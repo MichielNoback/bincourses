@@ -1,0 +1,554 @@
+---
+title: "Exploratory Data Analysis"
+author: "Michiel Noback"
+date: "11/12/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(ggplot2)
+library(knitr)
+```
+
+# Introduction
+
+## Definition (Wikipedia)
+
+In statistics, *exploratory data analysis (EDA)* is an approach to analyzing data sets to summarize their main characteristics, often with visual methods. A statistical model can be used or not, but primarily EDA is for seeing what the data can tell us beyond the formal modeling or hypothesis testing task. 
+s.  
+
+## The Cervical Cancer dataset
+
+The UCI machine learning public dataset "Cervical cancer (Risk Factors) Data Set":
+
+"... collected at 'Hospital Universitario de Caracas' in Caracas, Venezuela. The dataset comprises demographic information, habits, and historic medical records of 858 patients. Several patients decided not to answer some of the questions because of privacy concerns."
+
+# Getting to know the data
+
+## Look at the codebook
+
+A codebook describes the contents, structure, and layout of a dataset. A well-documented codebook contains information intended to be complete and self-explanatory for each variable in a data file.
+
+## The cervical cancer Codebook
+
+Is this a good codebook?
+
+```
+(int) Age 
+(int) Number of sexual partners 
+(int) First sexual intercourse (age) 
+(int) Num of pregnancies 
+(int) Hormonal Contraceptives (years) 
+(int) IUD (years) 
+(bool) STDs 
+(int) STDs (number) 
+...
+(bool) Hinselmann: target variable 
+(bool) Schiller: target variable 
+(bool) Cytology: target variable 
+(bool) Biopsy: target variable
+```
+
+## Elements of a good codebook entry
+
+- **Name** the column name (num.sex.partner)
+- **Full name** what it abbreviates ("Number of sexual partners")
+- **Data type** integer/float/Date/enum/... (int)
+- **Unit** the unit of measurement (e.g. "mg/l plasma"")
+- **Description** A full description of what is measured, and the way its value was collected. (e.g. questionnaire)
+
+## What if it is not present/complete?
+
+There are several ways to try and find out:  
+- read the publication  
+- contact the primary investigators  
+- *last resort* deduce from context and domain knowledge  
+
+## Load the data
+
+- Load the data and check the data type of the columns. 
+- Beware of unusual encodings for missing data. 
+- Use `head()` and `str()` to iteratively get data loading right.  
+
+```{r echo=T}
+datafile <- "data/risk_factors_cervical_cancer.csv"
+data <- read.table(datafile, sep=",", header = TRUE)
+str(data[1:5])
+```
+
+----
+
+```{r echo=TRUE}
+data <- read.table(datafile,
+                   sep=",", 
+                   header = TRUE,
+                   na.strings = "?")
+str(data[1:5])
+```
+
+## A better solution
+
+- Create a file called Codebook to store names, descriptions and types of variables
+
+```{r}
+codebook <- read.csv("data/cerv_cancer_codebook.csv", as.is = 1:3)
+head(codebook)
+```
+
+## Correcting typos?
+
+What do you think about this?
+(From the Attribute Information on the website )
+
+```
+(bool) Smokes (years) 
+(bool) Smokes (packs/year) 
+```
+
+They are advertised as a boolean, but are they?
+
+----
+
+```{r}
+data <- read.csv(datafile, na.strings = "?")
+names(data) <- codebook[,1]
+ggplot(data, aes(x=smoke.years)) + geom_histogram(binwidth = 4, na.rm = T) + ylim(0, 50)
+```
+
+**NB** `r sum(data$smoke.years==0, na.rm=T)` non-smokers omitted!  
+**Obviously, smoke.years should be an int (same for smokes.packs.year)**  
+
+## Getting it right in the end
+
+```{r echo=TRUE}
+data <- read.csv(datafile, na.strings = "?")
+names(data) <- codebook[,1]
+for(i in 1:nrow(codebook)) {
+  if(codebook[i, 2] == "logical"){
+    data[,i] <- as.logical(data[,i])
+  }
+}
+str(data[1:7])
+```
+
+## Why such a hassle?
+
+- It makes it much easier to code from here on  
+    - and to read the code
+- It makes adding labels to plots a breeze
+- It allows for easier checking
+
+# Exploring variables
+
+## First steps  
+
+- At first, simply use the `summary()` function. This gives you a very quick overview of the data  
+    - gives first hint of data distribution  
+    - indicates if anything funny is going on   
+- Take special care to notice   
+    - outliers  
+    - skewed data  
+    - large amounts of missing data   
+
+## Inspecting some columns (1)
+
+```{r}
+summary(data[,c(2,3)])
+```
+
+- Are these summaries you would expect?
+- Do you see (hints of) outliers?
+
+## Boxplot is a visual representation of the summary
+
+```{r}
+ggplot(data, aes(x=target.biopsy, y=horm.contracept.years)) + geom_boxplot(na.rm=T)
+```
+
+## Inspecting some columns (1)
+
+```{r echo=T}
+summary(data$STDs.number)
+```
+
+- Strange numbers!
+- Many outliers
+
+## A bit more detail with `table()`
+
+```{r echo=TRUE}
+table(data$STDs.number, useNA="always")
+```
+
+- This explains the strange `summary()` result.
+- Why are there so many NAs?
+
+## The smoking data
+
+```{r}
+summary(data[, 5:7])
+```
+
+- Obviously, these three variables describe the exact same thing!
+- Let's investigate this further and deal with it
+
+## Smoker data corrupted?
+
+```{r echo=T}
+sum(data$smoker, na.rm=T)
+tmp <- data$smoker & data$smoke.years > 0 & data$smokes.packs.year > 0
+sum(tmp, na.rm=T)
+```
+
+Probably not, but row 4 is dodgy at the least:
+
+```{r}
+data[4, c(1, 5, 6, 7)]
+```
+
+I'll investigate further
+
+----
+
+```{r echo=T}
+data[!is.na(data$smoke.years) & data$smoke.years > 0 
+     & data$smoke.years == data$smokes.packs.year, c(5,6,7)]
+```
+
+What do you think happened here?
+
+## A closer inspection
+
+```{r}
+ggplot(data[data$smokes.packs.year>0, ], aes(x=smokes.packs.year)) + geom_histogram(bins=25, na.rm=T)
+```
+
+**This cannot be packs per year! Most smokers smoke 1-7 packs per week! (exactly what this histogram shows)** 
+
+## Dealing with data corruption
+
+Two options remain for the `smokes.packs.year` column:  
+- adjust the units manually as I think is correct  
+- discard the column  
+
+Since the smoking data is redundant, I will choose the latter
+
+## Variable engineering: "factorization"
+
+Condense the 'smoking' data into one variable and start building a 'clean' dataset:
+
+```{r echo=T}
+smoking <- cut(data$smoke.years, 
+               breaks = c(0, 1, 5, 12, 100), 
+               labels = c("no", "short", "medium", "long"),
+               ordered_result = T,
+               right = F)
+clean_data <- cbind(data[, 1:4], smoking, data[, 8:ncol(data)])
+table(smoking)
+```
+
+## Data redundancy in STD variables
+
+There are many variables related to STDs:
+
+```{r}
+std_columns <- codebook[grep(pattern = "STD_", x = codebook$abbreviation), 1]
+std_columns
+```
+
+Some of them completely redundant, and most with extremely low (useless) counts
+
+```{r echo=T}
+table(data$STDs.number)
+```
+
+Only `r sum(data$STDs.number > 0, na.rm=T)` entries have STDs (luckily!), and 
+of these  
+
+----  
+
+These are the counts of occurrences of individual STDs:
+
+```{r}
+
+apply(data[ ,std_columns], MARGIN = 2, FUN = function(x) sum(x>0, na.rm=T))
+```
+
+# Recoding variables
+
+## Recoding strategies  
+
+Several options  
+
+- Factorization: convert to factor
+    - seen with Smoking data
+- Normalization  
+    - min-max normalization
+    - scaling normalization  
+- When numeric attributes are required: dummy coding
+
+## min-max normalization
+
+- pro: easy, transparent
+- used for normalization from 0 to 1
+- danger: unseen data with wider distribution
+    - define theoretical extremes
+
+This is how to do it in R
+
+```{r echo=T}
+scale_min_max <- function(x) (x - min(x)) / (max(x) - min(x))
+```
+
+## min-max demo
+
+```{r echo=T}
+x <- c(2, -1, 3, 5, 0, 4)
+round(scale_min_max(x), 2)
+```
+
+## scaling normalization
+
+$$x' = \frac{x-\bar{x}}{\sigma}$$
+- Built into R:
+
+```{r echo=T}
+x <- c(2, -1, 3, 5, 0, 4)
+round(scale(x), 2)[,1]
+```
+
+## dummy encoding
+
+how to change this factor in a numeric representation usable for clustering etc?
+
+```{r}
+pet_favour <- factor(c("dog", "cat", "cat", "dog", "rat"))
+pet_favour
+```
+
+## dummy coding pets
+
+The essence is binary splitting:  
+
+- dog/not dog
+- cat/not cat
+- rat/not rat
+
+## dummy coding in R
+
+```{r include=F}
+library(dummies)
+```
+
+```{r echo=T}
+dummies::dummy.data.frame(data.frame(favour=pet_favour), sep="_")
+```
+
+
+## The dependent variable
+
+Oh no, there are four!
+
+```{r}
+last <- length(names(data))
+names(data)[(last-3):last]
+```
+
+**Which are you going to use?**  
+
+----  
+
+```{r}
+library(reshape)
+target_names <- c("Hinselman", "Schiller", "cytology", "biopsy")
+cor_matrix <- cor(data[, 33:36])
+colnames(cor_matrix) <- target_names
+row.names(cor_matrix) <- target_names
+
+cor_matrix_melted <- melt(cor_matrix)
+ggplot(data = cor_matrix_melted, aes(x=X1, y=X2, fill=value)) + 
+  geom_tile() + labs(x=NULL, y=NULL)
+```
+This shows the correlation between the four target variables.
+
+
+
+# Exploring covariance
+
+## Exploring covariance  
+
+Typically, relationships between variables are visualized using scatterplots, but other strategies exist. Several are explored here.
+
+## The standard scatterplot  
+
+A simple scatterplot looking at the relationship between `first.sex` and `num.partners`.
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp <- ggplot(data, aes(x=first.sex, y=num.partners)) +
+   labs(x="Age of first sex", y="Number of sexual partners") 
+baseplot_sp + geom_point(na.rm=T)
+```
+
+----  
+
+This is not showing the correct picture: there is a limited number of discrete values for each variable.  
+Only around 100 points are visible where {r nrow(data)} are expected, so apparently many points overlap.
+
+## Improve with alpha parameter to `geom_point`
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_point(na.rm=T, alpha=0.2, shape=16, size=2)
+```
+
+## Improve with `geom_jitter`
+
+(and combine with `alpha` parameter)
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_jitter(na.rm=T, width=0.4, height=0.3, alpha=0.5, shape=16, size=0.7)
+```
+
+## Improve by omitting outliers
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_jitter(na.rm=T, width=0.4, height=0.3, alpha=0.5, shape=16, size=0.7) + ylim(0,10)
+```
+
+## Improve by adding trend line
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_point(na.rm=T, alpha=0.2, shape=16, size=2) + geom_smooth(method="loess", na.rm=T)
+```
+
+- Shows the high impact of a single outlier!
+- In contrast with common belief, no apparent relationship is visible
+
+## Improve by binning
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_bin2d(na.rm=T)
+```
+
+
+# Look for patterns with the dependent variable
+
+## Why?
+
+- The dependent variable is the thing you are interested in!  
+- It is a good idea to investigate variables in relation with the dependent variable
+
+```{r, fig.width=6.5, fig.height=3.5}
+baseplot_sp + geom_jitter(mapping = aes(color=target.biopsy), na.rm=T, width=0.4, height=0.3, alpha=0.5, shape=16, size=0.7) + ylim(0,10)
+```
+
+## Density plots show class distinction
+
+A density plot will often quickly reveal whether there is promise in 
+a variable. I'll demonstrate with the `iris` dataset.
+
+```{r, fig.width=6.5, fig.height=3.5}
+ggplot(iris, aes(x=Petal.Length)) + geom_density(aes(color=Species))
+```
+In this plot, you can see that Setosa separates quite nicely, by the other two don't.
+
+## The 'xor' problem
+
+The density approach is not flawless! Consider this:
+
+```{r, fig.width=6.5, fig.height=3.5}
+var_x <- c(runif(300, -1, 0), runif(300, 0, 1))
+var_y <- c(runif(150, -1, 0), runif(150, 0, 1), runif(150, 0, 1), runif(150, -1, 0))
+label = rep(c(rep("sick", 150), rep("healthy", 150)), 2)
+df <- data.frame(dosage = var_x, response=var_y, patient_type = label)
+ggplot(data=df, mapping=aes(x=dosage)) + geom_density(aes(color=patient_type))
+```
+
+This looks like there is little to win, doesn't it?  
+Here's another view of the same data!
+
+----
+
+```{r, fig.width=6.5, fig.height=3.5}
+ggplot(df, aes(x=dosage, y=response)) + geom_point()
+```
+Still not interesting!  
+Give it one more shot:
+
+----
+
+```{r, fig.width=6.5, fig.height=3.5}
+ggplot(df, aes(x=dosage, y=response, color=patient_type)) + geom_point()
+```
+
+
+# Advanced Explorations
+
+## PCA
+
+Here are the irises again.
+
+```{r echo=TRUE}
+ir.pca <- prcomp(iris[, -5],
+                 center = TRUE,
+                 scale. = TRUE)
+print(ir.pca)
+```
+
+## Plot variances
+
+The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis). 
+
+```{r echo=TRUE}
+plot(ir.pca, type = "l")
+```
+
+## Summary
+
+The summary method describe the importance of the PCs.
+
+```{r echo=TRUE}
+summary(ir.pca)
+```
+
+## The PC plot
+
+```{r, include=FALSE}
+#library(devtools)
+#install_github("vqv/ggbiplot")
+
+library(ggbiplot)
+g <- ggbiplot(ir.pca, obs.scale = 1, var.scale = 1, 
+              groups = iris[,5], ellipse = FALSE, 
+              circle = TRUE)
+g <- g + scale_color_discrete(name = '')
+g <- g + theme(legend.direction = 'horizontal', 
+               legend.position = 'top')
+```
+
+```{r}
+print(g)
+```
+
+
+## Clustering
+
+- Using clustering, you can sometimes see obvious patterns in the data.  
+- Most obvious are:  
+    - k-Means clustering
+    - Hierarchical clsutering
+    
+## k-Means clustering
+
+k-means is very sensitive to the scale of your data so you'll need to normalize it.
+
+## k-Means clustering
+
+```{r}
+#km_clusters <- kmeans()
+
+```
+
+
+
+
