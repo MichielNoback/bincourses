@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Exploratory Data Analysis | Data Analysis and Visualization using R (2)</title>
+  <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Exploratory Data Analysis | Data Analysis and Visualization using R (2)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Exploratory Data Analysis | Data Analysis and Visualization using R (2)" />
+  
+  <meta name="twitter:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+<meta name="date" content="2020-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="stringr.html">
+<link rel="next" href="exercises.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DAVuR2 gitbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a><ul>
+<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#keep-the-goal-in-mind"><i class="fa fa-check"></i>Keep the goal in mind</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#a-first-plot"><i class="fa fa-check"></i>A first plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#adding-a-dimension-using-color"><i class="fa fa-check"></i>Adding a dimension using color</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#phylosophy-of-ggplot2"><i class="fa fa-check"></i>Phylosophy of ggplot2</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-layered-plot-architecture"><i class="fa fa-check"></i>The layered plot architecture</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#tidy-the-data"><i class="fa fa-check"></i>“Tidy” the data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#shapes"><i class="fa fa-check"></i>Shapes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#lines"><i class="fa fa-check"></i>Lines</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#size"><i class="fa fa-check"></i>Size</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#what-are-geometries"><i class="fa fa-check"></i>What are geometries</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#violin-plot"><i class="fa fa-check"></i>Violin plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#overview-of-the-main-geoms"><i class="fa fa-check"></i>Overview of the main geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
+<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
+<li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a><ul>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-data"><i class="fa fa-check"></i>The data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#choose-a-visualization"><i class="fa fa-check"></i>Choose a visualization</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#a-first-version"><i class="fa fa-check"></i>A first version</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#add-mean-and-sd"><i class="fa fa-check"></i>Add mean and SD</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasise-worst-cases"><i class="fa fa-check"></i>Emphasise worst cases</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
+<li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dplyr.html"><a href="dplyr.html#by-row-constructor"><i class="fa fa-check"></i><b>4.1.1</b> By-row constructor</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dplyr.html"><a href="dplyr.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>4.1.2</b> Tibbles vs data frames</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dplyr.html"><a href="dplyr.html#the-str-equivalent-glimpse"><i class="fa fa-check"></i><b>4.1.3</b> The <code>str()</code> equivalent: <code>glimpse()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#the-chaining-operator"><i class="fa fa-check"></i><b>4.2</b> The chaining operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dplyr.html"><a href="dplyr.html#selecting-rows-by-index-slice"><i class="fa fa-check"></i><b>4.3.1</b> Selecting rows by index: <code>slice()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="dplyr.html"><a href="dplyr.html#get-unique-cases-with-distinct"><i class="fa fa-check"></i><b>4.3.2</b> Get unique cases with <code>distinct()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="dplyr.html"><a href="dplyr.html#filter-cases"><i class="fa fa-check"></i><b>4.3.3</b> <code>filter()</code> cases</a></li>
+<li class="chapter" data-level="4.3.4" data-path="dplyr.html"><a href="dplyr.html#selecting-variables-select"><i class="fa fa-check"></i><b>4.3.4</b> Selecting variables: <code>select()</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="dplyr.html"><a href="dplyr.html#renaming-variables-rename"><i class="fa fa-check"></i><b>4.3.5</b> Renaming variables: <code>rename()</code></a></li>
+<li class="chapter" data-level="4.3.6" data-path="dplyr.html"><a href="dplyr.html#selecting-from-ranked-data"><i class="fa fa-check"></i><b>4.3.6</b> Selecting from ranked data</a></li>
+<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-colum-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a colum as vector</a></li>
+<li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="dplyr.html"><a href="dplyr.html#group_by-and-ungroup"><i class="fa fa-check"></i><b>4.5.1</b> <code>group_by()</code> and <code>ungroup()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="dplyr.html"><a href="dplyr.html#group_split-and-group_keys"><i class="fa fa-check"></i><b>4.5.2</b> <code>group_split()</code> and <code>group_keys()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="dplyr.html"><a href="dplyr.html#apply-a-function-to-each-group"><i class="fa fa-check"></i><b>4.5.3</b> Apply a function to each group</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#summarizing-and-counting"><i class="fa fa-check"></i><b>4.6</b> Summarizing and counting</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="dplyr.html"><a href="dplyr.html#merging"><i class="fa fa-check"></i><b>4.7.1</b> Merging</a></li>
+<li class="chapter" data-level="4.7.2" data-path="dplyr.html"><a href="dplyr.html#adding-rows-and-columns"><i class="fa fa-check"></i><b>4.7.2</b> Adding rows and columns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="date-time.html"><a href="date-time.html#current-time"><i class="fa fa-check"></i><b>5.1</b> Current time</a></li>
+<li class="chapter" data-level="5.2" data-path="date-time.html"><a href="date-time.html#getting-elements-from-date-time-objects"><i class="fa fa-check"></i><b>5.2</b> Getting elements from date-time objects</a></li>
+<li class="chapter" data-level="5.3" data-path="date-time.html"><a href="date-time.html#calculations-with-date-time"><i class="fa fa-check"></i><b>5.3</b> Calculations with date-time</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a><ul>
+<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="stringr.html"><a href="stringr.html#a-few-remarks-on-locale"><i class="fa fa-check"></i><b>6.1.1</b> A few remarks on “locale”</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="stringr.html"><a href="stringr.html#regex-syntax-elements"><i class="fa fa-check"></i><b>6.2.1</b> Regex syntax elements</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stringr.html"><a href="stringr.html#character-classes-and-negation"><i class="fa fa-check"></i><b>6.2.2</b> Character classes and negation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stringr.html"><a href="stringr.html#quantifiers"><i class="fa fa-check"></i><b>6.2.3</b> Quantifiers</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stringr.html"><a href="stringr.html#anchoring"><i class="fa fa-check"></i><b>6.2.4</b> Anchoring</a></li>
+<li class="chapter" data-level="6.2.5" data-path="stringr.html"><a href="stringr.html#alternatives"><i class="fa fa-check"></i><b>6.2.5</b> Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="stringr.html"><a href="stringr.html#case-conversion"><i class="fa fa-check"></i><b>6.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stringr.html"><a href="stringr.html#split-join-and-substring"><i class="fa fa-check"></i><b>6.3.2</b> Split, join and substring</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stringr.html"><a href="stringr.html#matching"><i class="fa fa-check"></i><b>6.3.3</b> Matching</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stringr.html"><a href="stringr.html#extracting-and-replacing"><i class="fa fa-check"></i><b>6.3.4</b> Extracting and replacing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="eda.html"><a href="eda.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="eda.html"><a href="eda.html#the-codebook"><i class="fa fa-check"></i><b>7.2.1</b> The codebook</a></li>
+<li class="chapter" data-level="7.2.2" data-path="eda.html"><a href="eda.html#load-and-inspect-the-data"><i class="fa fa-check"></i><b>7.2.2</b> Load and inspect the data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="eda.html"><a href="eda.html#first-steps"><i class="fa fa-check"></i><b>7.3.1</b> First steps</a></li>
+<li class="chapter" data-level="7.3.2" data-path="eda.html"><a href="eda.html#smoking-data-corrupted"><i class="fa fa-check"></i><b>7.3.2</b> Smoking data corrupted?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="eda.html"><a href="eda.html#recoding-strategies"><i class="fa fa-check"></i><b>7.4.1</b> Recoding strategies</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eda.html"><a href="eda.html#factorization"><i class="fa fa-check"></i><b>7.4.2</b> “factorization”</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eda.html"><a href="eda.html#data-redundancy-in-std-variables"><i class="fa fa-check"></i><b>7.4.3</b> Data redundancy in STD variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="eda.html"><a href="eda.html#the-dependent-variable"><i class="fa fa-check"></i><b>7.5</b> The dependent variable</a></li>
+<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="eda.html"><a href="eda.html#the-scatterplot"><i class="fa fa-check"></i><b>7.6.1</b> The scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="eda.html"><a href="eda.html#look-for-patterns-with-the-dependent-variable"><i class="fa fa-check"></i><b>7.7</b> Look for patterns with the dependent variable</a></li>
+<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="eda.html"><a href="eda.html#the-xor-problem"><i class="fa fa-check"></i><b>7.8.1</b> The ‘xor’ problem</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="eda.html"><a href="eda.html#pca"><i class="fa fa-check"></i><b>7.9.1</b> PCA</a></li>
+<li class="chapter" data-level="7.9.2" data-path="eda.html"><a href="eda.html#clustering"><i class="fa fa-check"></i><b>7.9.2</b> Clustering</a></li>
+<li class="chapter" data-level="7.9.3" data-path="eda.html"><a href="eda.html#k-means-clustering"><i class="fa fa-check"></i><b>7.9.3</b> k-Means clustering</a></li>
+<li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
+<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis and Visualization using R (2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eda" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Exploratory Data Analysis</h1>
+<div id="introduction-3" class="section level2">
+<h2><span class="header-section-number">7.1</span> Introduction</h2>
+<p>In this last chapter we’ll step back from the data mangling and have a look at an activity called Exploratory Data Analysis, EDA in short. All theory that is presented in previous chapters will be applied to two datasets</p>
+<p>In statistics, <em>exploratory data analysis (EDA)</em> is an approach to analyzing data sets to summarize their main characteristics, often with visual methods. A statistical model can be used or not, but primarily EDA is for seeing what the data can tell us beyond the formal modeling or hypothesis testing task.
+s. (Wikipedia)</p>
+<div id="the-cervical-cancer-dataset" class="section level4">
+<h4><span class="header-section-number">7.1.0.1</span> The Cervical Cancer dataset</h4>
+<p>The UCI machine learning public dataset “Cervical cancer (Risk Factors) Data Set”:</p>
+<p>“… collected at ‘Hospital Universitario de Caracas’ in Caracas, Venezuela. The dataset comprises demographic information, habits, and historic medical records of 858 patients. Several patients decided not to answer some of the questions because of privacy concerns.”</p>
+<p>This dataset contains more than thirty variables of 858 subjects who participated in this research. The goal was to identify variables that could possibly be related to cervical cancer. Typically in this type of research there is one dependent variable - the variable you want to “explain”. However in this dataset the last four variables are all markers for cervical cancer.</p>
+</div>
+<div id="libraries" class="section level4">
+<h4><span class="header-section-number">7.1.0.2</span> Libraries</h4>
+<p>These are the packages used in thie EDA:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(gridExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gridExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)</code></pre>
+</div>
+</div>
+<div id="getting-to-know-the-dataset" class="section level2">
+<h2><span class="header-section-number">7.2</span> Getting to know the dataset</h2>
+<div id="the-codebook" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> The codebook</h3>
+<p>A codebook describes the contents, structure, and layout of a dataset. A well-documented codebook contains information intended to be complete and self-explanatory for each variable in a data file.</p>
+<p>You should always create a file called Codebook.txt to store names, descriptions and types of variables, if it is not yet present alongside the dataset you received.</p>
+<p>This makes it so much easier to add human-readable labels to plots, and column headers of tables that are supposed to be intergarted in a report. The label <code>Hormonal Contraceptives (years)</code> is so much better than <code>Hormonal.Contraceptives..years</code>.</p>
+<p>Is the following -part of the original codebook downloaded with the data- a good codebook?</p>
+<pre><code>(int) Age 
+(int) Number of sexual partners 
+(int) First sexual intercourse (age) 
+(int) Num of pregnancies 
+(int) Hormonal Contraceptives (years) 
+(int) IUD (years) 
+(bool) STDs 
+(int) STDs (number) 
+...
+(bool) Hinselmann: target variable 
+(bool) Schiller: target variable 
+(bool) Cytology: target variable 
+(bool) Biopsy: target variable</code></pre>
+<div id="elements-of-a-good-codebook-entry" class="section level4">
+<h4><span class="header-section-number">7.2.1.1</span> Elements of a good codebook entry</h4>
+<ul>
+<li><strong>Name</strong> the column name (num.sex.partner)</li>
+<li><strong>Full name</strong> what it abbreviates (“Number of sexual partners”)</li>
+<li>(optionally) <strong>Label</strong> the label you want to use in graphs and above tables.</li>
+<li><strong>Data type</strong> One of the R data (derived) data types: int/numeric/Date/factor/boolean…</li>
+<li><strong>Unit</strong> the unit of measurement (e.g. “mg/l plasma”)</li>
+<li><strong>Description</strong> A full description of what is measured, and the way its value was collected (e.g. questionnaire, lab protocol xxxx).</li>
+</ul>
+<p>Now look again at the codebook above and answer again: is this a good codebook?</p>
+<p>What if the codebook is not present or not complete? There are several ways to try and fix this:</p>
+<ul>
+<li>read the original publication</li>
+<li>see whether this publication has (online) supplements</li>
+<li>contact the primary investigators.<br />
+</li>
+<li>as a <em>last resort</em>: try to deduce from context and domain knowledge</li>
+</ul>
+<p>I have cleaned it up a bit and came to this. It is still not perfect; how would you improve on this?</p>
+<pre class="sourceCode r"><code class="sourceCode r">codebook &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/cerv_cancer_codebook.csv&quot;</span>, 
+                     <span class="dt">as.is =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)
+<span class="kw">head</span>(codebook)</code></pre>
+<pre><code>##   abbreviation   class                      full.name
+## 1          age     int                            Age
+## 2 num.partners     int      Number of sexual partners
+## 3    first.sex     int First sexual intercourse (age)
+## 4     num.preg     int             Num of pregnancies
+## 5       smoker logical                         Smokes
+## 6  smoke.years     int                Smokes (years)</code></pre>
+</div>
+</div>
+<div id="load-and-inspect-the-data" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Load and inspect the data</h3>
+<p>Load the data and check the data type of the columns. Always beware of unusual encodings for missing data! This is one of the most common causes of erroneous analyses, besides data entry errors and sample swaps.</p>
+<p>You should get data loading right in an iterative process, using several functions to inspect the result each time you have adjusted a parameter. Use <code>head()</code> and -especially- <code>str()</code> to do this. Tibbles print their data type automatically so that gives an advantage over <code>data.frame</code>.</p>
+<p>Here is a first attempt:</p>
+<pre class="sourceCode r"><code class="sourceCode r">datafile &lt;-<span class="st"> &quot;data/risk_factors_cervical_cancer.csv&quot;</span>
+data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile, 
+                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, 
+                   <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="kw">str</span>(data)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
+##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
+##  $ Number.of.sexual.partners         : Factor w/ 13 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 8 2 2 9 7 7 7 2 2 7 ...
+##  $ First.sexual.intercourse          : Factor w/ 22 levels &quot;?&quot;,&quot;10.0&quot;,&quot;11.0&quot;,..: 7 6 1 8 13 15 9 18 12 7 ...
+##  $ Num.of.pregnancies                : Factor w/ 12 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;,..: 3 3 3 8 8 6 10 7 9 1 ...
+##  $ Smokes                            : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 3 2 2 3 2 2 3 ...
+##  $ Smokes..years.                    : Factor w/ 31 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.16&quot;,..: 2 2 2 25 2 2 24 2 2 6 ...
+##  $ Smokes..packs.year.               : Factor w/ 63 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.001&quot;,..: 2 2 2 51 2 2 49 2 2 44 ...
+##  $ Hormonal.Contraceptives           : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 3 3 2 2 3 2 2 ...
+##  $ Hormonal.Contraceptives..years.   : Factor w/ 41 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.08&quot;,..: 2 2 2 31 22 2 2 26 2 2 ...
+##  $ IUD                               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 3 3 2 1 ...
+##  $ IUD..years.                       : Factor w/ 27 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.08&quot;,..: 2 2 2 2 2 2 25 25 2 1 ...
+##  $ STDs                              : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs..number.                     : Factor w/ 6 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.condylomatosis               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.cervical.condylomatosis      : Factor w/ 2 levels &quot;?&quot;,&quot;0.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.vaginal.condylomatosis       : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.vulvo.perineal.condylomatosis: Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.syphilis                     : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.pelvic.inflammatory.disease  : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.genital.herpes               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.molluscum.contagiosum        : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.AIDS                         : Factor w/ 2 levels &quot;?&quot;,&quot;0.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.HIV                          : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.Hepatitis.B                  : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs.HPV                          : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ STDs..Number.of.diagnosis         : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs..Time.since.first.diagnosis  : Factor w/ 19 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ STDs..Time.since.last.diagnosis   : Factor w/ 19 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Dx.Cancer                         : int  0 0 0 1 0 0 0 0 1 0 ...
+##  $ Dx.CIN                            : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Dx.HPV                            : int  0 0 0 1 0 0 0 0 1 0 ...
+##  $ Dx                                : int  0 0 0 0 0 0 0 0 1 0 ...
+##  $ Hinselmann                        : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ Schiller                          : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ Citology                          : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Biopsy                            : int  0 0 0 0 0 0 1 0 0 0 ...</code></pre>
+<p>As you can see, many of the variables have been read incorrectly. These can be recognized by the fact that they have been read as <code>Factor</code> instead of the expected <code>int</code>. A closer look at the output also tells me why: missing values are apparently encoded with a question mark.
+This is fixed in iteration two:</p>
+<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile,
+                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, 
+                   <span class="dt">header =</span> <span class="ot">TRUE</span>,
+                   <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)
+<span class="kw">str</span>(data)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
+##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
+##  $ Number.of.sexual.partners         : num  4 1 1 5 3 3 3 1 1 3 ...
+##  $ First.sexual.intercourse          : num  15 14 NA 16 21 23 17 26 20 15 ...
+##  $ Num.of.pregnancies                : num  1 1 1 4 4 2 6 3 5 NA ...
+##  $ Smokes                            : num  0 0 0 1 0 0 1 0 0 1 ...
+##  $ Smokes..years.                    : num  0 0 0 37 0 ...
+##  $ Smokes..packs.year.               : num  0 0 0 37 0 0 3.4 0 0 2.8 ...
+##  $ Hormonal.Contraceptives           : num  0 0 0 1 1 0 0 1 0 0 ...
+##  $ Hormonal.Contraceptives..years.   : num  0 0 0 3 15 0 0 2 0 0 ...
+##  $ IUD                               : num  0 0 0 0 0 0 1 1 0 NA ...
+##  $ IUD..years.                       : num  0 0 0 0 0 0 7 7 0 NA ...
+##  $ STDs                              : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs..number.                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.condylomatosis               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.cervical.condylomatosis      : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.vaginal.condylomatosis       : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.vulvo.perineal.condylomatosis: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.syphilis                     : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.pelvic.inflammatory.disease  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.genital.herpes               : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.molluscum.contagiosum        : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.AIDS                         : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.HIV                          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.Hepatitis.B                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs.HPV                          : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs..Number.of.diagnosis         : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ STDs..Time.since.first.diagnosis  : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ STDs..Time.since.last.diagnosis   : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Dx.Cancer                         : int  0 0 0 1 0 0 0 0 1 0 ...
+##  $ Dx.CIN                            : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Dx.HPV                            : int  0 0 0 1 0 0 0 0 1 0 ...
+##  $ Dx                                : int  0 0 0 0 0 0 0 0 1 0 ...
+##  $ Hinselmann                        : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ Schiller                          : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ Citology                          : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Biopsy                            : int  0 0 0 0 0 0 1 0 0 0 ...</code></pre>
+<p>This looks pretty OK to me. Be alert for surprises down the line, though!</p>
+<div id="should-you-correct-typos" class="section level4">
+<h4><span class="header-section-number">7.2.2.1</span> Should you correct typos?</h4>
+<p>What do you think about this - it was taken from the Attribute Information on the website:</p>
+<pre><code>(bool) Smokes (years) 
+(bool) Smokes (packs/year) </code></pre>
+<p>They are advertised as a boolean, but are they?<br />
+This kind of inspection should make you aware of possible problems that are going to arise later on. Booleans are very different from numbers after all. What is even more dangerous is that they can be treated interchangeably - in R you can treat a logical as an integer and an intereger in a boolean context.</p>
+<p>This kind of discrepancy is the first thing you should address after loading your data. We’ll get back to this shortly.</p>
+<p>I will now first change the column names to something shorter, using the codebook. Also, the data will be converted into a tibble because this is really a nicer data structure:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]
+data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data)
+data</code></pre>
+<pre><code>## # A tibble: 858 x 36
+##      age num.partners first.sex num.preg smoker smoke.years
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
+##  1    18            4        15        1      0        0   
+##  2    15            1        14        1      0        0   
+##  3    34            1        NA        1      0        0   
+##  4    52            5        16        4      1       37   
+##  5    46            3        21        4      0        0   
+##  6    42            3        23        2      0        0   
+##  7    51            3        17        6      1       34   
+##  8    26            1        26        3      0        0   
+##  9    45            1        20        5      0        0   
+## 10    44            3        15       NA      1        1.27
+## # … with 848 more rows, and 30 more variables: smokes.packs.year &lt;dbl&gt;,
+## #   horm.contracept.ever &lt;dbl&gt;, horm.contracept.years &lt;dbl&gt;,
+## #   IUD.ever &lt;dbl&gt;, IUD.years &lt;dbl&gt;, STD.ever &lt;dbl&gt;, STDs.number &lt;dbl&gt;,
+## #   STD_condylomatosis &lt;dbl&gt;, STD_cervical.cond &lt;dbl&gt;,
+## #   STD_vaginal.cond &lt;dbl&gt;, STD_vulvo.per.cond &lt;dbl&gt;, STD_syph &lt;dbl&gt;,
+## #   STD_pid &lt;dbl&gt;, STD_gen.herpes &lt;dbl&gt;, STD_moll.cont &lt;dbl&gt;,
+## #   STD_aids &lt;dbl&gt;, STD_hiv &lt;dbl&gt;, STD_hepB &lt;dbl&gt;, STD_HPV &lt;dbl&gt;,
+## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;,
+## #   STD.time.since.last &lt;dbl&gt;, Dx.cancer &lt;int&gt;, Dx.cin &lt;int&gt;,
+## #   Dx.hpv &lt;int&gt;, Dx &lt;int&gt;, target.hinselman &lt;int&gt;, target.schiller &lt;int&gt;,
+## #   target.cytology &lt;int&gt;, target.biopsy &lt;int&gt;</code></pre>
+<p>Now let’s have a look at the <code>smoke.years</code> variable:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>smoke.years)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>, <span class="dt">na.rm =</span> T) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:smoke-years-inspection"></span>
+<img src="bookdown-demo_files/figure-html/smoke-years-inspection-1.png" alt="A histogram of the 'smoke.years' attribute" width="80%" />
+<p class="caption">
+Figure 7.1: A histogram of the ‘smoke.years’ attribute
+</p>
+</div>
+<p>From the figure it is obvious that this attribute is really the number of years that the subject has smoked. As you can see, the zero-years smoking is absent - this data is only relevant for subjects where <code>smoker == 1</code>. Where <code>1</code> is actually not a logical (did you spot that already in the data?).<br />
+<strong>Obviously, smoke.years should be an int </strong>. The same counts for variable <code>smokes.packs.year</code>.</p>
+</div>
+<div id="getting-it-right-in-the-end" class="section level4">
+<h4><span class="header-section-number">7.2.2.2</span> Getting it right in the end</h4>
+<p>Here, for demonstration purposes I use a wrapper function <code>read.csv()</code> instead of <code>read.table()</code>. The tidyverse has data reading facilities as well of course, but these were not dealt with in this course.</p>
+<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(datafile, <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)
+<span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(codebook)) {
+  <span class="cf">if</span>(codebook[i, <span class="dv">2</span>] <span class="op">==</span><span class="st"> &quot;logical&quot;</span>){
+    data[,i] &lt;-<span class="st"> </span><span class="kw">as.logical</span>(data[,i])
+  }
+}
+(data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data))</code></pre>
+<pre><code>## # A tibble: 858 x 36
+##      age num.partners first.sex num.preg smoker smoke.years
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;        &lt;dbl&gt;
+##  1    18            4        15        1 FALSE         0   
+##  2    15            1        14        1 FALSE         0   
+##  3    34            1        NA        1 FALSE         0   
+##  4    52            5        16        4 TRUE         37   
+##  5    46            3        21        4 FALSE         0   
+##  6    42            3        23        2 FALSE         0   
+##  7    51            3        17        6 TRUE         34   
+##  8    26            1        26        3 FALSE         0   
+##  9    45            1        20        5 FALSE         0   
+## 10    44            3        15       NA TRUE          1.27
+## # … with 848 more rows, and 30 more variables: smokes.packs.year &lt;dbl&gt;,
+## #   horm.contracept.ever &lt;lgl&gt;, horm.contracept.years &lt;dbl&gt;,
+## #   IUD.ever &lt;lgl&gt;, IUD.years &lt;dbl&gt;, STD.ever &lt;lgl&gt;, STDs.number &lt;dbl&gt;,
+## #   STD_condylomatosis &lt;lgl&gt;, STD_cervical.cond &lt;lgl&gt;,
+## #   STD_vaginal.cond &lt;lgl&gt;, STD_vulvo.per.cond &lt;lgl&gt;, STD_syph &lt;lgl&gt;,
+## #   STD_pid &lt;lgl&gt;, STD_gen.herpes &lt;lgl&gt;, STD_moll.cont &lt;lgl&gt;,
+## #   STD_aids &lt;lgl&gt;, STD_hiv &lt;lgl&gt;, STD_hepB &lt;lgl&gt;, STD_HPV &lt;lgl&gt;,
+## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;,
+## #   STD.time.since.last &lt;dbl&gt;, Dx.cancer &lt;lgl&gt;, Dx.cin &lt;lgl&gt;,
+## #   Dx.hpv &lt;lgl&gt;, Dx &lt;lgl&gt;, target.hinselman &lt;lgl&gt;, target.schiller &lt;lgl&gt;,
+## #   target.cytology &lt;lgl&gt;, target.biopsy &lt;lgl&gt;</code></pre>
+</div>
+<div id="why-such-a-hassle" class="section level4">
+<h4><span class="header-section-number">7.2.2.3</span> Why such a hassle?</h4>
+<p>It makes it so much easier to run analyses from here on! Also, the code will be more readable making your research more <strong><em>transparent and reproducible</em></strong>. Two very important aspects of any analysis!
+Besides this, it will make adding labels to plots a breeze.</p>
+</div>
+</div>
+</div>
+<div id="exploring-variables" class="section level2">
+<h2><span class="header-section-number">7.3</span> Exploring variables</h2>
+<div id="first-steps" class="section level3">
+<h3><span class="header-section-number">7.3.1</span> First steps</h3>
+<p>The first phase of any analysis should be to inspect all variables with respect to data <strong><em>distribution</em></strong> and <strong><em>datacorruption</em></strong>. You should also take special care to notice <strong><em>outliers</em></strong>, <strong><em>skewed data</em></strong> and the amount of <strong><em>missing data</em></strong>.</p>
+<p>These functions and visualizations are used most often for this purpose:</p>
+<ul>
+<li><code>summary()</code></li>
+<li><code>quantile()</code></li>
+<li>histogram</li>
+<li>boxplot (or jitter, stripchart)</li>
+<li>density plot</li>
+<li>(contingency) tables</li>
+</ul>
+<p>As you can see, in this phae only <strong><em>univariate</em></strong> analyses and visualizations are employed.</p>
+<div id="inspecting-some-columns" class="section level4">
+<h4><span class="header-section-number">7.3.1.1</span> Inspecting some columns</h4>
+<p>Here, I will only inspect some columns since this entire process is for demonstration purposes only. I will start with columns 2 and three.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data[, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>])</code></pre>
+<pre><code>##   num.partners     first.sex 
+##  Min.   : 1.00   Min.   :10  
+##  1st Qu.: 2.00   1st Qu.:15  
+##  Median : 2.00   Median :17  
+##  Mean   : 2.53   Mean   :17  
+##  3rd Qu.: 3.00   3rd Qu.:18  
+##  Max.   :28.00   Max.   :32  
+##  NA&#39;s   :26      NA&#39;s   :7</code></pre>
+<p>Here is a visualization. I used <code>grid.arrange()</code> from the <code>gridExtra</code> package for arranging two plots in a single panel.</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
+p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> num.partners)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;number of partners&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)
+    
+p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> first.sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;age of first sex&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)
+
+<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">nrow =</span> <span class="dv">1</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:num-partners-inspection1"></span>
+<img src="bookdown-demo_files/figure-html/num-partners-inspection1-1.png" alt="The 'num.partners' (left) and 'first.sex' (right) attributes" width="80%" />
+<p class="caption">
+Figure 7.2: The ‘num.partners’ (left) and ‘first.sex’ (right) attributes
+</p>
+</div>
+<p>Now look at these results and ask yourself:</p>
+<ul>
+<li>Are these summaries and distributions you would expect?</li>
+<li>Do you see (hints of) outliers? Are these outliers “real data” or - for instance- data entry errors?</li>
+<li>Do you think the questions were answered truthfully?</li>
+</ul>
+<p>Here is another boxplot, the workhorse of data visualization. The problem with discrete data is that they overlap 100% in plots, as is the case with the outliers here. Instead of overlaying with all jittered data you could apply this trick to only jitter the outliers. The trick there is to provide a <code>data = function(x) dplyr::filter(x, outlier)</code> argument in <code>geom_jitter()</code> where only the rows with outliers are selected.<br />
+Note that I already moved away from univeriate analysis.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##define outlier function</span>
+my_outlier &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+    x <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(x) <span class="op">+</span><span class="st"> </span><span class="kw">IQR</span>(x) <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>
+}
+
+tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(<span class="kw">c</span>(horm.contracept.years, target.biopsy)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">outlier =</span> <span class="kw">my_outlier</span>(horm.contracept.years)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>()
+
+<span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>target.biopsy, <span class="dt">y=</span>horm.contracept.years)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>) <span class="op">+</span><span class="st"> </span><span class="co">##no outliers plotted here</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> <span class="cf">function</span>(x) dplyr<span class="op">::</span><span class="kw">filter</span>(x, outlier), 
+                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>Let’s also look at the STDs.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data<span class="op">$</span>STDs.number)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
+##     0.0     0.0     0.0     0.2     0.0     4.0     105</code></pre>
+<p>These are strange numbers! Many missing values and many outliers apparently. A simple table view may help get insight here.</p>
+<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(STDs.number) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##   STDs.number     n
+##         &lt;dbl&gt; &lt;int&gt;
+## 1           0   674
+## 2           1    34
+## 3           2    37
+## 4           3     7
+## 5           4     1
+## 6          NA   105</code></pre>
+<p>Why would there be o many missing values? I think people don’t like to admid they’ve had an STD.</p>
+</div>
+</div>
+<div id="smoking-data-corrupted" class="section level3">
+<h3><span class="header-section-number">7.3.2</span> Smoking data corrupted?</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data[, <span class="dv">5</span><span class="op">:</span><span class="dv">7</span>])</code></pre>
+<pre><code>##    smoker         smoke.years   smokes.packs.year
+##  Mode :logical   Min.   : 0.0   Min.   : 0.0     
+##  FALSE:722       1st Qu.: 0.0   1st Qu.: 0.0     
+##  TRUE :123       Median : 0.0   Median : 0.0     
+##  NA&#39;s :13        Mean   : 1.2   Mean   : 0.5     
+##                  3rd Qu.: 0.0   3rd Qu.: 0.0     
+##                  Max.   :37.0   Max.   :37.0     
+##                  NA&#39;s   :13     NA&#39;s   :13</code></pre>
+<p>Obviously, these three variables describe the exact same thing: smoking behaviour. But there is something funny going on. Let’s investigate this further and deal with it.</p>
+<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(smoker) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   smoker     n
+##   &lt;lgl&gt;  &lt;int&gt;
+## 1 FALSE    722
+## 2 TRUE     123
+## 3 NA        13</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">perc &lt;-<span class="st"> </span><span class="kw">length</span>(data<span class="op">$</span>smoker) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(data<span class="op">$</span>smoker, <span class="dt">na.rm =</span> T)</code></pre>
+<p>So 6.98% of the subjects in this study is smoker.</p>
+<p>Verify the number of smokers via another route:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(data<span class="op">$</span>smoker <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<pre><code>## [1] 123</code></pre>
+<p>So is the smoker data corrupted? Probably not, but row 4 is dodgy at the least, and worth further investigation:</p>
+<pre class="sourceCode r"><code class="sourceCode r">data[<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)]</code></pre>
+<pre><code>## # A tibble: 1 x 4
+##     age smoker smoke.years smokes.packs.year
+##   &lt;int&gt; &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
+## 1    52 TRUE            37                37</code></pre>
+<p>Let’s look at the values in the the smoker columns in another way:</p>
+<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(smoker, smoke.years, smokes.packs.year) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>smoke.years <span class="op">==</span><span class="st"> </span>smokes.packs.year)</code></pre>
+<pre><code>## # A tibble: 14 x 3
+##    smoker smoke.years smokes.packs.year
+##    &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
+##  1 TRUE            37                37
+##  2 TRUE            19                19
+##  3 TRUE            21                21
+##  4 TRUE            15                15
+##  5 TRUE            12                12
+##  6 TRUE             5                 5
+##  7 TRUE             3                 3
+##  8 TRUE             3                 3
+##  9 TRUE             5                 5
+## 10 TRUE             5                 5
+## 11 TRUE             9                 9
+## 12 TRUE             6                 6
+## 13 TRUE             3                 3
+## 14 TRUE            22                22</code></pre>
+<p>As reminder, here is the equivalent base R code - which do you prefer?</p>
+<pre class="sourceCode r"><code class="sourceCode r">data[<span class="op">!</span><span class="kw">is.na</span>(data<span class="op">$</span>smoke.years) 
+     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> 
+     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">==</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year, <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</code></pre>
+<p>What do you think happened here?<br />
+I personally think there was a sleepy person doing data entry in the wrong column, or something like that.</p>
+<p>Now the packs per year attribute.</p>
+<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> smokes.packs.year)) <span class="op">+</span><span class="st">  </span>
+<span class="st">        </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
+<p>Do you know any smoker? Do they smoke at most 37 packs per year? I think not! This cannot be packs per year! Most smokers smoke 1-7 packs per week! This is exactly what this histogram shows.</p>
+<div id="dealing-with-data-corruption" class="section level4">
+<h4><span class="header-section-number">7.3.2.1</span> Dealing with data corruption</h4>
+<p>Two options remain for the <code>smokes.packs.year</code> column. the first is to adjust the units manually as I think is correct. The other is to simply discard the column.<br />
+Since the smoking data is redundant, I will choose the latter. if you have this kind of problems with crusial data columns, you should probably try to contact the authors/data collection team before changing the units yourself.</p>
+</div>
+</div>
+</div>
+<div id="variable-engineering" class="section level2">
+<h2><span class="header-section-number">7.4</span> Variable engineering</h2>
+<div id="recoding-strategies" class="section level3">
+<h3><span class="header-section-number">7.4.1</span> Recoding strategies</h3>
+<p>Often you will have to recode (or transform) some or all of your variables. This can be to be able to compare groups instead of numbers on a continuous scale (factorization), to make them comparable (normalization) or to get them in a more linear distribution (log transformation).</p>
+<p>Several techniques exist for different challenges:</p>
+<ul>
+<li>Factorization: convert to factor
+<ul>
+<li>seen with Smoking data</li>
+</ul></li>
+<li>Normalization
+<ul>
+<li>min-max normalization</li>
+<li>scaling normalization<br />
+</li>
+</ul></li>
+<li>Log transformation (log2, log10)</li>
+<li>Dummy coding: when numeric attributes are required instead of factor data</li>
+</ul>
+<div id="min-max-normalization" class="section level4">
+<h4><span class="header-section-number">7.4.1.1</span> min-max normalization</h4>
+<p>All data is scaled from 0 to 1, where the lowest value in your data is mapped to zero and the highest to one. This method is easy and transparent, but the danger lies in unseen data. When new data is encountered with a wider distribution analyses with this approach may break.</p>
+<p>This is how to do it in R</p>
+<pre class="sourceCode r"><code class="sourceCode r">scale_min_max &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+     (x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)) <span class="op">/</span><span class="st"> </span>(<span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x))
+}</code></pre>
+<p>Here is a demo of min-max normalization.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)
+<span class="kw">scale_min_max</span>(x)</code></pre>
+<pre><code>## [1] 0.500 0.000 0.667 1.000 0.167 0.833</code></pre>
+</div>
+<div id="scaling-normalization" class="section level4">
+<h4><span class="header-section-number">7.4.1.2</span> scaling normalization</h4>
+<p>A slightly more used normalization technique is scaling normalization. It scales all variable to a mean of zero and with the same standard deviation.</p>
+<p><span class="math display">\[x&#39; = \frac{x-\bar{x}}{\sigma}\]</span></p>
+<p>It is built right into R:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)
+<span class="kw">scale</span>(x)</code></pre>
+<pre><code>##         [,1]
+## [1,] -0.0719
+## [2,] -1.3669
+## [3,]  0.3597
+## [4,]  1.2231
+## [5,] -0.9353
+## [6,]  0.7914
+## attr(,&quot;scaled:center&quot;)
+## [1] 2.17
+## attr(,&quot;scaled:scale&quot;)
+## [1] 2.32</code></pre>
+</div>
+<div id="dummy-encoding" class="section level4">
+<h4><span class="header-section-number">7.4.1.3</span> dummy encoding</h4>
+<p>How to change this factor in a numeric representation usable for techniques that require numeric input such as clustering, linear modelling or regression?</p>
+<p>This is done with a technique called dummy coding and the essence is binary splitting.
+Here is a small data set:</p>
+<pre class="sourceCode r"><code class="sourceCode r">pet_favour &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">subject =</span> <span class="kw">c</span>(<span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Roger&quot;</span>, <span class="st">&quot;Rose&quot;</span>, <span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Caitlin&quot;</span>),
+                    <span class="dt">favour =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;rat&quot;</span>)))
+pet_favour</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   subject favour
+##   &lt;chr&gt;   &lt;fct&gt; 
+## 1 Mike    dog   
+## 2 Roger   cat   
+## 3 Rose    cat   
+## 4 Megan   dog   
+## 5 Caitlin rat</code></pre>
+<p>What we need here is three columns with 0 or 1 values for</p>
+<ul>
+<li>dog/not dog</li>
+<li>cat/not cat</li>
+<li>rat/not rat</li>
+</ul>
+<p>Below you can see an approach to this using some techniques from base R.</p>
+<pre class="sourceCode r"><code class="sourceCode r">encode_dummy &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+    lvls &lt;-<span class="st"> </span><span class="kw">levels</span>(x)
+    tmp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">sapply</span>(lvls, <span class="cf">function</span>(y) <span class="kw">as.integer</span>(x <span class="op">==</span><span class="st"> </span>y)))
+    <span class="kw">names</span>(tmp) &lt;-<span class="st"> </span><span class="kw">paste0</span>(lvls, <span class="st">&quot;_y&quot;</span>)
+    tmp
+}
+<span class="kw">bind_cols</span>(<span class="dt">subject =</span> pet_favour<span class="op">$</span>subject, <span class="kw">encode_dummy</span>(pet_favour<span class="op">$</span>favour))</code></pre>
+<pre><code>## # A tibble: 5 x 4
+##   subject cat_y dog_y rat_y
+##   &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+## 1 Mike        0     1     0
+## 2 Roger       1     0     0
+## 3 Rose        1     0     0
+## 4 Megan       0     1     0
+## 5 Caitlin     0     0     1</code></pre>
+<p>There are of course also packages that can do this; e.g. have a look at <code>dummies</code>.</p>
+</div>
+</div>
+<div id="factorization" class="section level3">
+<h3><span class="header-section-number">7.4.2</span> “factorization”</h3>
+<p>Especially for visualization puroses, it can be more convenient to have a variable in a factor form instead of numeric form. For instance, this is the case with the smoking-related data in the current dataset.</p>
+<p>I will reduce all three ‘smoking’ variables to one variable and start building a ‘clean’ dataset.
+Here, the new variable <code>smoking</code> is the result of cutting the <code>smoke.years</code> variable into factor levels.</p>
+<pre class="sourceCode r"><code class="sourceCode r">smoking_f &lt;-<span class="st"> </span><span class="kw">cut</span>(data<span class="op">$</span>smoke.years, 
+               <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">100</span>), 
+               <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;short&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;long&quot;</span>),
+               <span class="dt">ordered_result =</span> T,
+               <span class="dt">right =</span> F)
+
+clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">smoking =</span> smoking_f) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(age<span class="op">:</span>num.preg, smoking, horm.contracept.ever<span class="op">:</span>target.biopsy)
+<span class="kw">table</span>(clean_data<span class="op">$</span>smoking, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</code></pre>
+<pre><code>## 
+##  never  short medium   long   &lt;NA&gt; 
+##    726     42     44     33     13</code></pre>
+</div>
+<div id="data-redundancy-in-std-variables" class="section level3">
+<h3><span class="header-section-number">7.4.3</span> Data redundancy in STD variables</h3>
+<p>There are many variables related to STDs:</p>
+<pre class="sourceCode r"><code class="sourceCode r">(std_columns &lt;-<span class="st"> </span>codebook <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(abbreviation) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(abbreviation, <span class="st">&quot;STD_&quot;</span>)))</code></pre>
+<pre><code>##          abbreviation
+## 1  STD_condylomatosis
+## 2   STD_cervical.cond
+## 3    STD_vaginal.cond
+## 4  STD_vulvo.per.cond
+## 5            STD_syph
+## 6             STD_pid
+## 7      STD_gen.herpes
+## 8       STD_moll.cont
+## 9            STD_aids
+## 10            STD_hiv
+## 11           STD_hepB
+## 12            STD_HPV</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">std_columns &lt;-<span class="st"> </span>std_columns<span class="op">$</span>abbreviation
+<span class="co">##alternative with base R:</span>
+<span class="co">#codebook[grep(pattern = &quot;STD_&quot;, x = codebook$abbreviation), 1]</span></code></pre>
+<p>Some of theese are almost completely redundant, and most with extremely low -and thus useless- counts. Seen in absolute numbers, not many have multiple STDs, but statistically seen they are highly overrepresented - there are even more with two than with one STD:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(data<span class="op">$</span>STDs.number, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</code></pre>
+<pre><code>## 
+##    0    1    2    3    4 &lt;NA&gt; 
+##  674   34   37    7    1  105</code></pre>
+<p>Only 79 subjects have STDs (luckily!).</p>
+<p>These are the counts of occurrences of individual STDs:</p>
+<p>They are listed below. You can see a nice application of the <code>gather()</code> function to put the results in long format instead of wide.</p>
+<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarise_at</span>(std_columns, <span class="cf">function</span>(x) <span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;disease&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">everything</span>()) </code></pre>
+<pre><code>## # A tibble: 12 x 2
+##    disease            count
+##    &lt;chr&gt;              &lt;int&gt;
+##  1 STD_condylomatosis    44
+##  2 STD_cervical.cond      0
+##  3 STD_vaginal.cond       4
+##  4 STD_vulvo.per.cond    43
+##  5 STD_syph              18
+##  6 STD_pid                1
+##  7 STD_gen.herpes         1
+##  8 STD_moll.cont          1
+##  9 STD_aids               0
+## 10 STD_hiv               18
+## 11 STD_hepB               1
+## 12 STD_HPV                2</code></pre>
+<p>This is the same in base R using <code>apply()</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(data[ ,std_columns], <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">&gt;</span><span class="dv">0</span>, <span class="dt">na.rm=</span>T))</code></pre>
+</div>
+</div>
+<div id="the-dependent-variable" class="section level2">
+<h2><span class="header-section-number">7.5</span> The dependent variable</h2>
+<p>In many datasets there is a single <strong><em>dependent variable</em></strong>, the variable you try to explain or model using all the other variables (hence the name “target” used here. In this case it is the question whether the subject has cervical cancer yes or no.</p>
+<p>Unfortunately there are four dependent variables:</p>
+<pre class="sourceCode r"><code class="sourceCode r">last &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">names</span>(data))
+(target_vars &lt;-<span class="st"> </span><span class="kw">names</span>(data)[(last<span class="dv">-3</span>)<span class="op">:</span>last])</code></pre>
+<pre><code>## [1] &quot;target.hinselman&quot; &quot;target.schiller&quot;  &quot;target.cytology&quot; 
+## [4] &quot;target.biopsy&quot;</code></pre>
+<p><strong>Which one(s) are you going to use?</strong></p>
+<p>Let’s investiate the pairwise correlations between them.</p>
+<pre class="sourceCode r"><code class="sourceCode r">target_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hinselman&quot;</span>, <span class="st">&quot;Schiller&quot;</span>, <span class="st">&quot;cytology&quot;</span>, <span class="st">&quot;biopsy&quot;</span>)
+cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(data[, <span class="dv">33</span><span class="op">:</span><span class="dv">36</span>])
+<span class="kw">colnames</span>(cor_matrix) &lt;-<span class="st"> </span>target_names
+(cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix))</code></pre>
+<pre><code>## # A tibble: 4 x 4
+##   Hinselman Schiller cytology biopsy
+##       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1        0.650    0.192  0.547
+## 2     0.650    1        0.361  0.733
+## 3     0.192    0.361    1      0.327
+## 4     0.547    0.733    0.327  1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">target_name =</span> target_names) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</code></pre>
+<p>A <strong><em>
+map</em></strong> is a nice visualization for this type of data. Of course, ggplot really likes the long format so that needs to be done first with <code>gather()</code> (try to do this with <code>pivot_longer()</code> as an exercise):</p>
+<pre class="{r"><code>map, fig.asp=.9, out.width=&#39;70%&#39;, fig.align=&#39;center&#39;, fig.cap=&quot;A correlation 
+map of the four explanatory variables&quot;}
+cor_matrix_long &lt;- gather(cor_matrix, key = &quot;method&quot;, value = &quot;correlation&quot;, target_names)
+ggplot(data = cor_matrix_long, aes(x=target_name, y=method, fill=correlation)) + 
+    geom_tile() + 
+    labs(x=NULL, y=NULL) + 
+    scale_fill_gradient(high = &quot;red&quot;, low = &quot;white&quot; )</code></pre>
+<p>This shows the correlation between the four target variables.</p>
+<p>Another way to explore this is a <strong><em>contingency table</em></strong>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## TO BE DONE</span></code></pre>
+</div>
+<div id="exploring-relationships-between-variables" class="section level2">
+<h2><span class="header-section-number">7.6</span> Exploring relationships between variables</h2>
+<p>Typically, relationships between variables are visualized using scatterplots, but other strategies exist. Several are explored here.</p>
+<div id="the-scatterplot" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> The scatterplot</h3>
+<p>A simple scatterplot looking at the relationship between <code>first.sex</code> and <code>num.partners</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(clean_data, <span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span>
+<span class="st">   </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) 
+baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">na.rm=</span>T)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:scatterplot1"></span>
+<img src="bookdown-demo_files/figure-html/scatterplot1-1.png" alt="scatterplot first version" width="70%" />
+<p class="caption">
+Figure 7.3: scatterplot first version
+</p>
+</div>
+<p>Do you notice the strange “outlier”, a subject who had first sex at ten and had 29 sexual partners?
+More importantly, this is not showing the correct picture: there is a limited number of discrete values for each variable. Only around 100 points are visible where {r nrow(data)} are expected, so apparently many points overlap. This can be improved with alpha parameter to <code>geom_point</code>. Another strategy to improve is by using the <code>geom_jitter()</code> function, and combined with the <code>alpha</code> parameter.
+Omitting outliers could improve the picture, but will of course not show the complete picture anymore.</p>
+<p>Here, I choose the transparency option together with a bit of jitter (but not too much to still show the discreteness of the measurents). I also added a trend line in the form of a smoother. The trend line is an addition that is a great visual help to guide your reader. My question to you is: look at the trend line and decide whether it is showing a false pattern.</p>
+<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, 
+                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, 
+                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,
+                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:scatterplot2"></span>
+<img src="bookdown-demo_files/figure-html/scatterplot2-1.png" alt="scatterplot  with trendline" width="70%" />
+<p class="caption">
+Figure 7.4: scatterplot with trendline
+</p>
+</div>
+<p>The trend line shows the high impact of a single outlier! In contrast to common belief about age of first sex and “promiscuity”, no apparent relationship is visible in this dataset when you omit the single outlier:</p>
+<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, 
+                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, 
+                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,
+                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">        </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:scatterplot3"></span>
+<img src="bookdown-demo_files/figure-html/scatterplot3-1.png" alt="scatterplot  with trendline" width="70%" />
+<p class="caption">
+Figure 7.5: scatterplot with trendline
+</p>
+</div>
+<div id="binning" class="section level4">
+<h4><span class="header-section-number">7.6.1.1</span> Binning</h4>
+<p>A method not discussed before is <strong><em>binning</em></strong>, With binning, you cluster the inf=dividual data points into “buckets”. The amount of cases in a bucket is then displayed using a color gradient.</p>
+<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_bin2d</span>(<span class="dt">na.rm=</span>T)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-166-1.png" width="624" /></p>
+<p>Here is a variation of binning - the hexagonal bin (requires package <code>hexbin</code>):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hexbin)
+baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_hex</span>(<span class="dt">na.rm=</span>T)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="look-for-patterns-with-the-dependent-variable" class="section level2">
+<h2><span class="header-section-number">7.7</span> Look for patterns with the dependent variable</h2>
+<p>Why would you do that? The dependent variable is the thing you are interested in! Therefore it is a good idea to investigate variables in relation with the dependent variable.</p>
+<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.preg, <span class="dt">color=</span>target.biopsy)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of pregnancies&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color=</span>target.biopsy), 
+                <span class="dt">na.rm=</span>T, <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">height=</span><span class="fl">0.2</span>, 
+                <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.8</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-168-1.png" width="624" /></p>
+<p>Again, the heatmap comes in handy. Start with creating the matrix.</p>
+<pre class="sourceCode r"><code class="sourceCode r">selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)
+
+tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
+cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(tmp)
+<span class="co">#cor_matrix</span>
+
+<span class="co">#colnames(cor_matrix) &lt;- target_names</span>
+cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix)
+(cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">var1 =</span> selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">8</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>))</code></pre>
+<pre><code>## # A tibble: 7 x 8
+##   var1  num.partners first.sex num.preg horm.contracept… IUD.years
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;
+## 1 num.…      1        -0.148    0.0937           0.0209    0.00705
+## 2 firs…     -0.148     1       -0.0704           0.00434  -0.0357 
+## 3 num.…      0.0937   -0.0704   1                0.217     0.156  
+## 4 horm…      0.0209    0.00434  0.217            1        -0.00885
+## 5 IUD.…      0.00705  -0.0357   0.156           -0.00885   1      
+## 6 STDs…      0.0370    0.00188 -0.00460         -0.0175    0.00262
+## 7 targ…     -0.00266   0.0296   0.0452           0.0799    0.0422 
+## # … with 2 more variables: STDs.number &lt;dbl&gt;, target.biopsy &lt;dbl&gt;</code></pre>
+<p>And then create the plot. Here I used <code>pivot_longer()</code> instead of <code>gather()</code> to obtain the longer format required for ggplot2.</p>
+<pre class="sourceCode r"><code class="sourceCode r">cor_matrix_long &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> cor_matrix, <span class="dt">cols =</span> selection, <span class="dt">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cor&quot;</span>)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> cor_matrix_long, <span class="kw">aes</span>(<span class="dt">x=</span>var1, <span class="dt">y=</span>variable, <span class="dt">fill=</span>cor)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="ot">NULL</span>, <span class="dt">y=</span><span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">high =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;white&quot;</span> )</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:heatmap2"></span>
+<img src="bookdown-demo_files/figure-html/heatmap2-1.png" alt="A heatmap pairwise correlation of selected numeric variables" width="100%" />
+<p class="caption">
+Figure 7.6: A heatmap pairwise correlation of selected numeric variables
+</p>
+</div>
+<p>As you can see, there is hardly any correlation between these numeric variables, and not with the target (dependent) variable <code>target.biopsy</code> either. This is not a hopeful result when the goal is to be able to predict cervical cancer occurrence.</p>
+</div>
+<div id="density-plots-show-class-distinction" class="section level2">
+<h2><span class="header-section-number">7.8</span> Density plots show class distinction</h2>
+<p>A density plot, split over the categories of your target variable, will often quickly reveal whether there is promise in a variable. I’ll demonstrate with the <code>iris</code> dataset since the cervical cancer dataset is not so nice in that respect.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Petal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Species))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-170-1.png" width="624" />
+In this plot, you can see that Setosa separates quite nicely, by the other two don’t.</p>
+<div id="the-xor-problem" class="section level3">
+<h3><span class="header-section-number">7.8.1</span> The ‘xor’ problem</h3>
+<p>The density approach is not flawless! Consider this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">var_x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>))
+var_y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>))
+label =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;sick&quot;</span>, <span class="dv">150</span>), <span class="kw">rep</span>(<span class="st">&quot;healthy&quot;</span>, <span class="dv">150</span>)), <span class="dv">2</span>)
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dosage =</span> var_x, <span class="dt">response=</span>var_y, <span class="dt">patient_type =</span> label)
+<span class="kw">ggplot</span>(<span class="dt">data=</span>df, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>dosage)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>patient_type))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-171-1.png" width="624" /></p>
+<p>This looks like there is little to win, doesn’t it?<br />
+Here’s another view of the same data!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-172-1.png" width="624" />
+Still not interesting! Give it one more shot:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response, <span class="dt">color=</span>patient_type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-173-1.png" width="624" /></p>
+<p>This is called the <strong><em>XOR</em></strong> problem because the cases follow an “Exclusive Or” rule.</p>
+</div>
+</div>
+<div id="advanced-explorations" class="section level2">
+<h2><span class="header-section-number">7.9</span> Advanced Explorations</h2>
+<div id="pca" class="section level3">
+<h3><span class="header-section-number">7.9.1</span> PCA</h3>
+<p>First PCA will be shown with the iris dataset and then with the cervical cancer dataset.</p>
+<pre class="sourceCode r"><code class="sourceCode r">ir.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(iris[, <span class="dv">-5</span>],
+                 <span class="dt">center =</span> <span class="ot">TRUE</span>,
+                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)
+<span class="kw">print</span>(ir.pca)</code></pre>
+<pre><code>## Standard deviations (1, .., p=4):
+## [1] 1.708 0.956 0.383 0.144
+## 
+## Rotation (n x k) = (4 x 4):
+##                 PC1     PC2    PC3    PC4
+## Sepal.Length  0.521 -0.3774  0.720  0.261
+## Sepal.Width  -0.269 -0.9233 -0.244 -0.124
+## Petal.Length  0.580 -0.0245 -0.142 -0.801
+## Petal.Width   0.565 -0.0669 -0.634  0.524</code></pre>
+<p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(ir.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<p>The summary method describe the importance of the PCs.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ir.pca)</code></pre>
+<pre><code>## Importance of components:
+##                         PC1   PC2    PC3     PC4
+## Standard deviation     1.71 0.956 0.3831 0.14393
+## Proportion of Variance 0.73 0.229 0.0367 0.00518
+## Cumulative Proportion  0.73 0.958 0.9948 1.00000</code></pre>
+<p>The PC plot</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggbiplot)</code></pre>
+<pre><code>## Loading required package: plyr</code></pre>
+<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
+## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
+## library(plyr); library(dplyr)</code></pre>
+<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## 
+## Attaching package: &#39;plyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:lubridate&#39;:
+## 
+##     here</code></pre>
+<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize</code></pre>
+<pre><code>## Loading required package: scales</code></pre>
+<pre><code>## Loading required package: grid</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggbiplot</span>(ir.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, 
+              <span class="dt">groups =</span> iris[,<span class="dv">5</span>], <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, 
+              <span class="dt">circle =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<p>Now the same procedure for the cervical cancer dataset, with a selection of numverical vaiables.</p>
+<pre class="sourceCode r"><code class="sourceCode r">selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)
+tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
+tmp</code></pre>
+<pre><code>## # A tibble: 676 x 7
+##    num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
+##           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+##  1            4        15        1                0         0           0
+##  2            1        14        1                0         0           0
+##  3            5        16        4                3         0           0
+##  4            3        21        4               15         0           0
+##  5            3        23        2                0         0           0
+##  6            3        17        6                0         7           0
+##  7            1        26        3                2         7           0
+##  8            1        20        5                0         0           0
+##  9            3        26        4                2         0           0
+## 10            1        17        3                8         0           0
+## # … with 666 more rows, and 1 more variable: target.biopsy &lt;lgl&gt;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">cc.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(tmp[, <span class="dv">-7</span>],
+                 <span class="dt">center =</span> <span class="ot">TRUE</span>,
+                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)
+<span class="kw">print</span>(cc.pca)</code></pre>
+<pre><code>## Standard deviations (1, .., p=6):
+## [1] 1.151 1.052 1.005 0.999 0.918 0.848
+## 
+## Rotation (n x k) = (6 x 6):
+##                           PC1    PC2     PC3     PC4     PC5      PC6
+## num.partners          -0.3816  0.552  0.2388  0.0143 -0.6832 -0.15857
+## first.sex              0.3461 -0.570 -0.0559  0.2939 -0.6801  0.05260
+## num.preg              -0.6473 -0.258 -0.0466  0.0622 -0.0273  0.71257
+## horm.contracept.years -0.4427 -0.471  0.4721  0.1730  0.1630 -0.55043
+## IUD.years             -0.3457 -0.104 -0.8319 -0.0899 -0.0903 -0.40168
+## STDs.number           -0.0113  0.266 -0.1506  0.9336  0.1875  0.00171</code></pre>
+<p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(cc.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<p>The summary method describe the importance of the PCs.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cc.pca)</code></pre>
+<pre><code>## Importance of components:
+##                          PC1   PC2   PC3   PC4   PC5   PC6
+## Standard deviation     1.151 1.052 1.005 0.999 0.918 0.848
+## Proportion of Variance 0.221 0.185 0.168 0.166 0.140 0.120
+## Cumulative Proportion  0.221 0.405 0.574 0.740 0.880 1.000</code></pre>
+<p>PC plot</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggbiplot</span>(cc.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, 
+              <span class="dt">groups =</span> tmp<span class="op">$</span>target.biopsy, <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, 
+              <span class="dt">circle =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:pca2"></span>
+<img src="bookdown-demo_files/figure-html/pca2-1.png" alt="A PCA plot of the numerical variables" width="100%" />
+<p class="caption">
+Figure 7.7: A PCA plot of the numerical variables
+</p>
+</div>
+<p>This is very promising neither; no structure in the data, not in general and not in relation with the dependent variable.</p>
+</div>
+<div id="clustering" class="section level3">
+<h3><span class="header-section-number">7.9.2</span> Clustering</h3>
+<ul>
+<li>Using clustering, you can sometimes see obvious patterns in the data.<br />
+</li>
+<li>Most obvious are:
+<ul>
+<li>k-Means clustering</li>
+<li>Hierarchical clsutering</li>
+</ul></li>
+</ul>
+</div>
+<div id="k-means-clustering" class="section level3">
+<h3><span class="header-section-number">7.9.3</span> k-Means clustering</h3>
+<p>k-means is very sensitive to the scale of your data so you’ll need to normalize it.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#km_clusters &lt;- kmeans()</span></code></pre>
+</div>
+<div id="hierarchical-clustering" class="section level3">
+<h3><span class="header-section-number">7.9.4</span> hierarchical clustering</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stringr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-eda.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

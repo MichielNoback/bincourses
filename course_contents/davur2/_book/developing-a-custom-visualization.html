@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Developing a custom visualization | Data Analysis and Visualization using R (2)</title>
+  <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Developing a custom visualization | Data Analysis and Visualization using R (2)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Developing a custom visualization | Data Analysis and Visualization using R (2)" />
+  
+  <meta name="twitter:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+<meta name="date" content="2020-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ggplot2.html">
+<link rel="next" href="tidyr.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DAVuR2 gitbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a><ul>
+<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#keep-the-goal-in-mind"><i class="fa fa-check"></i>Keep the goal in mind</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#a-first-plot"><i class="fa fa-check"></i>A first plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#adding-a-dimension-using-color"><i class="fa fa-check"></i>Adding a dimension using color</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#phylosophy-of-ggplot2"><i class="fa fa-check"></i>Phylosophy of ggplot2</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-layered-plot-architecture"><i class="fa fa-check"></i>The layered plot architecture</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#tidy-the-data"><i class="fa fa-check"></i>“Tidy” the data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#shapes"><i class="fa fa-check"></i>Shapes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#lines"><i class="fa fa-check"></i>Lines</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#size"><i class="fa fa-check"></i>Size</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#what-are-geometries"><i class="fa fa-check"></i>What are geometries</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#violin-plot"><i class="fa fa-check"></i>Violin plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#overview-of-the-main-geoms"><i class="fa fa-check"></i>Overview of the main geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
+<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
+<li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a><ul>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-data"><i class="fa fa-check"></i>The data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#choose-a-visualization"><i class="fa fa-check"></i>Choose a visualization</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#a-first-version"><i class="fa fa-check"></i>A first version</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#add-mean-and-sd"><i class="fa fa-check"></i>Add mean and SD</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasise-worst-cases"><i class="fa fa-check"></i>Emphasise worst cases</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
+<li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dplyr.html"><a href="dplyr.html#by-row-constructor"><i class="fa fa-check"></i><b>4.1.1</b> By-row constructor</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dplyr.html"><a href="dplyr.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>4.1.2</b> Tibbles vs data frames</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dplyr.html"><a href="dplyr.html#the-str-equivalent-glimpse"><i class="fa fa-check"></i><b>4.1.3</b> The <code>str()</code> equivalent: <code>glimpse()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#the-chaining-operator"><i class="fa fa-check"></i><b>4.2</b> The chaining operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dplyr.html"><a href="dplyr.html#selecting-rows-by-index-slice"><i class="fa fa-check"></i><b>4.3.1</b> Selecting rows by index: <code>slice()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="dplyr.html"><a href="dplyr.html#get-unique-cases-with-distinct"><i class="fa fa-check"></i><b>4.3.2</b> Get unique cases with <code>distinct()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="dplyr.html"><a href="dplyr.html#filter-cases"><i class="fa fa-check"></i><b>4.3.3</b> <code>filter()</code> cases</a></li>
+<li class="chapter" data-level="4.3.4" data-path="dplyr.html"><a href="dplyr.html#selecting-variables-select"><i class="fa fa-check"></i><b>4.3.4</b> Selecting variables: <code>select()</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="dplyr.html"><a href="dplyr.html#renaming-variables-rename"><i class="fa fa-check"></i><b>4.3.5</b> Renaming variables: <code>rename()</code></a></li>
+<li class="chapter" data-level="4.3.6" data-path="dplyr.html"><a href="dplyr.html#selecting-from-ranked-data"><i class="fa fa-check"></i><b>4.3.6</b> Selecting from ranked data</a></li>
+<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-colum-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a colum as vector</a></li>
+<li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="dplyr.html"><a href="dplyr.html#group_by-and-ungroup"><i class="fa fa-check"></i><b>4.5.1</b> <code>group_by()</code> and <code>ungroup()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="dplyr.html"><a href="dplyr.html#group_split-and-group_keys"><i class="fa fa-check"></i><b>4.5.2</b> <code>group_split()</code> and <code>group_keys()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="dplyr.html"><a href="dplyr.html#apply-a-function-to-each-group"><i class="fa fa-check"></i><b>4.5.3</b> Apply a function to each group</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#summarizing-and-counting"><i class="fa fa-check"></i><b>4.6</b> Summarizing and counting</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="dplyr.html"><a href="dplyr.html#merging"><i class="fa fa-check"></i><b>4.7.1</b> Merging</a></li>
+<li class="chapter" data-level="4.7.2" data-path="dplyr.html"><a href="dplyr.html#adding-rows-and-columns"><i class="fa fa-check"></i><b>4.7.2</b> Adding rows and columns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="date-time.html"><a href="date-time.html#current-time"><i class="fa fa-check"></i><b>5.1</b> Current time</a></li>
+<li class="chapter" data-level="5.2" data-path="date-time.html"><a href="date-time.html#getting-elements-from-date-time-objects"><i class="fa fa-check"></i><b>5.2</b> Getting elements from date-time objects</a></li>
+<li class="chapter" data-level="5.3" data-path="date-time.html"><a href="date-time.html#calculations-with-date-time"><i class="fa fa-check"></i><b>5.3</b> Calculations with date-time</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a><ul>
+<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="stringr.html"><a href="stringr.html#a-few-remarks-on-locale"><i class="fa fa-check"></i><b>6.1.1</b> A few remarks on “locale”</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="stringr.html"><a href="stringr.html#regex-syntax-elements"><i class="fa fa-check"></i><b>6.2.1</b> Regex syntax elements</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stringr.html"><a href="stringr.html#character-classes-and-negation"><i class="fa fa-check"></i><b>6.2.2</b> Character classes and negation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stringr.html"><a href="stringr.html#quantifiers"><i class="fa fa-check"></i><b>6.2.3</b> Quantifiers</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stringr.html"><a href="stringr.html#anchoring"><i class="fa fa-check"></i><b>6.2.4</b> Anchoring</a></li>
+<li class="chapter" data-level="6.2.5" data-path="stringr.html"><a href="stringr.html#alternatives"><i class="fa fa-check"></i><b>6.2.5</b> Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="stringr.html"><a href="stringr.html#case-conversion"><i class="fa fa-check"></i><b>6.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stringr.html"><a href="stringr.html#split-join-and-substring"><i class="fa fa-check"></i><b>6.3.2</b> Split, join and substring</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stringr.html"><a href="stringr.html#matching"><i class="fa fa-check"></i><b>6.3.3</b> Matching</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stringr.html"><a href="stringr.html#extracting-and-replacing"><i class="fa fa-check"></i><b>6.3.4</b> Extracting and replacing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="eda.html"><a href="eda.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="eda.html"><a href="eda.html#the-codebook"><i class="fa fa-check"></i><b>7.2.1</b> The codebook</a></li>
+<li class="chapter" data-level="7.2.2" data-path="eda.html"><a href="eda.html#load-and-inspect-the-data"><i class="fa fa-check"></i><b>7.2.2</b> Load and inspect the data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="eda.html"><a href="eda.html#first-steps"><i class="fa fa-check"></i><b>7.3.1</b> First steps</a></li>
+<li class="chapter" data-level="7.3.2" data-path="eda.html"><a href="eda.html#smoking-data-corrupted"><i class="fa fa-check"></i><b>7.3.2</b> Smoking data corrupted?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="eda.html"><a href="eda.html#recoding-strategies"><i class="fa fa-check"></i><b>7.4.1</b> Recoding strategies</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eda.html"><a href="eda.html#factorization"><i class="fa fa-check"></i><b>7.4.2</b> “factorization”</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eda.html"><a href="eda.html#data-redundancy-in-std-variables"><i class="fa fa-check"></i><b>7.4.3</b> Data redundancy in STD variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="eda.html"><a href="eda.html#the-dependent-variable"><i class="fa fa-check"></i><b>7.5</b> The dependent variable</a></li>
+<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="eda.html"><a href="eda.html#the-scatterplot"><i class="fa fa-check"></i><b>7.6.1</b> The scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="eda.html"><a href="eda.html#look-for-patterns-with-the-dependent-variable"><i class="fa fa-check"></i><b>7.7</b> Look for patterns with the dependent variable</a></li>
+<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="eda.html"><a href="eda.html#the-xor-problem"><i class="fa fa-check"></i><b>7.8.1</b> The ‘xor’ problem</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="eda.html"><a href="eda.html#pca"><i class="fa fa-check"></i><b>7.9.1</b> PCA</a></li>
+<li class="chapter" data-level="7.9.2" data-path="eda.html"><a href="eda.html#clustering"><i class="fa fa-check"></i><b>7.9.2</b> Clustering</a></li>
+<li class="chapter" data-level="7.9.3" data-path="eda.html"><a href="eda.html#k-means-clustering"><i class="fa fa-check"></i><b>7.9.3</b> k-Means clustering</a></li>
+<li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
+<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis and Visualization using R (2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="developing-a-custom-visualization" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Developing a custom visualization</h1>
+<div id="an-experimental-ptsd-treatment" class="section level2">
+<h2><span class="header-section-number">2.1</span> An experimental PTSD treatment</h2>
+<p>This chapter shows the iterative process of building a visualization where both the audience and the data story are taken into consideration.</p>
+<p>The <em>story</em> revolves around data that was collected in a research effort investigating the effect of some treatment of subjects with PTSD (Post-traumatic stress disorder). Only one variable of that dataset is shown here, a stress score.</p>
+<p>Since the group size was very low, and there was no control group, statistical analysis was not really feasible.</p>
+<p>But the question was: is there an indication of positive effect and a reason to continue the investigations?
+An attempt was made by developing a visualization to answer this question.</p>
+<div id="the-data" class="section level3 unnumbered">
+<h3>The data</h3>
+<p>The collected data was a distress score collected at three time points: 0 months (null measure, T0), 3 months (T1) and 12 months (T2) through questionnaires.</p>
+<table>
+<caption><span id="tab:read-distress-data">Table 2.1: </span>Distress data</caption>
+<thead>
+<tr class="header">
+<th align="right">Clientcode</th>
+<th align="right">T0</th>
+<th align="right">T1</th>
+<th align="right">T2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2.60</td>
+<td align="right">2.44</td>
+<td align="right">2.16</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.84</td>
+<td align="right">1.72</td>
+<td align="right">1.52</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2.04</td>
+<td align="right">2.12</td>
+<td align="right">1.32</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2.60</td>
+<td align="right">1.48</td>
+<td align="right">2.08</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2.08</td>
+<td align="right">1.04</td>
+<td align="right">2.04</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2.20</td>
+<td align="right">1.84</td>
+<td align="right">2.04</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">2.08</td>
+<td align="right">1.80</td>
+<td align="right">1.44</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">2.28</td>
+<td align="right">2.04</td>
+<td align="right">1.96</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">3.16</td>
+<td align="right">1.68</td>
+<td align="right">2.12</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">2.60</td>
+<td align="right">2.04</td>
+<td align="right">2.44</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">2.28</td>
+<td align="right">2.16</td>
+<td align="right">2.04</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">1.76</td>
+<td align="right">1.88</td>
+<td align="right">1.68</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="right">2.12</td>
+<td align="right">1.24</td>
+<td align="right">1.04</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">1.96</td>
+<td align="right">1.32</td>
+<td align="right">2.04</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="right">2.12</td>
+<td align="right">1.40</td>
+<td align="right">1.68</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="right">2.64</td>
+<td align="right">2.40</td>
+<td align="right">2.12</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="right">2.64</td>
+<td align="right">1.64</td>
+<td align="right">1.44</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">1.52</td>
+<td align="right">1.60</td>
+<td align="right">1.72</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">1.84</td>
+<td align="right">1.68</td>
+<td align="right">1.16</td>
+</tr>
+<tr class="even">
+<td align="right">21</td>
+<td align="right">1.44</td>
+<td align="right">1.68</td>
+<td align="right">1.40</td>
+</tr>
+<tr class="odd">
+<td align="right">22</td>
+<td align="right">2.88</td>
+<td align="right">2.00</td>
+<td align="right">1.28</td>
+</tr>
+<tr class="even">
+<td align="right">23</td>
+<td align="right">2.08</td>
+<td align="right">2.12</td>
+<td align="right">2.64</td>
+</tr>
+<tr class="odd">
+<td align="right">24</td>
+<td align="right">1.80</td>
+<td align="right">1.32</td>
+<td align="right">1.72</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">1.88</td>
+<td align="right">1.56</td>
+<td align="right">1.68</td>
+</tr>
+<tr class="odd">
+<td align="right">26</td>
+<td align="right">2.84</td>
+<td align="right">2.36</td>
+<td align="right">1.80</td>
+</tr>
+<tr class="even">
+<td align="right">27</td>
+<td align="right">2.32</td>
+<td align="right">1.80</td>
+<td align="right">2.20</td>
+</tr>
+<tr class="odd">
+<td align="right">28</td>
+<td align="right">1.76</td>
+<td align="right">1.56</td>
+<td align="right">1.92</td>
+</tr>
+<tr class="even">
+<td align="right">29</td>
+<td align="right">2.36</td>
+<td align="right">1.60</td>
+<td align="right">1.72</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">1.80</td>
+<td align="right">1.20</td>
+<td align="right">1.32</td>
+</tr>
+<tr class="even">
+<td align="right">31</td>
+<td align="right">2.36</td>
+<td align="right">1.96</td>
+<td align="right">2.28</td>
+</tr>
+<tr class="odd">
+<td align="right">32</td>
+<td align="right">2.56</td>
+<td align="right">2.56</td>
+<td align="right">2.52</td>
+</tr>
+<tr class="even">
+<td align="right">33</td>
+<td align="right">1.72</td>
+<td align="right">1.16</td>
+<td align="right">1.40</td>
+</tr>
+<tr class="odd">
+<td align="right">34</td>
+<td align="right">2.32</td>
+<td align="right">2.00</td>
+<td align="right">2.36</td>
+</tr>
+</tbody>
+</table>
+<p>You can see this is a really small dataset.</p>
+</div>
+<div id="choose-a-visualization" class="section level3 unnumbered">
+<h3>Choose a visualization</h3>
+<p>Before starting the visualization, several aspects should be considered:</p>
+<ul>
+<li>The <strong>audience</strong>:
+<ul>
+<li>people do not want to read lots of numbers in a table<br />
+</li>
+<li>in this case no knowledge of statistics (and this is usually the case)</li>
+</ul></li>
+<li>The <strong>data</strong>:
+<ul>
+<li>here, small sample size is an issue</li>
+<li>this dataset has connected measurements (timeseries-like)</li>
+</ul></li>
+</ul>
+<p>For this dataset I chose a <strong><em>jitterplot</em></strong> as basis because it is well suited for small samples. A boxplot tends to be indicative of information that simply is not there with small datasets. Moreover, a boxplot has a certain complexity that people who are not schooled in statistics have problems with.</p>
+</div>
+<div id="tidy-the-data-1" class="section level3 unnumbered">
+<h3>Tidy the data</h3>
+<p>To work with ggplot2, a tidy (“long”) version of the data is required.
+In the next chapter this will be dealt with in detail.
+Here the T0, T1 and T2 columns are <strong><em>gather</em></strong>ed into a single column because they actually represent a single variable: Time. All measured stress values, also a single variable, are gathered into a single column as well. This causes a flattening of the data (less columns, more rows).</p>
+<pre class="sourceCode r"><code class="sourceCode r">distress_data_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(distress_data,
+                        <span class="dt">key=</span>Timepoint,
+                        <span class="dt">value=</span>Stress, <span class="st">&quot;T0&quot;</span>, <span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>)
+distress_data_tidy<span class="op">$</span>Timepoint &lt;-<span class="st"> </span><span class="kw">factor</span>(distress_data_tidy<span class="op">$</span>Timepoint, <span class="dt">ordered =</span> T)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(distress_data_tidy, <span class="dt">n =</span> <span class="dv">10</span>), <span class="dt">caption =</span> <span class="st">&quot;Tidied data&quot;</span>)</code></pre>
+<table>
+<caption><span id="tab:ptsd-tidy">Table 2.2: </span>Tidied data</caption>
+<thead>
+<tr class="header">
+<th align="right">Clientcode</th>
+<th align="left">Timepoint</th>
+<th align="right">Stress</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="left">T0</td>
+<td align="right">2.60</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="left">T0</td>
+<td align="right">1.84</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="left">T0</td>
+<td align="right">2.04</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="left">T0</td>
+<td align="right">2.60</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="left">T0</td>
+<td align="right">2.08</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="left">T0</td>
+<td align="right">2.20</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="left">T0</td>
+<td align="right">2.08</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="left">T0</td>
+<td align="right">2.28</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="left">T0</td>
+<td align="right">3.16</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="left">T0</td>
+<td align="right">2.60</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="a-first-version" class="section level3 unnumbered">
+<h3>A first version</h3>
+<p>This is the first version of the cisualization. The jitter has been created with <code>geom_jitter</code>. The plot symbols have been made transparent to keep overlapping points visible. The plot symbols have been made bigger to support embedding in (powerpoint) presentations. A little horizontal jitter was introduced to have less overlap of the symbols, but not too much - the discrete timepoints still stand out well. Vertical jitter omitted since the data are already measured in a continuous scale. A typical use case for vertical jitter is when you have discrete (and few) y-axis measurements.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(distress_data_tidy, <span class="kw">aes</span>(<span class="dt">x=</span>Timepoint, <span class="dt">y=</span>Stress)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:ptsd-jitter-1"></span>
+<img src="bookdown-demo_files/figure-html/ptsd-jitter-1-1.png" alt="A first attempt" width="80%" />
+<p class="caption">
+Figure 2.1: A first attempt
+</p>
+</div>
+</div>
+<div id="add-mean-and-sd" class="section level3 unnumbered">
+<h3>Add mean and SD</h3>
+<p>To emphasise the trend in the timeseries, means and standard deviations from the mean were added using <code>stat_summary()</code>. Always be aware of the orders of layers of your plot! Here, the <code>stat_summary</code> was placed “below” the plot symbols. Again, size was increased for enhaced visibility in presentations. Why not the median? Because of the audience! Everybody knows what a mean is, but few know what a median is - especially at management level.</p>
+<pre class="sourceCode r"><code class="sourceCode r">mean.sd &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+  <span class="kw">c</span>(<span class="dt">y =</span> <span class="kw">mean</span>(x), <span class="dt">ymin =</span> (<span class="kw">mean</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">sd</span>(x)), <span class="dt">ymax =</span> (<span class="kw">mean</span>(x) <span class="op">+</span><span class="st"> </span><span class="kw">sd</span>(x)))
+}
+
+<span class="kw">ggplot</span>(distress_data_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> Timepoint, <span class="dt">y =</span> Stress)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data =</span> mean.sd, <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:ptsd-jitter-2"></span>
+<img src="bookdown-demo_files/figure-html/ptsd-jitter-2-1.png" alt="With mean and standard deviation" width="80%" />
+<p class="caption">
+Figure 2.2: With mean and standard deviation
+</p>
+</div>
+</div>
+<div id="emphasise-worst-cases" class="section level3 unnumbered">
+<h3>Emphasise worst cases</h3>
+<p>To emphasise the development of subjects who were in the worst shape at the onset of the research (T0), the top 25% with respect to distress score at T0 were highlighted.</p>
+<pre class="sourceCode r"><code class="sourceCode r">distress_data<span class="op">$</span>high_at_T0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(distress_data<span class="op">$</span>T0 <span class="op">&gt;</span><span class="st"> </span><span class="kw">quantile</span>(distress_data<span class="op">$</span>T0, <span class="fl">0.75</span>), <span class="st">&quot;Q4&quot;</span>, <span class="st">&quot;Q1-Q3&quot;</span>)
+
+distress_data_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(distress_data,
+                        <span class="dt">key=</span>Timepoint,
+                        <span class="dt">value=</span>Stress, <span class="st">&quot;T0&quot;</span>, <span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>)
+distress_data_tidy<span class="op">$</span>Timepoint &lt;-<span class="st"> </span><span class="kw">factor</span>(distress_data_tidy<span class="op">$</span>Timepoint, <span class="dt">ordered =</span> T)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(distress_data))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">Clientcode</th>
+<th align="right">T0</th>
+<th align="right">T1</th>
+<th align="right">T2</th>
+<th align="left">high_at_T0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">2.60</td>
+<td align="right">2.44</td>
+<td align="right">2.16</td>
+<td align="left">Q4</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">1.84</td>
+<td align="right">1.72</td>
+<td align="right">1.52</td>
+<td align="left">Q1-Q3</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2.04</td>
+<td align="right">2.12</td>
+<td align="right">1.32</td>
+<td align="left">Q1-Q3</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">2.60</td>
+<td align="right">1.48</td>
+<td align="right">2.08</td>
+<td align="left">Q4</td>
+</tr>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">2.08</td>
+<td align="right">1.04</td>
+<td align="right">2.04</td>
+<td align="left">Q1-Q3</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">2.20</td>
+<td align="right">1.84</td>
+<td align="right">2.04</td>
+<td align="left">Q1-Q3</td>
+</tr>
+</tbody>
+</table>
+<p>The color is added using <code>aes(color = high_at_T0)</code> within the <code>geom_jitter()</code> call.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(distress_data_tidy, <span class="kw">aes</span>(<span class="dt">x=</span>Timepoint, <span class="dt">y=</span>Stress)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data=</span>mean.sd, <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>, <span class="kw">aes</span>(<span class="dt">color =</span> high_at_T0))
+p</code></pre>
+<p><img src="bookdown-demo_files/figure-html/ptsd-jitter-3-1.png" width="768" /></p>
+</div>
+</div>
+<div id="last-tweaks-fonts-and-legend" class="section level2">
+<h2><span class="header-section-number">2.2</span> Last tweaks: fonts and legend</h2>
+<p>The plot is more or less ready. Now is the time to adjust the plot “theme”.</p>
+<pre class="sourceCode r"><code class="sourceCode r">p <span class="op">+</span><span class="st"> </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">14</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Group&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/ptsd-jitter-5-1.png" width="768" /></p>
+</div>
+<div id="the-code" class="section level2">
+<h2><span class="header-section-number">2.3</span> The code</h2>
+<p>Here is the code used for data preparation:</p>
+<pre class="sourceCode r"><code class="sourceCode r">distress_data<span class="op">$</span>high_at_T0 &lt;-<span class="st"> </span><span class="kw">ifelse</span>(
+    distress_data<span class="op">$</span>T0 <span class="op">&gt;</span><span class="st"> </span><span class="kw">quantile</span>(distress_data<span class="op">$</span>T0, <span class="fl">0.75</span>), <span class="st">&quot;Q4&quot;</span>, <span class="st">&quot;Q1-Q3&quot;</span>)
+
+distress_data_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(distress_data,
+                        <span class="dt">key=</span>Timepoint,
+                        <span class="dt">value=</span>Stress, <span class="st">&quot;T0&quot;</span>, <span class="st">&quot;T1&quot;</span>, <span class="st">&quot;T2&quot;</span>)
+distress_data_tidy<span class="op">$</span>Timepoint &lt;-<span class="st"> </span><span class="kw">factor</span>(distress_data_tidy<span class="op">$</span>Timepoint,
+                                       <span class="dt">ordered =</span> T)
+
+mean.sd &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+  <span class="kw">c</span>(<span class="dt">y =</span> <span class="kw">mean</span>(x), <span class="dt">ymin=</span>(<span class="kw">mean</span>(x)<span class="op">-</span><span class="kw">sd</span>(x)), <span class="dt">ymax=</span>(<span class="kw">mean</span>(x)<span class="op">+</span><span class="kw">sd</span>(x)))
+}</code></pre>
+<p>This is the final code for the plot</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(distress_data_tidy, <span class="kw">aes</span>(<span class="dt">x=</span>Timepoint, <span class="dt">y=</span>Stress)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_summary</span>(<span class="dt">fun.data=</span>mean.sd, <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="fl">1.5</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>,
+                <span class="dt">size =</span> <span class="dv">2</span>,
+                <span class="dt">alpha =</span> <span class="fl">0.6</span>,
+                <span class="kw">aes</span>(<span class="dt">color =</span> high_at_T0)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Group&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">14</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Group&quot;</span>)</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tidyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-developing-a-ggplot2-visualization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

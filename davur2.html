@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>DAVuR</title>
+    <title>DAVuR2</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +42,7 @@
                         Description</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" target="_blank" href="course_contents/davur/course_program.html">Course
+                    <a class="nav-link" target="_blank" href="course_contents/davur2/course_program.html">Course
                         Program</a>
                 </li>
             </ul>
@@ -59,29 +59,22 @@
         <small>Course code: BFVH19DAVUR2</small>
     </h1>
 
-    <p class="card-text">This course is a continuation of the previous one, focusing on the packages ggplot2, tidyr and
-        dplyr and
-        designing and implementing multi-step workflows.</p>
+    <p class="card-text">This course is a continuation of the previous one, focusing on the packages ggplot2, tidyr,
+        dplyr, lubridate and stringr and on designing and implementing multi-step workflows.</p>
     <hr>
 
     <div class="row">
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a target="_blank"
-                   href="https://michielnoback.github.io/davur1/presentations/06_sampling_and_testing.html">
-                    <img class="card-img-top" src="course_contents/davur/06_sampling_and_testing.png" alt=""></a>
+                <a target="_blank" href="course_contents/davur2/_book/index.html">
+                    <img class="card-img-top" src="graphics/gitbook.png" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a target="_blank"
-                           href="https://michielnoback.github.io/davur1/presentations/06_sampling_and_testing.html">Presentation
-                            6: Sampling and testing</a>
+                        <a target="_blank" href="course_contents/davur2/_book/index.html">The course eBook</a>
                     </h4>
-                    <p class="card-text">Some remaining topics are reviewed: Random sampling and Statistitcal tests
-                        ('t.test', 'aov', 'chisq.test').
-                        For the pdf version, click <a
-                                href="https://raw.githubusercontent.com/MichielNoback/R_data_analysis_and_visualization/master/presentations/06_sampling_and_testing.pdf"
-                                target="_blank">here</a>.</p>
+                    <p class="card-text">The eBook of this course. It contains the exercises as well
+                        This eBook will be available during the exam.</p>
                 </div>
             </div>
         </div>
@@ -89,58 +82,16 @@
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a target="_blank" href="course_contents/davur/Example_df_use_cases.html">
-                    <img class="card-img-top" src="graphics/study.png" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a target="_blank" href="course_contents/davur/Example_df_use_cases.html">Example use cases</a>
-                    </h4>
-                    <p class="card-text">Some example use cases with dataframes: selections, apply-ing and processing
-                        embedded dataframes.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a target="_blank" href="course_contents/davur/resources.html">
+                <a target="_blank" href="https://github.com/MichielNoback/datasets">
                     <img class="card-img-top" src="graphics/paperclip.png" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a target="_blank" href="course_contents/davur/resources.html">Resources</a>
+                        <a target="_blank" href="https://github.com/MichielNoback/datasets">Datasets</a>
                     </h4>
-                    <p class="card-text">Links to datasets, videos, Swirl course etc.</p>
+                    <p class="card-text">Link to the "datasets" repository on github that is referred to from within the exercises.</p>
                 </div>
             </div>
         </div>
-
-
-    </div>
-    <div class="row">
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a target="_blank"
-                   href="https://raw.githubusercontent.com/MichielNoback/R_data_analysis_and_visualization/master/exercises/CourseExercises_part1.Rmd">
-                    <img class="card-img-top" src="graphics/exercises.png" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a target="_blank"
-                           href="https://raw.githubusercontent.com/MichielNoback/R_data_analysis_and_visualization/master/exercises/CourseExercises_part1.Rmd">Course
-                            exercises part 1</a>
-                    </h4>
-                    <p class="card-text">Download the Rmarkdown file (right click: save as..)
-                        and open it in Rstudio. Work on the Exercises and klick "Knit HTML" to generate
-                        an HTML report of your work. A Knitted PDF version is
-                        <a href="https://raw.githubusercontent.com/MichielNoback/R_data_analysis_and_visualization/master/exercises/CourseExercises_part1.pdf"
-                           target="_blank">here</a>
-                        and solutions are
-                        <a href="https://michielnoback.github.io/davur1/exercises/CourseExercises_part1_SOLUTIONS.html"
-                           target="_blank">here</a></p>
-                </div>
-            </div>
-        </div>
-
 
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
             <div class="card h-100">
@@ -151,10 +102,9 @@
                         <a target="_blank" href="course_contents/davur/training_exam.zip">Training exam</a>
                     </h4>
                     <p class="card-text">
-                        Download the zip, extract it and start working on the file training TRAINING_EXAM.Rmd
-                        (pdf view also supplied). Do not use the internet, but only the supplied files and build-in R
-                        and
-                        time yourself to 1,5 hours. Solutions are supplied but I suggest you only look at these after
+                        Download the zip, extract it and start working on the Rmd file.
+                        Do not use the internet, but only the supplied eBook and build-in R documentation.
+                        Time yourself to 2 hours. Solutions are supplied but I suggest you only look at these after
                         completing the test.
                     </p>
                 </div>

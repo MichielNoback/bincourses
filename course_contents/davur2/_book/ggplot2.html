@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 The ggplot2 package | Data Analysis and Visualization using R (2)</title>
+  <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 The ggplot2 package | Data Analysis and Visualization using R (2)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 The ggplot2 package | Data Analysis and Visualization using R (2)" />
+  
+  <meta name="twitter:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+<meta name="date" content="2020-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="developing-a-custom-visualization.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DAVuR2 gitbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a><ul>
+<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#keep-the-goal-in-mind"><i class="fa fa-check"></i>Keep the goal in mind</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#a-first-plot"><i class="fa fa-check"></i>A first plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#adding-a-dimension-using-color"><i class="fa fa-check"></i>Adding a dimension using color</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#phylosophy-of-ggplot2"><i class="fa fa-check"></i>Phylosophy of ggplot2</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-layered-plot-architecture"><i class="fa fa-check"></i>The layered plot architecture</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#tidy-the-data"><i class="fa fa-check"></i>“Tidy” the data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#shapes"><i class="fa fa-check"></i>Shapes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#lines"><i class="fa fa-check"></i>Lines</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#size"><i class="fa fa-check"></i>Size</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#what-are-geometries"><i class="fa fa-check"></i>What are geometries</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#violin-plot"><i class="fa fa-check"></i>Violin plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#overview-of-the-main-geoms"><i class="fa fa-check"></i>Overview of the main geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
+<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
+<li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a><ul>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-data"><i class="fa fa-check"></i>The data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#choose-a-visualization"><i class="fa fa-check"></i>Choose a visualization</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#a-first-version"><i class="fa fa-check"></i>A first version</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#add-mean-and-sd"><i class="fa fa-check"></i>Add mean and SD</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasise-worst-cases"><i class="fa fa-check"></i>Emphasise worst cases</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
+<li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dplyr.html"><a href="dplyr.html#by-row-constructor"><i class="fa fa-check"></i><b>4.1.1</b> By-row constructor</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dplyr.html"><a href="dplyr.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>4.1.2</b> Tibbles vs data frames</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dplyr.html"><a href="dplyr.html#the-str-equivalent-glimpse"><i class="fa fa-check"></i><b>4.1.3</b> The <code>str()</code> equivalent: <code>glimpse()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#the-chaining-operator"><i class="fa fa-check"></i><b>4.2</b> The chaining operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dplyr.html"><a href="dplyr.html#selecting-rows-by-index-slice"><i class="fa fa-check"></i><b>4.3.1</b> Selecting rows by index: <code>slice()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="dplyr.html"><a href="dplyr.html#get-unique-cases-with-distinct"><i class="fa fa-check"></i><b>4.3.2</b> Get unique cases with <code>distinct()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="dplyr.html"><a href="dplyr.html#filter-cases"><i class="fa fa-check"></i><b>4.3.3</b> <code>filter()</code> cases</a></li>
+<li class="chapter" data-level="4.3.4" data-path="dplyr.html"><a href="dplyr.html#selecting-variables-select"><i class="fa fa-check"></i><b>4.3.4</b> Selecting variables: <code>select()</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="dplyr.html"><a href="dplyr.html#renaming-variables-rename"><i class="fa fa-check"></i><b>4.3.5</b> Renaming variables: <code>rename()</code></a></li>
+<li class="chapter" data-level="4.3.6" data-path="dplyr.html"><a href="dplyr.html#selecting-from-ranked-data"><i class="fa fa-check"></i><b>4.3.6</b> Selecting from ranked data</a></li>
+<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-colum-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a colum as vector</a></li>
+<li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="dplyr.html"><a href="dplyr.html#group_by-and-ungroup"><i class="fa fa-check"></i><b>4.5.1</b> <code>group_by()</code> and <code>ungroup()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="dplyr.html"><a href="dplyr.html#group_split-and-group_keys"><i class="fa fa-check"></i><b>4.5.2</b> <code>group_split()</code> and <code>group_keys()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="dplyr.html"><a href="dplyr.html#apply-a-function-to-each-group"><i class="fa fa-check"></i><b>4.5.3</b> Apply a function to each group</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#summarizing-and-counting"><i class="fa fa-check"></i><b>4.6</b> Summarizing and counting</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="dplyr.html"><a href="dplyr.html#merging"><i class="fa fa-check"></i><b>4.7.1</b> Merging</a></li>
+<li class="chapter" data-level="4.7.2" data-path="dplyr.html"><a href="dplyr.html#adding-rows-and-columns"><i class="fa fa-check"></i><b>4.7.2</b> Adding rows and columns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="date-time.html"><a href="date-time.html#current-time"><i class="fa fa-check"></i><b>5.1</b> Current time</a></li>
+<li class="chapter" data-level="5.2" data-path="date-time.html"><a href="date-time.html#getting-elements-from-date-time-objects"><i class="fa fa-check"></i><b>5.2</b> Getting elements from date-time objects</a></li>
+<li class="chapter" data-level="5.3" data-path="date-time.html"><a href="date-time.html#calculations-with-date-time"><i class="fa fa-check"></i><b>5.3</b> Calculations with date-time</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a><ul>
+<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="stringr.html"><a href="stringr.html#a-few-remarks-on-locale"><i class="fa fa-check"></i><b>6.1.1</b> A few remarks on “locale”</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="stringr.html"><a href="stringr.html#regex-syntax-elements"><i class="fa fa-check"></i><b>6.2.1</b> Regex syntax elements</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stringr.html"><a href="stringr.html#character-classes-and-negation"><i class="fa fa-check"></i><b>6.2.2</b> Character classes and negation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stringr.html"><a href="stringr.html#quantifiers"><i class="fa fa-check"></i><b>6.2.3</b> Quantifiers</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stringr.html"><a href="stringr.html#anchoring"><i class="fa fa-check"></i><b>6.2.4</b> Anchoring</a></li>
+<li class="chapter" data-level="6.2.5" data-path="stringr.html"><a href="stringr.html#alternatives"><i class="fa fa-check"></i><b>6.2.5</b> Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="stringr.html"><a href="stringr.html#case-conversion"><i class="fa fa-check"></i><b>6.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stringr.html"><a href="stringr.html#split-join-and-substring"><i class="fa fa-check"></i><b>6.3.2</b> Split, join and substring</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stringr.html"><a href="stringr.html#matching"><i class="fa fa-check"></i><b>6.3.3</b> Matching</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stringr.html"><a href="stringr.html#extracting-and-replacing"><i class="fa fa-check"></i><b>6.3.4</b> Extracting and replacing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="eda.html"><a href="eda.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="eda.html"><a href="eda.html#the-codebook"><i class="fa fa-check"></i><b>7.2.1</b> The codebook</a></li>
+<li class="chapter" data-level="7.2.2" data-path="eda.html"><a href="eda.html#load-and-inspect-the-data"><i class="fa fa-check"></i><b>7.2.2</b> Load and inspect the data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="eda.html"><a href="eda.html#first-steps"><i class="fa fa-check"></i><b>7.3.1</b> First steps</a></li>
+<li class="chapter" data-level="7.3.2" data-path="eda.html"><a href="eda.html#smoking-data-corrupted"><i class="fa fa-check"></i><b>7.3.2</b> Smoking data corrupted?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="eda.html"><a href="eda.html#recoding-strategies"><i class="fa fa-check"></i><b>7.4.1</b> Recoding strategies</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eda.html"><a href="eda.html#factorization"><i class="fa fa-check"></i><b>7.4.2</b> “factorization”</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eda.html"><a href="eda.html#data-redundancy-in-std-variables"><i class="fa fa-check"></i><b>7.4.3</b> Data redundancy in STD variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="eda.html"><a href="eda.html#the-dependent-variable"><i class="fa fa-check"></i><b>7.5</b> The dependent variable</a></li>
+<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="eda.html"><a href="eda.html#the-scatterplot"><i class="fa fa-check"></i><b>7.6.1</b> The scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="eda.html"><a href="eda.html#look-for-patterns-with-the-dependent-variable"><i class="fa fa-check"></i><b>7.7</b> Look for patterns with the dependent variable</a></li>
+<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="eda.html"><a href="eda.html#the-xor-problem"><i class="fa fa-check"></i><b>7.8.1</b> The ‘xor’ problem</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="eda.html"><a href="eda.html#pca"><i class="fa fa-check"></i><b>7.9.1</b> PCA</a></li>
+<li class="chapter" data-level="7.9.2" data-path="eda.html"><a href="eda.html#clustering"><i class="fa fa-check"></i><b>7.9.2</b> Clustering</a></li>
+<li class="chapter" data-level="7.9.3" data-path="eda.html"><a href="eda.html#k-means-clustering"><i class="fa fa-check"></i><b>7.9.3</b> k-Means clustering</a></li>
+<li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
+<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis and Visualization using R (2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggplot2" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> The <code>ggplot2</code> package</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">1.1</span> Introduction</h2>
+<p>In this chapter, we’ll explore the package <code>ggplot2</code>. Package ggplot2 is one of the most popular packages of R, and a defacto standard for creating publishabe visualizations.</p>
+<p>Whole books have been written about ggplot2 (e.g. [INSERT REF]); these will not be repeated here. Instead, I have selected the minimal amount of information and examples to get you going in your own research visualization endeavours in biomedical research. For that reason, this chapter only deals with the base <code>ggplot()</code> function and its most important usage scenarios.<br />
+In my opinion, you are best prepared when first learning the ggplot “language” structure, not the complete listing of possibilities. You can check these out later on your own. If you are interested in what the package has to offer, type <code>help(package=&quot;ggplot2&quot;)</code> on the console.</p>
+<div id="keep-the-goal-in-mind" class="section level3 unnumbered">
+<h3>Keep the goal in mind</h3>
+<p>You should always remember the purpose with which you create a plot:</p>
+<ol style="list-style-type: decimal">
+<li><strong><em>Communicate results in a visual way</em></strong>. The <em>audience</em> consists of other professionals: fellow scientists, students, project managers, CEOs. The <em>scope</em> is in reports, publications, presentations etc. Your plots should be immaculately annotated - have a title and/or caption, axis labels with physical quantities (e.g. Temperature) and measurement units (e.g. Celcius), and a legend (if relevant).</li>
+<li><strong><em>Create a representation of data for visual inspection</em></strong>. The <em>audience</em> is yourself. This is especially important in Exploratory Data Analysis (EDA). You visualize your data in order to discover patterns, trends, outliers and to generate new questions and hypotheses. The biggest challenge is to select the correct, most appropriate visualization that keeps you moving on your research track.</li>
+</ol>
+<p>Besides this, you should of course choose a relevant visualization for your data. For instance, generating a boxplot representing only a few data points is a poor choice, as will a scatterplot for millions of data points almost always be.</p>
+</div>
+</div>
+<div id="getting-started" class="section level2">
+<h2><span class="header-section-number">1.2</span> Getting started</h2>
+<p>Install the packages <code>ggplot2</code> and <code>tidyr</code> first, if not already installed. The package ggplot2 is the topic of this chapter of course. Package tidyr is the topic of a later chapter, but we’ll see a use case of it here already.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</code></pre>
+<p>After installing, you’ll need to load the packages.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(tidyr)</code></pre>
+<div id="a-first-plot" class="section level3 unnumbered">
+<h3>A first plot</h3>
+<p>Let’s dive right in and create a first plot, and walk through the different parts of this code.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:first-plot"></span>
+<img src="bookdown-demo_files/figure-html/first-plot-1.png" alt="A scatter plot visualizing Ozone as a function of Temperature" width="80%" />
+<p class="caption">
+Figure 1.1: A scatter plot visualizing Ozone as a function of Temperature
+</p>
+</div>
+<p>There are two <strong><em>chained function calls</em></strong>: <code>ggplot()</code> and <code>geom_point()</code>. They are chained using the <code>+</code> operator. The first function, <code>ggplot()</code>, creates the base layer of the plot It receives the data and defines how it maps to the two axes. By itself, <code>ggplot()</code>, will not display anything of your data. It creates an empty plot where the axes are defined and have the correct scale:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:empty-plot"></span>
+<img src="bookdown-demo_files/figure-html/empty-plot-1.png" alt="An empty plot pane" width="80%" />
+<p class="caption">
+Figure 1.2: An empty plot pane
+</p>
+</div>
+<p>The next function, <code>geom_point()</code>, builds on the base layer it receives via the <code>+</code> operator and adds a new layer to the plot, a data representation using points.</p>
+<p>The <code>geom_point()</code> function encounters rows with missing data and issues a warning (<code>Warning: Removed 37 rows...</code>) but proceeds anyway. There are two ways to prevent this annoying warning message. The first is to put a <code>warning=FALSE</code> statement in the RMarkdown chunk header. This is usually <strong>not</strong> a good idea because you should be explicit about problem handling when implementing a data analysis workflow because it hinders the reproducibility of your work. Therefore, removing the missing values explicitly is a better solution:</p>
+<pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">na.omit</span>(airquality)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p>Note that this overwrites the build-in dataset <code>airquality</code> for the duration of this R session.</p>
+<p>To obtain a similar plot as created above with “base” R, you would have done something like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(airquality, <span class="kw">plot</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:first-plot-baseR"></span>
+<img src="bookdown-demo_files/figure-html/first-plot-baseR-1.png" alt="The same visualization with base R" width="80%" />
+<p class="caption">
+Figure 1.3: The same visualization with base R
+</p>
+</div>
+<p>You can immediately see why ggplot2 has become so popular. When creating more complex plots it becomes more obvious still, as shown below.</p>
+</div>
+<div id="adding-a-dimension-using-color" class="section level3 unnumbered">
+<h3>Adding a dimension using color</h3>
+<p>This plot shows the power of ggplot2: building complex visualizations with minimal code.</p>
+<pre class="sourceCode r"><code class="sourceCode r">airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">as.factor</span>(airquality<span class="op">$</span>Month)
+airquality<span class="op">$</span>TempFac &lt;-<span class="st"> </span><span class="kw">cut</span>(airquality<span class="op">$</span>Temp, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dt">ordered_result =</span> T)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone, <span class="dt">color=</span>Month)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
+<div class="figure" style="text-align: center"><span id="fig:first-plot-w-color1"></span>
+<img src="bookdown-demo_files/figure-html/first-plot-w-color1-1.png" alt="Ozone as function of Temp with plot symbols colored by Month" width="80%" />
+<p class="caption">
+Figure 1.4: Ozone as function of Temp with plot symbols colored by Month
+</p>
+</div>
+</div>
+<div id="inspecting-and-tuning-the-figure" class="section level3 unnumbered">
+<h3>Inspecting and tuning the figure</h3>
+<p>What can you tell about the data and its measurements when looking at this plot?</p>
+<p>Looking at the above plot, you should notice that</p>
+<ol style="list-style-type: lower-alpha">
+<li>the temperature measurement is probably in degrees Fahrenheit. This should be apparent from the plot. The measurement unit for Ozone is missing. You should look both up; the <code>datasets</code> package doc says it is in Parts Per Billion (ppb).<br />
+</li>
+<li>temperature is lowest in the fifth month -probably May but once again you should make certain- and highest in months 8 and 9.</li>
+<li>ozone levels seem positively correlated with temperature (or Month), but not in an obvious linear way</li>
+<li>a detail: temperature is measured in whole degrees only. This will give plotting artifacts: discrete vertical lines of data points.</li>
+</ol>
+<p>The plot below fixes and addresses the above issues to create a publication-ready figure. We’ll get to the details of this code as we proceed in this chapter. For now the message is <strong><em>be meticulous in constructing your plot</em></strong>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">factor</span>(airquality<span class="op">$</span>Month, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">labels=</span>month.abb)
+<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:first-plot-w-color2"></span>
+<img src="bookdown-demo_files/figure-html/first-plot-w-color2-1.png" alt="Ozone level dependency on Temperature. Grey area: Loess smoother with 95% confidence interval. Source: R dataset &quot;Daily air quality measurements in New York, May to September 1973.&quot;" width="80%" />
+<p class="caption">
+Figure 1.5: Ozone level dependency on Temperature. Grey area: Loess smoother with 95% confidence interval. Source: R dataset “Daily air quality measurements in New York, May to September 1973.”
+</p>
+</div>
+</div>
+</div>
+<div id="ggplot2-and-the-theory-of-graphics" class="section level2">
+<h2><span class="header-section-number">1.3</span> ggplot2 and the theory of graphics</h2>
+<div id="phylosophy-of-ggplot2" class="section level3 unnumbered">
+<h3>Phylosophy of ggplot2</h3>
+<p>The author of ggplot2, Hadley Wickham, had a very clear goal in mind when he embarked on the development of this package:</p>
+<p><em>“The emphasis in ggplot2 is reducing the amount of thinking time by making it easier to go from the plot in your brain to the plot on the page.” (Wickham, 2012)</em></p>
+<p>The way this is achieved is through “<strong><em>The grammar of graphics</em></strong>”</p>
+</div>
+<div id="the-grammar-of-graphics" class="section level3 unnumbered">
+<h3>The grammar of graphics</h3>
+<p>The grammar of graphics tells us that a statistical graphic is a mapping from data to geometric objects (points, lines, bars) with aesthetic attributes (colour, shape, size).</p>
+<p>The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system. Facetting -grid layout- can be used to generate the same plot for different subsets of the dataset.
+(Wickham, 2010)</p>
+</div>
+</div>
+<div id="building-plots-with-ggplot2" class="section level2">
+<h2><span class="header-section-number">1.4</span> Building plots with ggplot2</h2>
+<div id="the-layered-plot-architecture" class="section level3 unnumbered">
+<h3>The layered plot architecture</h3>
+<p>A graph in ggplot2 is built using a few “layers”, or building blocks.</p>
+<table>
+<caption><span id="tab:ggplot2-building-blocks-1">Table 1.1: </span>The three core ggplot2 layers</caption>
+<thead>
+<tr class="header">
+<th align="left">ggplot2</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">data=</td>
+<td align="left">the data that you want to plot</td>
+</tr>
+<tr class="even">
+<td align="left">aes()</td>
+<td align="left">mappings of data to position (axes), colors, sizes</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_…..()</td>
+<td align="left">shapes (geometries) that will represent the data</td>
+</tr>
+</tbody>
+</table>
+<p>First, there is the <strong><em>data</em></strong> layer - the input data that you want to visualize:</p>
+<div class="figure">
+<img src="graphics/data_layer_50p.png#center" alt="The data layer" />
+<p class="caption">The data layer</p>
+</div>
+<p>Next, using the <code>aes()</code> function, the data is <strong><em>mapped</em></strong> to a coordinate system. This encompasses not only the xy-coordinates but also possible extra plot dimensions such as color and shape.</p>
+<div class="figure">
+<img src="graphics/data_aes_layers_50p.png#center" alt="The data and aesthetic layers" />
+<p class="caption">The data and aesthetic layers</p>
+</div>
+<p>As a third step, the data is <strong><em>visually represented</em></strong> in some way, using a <strong><em>geometry</em></strong> (dealt with by one of the many <code>geom_....()</code> functions). Examples of geometries are <strong><em>point</em></strong> for scatterplots, <strong><em>boxplot</em></strong>, <strong><em>line</em></strong> etc.</p>
+<div class="figure">
+<img src="graphics/data_aes_geom_layers_50p.png#center" alt="The data, aesthetic and geometry layers" />
+<p class="caption">The data, aesthetic and geometry layers</p>
+</div>
+<p>At a minimum, these three layers are used in every plot you create.</p>
+<p>Besides these fundamental aspects there are other elements you may wish to add or modify: axis labels, legend, titles, etc. These constitute additional, optional layers:</p>
+<div class="figure">
+<img src="graphics/all_layers_50p.png#center" alt="All layers" />
+<p class="caption">All layers</p>
+</div>
+<p>Except for Statistics and Coordinates, each of these layers will be discussed in detail in subsequent paragraphs.</p>
+</div>
+<div id="tidy-the-data" class="section level3 unnumbered">
+<h3>“Tidy” the data</h3>
+<p>This is a very important aspect of plotting using ggplot2: getting the data in a way that ggplot2 can deal with it. Sometimes it may be a bit challenging to get the data in such a format: some form of data mangling is often required. This is the topic of a next chapter, but here you’ll already see a little preview.</p>
+<p>The ggplot2 function expects its data to come in a <strong><em>tidy</em></strong> format. A dataset is considered <strong><em>tidy</em></strong> when it is formed according to these rules:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable has its own column.</li>
+<li>Each observation has its own row.</li>
+<li>Each value has its own cell.</li>
+</ol>
+<p>Want to know more about tidy data? Read the paper by Hadley Wickham: <span class="citation">(Wickham <a href="#ref-tidy-data">2014</a>)</span>.</p>
+<p>Here is an example dataset that requires some mangling, or <strong><em>tidying</em></strong>, to adhere to these rules.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="right">dose10mg</th>
+<th align="right">dose100mg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="right">12</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="right">11</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="right">54</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="right">71</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="right">19</td>
+<td align="right">89</td>
+</tr>
+</tbody>
+</table>
+<p>This dataset is not tidy because there is an independent variable -the dose- that should have its own column; its value is now buried inside two column headers (<code>dose10mg</code> and <code>dose10mg</code>). Also, there is actually a single variable -the response- that is now split into two columns. Thus, a row now contains two observations.</p>
+<p>Suppose you want to plot the response as a function of the dose. That is not quite possible right now in ggplot2. This is because you want to do something like</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>dose_response,
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&lt;I want to get the dose levels here&gt;&quot;</span>,
+                     <span class="dt">y =</span> <span class="st">&quot;&lt;I want to get the response here&gt;&quot;</span>)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p>The problem is you cannot <strong><em>specify the mapping in a straightforward manner</em></strong>.
+Note that in base R you would probably do this:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(dose_response<span class="op">$</span>dose10mg, dose_response<span class="op">$</span>dose100mg)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:plot-with-untidy-data"></span>
+<img src="bookdown-demo_files/figure-html/plot-with-untidy-data-1.png" alt="Selecting untidy data" width="80%" />
+<p class="caption">
+Figure 1.6: Selecting untidy data
+</p>
+</div>
+<p>So, we need to tidy this dataframe since the <code>dose_10_response</code> and <code>dose_100_response</code> columns actually describe the same variable (measurement) but with different <em>conditions</em>. As an exercise, I tried it using base R. Here is my solution.</p>
+<pre class="sourceCode r"><code class="sourceCode r">tidy_my_df &lt;-<span class="st"> </span><span class="cf">function</span>(df) {
+    create_tidy_columns &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+        <span class="kw">data.frame</span>(<span class="dt">patient =</span> <span class="kw">rep</span>(x[<span class="dv">1</span>], <span class="dv">2</span>),
+                   <span class="dt">sex =</span> <span class="kw">rep</span>(x[<span class="dv">2</span>], <span class="dv">2</span>),
+                   <span class="dt">dose =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>),
+                   <span class="dt">response =</span> <span class="kw">c</span>(x[<span class="dv">3</span>], x[<span class="dv">4</span>]))
+    }
+    
+    tmp &lt;-<span class="st"> </span><span class="kw">Reduce</span>(<span class="cf">function</span>(x, y) <span class="kw">merge</span>(x, y, <span class="dt">all=</span><span class="ot">TRUE</span>), 
+           <span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> create_tidy_columns))
+    tmp[<span class="kw">order</span>(tmp<span class="op">$</span>dose), ]
+}
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">tidy_my_df</span>(dose_response), <span class="dt">n=</span><span class="dv">10</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="right">dose</th>
+<th align="left">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">12</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">11</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="right">10</td>
+<td align="left">54</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="right">10</td>
+<td align="left">71</td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">19</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td align="left">006</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">22</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td align="left">007</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">23</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td align="left">008</td>
+<td align="left">m</td>
+<td align="right">10</td>
+<td align="left">68</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td align="left">009</td>
+<td align="left">f</td>
+<td align="right">10</td>
+<td align="left">30</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td align="left">010</td>
+<td align="left">m</td>
+<td align="right">10</td>
+<td align="left">83</td>
+</tr>
+</tbody>
+</table>
+<p>Luckily, there is a very nice package that makes this quite easy: <code>tidyr</code>.</p>
+<div id="tidying-data-using-tidyrgather" class="section level4 unnumbered">
+<h4>Tidying data using <code>tidyr::gather()</code></h4>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## tidy</span>
+dose_response_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data=</span>dose_response, 
+                             <span class="dt">key=</span>dose, 
+                             <span class="dt">value=</span>response, 
+                             <span class="st">&quot;dose10mg&quot;</span>, <span class="st">&quot;dose100mg&quot;</span>)
+<span class="co">## transform dose column to nice factor</span>
+dose_response_tidy<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(
+    dose_response_tidy<span class="op">$</span>dose <span class="op">==</span><span class="st"> &quot;dose10mg&quot;</span>, <span class="dv">10</span>, <span class="dv">100</span>), 
+  <span class="dt">ordered =</span> T)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(dose_response_tidy, <span class="dt">n=</span><span class="dv">10</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="left">dose</th>
+<th align="right">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">71</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">006</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">007</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">008</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">68</td>
+</tr>
+<tr class="odd">
+<td align="left">009</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">010</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">83</td>
+</tr>
+</tbody>
+</table>
+<p>The data is tidy now, and ready for use within ggplot2.</p>
+<p>We’ll explore the <code>gather()</code> function in detail in a next chapter.</p>
+<p>Now, creating the plot in ggplot2 is a breeze</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
+dr_plot <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot-tidy-basic-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Would you proceed with this hypothetical drug?</p>
+</div>
+</div>
+</div>
+<div id="aesthetics" class="section level2">
+<h2><span class="header-section-number">1.5</span> Aesthetics</h2>
+<p>After you obtain a tidy dataset and pass it to ggplot you must decide what the aesthetics are. This defines the way the data are represented in your plot. Very roughly speaking, you could correlate the aesthetics to the <strong><em>dimensions</em></strong> of the data you want to visualise. For instance, given this chapters’ first example of the airquality dataset, the aesthetics were defined in three “dimensions”:</p>
+<ul>
+<li>dimension “X” for temperature,</li>
+<li>dimension “Y” for Ozone</li>
+<li>dimension “color” for the month.</li>
+</ul>
+<p>Although color is used most often to represent an extra dimension in the data, other aesthetics you may consider are shape, size, line width and line type.</p>
+<div id="colors" class="section level3 unnumbered">
+<h3>Colors</h3>
+<p>Colors can be defined in a variety of ways:</p>
+<ul>
+<li>color name</li>
+<li>existing color palette</li>
+<li>custom color palette</li>
+</ul>
+<p>Below is a panel displaying all named colors you can use in R</p>
+<p><img src="bookdown-demo_files/figure-html/color-names-1.png" width="672" /></p>
+<p>When you provide a literal (character) for the color aesthetic it will simply be that color. If you want to map a property (e.g. “Month”) to a range of colors, you should use a color palette. Since ggplot has build-in color palettes, you can simply use <code>color=&lt;my-third-dimension-variable&gt;</code>. This variable mapping to color can be either a factor (discrete scale) or numeric (continuous scale).
+The ggplot function will map the variable the default color palette.</p>
+<p>Here are some ways to work with color palettes</p>
+<div id="the-default-palette" class="section level4 unnumbered">
+<h4>The default palette</h4>
+<pre class="sourceCode r"><code class="sourceCode r">sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species))
+sp</code></pre>
+<p><img src="bookdown-demo_files/figure-html/color-palette-default-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="manual-palettes" class="section level4 unnumbered">
+<h4>Manual palettes</h4>
+<p>You can specify your own colors using <code>scale_color_manual()</code> for scatter plots or <code>scale_fill_manual()</code> for boxplots and bar plots.</p>
+<pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#00AFBB&quot;</span>, <span class="st">&quot;#E7B800&quot;</span>, <span class="st">&quot;#FC4E07&quot;</span>))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/color-palette-manual-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here is a nice set of colors:</p>
+<pre class="sourceCode r"><code class="sourceCode r">custom_col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#FFDB6D&quot;</span>, <span class="st">&quot;#C4961A&quot;</span>, <span class="st">&quot;#F4EDCA&quot;</span>, 
+                <span class="st">&quot;#D16103&quot;</span>, <span class="st">&quot;#C3D7A4&quot;</span>, <span class="st">&quot;#52854C&quot;</span>, <span class="st">&quot;#4E84C4&quot;</span>, <span class="st">&quot;#293352&quot;</span>)
+<span class="kw">show_palette</span>(custom_col, <span class="dt">cols=</span><span class="kw">length</span>(custom_col))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/custom-palette1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here is a colorblind-friendly palette:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The palette with grey:</span>
+cbp1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>,
+          <span class="st">&quot;#F0E442&quot;</span>, <span class="st">&quot;#0072B2&quot;</span>, <span class="st">&quot;#D55E00&quot;</span>, <span class="st">&quot;#CC79A7&quot;</span>)
+
+<span class="kw">show_palette</span>(cbp1, <span class="dt">cols=</span><span class="kw">length</span>(cbp1))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/custom-palette2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>When you pass a palette that is longer than the number of levels in your factor, R will only use as many as required:</p>
+<pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> cbp1)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/color-palette-manual2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="rcolorbrewer-palettes" class="section level4 unnumbered">
+<h4>RColorBrewer palettes</h4>
+<p>R provides the “RColorBrewer” package. The <code>brewer.pal</code> function has several palettes for various applications at your disposal. Have a look at <code>brewer.pal.info</code>, which lists all:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">maxcolors</th>
+<th align="left">category</th>
+<th align="left">colorblind</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BrBG</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>PiYG</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>PRGn</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>PuOr</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>RdBu</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>RdGy</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>RdYlBu</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>RdYlGn</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>Spectral</td>
+<td align="right">11</td>
+<td align="left">div</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td>Accent</td>
+<td align="right">8</td>
+<td align="left">qual</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>Dark2</td>
+<td align="right">8</td>
+<td align="left">qual</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>Paired</td>
+<td align="right">12</td>
+<td align="left">qual</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>Pastel1</td>
+<td align="right">9</td>
+<td align="left">qual</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td>Pastel2</td>
+<td align="right">8</td>
+<td align="left">qual</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="odd">
+<td>Set1</td>
+<td align="right">9</td>
+<td align="left">qual</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td>Set2</td>
+<td align="right">8</td>
+<td align="left">qual</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>Set3</td>
+<td align="right">12</td>
+<td align="left">qual</td>
+<td align="left">FALSE</td>
+</tr>
+<tr class="even">
+<td>Blues</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>BuGn</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>BuPu</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>GnBu</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>Greens</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>Greys</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>Oranges</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>OrRd</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>PuBu</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>PuBuGn</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>PuRd</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>Purples</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>RdPu</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>Reds</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>YlGn</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>YlGnBu</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="even">
+<td>YlOrBr</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+<tr class="odd">
+<td>YlOrRd</td>
+<td align="right">9</td>
+<td align="left">seq</td>
+<td align="left">TRUE</td>
+</tr>
+</tbody>
+</table>
+<p>For instance, here is <code>Pastel2</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">show_palette</span>(<span class="kw">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Pastel2&quot;</span>), <span class="dt">cols =</span> <span class="dv">8</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/rcolorbrewer-pastel-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Here, an RColorBrewer palette is used with the Iris data.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>, <span class="st">&quot;Dark2&quot;</span>)) <span class="co">#only 3 required</span></code></pre>
+<p><img src="bookdown-demo_files/figure-html/rcolorbrewer-palette-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="shapes" class="section level3 unnumbered">
+<h3>Shapes</h3>
+<p>These are the shapes available in ggplot2 (and base R as well).</p>
+<pre class="sourceCode r"><code class="sourceCode r">shapes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">20</span>),
+  <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">5</span>,
+  <span class="dt">y =</span> <span class="op">-</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%%</span><span class="st"> </span><span class="dv">5</span>)
+)
+<span class="kw">ggplot</span>(shapes, <span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> shape), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> shape), <span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">nudge_x =</span> <span class="fl">0.15</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_shape_identity</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">expand_limits</span>(<span class="dt">x =</span> <span class="fl">4.1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_void</span>()</code></pre>
+<p><img src="bookdown-demo_files/figure-html/shapes-overview,-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Warning: do not clutter your plot with too many dimensions/aesthetics!</p>
+</div>
+<div id="lines" class="section level3 unnumbered">
+<h3>Lines</h3>
+<p>Geoms that draw lines have a “linetype” parameter.</p>
+<p>Legal values are the strings “blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, and “twodash”. Alternatively, the numbers 0 to 6 can be used (0 for “blank”, 1 for “solid”, …).</p>
+<p>You can set line type to a constant value. For this you use the linetype geom parameter. For instance, <code>geom_line(data=d, mapping=aes(x=x, y=y), linetype=3)</code> sets the line type of all lines in that layer to 3, which corresponds to a dotted line), but you can also use it dynamically.</p>
+<p>Here is an example where the female and male deaths in the UK for 72 successive months are plotted.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> deaths, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> month, <span class="dt">y =</span> deaths, <span class="dt">linetype=</span>sex)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_line</span>()</code></pre>
+<p><img src="bookdown-demo_files/figure-html/linecolor-dim-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="size" class="section level3 unnumbered">
+<h3>Size</h3>
+<p>The size of the plotting symbol can also be used as an extra “dimension” in your visualization. Here is an example showing the solar radiation of the airquality data as third dimension.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind, <span class="dt">y =</span> Ozone, <span class="dt">size=</span>Solar.R)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/sizes-demo-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="geometries" class="section level2">
+<h2><span class="header-section-number">1.6</span> Geometries</h2>
+<div id="what-are-geometries" class="section level3 unnumbered">
+<h3>What are geometries</h3>
+<p>Geometries are the ways data can be visually represented. Boxplot, scatterplot and histogram are a few examples. There are <strong><em>many</em></strong> geoms available in ggplo2; type <code>geom_</code> in the console and you will get a listing. Even more are available outside the ggplot2 package. Here we’ll only explore a few.</p>
+</div>
+<div id="boxplot" class="section level3 unnumbered">
+<h3>Boxplot</h3>
+<p>Boxplot is one of the most-used data visualizations. It dsplays the 5-number summary containing from bottom to top: minimum, first quartile, median (= second quartile), third quartile, maximum. Outliers, usually defined as more than <code>1.5 * IQR</code> from the median, are displayed as separate points. Some color was added in the example below.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
+dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot_geom_boxplot-1.png" width="576" /></p>
+</div>
+<div id="jitter" class="section level3 unnumbered">
+<h3>Jitter</h3>
+<p>Jitter is a good alternative to boxplot when you have small sample sizes, or discrete measurements with many exact copies, resulting in much overlap. Use the width and height attributes to adjust the jittering.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot_geom_jitter-1.png" width="576" /></p>
+<p>Here, a split over the sexes is added. Suddenly, a dramatic dosage effect becomes apparent that was smoothed out when the two sexes were combined.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex))</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot_tidy_color-1.png" width="672" /></p>
+<p>Alternatively, use a grid of plots</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>( . <span class="op">~</span><span class="st"> </span>sex)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot_tidy_facet-1.png" width="672" /></p>
+</div>
+<div id="plot-overlays-boxplot-jitter" class="section level3 unnumbered">
+<h3>Plot overlays: boxplot + jitter</h3>
+<p>This example shows how you can overlay plots on top of each other as much as you like.</p>
+<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
+dr_plot <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/plot-overlays-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="scatterplot-points" class="section level3 unnumbered">
+<h3>Scatterplot: Points</h3>
+<p>The <code>geom_point()</code> function is used to create the good old scatterplot of which we have seen several examples already.</p>
+</div>
+<div id="line-plots" class="section level3 unnumbered">
+<h3>Line plots</h3>
+<p>When points can be logically connected it may be a good idea to use a line to visualize trends, as we have seen in the <code>deaths</code> plot in section <a href="#Aesthetics"><strong>??</strong></a></p>
+</div>
+<div id="histograms" class="section level3 unnumbered">
+<h3>Histograms</h3>
+<p>A histogram is a means to visualize a distribution.</p>
+<p>Here we look at the eruption intervals of the “faithful” geyser. A <code>binwidth</code> argument is used to adjust the number of bins. Alternative use the <code>bins</code> argument.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/histogram1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>There are some statistics available to adjust what is shown on the y axis. The default that is used by <code>geom_histogram</code> is <code>stat(count)</code>, so if you don’t specify anything this will be used. But if you want it scaled to a maximum of 1, use <code>stat(count / max(count))</code>. The <code>stat()</code> function is a flag to ggplot2 that you want to use calculated aesthetics produced by the statistic.You can use any transformation of the statistic, e.g. <code>y = stat(log2(count))</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">max</span>(count)))) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;normalized proportion&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/histogram2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Alternatively, if you want percentages, you can use <code>y = stat(count / sum(count) * 100)</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>))) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;%&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/histogram3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="violin-plot" class="section level3 unnumbered">
+<h3>Violin plot</h3>
+<p>A violin plot is a compact display of a continuous distribution. It is a blend of geom_boxplot() and geom_density(): a violin plot is a mirrored density plot displayed in the same way as a boxplot. It is not seen as often as should be. An example best explains.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> Temp, <span class="dt">fill=</span>Month)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_violin</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/violinplot-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="overview-of-the-main-geoms" class="section level3 unnumbered">
+<h3>Overview of the main geoms</h3>
+<p>There are many geoms and even more outside the ggplot2 package.
+Here is a small overview of some of them.</p>
+<table>
+<caption><span id="tab:ggplot2-building-blocks-2">Table 1.2: </span>Some more geoms</caption>
+<thead>
+<tr class="header">
+<th align="left">function.</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">geom_abline()</td>
+<td align="left">Add reference lines to a plot, either horizontal, vertical, or diagonal</td>
+</tr>
+<tr class="even">
+<td align="left">geom_bar()</td>
+<td align="left">A bar plot makes the height of the bar proportional to the number of cases in each group</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_density()</td>
+<td align="left">Computes and draws kernel density estimate, which is a smoothed version of the histogram</td>
+</tr>
+<tr class="even">
+<td align="left">geom_line()</td>
+<td align="left">Connects the observations in order of the variable on the x axis</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_path()</td>
+<td align="left">Connects the observations in the order in which they appear in the data</td>
+</tr>
+<tr class="even">
+<td align="left">geom_qq()</td>
+<td align="left">geom_qq and stat_qq produce quantile-quantile plots</td>
+</tr>
+<tr class="odd">
+<td align="left">geom_smooth()</td>
+<td align="left">Aids the eye in seeing patterns in the presence of overplotting</td>
+</tr>
+<tr class="even">
+<td align="left">geom_violin()</td>
+<td align="left">A violin plot is a compact display of a continuous distribution. It is a blend of geom_boxplot() and geom_density()</td>
+</tr>
+</tbody>
+</table>
+<p>If you want to know them all, simply type <code>?geom_</code> and select the one that looks like the thing you want.</p>
+</div>
+</div>
+<div id="inheritance-of-aesthetics" class="section level2">
+<h2><span class="header-section-number">1.7</span> Inheritance of aesthetics</h2>
+<p>Like the main <code>ggplot()</code> function, every <code>geom_</code> function accepts its own <code>mapping = aes(...)</code>. The mapping is <em>inherited</em> from the ggplot() function, but you can specify your own “local” aesthetic mapping. Aesthetics defined within a geom_ function are scoped to that function only.</p>
+<p>In the plot below you see how this works (it is not a nice plot anymore, I know).
+Note that any aesthetic value specified outside the aes() function is simply a static property (in that scope).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) </code></pre>
+<p><img src="bookdown-demo_files/figure-html/inheritace-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="facetting" class="section level2">
+<h2><span class="header-section-number">1.8</span> Facetting</h2>
+<p>Facetting is the process of splitting into multiple plots with exactly the same coordinate system where each plot show a subset of the data. It can be applied to any geom. The figure above could be improved slightly with this technique.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>Month)</code></pre>
+<p><img src="bookdown-demo_files/figure-html/facetting-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="experimenting-with-geoms-and-aesthetics" class="section level2">
+<h2><span class="header-section-number">1.9</span> Experimenting with geoms and aesthetics</h2>
+<p>The process in plotting using ggplot2 is usually very iterative.<br />
+You start with the base plot, passing it the <strong><em>aesthetic</em></strong> for x and y, as shown above, and then experiment with <strong><em>geometries</em></strong>, <strong><em>colors</em></strong> and <strong><em>faceting</em></strong>.</p>
+<p>Look at every result and ask yourself</p>
+<ul>
+<li>what story does is tell?</li>
+<li>is it the story you seek to tell?</li>
+</ul>
+<p>Only after you finish this phase you should apply make-up (labels, texts).
+Maybe new questions have arisen as a result of the plot you created?</p>
+</div>
+<div id="final-tweeks" class="section level2">
+<h2><span class="header-section-number">1.10</span> Final tweeks</h2>
+<p>This section describes aspects that fall outside the standard realm of plot construction.</p>
+<div id="scales-and-coordinates" class="section level3 unnumbered">
+<h3>Scales and Coordinates</h3>
+<p>Scales and Coordinates are used to adjust the way your data is mapped and displayed. Here, a log10 scale is applied to the y axis and the x axis is reversed.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist)) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_x_reverse</span>() </code></pre>
+<p><img src="bookdown-demo_files/figure-html/tweeking-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>In other contexts, such as geographic information analysis, the scale is extremely important.
+The default coordinate system in ggplot2 is <code>coord_cartesian()</code>. In the plot below, a different coordinate system is used.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function to compute standard error of mean</span>
+se &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">sqrt</span>(<span class="kw">var</span>(x)<span class="op">/</span><span class="kw">length</span>(x)) 
+
+DF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">variable =</span> <span class="kw">as.factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">value =</span> <span class="kw">log2</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">11</span>))
+
+<span class="kw">ggplot</span>(DF, <span class="kw">aes</span>(variable, value, <span class="dt">fill =</span> variable)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> value <span class="op">-</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), 
+                      <span class="dt">ymax =</span> value <span class="op">+</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), 
+                      <span class="dt">color =</span> variable), 
+                      <span class="dt">width =</span> <span class="fl">.2</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="kw">nlevels</span>(DF<span class="op">$</span>variable)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">coord_polar</span>() </code></pre>
+<p><img src="bookdown-demo_files/figure-html/polarplot-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="labels" class="section level3 unnumbered">
+<h3>Labels</h3>
+<p>You have seen the <code>xlab()</code>, <code>ylab()</code>, and <code>labs()</code> functions at work already.</p>
+</div>
+<div id="themes" class="section level3 unnumbered">
+<h3>Themes</h3>
+<p>The theme is used to make changes to the overall appearance of the plot. Two approaches exist. The simplest one is selecting a specific theme and make some minor adjustments at most.
+Here are is the minimal theme where the text sizes have been modified somewhat.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">14</span>)</code></pre>
+<pre><code>## Warning: Removed 37 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/themes1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Note that if the <code>color = Month</code> aesthetic would have been put in the main ggplot call, the smoother would have been split over the Month groups.</p>
+<p>Alternatively, the theme can be specified completely, as show below.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
+        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">16</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),
+        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),
+        <span class="dt">axis.line =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),
+        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),
+        <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</code></pre>
+<pre><code>## Warning: Removed 37 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/themes2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>As you can see, there are <code>element_text()</code>, <code>element_line()</code> and <code>element_rect()</code> functions to specify these types opf plot elements. The <code>element_blank()</code> function can be used in various theme aspects to prevent it from being displayed.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-tidy-data">
+<p>Wickham, Hadley. 2014. “Tidy Data.” <em>The Journal of Statistical Software</em> 59 (10). <a href="http://www.jstatsoft.org/v59/i10/">http://www.jstatsoft.org/v59/i10/</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="developing-a-custom-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-ggplot2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

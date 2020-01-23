@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Package tidyr | Data Analysis and Visualization using R (2)</title>
+  <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Package tidyr | Data Analysis and Visualization using R (2)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Package tidyr | Data Analysis and Visualization using R (2)" />
+  
+  <meta name="twitter:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+<meta name="date" content="2020-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="developing-a-custom-visualization.html">
+<link rel="next" href="dplyr.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
+<script src="libs/str_view-binding-1.4.0/str_view.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DAVuR2 gitbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a><ul>
+<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#keep-the-goal-in-mind"><i class="fa fa-check"></i>Keep the goal in mind</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#a-first-plot"><i class="fa fa-check"></i>A first plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#adding-a-dimension-using-color"><i class="fa fa-check"></i>Adding a dimension using color</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#phylosophy-of-ggplot2"><i class="fa fa-check"></i>Phylosophy of ggplot2</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-layered-plot-architecture"><i class="fa fa-check"></i>The layered plot architecture</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#tidy-the-data"><i class="fa fa-check"></i>“Tidy” the data</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#shapes"><i class="fa fa-check"></i>Shapes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#lines"><i class="fa fa-check"></i>Lines</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#size"><i class="fa fa-check"></i>Size</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#what-are-geometries"><i class="fa fa-check"></i>What are geometries</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#violin-plot"><i class="fa fa-check"></i>Violin plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#overview-of-the-main-geoms"><i class="fa fa-check"></i>Overview of the main geoms</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
+<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
+<li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
+<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a><ul>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-data"><i class="fa fa-check"></i>The data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#choose-a-visualization"><i class="fa fa-check"></i>Choose a visualization</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#a-first-version"><i class="fa fa-check"></i>A first version</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#add-mean-and-sd"><i class="fa fa-check"></i>Add mean and SD</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasise-worst-cases"><i class="fa fa-check"></i>Emphasise worst cases</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
+<li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
+<li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="dplyr.html"><a href="dplyr.html#by-row-constructor"><i class="fa fa-check"></i><b>4.1.1</b> By-row constructor</a></li>
+<li class="chapter" data-level="4.1.2" data-path="dplyr.html"><a href="dplyr.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>4.1.2</b> Tibbles vs data frames</a></li>
+<li class="chapter" data-level="4.1.3" data-path="dplyr.html"><a href="dplyr.html#the-str-equivalent-glimpse"><i class="fa fa-check"></i><b>4.1.3</b> The <code>str()</code> equivalent: <code>glimpse()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#the-chaining-operator"><i class="fa fa-check"></i><b>4.2</b> The chaining operator <code>%&gt;%</code></a></li>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="dplyr.html"><a href="dplyr.html#selecting-rows-by-index-slice"><i class="fa fa-check"></i><b>4.3.1</b> Selecting rows by index: <code>slice()</code></a></li>
+<li class="chapter" data-level="4.3.2" data-path="dplyr.html"><a href="dplyr.html#get-unique-cases-with-distinct"><i class="fa fa-check"></i><b>4.3.2</b> Get unique cases with <code>distinct()</code></a></li>
+<li class="chapter" data-level="4.3.3" data-path="dplyr.html"><a href="dplyr.html#filter-cases"><i class="fa fa-check"></i><b>4.3.3</b> <code>filter()</code> cases</a></li>
+<li class="chapter" data-level="4.3.4" data-path="dplyr.html"><a href="dplyr.html#selecting-variables-select"><i class="fa fa-check"></i><b>4.3.4</b> Selecting variables: <code>select()</code></a></li>
+<li class="chapter" data-level="4.3.5" data-path="dplyr.html"><a href="dplyr.html#renaming-variables-rename"><i class="fa fa-check"></i><b>4.3.5</b> Renaming variables: <code>rename()</code></a></li>
+<li class="chapter" data-level="4.3.6" data-path="dplyr.html"><a href="dplyr.html#selecting-from-ranked-data"><i class="fa fa-check"></i><b>4.3.6</b> Selecting from ranked data</a></li>
+<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-colum-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a colum as vector</a></li>
+<li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
+<li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
+<li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="dplyr.html"><a href="dplyr.html#group_by-and-ungroup"><i class="fa fa-check"></i><b>4.5.1</b> <code>group_by()</code> and <code>ungroup()</code></a></li>
+<li class="chapter" data-level="4.5.2" data-path="dplyr.html"><a href="dplyr.html#group_split-and-group_keys"><i class="fa fa-check"></i><b>4.5.2</b> <code>group_split()</code> and <code>group_keys()</code></a></li>
+<li class="chapter" data-level="4.5.3" data-path="dplyr.html"><a href="dplyr.html#apply-a-function-to-each-group"><i class="fa fa-check"></i><b>4.5.3</b> Apply a function to each group</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#summarizing-and-counting"><i class="fa fa-check"></i><b>4.6</b> Summarizing and counting</a></li>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="dplyr.html"><a href="dplyr.html#merging"><i class="fa fa-check"></i><b>4.7.1</b> Merging</a></li>
+<li class="chapter" data-level="4.7.2" data-path="dplyr.html"><a href="dplyr.html#adding-rows-and-columns"><i class="fa fa-check"></i><b>4.7.2</b> Adding rows and columns</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a><ul>
+<li class="chapter" data-level="5.1" data-path="date-time.html"><a href="date-time.html#current-time"><i class="fa fa-check"></i><b>5.1</b> Current time</a></li>
+<li class="chapter" data-level="5.2" data-path="date-time.html"><a href="date-time.html#getting-elements-from-date-time-objects"><i class="fa fa-check"></i><b>5.2</b> Getting elements from date-time objects</a></li>
+<li class="chapter" data-level="5.3" data-path="date-time.html"><a href="date-time.html#calculations-with-date-time"><i class="fa fa-check"></i><b>5.3</b> Calculations with date-time</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a><ul>
+<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="stringr.html"><a href="stringr.html#a-few-remarks-on-locale"><i class="fa fa-check"></i><b>6.1.1</b> A few remarks on “locale”</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="stringr.html"><a href="stringr.html#regex-syntax-elements"><i class="fa fa-check"></i><b>6.2.1</b> Regex syntax elements</a></li>
+<li class="chapter" data-level="6.2.2" data-path="stringr.html"><a href="stringr.html#character-classes-and-negation"><i class="fa fa-check"></i><b>6.2.2</b> Character classes and negation</a></li>
+<li class="chapter" data-level="6.2.3" data-path="stringr.html"><a href="stringr.html#quantifiers"><i class="fa fa-check"></i><b>6.2.3</b> Quantifiers</a></li>
+<li class="chapter" data-level="6.2.4" data-path="stringr.html"><a href="stringr.html#anchoring"><i class="fa fa-check"></i><b>6.2.4</b> Anchoring</a></li>
+<li class="chapter" data-level="6.2.5" data-path="stringr.html"><a href="stringr.html#alternatives"><i class="fa fa-check"></i><b>6.2.5</b> Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="stringr.html"><a href="stringr.html#case-conversion"><i class="fa fa-check"></i><b>6.3.1</b> Case conversion</a></li>
+<li class="chapter" data-level="6.3.2" data-path="stringr.html"><a href="stringr.html#split-join-and-substring"><i class="fa fa-check"></i><b>6.3.2</b> Split, join and substring</a></li>
+<li class="chapter" data-level="6.3.3" data-path="stringr.html"><a href="stringr.html#matching"><i class="fa fa-check"></i><b>6.3.3</b> Matching</a></li>
+<li class="chapter" data-level="6.3.4" data-path="stringr.html"><a href="stringr.html#extracting-and-replacing"><i class="fa fa-check"></i><b>6.3.4</b> Extracting and replacing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="eda.html"><a href="eda.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="eda.html"><a href="eda.html#the-codebook"><i class="fa fa-check"></i><b>7.2.1</b> The codebook</a></li>
+<li class="chapter" data-level="7.2.2" data-path="eda.html"><a href="eda.html#load-and-inspect-the-data"><i class="fa fa-check"></i><b>7.2.2</b> Load and inspect the data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="eda.html"><a href="eda.html#first-steps"><i class="fa fa-check"></i><b>7.3.1</b> First steps</a></li>
+<li class="chapter" data-level="7.3.2" data-path="eda.html"><a href="eda.html#smoking-data-corrupted"><i class="fa fa-check"></i><b>7.3.2</b> Smoking data corrupted?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="eda.html"><a href="eda.html#recoding-strategies"><i class="fa fa-check"></i><b>7.4.1</b> Recoding strategies</a></li>
+<li class="chapter" data-level="7.4.2" data-path="eda.html"><a href="eda.html#factorization"><i class="fa fa-check"></i><b>7.4.2</b> “factorization”</a></li>
+<li class="chapter" data-level="7.4.3" data-path="eda.html"><a href="eda.html#data-redundancy-in-std-variables"><i class="fa fa-check"></i><b>7.4.3</b> Data redundancy in STD variables</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="eda.html"><a href="eda.html#the-dependent-variable"><i class="fa fa-check"></i><b>7.5</b> The dependent variable</a></li>
+<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="eda.html"><a href="eda.html#the-scatterplot"><i class="fa fa-check"></i><b>7.6.1</b> The scatterplot</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="eda.html"><a href="eda.html#look-for-patterns-with-the-dependent-variable"><i class="fa fa-check"></i><b>7.7</b> Look for patterns with the dependent variable</a></li>
+<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a><ul>
+<li class="chapter" data-level="7.8.1" data-path="eda.html"><a href="eda.html#the-xor-problem"><i class="fa fa-check"></i><b>7.8.1</b> The ‘xor’ problem</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a><ul>
+<li class="chapter" data-level="7.9.1" data-path="eda.html"><a href="eda.html#pca"><i class="fa fa-check"></i><b>7.9.1</b> PCA</a></li>
+<li class="chapter" data-level="7.9.2" data-path="eda.html"><a href="eda.html#clustering"><i class="fa fa-check"></i><b>7.9.2</b> Clustering</a></li>
+<li class="chapter" data-level="7.9.3" data-path="eda.html"><a href="eda.html#k-means-clustering"><i class="fa fa-check"></i><b>7.9.3</b> k-Means clustering</a></li>
+<li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
+<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis and Visualization using R (2)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tidyr" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Package tidyr</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>This chapter explores the package <code>tidyr</code>. It is also part of the <code>tidyverse</code> set of packages.</p>
+<p>This package is an essential tool in the process of organizing you data in a <strong><em>tidy</em></strong> way.
+A dataset is considered <strong><em>tidy</em></strong> when it is formed according to these rules:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable has its own column.</li>
+<li>Each observation has its own row.</li>
+<li>Each value has its own cell.</li>
+</ol>
+<p>Here is an example dataset, downloaded from the WHO website <a href="https://www.who.int/immunization/monitoring_surveillance/burden/vpd/surveillance_type/active/measles_monthlydata/en/">here</a>
+Note: the original data was exported from Excel to csv, and a text editor was used to replace single quote occurrences (“’”) with an underscore. Otherwise, data will be corrupted.</p>
+<p>The data concerns disease occurrences for two diseases: measles and rubella (“rode hond” in Dutch).
+Suppose I would like to analyse distribution and timeline of these two diseases, in relation to each other.
+There are two problems here:
+1. The data needs to be clean
+2. The data needs to be combined from two files into one dataframe.</p>
+<p>Let’s start with the first: measles.
+Here is part of the measles data. It is not tidy. Why not?</p>
+<table>
+<caption><span id="tab:load-measles">Table 3.1: </span>Why is this not tidy?</caption>
+<thead>
+<tr class="header">
+<th align="left">Region</th>
+<th align="left">ISO3</th>
+<th align="left">Country</th>
+<th align="right">Year</th>
+<th align="right">January</th>
+<th align="right">February</th>
+<th align="right">March</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="right">17</td>
+<td align="right">19</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2012</td>
+<td align="right">373</td>
+<td align="right">289</td>
+<td align="right">381</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2013</td>
+<td align="right">725</td>
+<td align="right">646</td>
+<td align="right">734</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2014</td>
+<td align="right">1161</td>
+<td align="right">1101</td>
+<td align="right">1319</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2015</td>
+<td align="right">4</td>
+<td align="right">15</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2016</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2017</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2018</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2019</td>
+<td align="right">120</td>
+<td align="right">94</td>
+<td align="right">281</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2011</td>
+<td align="right">6</td>
+<td align="right">2</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2012</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">10</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2013</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2014</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2015</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2016</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>The monthly counts are in separate columns. However, they are really all the same variable: measles cases. So this data needs to be tidied: There should be only one column called “cases” and another column called “month”. Or maybe even a single column “Date”? Because year and month are actually elements of a single unit of course. We’ll leave that for a later chapter.</p>
+</div>
+<div id="the-gather-function" class="section level2">
+<h2><span class="header-section-number">3.2</span> The <code>gather()</code> function</h2>
+<p>Tidying has never been simpler, using the <code>gather</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">measles_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data =</span> measles, 
+                       <span class="dt">key =</span> <span class="st">&quot;Month&quot;</span>, 
+                       <span class="dt">value =</span> <span class="st">&quot;Cases&quot;</span>, 
+                       <span class="dv">5</span><span class="op">:</span><span class="dv">16</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(measles_tidy, <span class="dt">n=</span><span class="dv">15</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Region</th>
+<th align="left">ISO3</th>
+<th align="left">Country</th>
+<th align="right">Year</th>
+<th align="left">Month</th>
+<th align="right">Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">January</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2012</td>
+<td align="left">January</td>
+<td align="right">373</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2013</td>
+<td align="left">January</td>
+<td align="right">725</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2014</td>
+<td align="left">January</td>
+<td align="right">1161</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2015</td>
+<td align="left">January</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2016</td>
+<td align="left">January</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2017</td>
+<td align="left">January</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2018</td>
+<td align="left">January</td>
+<td align="right">3</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2019</td>
+<td align="left">January</td>
+<td align="right">120</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2011</td>
+<td align="left">January</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2012</td>
+<td align="left">January</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2013</td>
+<td align="left">January</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2014</td>
+<td align="left">January</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2015</td>
+<td align="left">January</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">BDI</td>
+<td align="left">Burundi</td>
+<td align="right">2016</td>
+<td align="left">January</td>
+<td align="right">0</td>
+</tr>
+</tbody>
+</table>
+<p>In the <code>gather</code> function, you provide three pieces of information:</p>
+<ol style="list-style-type: decimal">
+<li><p>The name of the <code>key</code>. This is the name of the newly created column that will hold the information that is now present in the column headers that you are going to collect - in this case, the months names Januari-December. Hence, <code>key = Month</code>.</p></li>
+<li><p>The name for <code>value</code>. The <code>value</code> argument is the name of the column that will hold the actual measurements. In this case, the number of cases from each of the 12 month columns will be “gathered” in this column. Hence, <code>value = Cases</code>.</p></li>
+<li><p>Finally, you need to tell which columns to collect. Here, all the month columns are collected: <code>5:16</code>. you can also use the names of the columns you want to gather.</p></li>
+</ol>
+<p>The result is a “flattened but elongated” data structure. All data from the non-gathered columns (<code>Region</code>, <code>ISO3</code>, <code>Country</code>, and <code>Year</code>) will be expanded/duplicated for each of the 12 month rows that will be created.</p>
+<p>Here you can see the numbers as verification of the process:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## The original dimensions</span>
+<span class="kw">dim</span>(measles)</code></pre>
+<pre><code>## [1] 1746   16</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## The tidied data</span>
+<span class="kw">dim</span>(measles_tidy)</code></pre>
+<pre><code>## [1] 20952     6</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## 12 times 1746 is 20952 rows</span>
+<span class="kw">nrow</span>(measles_tidy) <span class="op">/</span><span class="st"> </span><span class="dv">12</span></code></pre>
+<pre><code>## [1] 1746</code></pre>
+<p>Obviously, the data you gather into a single column must be a single measurement type!</p>
+<p>When the names of the columns you want to gather have a common prefix, you can use <code>starts_with()</code> (from package <code>tidyselect</code>). Here is the dose-response example from the ggplot2 chapter again:</p>
+<pre class="sourceCode r"><code class="sourceCode r">dose_response &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/dose_response2.txt&quot;</span>,
+                            <span class="dt">header =</span> T,
+                            <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,
+                            <span class="dt">colClasses=</span><span class="kw">c</span>(<span class="st">&quot;character&quot;</span>, <span class="st">&quot;factor&quot;</span>, <span class="st">&quot;integer&quot;</span>, <span class="st">&quot;integer&quot;</span>))
+<span class="kw">names</span>(dose_response)</code></pre>
+<pre><code>## [1] &quot;patient&quot;   &quot;sex&quot;       &quot;dose10mg&quot;  &quot;dose100mg&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## gather with startswith()</span>
+dose_response_long &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data =</span> dose_response, 
+              <span class="dt">key =</span> <span class="st">&quot;Dose&quot;</span>, 
+              <span class="dt">value =</span> <span class="st">&quot;Response&quot;</span>, 
+              <span class="kw">starts_with</span>(<span class="st">&quot;dose&quot;</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(dose_response_long, <span class="dt">n =</span> <span class="dv">15</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="left">Dose</th>
+<th align="right">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">71</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">006</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">007</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">008</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">68</td>
+</tr>
+<tr class="odd">
+<td align="left">009</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">010</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">83</td>
+</tr>
+<tr class="odd">
+<td align="left">011</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">72</td>
+</tr>
+<tr class="even">
+<td align="left">012</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">48</td>
+</tr>
+<tr class="odd">
+<td align="left">013</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">67</td>
+</tr>
+<tr class="even">
+<td align="left">014</td>
+<td align="left">f</td>
+<td align="left">dose10mg</td>
+<td align="right">13</td>
+</tr>
+<tr class="odd">
+<td align="left">015</td>
+<td align="left">m</td>
+<td align="left">dose10mg</td>
+<td align="right">73</td>
+</tr>
+</tbody>
+</table>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(dose_response_long, <span class="dt">file =</span> <span class="st">&quot;data/dose_response_long.Rdata&quot;</span>)</code></pre>
+<p>The suffix case works -not surprisingly- with <code>ends_width()</code>. Type <code>tidyselect::</code> and use autocomplete to find out which helper functions exist for this kind of task. These functions allow you to select variables based on their names, and obviously have a much broader usefullness.</p>
+</div>
+<div id="a-more-complex-problem-two-sets-of-columns" class="section level2">
+<h2><span class="header-section-number">3.3</span> A more complex problem: two sets of columns</h2>
+<p>How about a case with two sets of columns? Here, to create an example, a <code>tibble</code> is used. This is an extension of the well-known <code>data.frame</code> type. It is also part of the <code>tidyverse</code> and will be discussed in more detail as well.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
+two_two_col &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">subject =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>],
+              <span class="dt">T0_Control =</span> <span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">1</span>),
+              <span class="dt">T0_Treated =</span> <span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="fl">9.5</span>, <span class="fl">1.2</span>),
+              <span class="dt">T1_Control =</span> <span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">11</span>, <span class="fl">1.5</span>),
+              <span class="dt">T1_Treated =</span> <span class="kw">rnorm</span>(<span class="dv">5</span>, <span class="dv">16</span>, <span class="dv">2</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(two_two_col)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="right">T0_Control</th>
+<th align="right">T0_Treated</th>
+<th align="right">T1_Control</th>
+<th align="right">T1_Treated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="right">8.79</td>
+<td align="right">10.11</td>
+<td align="right">10.28</td>
+<td align="right">15.8</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="right">10.28</td>
+<td align="right">8.81</td>
+<td align="right">9.50</td>
+<td align="right">15.0</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="right">11.08</td>
+<td align="right">8.84</td>
+<td align="right">9.84</td>
+<td align="right">14.2</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="right">7.65</td>
+<td align="right">8.82</td>
+<td align="right">11.10</td>
+<td align="right">14.3</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="right">10.43</td>
+<td align="right">8.43</td>
+<td align="right">12.44</td>
+<td align="right">20.8</td>
+</tr>
+</tbody>
+</table>
+<p>The measurements are spread over 4 columns and the column names actually represent the levels of <strong><em>two</em></strong> variables: Treatment and Time.
+Thus, to be tidy we need to mangle the data in this form:</p>
+<pre><code>subject time treatment response
+a       T0   Control   10.764
+a       T0   Treated   8.681
+a       T1   Control   13.057
+a       T1   Treated   15.188
+...</code></pre>
+<p>It seems simple enough. Let’s try:</p>
+<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(
+    <span class="kw">gather</span>(<span class="dt">data =</span> two_two_col, 
+           <span class="dt">key =</span> TreatTime, 
+           <span class="dt">value =</span> response, 
+           <span class="kw">starts_with</span>(<span class="st">&quot;T&quot;</span>)))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">TreatTime</th>
+<th align="right">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T0_Control</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T0_Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">T0_Control</td>
+<td align="right">11.08</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="left">T0_Control</td>
+<td align="right">7.65</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="left">T0_Control</td>
+<td align="right">10.43</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T0_Treated</td>
+<td align="right">10.11</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T0_Treated</td>
+<td align="right">8.81</td>
+</tr>
+<tr class="even">
+<td align="left">c</td>
+<td align="left">T0_Treated</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="left">d</td>
+<td align="left">T0_Treated</td>
+<td align="right">8.82</td>
+</tr>
+<tr class="even">
+<td align="left">e</td>
+<td align="left">T0_Treated</td>
+<td align="right">8.43</td>
+</tr>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T1_Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T1_Control</td>
+<td align="right">9.50</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">T1_Control</td>
+<td align="right">9.84</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="left">T1_Control</td>
+<td align="right">11.10</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="left">T1_Control</td>
+<td align="right">12.44</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T1_Treated</td>
+<td align="right">15.78</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T1_Treated</td>
+<td align="right">14.98</td>
+</tr>
+<tr class="even">
+<td align="left">c</td>
+<td align="left">T1_Treated</td>
+<td align="right">14.18</td>
+</tr>
+<tr class="odd">
+<td align="left">d</td>
+<td align="left">T1_Treated</td>
+<td align="right">14.33</td>
+</tr>
+<tr class="even">
+<td align="left">e</td>
+<td align="left">T1_Treated</td>
+<td align="right">20.83</td>
+</tr>
+</tbody>
+</table>
+<p>This is actually on the right track! Now the only thing that needs to be done is split the <code>TreatTime</code> column in two columns. We can do this with the <code>separate()</code> function which also comes with the <code>tidyr</code> package:</p>
+<pre class="sourceCode r"><code class="sourceCode r">two_two_col_long &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data =</span> two_two_col,
+                           <span class="dt">key =</span> TreatTime, 
+                           <span class="dt">value =</span> response, 
+                           <span class="kw">starts_with</span>(<span class="st">&quot;T&quot;</span>))
+two_two_col_long_spl &lt;-<span class="st"> </span><span class="kw">separate</span>(<span class="dt">data =</span> two_two_col_long, 
+                             <span class="dt">col =</span> TreatTime, 
+                             <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Timepoint&quot;</span>, <span class="st">&quot;Treatment&quot;</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(two_two_col_long_spl)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">Timepoint</th>
+<th align="left">Treatment</th>
+<th align="right">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">11.08</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">7.65</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">10.43</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">10.11</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">8.81</td>
+</tr>
+<tr class="even">
+<td align="left">c</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">8.84</td>
+</tr>
+<tr class="odd">
+<td align="left">d</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">8.82</td>
+</tr>
+<tr class="even">
+<td align="left">e</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">8.43</td>
+</tr>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">9.50</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">9.84</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">11.10</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">12.44</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">15.78</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">14.98</td>
+</tr>
+<tr class="even">
+<td align="left">c</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">14.18</td>
+</tr>
+<tr class="odd">
+<td align="left">d</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">14.33</td>
+</tr>
+<tr class="even">
+<td align="left">e</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">20.83</td>
+</tr>
+</tbody>
+</table>
+<p>The function <code>separate()</code> will split on the non-word chracter if no separator is specified; in this case the underscore. This method is discussed separately below (pun intended).</p>
+<p>The tidyr package provides the <strong><em>chaining operator</em></strong> <code>%&gt;%</code> that makes it possible to combine this into a single statement. We’ll see more of this in later chapters:</p>
+<pre class="sourceCode r"><code class="sourceCode r">two_two_col_long_spl &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data =</span> two_two_col, 
+        <span class="dt">key =</span> TreatTime, 
+        <span class="dt">value =</span> response, 
+        <span class="kw">starts_with</span>(<span class="st">&quot;T&quot;</span>)) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">## CHAIN IT!</span>
+<span class="st">    </span><span class="kw">separate</span>(<span class="dt">col =</span> TreatTime, 
+             <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&quot;Timepoint&quot;</span>, <span class="st">&quot;Treatment&quot;</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(two_two_col_long_spl, <span class="dv">3</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">Timepoint</th>
+<th align="left">Treatment</th>
+<th align="right">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">11.08</td>
+</tr>
+</tbody>
+</table>
+<p>By the way, in base R you would split a column using the <code>read.table</code> function:</p>
+<pre class="sourceCode r"><code class="sourceCode r">two_cols &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">text =</span> two_two_col_long<span class="op">$</span>TreatTime, 
+                       <span class="dt">sep=</span><span class="st">&quot;_&quot;</span>)
+<span class="kw">names</span>(two_cols) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Treatment&quot;</span>)
+two_two_col_long &lt;-<span class="st"> </span><span class="kw">cbind</span>(two_two_col, two_cols)
+tmp<span class="op">$</span>TreatTime &lt;-<span class="st"> </span><span class="ot">NULL</span></code></pre>
+<p>The tidyr package has a recent addition called <code>pivot_longer</code> which is specifically tailored for this kind of task. It requires a bit of knowledge of regular expressions though:</p>
+<pre class="sourceCode r"><code class="sourceCode r">alt &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> two_two_col,
+             <span class="dt">cols =</span> <span class="op">-</span><span class="st">&quot;subject&quot;</span>,
+             <span class="dt">names_pattern =</span> <span class="st">&quot;(T.)_(Control|Treated)&quot;</span>,
+             <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Treatment&quot;</span>),
+             <span class="dt">values_to =</span> <span class="st">&quot;Response&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(alt, <span class="dv">8</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">Time</th>
+<th align="left">Treatment</th>
+<th align="right">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">10.11</td>
+</tr>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">15.78</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">Treated</td>
+<td align="right">8.81</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">Control</td>
+<td align="right">9.50</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">Treated</td>
+<td align="right">14.98</td>
+</tr>
+</tbody>
+</table>
+<p>The expression <code>names_pattern = &quot;(T.).(Control|Treated)&quot;</code> tells the function there are two groups in the column names to be widened. These groups are defined by the two sets of parentheses <code>()</code>. The first group is defined by the letter “T” followd by a single character specified by the dot <code>.</code> which says “any character”. The second group is <code>(Control|Treated)</code> which tells the function that it is formed by the word Control or Treated. In between is a random single underscore &quot;_&quot;.
+Alternatively, the <code>names_sep</code> argument could have been used. For instance, <code>names_sep = 2</code> tells to split the column names after the second character, yielding this slightly less aesthetic result:</p>
+<pre class="sourceCode r"><code class="sourceCode r">alt &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> two_two_col,
+             <span class="dt">cols =</span> <span class="op">-</span><span class="st">&quot;subject&quot;</span>,
+             <span class="dt">names_sep =</span> <span class="dv">2</span>,
+             <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Time&quot;</span>, <span class="st">&quot;Treatment&quot;</span>),
+             <span class="dt">values_to =</span> <span class="st">&quot;Response&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(alt, <span class="dv">8</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="left">Time</th>
+<th align="left">Treatment</th>
+<th align="right">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">_Control</td>
+<td align="right">8.79</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T0</td>
+<td align="left">_Treated</td>
+<td align="right">10.11</td>
+</tr>
+<tr class="odd">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">_Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">a</td>
+<td align="left">T1</td>
+<td align="left">_Treated</td>
+<td align="right">15.78</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">_Control</td>
+<td align="right">10.28</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T0</td>
+<td align="left">_Treated</td>
+<td align="right">8.81</td>
+</tr>
+<tr class="odd">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">_Control</td>
+<td align="right">9.50</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="left">T1</td>
+<td align="left">_Treated</td>
+<td align="right">14.98</td>
+</tr>
+</tbody>
+</table>
+<p>Here is the dose_response data, processed by pivot_longer as well:</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> dose_response,
+             <span class="dt">cols =</span> <span class="op">-</span><span class="kw">c</span>(<span class="st">&quot;patient&quot;</span>, <span class="st">&quot;sex&quot;</span>),
+             <span class="dt">names_to =</span> <span class="st">&quot;dose&quot;</span>,
+             <span class="dt">names_pattern =</span> <span class="st">&quot;dose(10|100)mg&quot;</span>,
+             <span class="dt">values_to =</span> <span class="st">&quot;response&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(tmp)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="left">dose</th>
+<th align="right">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">88</td>
+</tr>
+<tr class="odd">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">71</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">89</td>
+</tr>
+<tr class="odd">
+<td align="left">006</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">006</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">99</td>
+</tr>
+<tr class="odd">
+<td align="left">007</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">23</td>
+</tr>
+<tr class="even">
+<td align="left">007</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">69</td>
+</tr>
+<tr class="odd">
+<td align="left">008</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">68</td>
+</tr>
+<tr class="even">
+<td align="left">008</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">31</td>
+</tr>
+<tr class="odd">
+<td align="left">009</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">009</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">85</td>
+</tr>
+<tr class="odd">
+<td align="left">010</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">83</td>
+</tr>
+<tr class="even">
+<td align="left">010</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="left">011</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">72</td>
+</tr>
+<tr class="even">
+<td align="left">011</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">37</td>
+</tr>
+<tr class="odd">
+<td align="left">012</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">48</td>
+</tr>
+<tr class="even">
+<td align="left">012</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">28</td>
+</tr>
+<tr class="odd">
+<td align="left">013</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">67</td>
+</tr>
+<tr class="even">
+<td align="left">013</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="left">014</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">014</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">79</td>
+</tr>
+<tr class="odd">
+<td align="left">015</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">73</td>
+</tr>
+<tr class="even">
+<td align="left">015</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">22</td>
+</tr>
+<tr class="odd">
+<td align="left">016</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">20</td>
+</tr>
+<tr class="even">
+<td align="left">016</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">84</td>
+</tr>
+<tr class="odd">
+<td align="left">017</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">017</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">96</td>
+</tr>
+<tr class="odd">
+<td align="left">018</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">40</td>
+</tr>
+<tr class="even">
+<td align="left">018</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="left">019</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">019</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="left">020</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="left">020</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">63</td>
+</tr>
+<tr class="odd">
+<td align="left">021</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">021</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">89</td>
+</tr>
+<tr class="odd">
+<td align="left">022</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">29</td>
+</tr>
+<tr class="even">
+<td align="left">022</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">77</td>
+</tr>
+<tr class="odd">
+<td align="left">023</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td align="left">023</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">024</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">61</td>
+</tr>
+<tr class="even">
+<td align="left">024</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="left">025</td>
+<td align="left">m</td>
+<td align="left">10</td>
+<td align="right">57</td>
+</tr>
+<tr class="even">
+<td align="left">025</td>
+<td align="left">m</td>
+<td align="left">100</td>
+<td align="right">36</td>
+</tr>
+<tr class="odd">
+<td align="left">026</td>
+<td align="left">f</td>
+<td align="left">10</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">026</td>
+<td align="left">f</td>
+<td align="left">100</td>
+<td align="right">80</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, we could have done the same with the measles data from the beginning of this chapter. The names need not even be separated in this case: all month columns represent a single variable:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(measles)</code></pre>
+<pre><code>##   Region ISO3 Country Year January February March April  May June July
+## 1    AFR  AGO  Angola 2011      17       19    37    41   11    8    5
+## 2    AFR  AGO  Angola 2012     373      289   381   393  546  357  382
+## 3    AFR  AGO  Angola 2013     725      646   734   491  726  695  680
+## 4    AFR  AGO  Angola 2014    1161     1101  1319  1094 1754 1150 1484
+## 5    AFR  AGO  Angola 2015       4       15     0     0    3    3    4
+## 6    AFR  AGO  Angola 2016       3        2     0     4    6    2    5
+##   August September October November December
+## 1      4        32      10        8        0
+## 2    553       571     367      216       42
+## 3    660       563     288      265       91
+## 4   1429      1098     373       27       12
+## 5     13        40      14        5        2
+## 6     11         5       1        5        7</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">alt &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> measles,
+             <span class="dt">cols =</span> <span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>),
+             <span class="dt">values_to =</span> <span class="st">&quot;Cases&quot;</span>,
+             <span class="dt">names_to =</span> <span class="st">&quot;Month&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(alt, <span class="dv">8</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Region</th>
+<th align="left">ISO3</th>
+<th align="left">Country</th>
+<th align="right">Year</th>
+<th align="left">Month</th>
+<th align="right">Cases</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">January</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">February</td>
+<td align="right">19</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">March</td>
+<td align="right">37</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">April</td>
+<td align="right">41</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">May</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">June</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">July</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">AFR</td>
+<td align="left">AGO</td>
+<td align="left">Angola</td>
+<td align="right">2011</td>
+<td align="left">August</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="widening-with-spread-and-pivot_wider" class="section level2">
+<h2><span class="header-section-number">3.4</span> Widening with <code>spread()</code> and <code>pivot_wider()</code></h2>
+<p>The opposite of <code>gather()</code> is <code>spread()</code>. First the simple case of a single column:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dose_response_long)</code></pre>
+<pre><code>##   patient sex     Dose Response
+## 1     001   f dose10mg       12
+## 2     002   f dose10mg       11
+## 3     003   m dose10mg       54
+## 4     004   m dose10mg       71
+## 5     005   f dose10mg       19
+## 6     006   f dose10mg       22</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##Quoting the column names is often not required in the tidyverse</span>
+tmp &lt;-<span class="st"> </span><span class="kw">spread</span>(<span class="dt">data =</span> dose_response_long, <span class="dt">key =</span> Dose, <span class="dt">value =</span> Response)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(tmp, <span class="dv">5</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="right">dose100mg</th>
+<th align="right">dose10mg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="right">88</td>
+<td align="right">12</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="right">54</td>
+<td align="right">11</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="right">14</td>
+<td align="right">54</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="right">21</td>
+<td align="right">71</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="right">89</td>
+<td align="right">19</td>
+</tr>
+</tbody>
+</table>
+<p>Here is the same with <code>pivot_wider</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(<span class="dt">data =</span> dose_response_long,
+                   <span class="dt">names_from =</span> Dose,
+                   <span class="dt">values_from =</span> Response)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(tmp, <span class="dv">5</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">patient</th>
+<th align="left">sex</th>
+<th align="right">dose10mg</th>
+<th align="right">dose100mg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">001</td>
+<td align="left">f</td>
+<td align="right">12</td>
+<td align="right">88</td>
+</tr>
+<tr class="even">
+<td align="left">002</td>
+<td align="left">f</td>
+<td align="right">11</td>
+<td align="right">54</td>
+</tr>
+<tr class="odd">
+<td align="left">003</td>
+<td align="left">m</td>
+<td align="right">54</td>
+<td align="right">14</td>
+</tr>
+<tr class="even">
+<td align="left">004</td>
+<td align="left">m</td>
+<td align="right">71</td>
+<td align="right">21</td>
+</tr>
+<tr class="odd">
+<td align="left">005</td>
+<td align="left">f</td>
+<td align="right">19</td>
+<td align="right">89</td>
+</tr>
+</tbody>
+</table>
+<p>With the <code>two_two_col_long</code> from above, the <code>spread</code> function is not enough. You need the <code>pivot_wider</code> function.</p>
+<p>The two-set two-column example is processed like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(<span class="dt">data =</span> two_two_col_long_spl,
+                   <span class="dt">names_from =</span> <span class="kw">c</span>(Timepoint, Treatment),
+                   <span class="dt">values_from =</span> response,
+                   <span class="dt">names_sep =</span> <span class="st">&quot;..&quot;</span>)
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(tmp, <span class="dv">5</span>))</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">subject</th>
+<th align="right">T0..Control</th>
+<th align="right">T0..Treated</th>
+<th align="right">T1..Control</th>
+<th align="right">T1..Treated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">a</td>
+<td align="right">8.79</td>
+<td align="right">10.11</td>
+<td align="right">10.28</td>
+<td align="right">15.8</td>
+</tr>
+<tr class="even">
+<td align="left">b</td>
+<td align="right">10.28</td>
+<td align="right">8.81</td>
+<td align="right">9.50</td>
+<td align="right">15.0</td>
+</tr>
+<tr class="odd">
+<td align="left">c</td>
+<td align="right">11.08</td>
+<td align="right">8.84</td>
+<td align="right">9.84</td>
+<td align="right">14.2</td>
+</tr>
+<tr class="even">
+<td align="left">d</td>
+<td align="right">7.65</td>
+<td align="right">8.82</td>
+<td align="right">11.10</td>
+<td align="right">14.3</td>
+</tr>
+<tr class="odd">
+<td align="left">e</td>
+<td align="right">10.43</td>
+<td align="right">8.43</td>
+<td align="right">12.44</td>
+<td align="right">20.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="separate-columns" class="section level2">
+<h2><span class="header-section-number">3.5</span> <code>separate()</code> columns</h2>
+<p>The function <code>separate()</code> will split on the non-word chracter if no separator is specified. Here a separator is prvided telling to split on an X with two other characters on either side.</p>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">a =</span> <span class="kw">paste0</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="st">&quot;zXb&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]))
+tmp</code></pre>
+<pre><code>##    x     a
+## 1 10 1zXba
+## 2 11 2zXbb
+## 3 12 3zXbc
+## 4 13 4zXbd
+## 5 14 5zXbe
+## 6 15 6zXbf</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">separate</span>(<span class="dt">data =</span> tmp, <span class="dt">col =</span> a, <span class="dt">sep =</span> <span class="st">&quot;.X.&quot;</span>, <span class="dt">into=</span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</code></pre>
+<pre><code>##    x b c
+## 1 10 1 a
+## 2 11 2 b
+## 3 12 3 c
+## 4 13 4 d
+## 5 14 5 e
+## 6 15 6 f</code></pre>
+</div>
+<div id="combine-columns" class="section level2">
+<h2><span class="header-section-number">3.6</span> combine columns</h2>
+<p>When you have two columns that should be logically combined into one, use the <code>unite()</code> function.
+For instance, dates and times are often placed in separate columns but they are two aspects of a single measurement: time.
+Here is a small example. In a later presentation, working with dates and times will be extensively treated.</p>
+<pre class="sourceCode r"><code class="sourceCode r">activity &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">date =</span> <span class="kw">c</span>(<span class="st">&quot;30/12/2019&quot;</span>, <span class="st">&quot;31/12/2019&quot;</span>, <span class="st">&quot;01/01/2020&quot;</span>, <span class="st">&quot;02/01/2020&quot;</span>, <span class="st">&quot;02/01/2020&quot;</span>),
+                 <span class="dt">time =</span> <span class="kw">c</span>(<span class="st">&quot;14:55&quot;</span>, <span class="st">&quot;21:01&quot;</span>, <span class="st">&quot;08:22&quot;</span>, <span class="st">&quot;11:56&quot;</span>, <span class="st">&quot;16:38&quot;</span>),
+                 <span class="dt">activity =</span> <span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">48</span>, <span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">22</span>))
+<span class="kw">unite</span>(activity, <span class="st">&quot;datetime&quot;</span>, date, time, <span class="dt">sep =</span> <span class="st">&quot;T&quot;</span>)</code></pre>
+<pre><code>##           datetime activity
+## 1 30/12/2019T14:55       34
+## 2 31/12/2019T21:01       48
+## 3 01/01/2020T08:22        5
+## 4 02/01/2020T11:56       19
+## 5 02/01/2020T16:38       22</code></pre>
+</div>
+<div id="drop-rows-with-missing-values-drop_na" class="section level2">
+<h2><span class="header-section-number">3.7</span> Drop rows with missing values: <code>drop_na()</code></h2>
+<p>This function is extremely simple and usefull. It drops rows with missing from a dataframe and returns a cured copy:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">drop_na</span>(airquality))</code></pre>
+<pre><code>##   Ozone Solar.R Wind Temp Month Day TempFac
+## 1    41     190  7.4   67   May   1     low
+## 2    36     118  8.0   72   May   2     low
+## 3    12     149 12.6   74   May   3     low
+## 4    18     313 11.5   62   May   4     low
+## 7    23     299  8.6   65   May   7     low
+## 8    19      99 13.8   59   May   8     low</code></pre>
+<p>There is of course an equivalent in base R: <code>na.omit()</code>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="developing-a-custom-visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-tidyr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
