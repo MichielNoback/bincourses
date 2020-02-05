@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-01-23" />
+<meta name="date" content="2020-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,9 +171,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
 <li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
-<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#annotation"><i class="fa fa-check"></i>Annotation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
@@ -191,7 +192,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
 <li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
 <li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
@@ -287,6 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
 <li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#ggplot2-1"><i class="fa fa-check"></i><b>8.2</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.1</b> Global temperature</a></li>
+<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.2</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.3</b> The dinos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#tidyr-and-dplyr"><i class="fa fa-check"></i><b>8.3</b> <code>tidyr</code> and <code>dplyr</code></a><ul>
+<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.1</b> Population numbers</a></li>
+<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.2</b> Rubella and Measles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#ggplot2-2"><i class="fa fa-check"></i><b>9.2</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.1</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.2</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.3</b> The dinos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#tidyr-and-dplyr-1"><i class="fa fa-check"></i><b>9.3</b> <code>tidyr</code> and <code>dplyr</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -324,6 +345,7 @@ In my opinion, you are best prepared when first learning the ggplot “language�
 <li><strong><em>Create a representation of data for visual inspection</em></strong>. The <em>audience</em> is yourself. This is especially important in Exploratory Data Analysis (EDA). You visualize your data in order to discover patterns, trends, outliers and to generate new questions and hypotheses. The biggest challenge is to select the correct, most appropriate visualization that keeps you moving on your research track.</li>
 </ol>
 <p>Besides this, you should of course choose a relevant visualization for your data. For instance, generating a boxplot representing only a few data points is a poor choice, as will a scatterplot for millions of data points almost always be.</p>
+<p>To help your imagination and see what is possible you should really browse through <a href="https://www.r-graph-gallery.com/">The R Graph Gallery</a>. It has code for all the charts in the gallery.</p>
 </div>
 </div>
 <div id="getting-started" class="section level2">
@@ -1212,9 +1234,9 @@ Maybe new questions have arisen as a result of the plot you created?</p>
 <div id="final-tweeks" class="section level2">
 <h2><span class="header-section-number">1.10</span> Final tweeks</h2>
 <p>This section describes aspects that fall outside the standard realm of plot construction.</p>
-<div id="scales-and-coordinates" class="section level3 unnumbered">
-<h3>Scales and Coordinates</h3>
-<p>Scales and Coordinates are used to adjust the way your data is mapped and displayed. Here, a log10 scale is applied to the y axis and the x axis is reversed.</p>
+<div id="scales-coordinates-and-annotations" class="section level3 unnumbered">
+<h3>Scales, Coordinates and Annotations</h3>
+<p>Scales and Coordinates are used to adjust the way your data is mapped and displayed. Here, a log10 scale is applied to the y axis using <code>scale_y_log10()</code> and the x axis is reversed (from high to low values instead of low to high) using <code>scale_x_reverse()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist)) <span class="op">+</span><span class="st"> </span>
 <span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
 <span class="st">    </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span>
@@ -1274,6 +1296,29 @@ Here are is the minimal theme where the text sizes have been modified somewhat.<
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
 <p><img src="bookdown-demo_files/figure-html/themes2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>As you can see, there are <code>element_text()</code>, <code>element_line()</code> and <code>element_rect()</code> functions to specify these types opf plot elements. The <code>element_blank()</code> function can be used in various theme aspects to prevent it from being displayed.</p>
+</div>
+<div id="annotation" class="section level3 unnumbered">
+<h3>Annotation</h3>
+<p>A final layer that can be added one containing <strong><em>annotations</em></strong>. Annotations are elements that are added manually to the plot. This can be a text label, a fictitious data point, a shaded box or an arrow indicating a region of interest.</p>
+<p>In the <code>annotate()</code> method, you specify the geom you wish to add (e.g. “text”, “point”)
+The panel below demonstrates a few.</p>
+<pre class="sourceCode r"><code class="sourceCode r">(outlier &lt;-<span class="st"> </span>airquality[<span class="op">!</span><span class="kw">is.na</span>(airquality<span class="op">$</span>Ozone) <span class="op">&amp;</span><span class="st"> </span>airquality<span class="op">$</span>Ozone <span class="op">&gt;</span><span class="st"> </span><span class="dv">150</span>, ])</code></pre>
+<pre><code>##     Ozone Solar.R Wind Temp Month Day TempFac
+## 117   168     238  3.4   81   Aug  25    high</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="dv">72</span>, <span class="dt">xmax=</span><span class="dv">77</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="dv">50</span>, 
+           <span class="dt">alpha=</span><span class="fl">0.1</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone, 
+           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="dv">-5</span>, <span class="dt">label =</span> <span class="st">&quot;Outlier&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">5</span>, <span class="dt">xend =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, 
+           <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="op">+</span><span class="st"> </span><span class="dv">4</span>, <span class="dt">yend =</span> outlier<span class="op">$</span>Ozone, 
+           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">arrow =</span> <span class="kw">arrow</span>()) </code></pre>
+<p><img src="bookdown-demo_files/figure-html/annotation-1.png" width="80%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

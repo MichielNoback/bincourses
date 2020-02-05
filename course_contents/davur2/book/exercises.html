@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-01-23" />
+<meta name="date" content="2020-02-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="eda.html">
-<link rel="next" href="references.html">
+<link rel="next" href="exercise-solutions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,9 +171,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
 <li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
-<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-and-coordinates"><i class="fa fa-check"></i>Scales and Coordinates</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#annotation"><i class="fa fa-check"></i>Annotation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
@@ -191,7 +192,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
 <li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
 <li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
@@ -287,6 +290,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
 <li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#ggplot2-1"><i class="fa fa-check"></i><b>8.2</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.1</b> Global temperature</a></li>
+<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.2</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.3</b> The dinos</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#tidyr-and-dplyr"><i class="fa fa-check"></i><b>8.3</b> <code>tidyr</code> and <code>dplyr</code></a><ul>
+<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.1</b> Population numbers</a></li>
+<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.2</b> Rubella and Measles</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#ggplot2-2"><i class="fa fa-check"></i><b>9.2</b> <code>ggplot2</code></a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.1</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.2</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.3</b> The dinos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#tidyr-and-dplyr-1"><i class="fa fa-check"></i><b>9.3</b> <code>tidyr</code> and <code>dplyr</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -313,7 +334,164 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 8</span> Exercises</h1>
 <div id="introduction-4" class="section level2">
 <h2><span class="header-section-number">8.1</span> Introduction</h2>
+<p>These exercises are meant to provide practice of the course material presented in this eBook. There is no single good solution for them, but some are better than others. A good practice is also to try to solve the same exercise in several different ways.</p>
+<p>Most of the *<strong><em>datasets</em></strong> referred to from within the exercises can be found in the Github repository with the URL <code>https://github.com/MichielNoback/datasets</code>. <a href="https://github.com/MichielNoback/datasets">This</a> is a direct link. You can download individual datasets from this page, or download the entire repository at once. To download, use the “clone or download” pull down button (green button). If you want to be a pro, use git to clone it…</p>
+<p>The solutions to the exercises are in the next chapter of this eBook.</p>
+</div>
+<div id="ggplot2-1" class="section level2">
+<h2><span class="header-section-number">8.2</span> <code>ggplot2</code></h2>
+<div id="global-temperature" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Global temperature</h3>
+<p>Maybe you have seen this picture of the world temperature over the past 120 years:</p>
+<div class="figure">
+<img src="graphics/global_heatmap_s.png" alt="global_heatmap_s.png" />
+<p class="caption">global_heatmap_s.png</p>
+</div>
+<p>The global temperature data are located in folder <code>global_temperature</code> (see the <a href="https://github.com/MichielNoback/datasets/tree/master/global_temperature">Data Repo</a>).
+There are two data series in file <a href="https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv">https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv</a>.
+Study the readme file in the same folder to find out their nature.</p>
+<div id="create-a-scatter-and-line-plot" class="section level4">
+<h4><span class="header-section-number">8.2.1.1</span> Create a scatter-and-line-plot</h4>
+<p>Create a scattter-and-line graph of both series in a single plot. Annotate well with labels and title.
+Optionally, add a smoother without error boundaries.</p>
+</div>
+<div id="re-create-the-heatmap" class="section level4">
+<h4><span class="header-section-number">8.2.1.2</span> Re-create the heatmap</h4>
+<p>You should try to reproduce the above picture by using the <code>geom_tile()</code> function. Hint: use <code>scale_fill_gradient2(low = &quot;blue&quot;, mid = &quot;white&quot;, high = &quot;red&quot;)</code> and pass <code>1</code> as value for <code>y</code> in the mapping function..</p>
+</div>
+<div id="extra-practice" class="section level4">
+<h4><span class="header-section-number">8.2.1.3</span> Extra practice</h4>
+<p>As extra practice, you could try to answer these questions as well:</p>
+<ul>
+<li>what is the warmest year?</li>
+<li>what is the warmest year that both timelines agree upon?</li>
+<li>which was the coldest decade?</li>
+<li>what is the 30-year moving average of the temperature?</li>
+</ul>
+<p>The is also a monthly temperature file. Many explorations can be carried out on that one as well.</p>
+</div>
+</div>
+<div id="epilepsy-drug-trial" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Epilepsy drug trial</h3>
+<p>The <code>epilepsy</code> folder (see the <a href="https://github.com/MichielNoback/datasets/tree/master/epilepsy">Data Repo</a>) contains two files, one of which -<code>epilepsy.csv</code>- is the actual datafile. The <code>readme.md</code> file describes the dataset and the columns. Read it carefully before proceeding.</p>
+<div id="load-the-data" class="section level4">
+<h4><span class="header-section-number">8.2.2.1</span> Load the data</h4>
+<p>Load the data and be sure to check the correctness of data types in the columns. The <code>period</code> should be a factor. You can use a downloaded copy, but a direct link to the data file can also be used as argument to <code>read.table()</code>:
+<a href="https://raw.githubusercontent.com/MichielNoback/datasets/master/epilepsy/epilepsy.csv">https://raw.githubusercontent.com/MichielNoback/datasets/master/epilepsy/epilepsy.csv</a></p>
+</div>
+<div id="reorganize-the-data" class="section level4">
+<h4><span class="header-section-number">8.2.2.2</span> Reorganize the data</h4>
+<p>Reorganize the data so that the dependent variable comes last and the useless <code>entry</code> variable is omitted. This order of variables is required:
+<code>&quot;subject&quot;, &quot;age&quot;, &quot;base&quot;, &quot;treatment&quot;, &quot;period&quot;, &quot;seizure.rate&quot;</code>
+For better readability you should convert the dataframe into a <code>tibble</code> using <code>as_tibble()</code> (tibbles are dealt with in a later chapter: dplyr).</p>
+</div>
+<div id="create-plots-of-seizure-rates" class="section level4">
+<h4><span class="header-section-number">8.2.2.3</span> Create plots of seizure rates</h4>
+<p>First, create a <strong>boxplot</strong> of the seizure rates of both groups, split over both the <code>period</code> and the <code>treatment</code>. To support both of these data dimensions you will either have to use the <code>color</code> aesthetic, or the <code>facet_wrap()</code> function, like this <code>+ facet_wrap(. ~ treatment)</code>. I suggest you try them both.</p>
+<p>Next, create the same basic plot as a <strong>jitter plot</strong>. You can use the <code>facet_wrap()</code>. Compare them and write down some pros and cons of both.<br />
+Investigate whether an <strong>overlay</strong> may improve the story this visualization tells, or can you come up with an even better graph?</p>
+</div>
+<div id="a-boxplot-after-correction" class="section level4">
+<h4><span class="header-section-number">8.2.2.4</span> A boxplot after correction</h4>
+<p>The <code>base</code> column is the base seizure rate of the subject in an 8-week window prior to the actual trial. To compare before and after you should create a new dataframe where the <code>seizure.rate</code> is summed for the 4 periods. Next, create a final boxplot of these corrected values.</p>
+</div>
+<div id="test-for-statistical-significance" class="section level4">
+<h4><span class="header-section-number">8.2.2.5</span> Test for statistical significance</h4>
+<p>In the previous exercise you have determined the corrected seizure rates.
+Can you figure out a statistical test to see if the difference is significant?</p>
+</div>
+<div id="investigate-age-dependency" class="section level4">
+<h4><span class="header-section-number">8.2.2.6</span> Investigate age-dependency</h4>
+<p>Investigate whether there is an age-dependent effect in either the base seizure rate or the effect of the treatment.</p>
+</div>
+</div>
+<div id="the-dinos" class="section level3">
+<h3><span class="header-section-number">8.2.3</span> The dinos</h3>
+<p>This exercise represents a review of many of basic R operations as well, besides ggplot2.</p>
+<p>The <code>dinos</code> folder contains an Excel file called <code>jgs2018049_si_001.xlsx</code>. It contains supplementary data to a scientific publication with the title “The Carnian Pluvial Episode and the origin of dinosaurs” [Benton et al., Journal of the Geological Society 175(6) 2018].</p>
+<p>One of the figures accompanying the paper is this one:</p>
+<p><img src="graphics/dino_trend.png" /></p>
+<p><em><strong>Figure 2</strong>.Proportions of early dinosaurs through the Triassic, showing the rapid rise in the late Carnian and early to middle Norian. Two metrics are shown, numbers of specimens and numbers of genera in 12 sampled faunas, in proportion to all tetrapods; the linking line is a moving average. Specimen counts perhaps exaggerate the trend when compared with generic counts, or at least both show different aspects of the same rise in ecological impact of the dinosaurs in the Late Triassic. (Based on data in supplementary material Table S1.)</em></p>
+<p>You have to agree this is terrible! They even omitted the legend for CPE which is descried in the paper “Carnian Pluvial Episode (CPE), dated at 232 MYa”. And what the heck is a “moving average”?</p>
+<p>Let’s explore and improve.</p>
+<div id="export-to-csv" class="section level4">
+<h4><span class="header-section-number">8.2.3.1</span> Export to csv</h4>
+<p>We’ll begin by exporting all three tabs to a textual format.</p>
+<p>Open the excel file and select the tab “Contents”. You can see it is a “codebook” - it contains column names and descriptions for the two other tabs in the excel file. In the <em>File</em> menu, select <em>Save As…</em>. Next, give as name <code>codebook.csv</code> and for <em>File Format</em>, select <em>CSV UTF-8 (Comma-delimited) (.csv)</em>. You’ll get a warning -read it!- but select <em>OK</em>.</p>
+<p>Next, select tab “Skeletons” and repeat to generate <code>skeletons.csv</code> and “Footprints” to generate <code>footprints.csv</code>.</p>
+<p>Close the Excel file without saving changes to it. We’ll continue with the csv files.</p>
+<p>Note: R has packages providing functionality to read from Excel, but this is outside the scope of this course, and installing them is often a hassle.</p>
+</div>
+<div id="clean-up-and-load-codebook.csv" class="section level4">
+<h4><span class="header-section-number">8.2.3.2</span> Clean up and load <code>codebook.csv</code></h4>
+<p>Have a look at the contents of <code>codebook.csv</code> in the editor. It is not yet suitable for loading into R. Write down the number of lines describing column headers for the skeletons and the number for footprints. Next, delete the lines that ar not really codebook entries.</p>
+<ol style="list-style-type: decimal">
+<li>Load the resulting file -as character data only!- and assign it to variable <code>codebook</code>.<br />
+</li>
+<li>Give the dataframe column names: <code>variable</code> and <code>description</code>.</li>
+<li>Remove the leading space of the second column</li>
+<li>Add a column called <code>dataset</code>: a factor with the value <code>skeleton</code> or <code>footprint</code>, depending on the file that is referred to.</li>
+</ol>
+</div>
+<div id="write-a-utility-function" class="section level4">
+<h4><span class="header-section-number">8.2.3.3</span> Write a utility function</h4>
+<p>Write a utility function that returns a text label to be used in plotting when given a dataset name and a column name. The label should come from the codebook <code>description</code> variable of course. The <code>dataset</code> parameter should default to <code>skeleton</code>. For example, these calls:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>, <span class="st">&#39;skeleton&#39;</span>) 
+<span class="co">##same as</span>
+<span class="kw">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>) </code></pre>
+<p>should both return <code>Number of genera of Dinosauria</code>.<br />
+As extra challenge you could implement some error checking to make the function more robust.</p>
+</div>
+<div id="load-skeleton-data" class="section level4">
+<h4><span class="header-section-number">8.2.3.4</span> Load skeleton data</h4>
+<p>Load the data in the <code>skeletons.csv</code> file and assign it to variable <code>skeleton</code>. Make sure your data columns have the right type and that you did not overlook NA value or decimal encodings.</p>
+</div>
+<div id="plot-species-versus-time" class="section level4">
+<h4><span class="header-section-number">8.2.3.5</span> Plot species versus time</h4>
+<p>As a first exploration of the data, create a scatterplot of <code>Total_spec</code> as a function of <code>Midpoint</code> (the midpoint of the archaeological epoch) and have the points colored by <code>Epoch</code>. You should use ggplot2 of course.
+There is an outlier flattening the picture quite a lot. Can you think of a strategy to make the picture clearer?
+Another problem is that the x-axis scale is from recent to ancient and this should be reversed.</p>
+<p>Finally, add a smoother (loess regression) for the entire dataset (not split over the Epochs!) and annotate the plot with nice axis labels, preferably using your previously created utility function.
+NB: it may be a good idea to tweek the descriptions in the codebook a little bit.</p>
+<p>Note that for “Million Years Ago” you can use the abbreviations “MYA” or “Ma” (Mega annum).</p>
+</div>
+<div id="reproducing-the-publication-figure" class="section level4">
+<h4><span class="header-section-number">8.2.3.6</span> Reproducing the publication figure</h4>
+<p>Reproduce the figure from the introduction of this section, but using ggplot2 instead of base R. This requires some preprocessing steps, especially with the use of <code>pivot_longer()</code>.</p>
+<p><strong>Part 1</strong><br />
+You will have to calculate the proportions of Dinosauria (<code>Dinosaur_gen</code>) relative to the total of all “tetrapod” groups (including <code>Archosauromorph_gen</code>, <code>Dinosaur_gen</code>, <code>Synapsid_gen</code>, <code>Parareptile_gen</code>, <code>Temnospondyl_gen</code>). You need this for Specimens (<code>_spec</code>) as well as Genera (<code>_gen</code>).</p>
+<p><strong>Part 2</strong><br />
+Next, you should extract a single proportion for all Formations represented in a single <code>Midpoint</code>. I realise that this is not an entirely valid operation. Do you know why? Can you figure out how it was done for the erxisting publication plot?<br />
+I suggest you use the <code>aggregate()</code> function. You will need the Epoch and Stage of these as well for later aspects of plotting.</p>
+<p><strong>Part 3</strong><br />
+Now you need to “flatten” the data using <code>spread()</code> or -preferably- <code>pivot_longer()</code>.</p>
+<p><strong>Part 4</strong><br />
+Finally you have the data to generate the plot itself, without the moving average.</p>
+<p><strong>Part 5 [challenge]</strong>
+Add the moving average. A <strong><em>simple moving average</em></strong> (SMA) is the unweighted mean of the previous <em>n</em> data.<br />
+The paper does not say anythong about the “window” (<code>n</code>) used in the moving average, but looking at the original figure it is less that 10 MY wide. Actually, to be honest, I cannot identify the used algorithm by looking at the plot. Can you?
+Just give it a shot and see how far you get.</p>
+</div>
+<div id="make-a-better-figure" class="section level4">
+<h4><span class="header-section-number">8.2.3.7</span> Make a better figure</h4>
+<p>Next, try to make a plot that uses an alternative to the <em>moving average</em> used in the publication. Also, use background coloring (rectangles) to highlight the Epochs within the plot.</p>
+</div>
+<div id="use-the-size-aesthetic" class="section level4">
+<h4><span class="header-section-number">8.2.3.8</span> Use the size aesthetic</h4>
+<p>The “size” aesthetic can be used for indicating the absolute number of specimens/genera, repsectively. This adds an extra dimension of information to the plot.</p>
+</div>
+</div>
+</div>
+<div id="tidyr-and-dplyr" class="section level2">
+<h2><span class="header-section-number">8.3</span> <code>tidyr</code> and <code>dplyr</code></h2>
+<div id="population-numbers" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Population numbers</h3>
+</div>
+<div id="rubella-and-measles" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Rubella and Measles</h3>
+<p>The <code>rubella_measles_cases</code> folder of the <code>datasets</code> repo contains</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -322,7 +500,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="eda.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercise-solutions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
