@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://example.com/favicon.png">
+    <title>Getting Started wirg Spring</title>
+    <link rel="icon" href="../../favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+        body {
+            padding-top: 54px;
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-top: 56px;
+            }
+        }
+
+        td {
+            text-align: left;
+        }
+
+        colgroup col.warning {
+            background-color: #fcf8e3;
+        }
+
+        colgroup col.info {
+            background-color: #d9edf7;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5">Getting started with Spring Boot (in IntelliJ)"</h1>
+            <p class="lead">This is a series of third-party demos and lessons that you could
+                follow before embarking on your "real" project.<br>
+                You should start with steps 1-7 in sequence first.<br>
+                IntelliJ Idea Ultimate is required.</p>
+            <table class="table table-striped table-condensed">
+                <colgroup>
+                    <col class="info">
+                    <col>
+                    <col class="warning">
+                </colgroup>
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Step</th>
+                    <th scope="col">Topic(s)</th>
+                    <th class="w-25" scope="col">Resource</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <strong>Set up a Gradle-managed project in IntelliJ</strong><br>
+                        Follow the first section, "Create a Spring Boot project".
+                        In the "New Project" wizard, in the Metadata tab, select "Gradle Project" as Type, and "Jar" for
+                        Packaging.
+                        As dependencies select "Web" -> "Spring Web" and "Template Engines" -> "Thymeleaf".<br>
+                        When you are finished there is a main class that you can run - without anything useful happening
+                        because there is no content yet.</li>
+                    </td>
+                    <td>
+                        <a href="https://www.jetbrains.com/help/idea/spring-boot.html" target="_blank">A first
+                            project</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>
+                        <strong>Serving Web Content with Spring MVC</strong>.<br>
+                        You will build an application that has a static home page and that will also accept HTTP GET
+                        requests.
+                        You can skip to section "Create a Web Controller". Place the controller in a package called
+                        "webcontrol".
+                    </td>
+                    <td>
+                        <a href="https://spring.io/guides/gs/serving-web-content/" target="_blank">Serve a greeting</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>
+                        <strong>Dependency Injection</strong>.<br>
+                        These articles describe how to use dependency injection with the Spring Framework.
+                    </td>
+                    <td>
+                        <li> <a href="https://www.baeldung.com/inversion-control-and-dependency-injection-in-spring"
+                           target="_blank">Spring DI (Baeldung)</a></li>
+                        <li><a href="https://www.vogella.com/tutorials/SpringDependencyInjection/article.html"
+                           target="_blank">Spring DI (Vogella)</a></li>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>
+                        <strong>Handling form submissions</strong>.<br>
+                        This guide walks you through the process of using Spring to create and submit a web form. Again,
+                        you can skip to
+                        "Create a Web Controller".
+                    </td>
+                    <td>
+                        <a href="https://spring.io/guides/gs/handling-form-submission/" target="_blank">Handling form
+                            submissions</a>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>
+                        <strong>Validating form input</strong><br>
+                        Demonstrates the process of configuring a web application form to support validation.
+                    </td>
+                    <td>
+                        <a href="https://spring.io/guides/gs/validating-form-input/" target="_blank">Validating form
+                            input</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>
+                        <strong>Spring Web Annotations</strong><br>
+                        A review of the main Spring Web Annotations.
+                    </td>
+                    <td>
+                        <a href="https://www.baeldung.com/spring-mvc-annotations" target="_blank">Spring web
+                            annotations</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>
+                        <strong>Internationalization</strong><br>
+                        How to add internationalization to a Spring Boot application.
+                    </td>
+                    <td>
+                        <a href="https://www.baeldung.com/spring-boot-internationalization" target="_blank">Internationalization</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>
+                        <strong>Security</strong><br>
+                        The hardest and most important part of any web app.
+                    </td>
+                    <td>
+                        <li><a href="https://spring.io/guides/gs/securing-web/" target="_blank">Securing a web app
+                        (intro)</a></li>
+                        <li><a href="https://www.baeldung.com/spring-security-authentication-with-a-database"
+                           target="_blank">Using a user database as service</a></li>
+                        <li><a href="https://bartcode.co.uk/2014/12/spring-boot-security-application" target="_blank">A bit
+                            old, but thorough</a></li>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>
+                        <strong>application.properties</strong><br>
+                        The Spring Boot application.properties file.
+                    </td>
+                    <td>
+                        <a href="http://dolszewski.com/spring/spring-boot-application-properties-file/" target="_blank">application.properties</a>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">10</th>
+                    <td>
+                        <strong>MySQL/JDBC</strong><br>
+                        How to do database interactions simple.
+                    </td>
+                    <td>
+
+                        <li><a href="https://www.concretepage.com/spring-boot/spring-boot-jdbc-example" target="_blank">Concretepage</a></li>
+                        <li><a href="https://www.baeldung.com/spring-jdbc-jdbctemplate" target="_blank">Baeldung</a></li>
+                        <li><a href="https://mkyong.com/spring-boot/spring-boot-jdbc-examples/" target="_blank">Mkyong</a></li>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">11</th>
+                    <td>
+                        <strong>Flash attributes</strong><br>
+                        Form submission is a heavily used mechanism to gather and process data for web apps.
+                        In this tutorial, you'll learn how Spring's flash attributes can help us with the form
+                        submission
+                        workflow securely and reliably.
+                    </td>
+                    <td>
+                        <a href="https://www.baeldung.com/spring-web-flash-attributes" target="_blank">Flash
+                            attributes</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>
+                        <strong>Logging</strong><br>
+                        How to do logging.
+                    </td>
+                    <td>
+                        <a href="https://www.concretepage.com/spring-boot/spring-boot-logging-example" target="_blank">Logging</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
