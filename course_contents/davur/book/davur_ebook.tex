@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-03-19}
+    \date{2020-03-20}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -142,17 +142,214 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{getting-started}{%
+\chapter{Getting started}\label{getting-started}}
 
-You should have R, RStudio and Tinytech or some other Latex alternative for your OS installed.
+Welcome, you have landed at the eBook accompanying my R course for Life Science students, \textbf{\emph{Data Analysis and Visualization using R (DAVuR)}}.
 
-For now, only the exercises have been ported from simple markdown documents. All other chapters are empty.
+Before reading on, you should check whether you are ready to work with R on your own computer.
+You should have installed R, RStudio and Tinytech or some other Latex alternative for your OS.
 
-\hypertarget{intro}{%
-\chapter{Introduction}\label{intro}}
+This eBook is the result of many hours of work and has been finetuned after lecturing the material for some years.
+You are free to use it in any way you like: courses and self-paced study.
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+Copyright © Michiel Noback, Hanze University of Applied Science, Groningen, The Netherlands
+
+\hypertarget{toolbox}{%
+\chapter{The toolbox}\label{toolbox}}
+
+\hypertarget{why-do-statistical-programming}{%
+\section{Why do statistical programming?}\label{why-do-statistical-programming}}
+
+Since you're a life science student -that is my target audience at least-, you have probably worked with Excel or SPSS at some time. Have you ever wondered
+
+\begin{itemize}
+\tightlist
+\item
+  Why am I doing this exact same series of mouse clicks again and again? Is there not a more efficient way?
+\item
+  How can I describe my work reproducibly as a series of mouse clicks?
+\end{itemize}
+
+If so, then R may be your next favourite data analysis tool.
+It takes a little effort at first, but once you get the hang of it you will never create a plot in Excel again.
+
+With R - as with any programming language,
+
+\begin{itemize}
+\tightlist
+\item
+  Redoing an analysis or generating a report with minor adjustments is a breeze
+\item
+  The analysis is central, not the output. This guarantees complete reproducibility
+\end{itemize}
+
+\hypertarget{overview-of-the-toolbox}{%
+\section{Overview of the toolbox}\label{overview-of-the-toolbox}}
+
+This chapter will introduce you to a toolbox that will serve you well during your data quests.\\
+It consists of
+
+\begin{itemize}
+\tightlist
+\item
+  The R programming language and builtin functionality
+\item
+  The RStudio Integrated Development Environment (IDE)
+\item
+  R Markdown as documenting and reporting tool
+\end{itemize}
+
+\hypertarget{tool-1-the-r-programming-language}{%
+\subsection{Tool 1: The R programming language}\label{tool-1-the-r-programming-language}}
+
+\includegraphics{figures/Rlogo.jpg}
+
+Nobody likes to pay for computer tools. R is completely free of charge. Moreover, it is completely open source. This is of course one of the main reasons for its popularity; other statistical tools are not free and sometimes downright expensive.
+Besides this free nature, R is very popular because it has an interactive mode. We call this a read--evaluate--print loop: REPL. This means you don't need to write programs to run code. You simply type a command in the \textbf{\emph{console}}, press ennter and immediately get the result on the line below.\\
+As stated above, because you store your analyses in code, repeating these analyses -possibly with with new data or changed settings- is very easy.
+One of my personal favorite features is that R supports ``literate programming'' for creating presentations (such as this one!) and other publications (reports, papers etc). Pdf documents, Microsoft Word documents, web pages (html) and e-books are all possible outputs of a single RMarkdown master document.
+
+Finally, R has advanced embedded graphical support. This means that graphical output (a plot) is as easy to generate as textual output!
+
+Here are some figures to whet your appetite. You will be able to create all of these yourself at the end of this course (actually, a pair of courses).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/facetting-example-1} 
+
+}
+
+\caption{A facetplot - multiple similar plots split over a single nominal or ordinal variable}\label{fig:facetting-example}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/polarplot-1} 
+
+}
+
+\caption{A polar plot - the dimensions are not your normal 2d x and y}\label{fig:polarplot}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/ptsd-jitter-5-1s.png}
+\caption{A custom jitter visualization}
+\end{figure}
+
+\hypertarget{tool-2-rstudio-as-development-environment}{%
+\subsection{Tool 2: RStudio as development environment}\label{tool-2-rstudio-as-development-environment}}
+
+\begin{figure}
+\centering
+\includegraphics{figures/RStudioLogo.png}
+\caption{RStudio logo}
+\end{figure}
+
+RStudio is a so-called Integrated Development Environment. This means it is a ``Swiss Mulitool'' for programming. With it, you manage and run code, files, documentation on the language (help pages), building different output formats.
+The workbench has several panels and looks like this when you run the application.
+
+\includegraphics{figures/RStudio_screen3.png}
+
+You primarily work with 4 panels of the workbench:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Code editor} where you write your scripts and RMarkdown documents: text files with code you want to execute more than once
+\item
+  \textbf{R console} where you execute lines of code one by one
+\item
+  \textbf{Environment and History} See what data you have in memory, and what you have done so far
+\item
+  \textbf{Plots, Help \& Files}
+\end{enumerate}
+
+You use the console to do basic calculations, try pieces of code, develop a function, or load scripts (from the code editor) into memory. On the other hand, the code editor is used to work on code that has life span longer than a few minutes: analyses you may want to repeat, or develop further in the form of scripts and RMarkdown documents.
+The code editor supports many file types for viewing and editing: regular text, structured datafiles (text, csv, data files), scripts (programs), and analytical notebooks (RMarkdown).
+
+What is nice about the \textbf{\emph{code editor}} above regular text editors such as Notepad, Wordpad, TextEdit, is that it knows about different file types and their constituting elements and helps your read, write (autocomplete, error alerts), scan and organize them by displaying these elements using coloring, font types and other visual aids.
+
+Here is the same piece of code, which is a plain text file, in two different editors. First as plain text in the Mac TextEdit app and next in the RStudio code editor:
+
+\begin{figure}
+\centering
+\includegraphics{figures/R_code_plain.png}
+\caption{code in TextEdit}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{figures/R_code_highlighted.png}
+\caption{exact same file in RStudio editor}
+\end{figure}
+
+It is clearly visible where the code elements, numeric data and character data are within the code.
+
+\hypertarget{tool-3-rmarkdown}{%
+\subsection{Tool 3: RMarkdown}\label{tool-3-rmarkdown}}
+
+\includegraphics{figures/markdown_logo.jpg}
+
+In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.
+
+You can use it to create reports in word, pdf or web (html); create presentations (pdf or web); create entire ebooks and websites (such as this one). This entire ebook itself is written in RMarkdown!
+
+Markdown is a very basic \textbf{\emph{markup}} language. Markup means that you use textual elements to indicate structure instead of content. RMarkdown simply is Markdown with embedded pieces of R code. Consider this piece of Markdown:
+
+\begin{verbatim}
+### Tool 3: RMarkdown
+
+![](figures/markdown_logo.jpg)
+
+In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.
+\end{verbatim}
+
+The result of this snippet is the top of the current paragraph you are reading.
+
+Here is a piece of R code we call a \textbf{\emph{code chunk}} that plots some random data in a scatter plot. In RStudio this piece of R code within (the current) RMarkdown document looks like this:
+
+\includegraphics{figures/code_chunk.png}
+Next, when I \textbf{\emph{knit}} the document into web format it results in the piece below together with its output, a scatter plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{100}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{) }\OperatorTok{+}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{100}\OperatorTok{*}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\FloatTok{0.2}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/simple-scatter-demo-1-1} 
+
+}
+
+\caption{A simple scatter plot}\label{fig:simple-scatter-demo-1}
+\end{figure}
+
+RMarkdown is really basic; in fact it is translated into html, the markup language of the web, before any further processing occurs. That is why you can also embed html elements within it. Here are the most basic elements you can use in Markdown documents.
+
+\begin{figure}
+\centering
+\includegraphics{figures/markdownOverview.png}
+\caption{RMarkdown}
+\end{figure}
+
+Finally, it is also possible to embed Latex elements. For instance, equations can be defined in a text format. This:
+
+\begin{verbatim}
+$$d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}$$
+\end{verbatim}
+
+results in this:
+
+\[d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}\]
+
+Happy coding!
 
 \hypertarget{basic-r}{%
 \chapter{Basic R}\label{basic-r}}
@@ -1185,7 +1382,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 
 \begin{verbatim}
 ##     Temp.C Month Day
-## 5 13.33333     5   5
+## 5 13.33333   May   5
 \end{verbatim}
 
 \textbf{D}

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Scripting | Data Analysis &amp; Visualization using R (1)</title>
+  <title>Chapter 2 The toolbox | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Scripting | Data Analysis &amp; Visualization using R (1)" />
+  <meta property="og:title" content="Chapter 2 The toolbox | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Scripting | Data Analysis &amp; Visualization using R (1)" />
+  <meta name="twitter:title" content="Chapter 2 The toolbox | Data Analysis &amp; Visualization using R (1)" />
   
   <meta name="twitter:description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions.html">
-<link rel="next" href="dataframe-manipulations.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="basic-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -232,18 +232,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scripting" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Scripting</h1>
-<p><strong><em>TO BE PORTED FROM PRESENTATION</em></strong></p>
+<div id="toolbox" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> The toolbox</h1>
+<div id="why-do-statistical-programming" class="section level2">
+<h2><span class="header-section-number">2.1</span> Why do statistical programming?</h2>
+<p>Since you’re a life science student -that is my target audience at least-, you have probably worked with Excel or SPSS at some time. Have you ever wondered</p>
+<ul>
+<li>Why am I doing this exact same series of mouse clicks again and again? Is there not a more efficient way?</li>
+<li>How can I describe my work reproducibly as a series of mouse clicks?</li>
+</ul>
+<p>If so, then R may be your next favourite data analysis tool.
+It takes a little effort at first, but once you get the hang of it you will never create a plot in Excel again.</p>
+<p>With R - as with any programming language,</p>
+<ul>
+<li>Redoing an analysis or generating a report with minor adjustments is a breeze</li>
+<li>The analysis is central, not the output. This guarantees complete reproducibility</li>
+</ul>
+</div>
+<div id="overview-of-the-toolbox" class="section level2">
+<h2><span class="header-section-number">2.2</span> Overview of the toolbox</h2>
+<p>This chapter will introduce you to a toolbox that will serve you well during your data quests.<br />
+It consists of</p>
+<ul>
+<li>The R programming language and builtin functionality</li>
+<li>The RStudio Integrated Development Environment (IDE)</li>
+<li>R Markdown as documenting and reporting tool</li>
+</ul>
+<div id="tool-1-the-r-programming-language" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Tool 1: The R programming language</h3>
+<p><img src="figures/Rlogo.jpg" /></p>
+<p>Nobody likes to pay for computer tools. R is completely free of charge. Moreover, it is completely open source. This is of course one of the main reasons for its popularity; other statistical tools are not free and sometimes downright expensive.
+Besides this free nature, R is very popular because it has an interactive mode. We call this a read–evaluate–print loop: REPL. This means you don’t need to write programs to run code. You simply type a command in the <strong><em>console</em></strong>, press ennter and immediately get the result on the line below.<br />
+As stated above, because you store your analyses in code, repeating these analyses -possibly with with new data or changed settings- is very easy.
+One of my personal favorite features is that R supports “literate programming” for creating presentations (such as this one!) and other publications (reports, papers etc). Pdf documents, Microsoft Word documents, web pages (html) and e-books are all possible outputs of a single RMarkdown master document.</p>
+<p>Finally, R has advanced embedded graphical support. This means that graphical output (a plot) is as easy to generate as textual output!</p>
+<p>Here are some figures to whet your appetite. You will be able to create all of these yourself at the end of this course (actually, a pair of courses).</p>
+<div class="figure" style="text-align: center"><span id="fig:facetting-example"></span>
+<img src="davur_ebook_files/figure-html/facetting-example-1.png" alt="A facetplot - multiple similar plots split over a single nominal or ordinal variable" width="80%" />
+<p class="caption">
+Figure 2.1: A facetplot - multiple similar plots split over a single nominal or ordinal variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:polarplot"></span>
+<img src="davur_ebook_files/figure-html/polarplot-1.png" alt="A polar plot - the dimensions are not your normal 2d x and y" width="80%" />
+<p class="caption">
+Figure 2.2: A polar plot - the dimensions are not your normal 2d x and y
+</p>
+</div>
+<div class="figure">
+<img src="figures/ptsd-jitter-5-1s.png" alt="A custom jitter visualization" />
+<p class="caption">A custom jitter visualization</p>
+</div>
+</div>
+<div id="tool-2-rstudio-as-development-environment" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Tool 2: RStudio as development environment</h3>
+<div class="figure">
+<img src="figures/RStudioLogo.png" alt="RStudio logo" />
+<p class="caption">RStudio logo</p>
+</div>
+<p>RStudio is a so-called Integrated Development Environment. This means it is a “Swiss Mulitool” for programming. With it, you manage and run code, files, documentation on the language (help pages), building different output formats.
+The workbench has several panels and looks like this when you run the application.</p>
+<p><img src="figures/RStudio_screen3.png" /></p>
+<p>You primarily work with 4 panels of the workbench:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Code editor</strong> where you write your scripts and RMarkdown documents: text files with code you want to execute more than once</li>
+<li><strong>R console</strong> where you execute lines of code one by one</li>
+<li><strong>Environment and History</strong> See what data you have in memory, and what you have done so far</li>
+<li><strong>Plots, Help &amp; Files</strong></li>
+</ol>
+<p>You use the console to do basic calculations, try pieces of code, develop a function, or load scripts (from the code editor) into memory. On the other hand, the code editor is used to work on code that has life span longer than a few minutes: analyses you may want to repeat, or develop further in the form of scripts and RMarkdown documents.
+The code editor supports many file types for viewing and editing: regular text, structured datafiles (text, csv, data files), scripts (programs), and analytical notebooks (RMarkdown).</p>
+<p>What is nice about the <strong><em>code editor</em></strong> above regular text editors such as Notepad, Wordpad, TextEdit, is that it knows about different file types and their constituting elements and helps your read, write (autocomplete, error alerts), scan and organize them by displaying these elements using coloring, font types and other visual aids.</p>
+<p>Here is the same piece of code, which is a plain text file, in two different editors. First as plain text in the Mac TextEdit app and next in the RStudio code editor:</p>
+<div class="figure">
+<img src="figures/R_code_plain.png" alt="code in TextEdit" />
+<p class="caption">code in TextEdit</p>
+</div>
+<div class="figure">
+<img src="figures/R_code_highlighted.png" alt="exact same file in RStudio editor" />
+<p class="caption">exact same file in RStudio editor</p>
+</div>
+<p>It is clearly visible where the code elements, numeric data and character data are within the code.</p>
+</div>
+<div id="tool-3-rmarkdown" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Tool 3: RMarkdown</h3>
+<p><img src="figures/markdown_logo.jpg" /></p>
+<p>In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.</p>
+<p>You can use it to create reports in word, pdf or web (html); create presentations (pdf or web); create entire ebooks and websites (such as this one). This entire ebook itself is written in RMarkdown!</p>
+<p>Markdown is a very basic <strong><em>markup</em></strong> language. Markup means that you use textual elements to indicate structure instead of content. RMarkdown simply is Markdown with embedded pieces of R code. Consider this piece of Markdown:</p>
+<pre><code>### Tool 3: RMarkdown
 
+![](figures/markdown_logo.jpg)
+
+In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.</code></pre>
+<p>The result of this snippet is the top of the current paragraph you are reading.</p>
+<p>Here is a piece of R code we call a <strong><em>code chunk</em></strong> that plots some random data in a scatter plot. In RStudio this piece of R code within (the current) RMarkdown document looks like this:</p>
+<p><img src="figures/code_chunk.png" />
+Next, when I <strong><em>knit</em></strong> the document into web format it results in the piece below together with its output, a scatter plot.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span>
+y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span><span class="op">*</span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>)
+<span class="kw">plot</span>(x, y)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:simple-scatter-demo-1"></span>
+<img src="davur_ebook_files/figure-html/simple-scatter-demo-1-1.png" alt="A simple scatter plot" width="80%" />
+<p class="caption">
+Figure 2.3: A simple scatter plot
+</p>
+</div>
+<p>RMarkdown is really basic; in fact it is translated into html, the markup language of the web, before any further processing occurs. That is why you can also embed html elements within it. Here are the most basic elements you can use in Markdown documents.</p>
+<div class="figure">
+<img src="figures/markdownOverview.png" alt="RMarkdown" />
+<p class="caption">RMarkdown</p>
+</div>
+<p>Finally, it is also possible to embed Latex elements. For instance, equations can be defined in a text format. This:</p>
+<pre><code>$$d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}$$</code></pre>
+<p>results in this:</p>
+<p><span class="math display">\[d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}\]</span></p>
+<p>Happy coding!</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataframe-manipulations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
