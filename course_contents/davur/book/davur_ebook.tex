@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-03-20}
+    \date{2020-03-21}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -351,18 +351,1598 @@ results in this:
 
 Happy coding!
 
-\hypertarget{basic-r}{%
-\chapter{Basic R}\label{basic-r}}
+\hypertarget{basic-r---coding-basics}{%
+\chapter{Basic R - coding basics}\label{basic-r---coding-basics}}
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+\hypertarget{first-look-at-vectors-fuctions-and-variables}{%
+\section{First look at vectors, fuctions and variables}\label{first-look-at-vectors-fuctions-and-variables}}
+
+\hypertarget{doing-math-in-the-console}{%
+\subsection{Doing Math in the console}\label{doing-math-in-the-console}}
+
+The console is the place where you do quick calculations, tests and analyses that do not need to be saved (yet) or repeated. It is the the tab that says ``Console'' and on first use, R puts it in the lower left panel.
+
+In the console, the \textbf{\emph{prompt}} is the ``greater than'' symbol ``\textgreater{}''. R waits here for you to enter commands. When the panel has ``focus'' the cursor is blinking on and off. You can use the console as a calculator. It supports all regular math operations, in the way you would expect them:
+
+\texttt{+}  : `plus', as in 2 + 2 = 4
+
+\texttt{-} : `subtract', as in 2 - 2 = 0
+
+\texttt{*}  : `multiply', as in 2 * 3 = 6
+
+\texttt{/}  : `divide', as in 8 / 4 = 2
+
+\texttt{\^{}}  : `exponent', as in 2\^{}3 = 8. In R, \texttt{\^{}} is synonym of \texttt{**}
+
+For the square root you can use \(n^{0.5}\): \texttt{n**0.5}, or the function \texttt{sqrt()} (discussed later).
+
+When Enter is pressed when the mathematical statement is not complete yet, the \texttt{\textgreater{}} symbol is replaced by a \texttt{+} at the start of the new line, indicating the statement is a continuation. Here is an example:
+
+\begin{verbatim}
+> 1 + 3 + 4 + 
++ 
+\end{verbatim}
+
+So the \texttt{+} at the start of line 2 is not a mathematical \texttt{+} but a ``continuation symbol''. You can always abort the current statement by pressing Escape.
+
+When a statement \emph{is} complete, the result will be printed in the next line:
+
+\begin{verbatim}
+> 31 + 11
+[1] 42
+\end{verbatim}
+
+The result is of course \texttt{42}; the leading \texttt{{[}1{]}} is the \textbf{\emph{index}} of the result. We will address this later.
+
+\hypertarget{operator-precedence}{%
+\subsubsection*{Operator Precedence}\label{operator-precedence}}
+\addcontentsline{toc}{subsubsection}{Operator Precedence}
+
+All ``operators'' adhere to the standard mathematical \textbf{precedence} rules (PEMDAS):
+
+\begin{verbatim}
+    Parentheses (simplify inside these)
+    Exponents
+    Multiplication and Division (from left to right)
+    Addition and Subtraction (from left to right)
+\end{verbatim}
+
+With complex statements you should be aware of operator precedence! If you are not sure, or want to make your expression less ambiguous you should simply use parentheses \texttt{()} because they have highest precedence.
+
+Besides math operators, R knows a whole set of other operators. They will be dealt with later in this chapter.
+
+\begin{quote}
+\textbf{\emph{Programming Rule}} Always place spaces around both sides of an operator, with the exception of \texttt{\^{}} and \texttt{**}.
+\end{quote}
+
+\hypertarget{an-expression-dissected}{%
+\subsection{An expression dissected}\label{an-expression-dissected}}
+
+When you type \texttt{21\ /\ 3} this called an \textbf{\emph{expression}}. The expression has three parts: an operator (\texttt{/} in the middle) and two operands. The left operand is \texttt{21} and the right operand is \texttt{3}.\\
+Since there is no assignment, the result of this expression will be send to the console as output, giving \texttt{{[}1{]}\ 7}.
+
+Because this expression is the sole contents of the current line in the console, it is also called a \textbf{\emph{statement}}.
+
+\begin{quote}
+\textbf{\emph{Statement vs expression}} A statement is a complete line of code that performs some action, while an expression is any section of code that evaluates to a value.
+\end{quote}
+
+\hypertarget{ending-statements}{%
+\subsubsection*{Ending statements}\label{ending-statements}}
+\addcontentsline{toc}{subsubsection}{Ending statements}
+
+In R, the newline (enter) is an end-of-statement character. Optionally you can end statements with a semicolon ``;''. However, when you have more statements on a single line they are mandatory is in this example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{); x; x <-}\StringTok{ }\DecValTok{42}\NormalTok{; x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 42
+\end{verbatim}
+
+\begin{quote}
+\textbf{\emph{Programming Rule}}: Have one statement per line and don't use semicolons
+\end{quote}
+
+\hypertarget{comments}{%
+\subsubsection*{Comments}\label{comments}}
+\addcontentsline{toc}{subsubsection}{Comments}
+
+Everything on a line after a hash sign ``\texttt{\#}'' will be ignored by R. Use it to add explanation to your code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## starting cool analysis}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(T, F, T) }\CommentTok{# Creating a logical vector}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{) }\CommentTok{# same}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{functions}{%
+\section{Functions}\label{functions}}
+
+Simple mathematics is not the core business of R.
+
+Going further than basic math, you will need functions, mostly pre-existing functions but often also custom functions that you write yourself. Here is a definition of a function:
+
+\begin{quote}
+\emph{A function is a piece of functionality that you can execute by typing its name, followed by a pair of parentheses. Within these parentheses, you can pass data for the function to work on. Functions often, but not always, return a value}.
+\end{quote}
+
+Function usage -or a \textbf{\emph{function call}}- has this general form:
+\[function\_name(arg_1, arg_2, ..., arg_n)\]
+
+\hypertarget{example-square-root-with-sqrt}{%
+\subsubsection*{\texorpdfstring{Example: Square root with \texttt{sqrt()}}{Example: Square root with sqrt()}}\label{example-square-root-with-sqrt}}
+\addcontentsline{toc}{subsubsection}{Example: Square root with \texttt{sqrt()}}
+
+You have already seen that the square root can be calculated as \(n^{0.5}\).
+However, there is also a function for it: \texttt{sqrt()}. It \textbf{\emph{returns}} the square root of the given \textbf{\emph{parameter}}, a number, \emph{e.g.} \texttt{sqrt(36)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{36}\OperatorTok{^}\FloatTok{0.5}
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{36}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+## [1] 6
+\end{verbatim}
+
+\hypertarget{another-example-paste}{%
+\subsubsection*{\texorpdfstring{Another example: \texttt{paste()}}{Another example: paste()}}\label{another-example-paste}}
+\addcontentsline{toc}{subsubsection}{Another example: \texttt{paste()}}
+
+The \texttt{paste()} function can take any number of arguments and returns them, combined into a single text (character) string. You can also specify a separator using \texttt{sep="\textless{}separator\ string\textgreater{}"}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{sep =} \StringTok{"---"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1---2---3"
+\end{verbatim}
+
+Note the use of quotes surrounding the dashes: \texttt{"-\/-\/-"}; they indicate it is text, or character, data.\\
+Also note the use of a name for only the last argument. Not all arguments can be specified by name, but when possible this has preference, as in \texttt{sep\ =\ "-\/-\/-"}.
+
+\hypertarget{getting-help-on-a-function}{%
+\subsection{Getting help on a function}\label{getting-help-on-a-function}}
+
+Type \texttt{?function\_name} or \texttt{help(function\_name)} in the console to get help on a function. The function documentation will appear in the panel containing the \texttt{Help} tab, Its location is dependent on your set of preferences.\\
+For instance, typing \texttt{?sqrt} will give the help page of the square root function together with the \texttt{abs()} function.\\
+R help pages always have the exact same structure:
+
+\begin{itemize}
+\tightlist
+\item
+  Name \& package (e.g. \texttt{\{base\}})
+\item
+  Short description
+\item
+  Description
+\item
+  Usage
+\item
+  Arguments
+\item
+  Details
+\item
+  \ldots{}
+\item
+  Examples
+\end{itemize}
+
+Scroll down in the help to see example usages of the function. Alternatively, type \texttt{example(sqrt)} in the console to have all examples executed in order, until you press Escape.
+
+\hypertarget{variables}{%
+\section{Variables}\label{variables}}
+
+In math and programming you often use variables to label or name pieces of data, or a function in order to have them reusable, retrievable, changeable.
+
+\begin{quote}
+A \textbf{\emph{variable}} is a named piece of data stored in memory that can be accessed via its name
+\end{quote}
+
+For instance, \texttt{x\ =\ 42} is used to define a variable called \texttt{x}, with a value attached to it of \texttt{42}. Variables are really \emph{variable} - their value can change!
+In R you usually assign a value to a variable using ``\texttt{\textless{}-}'', so ``\texttt{x\ \textless{}-\ 42}'' is equivalent to ``\texttt{x\ =\ 42}''. Both will work in R, but the ``arrow'' notation is preferred.
+
+\hypertarget{vectors}{%
+\section{Vectors}\label{vectors}}
+
+\hypertarget{r-is-completely-vector-based}{%
+\subsection{R is completely vector-based}\label{r-is-completely-vector-based}}
+
+In R, \emph{\textbf{all data lives inside vectors}}. When you type `2 + 4', R will execute the following series of actions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  create a vector of length 1 with its element having the value 2
+\item
+  create a vector of length 1 with its element having the value 4
+\item
+  add the value of the second vector to ALL the values of vector one, and recycle any shorter vector as many times as needed
+\end{enumerate}
+
+Step 3 is a crucial one. It is essential to grasp this aspect in order to understand R. Therefore we'll revisit it later in more detail.
+
+\hypertarget{five-datatype-that-live-in-vectors}{%
+\subsection{Five datatype that live in vectors}\label{five-datatype-that-live-in-vectors}}
+
+R knows five basic types of data:
+
+\begin{tabular}{l|l|l}
+\hline
+type & descripton & examples\\
+\hline
+numeric & numbers with a decimal part & `3.123`, `5000.0`, `4.1E3`\\
+\hline
+integer & numbers without a decimal part & `1`, `0`, `2999`\\
+\hline
+logical & Boolean values: yes/no) & `true` `false`\\
+\hline
+character & text, should be put within quotes & `'hello R'` `"A cat!"`\\
+\hline
+factor & nominal and ordinal scales & \textbackslash{}<dealt with later\textbackslash{}>\\
+\hline
+\end{tabular}
+
+All these types are created in similar ways, and can often be converted into other types.
+
+\textbf{Note 1:} If you type a number in the console, it will always be a \texttt{numeric} value, decimal part or not.\\
+\textbf{Note 2:} For character data, single and double quotes are equivalent but double are preferred; type \texttt{?Quotes} in the console to read more on this topic.
+
+\hypertarget{creating-vectors}{%
+\subsection{Creating vectors}\label{creating-vectors}}
+
+You will see shortly that there are many ways to create vectors: a custom collection, a series, a repetition of a smaller set, a random sample from a distribution, etc. etc.
+
+The simplest way to create a vector is the first: create a vector from a custom set of elements, using the ``Concatenate'' function \texttt{c()}. The \texttt{c()} function simply takes all its arguments and puts them behind each other, in the order in which they were passed to it, and returns the resulting vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"d"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a" "b" "c" "d"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.001}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.100 0.010 0.001
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(T, F, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{) }\CommentTok{# There are two way to write logical values}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+\hypertarget{vectors-can-hold-only-one-data-type}{%
+\subsubsection*{Vectors can hold only one data type}\label{vectors-can-hold-only-one-data-type}}
+\addcontentsline{toc}{subsubsection}{Vectors can hold only one data type}
+
+A vector can hold only one type of data. Therefore, if you pass a mixed set of values to the function \texttt{c()}, it will \textbf{coerce} all data into one type. The preferred type is numeric. However, when that is not possible the result will most often be a character vector. In the example below, two numbers and a character value are passed. Since \texttt{"a"} cannot be coerced into a numeric, the returned vector will be a character vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\StringTok{"a"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2" "4" "a"
+\end{verbatim}
+
+Here are some more coercion examples.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\OtherTok{TRUE}\NormalTok{) }\CommentTok{# To numeric}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\StringTok{"TRUE"}\NormalTok{) }\CommentTok{# To character}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "TRUE"  "FALSE" "TRUE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{1.3}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\StringTok{"1"}\NormalTok{) }\CommentTok{# To character}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1.3"  "TRUE" "1"
+\end{verbatim}
+
+Using the function \texttt{class()}, you can get the data type of any value or variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{class}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\StringTok{"a"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{class}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{class}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{0.3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{class}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\hypertarget{vector-fiddling}{%
+\subsection{Vector fiddling}\label{vector-fiddling}}
+
+\hypertarget{vector-arithmetic}{%
+\subsubsection*{Vector arithmetic}\label{vector-arithmetic}}
+\addcontentsline{toc}{subsubsection}{Vector arithmetic}
+
+Let's have a look at what it means to work with vectors, as opposed to singular values (also called \emph{scalars}). An example is probably best to get an idea.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8 6 9 7
+\end{verbatim}
+
+As you can see, R works \textbf{\emph{set based}} and will \textbf{\emph{cycle}} the shorter of the two operands to deal with all elements of the longer operand. How about when the longer one is not a multiple of the shorter one?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{z <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{x }\OperatorTok{-}\StringTok{ }\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in x - z: longer object length is not a multiple of shorter object
+## length
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 1 2 0 4
+\end{verbatim}
+
+As you can see this generates a warning that ``longer object length is not a multiple of shorter object length''. However, R will proceed anyway, cycling the shorter one.
+
+\hypertarget{other-operators}{%
+\section{Other operators}\label{other-operators}}
+
+Here is a complete listing of operators in R. Some operators such as \texttt{\^{}} are \emph{unary}, which means they have a single \emph{operand}; a single value or they operate on. On the other hand, \emph{binary} operators such as \texttt{+} have two \emph{operands}.
+
+The following unary and binary operators are listed in precedence groups, from highest to lowest. Many of them are still unknown to you of course. We will encounter most of these along the way as the course progresses, starting with a few in this section.
+
+\begin{tabular}{l|l}
+\hline
+operator & purpose\\
+\hline
+:: ::: & access variables in a namespace\\
+\hline
+\$ @ & component / slot extraction\\
+\hline
+[ [[ & indexing\\
+\hline
+\textasciicircum{} & exponentiation (right to left)\\
+\hline
+- + & unary minus and plus\\
+\hline
+: & sequence operator\\
+\hline
+\%any\% & special operators (including \%\% and \%/\%)\\
+\hline
+* / & multiply, divide\\
+\hline
++ - & (binary) add, subtract\\
+\hline
+< > <= >= == != & ordering and comparison\\
+\hline
+! & negation\\
+\hline
+\& \&\& & and\\
+\hline
+| || & or\\
+\hline
+\textasciitilde{} & as in formulae\\
+\hline
+-> ->> & rightwards assignment\\
+\hline
+<- <<- & assignment (right to left)\\
+\hline
+= & assignment (right to left)\\
+\hline
+? & help (unary and binary)\\
+\hline
+\end{tabular}
+
+\hypertarget{logical-operators}{%
+\subsection{Logical operators}\label{logical-operators}}
+
+Logical operators are used to evaluate and/or combine expressions that result in a single logical value: \texttt{TRUE} or \texttt{FALSE}. The \textbf{\emph{comparison operators}} compare two values (numeric, character - any type is possible) to get to a logical value, but always set-based! In the following chunk, each of the values in \texttt{x} is considered and if it is smaller than or equal to the value \texttt{4}, \texttt{TRUE} is returned, else \texttt{FALSE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{x }\OperatorTok{<=}\StringTok{ }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE  TRUE
+\end{verbatim}
+
+Other comparison operators are \texttt{\textless{}} (less then), \texttt{\textless{}=} (less then or equal to), \texttt{\textgreater{}} (greater then), \texttt{\textgreater{}=} (greater then or equal to), and \texttt{==} (equal to).
+
+Another category of logical operators is the set of \textbf{\emph{boolean operators}}. These are used to \emph{reduce} two logical values into one. These are
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\&}: logical ``AND''; \texttt{a\ \&\ b} will evaluate to \texttt{TRUE} only if \texttt{a} AND \texttt{b} are TRUE.\\
+\item
+  \texttt{\textbar{}}: logical ``OR''; \texttt{a\ \textbar{}\ b} will evaluate to \texttt{TRUE} only if \texttt{a} OR \texttt{b} are TRUE, no matter which.
+\item
+  \texttt{!}: logical -unary- ``NOT''; negates the right operand: \texttt{!\ a} will evaluate to the ``flipped'' logical value of \texttt{a}.
+\end{itemize}
+
+Here is a more elaborate example combining comparison and boolean operators.
+Suppose you have vectors a and b and you want to know which values in \texttt{a} are greater than in \texttt{b} and also smaller than \texttt{3}. This is the expression used for answering that question.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{b <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{a }\OperatorTok{>}\StringTok{ }\NormalTok{b }\OperatorTok{&}\StringTok{ }\NormalTok{a }\OperatorTok{<}\StringTok{ }\DecValTok{3} \CommentTok{## returns a logical vector with test results}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE FALSE FALSE  TRUE
+\end{verbatim}
+
+Here is a special case. Can you figure out what happens there?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6} \OperatorTok{-}\StringTok{ }\DecValTok{2} \OperatorTok{:}\StringTok{ }\DecValTok{5} \OperatorTok{<}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE  TRUE  TRUE
+\end{verbatim}
+
+\hypertarget{calculations-with-logical-vectors}{%
+\subsubsection*{Calculations with logical vectors}\label{calculations-with-logical-vectors}}
+\addcontentsline{toc}{subsubsection}{Calculations with logical vectors}
+
+Quite often you want to know how many cases fit some condition. A convenient thing in that case is that logical values have a numeric counterpart or ``hidden face'':
+
+\begin{verbatim}
+- TRUE == 1
+- FALSE == 0
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{sum()} to use this feature
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{x }\OperatorTok{>}\StringTok{ }\DecValTok{3} \CommentTok{## which values are greater than 3?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(x }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{) }\CommentTok{## how many are greater than 3?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{modulo}{%
+\subsection{\texorpdfstring{Modulo: \texttt{\%\%}}{Modulo: \%\%}}\label{modulo}}
+
+The modulo operator gives the remainder of a division.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{%%}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \OperatorTok{%%}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{11} \OperatorTok{%%}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+The modulo is most often used to establish periodicity: \texttt{x\ \%\%\ 2} is zero for all even numbers. Likewise, \texttt{x\ \%\%\ 10} will be zero for every tenth value.
+
+\hypertarget{integer-division-and-rounding}{%
+\subsection{\texorpdfstring{Integer division \texttt{\%/\%} and rounding}{Integer division \%/\% and rounding}}\label{integer-division-and-rounding}}
+
+The integer division is the complement of modulo and gives the integer part of a division, it simply ``chops off'' the decimal part.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{10} \OperatorTok{%/%}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \OperatorTok{%/%}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{11} \OperatorTok{%/%}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+Note that \texttt{floor()} does the same. In the same manner, \texttt{ceiling()} rounds up to the nearest integer, no matter how large the decimal part. Finally, there is the \texttt{round()} method to be used for - well, rounding. Be aware that rounding in R is not the same as rounding your course grade which always goes up at \texttt{x.5}. Rounding \texttt{x.5} values mathematically goes to the nearest even number:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\FloatTok{2.5}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\FloatTok{4.5}\NormalTok{, }\FloatTok{5.5}\NormalTok{, }\FloatTok{6.5}\NormalTok{, }\FloatTok{7.5}\NormalTok{)}
+\KeywordTok{round}\NormalTok{(x, }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 2 2 4 4 6 6 8
+\end{verbatim}
+
+\hypertarget{the-in-operator}{%
+\subsection{\texorpdfstring{The \texttt{\%in\%} operator}{The \%in\% operator}}\label{the-in-operator}}
+
+The \texttt{\%in\%} operator is very handy when you want to know if the elements of one vector are present in another vector. An example explains best, as usual:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"one"}\NormalTok{, }\StringTok{"two"}\NormalTok{, }\StringTok{"three"}\NormalTok{)}
+\NormalTok{b <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"zero"}\NormalTok{, }\StringTok{"three"}\NormalTok{, }\StringTok{"five"}\NormalTok{, }\StringTok{"two"}\NormalTok{)}
+\NormalTok{a }\OperatorTok{%in%}\StringTok{ }\NormalTok{b}
+\NormalTok{b }\OperatorTok{%in%}\StringTok{ }\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE  TRUE
+## [1] FALSE  TRUE FALSE  TRUE
+\end{verbatim}
+
+There is no positional evaluation, it simply reports if the corresponding element in the first is present \emph{anywhere} in the second.
+
+\hypertarget{vector-creation-methods}{%
+\section{Vector creation methods}\label{vector-creation-methods}}
+
+Since vectors are the bricks with which \emph{everything} is built in R, there are many, many ways to create them. Here, I will review the most important ones.
+
+\hypertarget{method-1-constructor-functions}{%
+\subsubsection*{Method 1: Constructor functions}\label{method-1-constructor-functions}}
+\addcontentsline{toc}{subsubsection}{Method 1: Constructor functions}
+
+Often you want to be specific about what you create: use the class-specific constructor \textbf{OR} one of the conversion methods. Constructor methods have the name of the type. They will create and return a vector of that type wit as length the number that is passed as constructor argument:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{integer}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{character}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "" "" "" ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{logical}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\hypertarget{method-2-conversion-functions}{%
+\subsubsection*{Method 2: Conversion functions}\label{method-2-conversion-functions}}
+\addcontentsline{toc}{subsubsection}{Method 2: Conversion functions}
+
+Conversion methods have the name \texttt{as.XXX()} where XXX is the desired type. They will attempt to coerce the given input vector into the requested type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{2.3}\NormalTok{)}
+\KeywordTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.logical}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.integer}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 0 2 2
+\end{verbatim}
+
+But there are limits to coercion: R will not coerce elements with types that are non-coercable: you get an \texttt{NA} value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\StringTok{"a"}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{as.integer}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  3 NA
+\end{verbatim}
+
+\hypertarget{method-3-the-colon-operator}{%
+\subsubsection*{Method 3: The colon operator}\label{method-3-the-colon-operator}}
+\addcontentsline{toc}{subsubsection}{Method 3: The colon operator}
+
+The colon operator \emph{(\texttt{:})} generates a series of integers fromthe left operand to -and including- the right operand.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \OperatorTok{:}\StringTok{ }\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \OperatorTok{:}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 4 3 2 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{:}\StringTok{ }\FloatTok{3.66}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3
+\end{verbatim}
+
+\hypertarget{method-4-the-rep-function}{%
+\subsubsection*{\texorpdfstring{Method 4: The \texttt{rep()} function}{Method 4: The rep() function}}\label{method-4-the-rep-function}}
+\addcontentsline{toc}{subsubsection}{Method 4: The \texttt{rep()} function}
+
+The \texttt{rep()} function takes three arguments. The first is an input vector. The second, \texttt{times\ =}, specifies how often the \emph{entire} input vector should be repeated. The second argument, \texttt{each\ =}, specifies how often \emph{each} individual element from the input vector should be repeated. When both arguments are provided, \texttt{each\ =} is evaluated first, followed by \texttt{times\ =}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1} \OperatorTok{:}\StringTok{ }\DecValTok{3}\NormalTok{, }\DataTypeTok{times =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 1 2 3 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1} \OperatorTok{:}\StringTok{ }\DecValTok{3}\NormalTok{, }\DataTypeTok{each=} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 1 1 2 2 2 3 3 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{1} \OperatorTok{:}\StringTok{ }\DecValTok{3}\NormalTok{, }\DataTypeTok{times =} \DecValTok{2}\NormalTok{, }\DataTypeTok{each =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3
+\end{verbatim}
+
+\hypertarget{method-5-the-seq-function}{%
+\subsubsection*{\texorpdfstring{Method 5: The \texttt{seq()} function}{Method 5: The seq() function}}\label{method-5-the-seq-function}}
+\addcontentsline{toc}{subsubsection}{Method 5: The \texttt{seq()} function}
+
+The \texttt{seq()} function is used to create a numeric vector in which the subsequent element show sequential increment or decrement. You specify a range and a step which may be neative if the range end (\texttt{to\ =}) is lower than the range start (\texttt{from\ =}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{1}\NormalTok{, }\DataTypeTok{to =} \DecValTok{3}\NormalTok{, }\DataTypeTok{by =} \FloatTok{.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.0 1.2 1.4 1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{0.2}\NormalTok{) }\CommentTok{# same}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.0 1.2 1.4 1.6 1.8 2.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.00 0.75 0.50 0.25 0.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{by =} \DecValTok{-1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 2 1 0
+\end{verbatim}
+
+\hypertarget{method-6-through-vector-operations}{%
+\subsubsection*{Method 6: Through vector operations}\label{method-6-through-vector-operations}}
+\addcontentsline{toc}{subsubsection}{Method 6: Through vector operations}
+
+Of course, new vectors, often of different type, are created when two vectors are combined in some operation, or a single vector is processed in some way.
+
+This operation of two numeric vectors results in a logical vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{:}\DecValTok{5} \OperatorTok{<}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE FALSE FALSE
+\end{verbatim}
+
+And this \texttt{paste()} call results in a character vector:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\DecValTok{0}\OperatorTok{:}\DecValTok{4}\NormalTok{, }\DecValTok{5}\OperatorTok{:}\DecValTok{9}\NormalTok{, }\DataTypeTok{sep =} \StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "0-5" "1-6" "2-7" "3-8" "4-9"
+\end{verbatim}
+
+\hypertarget{selecting-vector-elements}{%
+\section{Selecting vector elements}\label{selecting-vector-elements}}
+
+You often want to get to know things about specific values within a vector
+
+\begin{itemize}
+\tightlist
+\item
+  what value is at the third position?
+\item
+  what is the highest value?
+\item
+  which positions have negative values?
+\item
+  what are the last 5 values?
+\end{itemize}
+
+There are two principal ways to do this: through indexing with positionional reference (``addresses'') and through logical indexing.
+
+Here is a picture that demonstrates both.
+
+\includegraphics{figures/indexing_in_R_s.png}
+
+The \texttt{index} is the position of a value within a vector. R starts at one (1), and therefore ends at the length of the vector. Brackets \texttt{{[}{]}} are used to specify one or more indices that should be selected (returned).
+
+Here are two examples of straightforward indexing, selecing a single or a series of elements.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{x[}\DecValTok{4}\NormalTok{] }\CommentTok{## fourth element}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{] }\CommentTok{## elements 3 to 5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6 3 5
+\end{verbatim}
+
+However, the technique is much more versatile. You can use indexing to select elements multiple times and thus create copies of them, or select elements in any order you desire.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{)] }\CommentTok{## elements 1, 2, 2 and 5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Besides integers you can use logicals to perform selections:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\KeywordTok{c}\NormalTok{(T, F, T, T, T, F)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 6 3 5
+\end{verbatim}
+
+As with all vector operations, shorter vectors are cycled as often as needed to cover the longer one:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\KeywordTok{c}\NormalTok{(F, T, F)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5
+\end{verbatim}
+
+In practice you won't type literal logicals very often; they are ususaly the result of some comparison operation. Here, all even numbers are selected because their modulo will retun zero.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[x }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 6
+\end{verbatim}
+
+And all of the maximum values in a vector are retreived:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{x[x }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(x)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 3 3
+\end{verbatim}
+
+There is a caveat in selecting the last \emph{n} values: the colon operator has highest precedence!
+Here, the last two elements are (supposed to be selected).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{x[}\KeywordTok{length}\NormalTok{(x) }\OperatorTok{-}\StringTok{ }\DecValTok{1} \OperatorTok{:}\StringTok{ }\KeywordTok{length}\NormalTok{(x)] }\CommentTok{#fails}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 3 6 4 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[(}\KeywordTok{length}\NormalTok{(x) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{) }\OperatorTok{:}\StringTok{ }\KeywordTok{length}\NormalTok{(x)] }\CommentTok{## parentheses required!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 1
+\end{verbatim}
+
+\hypertarget{use-which-to-get-an-index-instead-of-value}{%
+\subsubsection*{\texorpdfstring{Use \texttt{which()} to get an index instead of value}{Use which() to get an index instead of value}}\label{use-which-to-get-an-index-instead-of-value}}
+\addcontentsline{toc}{subsubsection}{Use \texttt{which()} to get an index instead of value}
+
+The function \texttt{which()} returns indices for which the logical test evaluates to \texttt{true}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{which}\NormalTok{(x }\OperatorTok{>=}\StringTok{ }\DecValTok{2}\NormalTok{) }\CommentTok{## which positions have values 2 or greater?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{which}\NormalTok{(x }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(x)) }\CommentTok{## which positions have the maximum value?}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{some-coding-style-rules-rules-for-writing-code}{%
+\section{Some coding style rules rules for writing code}\label{some-coding-style-rules-rules-for-writing-code}}
+
+\begin{itemize}
+\tightlist
+\item
+  Names of variables start with a lower-case letter
+\item
+  Words are separated using underscores
+\item
+  Be descriptive with names
+\item
+  Function names are verbs
+\item
+  Write all code and comments in English
+\item
+  Preferentially use one statement per line
+\item
+  Use spaces on both sides of ALL operators
+\item
+  Use a space after a comma
+\item
+  Indent code blocks -with \{\}- with 4 or 2 spaces, but be consistent
+\end{itemize}
+
+Follow Hadleys' style guide \url{http://adv-r.had.co.nz/Style.html}
+
+\hypertarget{the-best-keyboard-shortcuts-for-rstudio}{%
+\section{The best keyboard shortcuts for RStudio}\label{the-best-keyboard-shortcuts-for-rstudio}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ctr\ +\ 1} go to code editor
+\item
+  \texttt{ctr\ +\ 2} go to console
+\item
+  \texttt{ctr\ +\ alt\ +\ i} insert code chunk (RMarkdown)
+\item
+  \texttt{ctr\ +\ enter} run current line
+\item
+  \texttt{ctr\ +\ shift\ +\ k} knit current document
+\item
+  \texttt{ctr\ +\ alt\ +\ c} run current code chunk
+\item
+  \texttt{ctr\ +\ shift\ +\ o} source the current document
+\end{itemize}
+
+\hypertarget{basic-r---plotting-basics}{%
+\chapter{Basic R - plotting basics}\label{basic-r---plotting-basics}}
+
+\hypertarget{basic-embedded-plot-types}{%
+\section{Basic embedded plot types}\label{basic-embedded-plot-types}}
+
+Looking at numbers is boring - people want to see pictures! Doing analyses without visualizations is like only listening to a movie.
+
+There are a few plot types supported by base R that deal with (combinations of) vectors:
+
+\begin{itemize}
+\tightlist
+\item
+  scatter (or line-) plot
+\item
+  barplot
+\item
+  histogram
+\item
+  boxplot
+\end{itemize}
+
+We'll only look at the bare basics in this chapter because we are going to do it for real with package \texttt{ggplot2} in the next course.
+
+\hypertarget{scatter-and-line-plots}{%
+\subsection{Scatter and line plots}\label{scatter-and-line-plots}}
+
+Meet \texttt{plot()} - the workhorse of R plotting.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{time <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{response <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.09}\NormalTok{, }\FloatTok{0.30}\NormalTok{, }\FloatTok{0.41}\NormalTok{, }\FloatTok{0.48}\NormalTok{, }\FloatTok{0.72}\NormalTok{, }\FloatTok{1.12}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ time, }\DataTypeTok{y =}\NormalTok{ response)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-hello-1-1} 
+
+}
+
+\caption{Here is a nice figure!}\label{fig:plot-hello-1}
+\end{figure}
+
+The function plot is used here to generate a \emph{scatter plot}. It may generae other types of figures, depending on its input as we'll see later.
+
+\hypertarget{formula-notation}{%
+\subsubsection*{Formula notation}\label{formula-notation}}
+\addcontentsline{toc}{subsubsection}{Formula notation}
+
+Instead of passing an \texttt{x\ =} and \texttt{y\ =} set of arguments, it is also possible to call the plot fuction with a \textbf{\emph{formula notation}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(response }\OperatorTok{~}\StringTok{ }\NormalTok{time)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-hello-with-formula-1} \end{center}
+
+You can read \texttt{response\ \textasciitilde{}\ time} as \emph{response as a function of time}. This is a nice, readable alternative in this case, but for many functions it is the only or preferred way to specify the relationship you want to investigate.
+
+\hypertarget{plot-decorations}{%
+\subsubsection*{Plot decorations}\label{plot-decorations}}
+\addcontentsline{toc}{subsubsection}{Plot decorations}
+
+Plots should always have these decorations:
+
+\begin{itemize}
+\tightlist
+\item
+  Axis labels indicating measurement type (quantity) and its units. E.g. `{[}Mg{]} (mq/ml)' or `Heartrate (bpm)'.
+\item
+  If multiple data series are plotted: a legend
+\item
+  Either a title or a figure caption, depending on the context.
+\end{itemize}
+
+The first plots of this chapters were very bare (and a bit boring to look at): the plot has no axis labels (quantity and units) and no decoration whatsoever. By passing arguments to \texttt{plot()} you can modify or add many features of your plot. Basic decoration includes
+
+\begin{itemize}
+\tightlist
+\item
+  adjusting markers (\texttt{pch\ =\ 19}, \texttt{col\ =\ "blue"})
+\item
+  adding connector lines (\texttt{type\ =\ "b"}) or removing points (\texttt{type\ =\ "l"})
+\item
+  adding axis labels and title (\texttt{xlab\ =\ "Time\ (hours)"}, \texttt{ylab\ =\ "Systemic\ response"}, \texttt{main\ =\ "Systemic\ response\ to\ agent\ X"})
+\item
+  adjusting axis limits (\texttt{xlim\ =\ c(0,\ 8)})
+\end{itemize}
+
+This is not an exhaustive listing; these are listed in the last section of this chapter.
+
+Here is a more complete plot using a variety of arguments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ time, }\DataTypeTok{y =}\NormalTok{ response, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{, }\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{8}\NormalTok{),}
+     \DataTypeTok{xlab =} \StringTok{"Time (hours)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Systemic response (a.u.)"}\NormalTok{,}
+     \DataTypeTok{main =} \StringTok{"Systemic response to agent X"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-hello-2-1} \end{center}
+
+\hypertarget{adjusting-the-plot-symbol}{%
+\subsubsection*{Adjusting the plot symbol}\label{adjusting-the-plot-symbol}}
+\addcontentsline{toc}{subsubsection}{Adjusting the plot symbol}
+
+When you have many data points they will overlap. Using transparency with the \texttt{rgb(,,\ alpha=)} color definition and/or smaller plot symbols (\texttt{cex=}) solves this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{2}\NormalTok{); y <-}\StringTok{ }\NormalTok{x }\OperatorTok{+}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(x, y, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{0.6}\NormalTok{,}
+     \DataTypeTok{col =} \KeywordTok{rgb}\NormalTok{(}\DataTypeTok{red =} \DecValTok{0}\NormalTok{, }\DataTypeTok{green =} \DecValTok{0}\NormalTok{, }\DataTypeTok{blue =} \DecValTok{1}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-hello-3-1} \end{center}
+
+\hypertarget{barplots}{%
+\subsection{Barplots}\label{barplots}}
+
+Barplots can be generated in several ways:
+
+\begin{itemize}
+\tightlist
+\item
+  By passing a factor to \texttt{plot()} - it will generate a barplot of level frequencies. This is a shorthand for \texttt{barplot(table(some\_factor))}.
+\item
+  By using \texttt{barplot()}. The advantage of this is that accepts some graphical parameters that are not relevant and accepted by \texttt{plot()}, such as \texttt{beside\ =}, \texttt{height\ =}, \texttt{width\ =} and others (type \texttt{?barplot} to see all).
+\end{itemize}
+
+Here is an example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persons <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{, }\StringTok{"female"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{100}\NormalTok{, }\DataTypeTok{replace =}\NormalTok{ T))}
+\KeywordTok{plot}\NormalTok{(persons)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/barplot-0-1} \end{center}
+
+\hypertarget{barplot-with-a-vector}{%
+\subsubsection*{\texorpdfstring{\texttt{barplot()} with a vector}{barplot() with a vector}}\label{barplot-with-a-vector}}
+\addcontentsline{toc}{subsubsection}{\texttt{barplot()} with a vector}
+
+The function \texttt{barplot()} can be called with a vector specifying the bar heights (frequencies), or a \texttt{table} object.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{frequencies <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{12}\NormalTok{, }\DecValTok{29}\NormalTok{)}
+\KeywordTok{barplot}\NormalTok{(frequencies, }\DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{"one"}\NormalTok{, }\StringTok{"two"}\NormalTok{, }\StringTok{"three"}\NormalTok{, }\StringTok{"four"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/barplot-1-1} \end{center}
+
+With a table object:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(persons)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## persons
+## female   male 
+##     55     45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(}\KeywordTok{table}\NormalTok{(persons))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/barplot-2-1} \end{center}
+
+\hypertarget{barplot-with-a-2d-table-object}{%
+\subsubsection*{\texorpdfstring{\texttt{barplot()} with a 2D table object}{barplot() with a 2D table object}}\label{barplot-with-a-2d-table-object}}
+\addcontentsline{toc}{subsubsection}{\texttt{barplot()} with a 2D table object}
+
+Suppose you have this data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1234}\NormalTok{) }
+\NormalTok{course <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"biology"}\NormalTok{, }\StringTok{"chemistry"}\NormalTok{), }\DataTypeTok{each =} \DecValTok{10}\NormalTok{)}
+\NormalTok{passed <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"Passed"}\NormalTok{, }\StringTok{"Failed"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{replace =}\NormalTok{ T)}
+\NormalTok{tbl <-}\StringTok{ }\KeywordTok{table}\NormalTok{(passed, course) }\CommentTok{# the order matters!}
+\NormalTok{tbl}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         course
+## passed   biology chemistry
+##   Failed       6         8
+##   Passed       4         2
+\end{verbatim}
+
+The \texttt{set.seed(1234)} makes the \emph{sampling} reproducible, although that sounds really unlogical. Discussing \textbf{\emph{pseudorandom}} sampling is not within the scope of this course however.
+
+You can create a \textbf{\emph{stacked bar chart}} like this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(tbl, }
+        \DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{), }
+        \DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{ncol}\NormalTok{(tbl) }\OperatorTok{+}\StringTok{ }\DecValTok{2}\NormalTok{), }
+        \DataTypeTok{legend =} \KeywordTok{rownames}\NormalTok{(tbl))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/barplot-4-1} \end{center}
+
+The \texttt{xlim\ =} setting is a trick to get the legend beside the plot.
+
+Using the \texttt{beside\ =\ TRUE} argument, you get the bars \textbf{\emph{side by side}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(tbl, }
+        \DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{), }
+        \DataTypeTok{beside =} \OtherTok{TRUE}\NormalTok{, }
+        \DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{ncol}\NormalTok{(tbl)}\OperatorTok{*}\DecValTok{2} \OperatorTok{+}\StringTok{ }\DecValTok{3}\NormalTok{), }
+        \DataTypeTok{legend =} \KeywordTok{rownames}\NormalTok{(tbl))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/barplot-5-1.pdf}
+
+Later, we'll see another data structure to feed to barplot: the matrix.
+
+\hypertarget{histograms}{%
+\subsection{Histograms}\label{histograms}}
+
+Histograms help you visualise the distribution of your data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{male_weights <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{500}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\CommentTok{## create 500 random numbers around 80}
+\KeywordTok{hist}\NormalTok{(male_weights)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/histogram-1-1} \end{center}
+
+Using the \texttt{breaks} argument, you can adjust the bin width. Always explore this option when creating histograms!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)) }\CommentTok{# make 2 plots to sit side by side}
+\KeywordTok{hist}\NormalTok{(male_weights, }\DataTypeTok{breaks =} \DecValTok{5}\NormalTok{, }\DataTypeTok{col =} \StringTok{"gold"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Male weights"}\NormalTok{)}
+\KeywordTok{hist}\NormalTok{(male_weights, }\DataTypeTok{breaks =} \DecValTok{25}\NormalTok{, }\DataTypeTok{col =} \StringTok{"green"}\NormalTok{, }\DataTypeTok{main =} \StringTok{"Male weights"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/histogram-2-1} \end{center}
+
+If you want a more detailed
+
+\hypertarget{density-plot-as-alternative-to-hist}{%
+\subsection{\texorpdfstring{Density plot as alternative to \texttt{hist()}}{Density plot as alternative to hist()}}\label{density-plot-as-alternative-to-hist}}
+
+When you want a bit more fine-grained view of the distribution you can use a plot of a density function; by adding a \texttt{polygon()} you can even have some nice shading under the line:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(male_weights),}
+     \DataTypeTok{main =} \StringTok{"A density plot of male weights"}\NormalTok{,}
+     \DataTypeTok{col =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{polygon}\NormalTok{(}\KeywordTok{density}\NormalTok{(male_weights), }\DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/density-plot-1-1} \end{center}
+
+\hypertarget{boxplots}{%
+\subsection{Boxplots}\label{boxplots}}
+
+This is the last of the basic plot types. A boxplot is a visual representation of the \emph{5-number summary} of a numeric variable: minimum, maximum, median, first and third quartile.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persons <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{, }\StringTok{"female"}\NormalTok{), }\DataTypeTok{each =} \DecValTok{100}\NormalTok{)}
+\NormalTok{weights <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{80}\NormalTok{, }\DecValTok{6}\NormalTok{), }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\CommentTok{#print 6-number summary (5-number + mean)}
+\KeywordTok{summary}\NormalTok{(weights[persons }\OperatorTok{==}\StringTok{ "female"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   57.68   69.36   74.12   73.99   78.97   92.23
+\end{verbatim}
+
+Boxplots tell the same story as histograms, but are less precise. however, they are excellent when you want to show a series of subsets split over some variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)) }\CommentTok{# make 2 plots to sit side by side}
+\CommentTok{# create boxplots of weights depending on sex}
+\KeywordTok{boxplot}\NormalTok{(weights }\OperatorTok{~}\StringTok{ }\NormalTok{persons, }\DataTypeTok{ylab =} \StringTok{"weight"}\NormalTok{)}
+\KeywordTok{boxplot}\NormalTok{(weights }\OperatorTok{~}\StringTok{ }\NormalTok{persons, }\DataTypeTok{notch =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"magenta"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/boxplots-1-1} \end{center}
+
+Use \texttt{varwidth\ =\ TRUE} when you want to visualize the difference in group sizes.
+
+\hypertarget{adding-more-data-and-a-legend}{%
+\subsection{Adding more data and a legend}\label{adding-more-data-and-a-legend}}
+
+When you have more than one data series to plot, add them using the function \texttt{points()}. You call this function \emph{after} you created the primary plot. Since there are multiple lines you will also need a legend.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{response2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.07}\NormalTok{, }\FloatTok{0.10}\NormalTok{, }\FloatTok{0.17}\NormalTok{, }\FloatTok{0.28}\NormalTok{, }\FloatTok{0.46}\NormalTok{, }\FloatTok{0.61}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ time, }\DataTypeTok{y =}\NormalTok{ response, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{"Time (hours)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Systemic response (a.u.)"}\NormalTok{,}
+     \DataTypeTok{main =} \StringTok{"Systemic response to agent X"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ time, }\DataTypeTok{y =}\NormalTok{ response2, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\NormalTok{, }\DataTypeTok{y =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{legend =} \KeywordTok{c}\NormalTok{(}\StringTok{"one"}\NormalTok{, }\StringTok{"two"}\NormalTok{), }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-legend-1-1} \end{center}
+
+The \texttt{legend()} function is \emph{very} versatile. Have a look at the docs!
+In its most basic form you pass it a position (x and y), series names, colors and plot character.
+
+\hypertarget{helper-lines-and-lm}{%
+\subsection{\texorpdfstring{Helper lines and \texttt{lm()}}{Helper lines and lm()}}\label{helper-lines-and-lm}}
+
+Adding helper lines can be used to aid your reader in grasping and interpreting your data story.
+Use the function \texttt{abline()} for this.
+
+There are four types of helper lines you might want to add to a figure:
+
+\begin{itemize}
+\tightlist
+\item
+  A horizontal line with \texttt{h\ =}: indicate some y-threshold
+\item
+  A vertical line with \texttt{v\ =}: indicate x-threshold or mean or some other statistic
+\item
+  A line with an intercept (\texttt{a\ =}) and a slope (\texttt{b\ =}): often used to indicate some expected response, or diagonal x = y
+\item
+  A linear model, determined with the \texttt{lm()} function. The linear model object actually contains an intercept and a slope value which is taken by \texttt{abline()}.
+\end{itemize}
+
+In the following plot, these four basic helper lines are demonstrated:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ time, }\DataTypeTok{y =}\NormalTok{ response, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{, }\DataTypeTok{type =} \StringTok{"b"}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{"Time (hours)"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Systemic response (a.u.)"}\NormalTok{,}
+     \DataTypeTok{main =} \StringTok{"Systemic response to agent X"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\CommentTok{#horizontal line}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{)}
+\CommentTok{#vertical line}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"darkgreen"}\NormalTok{)}
+\CommentTok{#line with slope}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{a =} \FloatTok{-0.1}\NormalTok{, }\DataTypeTok{b =} \FloatTok{0.3}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"purple"}\NormalTok{)}
+\CommentTok{#linear model }
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(response }\OperatorTok{~}\StringTok{ }\NormalTok{time),  }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"maroon"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/plot-helpers-1-1} \end{center}
+
+\hypertarget{graphical-parameters-to-plot}{%
+\section{\texorpdfstring{Graphical parameters to \texttt{plot()}}{Graphical parameters to plot()}}\label{graphical-parameters-to-plot}}
+
+There are \emph{many} parameters that can be passed to the plotting functions. Here is a small sample and their possible values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{series <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{20}
+\KeywordTok{plot}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{20}\NormalTok{) , }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{7.5}\NormalTok{), }\DataTypeTok{col=}\StringTok{"white"}\NormalTok{ , }\DataTypeTok{yaxt=}\StringTok{"n"}\NormalTok{ , }\DataTypeTok{ylab=}\StringTok{""}\NormalTok{ , }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{)}
+
+\CommentTok{# the rainbow() function gives a nice palette across all colors}
+\CommentTok{# or use hcl.colors() to specify another palette}
+\CommentTok{# use  hcl.pals() to get an overview of available pallettes}
+\NormalTok{colors =}\StringTok{ }\KeywordTok{hcl.colors}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.8}\NormalTok{, }\DataTypeTok{palette =} \StringTok{'viridis'}\NormalTok{)}
+
+\CommentTok{#pch}
+\KeywordTok{points}\NormalTok{(series, }\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{20}\NormalTok{), }\DataTypeTok{pch =} \DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{, }\DataTypeTok{cex =} \DecValTok{2}\NormalTok{)}
+\CommentTok{#col}
+\KeywordTok{points}\NormalTok{(series, }\KeywordTok{rep}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{20}\NormalTok{), }\DataTypeTok{col =}\NormalTok{ colors, }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex =} \DecValTok{3}\NormalTok{)}
+\CommentTok{#cex}
+\KeywordTok{points}\NormalTok{(series, }\KeywordTok{rep}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{20}\NormalTok{), }\DataTypeTok{col =} \StringTok{"black"}\NormalTok{ , }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex =}\NormalTok{ series }\OperatorTok{*}\StringTok{ }\FloatTok{0.2}\NormalTok{)}
+
+\CommentTok{#overlay to create new symbol}
+\KeywordTok{points}\NormalTok{(series, }\KeywordTok{rep}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{20}\NormalTok{), }\DataTypeTok{pch =}\NormalTok{ series, }\DataTypeTok{cex =} \FloatTok{2.5}\NormalTok{, }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(series, }\KeywordTok{rep}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{20}\NormalTok{), }\DataTypeTok{pch =}\NormalTok{ series, }\DataTypeTok{cex =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ colors)}
+ 
+\CommentTok{#lty}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{) \{}
+    \KeywordTok{points}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{2}\NormalTok{, }\DecValTok{0}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{(i }\OperatorTok{*}\StringTok{ }\DecValTok{3}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DataTypeTok{col =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{lty =}\NormalTok{ i, }\DataTypeTok{type =} \StringTok{"l"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{3}\NormalTok{)}
+    \KeywordTok{text}\NormalTok{((i }\OperatorTok{*}\StringTok{ }\DecValTok{3}\NormalTok{) }\OperatorTok{-}\StringTok{ }\DecValTok{1}\NormalTok{, }\FloatTok{5.25}\NormalTok{ , i)}
+\NormalTok{\}}
+\CommentTok{#type and lwd}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{) \{}
+    \CommentTok{#type}
+    \KeywordTok{points}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{-2}\NormalTok{, }\DecValTok{-1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{(i }\OperatorTok{*}\StringTok{ }\DecValTok{5}\NormalTok{), }\KeywordTok{rep}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+           \DataTypeTok{col =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{type =} \KeywordTok{c}\NormalTok{(}\StringTok{"p"}\NormalTok{,}\StringTok{"l"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"o"}\NormalTok{)[i], }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+    \KeywordTok{text}\NormalTok{((i }\OperatorTok{*}\StringTok{ }\DecValTok{5}\NormalTok{) }\OperatorTok{-}\StringTok{ }\FloatTok{2.5}\NormalTok{, }\FloatTok{6.4}\NormalTok{ , }\KeywordTok{c}\NormalTok{(}\StringTok{"p"}\NormalTok{,}\StringTok{"l"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"o"}\NormalTok{)[i] )}
+    \CommentTok{#lwd}
+    \KeywordTok{points}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{-3}\NormalTok{, }\DecValTok{-2}\NormalTok{, }\DecValTok{-1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\NormalTok{(i }\OperatorTok{*}\StringTok{ }\DecValTok{5}\NormalTok{), }\KeywordTok{rep}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{type =} \StringTok{"l"}\NormalTok{, }\DataTypeTok{lwd =}\NormalTok{ i)}
+    \KeywordTok{text}\NormalTok{((i }\OperatorTok{*}\StringTok{ }\DecValTok{5}\NormalTok{) }\OperatorTok{-}\StringTok{ }\FloatTok{2.5}\NormalTok{, }\FloatTok{7.23}\NormalTok{, i)}
+\NormalTok{\}}
+\CommentTok{#add axis}
+\KeywordTok{axis}\NormalTok{(}\DataTypeTok{side =} \DecValTok{2}\NormalTok{, }\DataTypeTok{at =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{),}
+    \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"pch"}\NormalTok{ , }\StringTok{"col"}\NormalTok{ , }\StringTok{"cex"}\NormalTok{ , }\StringTok{"combine"}\NormalTok{, }\StringTok{"lty"}\NormalTok{, }\StringTok{"type"}\NormalTok{ , }\StringTok{"lwd"}\NormalTok{ ),}
+    \DataTypeTok{tick =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{col =} \StringTok{"black"}\NormalTok{, }\DataTypeTok{las =} \DecValTok{1}\NormalTok{, }\DataTypeTok{cex.axis =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-14-1.pdf}
 
 \hypertarget{complex-datatypes}{%
 \chapter{Complex Datatypes}\label{complex-datatypes}}
 
 \textbf{\emph{TO BE PORTED FROM PRESENTATION}}
 
-\hypertarget{functions}{%
-\chapter{Functions}\label{functions}}
+\hypertarget{functions-1}{%
+\chapter{Functions}\label{functions-1}}
 
 \textbf{\emph{TO BE PORTED FROM PRESENTATION}}
 
@@ -381,8 +1961,81 @@ Happy coding!
 
 This chapter only contains exercises. The solutions are in the next chapter which has a numbering parallel to this one.
 
-\hypertarget{basic-r-1}{%
-\section{Basic R}\label{basic-r-1}}
+\hypertarget{basic-r}{%
+\section{Basic R}\label{basic-r}}
+
+\hypertarget{math-in-the-console}{%
+\subsection{Math in the console}\label{math-in-the-console}}
+
+In the console, calculate the following:
+
+\(31 + 11\)
+
+\(66 - 24\)
+
+\(\frac{126}{3}\)
+
+\(12^2\)
+
+\(\sqrt{256}\)
+
+\(\frac{3*(4+\sqrt{8})}{5^3}\)
+
+\hypertarget{first-look-at-functions}{%
+\subsection{First look at functions}\label{first-look-at-functions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  View the help page for \texttt{paste()}. There are two variants of this function.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Which? And what is the difference between them?
+  \item
+    Use both variants to generate exactly this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
+  \end{itemize}
+\item
+  What does the \texttt{abs} function do?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?\\
+  \end{itemize}
+\item
+  What does the \texttt{c} function do?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the difference in returned value of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments , or \texttt{1}, \texttt{2} and \texttt{3}?
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{variables-1}{%
+\subsection{Variables}\label{variables-1}}
+
+Create three variables with the given values - x=20, y=10 and z=3. Next, calculate the following with these variables:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x+y\)
+\item
+  \(x^z\)
+\item
+  \(q = x \times y \times z\)
+\item
+  \(\sqrt{q}\)
+\item
+  \(\frac{q}{\pi}\) (pi is simply pi in R)
+\item
+  \(\log_{10}{(x \times y)}\)
+\end{enumerate}
 
 \hypertarget{plotting-rules}{%
 \subsection*{Plotting rules}\label{plotting-rules}}
@@ -1014,8 +2667,48 @@ Report the different observed species (using \texttt{Common.name}) for each genu
 \hypertarget{exercise-solutions}{%
 \chapter{Exercise solutions}\label{exercise-solutions}}
 
-\hypertarget{basic-r-2}{%
-\section{Basic R}\label{basic-r-2}}
+\hypertarget{basic-r-1}{%
+\section{Basic R}\label{basic-r-1}}
+
+\hypertarget{math-in-the-console-1}{%
+\subsection{Math in the console}\label{math-in-the-console-1}}
+
+\(31 + 11\)
+
+\(66 - 24\)
+
+\(\frac{126}{3}\)
+
+\(12^2\)
+
+\(\sqrt{256}\)
+
+\(\frac{3*(4+\sqrt{8})}{5^3}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{31} \OperatorTok{+}\StringTok{ }\DecValTok{11}
+\DecValTok{66} \OperatorTok{-}\StringTok{ }\DecValTok{24}
+\DecValTok{126} \OperatorTok{/}\StringTok{ }\DecValTok{3}
+\DecValTok{12}\OperatorTok{^}\DecValTok{2} 
+\DecValTok{256}\OperatorTok{**}\FloatTok{0.5}
+\NormalTok{(}\DecValTok{3} \OperatorTok{*}\StringTok{ }\NormalTok{(}\DecValTok{4} \OperatorTok{+}\StringTok{ }\DecValTok{8}\OperatorTok{^}\FloatTok{0.5}\NormalTok{))}\OperatorTok{/}\NormalTok{(}\DecValTok{5}\OperatorTok{^}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 42
+## [1] 42
+## [1] 42
+## [1] 144
+## [1] 16
+## [1] 0.1638823
+\end{verbatim}
+
+\hypertarget{first-look-at-functions-1}{%
+\subsection{First look at functions}\label{first-look-at-functions-1}}
+
+\textbf{\texttt{{[}NO\ SOLUTION\ YET{]}}}
 
 \hypertarget{plotting-rules-1}{%
 \subsection*{Plotting rules}\label{plotting-rules-1}}
@@ -1294,7 +2987,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-28-1.pdf}
 
 \hypertarget{a-dictionary-with-a-named-vector-1}{%
 \subsection{A dictionary with a named vector}\label{a-dictionary-with-a-named-vector-1}}
@@ -2047,7 +3740,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-43-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 \textbf{D}
 
