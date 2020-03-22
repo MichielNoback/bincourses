@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Complex Datatypes and File Reading | Data Analysis &amp; Visualization using R (1)</title>
+  <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Complex Datatypes and File Reading | Data Analysis &amp; Visualization using R (1)" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Complex Datatypes and File Reading | Data Analysis &amp; Visualization using R (1)" />
+  
+  <meta name="twitter:description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+<meta name="date" content="2020-03-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-r-plotting-basics.html">
+<link rel="next" href="functions-1.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DAVuR eBook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Getting started</a></li>
+<li class="chapter" data-level="2" data-path="toolbox.html"><a href="toolbox.html"><i class="fa fa-check"></i><b>2</b> The toolbox</a><ul>
+<li class="chapter" data-level="2.1" data-path="toolbox.html"><a href="toolbox.html#why-do-statistical-programming"><i class="fa fa-check"></i><b>2.1</b> Why do statistical programming?</a></li>
+<li class="chapter" data-level="2.2" data-path="toolbox.html"><a href="toolbox.html#overview-of-the-toolbox"><i class="fa fa-check"></i><b>2.2</b> Overview of the toolbox</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="toolbox.html"><a href="toolbox.html#tool-1-the-r-programming-language"><i class="fa fa-check"></i><b>2.2.1</b> Tool 1: The R programming language</a></li>
+<li class="chapter" data-level="2.2.2" data-path="toolbox.html"><a href="toolbox.html#tool-2-rstudio-as-development-environment"><i class="fa fa-check"></i><b>2.2.2</b> Tool 2: RStudio as development environment</a></li>
+<li class="chapter" data-level="2.2.3" data-path="toolbox.html"><a href="toolbox.html#tool-3-rmarkdown"><i class="fa fa-check"></i><b>2.2.3</b> Tool 3: RMarkdown</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html"><i class="fa fa-check"></i><b>3</b> Basic R - coding basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#first-look-at-vectors-fuctions-and-variables"><i class="fa fa-check"></i><b>3.1</b> First look at vectors, fuctions and variables</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#doing-math-in-the-console"><i class="fa fa-check"></i><b>3.1.1</b> Doing Math in the console</a></li>
+<li class="chapter" data-level="3.1.2" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#an-expression-dissected"><i class="fa fa-check"></i><b>3.1.2</b> An expression dissected</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#getting-help-on-a-function"><i class="fa fa-check"></i><b>3.2.1</b> Getting help on a function</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#variables"><i class="fa fa-check"></i><b>3.3</b> Variables</a></li>
+<li class="chapter" data-level="3.4" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#vectors"><i class="fa fa-check"></i><b>3.4</b> Vectors</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#r-is-completely-vector-based"><i class="fa fa-check"></i><b>3.4.1</b> R is completely vector-based</a></li>
+<li class="chapter" data-level="3.4.2" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#five-datatype-that-live-in-vectors"><i class="fa fa-check"></i><b>3.4.2</b> Five datatype that live in vectors</a></li>
+<li class="chapter" data-level="3.4.3" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#creating-vectors"><i class="fa fa-check"></i><b>3.4.3</b> Creating vectors</a></li>
+<li class="chapter" data-level="3.4.4" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#vector-fiddling"><i class="fa fa-check"></i><b>3.4.4</b> Vector fiddling</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#other-operators"><i class="fa fa-check"></i><b>3.5</b> Other operators</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#logical-operators"><i class="fa fa-check"></i><b>3.5.1</b> Logical operators</a></li>
+<li class="chapter" data-level="3.5.2" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#modulo"><i class="fa fa-check"></i><b>3.5.2</b> Modulo: <code>%%</code></a></li>
+<li class="chapter" data-level="3.5.3" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#integer-division-and-rounding"><i class="fa fa-check"></i><b>3.5.3</b> Integer division <code>%/%</code> and rounding</a></li>
+<li class="chapter" data-level="3.5.4" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#the-in-operator"><i class="fa fa-check"></i><b>3.5.4</b> The <code>%in%</code> operator</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#vector-creation-methods"><i class="fa fa-check"></i><b>3.6</b> Vector creation methods</a></li>
+<li class="chapter" data-level="3.7" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#selecting-vector-elements"><i class="fa fa-check"></i><b>3.7</b> Selecting vector elements</a></li>
+<li class="chapter" data-level="3.8" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#some-coding-style-rules-rules-for-writing-code"><i class="fa fa-check"></i><b>3.8</b> Some coding style rules rules for writing code</a></li>
+<li class="chapter" data-level="3.9" data-path="basic-r-coding-basics.html"><a href="basic-r-coding-basics.html#the-best-keyboard-shortcuts-for-rstudio"><i class="fa fa-check"></i><b>3.9</b> The best keyboard shortcuts for RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html"><i class="fa fa-check"></i><b>4</b> Basic R - plotting basics</a><ul>
+<li class="chapter" data-level="4.1" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#basic-embedded-plot-types"><i class="fa fa-check"></i><b>4.1</b> Basic embedded plot types</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#scatter-and-line-plots"><i class="fa fa-check"></i><b>4.1.1</b> Scatter and line plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#barplots"><i class="fa fa-check"></i><b>4.1.2</b> Barplots</a></li>
+<li class="chapter" data-level="4.1.3" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#histograms"><i class="fa fa-check"></i><b>4.1.3</b> Histograms</a></li>
+<li class="chapter" data-level="4.1.4" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#density-plot-as-alternative-to-hist"><i class="fa fa-check"></i><b>4.1.4</b> Density plot as alternative to <code>hist()</code></a></li>
+<li class="chapter" data-level="4.1.5" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#boxplots"><i class="fa fa-check"></i><b>4.1.5</b> Boxplots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#adding-more-data-and-a-legend"><i class="fa fa-check"></i><b>4.1.6</b> Adding more data and a legend</a></li>
+<li class="chapter" data-level="4.1.7" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#helper-lines-and-lm"><i class="fa fa-check"></i><b>4.1.7</b> Helper lines and <code>lm()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="basic-r-plotting-basics.html"><a href="basic-r-plotting-basics.html#graphical-parameters-to-plot"><i class="fa fa-check"></i><b>4.2</b> Graphical parameters to <code>plot()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html"><i class="fa fa-check"></i><b>5</b> Complex Datatypes and File Reading</a><ul>
+<li class="chapter" data-level="5.1" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#matrices-are-vectors-with-dimensions"><i class="fa fa-check"></i><b>5.1</b> Matrices are vectors with dimensions</a></li>
+<li class="chapter" data-level="5.2" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#factors-nominal-ordinal-scales"><i class="fa fa-check"></i><b>5.2</b> Factors: Nominal &amp; Ordinal scales</a></li>
+<li class="chapter" data-level="5.3" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#lists"><i class="fa fa-check"></i><b>5.3</b> Lists</a></li>
+<li class="chapter" data-level="5.4" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#dataframes"><i class="fa fa-check"></i><b>5.4</b> Dataframes</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#selections-on-dataframes"><i class="fa fa-check"></i><b>5.4.1</b> Selections on dataframes</a></li>
+<li class="chapter" data-level="5.4.2" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#read-from-file-using-read.table"><i class="fa fa-check"></i><b>5.4.2</b> Read from file using <code>read.table()</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="complex-datatypes-and-file-reading.html"><a href="complex-datatypes-and-file-reading.html#dataframe-manipulations"><i class="fa fa-check"></i><b>5.4.3</b> Dataframe manipulations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>6</b> Functions</a><ul>
+<li class="chapter" data-level="6.1" data-path="functions-1.html"><a href="functions-1.html#dealing-with-nas"><i class="fa fa-check"></i><b>6.1</b> Dealing with NAs</a></li>
+<li class="chapter" data-level="6.2" data-path="functions-1.html"><a href="functions-1.html#descriptive-statistics"><i class="fa fa-check"></i><b>6.2</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="6.3" data-path="functions-1.html"><a href="functions-1.html#general-purpose-functions"><i class="fa fa-check"></i><b>6.3</b> General purpose functions</a></li>
+<li class="chapter" data-level="6.4" data-path="functions-1.html"><a href="functions-1.html#convert-numeric-vector-to-factor-cut"><i class="fa fa-check"></i><b>6.4</b> Convert numeric vector to factor: <code>cut()</code></a></li>
+<li class="chapter" data-level="6.5" data-path="functions-1.html"><a href="functions-1.html#file-io-revisited"><i class="fa fa-check"></i><b>6.5</b> File I/O revisited</a></li>
+<li class="chapter" data-level="6.6" data-path="functions-1.html"><a href="functions-1.html#pattern-matching"><i class="fa fa-check"></i><b>6.6</b> Pattern matching</a><ul>
+<li class="chapter" data-level="6.6.1" data-path="functions-1.html"><a href="functions-1.html#regex-syntax"><i class="fa fa-check"></i><b>6.6.1</b> Regex syntax</a></li>
+<li class="chapter" data-level="6.6.2" data-path="functions-1.html"><a href="functions-1.html#quantifiers"><i class="fa fa-check"></i><b>6.6.2</b> Quantifiers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="functions-1.html"><a href="functions-1.html#some-examples"><i class="fa fa-check"></i><b>6.6.3</b> Some examples</a></li>
+<li class="chapter" data-level="6.6.4" data-path="functions-1.html"><a href="functions-1.html#anchoring"><i class="fa fa-check"></i><b>6.6.4</b> Anchoring</a></li>
+<li class="chapter" data-level="6.6.5" data-path="functions-1.html"><a href="functions-1.html#metacharacters-special-character-classes"><i class="fa fa-check"></i><b>6.6.5</b> Metacharacters: Special character classes</a></li>
+<li class="chapter" data-level="6.6.6" data-path="functions-1.html"><a href="functions-1.html#locating-and-extracting"><i class="fa fa-check"></i><b>6.6.6</b> Locating and Extracting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="scripting.html"><a href="scripting.html"><i class="fa fa-check"></i><b>7</b> Scripting</a></li>
+<li class="chapter" data-level="8" data-path="dataframe-manipulations-1.html"><a href="dataframe-manipulations-1.html"><i class="fa fa-check"></i><b>8</b> Dataframe manipulations</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#basic-r"><i class="fa fa-check"></i><b>9.1</b> Basic R</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="exercises.html"><a href="exercises.html#math-in-the-console"><i class="fa fa-check"></i><b>9.1.1</b> Math in the console</a></li>
+<li class="chapter" data-level="9.1.2" data-path="exercises.html"><a href="exercises.html#first-look-at-functions"><i class="fa fa-check"></i><b>9.1.2</b> First look at functions</a></li>
+<li class="chapter" data-level="9.1.3" data-path="exercises.html"><a href="exercises.html#variables-1"><i class="fa fa-check"></i><b>9.1.3</b> Variables</a></li>
+<li class="chapter" data-level="" data-path="exercises.html"><a href="exercises.html#plotting-rules"><i class="fa fa-check"></i>Plotting rules</a></li>
+<li class="chapter" data-level="9.1.4" data-path="exercises.html"><a href="exercises.html#stair-walking-and-heart-rate"><i class="fa fa-check"></i><b>9.1.4</b> Stair walking and heart rate</a></li>
+<li class="chapter" data-level="9.1.5" data-path="exercises.html"><a href="exercises.html#more-subjects"><i class="fa fa-check"></i><b>9.1.5</b> More subjects</a></li>
+<li class="chapter" data-level="9.1.6" data-path="exercises.html"><a href="exercises.html#chickens-on-a-diet"><i class="fa fa-check"></i><b>9.1.6</b> Chickens on a diet</a></li>
+<li class="chapter" data-level="9.1.7" data-path="exercises.html"><a href="exercises.html#chicken-bar-plot"><i class="fa fa-check"></i><b>9.1.7</b> Chicken bar plot</a></li>
+<li class="chapter" data-level="9.1.8" data-path="exercises.html"><a href="exercises.html#discoveries"><i class="fa fa-check"></i><b>9.1.8</b> Discoveries</a></li>
+<li class="chapter" data-level="9.1.9" data-path="exercises.html"><a href="exercises.html#lung-cancer"><i class="fa fa-check"></i><b>9.1.9</b> Lung cancer</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#complex-datatypes"><i class="fa fa-check"></i><b>9.2</b> Complex datatypes</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#creating-factors"><i class="fa fa-check"></i><b>9.2.1</b> Creating factors</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#a-dictionary-with-a-named-vector"><i class="fa fa-check"></i><b>9.2.2</b> A dictionary with a named vector</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>9.2.3</b> airquality</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>9.2.4</b> Bird observations</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>9.3</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>9.3.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>9.3.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>9.3.3</b> Fasta Headers</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#scripting-1"><i class="fa fa-check"></i><b>9.4</b> Scripting</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>9.4.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>9.4.2</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="9.4.3" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>9.4.3</b> Vector distance</a></li>
+<li class="chapter" data-level="9.4.4" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>9.4.4</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>9.5</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>9.5.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="9.5.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.5.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.5.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>9.5.3</b> Food constituents</a></li>
+<li class="chapter" data-level="9.5.4" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>9.5.4</b> Bird observations revisited</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#basic-r-1"><i class="fa fa-check"></i><b>10.1</b> Basic R</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#math-in-the-console-1"><i class="fa fa-check"></i><b>10.1.1</b> Math in the console</a></li>
+<li class="chapter" data-level="10.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#first-look-at-functions-1"><i class="fa fa-check"></i><b>10.1.2</b> First look at functions</a></li>
+<li class="chapter" data-level="" data-path="exercise-solutions.html"><a href="exercise-solutions.html#plotting-rules-1"><i class="fa fa-check"></i>Plotting rules</a></li>
+<li class="chapter" data-level="10.1.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#stair-walking-and-heart-rate-1"><i class="fa fa-check"></i><b>10.1.3</b> Stair walking and heart rate</a></li>
+<li class="chapter" data-level="10.1.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#more-subjects-1"><i class="fa fa-check"></i><b>10.1.4</b> More subjects</a></li>
+<li class="chapter" data-level="10.1.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickens-on-a-diet-1"><i class="fa fa-check"></i><b>10.1.5</b> Chickens on a diet</a></li>
+<li class="chapter" data-level="10.1.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chicken-bar-plot-1"><i class="fa fa-check"></i><b>10.1.6</b> Chicken bar plot</a></li>
+<li class="chapter" data-level="10.1.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#discoveries-1"><i class="fa fa-check"></i><b>10.1.7</b> Discoveries</a></li>
+<li class="chapter" data-level="10.1.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#lung-cancer-1"><i class="fa fa-check"></i><b>10.1.8</b> Lung cancer</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#complex-datatypes-1"><i class="fa fa-check"></i><b>10.2</b> Complex datatypes</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#creating-factors-1"><i class="fa fa-check"></i><b>10.2.1</b> Creating factors</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#a-dictionary-with-a-named-vector-1"><i class="fa fa-check"></i><b>10.2.2</b> A dictionary with a named vector</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#airquality-1"><i class="fa fa-check"></i><b>10.2.3</b> airquality</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>10.2.4</b> Bird observations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>10.3</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>10.3.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>10.3.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>10.3.3</b> Fasta Headers</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-2"><i class="fa fa-check"></i><b>10.4</b> Scripting</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>10.4.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>10.4.2</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="10.4.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>10.4.3</b> Vector distance</a></li>
+<li class="chapter" data-level="10.4.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>10.4.4</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>10.5</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>10.5.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.5.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>10.5.3</b> Food constituents</a></li>
+<li class="chapter" data-level="10.5.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>10.5.4</b> Bird observations revisited</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis &amp; Visualization using R (1)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="complex-datatypes-and-file-reading" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Complex Datatypes and File Reading</h1>
+<div id="matrices-are-vectors-with-dimensions" class="section level2">
+<h2><span class="header-section-number">5.1</span> Matrices are vectors with dimensions</h2>
+<p>We will not detail on them in this course, only this one small paragraph. This does not mean they are not important, but they are just not the focus here. Some functions require or return a matrix so you should be aware of them.</p>
+<pre class="sourceCode r"><code class="sourceCode r">m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">5</span>) 
+m</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">v &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
+<span class="kw">dim</span>(v) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>)
+v</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10</code></pre>
+</div>
+<div id="factors-nominal-ordinal-scales" class="section level2">
+<h2><span class="header-section-number">5.2</span> Factors: Nominal &amp; Ordinal scales</h2>
+<p>Although factors are not actually a complex datatype but very much one of the five base types in R, I saved them because they have some more complex and sometimes puzzling behaviour.</p>
+<blockquote>
+<p>Factors represent different discrete levels of a variable - the <em>nominal</em> and <em>ordinal</em> scales known from statistics.</p>
+</blockquote>
+<p>For instance:</p>
+<ul>
+<li>eye color (brown, blue, green)</li>
+<li>weight class (underweight, normal, obese)</li>
+<li>autism spectrum (none, minimal, heavy)</li>
+</ul>
+<div id="factor-creation" class="section level4 unnumbered">
+<h4>Factor creation</h4>
+<p>Factors are used to represent data in nominal and ordinal scales. <strong><em>Nominal</em></strong> has no order (e.g. eye color). <strong><em>Ordinal</em></strong> has order (e.g. autism spectrum), but can not be calculated with, other than ordering from high to low. No <em>distance</em> is defined between separate levels. The following functions are used to create factors:</p>
+<ul>
+<li><code>factor()</code>: constructor function, from factor, character, numeric or logical</li>
+<li><code>as.factor()</code>: coercion function, from factor, character, numeric or logical</li>
+<li><code>cut()</code>: conversion function from numeric vector</li>
+</ul>
+<p>So what is the difference between <code>factor()</code> and <code>as.factor()</code>? Function <code>as.factor()</code> is a <em>wrapper</em> for <code>factor()</code>. The difference lies in behaviour when the input is a factor itself: <code>factor</code> will omit unused levels. Besides this, <code>as.factor()</code> does not specify the arguments for labels and levels.</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))
+x
+<span class="kw">factor</span>(x)
+<span class="kw">as.factor</span>(x)</code></pre>
+<pre><code>## [1] a b
+## Levels: a b c
+## [1] a b
+## Levels: a b
+## [1] a b
+## Levels: a b c</code></pre>
+<p>Suppose you have surveyed the eye color of your class room and found these values</p>
+<pre class="sourceCode r"><code class="sourceCode r">eye_colors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;blue&quot;</span>,
+    <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;green&quot;</span>,
+    <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;brown&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;brown&quot;</span>)</code></pre>
+<p>Next you would like to plot or tabulate these findings. Simply plotting gives an error:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(eye_colors)</code></pre>
+<pre><code>## Warning in xy.coords(x, y, xlabel, ylabel, log): NAs introduced by coercion</code></pre>
+<pre><code>## Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
+<pre><code>## Warning in max(x): no non-missing arguments to max; returning -Inf</code></pre>
+<pre><code>## Error in plot.window(...): need finite &#39;ylim&#39; values</code></pre>
+<p><img src="davur_ebook_files/figure-html/eye-color-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>However, plotting a character vector converted to a factor is easy</p>
+<pre class="sourceCode r"><code class="sourceCode r">eye_colors &lt;-<span class="st"> </span><span class="kw">as.factor</span>(eye_colors)
+<span class="kw">plot</span>(eye_colors)</code></pre>
+<p><img src="davur_ebook_files/figure-html/eye-color-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Factors are also really easy to tabulate and filter</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(eye_colors)</code></pre>
+<pre><code>## eye_colors
+##  blue brown green 
+##     5     9     2</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(eye_colors <span class="op">==</span><span class="st"> &quot;blue&quot;</span>)</code></pre>
+<pre><code>## [1] 5</code></pre>
+</div>
+<div id="levels-labels-and-ordering" class="section level4 unnumbered">
+<h4>Levels, Labels and Ordering</h4>
+<p>When working with ordinal scales, defining the order of the factors (levels) is crucial. By default, R uses the <em>natural ordering</em> which means it will stick to either numerical (<code>numeric</code>, <code>integer</code> and <code>logical</code>) or alphabetical ordering (<code>character</code>). When you want a different ordering you need to specify this. You can even define missing levels, as shown in the following example.</p>
+<pre class="sourceCode r"><code class="sourceCode r">classSizes &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;huge&quot;</span>, <span class="st">&quot;huge&quot;</span>, 
+    <span class="st">&quot;small&quot;</span>,<span class="st">&quot;big&quot;</span>,<span class="st">&quot;small&quot;</span>,<span class="st">&quot;big&quot;</span>),
+    <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;normal&quot;</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;huge&quot;</span>),
+    <span class="dt">ordered =</span> <span class="ot">TRUE</span>) <span class="co">#make it an ordinal scale!</span>
+<span class="kw">plot</span>(classSizes)</code></pre>
+<p><img src="davur_ebook_files/figure-html/class-sizes-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>When you have factor, you can do a -limited- set of calulations with it. However, comparators only work with ordinal scale. As with all equality tests, <code>sum()</code> works as well:</p>
+<pre class="sourceCode r"><code class="sourceCode r">classSizes <span class="op">&lt;</span><span class="st"> &quot;big&quot;</span> <span class="co">## only with in Ordinal scale</span></code></pre>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(classSizes <span class="op">==</span><span class="st"> &quot;huge&quot;</span>) </code></pre>
+<pre><code>## [1] 2</code></pre>
+</div>
+<div id="convert-existing-factors" class="section level4 unnumbered">
+<h4>Convert existing factors</h4>
+<p>When you already have an unordered factor, you can make it ordered by using the function <code>ordered()</code> together with a fvector specifying the levels.</p>
+<pre class="sourceCode r"><code class="sourceCode r">classSizes &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;huge&quot;</span>, <span class="st">&quot;huge&quot;</span>,
+    <span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>))
+classSizes &lt;-<span class="st"> </span><span class="kw">ordered</span>(classSizes,
+                    <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;small&quot;</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;huge&quot;</span>))
+classSizes</code></pre>
+<pre><code>## [1] big   small huge  huge  small big   small big  
+## Levels: small &lt; big &lt; huge</code></pre>
+</div>
+<div id="when-calculations-get-corrupted" class="section level4 unnumbered">
+<h4>When calculations get corrupted</h4>
+<p>Especially when a factor consists of numeric levels, calculations can get your mind screwed big time:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>))
+x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<pre><code>## Warning in Ops.factor(x, 1): &#39;+&#39; not meaningful for factors</code></pre>
+<pre><code>## [1] NA NA NA NA</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(x) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<pre><code>## [1] 2 3 4 3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="kw">levels</span>(x)) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<pre><code>## [1] 4 5 6</code></pre>
+<p>The only way to get the numbers back with numeric factors is by using this trick</p>
+<pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
+<pre><code>## [1] 3 4 5 4
+## Levels: 3 4 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="kw">levels</span>(x))[x]</code></pre>
+<pre><code>## [1] 3 4 5 4</code></pre>
+<p>But this makes for really unintelligible code so try to prevent this at all costs!</p>
+</div>
+<div id="the-power-of-factors" class="section level4 unnumbered">
+<h4>The power of factors</h4>
+<p>Factors are used all the time e.g. for defining treated/untreated. That’s why R knows how to deal with them so well:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(ChickWeight, <span class="kw">plot</span>(weight <span class="op">~</span><span class="st"> </span>Diet))</code></pre>
+<p><img src="davur_ebook_files/figure-html/factor-plotting-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>You will see many many exaples in the subsequent chapters of this and the next course.</p>
+</div>
+</div>
+<div id="lists" class="section level2">
+<h2><span class="header-section-number">5.3</span> Lists</h2>
+<blockquote>
+<p>A list is an <strong><em>ordered collection of vectors</em></strong>. These vectors can have <em>differing types</em> and <em>differing lengths</em>.</p>
+</blockquote>
+<div id="list-creation" class="section level4 unnumbered">
+<h4>List creation</h4>
+<p>Create a list with or without element names:</p>
+<ul>
+<li><code>list(element1, element2, ...)</code><br />
+</li>
+<li><code>list(name1 = element1, name2 = element2, ...)</code></li>
+</ul>
+<p>Without names:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>);  y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>)
+l &lt;-<span class="st"> </span><span class="kw">list</span>(x, y); l</code></pre>
+<pre><code>## [[1]]
+## [1] 2 3 1
+## 
+## [[2]]
+## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l[[<span class="dv">2</span>]]</code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<p>With names:</p>
+<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)
+y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;foo&quot;</span>, <span class="st">&quot;bar&quot;</span>)
+l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;numbers&quot;</span> =<span class="st"> </span>x, <span class="st">&quot;words&quot;</span> =<span class="st"> </span>y)
+l</code></pre>
+<pre><code>## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<p>This is the preferred way to create and use them because it gives you more and easier ways to access its elements and it makes for much more reradable code. That’s why you will only see lists with named elements from here on.</p>
+</div>
+<div id="making-selections-on-lists" class="section level4 unnumbered">
+<h4>Making selections on lists</h4>
+<p>Accessing named elements can be done in three ways:</p>
+<ul>
+<li>By index, within double or single brackets: <code>[[&lt;index&gt;]]</code> or <code>[&lt;index&gt;]</code></li>
+<li>By name of the element, within double or single brackets: <code>[[&lt;name&gt;]]</code> or <code>[&lt;name&gt;]</code></li>
+<li>By name of the element, using the dollar sign on the list name: <code>$&lt;name&gt;</code></li>
+</ul>
+<p>Here are all three:</p>
+<pre class="sourceCode r"><code class="sourceCode r">l[[<span class="dv">2</span>]]        <span class="co"># index</span></code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l[[<span class="st">&quot;words&quot;</span>]]  <span class="co"># name of element with double brackets</span></code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l<span class="op">$</span>words       <span class="co"># name of element with dollar sign</span></code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<blockquote>
+<p>Single brackets selection on a list returns a list; double brackets and <code>$</code> return a vector.</p>
+</blockquote>
+<pre class="sourceCode r"><code class="sourceCode r">l[<span class="dv">2</span>]</code></pre>
+<pre><code>## $words
+## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l[[<span class="dv">2</span>]]</code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l<span class="op">$</span>words</code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<p>In R, selections are often <strong><em>chained</em></strong>. In the following example the second vector element of the second list element is selected.</p>
+<pre class="sourceCode r"><code class="sourceCode r">l
+l[[<span class="dv">2</span>]][<span class="dv">2</span>] </code></pre>
+<pre><code>## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] &quot;foo&quot; &quot;bar&quot;
+## 
+## [1] &quot;bar&quot;</code></pre>
+<p>When you need multiple elements of a list, use <strong><em>single brackets</em></strong>. Remember: single brackets return a list; that’s why you need single brackets here.</p>
+<pre class="sourceCode r"><code class="sourceCode r">l[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)]</code></pre>
+<pre><code>## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] &quot;foo&quot; &quot;bar&quot;
+## 
+## $numbers
+## [1] 2 3 1</code></pre>
+<p>Accessing named elements has its limitations. You can not use a variable in combination with the dollar sign selector.</p>
+<pre class="sourceCode r"><code class="sourceCode r">select &lt;-<span class="st"> &quot;words&quot;</span>
+l[[select]] <span class="co">## OK</span></code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">l<span class="op">$</span>select <span class="co">##fails - no element with name &quot;select&quot;</span></code></pre>
+<pre><code>## NULL</code></pre>
+<p>Chaining of selectors can become awkward, as this example demonstrates.</p>
+<pre class="sourceCode r"><code class="sourceCode r">l[<span class="dv">2</span>][<span class="st">&quot;words&quot;</span>][<span class="dv">1</span>]<span class="op">$</span>words  <span class="co">## mind****</span></code></pre>
+<pre><code>## [1] &quot;foo&quot; &quot;bar&quot;</code></pre>
+</div>
+</div>
+<div id="dataframes" class="section level2">
+<h2><span class="header-section-number">5.4</span> Dataframes</h2>
+<blockquote>
+<p>A dataframe is an <strong><em>ordered collection of vectors</em></strong>. These vectors can have <em>differing types</em> but must have <em>equal lengths</em>.</p>
+</blockquote>
+<p>A dataframe is very similar to the square grid-like structures you have probably worked with in Excel. Variables are in columns in which all elements are of the same type. Examples (observations) are in rows - they <em>can</em> have differing types.</p>
+<p>Dataframes can be constructed using the <code>data.frame()</code> function in the same way as the <code>list</code> function:<br />
+<code>data.frame(column1 = vector1, column2 = vector2, ...)</code></p>
+<p>Here is a first example.</p>
+<pre class="sourceCode r"><code class="sourceCode r">geneNames &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;P53&quot;</span>,<span class="st">&quot;BRCA1&quot;</span>,<span class="st">&quot;VAMP1&quot;</span>, <span class="st">&quot;FHIT&quot;</span>)
+sig &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)
+meanExp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">7.3</span>, <span class="fl">5.4</span>, <span class="fl">2.4</span>)
+genes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+    <span class="st">&quot;name&quot;</span> =<span class="st"> </span>geneNames,  
+    <span class="st">&quot;significant&quot;</span> =<span class="st"> </span>sig,  
+    <span class="st">&quot;expression&quot;</span> =<span class="st"> </span>meanExp)  
+genes</code></pre>
+<pre><code>##    name significant expression
+## 1   P53        TRUE        4.5
+## 2 BRCA1        TRUE        7.3
+## 3 VAMP1       FALSE        5.4
+## 4  FHIT       FALSE        2.4</code></pre>
+<p>Here you can see the structure of a dataframe: each column has a single datatype but rows can have differing types for neighboring fields.</p>
+<p><img src="figures/Dataframe_view1.png" /></p>
+<div id="selections-on-dataframes" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Selections on dataframes</h3>
+<p>Making selections on dataframes is not very surprising when you already know how to do it with vectors and lists. There is only one extension. The fact that it is a square grid-like structure makes it possible to add an extra way of making selections: combining rows and column selections as subgrids. This section extensively reviews all means of making selections.</p>
+<p>This is a summary:</p>
+<ul>
+<li>Select a single column using <code>$</code> will return a vector</li>
+<li>Selecting with double brackets <code>[[&lt;name&gt;]]</code> or <code>[[&lt;index&gt;]]</code> will return a vector</li>
+<li>Selecting with single brackets <code>[&lt;name&gt;]</code> or <code>[&lt;index&gt;]</code> will return a dataframe</li>
+<li>Selecting with row-and-column coordinates <code>[row_selection, col_selection]</code> returns either a vector or a dataframe, depending on the selection made. Here, <code>row_selection</code> and <code>col_selection</code> can be
+<ul>
+<li>a numerical vector of length 1 or more</li>
+<li>a logical vector of length 1 or more</li>
+<li>empty (to select all rows/columns)</li>
+</ul></li>
+</ul>
+<p>Here follow a few examples.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[<span class="dv">2</span>,<span class="dv">1</span>]            <span class="co">#row 2, column 1</span></code></pre>
+<pre><code>## [1] BRCA1
+## Levels: BRCA1 FHIT P53 VAMP1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[<span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]     <span class="co">#row 2, columns 1 and 2</span></code></pre>
+<pre><code>##    name significant
+## 2 BRCA1        TRUE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[<span class="dv">2</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)] <span class="co">#row 2, column 1 and 3</span></code></pre>
+<pre><code>##    name expression
+## 2 BRCA1        7.3</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes<span class="op">$</span>name          <span class="co">#column &quot;name&quot;</span></code></pre>
+<pre><code>## [1] P53   BRCA1 VAMP1 FHIT 
+## Levels: BRCA1 FHIT P53 VAMP1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[, <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;expression&quot;</span>)]  <span class="co">#columns &quot;name&quot; and &quot;expression&quot;, all rows</span></code></pre>
+<pre><code>##    name expression
+## 1   P53        4.5
+## 2 BRCA1        7.3
+## 3 VAMP1        5.4
+## 4  FHIT        2.4</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]      <span class="co">#columns 1 and 2, all rows</span></code></pre>
+<pre><code>##    name significant
+## 1   P53        TRUE
+## 2 BRCA1        TRUE
+## 3 VAMP1       FALSE
+## 4  FHIT       FALSE</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>genes[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]      <span class="co">#row 1 and 2, all columns</span></code></pre>
+<pre><code>##    name significant expression
+## 1   P53        TRUE        4.5
+## 2 BRCA1        TRUE        7.3</code></pre>
+<p>As with vectors and lists, R will cycle selectors, and you can select an element as often as you want.</p>
+<pre class="sourceCode r"><code class="sourceCode r">genes[<span class="kw">c</span>(T, F), <span class="dv">1</span>]   <span class="co">#every uneven row, column 1</span></code></pre>
+<pre><code>## [1] P53   VAMP1
+## Levels: BRCA1 FHIT P53 VAMP1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">genes[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), ]  <span class="co">#three times row 1 and row 2</span></code></pre>
+<pre><code>##      name significant expression
+## 1     P53        TRUE        4.5
+## 1.1   P53        TRUE        4.5
+## 1.2   P53        TRUE        4.5
+## 2   BRCA1        TRUE        7.3</code></pre>
+<p>A dataframe is much like a list, but not entirely equal:</p>
+<pre class="sourceCode r"><code class="sourceCode r">genes[[<span class="st">&quot;name&quot;</span>]] <span class="co">## select column w. double brackets</span></code></pre>
+<pre><code>## [1] P53   BRCA1 VAMP1 FHIT 
+## Levels: BRCA1 FHIT P53 VAMP1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(genes) <span class="co">## it is NOT a list though</span></code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(genes)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    4 obs. of  3 variables:
+##  $ name       : Factor w/ 4 levels &quot;BRCA1&quot;,&quot;FHIT&quot;,..: 3 1 4 2
+##  $ significant: logi  TRUE TRUE FALSE FALSE
+##  $ expression : num  4.5 7.3 5.4 2.4</code></pre>
+<div id="selections-with-subset" class="section level4 unnumbered">
+<h4>Selections with <code>subset()</code></h4>
+<p>Function <code>subset()</code> can serve as alternative to “bracket-based” selections (<code>[ , ]</code>).
+You can use <code>subset()</code> to make both <strong>column</strong> and <strong>row selections</strong>. Here, using <code>subset =</code>, the rows are selected for which Solar.R is available using the <code>is.na()</code> function.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">subset</span>(airquality, <span class="dt">subset =</span> <span class="op">!</span><span class="kw">is.na</span>(Solar.R)))</code></pre>
+<pre><code>##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67   May   1
+## 2    36     118  8.0   72   May   2
+## 3    12     149 12.6   74   May   3
+## 4    18     313 11.5   62   May   4
+## 7    23     299  8.6   65   May   7
+## 8    19      99 13.8   59   May   8</code></pre>
+<p>Note that you don’t even need to use quotes for column names.</p>
+<p>Select columns only with the <code>select =</code> argument.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">subset</span>(airquality, <span class="dt">select =</span> <span class="kw">c</span>(Ozone, Solar.R)))</code></pre>
+<pre><code>##   Ozone Solar.R
+## 1    41     190
+## 2    36     118
+## 3    12     149
+## 4    18     313
+## 5    NA      NA
+## 6    28      NA</code></pre>
+<p>Of course, you can combine row and colum selection:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">subset</span>(airquality, 
+            <span class="dt">subset =</span> <span class="op">!</span><span class="kw">is.na</span>(Solar.R), 
+            <span class="dt">select =</span> <span class="kw">c</span>(Ozone, Solar.R)))</code></pre>
+<pre><code>##   Ozone Solar.R
+## 1    41     190
+## 2    36     118
+## 3    12     149
+## 4    18     313
+## 7    23     299
+## 8    19      99</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># shorthand notation</span>
+<span class="co">#subset(airquality, Day == 1, select = -Temp)</span></code></pre>
+<p><code>subset()</code> can be used more sophisticated; however we are going to see <code>subset()</code> on steroids in the next course: the functions in package <code>dplyr</code>.</p>
+</div>
+</div>
+<div id="read-from-file-using-read.table" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Read from file using <code>read.table()</code></h3>
+<p>Usually your data comes from file, loaded into memory as a dataframe. The most common data transfer &amp; storage format is text. The text will have column separators that can be any of a whole number of characters, but tab- or comma-delimited are most common.<br />
+Here is an example dataset in a file (“whale_selenium.txt”) where the separator is a space character:</p>
+<pre><code>whale liver.Se tooth.Se  
+1 6.23 140.16  
+2 6.79 133.32  
+3 7.92 135.34  
+...  
+19 41.23 206.30  
+20 45.47 141.31  </code></pre>
+<p>To load this data into an R session you can use the function <code>read.table()</code>. Let’s try</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>whale_selenium &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/whale_selenium.txt&quot;</span>)
+<span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(whale_selenium) <span class="co"># first rows</span></code></pre>
+<pre><code>##      V1       V2       V3
+## 1 whale liver.Se tooth.Se
+## 2     1     6.23   140.16
+## 3     2     6.79   133.32
+## 4     3     7.92   135.34
+## 5     4     8.02   127.82
+## 6     5     9.34   108.67</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">str</span>(whale_selenium) <span class="co"># structure</span></code></pre>
+<pre><code>## &#39;data.frame&#39;:    21 obs. of  3 variables:
+##  $ V1: Factor w/ 21 levels &quot;1&quot;,&quot;10&quot;,&quot;11&quot;,..: 21 1 12 14 15 16 17 18 19 20 ...
+##  $ V2: Factor w/ 21 levels &quot;10.00&quot;,&quot;10.57&quot;,..: 21 16 17 18 19 20 1 2 3 4 ...
+##  $ V3: Factor w/ 21 levels &quot;108.67&quot;,&quot;112.63&quot;,..: 21 8 5 6 3 1 12 4 11 14 ...</code></pre>
+<p>That is not entirely correct: all columns are imported as a factor while obviously they should be numeric. The cause of this is that, when loading the data,</p>
+<ul>
+<li>there is no special consideration for the header line</li>
+<li>the separator is assumed to be a space</li>
+<li>the decimal is assumed to be a dot “.”</li>
+</ul>
+<p>(and some more assumptions)</p>
+<p>Therefore, to read a file correctly, you have to specify its format in every detail. in this case,</p>
+<ul>
+<li>the first line is a header with column names</li>
+<li>the first column contains the row names</li>
+</ul>
+<p>Here is a new attempt with some <strong><em>format specifications</em></strong>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">whale_selenium &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    <span class="dt">file =</span> <span class="st">&quot;data/whale_selenium.txt&quot;</span>,
+    <span class="dt">header =</span> <span class="ot">TRUE</span>,
+    <span class="dt">row.names =</span> <span class="dv">1</span>)</code></pre>
+<p>Before proceeding with your data, you should always perform some checks. Several helper methods exist for this purpose:</p>
+<ul>
+<li><code>head()</code> shows you the first <code>n</code> lines</li>
+<li><code>str()</code> gives you a structure description: what types have the columns and what dimension does the data frame have?</li>
+<li><code>summary()</code> gives you a 6-number sumary of the data</li>
+</ul>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">head</span>(whale_selenium, <span class="dt">n=</span><span class="dv">4</span>) </code></pre>
+<pre><code>##   liver.Se tooth.Se
+## 1     6.23   140.16
+## 2     6.79   133.32
+## 3     7.92   135.34
+## 4     8.02   127.82</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">str</span>(whale_selenium) </code></pre>
+<pre><code>## &#39;data.frame&#39;:    20 obs. of  2 variables:
+##  $ liver.Se: num  6.23 6.79 7.92 8.02 9.34 ...
+##  $ tooth.Se: num  140 133 135 128 109 ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">summary</span>(whale_selenium) </code></pre>
+<pre><code>##     liver.Se         tooth.Se    
+##  Min.   : 6.230   Min.   :108.7  
+##  1st Qu.: 9.835   1st Qu.:134.8  
+##  Median :14.905   Median :143.4  
+##  Mean   :20.685   Mean   :156.6  
+##  3rd Qu.:33.633   3rd Qu.:175.1  
+##  Max.   :45.470   Max.   :245.1</code></pre>
+<p>There are various other helper methods the you can use to inspect the contents and nature of your dataframe columns and rows:</p>
+<ul>
+<li><code>dim()</code> gives the rows and columns</li>
+<li><code>ncol()</code> gives the number of columns</li>
+<li><code>nrow()</code> gives the number of rows</li>
+<li><code>names()</code> gives the column names (synonym to <code>colnames()</code>)</li>
+<li><code>rownames()</code> gives the row names</li>
+</ul>
+<p>But visualizing your data speaks more than a thousand words of course.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(whale_selenium<span class="op">$</span>liver.Se, whale_selenium<span class="op">$</span>tooth.Se,
+    <span class="dt">xlab =</span> <span class="st">&quot;liver Selenium&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;tooth Selenium&quot;</span>)
+<span class="kw">abline</span>(<span class="kw">lm</span>(whale_selenium<span class="op">$</span>tooth.Se <span class="op">~</span><span class="st"> </span>whale_selenium<span class="op">$</span>liver.Se))</code></pre>
+<p><img src="davur_ebook_files/figure-html/data-frame-io3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>This is absolutely not the whole filereading story! The topic will be addressed again in a later chapter.</p>
+</div>
+<div id="dataframe-manipulations" class="section level3">
+<h3><span class="header-section-number">5.4.3</span> Dataframe manipulations</h3>
+<div id="changing-column-names" class="section level4 unnumbered">
+<h4>Changing column names</h4>
+<p>Sometimes the existing column names are not convenient to work with (unclear, too long etc.). In that case it may be a good idea to change the column names. To do this you can use either <code>names()</code> or <code>colnames()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(whale_selenium) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;liver&quot;</span>, <span class="st">&quot;tooth&quot;</span>)
+<span class="kw">head</span>(whale_selenium, <span class="dt">n=</span><span class="dv">2</span>)</code></pre>
+<pre><code>##   liver  tooth
+## 1  6.23 140.16
+## 2  6.79 133.32</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##or</span>
+<span class="kw">colnames</span>(whale_selenium) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pancreas&quot;</span>, <span class="st">&quot;colon&quot;</span>)
+<span class="kw">head</span>(whale_selenium, <span class="dt">n=</span><span class="dv">2</span>)</code></pre>
+<pre><code>##   pancreas  colon
+## 1     6.23 140.16
+## 2     6.79 133.32</code></pre>
+</div>
+<div id="adding-columns" class="section level4 unnumbered">
+<h4>Adding columns</h4>
+<p>You can add a single column by simply specifying its name and the value(s) to be attached.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## add simulated stomach data</span>
+whale_selenium<span class="op">$</span>stomach &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">nrow</span>(whale_selenium), <span class="dv">42</span>, <span class="dv">6</span>) 
+<span class="kw">head</span>(whale_selenium, <span class="dt">n=</span><span class="dv">2</span>)</code></pre>
+<pre><code>##   liver  tooth  stomach
+## 1  6.23 140.16 52.53270
+## 2  6.79 133.32 50.69782</code></pre>
+<p>Alternatively, use <code>cbind</code>. It is a bit more versatile because you can add multiple columns at once.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(whale_selenium, <span class="st">&quot;brain&quot;</span> =<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>)) <span class="co">#cycled values!</span></code></pre>
+<pre><code>##    liver  tooth  stomach brain
+## 1   6.23 140.16 52.53270     1
+## 2   6.79 133.32 50.69782     0
+## 3   7.92 135.34 39.30723     1
+## 4   8.02 127.82 42.84040     0
+## 5   9.34 108.67 39.75810     1
+## 6  10.00 146.22 34.76140     0
+## 7  10.57 131.18 26.03192     1
+## 8  11.04 145.51 41.84943     0
+## 9  12.36 163.24 41.79376     1
+## 10 14.53 136.55 51.85415     0
+## 11 15.28 112.63 30.02723     1
+## 12 18.68 245.07 38.02698     0
+## 13 22.08 140.48 47.28023     1
+## 14 27.55 177.93 44.05432     0
+## 15 32.83 160.73 42.73052     1
+## 16 36.04 227.60 38.27543     0
+## 17 37.74 177.69 43.20567     1
+## 18 40.00 174.23 40.58457     0
+## 19 41.23 206.30 42.68197     1
+## 20 45.47 141.31 38.53242     0</code></pre>
+</div>
+<div id="adding-rows-rbind" class="section level4 unnumbered">
+<h4>Adding rows: <code>rbind()</code></h4>
+<p>Adding rows to a dataframe is similar. There is however a constraint: the column names of both dataframes need to match for this operation to succeed.</p>
+<pre class="sourceCode r"><code class="sourceCode r">my_data1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colA =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">colB =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))
+my_data2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colA =</span> <span class="dv">4</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">colB =</span> <span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>))
+my_data_complete &lt;-<span class="st"> </span><span class="kw">rbind</span>(my_data1, my_data2)
+my_data_complete</code></pre>
+<pre><code>##   colA colB
+## 1    1    a
+## 2    2    b
+## 3    3    c
+## 4    4    d
+## 5    5    e</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-r-plotting-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functions-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["davur_ebook.pdf", "davur_ebook.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

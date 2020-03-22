@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-03-21}
+    \date{2020-03-22}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1680,7 +1680,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     55     45
+##     44     56
 \end{verbatim}
 
 \begin{Shaded}
@@ -1936,23 +1936,1851 @@ There are \emph{many} parameters that can be passed to the plotting functions. H
 
 \includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-14-1.pdf}
 
-\hypertarget{complex-datatypes}{%
-\chapter{Complex Datatypes}\label{complex-datatypes}}
+\hypertarget{complex-datatypes-and-file-reading}{%
+\chapter{Complex Datatypes and File Reading}\label{complex-datatypes-and-file-reading}}
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+\hypertarget{matrices-are-vectors-with-dimensions}{%
+\section{Matrices are vectors with dimensions}\label{matrices-are-vectors-with-dimensions}}
+
+We will not detail on them in this course, only this one small paragraph. This does not mean they are not important, but they are just not the focus here. Some functions require or return a matrix so you should be aware of them.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{) }
+\NormalTok{m}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{10}
+\KeywordTok{dim}\NormalTok{(v) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{v}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+\end{verbatim}
+
+\hypertarget{factors-nominal-ordinal-scales}{%
+\section{Factors: Nominal \& Ordinal scales}\label{factors-nominal-ordinal-scales}}
+
+Although factors are not actually a complex datatype but very much one of the five base types in R, I saved them because they have some more complex and sometimes puzzling behaviour.
+
+\begin{quote}
+Factors represent different discrete levels of a variable - the \emph{nominal} and \emph{ordinal} scales known from statistics.
+\end{quote}
+
+For instance:
+
+\begin{itemize}
+\tightlist
+\item
+  eye color (brown, blue, green)
+\item
+  weight class (underweight, normal, obese)
+\item
+  autism spectrum (none, minimal, heavy)
+\end{itemize}
+
+\hypertarget{factor-creation}{%
+\subsubsection*{Factor creation}\label{factor-creation}}
+\addcontentsline{toc}{subsubsection}{Factor creation}
+
+Factors are used to represent data in nominal and ordinal scales. \textbf{\emph{Nominal}} has no order (e.g.~eye color). \textbf{\emph{Ordinal}} has order (e.g.~autism spectrum), but can not be calculated with, other than ordering from high to low. No \emph{distance} is defined between separate levels. The following functions are used to create factors:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{factor()}: constructor function, from factor, character, numeric or logical
+\item
+  \texttt{as.factor()}: coercion function, from factor, character, numeric or logical
+\item
+  \texttt{cut()}: conversion function from numeric vector
+\end{itemize}
+
+So what is the difference between \texttt{factor()} and \texttt{as.factor()}? Function \texttt{as.factor()} is a \emph{wrapper} for \texttt{factor()}. The difference lies in behaviour when the input is a factor itself: \texttt{factor} will omit unused levels. Besides this, \texttt{as.factor()} does not specify the arguments for labels and levels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{), }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{x}
+\KeywordTok{factor}\NormalTok{(x)}
+\KeywordTok{as.factor}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] a b
+## Levels: a b c
+## [1] a b
+## Levels: a b
+## [1] a b
+## Levels: a b c
+\end{verbatim}
+
+Suppose you have surveyed the eye color of your class room and found these values
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eye_colors <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"blue"}\NormalTok{,}
+    \StringTok{"brown"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"green"}\NormalTok{,}
+    \StringTok{"brown"}\NormalTok{, }\StringTok{"brown"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"brown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Next you would like to plot or tabulate these findings. Simply plotting gives an error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(eye_colors)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in xy.coords(x, y, xlabel, ylabel, log): NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in min(x): no non-missing arguments to min; returning Inf
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in max(x): no non-missing arguments to max; returning -Inf
+\end{verbatim}
+
+\begin{verbatim}
+## Error in plot.window(...): need finite 'ylim' values
+\end{verbatim}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/eye-color-2-1} \end{center}
+
+However, plotting a character vector converted to a factor is easy
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eye_colors <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(eye_colors)}
+\KeywordTok{plot}\NormalTok{(eye_colors)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/eye-color-3-1} \end{center}
+
+Factors are also really easy to tabulate and filter
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(eye_colors)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## eye_colors
+##  blue brown green 
+##     5     9     2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(eye_colors }\OperatorTok{==}\StringTok{ "blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\hypertarget{levels-labels-and-ordering}{%
+\subsubsection*{Levels, Labels and Ordering}\label{levels-labels-and-ordering}}
+\addcontentsline{toc}{subsubsection}{Levels, Labels and Ordering}
+
+When working with ordinal scales, defining the order of the factors (levels) is crucial. By default, R uses the \emph{natural ordering} which means it will stick to either numerical (\texttt{numeric}, \texttt{integer} and \texttt{logical}) or alphabetical ordering (\texttt{character}). When you want a different ordering you need to specify this. You can even define missing levels, as shown in the following example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classSizes <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"big"}\NormalTok{, }\StringTok{"small"}\NormalTok{, }\StringTok{"huge"}\NormalTok{, }\StringTok{"huge"}\NormalTok{, }
+    \StringTok{"small"}\NormalTok{,}\StringTok{"big"}\NormalTok{,}\StringTok{"small"}\NormalTok{,}\StringTok{"big"}\NormalTok{),}
+    \DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"small"}\NormalTok{, }\StringTok{"normal"}\NormalTok{, }\StringTok{"big"}\NormalTok{, }\StringTok{"huge"}\NormalTok{),}
+    \DataTypeTok{ordered =} \OtherTok{TRUE}\NormalTok{) }\CommentTok{#make it an ordinal scale!}
+\KeywordTok{plot}\NormalTok{(classSizes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/class-sizes-1-1} \end{center}
+
+When you have factor, you can do a -limited- set of calulations with it. However, comparators only work with ordinal scale. As with all equality tests, \texttt{sum()} works as well:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classSizes }\OperatorTok{<}\StringTok{ "big"} \CommentTok{## only with in Ordinal scale}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(classSizes }\OperatorTok{==}\StringTok{ "huge"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+\hypertarget{convert-existing-factors}{%
+\subsubsection*{Convert existing factors}\label{convert-existing-factors}}
+\addcontentsline{toc}{subsubsection}{Convert existing factors}
+
+When you already have an unordered factor, you can make it ordered by using the function \texttt{ordered()} together with a fvector specifying the levels.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classSizes <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"big"}\NormalTok{, }\StringTok{"small"}\NormalTok{, }\StringTok{"huge"}\NormalTok{, }\StringTok{"huge"}\NormalTok{,}
+    \StringTok{"small"}\NormalTok{, }\StringTok{"big"}\NormalTok{, }\StringTok{"small"}\NormalTok{, }\StringTok{"big"}\NormalTok{))}
+\NormalTok{classSizes <-}\StringTok{ }\KeywordTok{ordered}\NormalTok{(classSizes,}
+                    \DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{"small"}\NormalTok{, }\StringTok{"big"}\NormalTok{, }\StringTok{"huge"}\NormalTok{))}
+\NormalTok{classSizes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] big   small huge  huge  small big   small big  
+## Levels: small < big < huge
+\end{verbatim}
+
+\hypertarget{when-calculations-get-corrupted}{%
+\subsubsection*{When calculations get corrupted}\label{when-calculations-get-corrupted}}
+\addcontentsline{toc}{subsubsection}{When calculations get corrupted}
+
+Especially when a factor consists of numeric levels, calculations can get your mind screwed big time:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\NormalTok{x }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in Ops.factor(x, 1): '+' not meaningful for factors
+\end{verbatim}
+
+\begin{verbatim}
+## [1] NA NA NA NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.integer}\NormalTok{(x) }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3 4 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.integer}\NormalTok{(}\KeywordTok{levels}\NormalTok{(x)) }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5 6
+\end{verbatim}
+
+The only way to get the numbers back with numeric factors is by using this trick
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4 5 4
+## Levels: 3 4 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{as.integer}\NormalTok{(}\KeywordTok{levels}\NormalTok{(x))[x]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4 5 4
+\end{verbatim}
+
+But this makes for really unintelligible code so try to prevent this at all costs!
+
+\hypertarget{the-power-of-factors}{%
+\subsubsection*{The power of factors}\label{the-power-of-factors}}
+\addcontentsline{toc}{subsubsection}{The power of factors}
+
+Factors are used all the time e.g.~for defining treated/untreated. That's why R knows how to deal with them so well:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(ChickWeight, }\KeywordTok{plot}\NormalTok{(weight }\OperatorTok{~}\StringTok{ }\NormalTok{Diet))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/factor-plotting-1} \end{center}
+
+You will see many many exaples in the subsequent chapters of this and the next course.
+
+\hypertarget{lists}{%
+\section{Lists}\label{lists}}
+
+\begin{quote}
+A list is an \textbf{\emph{ordered collection of vectors}}. These vectors can have \emph{differing types} and \emph{differing lengths}.
+\end{quote}
+
+\hypertarget{list-creation}{%
+\subsubsection*{List creation}\label{list-creation}}
+\addcontentsline{toc}{subsubsection}{List creation}
+
+Create a list with or without element names:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{list(element1,\ element2,\ ...)}~\\
+\item
+  \texttt{list(name1\ =\ element1,\ name2\ =\ element2,\ ...)}
+\end{itemize}
+
+Without names:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{);  y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"foo"}\NormalTok{, }\StringTok{"bar"}\NormalTok{)}
+\NormalTok{l <-}\StringTok{ }\KeywordTok{list}\NormalTok{(x, y); l}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 2 3 1
+## 
+## [[2]]
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+With names:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"foo"}\NormalTok{, }\StringTok{"bar"}\NormalTok{)}
+\NormalTok{l <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\StringTok{"numbers"}\NormalTok{ =}\StringTok{ }\NormalTok{x, }\StringTok{"words"}\NormalTok{ =}\StringTok{ }\NormalTok{y)}
+\NormalTok{l}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] "foo" "bar"
+\end{verbatim}
+
+This is the preferred way to create and use them because it gives you more and easier ways to access its elements and it makes for much more reradable code. That's why you will only see lists with named elements from here on.
+
+\hypertarget{making-selections-on-lists}{%
+\subsubsection*{Making selections on lists}\label{making-selections-on-lists}}
+\addcontentsline{toc}{subsubsection}{Making selections on lists}
+
+Accessing named elements can be done in three ways:
+
+\begin{itemize}
+\tightlist
+\item
+  By index, within double or single brackets: \texttt{{[}{[}\textless{}index\textgreater{}{]}{]}} or \texttt{{[}\textless{}index\textgreater{}{]}}
+\item
+  By name of the element, within double or single brackets: \texttt{{[}{[}\textless{}name\textgreater{}{]}{]}} or \texttt{{[}\textless{}name\textgreater{}{]}}
+\item
+  By name of the element, using the dollar sign on the list name: \texttt{\$\textless{}name\textgreater{}}
+\end{itemize}
+
+Here are all three:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[[}\DecValTok{2}\NormalTok{]]        }\CommentTok{# index}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[[}\StringTok{"words"}\NormalTok{]]  }\CommentTok{# name of element with double brackets}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l}\OperatorTok{$}\NormalTok{words       }\CommentTok{# name of element with dollar sign}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{quote}
+Single brackets selection on a list returns a list; double brackets and \texttt{\$} return a vector.
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $words
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[[}\DecValTok{2}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l}\OperatorTok{$}\NormalTok{words}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+In R, selections are often \textbf{\emph{chained}}. In the following example the second vector element of the second list element is selected.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l}
+\NormalTok{l[[}\DecValTok{2}\NormalTok{]][}\DecValTok{2}\NormalTok{] }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] "foo" "bar"
+## 
+## [1] "bar"
+\end{verbatim}
+
+When you need multiple elements of a list, use \textbf{\emph{single brackets}}. Remember: single brackets return a list; that's why you need single brackets here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $numbers
+## [1] 2 3 1
+## 
+## $words
+## [1] "foo" "bar"
+## 
+## $numbers
+## [1] 2 3 1
+\end{verbatim}
+
+Accessing named elements has its limitations. You can not use a variable in combination with the dollar sign selector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{select <-}\StringTok{ "words"}
+\NormalTok{l[[select]] }\CommentTok{## OK}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l}\OperatorTok{$}\NormalTok{select }\CommentTok{##fails - no element with name "select"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## NULL
+\end{verbatim}
+
+Chaining of selectors can become awkward, as this example demonstrates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{l[}\DecValTok{2}\NormalTok{][}\StringTok{"words"}\NormalTok{][}\DecValTok{1}\NormalTok{]}\OperatorTok{$}\NormalTok{words  }\CommentTok{## mind****}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "foo" "bar"
+\end{verbatim}
+
+\hypertarget{dataframes}{%
+\section{Dataframes}\label{dataframes}}
+
+\begin{quote}
+A dataframe is an \textbf{\emph{ordered collection of vectors}}. These vectors can have \emph{differing types} but must have \emph{equal lengths}.
+\end{quote}
+
+A dataframe is very similar to the square grid-like structures you have probably worked with in Excel. Variables are in columns in which all elements are of the same type. Examples (observations) are in rows - they \emph{can} have differing types.
+
+Dataframes can be constructed using the \texttt{data.frame()} function in the same way as the \texttt{list} function:\\
+\texttt{data.frame(column1\ =\ vector1,\ column2\ =\ vector2,\ ...)}
+
+Here is a first example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{geneNames <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"P53"}\NormalTok{,}\StringTok{"BRCA1"}\NormalTok{,}\StringTok{"VAMP1"}\NormalTok{, }\StringTok{"FHIT"}\NormalTok{)}
+\NormalTok{sig <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{)}
+\NormalTok{meanExp <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{4.5}\NormalTok{, }\FloatTok{7.3}\NormalTok{, }\FloatTok{5.4}\NormalTok{, }\FloatTok{2.4}\NormalTok{)}
+\NormalTok{genes <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
+    \StringTok{"name"}\NormalTok{ =}\StringTok{ }\NormalTok{geneNames,  }
+    \StringTok{"significant"}\NormalTok{ =}\StringTok{ }\NormalTok{sig,  }
+    \StringTok{"expression"}\NormalTok{ =}\StringTok{ }\NormalTok{meanExp)  }
+\NormalTok{genes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name significant expression
+## 1   P53        TRUE        4.5
+## 2 BRCA1        TRUE        7.3
+## 3 VAMP1       FALSE        5.4
+## 4  FHIT       FALSE        2.4
+\end{verbatim}
+
+Here you can see the structure of a dataframe: each column has a single datatype but rows can have differing types for neighboring fields.
+
+\includegraphics{figures/Dataframe_view1.png}
+
+\hypertarget{selections-on-dataframes}{%
+\subsection{Selections on dataframes}\label{selections-on-dataframes}}
+
+Making selections on dataframes is not very surprising when you already know how to do it with vectors and lists. There is only one extension. The fact that it is a square grid-like structure makes it possible to add an extra way of making selections: combining rows and column selections as subgrids. This section extensively reviews all means of making selections.
+
+This is a summary:
+
+\begin{itemize}
+\tightlist
+\item
+  Select a single column using \texttt{\$} will return a vector
+\item
+  Selecting with double brackets \texttt{{[}{[}\textless{}name\textgreater{}{]}{]}} or \texttt{{[}{[}\textless{}index\textgreater{}{]}{]}} will return a vector
+\item
+  Selecting with single brackets \texttt{{[}\textless{}name\textgreater{}{]}} or \texttt{{[}\textless{}index\textgreater{}{]}} will return a dataframe
+\item
+  Selecting with row-and-column coordinates \texttt{{[}row\_selection,\ col\_selection{]}} returns either a vector or a dataframe, depending on the selection made. Here, \texttt{row\_selection} and \texttt{col\_selection} can be
+
+  \begin{itemize}
+  \tightlist
+  \item
+    a numerical vector of length 1 or more
+  \item
+    a logical vector of length 1 or more
+  \item
+    empty (to select all rows/columns)
+  \end{itemize}
+\end{itemize}
+
+Here follow a few examples.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{]            }\CommentTok{#row 2, column 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] BRCA1
+## Levels: BRCA1 FHIT P53 VAMP1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[}\DecValTok{2}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{]     }\CommentTok{#row 2, columns 1 and 2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name significant
+## 2 BRCA1        TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[}\DecValTok{2}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)] }\CommentTok{#row 2, column 1 and 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name expression
+## 2 BRCA1        7.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes}\OperatorTok{$}\NormalTok{name          }\CommentTok{#column "name"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] P53   BRCA1 VAMP1 FHIT 
+## Levels: BRCA1 FHIT P53 VAMP1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[, }\KeywordTok{c}\NormalTok{(}\StringTok{"name"}\NormalTok{, }\StringTok{"expression"}\NormalTok{)]  }\CommentTok{#columns "name" and "expression", all rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name expression
+## 1   P53        4.5
+## 2 BRCA1        7.3
+## 3 VAMP1        5.4
+## 4  FHIT        2.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[, }\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{]      }\CommentTok{#columns 1 and 2, all rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name significant
+## 1   P53        TRUE
+## 2 BRCA1        TRUE
+## 3 VAMP1       FALSE
+## 4  FHIT       FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{genes[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{, ]      }\CommentTok{#row 1 and 2, all columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name significant expression
+## 1   P53        TRUE        4.5
+## 2 BRCA1        TRUE        7.3
+\end{verbatim}
+
+As with vectors and lists, R will cycle selectors, and you can select an element as often as you want.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genes[}\KeywordTok{c}\NormalTok{(T, F), }\DecValTok{1}\NormalTok{]   }\CommentTok{#every uneven row, column 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] P53   VAMP1
+## Levels: BRCA1 FHIT P53 VAMP1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genes[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{), ]  }\CommentTok{#three times row 1 and row 2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      name significant expression
+## 1     P53        TRUE        4.5
+## 1.1   P53        TRUE        4.5
+## 1.2   P53        TRUE        4.5
+## 2   BRCA1        TRUE        7.3
+\end{verbatim}
+
+A dataframe is much like a list, but not entirely equal:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genes[[}\StringTok{"name"}\NormalTok{]] }\CommentTok{## select column w. double brackets}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] P53   BRCA1 VAMP1 FHIT 
+## Levels: BRCA1 FHIT P53 VAMP1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(genes) }\CommentTok{## it is NOT a list though}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "data.frame"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(genes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    4 obs. of  3 variables:
+##  $ name       : Factor w/ 4 levels "BRCA1","FHIT",..: 3 1 4 2
+##  $ significant: logi  TRUE TRUE FALSE FALSE
+##  $ expression : num  4.5 7.3 5.4 2.4
+\end{verbatim}
+
+\hypertarget{selections-with-subset}{%
+\subsubsection*{\texorpdfstring{Selections with \texttt{subset()}}{Selections with subset()}}\label{selections-with-subset}}
+\addcontentsline{toc}{subsubsection}{Selections with \texttt{subset()}}
+
+Function \texttt{subset()} can serve as alternative to ``bracket-based'' selections (\texttt{{[}\ ,\ {]}}).
+You can use \texttt{subset()} to make both \textbf{column} and \textbf{row selections}. Here, using \texttt{subset\ =}, the rows are selected for which Solar.R is available using the \texttt{is.na()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{subset}\NormalTok{(airquality, }\DataTypeTok{subset =} \OperatorTok{!}\KeywordTok{is.na}\NormalTok{(Solar.R)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Ozone Solar.R Wind Temp Month Day
+## 1    41     190  7.4   67   May   1
+## 2    36     118  8.0   72   May   2
+## 3    12     149 12.6   74   May   3
+## 4    18     313 11.5   62   May   4
+## 7    23     299  8.6   65   May   7
+## 8    19      99 13.8   59   May   8
+\end{verbatim}
+
+Note that you don't even need to use quotes for column names.
+
+Select columns only with the \texttt{select\ =} argument.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{subset}\NormalTok{(airquality, }\DataTypeTok{select =} \KeywordTok{c}\NormalTok{(Ozone, Solar.R)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Ozone Solar.R
+## 1    41     190
+## 2    36     118
+## 3    12     149
+## 4    18     313
+## 5    NA      NA
+## 6    28      NA
+\end{verbatim}
+
+Of course, you can combine row and colum selection:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{subset}\NormalTok{(airquality, }
+            \DataTypeTok{subset =} \OperatorTok{!}\KeywordTok{is.na}\NormalTok{(Solar.R), }
+            \DataTypeTok{select =} \KeywordTok{c}\NormalTok{(Ozone, Solar.R)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Ozone Solar.R
+## 1    41     190
+## 2    36     118
+## 3    12     149
+## 4    18     313
+## 7    23     299
+## 8    19      99
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# shorthand notation}
+\CommentTok{#subset(airquality, Day == 1, select = -Temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{subset()} can be used more sophisticated; however we are going to see \texttt{subset()} on steroids in the next course: the functions in package \texttt{dplyr}.
+
+\hypertarget{read-from-file-using-read.table}{%
+\subsection{\texorpdfstring{Read from file using \texttt{read.table()}}{Read from file using read.table()}}\label{read-from-file-using-read.table}}
+
+Usually your data comes from file, loaded into memory as a dataframe. The most common data transfer \& storage format is text. The text will have column separators that can be any of a whole number of characters, but tab- or comma-delimited are most common.\\
+Here is an example dataset in a file (``whale\_selenium.txt'') where the separator is a space character:
+
+\begin{verbatim}
+whale liver.Se tooth.Se  
+1 6.23 140.16  
+2 6.79 133.32  
+3 7.92 135.34  
+...  
+19 41.23 206.30  
+20 45.47 141.31  
+\end{verbatim}
+
+To load this data into an R session you can use the function \texttt{read.table()}. Let's try
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\NormalTok{whale_selenium <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"data/whale_selenium.txt"}\NormalTok{)}
+\OperatorTok{>}\StringTok{ }\KeywordTok{head}\NormalTok{(whale_selenium) }\CommentTok{# first rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      V1       V2       V3
+## 1 whale liver.Se tooth.Se
+## 2     1     6.23   140.16
+## 3     2     6.79   133.32
+## 4     3     7.92   135.34
+## 5     4     8.02   127.82
+## 6     5     9.34   108.67
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{str}\NormalTok{(whale_selenium) }\CommentTok{# structure}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    21 obs. of  3 variables:
+##  $ V1: Factor w/ 21 levels "1","10","11",..: 21 1 12 14 15 16 17 18 19 20 ...
+##  $ V2: Factor w/ 21 levels "10.00","10.57",..: 21 16 17 18 19 20 1 2 3 4 ...
+##  $ V3: Factor w/ 21 levels "108.67","112.63",..: 21 8 5 6 3 1 12 4 11 14 ...
+\end{verbatim}
+
+That is not entirely correct: all columns are imported as a factor while obviously they should be numeric. The cause of this is that, when loading the data,
+
+\begin{itemize}
+\tightlist
+\item
+  there is no special consideration for the header line
+\item
+  the separator is assumed to be a space
+\item
+  the decimal is assumed to be a dot ``.''
+\end{itemize}
+
+(and some more assumptions)
+
+Therefore, to read a file correctly, you have to specify its format in every detail. in this case,
+
+\begin{itemize}
+\tightlist
+\item
+  the first line is a header with column names
+\item
+  the first column contains the row names
+\end{itemize}
+
+Here is a new attempt with some \textbf{\emph{format specifications}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{whale_selenium <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+    \DataTypeTok{file =} \StringTok{"data/whale_selenium.txt"}\NormalTok{,}
+    \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{,}
+    \DataTypeTok{row.names =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Before proceeding with your data, you should always perform some checks. Several helper methods exist for this purpose:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{head()} shows you the first \texttt{n} lines
+\item
+  \texttt{str()} gives you a structure description: what types have the columns and what dimension does the data frame have?
+\item
+  \texttt{summary()} gives you a 6-number sumary of the data
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{head}\NormalTok{(whale_selenium, }\DataTypeTok{n=}\DecValTok{4}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   liver.Se tooth.Se
+## 1     6.23   140.16
+## 2     6.79   133.32
+## 3     7.92   135.34
+## 4     8.02   127.82
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{str}\NormalTok{(whale_selenium) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    20 obs. of  2 variables:
+##  $ liver.Se: num  6.23 6.79 7.92 8.02 9.34 ...
+##  $ tooth.Se: num  140 133 135 128 109 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{>}\StringTok{ }\KeywordTok{summary}\NormalTok{(whale_selenium) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     liver.Se         tooth.Se    
+##  Min.   : 6.230   Min.   :108.7  
+##  1st Qu.: 9.835   1st Qu.:134.8  
+##  Median :14.905   Median :143.4  
+##  Mean   :20.685   Mean   :156.6  
+##  3rd Qu.:33.633   3rd Qu.:175.1  
+##  Max.   :45.470   Max.   :245.1
+\end{verbatim}
+
+There are various other helper methods the you can use to inspect the contents and nature of your dataframe columns and rows:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dim()} gives the rows and columns
+\item
+  \texttt{ncol()} gives the number of columns
+\item
+  \texttt{nrow()} gives the number of rows
+\item
+  \texttt{names()} gives the column names (synonym to \texttt{colnames()})
+\item
+  \texttt{rownames()} gives the row names
+\end{itemize}
+
+But visualizing your data speaks more than a thousand words of course.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(whale_selenium}\OperatorTok{$}\NormalTok{liver.Se, whale_selenium}\OperatorTok{$}\NormalTok{tooth.Se,}
+    \DataTypeTok{xlab =} \StringTok{"liver Selenium"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"tooth Selenium"}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(whale_selenium}\OperatorTok{$}\NormalTok{tooth.Se }\OperatorTok{~}\StringTok{ }\NormalTok{whale_selenium}\OperatorTok{$}\NormalTok{liver.Se))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/data-frame-io3-1} \end{center}
+
+This is absolutely not the whole filereading story! The topic will be addressed again in a later chapter.
+
+\hypertarget{dataframe-manipulations}{%
+\subsection{Dataframe manipulations}\label{dataframe-manipulations}}
+
+\hypertarget{changing-column-names}{%
+\subsubsection*{Changing column names}\label{changing-column-names}}
+\addcontentsline{toc}{subsubsection}{Changing column names}
+
+Sometimes the existing column names are not convenient to work with (unclear, too long etc.). In that case it may be a good idea to change the column names. To do this you can use either \texttt{names()} or \texttt{colnames()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(whale_selenium) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"liver"}\NormalTok{, }\StringTok{"tooth"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(whale_selenium, }\DataTypeTok{n=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   liver  tooth
+## 1  6.23 140.16
+## 2  6.79 133.32
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##or}
+\KeywordTok{colnames}\NormalTok{(whale_selenium) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"pancreas"}\NormalTok{, }\StringTok{"colon"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(whale_selenium, }\DataTypeTok{n=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   pancreas  colon
+## 1     6.23 140.16
+## 2     6.79 133.32
+\end{verbatim}
+
+\hypertarget{adding-columns}{%
+\subsubsection*{Adding columns}\label{adding-columns}}
+\addcontentsline{toc}{subsubsection}{Adding columns}
+
+You can add a single column by simply specifying its name and the value(s) to be attached.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## add simulated stomach data}
+\NormalTok{whale_selenium}\OperatorTok{$}\NormalTok{stomach <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\KeywordTok{nrow}\NormalTok{(whale_selenium), }\DecValTok{42}\NormalTok{, }\DecValTok{6}\NormalTok{) }
+\KeywordTok{head}\NormalTok{(whale_selenium, }\DataTypeTok{n=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   liver  tooth  stomach
+## 1  6.23 140.16 52.53270
+## 2  6.79 133.32 50.69782
+\end{verbatim}
+
+Alternatively, use \texttt{cbind}. It is a bit more versatile because you can add multiple columns at once.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cbind}\NormalTok{(whale_selenium, }\StringTok{"brain"}\NormalTok{ =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\CommentTok{#cycled values!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    liver  tooth  stomach brain
+## 1   6.23 140.16 52.53270     1
+## 2   6.79 133.32 50.69782     0
+## 3   7.92 135.34 39.30723     1
+## 4   8.02 127.82 42.84040     0
+## 5   9.34 108.67 39.75810     1
+## 6  10.00 146.22 34.76140     0
+## 7  10.57 131.18 26.03192     1
+## 8  11.04 145.51 41.84943     0
+## 9  12.36 163.24 41.79376     1
+## 10 14.53 136.55 51.85415     0
+## 11 15.28 112.63 30.02723     1
+## 12 18.68 245.07 38.02698     0
+## 13 22.08 140.48 47.28023     1
+## 14 27.55 177.93 44.05432     0
+## 15 32.83 160.73 42.73052     1
+## 16 36.04 227.60 38.27543     0
+## 17 37.74 177.69 43.20567     1
+## 18 40.00 174.23 40.58457     0
+## 19 41.23 206.30 42.68197     1
+## 20 45.47 141.31 38.53242     0
+\end{verbatim}
+
+\hypertarget{adding-rows-rbind}{%
+\subsubsection*{\texorpdfstring{Adding rows: \texttt{rbind()}}{Adding rows: rbind()}}\label{adding-rows-rbind}}
+\addcontentsline{toc}{subsubsection}{Adding rows: \texttt{rbind()}}
+
+Adding rows to a dataframe is similar. There is however a constraint: the column names of both dataframes need to match for this operation to succeed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_data1 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{colA =} \DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{colB =} \KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{))}
+\NormalTok{my_data2 <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{colA =} \DecValTok{4}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{colB =} \KeywordTok{c}\NormalTok{(}\StringTok{"d"}\NormalTok{, }\StringTok{"e"}\NormalTok{))}
+\NormalTok{my_data_complete <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(my_data1, my_data2)}
+\NormalTok{my_data_complete}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   colA colB
+## 1    1    a
+## 2    2    b
+## 3    3    c
+## 4    4    d
+## 5    5    e
+\end{verbatim}
 
 \hypertarget{functions-1}{%
 \chapter{Functions}\label{functions-1}}
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+\hypertarget{dealing-with-nas}{%
+\section{Dealing with NAs}\label{dealing-with-nas}}
+
+Dealing with NA is a \textbf{\emph{very big thing}}. When you work with external data there is always the possibility that some values will be missing.
+
+You should be aware that it is not possble to test for \texttt{NA} values (Not Available) values in any other way; using \texttt{==} will simply return \texttt{NA}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{x }\OperatorTok{==}\StringTok{ }\OtherTok{NA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+Other important functions for dealing with that are \texttt{na.omit()} and \texttt{complete.cases()}. Besides that, many functions in R have a (variant of) the \texttt{na.rm\ =} argument. For nstance, when the \texttt{sum()} function encounters an NA in its input vector, it will always return \texttt{NA}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\OtherTok{NA}\NormalTok{)}
+\KeywordTok{sum}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(x, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\hypertarget{descriptive-statistics}{%
+\section{Descriptive statistics}\label{descriptive-statistics}}
+
+R provides a wealth of descriptive statistics functions. The most important ones of them are listed below. The ones with an asterisk are described in more detail in following paragraphs.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+function & purpose\tabularnewline
+\midrule
+\endhead
+\texttt{mean(\ )} & mean\tabularnewline
+\texttt{median(\ )} & median\tabularnewline
+\texttt{min(\ )} & minimum\tabularnewline
+\texttt{max(\ )} & maximum\tabularnewline
+\texttt{range(\ )} & min and max\tabularnewline
+\texttt{var(\ )} & variance s\^{}2\tabularnewline
+\texttt{sd(\ )} & standard deviation s\tabularnewline
+\texttt{summary(\ )} & 6-number summary\tabularnewline
+\texttt{quantile(\ )} * & quantiles\tabularnewline
+\texttt{IQR(\ )} * & interquantile range\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{the-quantile-function}{%
+\subsubsection*{\texorpdfstring{The \texttt{quantile()} function}{The quantile() function}}\label{the-quantile-function}}
+\addcontentsline{toc}{subsubsection}{The \texttt{quantile()} function}
+
+This function gives the data values corresponding to the specified quantiles. The function defaults to the quantiles \texttt{0\%\ \ 25\%\ \ 50\%\ \ 75\%\ 100\%}: these are the \emph{quartiles} of course.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     0%    25%    50%    75%   100% 
+##  35.00  63.00 103.00 163.75 373.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{quantile}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight, }\DataTypeTok{probs =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    0%   20%   40%   60%   80%  100% 
+##  35.0  57.0  85.0 126.0 181.6 373.0
+\end{verbatim}
+
+\hypertarget{interquantile-range-iqr}{%
+\subsubsection*{\texorpdfstring{Interquantile range \texttt{IQR()}}{Interquantile range IQR()}}\label{interquantile-range-iqr}}
+\addcontentsline{toc}{subsubsection}{Interquantile range \texttt{IQR()}}
+
+Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{IQR}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100.75
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## same as}
+\KeywordTok{quantile}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)[}\DecValTok{4}\NormalTok{] }\OperatorTok{-}\StringTok{ }\KeywordTok{quantile}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)[}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    75% 
+## 100.75
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## same as}
+\KeywordTok{diff}\NormalTok{(}\KeywordTok{quantile}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight, }\DataTypeTok{probs =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{, }\FloatTok{0.75}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    75% 
+## 100.75
+\end{verbatim}
+
+\hypertarget{boxplot-is-summary-visualized}{%
+\subsubsection*{\texorpdfstring{\texttt{boxplot()} is \texttt{summary()} visualized}{boxplot() is summary() visualized}}\label{boxplot-is-summary-visualized}}
+\addcontentsline{toc}{subsubsection}{\texttt{boxplot()} is \texttt{summary()} visualized}
+
+Boxplot is a graph of the 5-number summary, but \texttt{summary()} also gives the mean
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    35.0    63.0   103.0   121.8   163.8   373.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(ChickWeight}\OperatorTok{$}\NormalTok{weight)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/box_demo-1.pdf}
+
+\hypertarget{general-purpose-functions}{%
+\section{General purpose functions}\label{general-purpose-functions}}
+
+\hypertarget{memory-management}{%
+\subsubsection*{Memory management}\label{memory-management}}
+\addcontentsline{toc}{subsubsection}{Memory management}
+
+When working with large datasets it may be usefull to free some memory once in a while (i.e.~intermediate results). Use \texttt{ls()} to see what is in menory; use \texttt{rm()} to delete single or several items: \texttt{rm(genes)}, \texttt{rm(x,\ y,\ z)} and clear all by typing \texttt{rm(list\ =\ ls())}
+
+\hypertarget{file-system-operations}{%
+\subsubsection*{File system operations}\label{file-system-operations}}
+\addcontentsline{toc}{subsubsection}{File system operations}
+
+Several functions exist for working with the file system:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{getwd()} returns the current working directory.
+\item
+  \texttt{setwd(\textless{}/path/to/folder\textgreater{})} sets the current working directory.
+\item
+  \texttt{dir()}, \texttt{dir(path)} lists the contents of the current directory, or of \texttt{path}.
+\item
+  A \texttt{path} can be defined as \texttt{"E:\textbackslash{}\textbackslash{}emile\textbackslash{}\textbackslash{}datasets"} (Windows) or, on Linux/Mac using relative paths \texttt{"\textasciitilde{}/datasets"} or absolute paths \texttt{"/home/emile/datasets"}.
+\end{itemize}
+
+\hypertarget{glueing-character-elements-paste}{%
+\subsubsection*{\texorpdfstring{Glueing character elements: \texttt{paste()}}{Glueing character elements: paste()}}\label{glueing-character-elements-paste}}
+\addcontentsline{toc}{subsubsection}{Glueing character elements: \texttt{paste()}}
+
+Use \texttt{paste()} to combine elements into a string
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1 2 3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1-2-3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, month.abb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "1 Jan"  "2 Feb"  "3 Mar"  "4 Apr"  "5 May"  "6 Jun"  "7 Jul" 
+##  [8] "8 Aug"  "9 Sep"  "10 Oct" "11 Nov" "12 Dec"
+\end{verbatim}
+
+There is a variant, \texttt{paste0()} which uses no separator by default.
+
+\hypertarget{a-local-namespace-with}{%
+\subsubsection*{\texorpdfstring{A local namespace: \texttt{with()}}{A local namespace: with()}}\label{a-local-namespace-with}}
+\addcontentsline{toc}{subsubsection}{A local namespace: \texttt{with()}}
+
+When you have a piece of related code operating on a single dataset, use \texttt{with()} so you don't have to type its name all the time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(airquality, \{}
+\NormalTok{  mdl <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(Solar.R }\OperatorTok{~}\StringTok{ }\NormalTok{Temp)}
+  \KeywordTok{plot}\NormalTok{(Solar.R }\OperatorTok{~}\StringTok{ }\NormalTok{Temp)}
+  \KeywordTok{abline}\NormalTok{(mdl)}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+Local variables such as \texttt{mdl} will not end up in the global environment.
+
+\hypertarget{convert-numeric-vector-to-factor-cut}{%
+\section{\texorpdfstring{Convert numeric vector to factor: \texttt{cut()}}{Convert numeric vector to factor: cut()}}\label{convert-numeric-vector-to-factor-cut}}
+
+Sometimes it is useful to work with a factor instead of a numeric vector. For instance, when working with a Body Mass Index (bmi) variable it may be nice to split this into a factor for some analyses.
+The function \texttt{cut()} is used for this.
+Suppose you have the following fictitious dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## body mass index}
+\NormalTok{bmi <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{22}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{21}\NormalTok{, }\DecValTok{37}\NormalTok{, }\DecValTok{28}\NormalTok{, }\DecValTok{34}\NormalTok{, }\DecValTok{26}\NormalTok{, }\DecValTok{29}\NormalTok{,}
+         \DecValTok{41}\NormalTok{, }\DecValTok{18}\NormalTok{, }\DecValTok{22}\NormalTok{, }\DecValTok{27}\NormalTok{, }\DecValTok{32}\NormalTok{, }\DecValTok{31}\NormalTok{, }\DecValTok{26}\NormalTok{)}
+\CommentTok{## year income * 1000 euros}
+\NormalTok{income <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{13}\NormalTok{, }\DecValTok{47}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{38}\NormalTok{, }\DecValTok{29}\NormalTok{, }
+            \DecValTok{12}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{33}\NormalTok{, }\DecValTok{24}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{42}\NormalTok{, }\DecValTok{38}\NormalTok{)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{bmi =}\NormalTok{ bmi, }\DataTypeTok{income =}\NormalTok{ income)}
+\end{Highlighting}
+\end{Shaded}
+
+You can of course look at income as a function of bmi using a scatter plot:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(my_data, }\KeywordTok{plot}\NormalTok{(income }\OperatorTok{~}\StringTok{ }\NormalTok{bmi))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/cut-demo-2-1} \end{center}
+
+But wouldn't it be nice to look at the bmi categories as defined by the WHO? To be able to do this, you need to split the numeric \texttt{bmi} variable into a factor using \texttt{cut()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_data}\OperatorTok{$}\NormalTok{bmi_class <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(bmi,}
+    \DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{18.5}\NormalTok{, }\FloatTok{25.0}\NormalTok{, }\FloatTok{30.0}\NormalTok{, }\OtherTok{Inf}\NormalTok{), }
+    \DataTypeTok{right =}\NormalTok{ F,}
+    \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"underweight"}\NormalTok{, }\StringTok{"normal"}\NormalTok{, }\StringTok{"overweight"}\NormalTok{, }\StringTok{"obese"}\NormalTok{),}
+    \DataTypeTok{ordered_result =}\NormalTok{ T)}
+\KeywordTok{with}\NormalTok{(my_data, }\KeywordTok{boxplot}\NormalTok{(income }\OperatorTok{~}\StringTok{ }\NormalTok{bmi_class))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/cut-demo-3-1} \end{center}
+
+The \texttt{breaks\ =} argument specifies the split positions; the \texttt{right\ =\ F} arguments specifies that the interval is \emph{inclusive} on the lower (left) boundary:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\KeywordTok{cut}\NormalTok{(x, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{right =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] [2,5)  [5,10) <NA>  
+## Levels: [0,2) [2,5) [5,10)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cut}\NormalTok{(x, }\DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{right =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] (0,2]  (2,5]  (5,10]
+## Levels: (0,2] (2,5] (5,10]
+\end{verbatim}
+
+An interval written as \texttt{(5,10{]}} means it is from -but excluding- 5 to -but including- 10.
+Note that in the first example the last value (10) becomes NA because 10 is exclusive in that interval specification.
+
+\hypertarget{file-io-revisited}{%
+\section{File I/O revisited}\label{file-io-revisited}}
+
+Whatever the contents of a file, you always need to address (some of) these questions:
+
+\begin{itemize}
+\tightlist
+\item
+  Are there comment lines at the top?
+\item
+  Is there a header line with column names?
+\item
+  What is the column separator?
+\item
+  Are there quotes around character data?
+\item
+  How are missing values encoded?
+\item
+  How are numeric values encoded?
+\item
+  Are there dates (a special challenge)
+\item
+  What is the type in each column?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    character / numeric / factor / date-time
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{some-read.table-arguments}{%
+\subsubsection*{\texorpdfstring{Some \texttt{read.table()} arguments}{Some read.table() arguments}}\label{some-read.table-arguments}}
+\addcontentsline{toc}{subsubsection}{Some \texttt{read.table()} arguments}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+arg & specifies & example\tabularnewline
+\midrule
+\endhead
+\textbf{sep} & field separator & sep = ``:''\tabularnewline
+\textbf{header} & is there a header & header = F\tabularnewline
+\textbf{dec} & decimal format & dec = ``,''\tabularnewline
+\textbf{comment.char} & comment line start & comment.char = ""\tabularnewline
+\textbf{na.strings} & NA value & na.strings = ``-''\tabularnewline
+\textbf{as.is} & load as character & as.is = c(1,4)\tabularnewline
+\textbf{stringsAsFactors} & load strings as factors & stringsAsFactors = F\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{the-data-reading-workflow}{%
+\subsubsection*{The data reading workflow}\label{the-data-reading-workflow}}
+\addcontentsline{toc}{subsubsection}{The data reading workflow}
+
+Always apply this sequence of steps and repeat until you are satisfied with the result:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{read.table()} with arguments that seem OK
+\item
+  Check the result at least with \texttt{str()} and \texttt{head()} and verify that the columns have the correct data type.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Factors where numeric expected indicate missed ``NA'' values!
+  \end{itemize}
+\item
+  Adjust the read.table parameters
+\item
+  Rinse and repeat
+\end{enumerate}
+
+\hypertarget{writing-data-to-file}{%
+\subsubsection*{Writing data to file}\label{writing-data-to-file}}
+\addcontentsline{toc}{subsubsection}{Writing data to file}
+
+To write a data frame, matrix or vector to file, use \texttt{write.table(myData,\ file="file.csv")}. Standard is a comma-separated file with both column- and row names, unless otherwise specified:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{col.names\ =\ F}
+\item
+  \texttt{row.names\ =\ F}
+\item
+  \texttt{sep\ =\ ";"}
+\item
+  \texttt{sep\ =\ "\textbackslash{}t"\ \#\ tab-separated}
+\end{itemize}
+
+\hypertarget{saving-r-objects-to-file}{%
+\subsubsection*{Saving R objects to file}\label{saving-r-objects-to-file}}
+\addcontentsline{toc}{subsubsection}{Saving R objects to file}
+
+Use the \texttt{save()} function to write R objects to file for later use.
+This is especially handy with intermediate results in long-running analysis workflows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\NormalTok{stats}\OperatorTok{::}\KeywordTok{runif}\NormalTok{(}\DecValTok{20}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{a =} \DecValTok{1}\NormalTok{, }\DataTypeTok{b =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{c =} \StringTok{"oops"}\NormalTok{)}
+\KeywordTok{save}\NormalTok{(x, y, }\DataTypeTok{file =} \StringTok{"xy.RData"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{writing-a-plot-to-file}{%
+\subsubsection*{Writing a plot to file}\label{writing-a-plot-to-file}}
+\addcontentsline{toc}{subsubsection}{Writing a plot to file}
+
+Use one of the functions \texttt{png()}, \texttt{jpeg()}, \texttt{tiff()}, or \texttt{bmp()} for these specific file types. They have widely differing properties, especially with repsect to file size.\\
+Use \texttt{width} and \texttt{height} to specify size. Default unit is pixels. Use other unit: \texttt{units\ =\ "mm"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{png}\NormalTok{(}\StringTok{"/path/to/your/file.png"}\NormalTok{,}
+    \DataTypeTok{width =} \DecValTok{700}\NormalTok{, }\DataTypeTok{height =} \DecValTok{350}\NormalTok{, }\DataTypeTok{units =} \StringTok{"mm"}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(cars)}
+\KeywordTok{dev.off}\NormalTok{() }\CommentTok{# don't forget this one!}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{pattern-matching}{%
+\section{Pattern matching}\label{pattern-matching}}
+
+\begin{quote}
+Pattern matching is the process of finding, locating, extracting and replacing patterns in character data that usually cannot be literally described.
+\end{quote}
+
+For instance, it is easy enough to look for the word ``Chimpansee'' in a vector containing animal species names:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Chimpanzee"}\NormalTok{, }\StringTok{"Cow"}\NormalTok{, }\StringTok{"Camel"}\NormalTok{)}
+\NormalTok{animals }\OperatorTok{==}\StringTok{ "Chimpanzee"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE
+\end{verbatim}
+
+but what are you going to do if there are multiple variants of the word you are looking for? This?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{animals =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Chimpanzee"}\NormalTok{, }\StringTok{"Chimp"}\NormalTok{, }\StringTok{"chimpanzee"}\NormalTok{, }\StringTok{"Camel"}\NormalTok{)}
+\NormalTok{animals }\OperatorTok{==}\StringTok{ "Chimpanzee"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "Chimp"} \OperatorTok{|}\StringTok{ }\NormalTok{animals }\OperatorTok{==}\StringTok{ "chimpanzee"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE  TRUE FALSE
+\end{verbatim}
+
+The solution here is not using literals, but to describe \textbf{\emph{patterns}}.
+
+Look at the above example. How would you describe a pattern that would correctly identify all Chimpanzee occurrences?
+
+Is you pattern something like this?
+
+\emph{A letter C in upper-or lower case followed by `himp' followed by nothing or `anzee'}
+
+In programming we use \textbf{\emph{regular expressions}} or \textbf{\emph{RegEx}} to describe such a pattern in a formal consice way:
+
+\texttt{{[}Cc{]}himp(anzee)?}
+
+And to apply such a pattern in R, we use one of several functions dedicated for this task. Here is one, \texttt{grepl()}, which returns \texttt{TRUE} if the regex matched the vector element.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{grepl}\NormalTok{(}\StringTok{"[Cc]himp(anzee)?"}\NormalTok{, animals)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE  TRUE FALSE
+\end{verbatim}
+
+\hypertarget{functions-using-regex}{%
+\subsubsection*{Functions using regex}\label{functions-using-regex}}
+\addcontentsline{toc}{subsubsection}{Functions using regex}
+
+There are several functions dedicated to finding patters in character data. They differ in intent and output. Here is a listing.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{finding} Does an element contain a pattern (TRUE/FALSE)? \texttt{grepl(pattern,\ string)}
+\item
+  \textbf{locating} Which elements contain a pattern (INDEX)? \texttt{grep(pattern,\ string)}
+\item
+  \textbf{extracting} Get the content of matching elements \texttt{grep(pattern,\ string,\ value\ =\ TRUE)}
+\item
+  \textbf{replace} Replace the first occurrence of the pattern \texttt{sub(pattern,\ replacement,\ string)}
+\item
+  \textbf{replace all} Replace all occurrences of the pattern \texttt{gsub(pattern,\ replacement,\ string)}
+\end{itemize}
+
+Note that the \texttt{stringr} package from the tidyverse has many user-friendly functions in this field as well. Two of them will be dealt with in the exercises.
+
+\hypertarget{regex-syntax}{%
+\subsection{Regex syntax}\label{regex-syntax}}
+
+A regular expression can be build out of any combination of
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{character sequences} - Literal character sequences such as `chimp'\\
+\item
+  \textbf{character classes} - A listing of possibilities for a single position.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Between brackets: \texttt{{[}adgk{]}} means `a' or `d' or `g' or `k'.
+  \item
+    Use a hyphen to create a series: \texttt{{[}3-9{]}} means digits 3 through 9 and \texttt{{[}a-zA-Z{]}} means all alphabet characters.
+  \item
+    Negate using \texttt{\^{}}. \texttt{{[}\^{}adgk{]}} means anything \emph{but} a, d, g or k.
+  \item
+    A special case is the dot \texttt{.}: any character matches.\\
+  \item
+    Many special character classes exist (digits, whitespaces etc). They are discussed in a later paragraph.
+  \end{itemize}
+\item
+  \textbf{alternatives} - Are defined by the pipe symbol \texttt{\textbar{}}: ``OR''\\
+\item
+  \textbf{quantifiers} - How many times the preceding block should occur. See next paragraph.\\
+\item
+  \textbf{anchors} - \texttt{\^{}} means matching at the start of a string. \texttt{\$} means at the end.
+\end{itemize}
+
+An excellent cheatsheet from the RStudio website is also included
+here
+
+\hypertarget{quantifiers}{%
+\subsection{Quantifiers}\label{quantifiers}}
+
+Use quantifiers to specify how many times a character or series of characters should occur.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\texttt{\{n\}}}: exactly \texttt{n} times
+\item
+  \textbf{\texttt{\{n,\ \}}}: at least \texttt{n} times
+\item
+  \textbf{\texttt{\{\ ,n\}}}: at most \texttt{n} times
+\item
+  \textbf{\texttt{\{n,\ m\}}}: at least \texttt{n} and at most \texttt{m} times.
+\item
+  \textbf{\texttt{*}}: 0 or more times; same as \texttt{\{0,\ \}}
+\item
+  \textbf{\texttt{+}}: 1 or more times; same as \texttt{\{1,\ \}}
+\item
+  \textbf{\texttt{?}}: 0 or 1 time; same as \texttt{\{0,\ 1\}}
+\end{itemize}
+
+\hypertarget{some-examples}{%
+\subsection{Some examples}\label{some-examples}}
+
+\hypertarget{restriction-enzymes}{%
+\subsubsection*{Restriction enzymes}\label{restriction-enzymes}}
+\addcontentsline{toc}{subsubsection}{Restriction enzymes}
+
+This is the recognition sequence for the \emph{HincII} restriction endonuclease:
+
+\begin{verbatim}
+5'-GTYRAC-3'
+3'-CARYTG-5'
+\end{verbatim}
+
+Before reading on: how would you define a regular expression that is precisely describes this recognition sequence?
+
+Molecular biology seuence ambiguity codes can be found
+here
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HincII_rs <-}\StringTok{ "GT[CT][AG]AC"}
+\NormalTok{sequences <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"GTCAAC"}\NormalTok{,}
+               \StringTok{"GTCGAC"}\NormalTok{,}
+               \StringTok{"GTTGAC"}\NormalTok{,}
+               \StringTok{"aGTTAACa"}\NormalTok{,}
+               \StringTok{"GTGCAC"}\NormalTok{)}
+\KeywordTok{grep}\NormalTok{(}\DataTypeTok{pattern =}\NormalTok{ HincII_rs, }\DataTypeTok{x =}\NormalTok{ sequences, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "GTCAAC"   "GTCGAC"   "GTTGAC"   "aGTTAACa"
+\end{verbatim}
+
+\hypertarget{dutch-dates}{%
+\subsubsection*{Dutch dates}\label{dutch-dates}}
+\addcontentsline{toc}{subsubsection}{Dutch dates}
+
+Here are some Dutch dates, in different accepted formats. The last two are not a correct notation.
+Create a RegEx that will determine whether an element contains a Dutch date string.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dates <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"15/2/2019"}\NormalTok{, }\StringTok{"15-2-2019"}\NormalTok{, }\StringTok{"15-02-2019"}\NormalTok{, }\StringTok{"015/2/20191"}\NormalTok{, }\StringTok{"15/2/20191"}\NormalTok{)}
+\NormalTok{dateRegex <-}\StringTok{ "[0-9]\{2\}[/-][0-9]\{1,2\}[/-][0-9]\{4\}"}
+\KeywordTok{grep}\NormalTok{(}\DataTypeTok{pattern =}\NormalTok{ dateRegex, }\DataTypeTok{x =}\NormalTok{ dates, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "15/2/2019"   "15-2-2019"   "15-02-2019"  "015/2/20191" "15/2/20191"
+\end{verbatim}
+
+Why were the last two matched?\\
+Because the pattern \emph{is there}, albeit embedded in a longer string.\\
+We have to \textbf{\emph{anchor}} the pattern to be more specific.
+
+\hypertarget{anchoring}{%
+\subsection{Anchoring}\label{anchoring}}
+
+Using anchoring, you can make sure the string is not longer than you explicitly state:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dates <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"15/2/2019"}\NormalTok{, }\StringTok{"15-2-2019"}\NormalTok{, }\StringTok{"15-02-2019"}\NormalTok{, }\StringTok{"015/2/20191"}\NormalTok{, }\StringTok{"15/2/20191"}\NormalTok{)}
+\NormalTok{dateRegex <-}\StringTok{ "^[0-9]\{2\}[/-][0-9]\{1,2\}[/-][0-9]\{4\}$"}
+\KeywordTok{grep}\NormalTok{(}\DataTypeTok{pattern =}\NormalTok{ dateRegex, }\DataTypeTok{x =}\NormalTok{ dates, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "15/2/2019"  "15-2-2019"  "15-02-2019"
+\end{verbatim}
+
+Now the date matching is correct.
+
+\hypertarget{metacharacters-special-character-classes}{%
+\subsection{Metacharacters: Special character classes}\label{metacharacters-special-character-classes}}
+
+Since patterns such as \texttt{{[}0-9{]}} accur so frequently, they have dedicated character classes such as \texttt{{[}{[}:digit:{]}{]}}. The most important other ones are
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{digits} \texttt{{[}{[}:digit:{]}{]}} or \texttt{\textbackslash{}\textbackslash{}d}: equivalent to \texttt{{[}0-9{]}}
+\item
+  \textbf{alphabet characters} \texttt{{[}{[}:alpha:{]}{]}}: equivalent to \texttt{{[}a-zA-Z{]}}
+\item
+  \textbf{lowercase characters} \texttt{{[}{[}:lower:{]}{]}}: equivalent to \texttt{{[}a-z{]}}
+\item
+  \textbf{uppercase characters} \texttt{{[}{[}:upper:{]}{]}}: equivalent to \texttt{{[}A-Z{]}}
+\item
+  \textbf{whitespace characters} \texttt{{[}{[}:space:{]}{]}} or \texttt{\textbackslash{}\textbackslash{}s}: Space, tab, vertical tab, newline, form feed, carriage return
+\item
+  \textbf{punctuation characters} \texttt{{[}{[}:punct:{]}{]}}: One of !"\#\$\%\&'()*+,-./:;\textless{}=\textgreater{}?@{[}{]}\^{}\_`\{\textbar{}\}\textasciitilde{}
+\end{itemize}
+
+(have a look at the cheat sheet for all)
+
+Here is the same example, this time using these predefined character classes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dates <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"15/2/2019"}\NormalTok{, }\StringTok{"15-2-2019"}\NormalTok{, }\StringTok{"15-02-2019"}\NormalTok{, }\StringTok{"15022019"}\NormalTok{, }\StringTok{"15/2/20191"}\NormalTok{)}
+\NormalTok{dateRegex <-}\StringTok{ "[[:digit:]]\{2\}[/-]}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{1,2\}[/-]}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{d\{4\}"}
+\KeywordTok{grep}\NormalTok{(}\DataTypeTok{pattern =}\NormalTok{ dateRegex, }\DataTypeTok{x =}\NormalTok{ dates, }\DataTypeTok{value =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "15/2/2019"  "15-2-2019"  "15-02-2019" "15/2/20191"
+\end{verbatim}
+
+\hypertarget{postal-codes}{%
+\subsubsection*{Postal codes}\label{postal-codes}}
+\addcontentsline{toc}{subsubsection}{Postal codes}
+
+Here are some Dutch zip (postal) codes, in different accepted formats. The last two are not a correct notation.
+Can you create a RegEx that will determine whether an element contains a Dutch zip code?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{zips <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"1234 AA"}\NormalTok{, }\StringTok{"2345-BB"}\NormalTok{, }\StringTok{"3456CC"}\NormalTok{, }\StringTok{"4567 dd"}\NormalTok{, }\StringTok{"56789aa"}\NormalTok{, }\StringTok{"6789a_"}\NormalTok{)}
+\NormalTok{zips}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1234 AA" "2345-BB" "3456CC"  "4567 dd" "56789aa" "6789a_"
+\end{verbatim}
+
+\hypertarget{prosite-patterns}{%
+\subsubsection*{Prosite patterns}\label{prosite-patterns}}
+\addcontentsline{toc}{subsubsection}{Prosite patterns}
+
+Prosite is a database of amino acid sequence motifs. One of them is the Histidine Triad profile (PDOC00694).
+
+\begin{verbatim}
+[NQAR]-x(4)-[GSAVY]-x-[QFLPA]-x-[LIVMY]-x-[HWYRQ]-  
+[LIVMFYST]-H-[LIVMFT]-H-[LIVMF]-[LIVMFPT]-[PSGAWN]
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Write this down as a RegEx
+\item
+  Was that efficient? Using the \texttt{gsub()} function, can you convert it in a RegEx using code? It may take several iterations. Was that efficient?\\
+\item
+  Next, use an appropriate function to find if, and where, this pattern is located within the sequences in file \texttt{data/hit\_proteins.txt} (here)
+\end{itemize}
+
+Amino Acid codes and Prosite pattern encoding can be found
+here
+
+\hypertarget{locating-and-extracting}{%
+\subsection{Locating and Extracting}\label{locating-and-extracting}}
+
+This is outside the scope of this first acquaintance. The \texttt{stringr} package from the tidyverse is much better at this than the base R functions. One of the exercises introduces this topic for the eager ones among you.
 
 \hypertarget{scripting}{%
 \chapter{Scripting}\label{scripting}}
 
 \textbf{\emph{TO BE PORTED FROM PRESENTATION}}
 
-\hypertarget{dataframe-manipulations}{%
-\chapter{Dataframe manipulations}\label{dataframe-manipulations}}
+\hypertarget{dataframe-manipulations-1}{%
+\chapter{Dataframe manipulations}\label{dataframe-manipulations-1}}
 
 \textbf{\emph{TO BE PORTED FROM PRESENTATION}}
 
@@ -2142,8 +3970,8 @@ Create the mentioned line plot. Do you see trends and/or patterns and if so, can
 
 Create a combined boxplot of the three time-series. Are there outliers? If so, can you figure out when this occurred?
 
-\hypertarget{complex-datatypes-1}{%
-\section{Complex datatypes}\label{complex-datatypes-1}}
+\hypertarget{complex-datatypes}{%
+\section{Complex datatypes}\label{complex-datatypes}}
 
 This section serves you some datatype challenges.
 
@@ -2354,8 +4182,8 @@ This is a challenge exercise for those who like to grind their brains! Think of 
 \hypertarget{regular-expressions}{%
 \section{Regular Expressions}\label{regular-expressions}}
 
-\hypertarget{restriction-enzymes}{%
-\subsection{Restriction enzymes}\label{restriction-enzymes}}
+\hypertarget{restriction-enzymes-1}{%
+\subsection{Restriction enzymes}\label{restriction-enzymes-1}}
 
 \textbf{A}
 
@@ -2365,8 +4193,8 @@ The restriction enzyme PacI has the recognition sequence ``TTAATTAA''. Define (a
 
 The restriction enzyme SfiI has the recognition sequence ``GGCCNNNNNGGCC''. Define (at least) three alternative regex patterns that will catch these sites.
 
-\hypertarget{prosite-patterns}{%
-\subsection{Prosite Patterns}\label{prosite-patterns}}
+\hypertarget{prosite-patterns-1}{%
+\subsection{Prosite Patterns}\label{prosite-patterns-1}}
 
 \textbf{A}
 
@@ -2916,8 +4744,8 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/lung-cancer-2-1} \end{center}
 
-\hypertarget{complex-datatypes-2}{%
-\section{Complex datatypes}\label{complex-datatypes-2}}
+\hypertarget{complex-datatypes-1}{%
+\section{Complex datatypes}\label{complex-datatypes-1}}
 
 \hypertarget{creating-factors-1}{%
 \subsection{Creating factors}\label{creating-factors-1}}
@@ -2987,7 +4815,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-28-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 \hypertarget{a-dictionary-with-a-named-vector-1}{%
 \subsection{A dictionary with a named vector}\label{a-dictionary-with-a-named-vector-1}}
@@ -3356,8 +5184,8 @@ Better results with a log transformation (and some coloring)
 \hypertarget{regular-expressions-1}{%
 \section{Regular Expressions}\label{regular-expressions-1}}
 
-\hypertarget{restriction-enzymes-1}{%
-\subsection{Restriction enzymes}\label{restriction-enzymes-1}}
+\hypertarget{restriction-enzymes-2}{%
+\subsection{Restriction enzymes}\label{restriction-enzymes-2}}
 
 \textbf{A}
 
@@ -3387,8 +5215,8 @@ Better results with a log transformation (and some coloring)
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{prosite-patterns-1}{%
-\subsection{Prosite Patterns}\label{prosite-patterns-1}}
+\hypertarget{prosite-patterns-2}{%
+\subsection{Prosite Patterns}\label{prosite-patterns-2}}
 
 \textbf{A}
 
@@ -3740,7 +5568,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-82-1.pdf}
 
 \textbf{D}
 
