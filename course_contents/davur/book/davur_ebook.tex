@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-03-22}
+    \date{2020-03-23}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1680,7 +1680,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     44     56
+##     52     48
 \end{verbatim}
 
 \begin{Shaded}
@@ -1807,7 +1807,7 @@ This is the last of the basic plot types. A boxplot is a visual representation o
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   57.68   69.36   74.12   73.99   78.97   92.23
+##    57.7    69.4    74.1    74.0    79.0    92.2
 \end{verbatim}
 
 Boxplots tell the same story as histograms, but are less precise. however, they are excellent when you want to show a series of subsets split over some variable.
@@ -2859,10 +2859,10 @@ Before proceeding with your data, you should always perform some checks. Several
 
 \begin{verbatim}
 ##   liver.Se tooth.Se
-## 1     6.23   140.16
-## 2     6.79   133.32
-## 3     7.92   135.34
-## 4     8.02   127.82
+## 1     6.23    140.2
+## 2     6.79    133.3
+## 3     7.92    135.3
+## 4     8.02    127.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -2884,13 +2884,13 @@ Before proceeding with your data, you should always perform some checks. Several
 \end{Shaded}
 
 \begin{verbatim}
-##     liver.Se         tooth.Se    
-##  Min.   : 6.230   Min.   :108.7  
-##  1st Qu.: 9.835   1st Qu.:134.8  
-##  Median :14.905   Median :143.4  
-##  Mean   :20.685   Mean   :156.6  
-##  3rd Qu.:33.633   3rd Qu.:175.1  
-##  Max.   :45.470   Max.   :245.1
+##     liver.Se        tooth.Se  
+##  Min.   : 6.23   Min.   :109  
+##  1st Qu.: 9.84   1st Qu.:135  
+##  Median :14.90   Median :143  
+##  Mean   :20.68   Mean   :157  
+##  3rd Qu.:33.63   3rd Qu.:175  
+##  Max.   :45.47   Max.   :245
 \end{verbatim}
 
 There are various other helper methods the you can use to inspect the contents and nature of your dataframe columns and rows:
@@ -2940,9 +2940,9 @@ Sometimes the existing column names are not convenient to work with (unclear, to
 \end{Shaded}
 
 \begin{verbatim}
-##   liver  tooth
-## 1  6.23 140.16
-## 2  6.79 133.32
+##   liver tooth
+## 1  6.23 140.2
+## 2  6.79 133.3
 \end{verbatim}
 
 \begin{Shaded}
@@ -2954,9 +2954,9 @@ Sometimes the existing column names are not convenient to work with (unclear, to
 \end{Shaded}
 
 \begin{verbatim}
-##   pancreas  colon
-## 1     6.23 140.16
-## 2     6.79 133.32
+##   pancreas colon
+## 1     6.23 140.2
+## 2     6.79 133.3
 \end{verbatim}
 
 \hypertarget{adding-columns}{%
@@ -2974,9 +2974,9 @@ You can add a single column by simply specifying its name and the value(s) to be
 \end{Shaded}
 
 \begin{verbatim}
-##   liver  tooth  stomach
-## 1  6.23 140.16 52.53270
-## 2  6.79 133.32 50.69782
+##   liver tooth stomach
+## 1  6.23 140.2   52.53
+## 2  6.79 133.3   50.70
 \end{verbatim}
 
 Alternatively, use \texttt{cbind}. It is a bit more versatile because you can add multiple columns at once.
@@ -2988,27 +2988,27 @@ Alternatively, use \texttt{cbind}. It is a bit more versatile because you can ad
 \end{Shaded}
 
 \begin{verbatim}
-##    liver  tooth  stomach brain
-## 1   6.23 140.16 52.53270     1
-## 2   6.79 133.32 50.69782     0
-## 3   7.92 135.34 39.30723     1
-## 4   8.02 127.82 42.84040     0
-## 5   9.34 108.67 39.75810     1
-## 6  10.00 146.22 34.76140     0
-## 7  10.57 131.18 26.03192     1
-## 8  11.04 145.51 41.84943     0
-## 9  12.36 163.24 41.79376     1
-## 10 14.53 136.55 51.85415     0
-## 11 15.28 112.63 30.02723     1
-## 12 18.68 245.07 38.02698     0
-## 13 22.08 140.48 47.28023     1
-## 14 27.55 177.93 44.05432     0
-## 15 32.83 160.73 42.73052     1
-## 16 36.04 227.60 38.27543     0
-## 17 37.74 177.69 43.20567     1
-## 18 40.00 174.23 40.58457     0
-## 19 41.23 206.30 42.68197     1
-## 20 45.47 141.31 38.53242     0
+##    liver tooth stomach brain
+## 1   6.23 140.2   52.53     1
+## 2   6.79 133.3   50.70     0
+## 3   7.92 135.3   39.31     1
+## 4   8.02 127.8   42.84     0
+## 5   9.34 108.7   39.76     1
+## 6  10.00 146.2   34.76     0
+## 7  10.57 131.2   26.03     1
+## 8  11.04 145.5   41.85     0
+## 9  12.36 163.2   41.79     1
+## 10 14.53 136.6   51.85     0
+## 11 15.28 112.6   30.03     1
+## 12 18.68 245.1   38.03     0
+## 13 22.08 140.5   47.28     1
+## 14 27.55 177.9   44.05     0
+## 15 32.83 160.7   42.73     1
+## 16 36.04 227.6   38.28     0
+## 17 37.74 177.7   43.21     1
+## 18 40.00 174.2   40.58     0
+## 19 41.23 206.3   42.68     1
+## 20 45.47 141.3   38.53     0
 \end{verbatim}
 
 \hypertarget{adding-rows-rbind}{%
@@ -3043,7 +3043,7 @@ Adding rows to a dataframe is similar. There is however a constraint: the column
 
 Dealing with NA is a \textbf{\emph{very big thing}}. When you work with external data there is always the possibility that some values will be missing.
 
-You should be aware that it is not possble to test for \texttt{NA} values (Not Available) values in any other way; using \texttt{==} will simply return \texttt{NA}:
+You should be aware that it is not possible to test for \texttt{NA} values (Not Available) values in any other way; using \texttt{==} will simply return \texttt{NA}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3056,7 +3056,7 @@ You should be aware that it is not possble to test for \texttt{NA} values (Not A
 ## [1] NA
 \end{verbatim}
 
-Other important functions for dealing with that are \texttt{na.omit()} and \texttt{complete.cases()}. Besides that, many functions in R have a (variant of) the \texttt{na.rm\ =} argument. For nstance, when the \texttt{sum()} function encounters an NA in its input vector, it will always return \texttt{NA}:
+Other important functions for dealing with that are \texttt{na.omit()} and \texttt{complete.cases()}. Besides that, many functions in R have a (variant of) the \texttt{na.rm\ =} argument. For instance, when the \texttt{sum()} function encounters an NA in its input vector, it will always return \texttt{NA}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3115,8 +3115,8 @@ This function gives the data values corresponding to the specified quantiles. Th
 \end{Shaded}
 
 \begin{verbatim}
-##     0%    25%    50%    75%   100% 
-##  35.00  63.00 103.00 163.75 373.00
+##    0%   25%   50%   75%  100% 
+##  35.0  63.0 103.0 163.8 373.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -3143,7 +3143,7 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 100.75
+## [1] 100.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -3154,8 +3154,8 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-##    75% 
-## 100.75
+##   75% 
+## 100.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -3166,8 +3166,8 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-##    75% 
-## 100.75
+##   75% 
+## 100.8
 \end{verbatim}
 
 \hypertarget{boxplot-is-summary-visualized}{%
@@ -3184,7 +3184,7 @@ Boxplot is a graph of the 5-number summary, but \texttt{summary()} also gives th
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    35.0    63.0   103.0   121.8   163.8   373.0
+##      35      63     103     122     164     373
 \end{verbatim}
 
 \begin{Shaded}
@@ -3202,7 +3202,7 @@ Boxplot is a graph of the 5-number summary, but \texttt{summary()} also gives th
 \subsubsection*{Memory management}\label{memory-management}}
 \addcontentsline{toc}{subsubsection}{Memory management}
 
-When working with large datasets it may be usefull to free some memory once in a while (i.e.~intermediate results). Use \texttt{ls()} to see what is in menory; use \texttt{rm()} to delete single or several items: \texttt{rm(genes)}, \texttt{rm(x,\ y,\ z)} and clear all by typing \texttt{rm(list\ =\ ls())}
+When working with large datasets it may be useful to free some memory once in a while (i.e.~intermediate results). Use \texttt{ls()} to see what is in memory; use \texttt{rm()} to delete single or several items: \texttt{rm(genes)}, \texttt{rm(x,\ y,\ z)} and clear all by typing \texttt{rm(list\ =\ ls())}
 
 \hypertarget{file-system-operations}{%
 \subsubsection*{File system operations}\label{file-system-operations}}
@@ -3463,7 +3463,7 @@ This is especially handy with intermediate results in long-running analysis work
 \subsubsection*{Writing a plot to file}\label{writing-a-plot-to-file}}
 \addcontentsline{toc}{subsubsection}{Writing a plot to file}
 
-Use one of the functions \texttt{png()}, \texttt{jpeg()}, \texttt{tiff()}, or \texttt{bmp()} for these specific file types. They have widely differing properties, especially with repsect to file size.\\
+Use one of the functions \texttt{png()}, \texttt{jpeg()}, \texttt{tiff()}, or \texttt{bmp()} for these specific file types. They have widely differing properties, especially with respect to file size.\\
 Use \texttt{width} and \texttt{height} to specify size. Default unit is pixels. Use other unit: \texttt{units\ =\ "mm"}
 
 \begin{Shaded}
@@ -3482,7 +3482,7 @@ Use \texttt{width} and \texttt{height} to specify size. Default unit is pixels. 
 Pattern matching is the process of finding, locating, extracting and replacing patterns in character data that usually cannot be literally described.
 \end{quote}
 
-For instance, it is easy enough to look for the word ``Chimpansee'' in a vector containing animal species names:
+For instance, it is easy enough to look for the word ``Chimpanzee'' in a vector containing animal species names:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3516,7 +3516,7 @@ Is you pattern something like this?
 
 \emph{A letter C in upper-or lower case followed by `himp' followed by nothing or `anzee'}
 
-In programming we use \textbf{\emph{regular expressions}} or \textbf{\emph{RegEx}} to describe such a pattern in a formal consice way:
+In programming we use \textbf{\emph{regular expressions}} or \textbf{\emph{RegEx}} to describe such a pattern in a formal concise way:
 
 \texttt{{[}Cc{]}himp(anzee)?}
 
@@ -3587,7 +3587,7 @@ A regular expression can be build out of any combination of
   \textbf{anchors} - \texttt{\^{}} means matching at the start of a string. \texttt{\$} means at the end.
 \end{itemize}
 
-An excellent cheatsheet from the RStudio website is also included
+An excellent cheat sheet from the RStudio website is also included
 here
 
 \hypertarget{quantifiers}{%
@@ -3629,7 +3629,7 @@ This is the recognition sequence for the \emph{HincII} restriction endonuclease:
 
 Before reading on: how would you define a regular expression that is precisely describes this recognition sequence?
 
-Molecular biology seuence ambiguity codes can be found
+Molecular biology sequence ambiguity codes can be found
 here
 
 \begin{Shaded}
@@ -3693,7 +3693,7 @@ Now the date matching is correct.
 \hypertarget{metacharacters-special-character-classes}{%
 \subsection{Metacharacters: Special character classes}\label{metacharacters-special-character-classes}}
 
-Since patterns such as \texttt{{[}0-9{]}} accur so frequently, they have dedicated character classes such as \texttt{{[}{[}:digit:{]}{]}}. The most important other ones are
+Since patterns such as \texttt{{[}0-9{]}} occur so frequently, they have dedicated character classes such as \texttt{{[}{[}:digit:{]}{]}}. The most important other ones are
 
 \begin{itemize}
 \tightlist
@@ -3777,12 +3777,1173 @@ This is outside the scope of this first acquaintance. The \texttt{stringr} packa
 \hypertarget{scripting}{%
 \chapter{Scripting}\label{scripting}}
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+So far you have only seen R code used in the console, in code chunks of an RMarkdown document, or maybe in an R script in the form of a scratchpad. The code you have seen consisted of (series of) R statements with one or more function calls.\\
+There has been no conditional code, no repeated operations and no extraction of blocks of code into something reusable, a custom function. In short, you have not written any \emph{program} or \emph{script} yet.
+
+This chapter deals with that. It introduces conditional execution and custom functions.
+
+\hypertarget{flow-control}{%
+\section{Flow control}\label{flow-control}}
+
+\begin{quote}
+Flow control constitutes a series of code elements used to control whether some code blocks are executed or not, and how many times
+\end{quote}
+
+These programming concepts and structures are used for flow control:
+
+\begin{itemize}
+\tightlist
+\item
+  Conditional execution: \texttt{if()\{\}\ else\ if()\{\}\ else\{\}}
+\item
+  Repeated execution: \texttt{for()\ \{\}}
+\item
+  Repeated conditional execution: \texttt{while()\{\}}
+\end{itemize}
+
+For those of you with experience in other programming languages: there is no switch expression. There is a \texttt{switch()} function however, but it is not dealt with in this eBook.
+
+\hypertarget{conditional-execution-with-ifelse}{%
+\subsection{\texorpdfstring{Conditional execution with \texttt{if/else}}{Conditional execution with if/else}}\label{conditional-execution-with-ifelse}}
+
+There are several applications for conditionals, with differing language constructs:
+
+\begin{itemize}
+\tightlist
+\item
+  the \texttt{if(COND)\ \{\textless{}TRUE\textgreater{}\}\ else\ \{\textless{}FALSE\textgreater{}\}} code block for controlling program flow
+\item
+  the \texttt{if\ (COND)\ \textless{}TRUE\textgreater{}\ else\ \textless{}FALSE\textgreater{}} expression as a shorthand for the code block
+\item
+  the \texttt{ifelse(COND,\ \textless{}TRUE\textgreater{},\ \textless{}FALSE\textgreater{})} function for use on dataframes
+\end{itemize}
+
+As you can see there is always a \textbf{\emph{condition}} to be tested. This expression should return a logical value: TRUE or FALSE.
+
+All three are discussed in the following slides.
+
+\hypertarget{the-if-else-code-block}{%
+\subsubsection*{\texorpdfstring{The \texttt{if()\ \{\}\ else\ \{\}} code block}{The if() \{\} else \{\} code block}}\label{the-if-else-code-block}}
+\addcontentsline{toc}{subsubsection}{The \texttt{if()\ \{\}\ else\ \{\}} code block}
+
+The \texttt{if(COND)\ \{\textless{}TRUE\textgreater{}\}\ else\ \{\textless{}FALSE\textgreater{}\}} code block knows several required and several optional elements.\\
+At the minimum there is an \texttt{if(COND)\ \{\}} element where \texttt{COND} is an expression evaluating to a Logical.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age <-}\StringTok{ }\DecValTok{43}
+\ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{>=}\StringTok{ }\DecValTok{18}\NormalTok{) \{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Adult"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Adult"
+\end{verbatim}
+
+\hypertarget{if-shorthand}{%
+\subsubsection*{\texorpdfstring{\texttt{if()} shorthand}{if() shorthand}}\label{if-shorthand}}
+\addcontentsline{toc}{subsubsection}{\texttt{if()} shorthand}
+
+If there is only one statement within a block you can omit the curly braces:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age <-}\StringTok{ }\DecValTok{43}
+\ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{>=}\StringTok{ }\DecValTok{18}\NormalTok{) }\KeywordTok{print}\NormalTok{(}\StringTok{"Adult"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Adult"
+\end{verbatim}
+
+Remember that the semicolon at the end of a statement is optional in R and is usually omitted.
+
+\hypertarget{if-can-have-an-else}{%
+\subsubsection*{\texorpdfstring{\texttt{if()} can have an \texttt{else\ \{\}}}{if() can have an else \{\}}}\label{if-can-have-an-else}}
+\addcontentsline{toc}{subsubsection}{\texttt{if()} can have an \texttt{else\ \{\}}}
+
+When there is an alternative course of action when the test evaluates to \texttt{FALSE} you use the \texttt{else\{\}} element of this structure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age <-}\StringTok{ }\DecValTok{43}
+\ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{>=}\StringTok{ }\DecValTok{18}\NormalTok{) \{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Adult"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Junior"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Adult"
+\end{verbatim}
+
+Here the curly braces are required:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age <-}\StringTok{ }\DecValTok{43}
+\ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{>=}\StringTok{ }\DecValTok{18}\NormalTok{) }\KeywordTok{print}\NormalTok{(}\StringTok{"Adult"}\NormalTok{)}
+\ControlFlowTok{else} \KeywordTok{print}\NormalTok{(}\StringTok{"Junior"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error: <text>:3:1: unexpected 'else'
+## 2: if (age >= 18) print("Adult")
+## 3: else
+##    ^
+\end{verbatim}
+
+\hypertarget{the-if-can-have-else-if-blocks}{%
+\subsubsection*{\texorpdfstring{The \texttt{if()} can have \texttt{else\ if()} blocks}{The if() can have else if() blocks}}\label{the-if-can-have-else-if-blocks}}
+\addcontentsline{toc}{subsubsection}{The \texttt{if()} can have \texttt{else\ if()} blocks}
+
+If there are more than two courses of action, you must reside to \texttt{else\ if()} blocks.
+Each of them should have its own CONDition to test on.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{age <-}\StringTok{ }\DecValTok{43}
+\ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{<}\StringTok{ }\DecValTok{18}\NormalTok{) \{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Minor"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{>=}\StringTok{ }\DecValTok{65}\NormalTok{)\{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Senior"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(age }\OperatorTok{>=}\StringTok{ }\DecValTok{18} \OperatorTok{&&}\StringTok{ }\NormalTok{age }\OperatorTok{<=}\StringTok{ }\DecValTok{30}\NormalTok{)\{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Young Adult"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"Adult"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Adult"
+\end{verbatim}
+
+\hypertarget{ifelse-real-life-example}{%
+\subsubsection*{if/else real life example}\label{ifelse-real-life-example}}
+\addcontentsline{toc}{subsubsection}{if/else real life example}
+
+This code chunk checks if a file exists and only downloads it if it is not present
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_data_file <-}\StringTok{ "/some/file/on/disk"}
+\CommentTok{## fetch file}
+\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{file.exists}\NormalTok{(my_data_file)) \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"downloading"}\NormalTok{, my_data_file))}
+    \KeywordTok{download.file}\NormalTok{(}\DataTypeTok{url =}\NormalTok{ remote_url, }\DataTypeTok{destfile =}\NormalTok{ my_data_file)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"reading cached copy of"}\NormalTok{, my_data_file))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ifelse-shorthand}{%
+\subsubsection*{ifelse shorthand}\label{ifelse-shorthand}}
+\addcontentsline{toc}{subsubsection}{ifelse shorthand}
+
+There is also a shorthand for \texttt{if()\{\}\ else\{\}}. It is also called a \textbf{\emph{ternary}}.\\
+It has the form\\
+\texttt{if\ (COND)\ \textless{}EXPRESSION\_FOR\_TRUE\textgreater{}\ else\ \textless{}EXPRESSION\_FOR\_FALSE\textgreater{}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\DecValTok{3}
+\NormalTok{x <-}\StringTok{ }\ControlFlowTok{if}\NormalTok{ (a }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{) }\StringTok{"EVEN"} \ControlFlowTok{else} \StringTok{"UNEVEN"}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "UNEVEN"
+\end{verbatim}
+
+\hypertarget{ifelse-on-dataframes-ifelse}{%
+\subsubsection*{\texorpdfstring{if/else on dataframes: \texttt{ifelse()}}{if/else on dataframes: ifelse()}}\label{ifelse-on-dataframes-ifelse}}
+\addcontentsline{toc}{subsubsection}{if/else on dataframes: \texttt{ifelse()}}
+
+When you want to assign values to a vector based on some condition, you need to use the third form, the \texttt{ifelse()} function.
+
+When you use the regular if/else structures on dataframes you don't get what you want:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Only first value (row) is evaluated and this value is cycled}
+\CommentTok{# The whole column gets value 1}
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{foo <-}\StringTok{ }\ControlFlowTok{if}\NormalTok{ (airquality}\OperatorTok{$}\NormalTok{Ozone }\OperatorTok{<}\StringTok{ }\DecValTok{30}\NormalTok{) }\DecValTok{0} \ControlFlowTok{else} \DecValTok{1} 
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in if (airquality$Ozone < 30) 0 else 1: the condition has length >
+## 1 and only the first element will be used
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# This works}
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{bar <-}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Ozone }\OperatorTok{<}\StringTok{ }\DecValTok{30}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(airquality)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Ozone Solar.R Wind Temp Month Day foo bar
+## 1    41     190  7.4   67   May   1   1   1
+## 2    36     118  8.0   72   May   2   1   1
+## 3    12     149 12.6   74   May   3   1   0
+## 4    18     313 11.5   62   May   4   1   0
+## 5    NA      NA 14.3   56   May   5   1  NA
+## 6    28      NA 14.9   66   May   6   1   0
+\end{verbatim}
+
+\hypertarget{iteration-with-for}{%
+\subsection{\texorpdfstring{Iteration with \texttt{for()\{\}}}{Iteration with for()\{\}}}\label{iteration-with-for}}
+
+\begin{itemize}
+\tightlist
+\item
+  Iteration with \texttt{for} is used for looping a series of values from a vector.
+  \_ You should not use it to iterate columns or rows of a dataframe: the preferred way to do that is with \texttt{apply()} and its relatives (next presentation)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (greeting }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"Hello"}\NormalTok{, }\StringTok{"'Allo"}\NormalTok{, }\StringTok{"Moi"}\NormalTok{)) \{}
+    \KeywordTok{print}\NormalTok{(greeting)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello"
+## [1] "'Allo"
+## [1] "Moi"
+\end{verbatim}
+
+Sometimes you need a counter or index when iterating:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{greetings <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Hello"}\NormalTok{, }\StringTok{"'Allo"}\NormalTok{, }\StringTok{"Moi"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1} \OperatorTok{:}\StringTok{ }\KeywordTok{length}\NormalTok{(greetings)) \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(i, greetings[i]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1 Hello"
+## [1] "2 'Allo"
+## [1] "3 Moi"
+\end{verbatim}
+
+\hypertarget{conditional-iteration-with-while}{%
+\subsection{\texorpdfstring{Conditional iteration with \texttt{while()\{\}}}{Conditional iteration with while()\{\}}}\label{conditional-iteration-with-while}}
+
+This is the last flow control structure. It is used to execute a block \textbf{\emph{as long as a certain condition is met}}. They are not used very much in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counter =}\StringTok{ }\DecValTok{1}
+\ControlFlowTok{while}\NormalTok{ (counter }\OperatorTok{%%}\StringTok{ }\DecValTok{5} \OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
+    \KeywordTok{print}\NormalTok{(counter)}
+\NormalTok{    counter =}\StringTok{ }\NormalTok{counter }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+\end{verbatim}
+
+\hypertarget{creating-functions}{%
+\section{Creating functions}\label{creating-functions}}
+
+Here is the definition again.
+
+\begin{quote}
+\emph{A function is a piece of functionality that you can execute by typing its name, followed by a pair of parentheses. Within these parentheses, you can pass data for the function to work on. Functions often, but not always, return a value}.
+\end{quote}
+
+Thus, functions are named blocks of code with a \textbf{\emph{single well-defined purpose}} which make them reusable.
+You have already used many \textbf{\emph{predefined}} or build in functions of R: \texttt{str}, \texttt{max}, \texttt{read.table} etc. If you type the name of a function without parenthesis you get its definition.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function (..., na.rm = FALSE)  .Primitive("sum")
+\end{verbatim}
+
+\hypertarget{anatomy-of-a-function}{%
+\subsubsection*{Anatomy of a function}\label{anatomy-of-a-function}}
+\addcontentsline{toc}{subsubsection}{Anatomy of a function}
+
+A function
+
+\begin{itemize}
+\tightlist
+\item
+  usually, but not always, has a name. in the next chapter you will see examples of \emph{anonymous} functions that are defined in the location where they are needed.\\
+\item
+  has a \textbf{\emph{parameter list}} (sometimes of size zero) between parentheses. These parameters constitute the required input variables on which the function will operate.\\
+\item
+  has a \textbf{\emph{method body}}. This is a block of one or more lines of code in which the actual work is performed.\\
+\item
+  may have a \textbf{\emph{return value}}. Ther result of a function is usually, but not always returned. The print function, for instance, does not return a value but only outputs to the console. Functions can only retun one single value (vector). If more return values are needed, you need to wrap them in a complex datatype such as a list.\\
+\item
+  is defined using the \_\textbf{function keyword\_}
+\end{itemize}
+
+Here is a function prototype. It shows all characteristics of the above list of properties.
+
+\begin{verbatim}
+method_name <- function(arg, arg, ...) {
+    <function body>
+    return(return_value)
+}
+\end{verbatim}
+
+\hypertarget{a-first-function}{%
+\subsubsection*{A first function}\label{a-first-function}}
+\addcontentsline{toc}{subsubsection}{A first function}
+
+Here is a simple function determining whether some number is even
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{is_even <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{    evens <-}\StringTok{ }\NormalTok{x }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}
+    \KeywordTok{return}\NormalTok{(evens) }
+\NormalTok{\}}
+\KeywordTok{is_even}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+Note that \texttt{return()} is a \textbf{\emph{method call}} which is very unlike other programming languages.
+
+The \textbf{\emph{return statement is optional}}.
+In R, the last statement of a method body is its \textbf{\emph{implicit return value}}. Therefore, the previous example is equivalent to this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{is_even <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{    x }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}
+\NormalTok{\}}
+\KeywordTok{is_even}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+Being explicit is always allowed when implicit return is possible, but using a \texttt{return()} for forcing return values at other points is required:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_message <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(age) \{}
+    \ControlFlowTok{if}\NormalTok{ (age }\OperatorTok{<}\StringTok{ }\DecValTok{18}\NormalTok{) }\KeywordTok{return}\NormalTok{(}\StringTok{"have a lemonade!"}\NormalTok{) }\CommentTok{# explicit return}
+    \StringTok{"have a beer!"} \CommentTok{# implicit return statement}
+\NormalTok{\}}
+\KeywordTok{my_message}\NormalTok{(}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "have a beer!"
+\end{verbatim}
+
+\hypertarget{default-argument-values}{%
+\subsubsection*{Default argument values}\label{default-argument-values}}
+\addcontentsline{toc}{subsubsection}{Default argument values}
+
+It is possible to specify \textbf{\emph{default values}} for function arguments. This is a value that is attached to a function parameter when the calling code does not provide one. A default value is specified in the parameter list, using this construct: \texttt{some\_arg\ =\ \textless{}default-value\textgreater{}}. Almost all functions in R have (many) parameters with default values.
+
+You should use default values yourself for function parameters whenever possible. They make using the function so much easier. The following function calculates the exponent (power) of a number. When no \texttt{power\ =} value is provided, it defaults to two.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_power <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, }\DataTypeTok{power =} \DecValTok{2}\NormalTok{) \{}
+\NormalTok{    x }\OperatorTok{^}\StringTok{ }\NormalTok{power}
+\NormalTok{\}}
+\KeywordTok{my_power}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{3}\NormalTok{) }\CommentTok{## custom power}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_power}\NormalTok{(}\DecValTok{10}\NormalTok{) }\CommentTok{## defaults to 2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+\hypertarget{argument-order-when-calling-a-function}{%
+\subsubsection*{Argument order when calling a function}\label{argument-order-when-calling-a-function}}
+\addcontentsline{toc}{subsubsection}{Argument order when calling a function}
+
+As we have seen many times before, you do not \emph{need} to pass arguments by name. In the above example, the names were not used. When you do not use the names of arguments, the order in which you pass them is important; they must match the order in which they are declared in the function. If you use their names, their order is not important:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_power}\NormalTok{(}\DataTypeTok{power =} \DecValTok{4}\NormalTok{, }\DataTypeTok{x =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16
+\end{verbatim}
+
+To summarize: When calling a function,
+
+\begin{itemize}
+\tightlist
+\item
+  the parameters without default value are mandatory
+\item
+  the unnamed arguments should come first and should be passed in the order in which they are declared
+\item
+  passing named arguments may be done in any order
+\end{itemize}
+
+\hypertarget{errors-and-warnings}{%
+\subsection{Errors and warnings}\label{errors-and-warnings}}
+
+When someting is not right, but not enought to quit execution, use a warning to let the user (or yourself) know that there is something wrong:
+
+\texttt{warning("I\ am\ not\ happy")}
+
+When something is terribly wrong, and you cannot continue, you should stop execution with an error message:
+
+\texttt{stop("I\ can\textquotesingle{}t\ go\ on")}
+
+Here is a small errors demo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{demo_inverse <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{is.numeric}\NormalTok{(x)) \{}
+        \KeywordTok{stop}\NormalTok{(}\StringTok{"non-numeric vector"}\NormalTok{)}
+\NormalTok{    \}}
+    \KeywordTok{return}\NormalTok{(x }\OperatorTok{/}\StringTok{ }\DecValTok{3}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{result1 <-}\StringTok{ }\KeywordTok{demo_inverse}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{)) }\CommentTok{#result1 not created!}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Error in demo_inverse(c("a", "b")): non-numeric vector
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{result2 <-}\StringTok{ }\KeywordTok{demo_inverse}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{scripting-1}{%
+\section{Scripting}\label{scripting-1}}
+
+An R script is a text file with the extension \texttt{.R} that contains R code. When it is loaded, it is immediately evaluated. \textbf{\emph{Functions are loaded/evaluated, but not executed}}. Declared variables are stored in main memory - the Global Environment to be precise.
+
+Here is the contents of a very simple R script called \texttt{source\_demo.R}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{42}
+\NormalTok{x }\CommentTok{# echo to console}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"x = "}\NormalTok{, x)) }\CommentTok{#explicit print}
+
+\CommentTok{# function defined but not called}
+\NormalTok{demo_function <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(message) \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"you said"}\NormalTok{, message))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+You can load this script int your R session by \emph{sourcing} it; just call \texttt{source(path/to/source\_demo.R)}. Alternatively, when you have it open in the RStudio editor, you can click the ``source'' button at the top right of the editor panel. After that, you can use the functions and variables defined within the script:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\StringTok{"data/source_demo.R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x = 42"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{demo_function}\NormalTok{(}\StringTok{"hi!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "you said hi!"
+\end{verbatim}
+
+\hypertarget{why-scripts}{%
+\subsubsection*{Why scripts?}\label{why-scripts}}
+\addcontentsline{toc}{subsubsection}{Why scripts?}
+
+\begin{itemize}
+\tightlist
+\item
+  To store pieces of functionality you want to reuse (e.g.~in different RMarkdown documents)
+\item
+  To store entire workflows outside RMarkdown
+\item
+  To run R code from the commandline (terminal)
+\item
+  To call from other scripts and build \textbf{\emph{applications}} or \textbf{\emph{packages}}
+\end{itemize}
 
 \hypertarget{dataframe-manipulations-1}{%
 \chapter{Dataframe manipulations}\label{dataframe-manipulations-1}}
 
-\textbf{\emph{TO BE PORTED FROM PRESENTATION}}
+Dataframes are ubiquitous in R-based data analyses. Many R functions and packages are tailored specifically for DF manipulations - you have already seen \texttt{cbind()}, \texttt{rbind()} and \texttt{subset()}.\\
+In this presentation, we'll explore a few new functions and techniques for working with DFs:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{apply()}
+\item
+  \texttt{lapply()}
+\item
+  \texttt{sapply()}
+\item
+  \texttt{tapply()}
+\item
+  \texttt{aggregate()}
+\item
+  \texttt{split()}
+\end{itemize}
+
+\hypertarget{the-apply-family-of-functions}{%
+\section{\texorpdfstring{The \texttt{apply()} family of functions}{The apply() family of functions}}\label{the-apply-family-of-functions}}
+
+Looping with \texttt{for} may be tempting, but highly discouraged in R because its inefficient. Ususally one of these functions will do it better:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{apply}: Apply a function over the ``margins'' of a dataframe - rows or columns or both
+\item
+  \texttt{lapply}: Loop over a list and evaluate a function on each element; returns a list of the same length
+\item
+  \texttt{sapply}: Same as lapply but try to simplify the result
+\item
+  \texttt{tapply}: Apply a function over subsets of a vector (read: split with a factor)
+\end{itemize}
+
+There are more but these are the important ones.
+
+\hypertarget{apply-apply-functions-over-array-margins}{%
+\subsection{\texorpdfstring{\texttt{apply()}: Apply Functions Over Array Margins}{apply(): Apply Functions Over Array Margins}}\label{apply-apply-functions-over-array-margins}}
+
+\begin{itemize}
+\tightlist
+\item
+  Suppose you want to know the means of all columns of a dataframe.
+\item
+  \texttt{apply()} needs to know
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    what DF to apply to (\texttt{X})
+  \item
+    over which margin(s) - columns and/or rows (\texttt{MARGIN})
+  \item
+    what function to apply (\texttt{FUN})
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ cars, }\DataTypeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ mean) }\CommentTok{# apply over columns}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## speed  dist 
+## 15.40 42.98
+\end{verbatim}
+
+Here, a function is applied to both columns and rows
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{y =} \DecValTok{6}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{minus_one_squared <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) (x}\DecValTok{-1}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ df, }\DataTypeTok{MARGIN =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{FUN =}\NormalTok{ minus_one_squared)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       x  y
+## [1,]  0 25
+## [2,]  1 36
+## [3,]  4 49
+## [4,]  9 64
+## [5,] 16 81
+\end{verbatim}
+
+(Ok, that was a bit lame: \texttt{minus\_one\_squared(df)} does the same)
+
+The Body Mass Index, or BMI, is calculated as \((weight / height ^ 2) * 703\) where weight is in pounds and height in inches. Here it is calculated for the build in dataset \texttt{women}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(women, }\DataTypeTok{n=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height weight
+## 1     58    115
+## 2     59    117
+## 3     60    120
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{women}\OperatorTok{$}\NormalTok{bmi <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ women, }
+                   \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }
+                   \DataTypeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x) (x[}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{703}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(women, }\DataTypeTok{n=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height weight   bmi
+## 1     58    115 24.03
+## 2     59    117 23.63
+## 3     60    120 23.43
+## 4     61    123 23.24
+\end{verbatim}
+
+\hypertarget{pass-arguments-to-the-applied-function}{%
+\subsubsection*{Pass arguments to the applied function}\label{pass-arguments-to-the-applied-function}}
+\addcontentsline{toc}{subsubsection}{Pass arguments to the applied function}
+
+Sometimes the applied function needs to have other arguments passed besides the row or column. The \texttt{...} argument to \texttt{apply()} makes this possible (type \texttt{?apply} to see more info)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# function sums and powers up}
+\NormalTok{spwr <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x, }\DataTypeTok{p =} \DecValTok{2}\NormalTok{) \{}\KeywordTok{sum}\NormalTok{(x)}\OperatorTok{^}\NormalTok{p\}}
+\CommentTok{# a simple dataframe}
+\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{a =} \DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{b =} \DecValTok{6}\OperatorTok{:}\DecValTok{10}\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   a  b
+## 1 1  6
+## 2 2  7
+## 3 3  8
+## 4 4  9
+## 5 5 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# spwr will use the default value for p (p = 2)}
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ df, }\DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ spwr) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  49  81 121 169 225
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# pass power p = 3 to function spwr (argument names omitted)}
+\KeywordTok{apply}\NormalTok{(df, }\DecValTok{1}\NormalTok{, spwr, }\DataTypeTok{p =} \DecValTok{3}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  343  729 1331 2197 3375
+\end{verbatim}
+
+Note: The \texttt{...} argument works for all \texttt{..apply..} functions.
+
+\hypertarget{lapply-apply-a-function-over-a-list-or-vector}{%
+\subsection{\texorpdfstring{\texttt{lapply()}: Apply a Function over a List or Vector}{lapply(): Apply a Function over a List or Vector}}\label{lapply-apply-a-function-over-a-list-or-vector}}
+
+Function \texttt{lapply()} applies a function to all elements of a list and returns a list with the same length, each element the result of applying the function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myNumbers =}\StringTok{ }\KeywordTok{list}\NormalTok{(}
+    \DataTypeTok{one =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{), }
+    \DataTypeTok{two =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{), }
+    \DataTypeTok{three =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+\KeywordTok{lapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myNumbers, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $one
+## [1] 2.667
+## 
+## $two
+## [1] 3
+## 
+## $three
+## [1] 7
+\end{verbatim}
+
+Here is the same list, but now with \texttt{sqrt()} applied. Notice how the nature of the applied function influences the result.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{lapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myNumbers, }\DataTypeTok{FUN =}\NormalTok{ sqrt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $one
+## [1] 1.000 1.732 2.000
+## 
+## $two
+## [1] 1.732 1.414 2.449 1.000
+## 
+## $three
+## [1] 2.236 2.646 2.449 2.828 3.000
+\end{verbatim}
+
+\hypertarget{sapply-apply-a-function-over-a-list-or-vector-and-simplify}{%
+\subsection{\texorpdfstring{\texttt{sapply()}: Apply a Function over a List or Vector and Simplify}{sapply(): Apply a Function over a List or Vector and Simplify}}\label{sapply-apply-a-function-over-a-list-or-vector-and-simplify}}
+
+When using the same example as above, but with \texttt{sapply}, you get a vector returned. Note that the resulting vector is a named vector, a convenient feature of \texttt{sapply}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myNumbers =}\StringTok{ }\KeywordTok{list}\NormalTok{(}
+    \DataTypeTok{one =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+    \DataTypeTok{two =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+    \DataTypeTok{three =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+\KeywordTok{sapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myNumbers, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   one   two three 
+## 2.667 3.000 7.000
+\end{verbatim}
+
+When the result can not be simplified, you get the same list as with \texttt{lapply()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myNumbers, }\DataTypeTok{FUN =}\NormalTok{ sqrt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $one
+## [1] 1.000 1.732 2.000
+## 
+## $two
+## [1] 1.732 1.414 2.449 1.000
+## 
+## $three
+## [1] 2.236 2.646 2.449 2.828 3.000
+\end{verbatim}
+
+\hypertarget{wasnt-a-dataframe-also-a-list}{%
+\subsubsection{wasn't a dataframe also a list?}\label{wasnt-a-dataframe-also-a-list}}
+
+Yes! It is also list(ish). Both \texttt{lapply()} and \texttt{sapply()} work just fine on dataframes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{lapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ cars, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $speed
+## [1] 15.4
+## 
+## $dist
+## [1] 42.98
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ cars, }\DataTypeTok{FUN =}\NormalTok{ mean) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## speed  dist 
+## 15.40 42.98
+\end{verbatim}
+
+By the way, sapply and lapply also work with vectors.
+
+\hypertarget{tapply-apply-a-function-over-a-ragged-array}{%
+\subsection{\texorpdfstring{\texttt{tapply()}: Apply a Function Over a Ragged Array}{tapply(): Apply a Function Over a Ragged Array}}\label{tapply-apply-a-function-over-a-ragged-array}}
+
+What \texttt{tapply()} does is apply a function over subsets of a vector; it splits a vector into groups according to the levels in a second vector and applies the given function to each group.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{weight, }\DataTypeTok{INDEX =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{feed, }\DataTypeTok{FUN =}\NormalTok{ sd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    casein horsebean   linseed  meatmeal   soybean sunflower 
+##     64.43     38.63     52.24     64.90     54.13     48.84
+\end{verbatim}
+
+\hypertarget{split-divide-into-groups-and-reassemble}{%
+\subsection{\texorpdfstring{\texttt{split()}: Divide into Groups and Reassemble}{split(): Divide into Groups and Reassemble}}\label{split-divide-into-groups-and-reassemble}}
+
+This is similar to \texttt{tapply()} in the sense that is uses a factor to split its first argument. But where \texttt{tapply()} splits a vector, \texttt{split()} splits a dataframe - into \emph{list of dataframes}.
+You use \texttt{split()} when a dataframe needs to be divided depending on the value of some grouping variable.\\
+Here we have the response of Treated (T) and Untreated (UT) subjects
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myData <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
+    \DataTypeTok{response =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+    \DataTypeTok{treatment =} \KeywordTok{factor}\NormalTok{(}
+        \KeywordTok{c}\NormalTok{(}\StringTok{"UT"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"UT"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"T"}\NormalTok{, }\StringTok{"UT"}\NormalTok{)))}
+\NormalTok{splData <-}\StringTok{ }\KeywordTok{split}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ myData, }\DataTypeTok{f =}\NormalTok{ myData}\OperatorTok{$}\NormalTok{treatment)}
+\KeywordTok{str}\NormalTok{(splData)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 2
+##  $ T :'data.frame':  6 obs. of  2 variables:
+##   ..$ response : num [1:6] 8 9 6 7 6 5
+##   ..$ treatment: Factor w/ 2 levels "T","UT": 1 1 1 1 1 1
+##  $ UT:'data.frame':  6 obs. of  2 variables:
+##   ..$ response : num [1:6] 5 4 5 3 3 2
+##   ..$ treatment: Factor w/ 2 levels "T","UT": 2 2 2 2 2 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(splData}\OperatorTok{$}\NormalTok{T}\OperatorTok{$}\NormalTok{response, splData}\OperatorTok{$}\NormalTok{UT}\OperatorTok{$}\NormalTok{response, }
+        \DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{"Treated"}\NormalTok{, }\StringTok{"Untreated"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/split_demo1-1.pdf}
+
+Note that this trivial example could also have been done with \texttt{boxplot(myData\$response\ \textasciitilde{}\ myData\$treatment)}.
+
+Here you can see that \texttt{split()} also works with vectors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{split}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{), }\DataTypeTok{f =} \KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"sick"}\NormalTok{, }\StringTok{"healthy"}\NormalTok{), }\DataTypeTok{each=}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $healthy
+## [1] -0.35028  1.37414 -0.29972  0.09764  0.38119
+## 
+## $sick
+## [1]  1.1886  1.0599  1.3368 -0.3672 -0.3043
+\end{verbatim}
+
+\hypertarget{aggregate-compute-summary-statistics-of-data-subsets}{%
+\subsection{\texorpdfstring{\texttt{aggregate()}: Compute Summary Statistics of Data Subsets}{aggregate(): Compute Summary Statistics of Data Subsets}}\label{aggregate-compute-summary-statistics-of-data-subsets}}
+
+Splits the data into subsets, computes summary statistics for each, and returns the result in a convenient form.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{formula =}\NormalTok{ Temp }\OperatorTok{~}\StringTok{ }\NormalTok{Month, }\DataTypeTok{data =}\NormalTok{ airquality, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Month  Temp
+## 1       May 65.55
+## 2      June 79.10
+## 3      July 83.90
+## 4    August 83.97
+## 5 September 76.90
+\end{verbatim}
+
+Aggregate has two usage techniques:
+
+\begin{itemize}
+\item
+  with a formula:\\
+  \textbf{\texttt{aggregate(formula,\ data,\ FUN,\ ...)}}
+\item
+  with a list:\\
+  \textbf{\texttt{aggregate(x,\ by,\ FUN,\ ...)}}
+\end{itemize}
+
+I really like \texttt{aggregate()}, especially the first form. That is, until I got to know the \texttt{dplyr} package.
+
+Both forms of \texttt{aggregate()} will be demonstrated
+
+\hypertarget{aggregate-with-formula}{%
+\subsubsection*{Aggregate with formula}\label{aggregate-with-formula}}
+\addcontentsline{toc}{subsubsection}{Aggregate with formula}
+
+The left part of the formula accepts one, several or all columns as dependent variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##two dependents}
+\KeywordTok{aggregate}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(Temp, Ozone) }\OperatorTok{~}\StringTok{ }\NormalTok{Month, }\DataTypeTok{data =}\NormalTok{ airquality, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Month  Temp Ozone
+## 1       May 66.73 23.62
+## 2      June 78.22 29.44
+## 3      July 83.88 59.12
+## 4    August 83.96 59.96
+## 5 September 76.90 31.45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##all}
+\KeywordTok{aggregate}\NormalTok{(. }\OperatorTok{~}\StringTok{ }\NormalTok{Month, }\DataTypeTok{data =}\NormalTok{ airquality, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Month Ozone Solar.R   Wind  Temp   Day foo    bar
+## 1       May 24.12   182.0 11.504 66.46 16.08   1 0.3333
+## 2      June 29.44   184.2 12.178 78.22 14.33   1 0.3333
+## 3      July 59.12   216.4  8.523 83.88 16.23   1 0.8077
+## 4    August 60.00   173.1  8.861 83.70 17.17   1 0.6957
+## 5 September 31.45   168.2 10.076 76.90 15.10   1 0.3448
+\end{verbatim}
+
+The right part can also accept multiple independent variables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{Temp_factor <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Temp, }\DataTypeTok{breaks =} \DecValTok{2}\NormalTok{, }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"low"}\NormalTok{, }\StringTok{"high"}\NormalTok{))}
+\KeywordTok{aggregate}\NormalTok{(Ozone }\OperatorTok{~}\StringTok{ }\NormalTok{Month }\OperatorTok{+}\StringTok{ }\NormalTok{Temp_factor, }\DataTypeTok{data =}\NormalTok{ airquality, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Month Temp_factor Ozone
+## 1        May         low 18.92
+## 2       June         low 20.50
+## 3       July         low 13.00
+## 4     August         low 16.00
+## 5  September         low 17.62
+## 6        May        high 80.00
+## 7       June        high 36.60
+## 8       July        high 62.96
+## 9     August        high 63.62
+## 10 September        high 48.46
+\end{verbatim}
+
+\hypertarget{the-by-list...-form}{%
+\subsubsection*{\texorpdfstring{The \texttt{by\ =\ list(...)} form}{The by = list(...) form}}\label{the-by-list...-form}}
+\addcontentsline{toc}{subsubsection}{The \texttt{by\ =\ list(...)} form}
+
+This is the other form of aggregate. It is more elaborate in my opinion because you need te spell out all vectors you want to work on.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{weight, }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{feed =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{feed), }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        feed     x
+## 1    casein 323.6
+## 2 horsebean 160.2
+## 3   linseed 218.8
+## 4  meatmeal 276.9
+## 5   soybean 246.4
+## 6 sunflower 328.9
+\end{verbatim}
+
+Here is another example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ airquality}\OperatorTok{$}\NormalTok{Wind, }
+          \DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{month =}\NormalTok{ airquality}\OperatorTok{$}\NormalTok{Month, }\DataTypeTok{temperature =}\NormalTok{ airquality}\OperatorTok{$}\NormalTok{Temp_factor), }
+          \DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        month temperature      x
+## 1        May         low 11.714
+## 2       June         low  9.855
+## 3       July         low 10.600
+## 4     August         low 11.433
+## 5  September         low 11.394
+## 6        May        high 10.300
+## 7       June        high 10.505
+## 8       July        high  8.828
+## 9     August        high  8.511
+## 10 September        high  8.793
+\end{verbatim}
+
+But it is better to wrap it in \texttt{with()}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(airquality, }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Wind, }
+                           \DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{month =}\NormalTok{ Month, }\DataTypeTok{temperature =}\NormalTok{ Temp_factor), }
+                           \DataTypeTok{FUN =}\NormalTok{ mean))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{many-roads-lead-to-rome}{%
+\subsection{Many roads lead to Rome}\label{many-roads-lead-to-rome}}
+
+The next series of examples are all essentially the same. The message is: there is more than one way to do it!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(weight }\OperatorTok{~}\StringTok{ }\NormalTok{feed, }\DataTypeTok{data =}\NormalTok{ chickwts, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        feed weight
+## 1    casein  323.6
+## 2 horsebean  160.2
+## 3   linseed  218.8
+## 4  meatmeal  276.9
+## 5   soybean  246.4
+## 6 sunflower  328.9
+\end{verbatim}
+
+same as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(}\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{weight, }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{feed =}\NormalTok{ chickwts}\OperatorTok{$}\NormalTok{feed), }\DataTypeTok{FUN =}\NormalTok{ mean), }\DataTypeTok{n=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        feed     x
+## 1    casein 323.6
+## 2 horsebean 160.2
+## 3   linseed 218.8
+\end{verbatim}
+
+same as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tapply}\NormalTok{(chickwts}\OperatorTok{$}\NormalTok{weight, chickwts}\OperatorTok{$}\NormalTok{feed, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    casein horsebean   linseed  meatmeal   soybean sunflower 
+##     323.6     160.2     218.8     276.9     246.4     328.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(chickwts, }\KeywordTok{tapply}\NormalTok{(weight, feed, mean))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    casein horsebean   linseed  meatmeal   soybean sunflower 
+##     323.6     160.2     218.8     276.9     246.4     328.9
+\end{verbatim}
+
+same as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sapply}\NormalTok{(}\KeywordTok{split}\NormalTok{(chickwts, chickwts}\OperatorTok{$}\NormalTok{feed), }\ControlFlowTok{function}\NormalTok{(x)\{}\KeywordTok{mean}\NormalTok{(x}\OperatorTok{$}\NormalTok{weight)\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    casein horsebean   linseed  meatmeal   soybean sunflower 
+##     323.6     160.2     218.8     276.9     246.4     328.9
+\end{verbatim}
+
+And this is the topic of the next course:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{group_by}\NormalTok{(chickwts, feed) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{mean_weigth =} \KeywordTok{mean}\NormalTok{(weight))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   feed      mean_weigth
+##   <fct>           <dbl>
+## 1 casein           324.
+## 2 horsebean        160.
+## 3 linseed          219.
+## 4 meatmeal         277.
+## 5 soybean          246.
+## 6 sunflower        329.
+\end{verbatim}
 
 \hypertarget{exercises}{%
 \chapter{Exercises}\label{exercises}}
@@ -4294,8 +5455,8 @@ Extract all \textbf{\emph{first}} database identifiers. So in this header elemen
 
 Extract all protein names/descriptions.
 
-\hypertarget{scripting-1}{%
-\section{Scripting}\label{scripting-1}}
+\hypertarget{scripting-2}{%
+\section{Scripting}\label{scripting-2}}
 
 This section serves you some exercises that will help you improve your function-writing skills.
 
@@ -4530,7 +5691,7 @@ Report the different observed species (using \texttt{Common.name}) for each genu
 ## [1] 42
 ## [1] 144
 ## [1] 16
-## [1] 0.1638823
+## [1] 0.1639
 \end{verbatim}
 
 \hypertarget{first-look-at-functions-1}{%
@@ -4815,7 +5976,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 \hypertarget{a-dictionary-with-a-named-vector-1}{%
 \subsection{A dictionary with a named vector}\label{a-dictionary-with-a-named-vector-1}}
@@ -4902,8 +6063,8 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Shaded}
 
 \begin{verbatim}
-##     Temp.C Month Day
-## 5 13.33333   May   5
+##   Temp.C Month Day
+## 5  13.33   May   5
 \end{verbatim}
 
 \textbf{D}
@@ -5275,8 +6436,8 @@ PS00018:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{scripting-2}{%
-\section{Scripting}\label{scripting-2}}
+\hypertarget{scripting-3}{%
+\section{Scripting}\label{scripting-3}}
 
 \hypertarget{illegal-reproductions-1}{%
 \subsection{Illegal reproductions}\label{illegal-reproductions-1}}
@@ -5538,11 +6699,11 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Shaded}
 
 \begin{verbatim}
-##   Diet   weight
-## 1    1 102.6455
-## 2    2 122.6167
-## 3    3 142.9500
-## 4    4 135.2627
+##   Diet weight
+## 1    1  102.6
+## 2    2  122.6
+## 3    3  142.9
+## 4    4  135.3
 \end{verbatim}
 
 \begin{Shaded}
@@ -5553,11 +6714,11 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Shaded}
 
 \begin{verbatim}
-##   Diet        x
-## 1    1 102.6455
-## 2    2 122.6167
-## 3    3 142.9500
-## 4    4 135.2627
+##   Diet     x
+## 1    1 102.6
+## 2    2 122.6
+## 3    3 142.9
+## 4    4 135.3
 \end{verbatim}
 
 \textbf{C}
@@ -5568,7 +6729,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-82-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 \textbf{D}
 
