@@ -351,6 +351,59 @@ results in this:
 
 Happy coding!
 
+\hypertarget{resources}{%
+\section{Resources}\label{resources}}
+
+\hypertarget{swirl-course}{%
+\subsection{Swirl course}\label{swirl-course}}
+
+Swirl course to accompany this course: \url{http://github.com/MichielNoback/R_Data_Analysis}
+
+\hypertarget{data-files}{%
+\subsection{Data Files}\label{data-files}}
+
+In this section all data files used or required for the course presentations or exercises are listed.\\
+
+Whale selenium data:
+whale\_selenium.txt
+
+Bird observation data:
+Observations-Data-2014.xlsx or, as
+csv
+
+Food constituents:
+food\_constituents.txt
+
+Wine review data:
+winemag-data-130k-v2.csv
+
+\hypertarget{web-resources-and-references}{%
+\subsection{Web resources and references}\label{web-resources-and-references}}
+
+\begin{itemize}
+\item
+  \textbf{R Markdown}\\
+  R Markdown is a Markdown ``Dialect'' used for presenting, documenting and reporting in R: \href{http://rmarkdown.rstudio.com/}{http://rmarkdown.rstudio.com}
+\item
+  \textbf{R cheat sheet}\\
+  The \href{figures/R_cheatsheet.pdf}{R cheat sheet}.
+\item
+  \textbf{RMarkdown reference}\\
+  The \href{https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf}{RMarkdown reference} cards with extensive documentation. Also available at the computer exam!
+\item
+  \textbf{Bioconductor}\\
+  Bioconductor provides tools for the analysis and comprehension of high- throughput genomic data: \href{http://www.bioconductor.org/}{http://www.bioconductor.org}
+\end{itemize}
+
+\hypertarget{screencasts}{%
+\subsubsection{Screencasts}\label{screencasts}}
+
+Setting up on a Windows system
+Youtube
+
+Starting with Rstudio
+Youtube
+
 \hypertarget{basic-r---coding-basics}{%
 \chapter{Basic R - coding basics}\label{basic-r---coding-basics}}
 
@@ -1680,7 +1733,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     52     48
+##     57     43
 \end{verbatim}
 
 \begin{Shaded}
@@ -4945,10 +4998,596 @@ And this is the topic of the next course:
 ## 6 sunflower        329.
 \end{verbatim}
 
+\hypertarget{usecases}{%
+\section{Example Use Cases}\label{usecases}}
+
+In this chapter, some example use cases will be presented demonstrating some concept or function.
+The topics for these use cases are selected because they appear to be harder to comprehend for my students, are a bit out of scope for the lectures, or because they are simply too extensive to fit into a few slides of a presentation.
+
+\hypertarget{dfselection}{%
+\subsection{Dataframe Selections}\label{dfselection}}
+
+R offers a wealth of methods to make selection on dataframes by columns, rows, or both.
+
+We'll explore the \texttt{iris} dataset, a dataframe holding morphological data on several species of plants from the genus \emph{Iris}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\KeywordTok{head}\NormalTok{(iris, }\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|r|r|r|l}
+\hline
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\hline
+5.1 & 3.5 & 1.4 & 0.2 & setosa\\
+\hline
+4.9 & 3.0 & 1.4 & 0.2 & setosa\\
+\hline
+4.7 & 3.2 & 1.3 & 0.2 & setosa\\
+\hline
+4.6 & 3.1 & 1.5 & 0.2 & setosa\\
+\hline
+5.0 & 3.6 & 1.4 & 0.2 & setosa\\
+\hline
+5.4 & 3.9 & 1.7 & 0.4 & setosa\\
+\hline
+4.6 & 3.4 & 1.4 & 0.3 & setosa\\
+\hline
+5.0 & 3.4 & 1.5 & 0.2 & setosa\\
+\hline
+4.4 & 2.9 & 1.4 & 0.2 & setosa\\
+\hline
+4.9 & 3.1 & 1.5 & 0.1 & setosa\\
+\hline
+\end{tabular}
+
+There are only three species in this dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{table}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##     setosa versicolor  virginica 
+##         50         50         50
+\end{verbatim}
+
+but how do they relate to each other with repect to Sepal length?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(iris, }\KeywordTok{boxplot}\NormalTok{(Sepal.Length }\OperatorTok{~}\StringTok{ }\NormalTok{Species,}
+                   \DataTypeTok{ylab =} \StringTok{"Sepal length (cm)"}\NormalTok{,}
+                   \DataTypeTok{xlab =} \StringTok{"Iris species"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/boxplot_sepal_length-1.pdf}
+
+Now suppose I want to get the data from \emph{virginica} plants that have a Sepal length smaller than the largest Sepal length of \emph{setosa} plants?
+First of course we'll need the maximum of the \emph{setosa} plants:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{max.setosa <-}\StringTok{ }\KeywordTok{max}\NormalTok{(iris[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ "setosa"}\NormalTok{, }\StringTok{"Sepal.Length"}\NormalTok{])}
+\NormalTok{max.setosa}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5.8
+\end{verbatim}
+
+Which plant is it? Let's use the subset function to find out.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris,}
+       \DataTypeTok{subset =}\NormalTok{ (Species }\OperatorTok{==}\StringTok{ "setosa"} \OperatorTok{&}\StringTok{ }\NormalTok{Sepal.Length }\OperatorTok{==}\StringTok{ }\NormalTok{max.setosa))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 15          5.8           4          1.2         0.2  setosa
+\end{verbatim}
+
+Now filter out the \emph{virginica} plants that have a Sepal length smaller than this value. I'll show two approaches, one with logical indexing and one with \texttt{subset}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##get a logical for small plants}
+\NormalTok{logi.small.sepal <-}\StringTok{ }\NormalTok{iris}\OperatorTok{$}\NormalTok{Sepal.Length }\OperatorTok{<}\StringTok{ }\NormalTok{max.setosa}
+\NormalTok{logi.small.sepal}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [12]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [23]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [45]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE
+##  [56]  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE
+##  [67]  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [78] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
+##  [89]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+## [100]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+## [111] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [122]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [144] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##get a logical for virginica plants}
+\NormalTok{logi.virginica <-}\StringTok{ }\NormalTok{iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ "virginica"}
+\NormalTok{logi.virginica}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [100] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [111]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [122]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [144]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##combine the two via a boolean operation}
+\NormalTok{logi.both <-}\StringTok{ }\NormalTok{logi.small.sepal }\OperatorTok{&}\StringTok{ }\NormalTok{logi.virginica}
+\NormalTok{logi.both}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [100] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
+## [111] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [122]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [144] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##use it as a selector on the rows of the iris DF}
+\NormalTok{iris[logi.both, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 107          4.9         2.5          4.5         1.7 virginica
+## 114          5.7         2.5          5.0         2.0 virginica
+## 122          5.6         2.8          4.9         2.0 virginica
+\end{verbatim}
+
+Of course, you will usually perform this selection in one statement, but the operations carried out by R will be exactly the same (but without creating any variables of course):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iris[iris}\OperatorTok{$}\NormalTok{Sepal.Length }\OperatorTok{<}\StringTok{ }\NormalTok{max.setosa }\OperatorTok{&}\StringTok{ }\NormalTok{iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ "virginica"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 107          4.9         2.5          4.5         1.7 virginica
+## 114          5.7         2.5          5.0         2.0 virginica
+## 122          5.6         2.8          4.9         2.0 virginica
+\end{verbatim}
+
+The function \texttt{subset} will do the same behind the scenes, but your code may be more to your liking:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris,}
+       \DataTypeTok{subset =}\NormalTok{ Sepal.Length }\OperatorTok{<}\StringTok{ }\NormalTok{max.setosa }\OperatorTok{&}\StringTok{ }\NormalTok{Species }\OperatorTok{==}\StringTok{ "virginica"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 107          4.9         2.5          4.5         1.7 virginica
+## 114          5.7         2.5          5.0         2.0 virginica
+## 122          5.6         2.8          4.9         2.0 virginica
+\end{verbatim}
+
+By the way, \textbf{beware to use only one boolean and: \&, not \&\&}. This will not give an error but only an empty result set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{subset}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris,}
+       \DataTypeTok{subset =}\NormalTok{ Sepal.Length }\OperatorTok{<}\StringTok{ }\NormalTok{max.setosa }\OperatorTok{&&}\StringTok{ }\NormalTok{Species }\OperatorTok{==}\StringTok{ "virginica"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
+## <0 rows> (or 0-length row.names)
+\end{verbatim}
+
+\begin{quote}
+\& and \&\& indicate logical AND and \textbar{} and \textbar{}\textbar{} indicate logical OR. The shorter form performs elementwise comparisons in much the same way as arithmetic operators. The longer form evaluates left to right examining only the first element of each vector. Evaluation proceeds only until the result is determined. The longer form is appropriate for programming control-flow and typically preferred in if clauses.
+\end{quote}
+
+Can you figure out why using \texttt{\&\&} would give an empty set in the above case?
+
+See \href{http://stat.ethz.ch/R-manual/R-patched/library/base/html/Logic.html}{The R manual} for details.
+
+\hypertarget{apply}{%
+\subsection{Apply}\label{apply}}
+
+Consider the \texttt{women} dataset, holding height and weight of a population sample of 15 women:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(women)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{r|r|r}
+\hline
+height & weight & bmi\\
+\hline
+58 & 115 & 24.03\\
+\hline
+59 & 117 & 23.63\\
+\hline
+60 & 120 & 23.43\\
+\hline
+61 & 123 & 23.24\\
+\hline
+62 & 126 & 23.04\\
+\hline
+63 & 129 & 22.85\\
+\hline
+64 & 132 & 22.66\\
+\hline
+65 & 135 & 22.46\\
+\hline
+66 & 139 & 22.43\\
+\hline
+67 & 142 & 22.24\\
+\hline
+68 & 146 & 22.20\\
+\hline
+69 & 150 & 22.15\\
+\hline
+70 & 154 & 22.09\\
+\hline
+71 & 159 & 22.17\\
+\hline
+72 & 164 & 22.24\\
+\hline
+\end{tabular}
+
+To calculate the average height and the average weight of this sample, one could of course simply do
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{with}\NormalTok{(women, \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{mean}\NormalTok{(height))}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{mean}\NormalTok{(weight))}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 65
+## [1] 136.7
+\end{verbatim}
+
+However, when your dataset has (a lot) more columns, repeating this will be quite tedious\ldots{}unless you use a \texttt{for} loop
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(women)) \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{mean}\NormalTok{(women[,i]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 65
+## [1] 136.7
+## [1] 22.72
+\end{verbatim}
+
+Enter \texttt{apply()}, a very nice function to do this in a handy one-liner
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ women, }\DataTypeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## height weight    bmi 
+##  65.00 136.73  22.72
+\end{verbatim}
+
+The arguments I supplied to \texttt{apply}have the following purpose:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{X\ =\ women} specifies the data to be processed
+\item
+  \texttt{MARGIN\ =\ 2} specifies wether columns or rows shoud be processed; 1 = rows and 2 = columns
+\item
+  \texttt{FUN\ =\ mean} speciefies the function to be applied to the given dataframe
+\end{enumerate}
+
+Not only gives apply the the exact same result (of course, duh), but this approach has several advantages:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{apply} returns a named vector where the elements are named the same as the corresponding columns of the original dataframe
+\item
+  \texttt{apply} is computationally more efficient than the other approaches
+\item
+  it requires less code; a good programmer types as little as possible - except for Java programmers of course :-)
+\end{itemize}
+
+If you really have strongh feelings about typing no more than strictly required, you can of course also omit the method parameters:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(women, }\DecValTok{2}\NormalTok{, mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## height weight    bmi 
+##  65.00 136.73  22.72
+\end{verbatim}
+
+But if you are just starting out with R, I suggest you invest those few character strokes for readability later on.
+
+The above example dealt with columns. For instance, if you want to calculate the BMI of these women, you'll need to target the rows.
+The BMI formula is
+\[weight/height^2*703\]
+
+where weight is in pounds and height is in inches.
+
+This formula is implemented in the following function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bmi <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(height, weight) \{}
+\NormalTok{    (weight }\OperatorTok{/}\StringTok{ }\NormalTok{height}\OperatorTok{^}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{703}
+\NormalTok{\}}
+\KeywordTok{bmi}\NormalTok{(}\DecValTok{65}\NormalTok{, }\DecValTok{150}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 24.96
+\end{verbatim}
+
+You can also apply the formula to the \texttt{women} dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{women}\OperatorTok{$}\NormalTok{bmi1 <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(}
+    \DataTypeTok{X =}\NormalTok{ women, }
+    \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }
+    \DataTypeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x)\{(x[}\DecValTok{2}\NormalTok{] }\OperatorTok{/}\StringTok{ }\NormalTok{x[}\DecValTok{1}\NormalTok{]}\OperatorTok{^}\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{703}\NormalTok{\})}
+\KeywordTok{head}\NormalTok{(women, }\DataTypeTok{n =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height weight   bmi  bmi1
+## 1     58    115 24.03 24.03
+## 2     59    117 23.63 23.63
+## 3     60    120 23.43 23.43
+## 4     61    123 23.24 23.24
+\end{verbatim}
+
+if you like to use your own formula (it's always a good idea to write logic only once and reuse it in different places), you'll still need to wrap it inside an anonymous function call:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{women}\OperatorTok{$}\NormalTok{bmi2 <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(}
+    \DataTypeTok{X =}\NormalTok{ women, }
+    \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }
+    \DataTypeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x)\{}\KeywordTok{bmi}\NormalTok{(x[}\DecValTok{1}\NormalTok{], x[}\DecValTok{2}\NormalTok{])\})}
+\KeywordTok{head}\NormalTok{(women, }\DataTypeTok{n =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height weight   bmi  bmi1  bmi2
+## 1     58    115 24.03 24.03 24.03
+## 2     59    117 23.63 23.63 23.63
+## 3     60    120 23.43 23.43 23.43
+## 4     61    123 23.24 23.24 23.24
+\end{verbatim}
+
+\hypertarget{embeddeddf}{%
+\subsection{Processing Embedded Dataframes}\label{embeddeddf}}
+
+Suppose you have imported some data that has a structure like this
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genes <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"gene A"}\NormalTok{, }\StringTok{"gene B"}\NormalTok{, }\StringTok{"gene C"}\NormalTok{, }\StringTok{"gene D"}\NormalTok{)}
+\NormalTok{positions <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"chr01:128757:129667"}\NormalTok{, }
+               \StringTok{"chr01:366389:486990"}\NormalTok{,}
+               \StringTok{"chr02:8986463:9100856"}\NormalTok{,}
+               \StringTok{"chr03:53536:87201"}\NormalTok{)}
+\NormalTok{my.genome <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{gene =}\NormalTok{ genes, }\DataTypeTok{position =}\NormalTok{ positions)}
+\NormalTok{my.genome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     gene              position
+## 1 gene A   chr01:128757:129667
+## 2 gene B   chr01:366389:486990
+## 3 gene C chr02:8986463:9100856
+## 4 gene D     chr03:53536:87201
+\end{verbatim}
+
+The problem here is that the second column, \texttt{positions}, of type \texttt{character}, actually holds three different variables: the chromosome identifyer, the start position and the stop position on the chromosome. To be able to perform analyses of chromosomal contents, or positional contexts, we will need to split this column into separate columns, each holding exactly one variable of the correct type (\texttt{factor}, \texttt{integer} and \texttt{integer}).
+
+When I first encountered this type of problem (it is a \emph{challenge} actually, some teachers would object, not a \emph{problem}\ldots{}), my first thought was ``easy, simply apply a split and bind as three columns''.
+
+Let's have a look at how the \texttt{strsplit} function works in splitting strings
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{strsplit}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ positions[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{], }\DataTypeTok{split =} \StringTok{":"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "chr01"  "128757" "129667"
+## 
+## [[2]]
+## [1] "chr01"  "366389" "486990"
+\end{verbatim}
+
+As you can see, strsplit generates a list of vectors, with each vector corresponding to the string at the same index of the original character vector.
+So, easy, I thought. Simply assign these elements to three new columns of the original dataframe (assuming every split character results in a vector of three). I first created the columns, defined my splitter function and then used apply to get the job done
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## create columns}
+\NormalTok{my.genome[, }\KeywordTok{c}\NormalTok{(}\StringTok{"chromosome"}\NormalTok{, }\StringTok{"start"}\NormalTok{, }\StringTok{"stop"}\NormalTok{)] <-}\StringTok{ }\OtherTok{NA}
+\CommentTok{## define splitter function}
+\NormalTok{loc.splitter <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \CommentTok{## strsplit returns a list!}
+    \KeywordTok{strsplit}\NormalTok{(x[}\StringTok{"position"}\NormalTok{], }\StringTok{":"}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{\}}
+\CommentTok{## use apply to fill the columns}
+\NormalTok{my.genome[, }\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{] <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ my.genome,}
+                          \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{,}
+                          \DataTypeTok{FUN =}\NormalTok{ loc.splitter)}
+\NormalTok{my.genome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     gene              position chromosome   start    stop
+## 1 gene A   chr01:128757:129667      chr01  366389 9100856
+## 2 gene B   chr01:366389:486990     128757  486990   chr03
+## 3 gene C chr02:8986463:9100856     129667   chr02   53536
+## 4 gene D     chr03:53536:87201      chr01 8986463   87201
+\end{verbatim}
+
+Whoa, what happened here?! This was not what I had in mind. Can you figure out what happened?
+
+\ldots{}
+
+I did figure it out (eventually\ldots{}). The applied function returned three elements at a time, and I had apply fill three columns of my dataframe. And that is exactly what R did, fill the three columns, but not by row but by column! Have a look at the output from apply and you can see:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ my.genome,}
+      \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{,}
+      \DataTypeTok{FUN =}\NormalTok{ loc.splitter)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1]     [,2]     [,3]      [,4]   
+## [1,] "chr01"  "chr01"  "chr02"   "chr03"
+## [2,] "128757" "366389" "8986463" "53536"
+## [3,] "129667" "486990" "9100856" "87201"
+\end{verbatim}
+
+Fortunately, R has a function to transpose this kind of structure (a matrix actually): the \texttt{t()} function, so that is what I did:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.genome[, }\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{] <-}\StringTok{ }\KeywordTok{t}\NormalTok{(}\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ my.genome,}
+                            \DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{,}
+                            \DataTypeTok{FUN =}\NormalTok{ loc.splitter))}
+\NormalTok{my.genome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     gene              position chromosome   start    stop
+## 1 gene A   chr01:128757:129667      chr01  128757  129667
+## 2 gene B   chr01:366389:486990      chr01  366389  486990
+## 3 gene C chr02:8986463:9100856      chr02 8986463 9100856
+## 4 gene D     chr03:53536:87201      chr03   53536   87201
+\end{verbatim}
+
+Yeah, that's what I'm talking about! (Feeling very happy with myself\ldots{}until I googled this problem). I found out there are a gazillion solutions to this problem, but only one of them is very very simple, because it uses a function you know really well: \texttt{read.table}, but not with the \texttt{file\ =} argument but with \texttt{text\ =}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.genome <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{gene =}\NormalTok{ genes, }\DataTypeTok{position =}\NormalTok{ positions)}
+\NormalTok{my.genome <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(}
+\NormalTok{    my.genome,}
+    \KeywordTok{read.table}\NormalTok{(}
+        \DataTypeTok{text =} \KeywordTok{as.character}\NormalTok{(my.genome}\OperatorTok{$}\NormalTok{position),}
+        \DataTypeTok{sep =} \StringTok{":"}\NormalTok{))}
+\KeywordTok{colnames}\NormalTok{(my.genome) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{colnames}\NormalTok{(my.genome)[}\DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{], }\StringTok{"chr"}\NormalTok{, }\StringTok{"start"}\NormalTok{, }\StringTok{"stop"}\NormalTok{)}
+\NormalTok{my.genome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     gene              position   chr   start    stop
+## 1 gene A   chr01:128757:129667 chr01  128757  129667
+## 2 gene B   chr01:366389:486990 chr01  366389  486990
+## 3 gene C chr02:8986463:9100856 chr02 8986463 9100856
+## 4 gene D     chr03:53536:87201 chr03   53536   87201
+\end{verbatim}
+
+That's it. The lessons learned here:
+
+\begin{itemize}
+\tightlist
+\item
+  Always know that GIYF (Google Is Your Friend)
+\item
+  When reading tables, also those embedded within others, use \texttt{read.table}
+\item
+  You really learn a lot by fiddling about with data
+\end{itemize}
+
 \hypertarget{exercises}{%
 \chapter{Exercises}\label{exercises}}
 
 This chapter only contains exercises. The solutions are in the next chapter which has a numbering parallel to this one.
+
+This is a link to an \href{figures/R_cheatsheet.pdf}{R cheat sheet} that you could use for selecting the right function for a task.
 
 \hypertarget{basic-r}{%
 \section{Basic R}\label{basic-r}}
