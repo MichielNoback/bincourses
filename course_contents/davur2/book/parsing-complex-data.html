@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Processing text with: stringr and regex | Data Analysis and Visualization using R (2)</title>
+  <title>Chapter 10 Parsing complex data | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Processing text with: stringr and regex | Data Analysis and Visualization using R (2)" />
+  <meta property="og:title" content="Chapter 10 Parsing complex data | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Processing text with: stringr and regex | Data Analysis and Visualization using R (2)" />
+  <meta name="twitter:title" content="Chapter 10 Parsing complex data | Data Analysis and Visualization using R (2)" />
   
   <meta name="twitter:description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="date-time.html">
-<link rel="next" href="eda.html">
+<link rel="prev" href="exercise-solutions.html">
+<link rel="next" href="references.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -365,233 +365,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="stringr" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Processing text with: <code>stringr</code> and regex</h1>
-<div id="introduction-2" class="section level2">
-<h2><span class="header-section-number">6.1</span> Introduction</h2>
-<p>This is the last presentation in the tidyverse series. It revolves around processing textual data: finding, extracting, and replacing patterns. Central to this task is <strong><em>pattern matching</em></strong> using regular expressions. Pattern matching is the process of finding, locating, extracting and replacing patterns in character data that usually cannot be literally described. <strong><em>Regular expression syntax</em></strong> is the language in which patterns are described in a wide range of programming languages, including R.</p>
-<p>This topic has been dealt with in an introductory manner previously (course DAVuR1). And is repeated and expanded here. Instead of the base R functions we now switch to the <code>stringr</code> package.</p>
-<p>As all packages from the tidyverse, <code>stringr</code> has many many functions (type <code>help(package = &quot;stringr&quot;)</code> to see which). this package has a great <a href="graphics/stringr.pdf">cheat sheet</a> as well.</p>
-<p>Here, a few of them will be reviewed.</p>
-<div id="a-few-remarks-on-locale" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> A few remarks on “locale”</h3>
-<p>Many functions of the tidyverse packages related to time and text (and currency) accept arguments specifying the <strong><em>locale</em></strong>.
-The locale is a container for all location-specific display of information.<br />
-Think</p>
+<div id="parsing-complex-data" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Parsing complex data</h1>
+<p>This worked example shows that R can be used to parse complex text data as well. The data that is going to be parsed here is from a machine called Varioscan. It concerns a 96-well plate reading of a growth curve of the bacterium <em>Staphylococcus aureus</em>.</p>
+<p>The research question was this: &quot;Do anthocyans from red tulips inhibit growth of the bacterium <em>Staphylococcus aureus</em>?
+The experimental setup was as follows. Bacteria were grown in Nutrient Broth in a 96-well plate. Growth was measured through Optical Density every 10 minutes.
+The rows represent dilution series of the test substrate; every row is a twofold dilution of the previous, starting at 2% and ending at 0% (control). A: 2%, B: 1%, C: 0.5, D: 0.25, E: 0.125, F: 0.0625, G: 0.03125, H: 0%.<br />
+The columns represent an ordered experimental control setup:</p>
 <ul>
-<li>Character set of the language</li>
-<li>Time zone, Daylight savings time</li>
-<li>Thousands separator and decimal symbol</li>
-<li>Currency symbol</li>
+<li>Columns 1-3: Red tulip with bacteria</li>
+<li>Column 4: Red tulip without bacteria</li>
+<li>Columns 5-7: White tulip with bacteria</li>
+<li>Column 8: White tulip without bacteria</li>
+<li>Column 9-11: Elution fluid (maltodextrin) with bacteria</li>
+<li>Column 12: Elution fluid without bacteria</li>
 </ul>
-<p>Dealing with locales is a big challenge indeed for any programming language. However, since this is only an introductory course we will stick to US English and work with the current locale for times only.
-This note is to make you aware of the concept so that you remember this when the appropriate time comes.</p>
-</div>
-</div>
-<div id="review-of-regular-expressions" class="section level2">
-<h2><span class="header-section-number">6.2</span> Review of regular expressions</h2>
-<p>Many of the <code>stringr</code> functions take regular expression as one of the arguments.
-Regular expression syntax has been dealt with in a previous course/presentation. For your convenience, an overview is presented here as well.</p>
-<div id="regex-syntax-elements" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Regex syntax elements</h3>
-<p>A regex can be build out of any combination of</p>
+<p>The output of this machine has a terrible format that is impossible to process by any of the <code>read.xxxx()</code> functions. The data is segmented in blocks that represent a single measurement of the 96-well plate, and the blocks are separated to represent a 10-minute reading interval. Here is the data for the first complete block with some leading and trailing lines (omitting the first):</p>
+<pre><code>Photometric1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Plate 1: 1, reading 1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ A;Un_0001 1/1;Un_0009 1/1;Un_0017 1/1;Un_0025 1/1;Un_0033 1/1;Un_0041 1/1;Un_0049 1/1;Un_0057 1/1;Un_0065 1/1;Un_0073 1/1;Un_0081 1/1;Un_0089 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ B;Un_0002 1/1;Un_0010 1/1;Un_0018 1/1;Un_0026 1/1;Un_0034 1/1;Un_0042 1/1;Un_0050 1/1;Un_0058 1/1;Un_0066 1/1;Un_0074 1/1;Un_0082 1/1;Un_0090 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ C;Un_0003 1/1;Un_0011 1/1;Un_0019 1/1;Un_0027 1/1;Un_0035 1/1;Un_0043 1/1;Un_0051 1/1;Un_0059 1/1;Un_0067 1/1;Un_0075 1/1;Un_0083 1/1;Un_0091 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ D;Un_0004 1/1;Un_0012 1/1;Un_0020 1/1;Un_0028 1/1;Un_0036 1/1;Un_0044 1/1;Un_0052 1/1;Un_0060 1/1;Un_0068 1/1;Un_0076 1/1;Un_0084 1/1;Un_0092 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ E;Un_0005 1/1;Un_0013 1/1;Un_0021 1/1;Un_0029 1/1;Un_0037 1/1;Un_0045 1/1;Un_0053 1/1;Un_0061 1/1;Un_0069 1/1;Un_0077 1/1;Un_0085 1/1;Un_0093 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ F;Un_0006 1/1;Un_0014 1/1;Un_0022 1/1;Un_0030 1/1;Un_0038 1/1;Un_0046 1/1;Un_0054 1/1;Un_0062 1/1;Un_0070 1/1;Un_0078 1/1;Un_0086 1/1;Un_0094 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ G;Un_0007 1/1;Un_0015 1/1;Un_0023 1/1;Un_0031 1/1;Un_0039 1/1;Un_0047 1/1;Un_0055 1/1;Un_0063 1/1;Un_0071 1/1;Un_0079 1/1;Un_0087 1/1;Un_0095 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ H;Un_0008 1/1;Un_0016 1/1;Un_0024 1/1;Un_0032 1/1;Un_0040 1/1;Un_0048 1/1;Un_0056 1/1;Un_0064 1/1;Un_0072 1/1;Un_0080 1/1;Un_0088 1/1;Un_0096 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Value;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ A;0,267552;0,272019;0,263387;0,278566;0,0984628;0,0936923;0,107464;0,105546;0,106577;0,091187;0,101332;0,10287;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ B;0,252371;0,246752;0,252471;0,258912;0,109206;0,0992488;0,10794;0,112641;0,112533;0,123722;0,092579;0,101677;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ C;0,217063;0,217046;0,213377;0,205835;0,0998421;0,105516;0,10702;0,103577;0,106884;0,0940363;0,0939646;0,0928696;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ D;0,215713;0,206423;0,225242;0,207882;0,101945;0,110656;0,101335;0,113771;0,10745;0,0974231;0,0959958;0,102336;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ E;0,201186;0,185729;0,191045;0,191651;0,112556;0,120355;0,155579;0,102002;0,101704;0,0888485;0,0985116;0,117562;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ F;0,160001;0,151447;0,156737;0,153896;0,11059;0,115471;0,107786;0,106571;0,109566;0,106598;0,0940017;0,100102;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ G;0,137258;0,129698;0,128936;0,131165;0,105271;0,112039;0,106057;0,0992461;0,109021;0,120979;0,0926567;0,112816;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ H;0,108073;0,10298;0,102386;0,108621;0,123152;0,104467;0,104612;0,0930304;0,0946673;0,103918;0,0982605;0,103816;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Plate 1: 1, reading 2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ A;Un_0001 1/1;Un_0009 1/1;Un_0017 1/1;Un_0025 1/1;Un_0033 1/1;Un_0041 1/1;Un_0049 1/1;Un_0057 1/1;Un_0065 1/1;Un_0073 1/1;Un_0081 1/1;Un_0089 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+</code></pre>
+<p>Here, a strategy is demonstrated for when your data cannot be simply read into a dataframe directly. First, load all data in a single character vector, on line per element:</p>
+<pre class="sourceCode r"><code class="sourceCode r">file &lt;-<span class="st"> &quot;data/varioscan/2020-01-30.csv&quot;</span>
+all_data &lt;-<span class="st"> </span><span class="kw">readLines</span>(file)
+<span class="kw">head</span>(all_data[<span class="op">-</span><span class="dv">1</span>]) <span class="co">##omitting empty lines</span></code></pre>
+<pre><code>## [1] &quot;Photometric1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                          
+## [2] &quot;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                                      
+## [3] &quot;Plate 1: 1, reading 1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                 
+## [4] &quot;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                                      
+## [5] &quot;Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                 
+## [6] &quot; A;Un_0001 1/1;Un_0009 1/1;Un_0017 1/1;Un_0025 1/1;Un_0033 1/1;Un_0041 1/1;Un_0049 1/1;Un_0057 1/1;Un_0065 1/1;Un_0073 1/1;Un_0081 1/1;Un_0089 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;</code></pre>
+<p>Next, remove unwanted header lines:</p>
+<pre class="sourceCode r"><code class="sourceCode r">all_data &lt;-<span class="st"> </span>all_data[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</code></pre>
+<p>What is left is a vector with nice <strong><em>periodicity</em></strong>: recurring blocks of 22 elements with this structure:</p>
 <ul>
-<li><strong>character sequences</strong> - Literal sequences, such as ‘chimp’</li>
-<li><strong>character classes</strong> - A listing of possibilities for a single position.<br />
-</li>
-<li><strong>alternatives</strong> - Are defined by the pipe symbol <code>|</code>.</li>
-<li><strong>quantifiers</strong> - How many times the preceding block should occur.</li>
-<li><strong>anchors</strong> - <code>^</code> means matching at the start of a string. <code>$</code> means at the end.</li>
+<li>element 1: reading count</li>
+<li>element 2: empty line</li>
+<li>element 3-11: sample layout, which is always the same (so reading is required only once!)</li>
+<li>element 13-21: actual OD data</li>
+<li>element 22: empty line</li>
 </ul>
-<p>The <a href="graphics/stringr.pdf">stringr cheat sheet</a> also contains a summary of regex syntax.</p>
-</div>
-<div id="character-classes-and-negation" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Character classes and negation</h3>
-<p>Characters classes -groups of matching characters for a single position- are placed between brackets: <code>[adgk]</code> means ‘a’ or ‘d’ or ‘g’ or ‘k’. Use a hyphen to create a series: <code>[3-9]</code> means digits 3 through 9 and <code>[a-zA-Z]</code> means all alphabet characters.</p>
-<p>Character classes can be negated by putting a <code>^</code> at the beginning of the list: <code>[^adgk]</code> means anything <em>but</em> the letters a, d, g or k.</p>
-<p>There is a special character</p>
-<p>Since character classes such as <code>[0-9]</code> occur so frequently they have dedicated character classes -also called <strong><em>metacharacters</em></strong>- such as <code>[[:digit:]]</code> or (equivalently) <code>\\d</code>. The most important other ones are these</p>
-<ul>
-<li><strong>any character</strong> (wildcard) is specified by <code>.</code>. If you want to search for a literal dot, you need to <strong><em>escape</em></strong> its special meaning using two backslashes: <code>\\.</code></li>
-<li><strong>digits</strong> <code>[[:digit:]]</code> or <code>\\d</code>: equivalent to <code>[0-9]</code></li>
-<li><strong>alphabet characters</strong> <code>[[:alpha:]]</code>: equivalent to <code>[a-zA-Z]</code></li>
-<li><strong>lowercase characters</strong> <code>[[:lower:]]</code>: equivalent to <code>[a-z]</code></li>
-<li><strong>uppercase characters</strong> <code>[[:upper:]]</code>: equivalent to <code>[A-Z]</code></li>
-<li><strong>whitespace characters</strong> <code>[[:space:]]</code> or <code>\\s</code>: Space, tab, vertical tab, newline, form feed, carriage return</li>
-<li><strong>punctuation characters</strong> <code>[[:punct:]]</code>: One of !&quot;#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~</li>
-</ul>
-<p>(have a look at the cheat sheet for all)</p>
-</div>
-<div id="quantifiers" class="section level3">
-<h3><span class="header-section-number">6.2.3</span> Quantifiers</h3>
-<p>Quantifiers specify how often a (part of) a pattern should occur.</p>
-<ul>
-<li><strong><code>*</code></strong>: 0 or more times</li>
-<li><strong><code>+</code></strong>: 1 or more times</li>
-<li><strong><code>?</code></strong>: 0 or 1 time</li>
-<li><strong><code>{n}</code></strong>: exactly <code>n</code> times</li>
-<li><strong><code>{n,}</code></strong>: at least <code>n</code> times</li>
-<li><strong><code>{,n}</code></strong>: at most <code>n</code> times</li>
-<li><strong><code>{n, m}</code></strong>: at least <code>n</code> and at most <code>m</code> times.</li>
-</ul>
-<p>The <code>*</code> zero or more times and <code>?</code> zero or one time quantifiers are sometimes confusing. Why zero? A good example is the Dutch postal code. These are all valid postal codes</p>
-<pre class="sourceCode r"><code class="sourceCode r">pc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1234 AA&quot;</span>, <span class="st">&quot;2345-BB&quot;</span>, <span class="st">&quot;3456CC&quot;</span>, <span class="st">&quot;4567 dd&quot;</span>)
-pc</code></pre>
-<pre><code>## [1] &quot;1234 AA&quot; &quot;2345-BB&quot; &quot;3456CC&quot;  &quot;4567 dd&quot;</code></pre>
-<p>and therefore a pattern could be <code>&quot;\\d{4}[ -]?[a-zA-Z]{2}&quot;</code> where the question mark specifies that either a space or a hyphen may occur zero or one time: It may or may not be present.</p>
-<p>The <code>stringr</code> package provides two nice utility functions to visualize regex matches in a character: <code>str_view_all()</code> and <code>str_view()</code>. The difference is that the latter function only shows the first match - if present.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view_all</span>(pc, <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">d{4}[ -]?[a-zA-Z]{2}$&quot;</span>)</code></pre>
-<div id="htmlwidget-6b82562872f5e3479f29" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6b82562872f5e3479f29">{"x":{"html":"<ul>\n  <li><span class='match'>1234 AA<\/span><\/li>\n  <li><span class='match'>2345-BB<\/span><\/li>\n  <li><span class='match'>3456CC<\/span><\/li>\n  <li><span class='match'>4567 dd<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-<p>As you can see, the last element (“56789aa”) is not a good postal code.</p>
-<p>Note that <code>[a-zA-Z]</code> could have been replaced by <code>[[:alpha:]]</code>.</p>
-</div>
-<div id="anchoring" class="section level3">
-<h3><span class="header-section-number">6.2.4</span> Anchoring</h3>
-<p>Using anchoring, you can make sure the matching string is not longer than you explicitly state.</p>
-<ul>
-<li><code>^</code> anchors a pattern to the start of a string</li>
-<li><code>$</code> anchors a regex to the end of a string</li>
-</ul>
-<pre class="sourceCode r"><code class="sourceCode r">sntc &lt;-<span class="st"> &quot;the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?&quot;</span>
+<p>Let’s read the first block - the sample layout. Note that there are many empty columns and these are removed as well.</p>
+<pre class="sourceCode r"><code class="sourceCode r">samples &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">text =</span> all_data[<span class="dv">3</span><span class="op">:</span><span class="dv">11</span>], <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T)
+samples &lt;-<span class="st"> </span>samples[, <span class="op">-</span>(<span class="dv">14</span><span class="op">:</span><span class="dv">42</span>)]</code></pre>
+<p>The experimental setup needs to be added as well.</p>
+<pre class="sourceCode r"><code class="sourceCode r">new_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Dilution&quot;</span>, 
+               <span class="kw">rep</span>(<span class="st">&quot;Red&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Red_w_o&quot;</span>, 
+               <span class="kw">rep</span>(<span class="st">&quot;White&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;White_w_o&quot;</span>, 
+               <span class="kw">rep</span>(<span class="st">&quot;Elution&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Elution_w_o&quot;</span>)
+<span class="kw">names</span>(samples) &lt;-<span class="st"> </span>new_names
+dilutions &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="fl">0.0625</span>, <span class="fl">0.03125</span>, <span class="dv">0</span>)
+samples<span class="op">$</span>Dilution &lt;-<span class="st"> </span>dilutions</code></pre>
+<p>Finally, we need a set of columns to add the OD measurements to. The <code>pivot_longer()</code> function is perfect for this. For the next phase, the sample data needs to be ordered by Sample ID, so that is done as well.</p>
+<pre class="sourceCode r"><code class="sourceCode r">growth_data &lt;-<span class="st"> </span>samples <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">names_to =</span> <span class="st">&quot;Content&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;Sample&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(Sample)</code></pre>
+<pre><code>## Warning: Duplicate column names detected, adding .copy variable</code></pre>
+<p>Note the warning <code>Duplicate column names detected, adding .copy variable</code>. This is not a bug but a feature!</p>
+<p>In the next step we need to loop the entire file, essentially doing the same thing with all OD measurements: read, flatten and attach.</p>
+<pre class="sourceCode r"><code class="sourceCode r">line_count &lt;-<span class="st"> </span><span class="kw">length</span>(all_data)
 
-<span class="kw">str_view</span>(sntc, <span class="st">&quot;evil&quot;</span>) <span class="co">##matches</span></code></pre>
-<div id="htmlwidget-2a01744eb53065b73285" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a01744eb53065b73285">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of <span class='match'>evil<\/span> men. --quote from?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil$&quot;</span>) <span class="co">## does not match</span></code></pre>
-<div id="htmlwidget-30dcdf3038871990be7a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-30dcdf3038871990be7a">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-</div>
-<div id="alternatives" class="section level3">
-<h3><span class="header-section-number">6.2.5</span> Alternatives</h3>
-<p>To apply two alternative choices for a single regex element you use the pipe symbol <code>|</code>. You can us parentheses <code>(foo[])</code> to fence alternatives off.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view_all</span>(sntc, <span class="st">&quot;(y</span><span class="ch">\\</span><span class="st">s)|(</span><span class="ch">\\</span><span class="st">sf)&quot;</span>)</code></pre>
-<div id="htmlwidget-07e95fee152228cf8255" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-07e95fee152228cf8255">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides b<span class='match'>y <\/span>the iniquities of the selfish,  and the tyrann<span class='match'>y <\/span>of evil men. --quote<span class='match'> f<\/span>rom?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div id="the-stringr-essentials" class="section level2">
-<h2><span class="header-section-number">6.3</span> The <code>stringr</code> essentials</h2>
-<div id="case-conversion" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> Case conversion</h3>
-<p>These functions all change the capitalization of (some of) the word characters of an input string. They all ignore non-word characters such as punctuation and other symbols.</p>
-<ul>
-<li><code>str_to_upper()</code> converts all word characters to uppercase</li>
-<li><code>str_to_lower()</code> converts all word characters to lowercase</li>
-<li><code>str_to_title()</code> capitalizes all first characters of words</li>
-<li><code>str_to_sentence()</code> capitalizes the first character in the string, not after every period</li>
-</ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_to_title</span>(sntc)</code></pre>
-<pre><code>## [1] &quot;The Path Of The Righteous Man Is Beset On All Sides By The Iniquities Of The Selfish,  And The Tyranny Of Evil Men. --Quote From?&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_to_sentence</span>(sntc)</code></pre>
-<pre><code>## [1] &quot;The path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?&quot;</code></pre>
-</div>
-<div id="split-join-and-substring" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Split, join and substring</h3>
-<p>Combining two vectors into one, one vector into one, or doing the reverse: splitting. These are all string-based operation that are carried out in scripting quite often.</p>
-<p>Here are some joining operations, using <code>str_c()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">l1 &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
-l2 &lt;-<span class="st"> </span>letters[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>]
+time =<span class="st"> </span><span class="dv">0</span>
+<span class="cf">for</span>(n <span class="cf">in</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">13</span>, <span class="dt">to =</span> line_count, <span class="dt">by =</span> <span class="dv">22</span>)) {
+    values &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">text =</span> all_data[(n<span class="op">+</span><span class="dv">1</span>)<span class="op">:</span>(n<span class="op">+</span><span class="dv">8</span>)], <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)
+    values &lt;-<span class="st"> </span>values[, <span class="op">-</span>(<span class="dv">14</span><span class="op">:</span><span class="dv">42</span>)]
+    values &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(values[, <span class="dv">-1</span>])
+    <span class="kw">dim</span>(values) &lt;-<span class="st"> </span><span class="ot">NULL</span>
+    growth_data[, <span class="kw">paste0</span>(<span class="st">&quot;T.&quot;</span>, time)] &lt;-<span class="st"> </span>values
+    time &lt;-<span class="st"> </span>time <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+}
 
-<span class="kw">str_c</span>(l1, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;a=b=c=d=e&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;a+f&quot; &quot;b+g&quot; &quot;c+h&quot; &quot;d+i&quot; &quot;e+j&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;a+f=b+g=c+h=d+i=e+j&quot;</code></pre>
-<p>When you want to combine variables and text <code>str_glue()</code> comes in handy:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_glue</span>(<span class="st">&quot;The value of pi is {pi} and the first month of the year is {month.name[1]}&quot;</span>)</code></pre>
-<pre><code>## The value of pi is 3.14159265358979 and the first month of the year is January</code></pre>
-<p>This is a more friendly approach than with <code>paste()</code>.</p>
-<p><strong>Splitting</strong> is slightly more tricky since it accepts a regex pattern as split argument. For instance, you can get the words of a sentence by splitting like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">words &lt;-<span class="st"> </span><span class="kw">str_split</span>(sntc, <span class="st">&quot;([[:punct:]]|[[:space:]])+&quot;</span>)
-words
-<span class="co">##alternative</span>
-<span class="co">#str_split(sntc, &quot;[^a-zA-Z]+&quot;)</span></code></pre>
-<pre><code>## [[1]]
-##  [1] &quot;the&quot;        &quot;path&quot;       &quot;of&quot;         &quot;the&quot;        &quot;righteous&quot; 
-##  [6] &quot;man&quot;        &quot;is&quot;         &quot;beset&quot;      &quot;on&quot;         &quot;all&quot;       
-## [11] &quot;sides&quot;      &quot;by&quot;         &quot;the&quot;        &quot;iniquities&quot; &quot;of&quot;        
-## [16] &quot;the&quot;        &quot;selfish&quot;    &quot;and&quot;        &quot;the&quot;        &quot;tyranny&quot;   
-## [21] &quot;of&quot;         &quot;evil&quot;       &quot;men&quot;        &quot;quote&quot;      &quot;from&quot;      
-## [26] &quot;&quot;</code></pre>
-<p>There are two ways to get parts of character strings, or <strong><em>substrings</em></strong>. The first is by index. You can omit both <code>start</code> and <code>end</code> arguments; they will default to start and end of the string, respectively.</p>
-<pre class="sourceCode r"><code class="sourceCode r">nucs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>)
-<span class="kw">str_sub</span>(nucs, <span class="dt">end =</span> <span class="dv">3</span>)</code></pre>
-<pre><code>## [1] &quot;Ade&quot; &quot;Gua&quot; &quot;Cyt&quot; &quot;Thy&quot;</code></pre>
-<p>You can even use this function to change the substring that is removed</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_sub</span>(nucs, <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span>
-nucs</code></pre>
-<pre><code>## [1] &quot;Ade......&quot; &quot;Gua......&quot; &quot;Cyt......&quot; &quot;Thy......&quot;</code></pre>
-<p>This does not work with literals! The following chunk gives and error:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_sub</span>(<span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>), <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span></code></pre>
-<pre><code>## Error in str_sub(c(&quot;Adenine&quot;, &quot;Guanine&quot;, &quot;Cytosine&quot;, &quot;Thymine&quot;), start = 4) &lt;- &quot;......&quot;: target of assignment expands to non-language object</code></pre>
-</div>
-<div id="matching" class="section level3">
-<h3><span class="header-section-number">6.3.3</span> Matching</h3>
-<p>When you <strong>match</strong> a pattern to a string, you usually want to know <strong><em>if</em></strong> it is there, <strong>which</strong> elements have it, <strong><em>where</em></strong> it is located in those elements or <strong><em>how often</em></strong> it is present. For each of these question there is a dedicated function:</p>
-<ul>
-<li><p><code>str_detect(string, pattern)</code> detects the presence of a pattern match in a string.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_detect</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
-<pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre></li>
-<li><p><code>str_subset(string, pattern)</code> returns only the strings that contain a pattern match</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_subset</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;Banana&quot; &quot;Apple&quot;  &quot;Orange&quot;</code></pre></li>
-<li><p><code>str_which(string, pattern)</code> finds the indexes of strings that contain a pattern match.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_which</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
-<pre><code>## [1] 1 2 3</code></pre></li>
-<li><p><code>str_count(string, pattern)</code> counts the number of matches in a string.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_count</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
-<pre><code>## [1] 3 1 1 0</code></pre></li>
-<li><p><code>str_locate(string, pattern)</code> and <code>str_locate_all(string, pattern)</code> locate the positions of pattern matches in a string</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_locate_all</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
-<pre><code>## [[1]]
-##      start end
-## [1,]     2   2
-## [2,]     4   4
-## [3,]     6   6
-## 
-## [[2]]
-##      start end
-## [1,]     1   1
-## 
-## [[3]]
-##      start end
-## [1,]     3   3
-## 
-## [[4]]
-##      start end</code></pre></li>
-</ul>
-</div>
-<div id="extracting-and-replacing" class="section level3">
-<h3><span class="header-section-number">6.3.4</span> Extracting and replacing</h3>
-<p>If you want to obtain the character sequences matching your pattern you can use the <code>str_extract()</code> and <code>str_extract_all()</code> functions:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_extract_all</span>(fruits, <span class="st">&quot;an&quot;</span>)</code></pre>
-<pre><code>## [[1]]
-## [1] &quot;an&quot; &quot;an&quot;
-## 
-## [[2]]
-## character(0)
-## 
-## [[3]]
-## [1] &quot;an&quot;
-## 
-## [[4]]
-## character(0)</code></pre>
-<p>Finally, replacing occurrences of a pattern is carried out using <code>str_replace()</code> or <code>str_replace_all()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_replace_all</span>(fruits, <span class="st">&quot;an&quot;</span>, <span class="st">&quot;..&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;B....a&quot; &quot;Apple&quot;  &quot;Or..ge&quot; &quot;Cherry&quot;</code></pre>
+<span class="kw">dim</span>(growth_data)</code></pre>
+<pre><code>## [1]  96 113</code></pre>
+<p>Now everything is in a nice dataframe, but it is not <strong><em>tidy</em></strong> yet, of course, nor is any other processing performed required for correct visualization and analysis of this dataset.
+Let’s save it as it is though:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(growth_data, 
+          <span class="dt">file =</span> <span class="st">&quot;data/varioscan/2020-01-30_wide.csv&quot;</span>,
+          <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre>
+<p>One of the exercises will address this dataset for tidying, processing and visualization.</p>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="date-time.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="eda.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exercise-solutions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -621,7 +506,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-stringr.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/10-parsing_complex_data.Rmd",
 "text": "Edit"
 },
 "history": {

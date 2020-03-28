@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-02-05" />
+<meta name="date" content="2020-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="exercises.html">
-<link rel="next" href="references.html">
+<link rel="next" href="parsing-complex-data.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
-<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#phylosophy-of-ggplot2"><i class="fa fa-check"></i>Phylosophy of ggplot2</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#philosophy-of-ggplot2"><i class="fa fa-check"></i>Philosophy of ggplot2</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
@@ -165,12 +165,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#violin-plot"><i class="fa fa-check"></i>Violin plot</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#barplot"><i class="fa fa-check"></i>Barplot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#overview-of-the-main-geoms"><i class="fa fa-check"></i>Overview of the main geoms</a></li>
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
-<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#facetting"><i class="fa fa-check"></i><b>1.8</b> Facetting</a></li>
+<li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweeks"><i class="fa fa-check"></i><b>1.10</b> Final tweeks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -184,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#a-first-version"><i class="fa fa-check"></i>A first version</a></li>
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#add-mean-and-sd"><i class="fa fa-check"></i>Add mean and SD</a></li>
-<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasise-worst-cases"><i class="fa fa-check"></i>Emphasise worst cases</a></li>
+<li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#emphasize-worst-cases"><i class="fa fa-check"></i>Emphasize worst cases</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
 <li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
@@ -214,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.4" data-path="dplyr.html"><a href="dplyr.html#selecting-variables-select"><i class="fa fa-check"></i><b>4.3.4</b> Selecting variables: <code>select()</code></a></li>
 <li class="chapter" data-level="4.3.5" data-path="dplyr.html"><a href="dplyr.html#renaming-variables-rename"><i class="fa fa-check"></i><b>4.3.5</b> Renaming variables: <code>rename()</code></a></li>
 <li class="chapter" data-level="4.3.6" data-path="dplyr.html"><a href="dplyr.html#selecting-from-ranked-data"><i class="fa fa-check"></i><b>4.3.6</b> Selecting from ranked data</a></li>
-<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-colum-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a colum as vector</a></li>
+<li class="chapter" data-level="4.3.7" data-path="dplyr.html"><a href="dplyr.html#extract-a-column-as-vector"><i class="fa fa-check"></i><b>4.3.7</b> Extract a column as vector</a></li>
 <li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
 <li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
 </ul></li>
@@ -290,25 +291,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
 <li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#ggplot2-1"><i class="fa fa-check"></i><b>8.2</b> <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.1</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.2</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.3</b> The dinos</a></li>
+<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
+<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#tidyr-and-dplyr"><i class="fa fa-check"></i><b>8.3</b> <code>tidyr</code> and <code>dplyr</code></a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.1</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.2</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
+<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
 <li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#ggplot2-2"><i class="fa fa-check"></i><b>9.2</b> <code>ggplot2</code></a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.1</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.2</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.3</b> The dinos</a></li>
+<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#tidyr-and-dplyr-1"><i class="fa fa-check"></i><b>9.3</b> <code>tidyr</code> and <code>dplyr</code></a></li>
+<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
+<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -334,22 +369,188 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 9</span> Exercise Solutions</h1>
 <div id="introduction-5" class="section level2">
 <h2><span class="header-section-number">9.1</span> Introduction</h2>
-<p>Only solutions chunks are displayed here, not the output.</p>
+<p>Only solutions chunks are displayed here, not the output - except for the plots.</p>
 </div>
-<div id="ggplot2-2" class="section level2">
-<h2><span class="header-section-number">9.2</span> <code>ggplot2</code></h2>
+<div id="the-ggplot2-and-tidyr-packages-1" class="section level2">
+<h2><span class="header-section-number">9.2</span> The <code>ggplot2</code> and <code>tidyr</code> packages</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(tidyr)</code></pre>
+<span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(lubridate)</code></pre>
+<div id="trees-1" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Trees</h3>
+<p><strong>A [❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> trees, 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Girth, <span class="dt">y =</span> Height)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&#39;Girth (in)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Height (ft)&#39;</span>)</code></pre>
+<p><strong>B [❋❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> trees, 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Girth, <span class="dt">y =</span> Height)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&#39;Girth (in)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Height (ft)&#39;</span>)</code></pre>
+<p><strong>C [❋❋]</strong></p>
+<p>Final figure.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> trees, 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Girth, <span class="dt">y =</span> Height)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">size =</span> Volume), <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&#39;Girth (in)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;Height (ft)&#39;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">size =</span> <span class="st">&#39;Volume (ft^3)&#39;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:trees-C"></span>
+<img src="bookdown-demo_files/figure-html/trees-C-1.png" alt="Tree girth, height and volume relationship" width="80%" />
+<p class="caption">
+Figure 9.1: Tree girth, height and volume relationship
+</p>
+</div>
+</div>
+<div id="insect-sprays-1" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></h3>
+<p>The <code>datasets</code> package that is shipped with R has a dataset called <code>?</code>. Type <code>?InsectSprays</code> to get information on it.</p>
+<p><strong>A [❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> InsectSprays, 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> spray, <span class="dt">y =</span> count)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Insect count&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Insect spray&quot;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:insect-sprays-A"></span>
+<img src="bookdown-demo_files/figure-html/insect-sprays-A-1.png" alt="The counts of insects in agricultural experimental units treated with different insecticides" width="80%" />
+<p class="caption">
+Figure 9.2: The counts of insects in agricultural experimental units treated with different insecticides
+</p>
+</div>
+<p><strong>B [❋❋]</strong><br />
+Create a jitter plot, splitting on the spray type and jittering minimally on the y-axis. Make sure that overlapping plot symbols do not hide each other and try to find a nice color.
+[Extra: Give each spray a different plot symbol.]</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> InsectSprays, 
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> spray, <span class="dt">y =</span> count, <span class="dt">color =</span> spray)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">shape =</span> <span class="dv">18</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Insect count&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Insect spray&quot;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:insect-sprays-B"></span>
+<img src="bookdown-demo_files/figure-html/insect-sprays-B-1.png" alt="The counts of insects in agricultural experimental units treated with different insecticides" width="80%" />
+<p class="caption">
+Figure 9.3: The counts of insects in agricultural experimental units treated with different insecticides
+</p>
+</div>
+</div>
+<div id="diauxic-growth-1" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Diauxic growth</h3>
+<p><strong>A [❋❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">remote &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/diauxic_growth/monod_diauxic_growth.csv&quot;</span>
+local &lt;-<span class="st"> &quot;../diauxic.csv&quot;</span>
+<span class="co">#download.file(url = remote, destfile = local)</span>
+diauxic &lt;-<span class="st"> </span><span class="kw">read.table</span>(local, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T)
+diauxic &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> diauxic,
+                        <span class="dt">cols =</span> <span class="dv">-1</span>,
+                        <span class="dt">names_to =</span> <span class="st">&quot;Substrate&quot;</span>,
+                        <span class="dt">values_to =</span> <span class="st">&quot;OD&quot;</span>)</code></pre>
+<p><strong>B [❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">diauxic<span class="op">$</span>Substrate &lt;-<span class="st"> </span><span class="kw">factor</span>(diauxic<span class="op">$</span>Substrate, 
+       <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;GlucMann&quot;</span>, <span class="st">&quot;GlucXyl&quot;</span>, <span class="st">&quot;GlucArab&quot;</span>, <span class="st">&quot;GlucRham&quot;</span>), 
+       <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Glucose Mannose&quot;</span>, <span class="st">&quot;Glucose Xylose&quot;</span>, <span class="st">&quot;Glucose Arabinose&quot;</span>, <span class="st">&quot;Glucose Rhamnose&quot;</span>))</code></pre>
+<p><strong>C [❋❋]</strong></p>
+<p>Create a line plot with all four growth curves within a single graph.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diauxic,
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> OD, <span class="dt">color =</span> Substrate)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">span =</span> <span class="fl">0.3</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:diauxic-growth-C"></span>
+<img src="bookdown-demo_files/figure-html/diauxic-growth-C-1.png" alt="Monod's Diauxic shift experiment." width="80%" />
+<p class="caption">
+Figure 9.4: Monod’s Diauxic shift experiment.
+</p>
+</div>
+<p><strong>D [❋❋❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> diauxic,
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> OD)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">span =</span> <span class="fl">0.3</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>Substrate, <span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:diauxic-growth-D"></span>
+<img src="bookdown-demo_files/figure-html/diauxic-growth-D-1.png" alt="Monod's Diauxic shift experiment." width="80%" />
+<p class="caption">
+Figure 9.5: Monod’s Diauxic shift experiment.
+</p>
+</div>
+</div>
+<div id="virginia-death-rates-1" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Virginia Death Rates</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="co">## %&gt;% is used to pipe results from one operation to the other, just like &#39;|&#39; in Linux.</span>
+virginia_death_rates &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(VADeaths)
+virginia_death_rates &lt;-<span class="st"> </span>virginia_death_rates <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;Age Group&quot;</span> =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rownames</span>(virginia_death_rates), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Age Group</span><span class="st">`</span>, <span class="kw">everything</span>()) <span class="co">#reorder the columns</span></code></pre>
+<p><strong>A (❋❋;❋)</strong></p>
+<p>Pivot this table to long (tidy) format. This should generate a dataframe with four columns: <code>Age Group</code>, <code>Habitat</code>, <code>Gender</code> and <code>DeathRate</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">virginia_death_rates &lt;-<span class="st"> </span>virginia_death_rates <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="dv">-1</span>, 
+                 <span class="dt">names_to =</span> <span class="kw">c</span>(<span class="st">&quot;Habitat&quot;</span>, <span class="st">&quot;Gender&quot;</span>), 
+                 <span class="dt">names_sep =</span> <span class="st">&quot; &quot;</span>, 
+                 <span class="dt">values_to =</span> <span class="st">&quot;DeathRate&quot;</span>)</code></pre>
+<p><strong>B (❋❋)</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> virginia_death_rates, <span class="kw">aes</span>(Gender)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">weight =</span> DeathRate, <span class="dt">fill =</span> Habitat), <span class="dt">position =</span> <span class="st">&quot;dodge&quot;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:VADeaths-B"></span>
+<img src="bookdown-demo_files/figure-html/VADeaths-B-1.png" alt="Virginia Death rates" width="70%" />
+<p class="caption">
+Figure 9.6: Virginia Death rates
+</p>
+</div>
+</div>
+<div id="investigate-new-visualization-1" class="section level3">
+<h3><span class="header-section-number">9.2.5</span> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></h3>
+<p>This assignment has no solution of course. It is included here solely to keep the numbering consistent for both assignment chapters.</p>
+</div>
+<div id="toothgrowth-1" class="section level3">
+<h3><span class="header-section-number">9.2.6</span> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></h3>
+<p>In my opinion, the boxplot is an excellent choice for this visualization. However, <code>geom_jitter()</code> could also work but is more of a hassle to split out on Dose.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ToothGrowth, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> supp, <span class="dt">y =</span> len)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">color =</span> <span class="kw">as.factor</span>(dose))) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Supplement&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Tooth length (mm)&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="st">&quot;Dose (mg/day)&quot;</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:toothgrowth"></span>
+<img src="bookdown-demo_files/figure-html/toothgrowth-1.png" alt=" length of odontoblasts with vitamin C" width="80%" />
+<p class="caption">
+Figure 9.7:  length of odontoblasts with vitamin C
+</p>
+</div>
+</div>
+<div id="puromycin-1" class="section level3">
+<h3><span class="header-section-number">9.2.7</span> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> Puromycin,
+       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> conc, <span class="dt">y =</span> rate, <span class="dt">color =</span> state)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span><span class="kw">log</span>(x), <span class="dt">se =</span> F)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:puromycin2"></span>
+<img src="bookdown-demo_files/figure-html/puromycin2-1.png" alt="reaction velocity versus substrate concentration" width="80%" />
+<p class="caption">
+Figure 9.8: reaction velocity versus substrate concentration
+</p>
+</div>
+</div>
 <div id="global-temperature-1" class="section level3">
-<h3><span class="header-section-number">9.2.1</span> Global temperature</h3>
+<h3><span class="header-section-number">9.2.8</span> Global temperature</h3>
 <p>Load the data.</p>
-<pre class="sourceCode r"><code class="sourceCode r">temp_file &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv&quot;</span>
-<span class="kw">download.file</span>(temp_file, <span class="dt">destfile =</span> <span class="st">&quot;annual.csv&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r">remote_file &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv&quot;</span>
+local_file &lt;-<span class="st"> &quot;../annual.csv&quot;</span>
+
+<span class="cf">if</span> (<span class="op">!</span><span class="st"> </span><span class="kw">file.exists</span>(local_file)) {
+    <span class="kw">download.file</span>(remote_file, <span class="dt">destfile =</span> local_file)
+}
+
 global_temp &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;annual.csv&quot;</span>,
                           <span class="dt">header =</span> <span class="ot">TRUE</span>,
                           <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</code></pre>
 <div id="create-a-scatter-and-line-plot-1" class="section level4">
-<h4><span class="header-section-number">9.2.1.1</span> Create a scatter-and-line-plot</h4>
+<h4><span class="header-section-number">9.2.8.1</span> Create a scatter-and-line-plot [❋❋]</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> global_temp,
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> Mean, <span class="dt">color =</span> Source)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span>
@@ -359,12 +560,12 @@ global_temp &lt;-<span class="st"> </span><span class="kw">read.table</span>(<sp
 <div class="figure" style="text-align: center"><span id="fig:scatter-global-temp"></span>
 <img src="bookdown-demo_files/figure-html/scatter-global-temp-1.png" alt="Global temperature anomalies" width="80%" />
 <p class="caption">
-Figure 9.1: Global temperature anomalies
+Figure 9.9: Global temperature anomalies
 </p>
 </div>
 </div>
 <div id="re-create-the-heatmap-1" class="section level4">
-<h4><span class="header-section-number">9.2.1.2</span> Re-create the heatmap</h4>
+<h4><span class="header-section-number">9.2.8.2</span> Re-create the heatmap [❋❋❋]</h4>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> global_temp[global_temp<span class="op">$</span>Source <span class="op">==</span><span class="st"> &quot;GCAG&quot;</span>, ],
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Year, <span class="dt">y =</span> <span class="dv">1</span>)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Mean), <span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span><span class="st"> </span>
@@ -374,16 +575,16 @@ Figure 9.1: Global temperature anomalies
 <div class="figure" style="text-align: center"><span id="fig:heatmap-global-temp"></span>
 <img src="bookdown-demo_files/figure-html/heatmap-global-temp-1.png" alt="Global temperature anomalies" width="80%" />
 <p class="caption">
-Figure 9.2: Global temperature anomalies
+Figure 9.10: Global temperature anomalies
 </p>
 </div>
 <p>Note: rescaling the temperature from 0 to 1 may yield even better results.</p>
 </div>
 </div>
 <div id="epilepsy-drug-trial-1" class="section level3">
-<h3><span class="header-section-number">9.2.2</span> Epilepsy drug trial</h3>
+<h3><span class="header-section-number">9.2.9</span> Epilepsy drug trial</h3>
 <div id="load-data" class="section level4">
-<h4><span class="header-section-number">9.2.2.1</span> Load data</h4>
+<h4><span class="header-section-number">9.2.9.1</span> Load data <sup><font size="3em">[❋]</font></sup></h4>
 <pre class="sourceCode r"><code class="sourceCode r">epilepsy_file &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/epilepsy/epilepsy.csv&quot;</span>
 epilepsy &lt;-<span class="st"> </span><span class="kw">read.table</span>(epilepsy_file,
                         <span class="dt">header =</span> <span class="ot">TRUE</span>,
@@ -391,21 +592,21 @@ epilepsy &lt;-<span class="st"> </span><span class="kw">read.table</span>(epilep
 epilepsy<span class="op">$</span>period &lt;-<span class="st"> </span><span class="kw">factor</span>(epilepsy<span class="op">$</span>period, <span class="dt">ordered=</span><span class="ot">TRUE</span>)</code></pre>
 </div>
 <div id="reorganize-the-data-1" class="section level4">
-<h4><span class="header-section-number">9.2.2.2</span> Reorganize the data</h4>
-<pre class="sourceCode r"><code class="sourceCode r">(epilepsy &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(
-    epilepsy[, <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;period&quot;</span>,<span class="st">&quot;seizure.rate&quot;</span>)]))</code></pre>
+<h4><span class="header-section-number">9.2.9.2</span> Reorganize the data <sup><font size="3em">[❋❋]</font></sup></h4>
+<pre class="sourceCode r"><code class="sourceCode r">epilepsy &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(
+    epilepsy[, <span class="kw">c</span>(<span class="st">&quot;subject&quot;</span>,<span class="st">&quot;age&quot;</span>,<span class="st">&quot;base&quot;</span>,<span class="st">&quot;treatment&quot;</span>,<span class="st">&quot;period&quot;</span>,<span class="st">&quot;seizure.rate&quot;</span>)])</code></pre>
 </div>
 <div id="create-plots-of-seizure-rates-1" class="section level4">
-<h4><span class="header-section-number">9.2.2.3</span> Create plots of seizure rates</h4>
-<p><strong>boxplot</strong>
-I used the <code>color</code> aesthetic here:</p>
+<h4><span class="header-section-number">9.2.9.3</span> Create plots of seizure rates</h4>
+<p><strong>A [❋❋]</strong></p>
+<p>I used the <code>color</code> aesthetic here:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> epilepsy,
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> period, <span class="dt">y =</span> seizure.rate, <span class="dt">color =</span> treatment)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:boxplot-seizure-rates"></span>
 <img src="bookdown-demo_files/figure-html/boxplot-seizure-rates-1.png" alt="Seizure rates with color" width="80%" />
 <p class="caption">
-Figure 9.3: Seizure rates with color
+Figure 9.11: Seizure rates with color
 </p>
 </div>
 <p>This is the alternative with <code>facet_wrap()</code></p>
@@ -416,10 +617,10 @@ Figure 9.3: Seizure rates with color
 <div class="figure" style="text-align: center"><span id="fig:boxplot-seizure-rates2"></span>
 <img src="bookdown-demo_files/figure-html/boxplot-seizure-rates2-1.png" alt="Seizure rates with facet wrap" width="80%" />
 <p class="caption">
-Figure 9.4: Seizure rates with facet wrap
+Figure 9.12: Seizure rates with facet wrap
 </p>
 </div>
-<p><strong>jitter plot</strong></p>
+<p><strong>B [❋❋❋]</strong></p>
 <p>Again, this could be done with color or facetting, but in this case <code>shape</code> is also an option (not shown). I used a little trick to separate the <code>period</code> for treated/untreated.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span>epilepsy
 tmp<span class="op">$</span>period &lt;-<span class="st"> </span><span class="kw">as.integer</span>(tmp<span class="op">$</span>period)
@@ -431,10 +632,10 @@ tmp<span class="op">$</span>period_offset &lt;-<span class="st"> </span><span cl
 <div class="figure" style="text-align: center"><span id="fig:boxplot-seizure-rates3"></span>
 <img src="bookdown-demo_files/figure-html/boxplot-seizure-rates3-1.png" alt="Seizure rates" width="80%" />
 <p class="caption">
-Figure 9.5: Seizure rates
+Figure 9.13: Seizure rates
 </p>
 </div>
-<p><strong>overlay</strong></p>
+<p><strong>C [❋❋❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> epilepsy,
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> period, <span class="dt">y =</span> seizure.rate, <span class="dt">color =</span> treatment)) <span class="op">+</span>
 <span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> treatment), <span class="dt">alpha =</span> <span class="fl">0.2</span>) <span class="op">+</span>
@@ -443,14 +644,14 @@ Figure 9.5: Seizure rates
 <div class="figure" style="text-align: center"><span id="fig:boxplot-seizure-rates4"></span>
 <img src="bookdown-demo_files/figure-html/boxplot-seizure-rates4-1.png" alt="Seizure rates" width="90%" />
 <p class="caption">
-Figure 9.6: Seizure rates
+Figure 9.14: Seizure rates
 </p>
 </div>
 <p>Note that it would have been nicer to omit the outliers from the boxplot. This is your challenge.</p>
 <p>There are many more variations possible! You should really explore some of these as practice.</p>
 </div>
 <div id="a-boxplot-after-correction-1" class="section level4">
-<h4><span class="header-section-number">9.2.2.4</span> A boxplot after correction</h4>
+<h4><span class="header-section-number">9.2.9.4</span> A boxplot after correction <sup><font size="3em">[❋❋❋]</font></sup></h4>
 <p>Correction:</p>
 <pre class="sourceCode r"><code class="sourceCode r">epilepsy_corrected &lt;-<span class="st"> </span><span class="kw">aggregate</span>(
     seizure.rate <span class="op">~</span><span class="st"> </span>subject <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>base <span class="op">+</span><span class="st"> </span>treatment, 
@@ -464,12 +665,12 @@ epilepsy_corrected<span class="op">$</span>seizure_rate_corrected &lt;-<span cla
 <div class="figure" style="text-align: center"><span id="fig:boxplot-seizure-rates5"></span>
 <img src="bookdown-demo_files/figure-html/boxplot-seizure-rates5-1.png" alt="Seizure rates after correction" width="80%" />
 <p class="caption">
-Figure 9.7: Seizure rates after correction
+Figure 9.15: Seizure rates after correction
 </p>
 </div>
 </div>
 <div id="test-for-statistical-significance-1" class="section level4">
-<h4><span class="header-section-number">9.2.2.5</span> Test for statistical significance</h4>
+<h4><span class="header-section-number">9.2.9.5</span> Test for statistical significance <sup><font size="3em">[❋❋❋]</font></sup></h4>
 <pre class="sourceCode r"><code class="sourceCode r">placebo &lt;-<span class="st"> </span>epilepsy_corrected<span class="op">$</span>seizure_rate_corrected[epilepsy_corrected<span class="op">$</span>treatment <span class="op">==</span><span class="st"> &quot;placebo&quot;</span>]
 treated &lt;-<span class="st"> </span>epilepsy_corrected<span class="op">$</span>seizure_rate_corrected[epilepsy_corrected<span class="op">$</span>treatment <span class="op">==</span><span class="st"> &quot;Progabide&quot;</span>]
 <span class="kw">t.test</span>(<span class="dt">x =</span> placebo, <span class="dt">y =</span> treated)</code></pre>
@@ -512,30 +713,115 @@ treated &lt;-<span class="st"> </span>epilepsy_corrected<span class="op">$</span
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 </div>
+<div id="bacterial-growth-curves-with-varioscan-1" class="section level3">
+<h3><span class="header-section-number">9.2.10</span> Bacterial growth curves with Varioscan</h3>
+<div id="load-preprocess-and-tidy-1" class="section level4">
+<h4><span class="header-section-number">9.2.10.1</span> Load, preprocess and tidy <sup><font size="3em">[❋❋❋❋]</font></sup></h4>
+<p>Load:</p>
+<pre class="sourceCode r"><code class="sourceCode r">growth_data_file &lt;-<span class="st"> &quot;data/varioscan/2020-01-30_wide.csv&quot;</span>
+growth_data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(growth_data_file)</code></pre>
+<p>Preprocess. Applying corrctions to the dataset is not easy as it is; this is much easier when the dataframe is transposed so samples are in columns and timepoints in rows. Also, transposition will force all data into character because the first columns contain character data. To prevent this, they are removed (and stored), leaving only the numerical OD measurements.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## Add rownames to get a hold of them after transpose</span>
+row_names &lt;-<span class="st"> </span><span class="kw">paste0</span>(growth_data<span class="op">$</span>Content, <span class="st">&#39;.&#39;</span>,
+                    growth_data<span class="op">$</span>.copy, <span class="st">&#39;.&#39;</span>,
+                    <span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">times =</span> <span class="dv">12</span>)) <span class="co">#letters A-H represent the 8 dilutions</span>
+<span class="kw">rownames</span>(growth_data) &lt;-<span class="st"> </span>row_names
+
+<span class="co">## remove non-numeric cols but store them first</span>
+label_columns &lt;-<span class="st"> </span>growth_data[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
+tmp &lt;-<span class="st"> </span>growth_data[, <span class="op">-</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)]
+
+<span class="co">## transpose</span>
+tmp &lt;-<span class="st"> </span><span class="kw">t</span>(tmp)
+
+<span class="co">## build a new dataframe/tibble, empty but with predefined number of rows</span>
+growth_data_corr &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">.rows =</span> <span class="kw">nrow</span>(tmp))</code></pre>
+<p>Carry out the corrections; can this be done more efficiently? Take the challenge!</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##1  9 17 25 33 41 49 57 65 73 81 89</span>
+
+<span class="cf">for</span> (col_select <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>) {
+    <span class="co">#Using correction columns 25-32</span>
+    <span class="co">#Red.1: columns 1 to 8</span>
+    growth_data_corr[, row_names[col_select]] &lt;-<span class="st"> </span>tmp[ , col_select] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">24</span>]
+    <span class="co">#Red.2: columns 9 to 16</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">8</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">8</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">24</span>]
+    <span class="co">#Red.3: columns 17 to 24</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">16</span>]] &lt;-<span class="st"> </span>tmp[, col_select <span class="op">+</span><span class="st"> </span><span class="dv">16</span>] <span class="op">-</span><span class="st"> </span>tmp[, col_select <span class="op">+</span><span class="st"> </span><span class="dv">24</span>]
+
+    <span class="co">#Using correction columns 57-64</span>
+    <span class="co">#White.1: columns 33 to 40</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">32</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">32</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">56</span>]
+    <span class="co">#White.2: columns 41 to 48</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">40</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">40</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">56</span>]
+    <span class="co">#White.3: columns 49 to 56</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">48</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">48</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">56</span>]
+
+    <span class="co">#Using correction columns 89-96</span>
+    <span class="co">#Elution.1: columns 65 to 72</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">64</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">64</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">88</span>]
+    <span class="co">#Elution.2: columns 73 to 80</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">72</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">72</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">88</span>]
+    <span class="co">#Elution.1: columns 81 to 89</span>
+    growth_data_corr[, row_names[col_select <span class="op">+</span><span class="st"> </span><span class="dv">80</span>]] &lt;-<span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">80</span>] <span class="op">-</span><span class="st"> </span>tmp[ , col_select <span class="op">+</span><span class="st"> </span><span class="dv">88</span>]
+}
+growth_data_corr &lt;-<span class="st"> </span>growth_data_corr[, row_names[<span class="op">-</span><span class="kw">c</span>(<span class="dv">25</span><span class="op">:</span><span class="dv">32</span>, <span class="dv">57</span><span class="op">:</span><span class="dv">64</span>, <span class="dv">89</span><span class="op">:</span><span class="dv">96</span>)]]</code></pre>
+<p>Re-attach the</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## Transpose back and re-attach the first columns and time series labels</span>
+growth_data_corr &lt;-<span class="st"> </span><span class="kw">t</span>(growth_data_corr)
+label_columns &lt;-<span class="st"> </span>label_columns[<span class="op">-</span><span class="kw">c</span>(<span class="dv">25</span><span class="op">:</span><span class="dv">32</span>, <span class="dv">57</span><span class="op">:</span><span class="dv">64</span>, <span class="dv">89</span><span class="op">:</span><span class="dv">96</span>), ]
+growth_data_corr &lt;-<span class="st"> </span><span class="kw">cbind</span>(label_columns, growth_data_corr)
+<span class="kw">names</span>(growth_data_corr) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">colnames</span>(label_columns), <span class="kw">rownames</span>(tmp))</code></pre>
+<p>Tidy:</p>
+<pre class="sourceCode r"><code class="sourceCode r">growth_data_tidy &lt;-<span class="st"> </span>growth_data_corr <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">starts_with</span>(<span class="st">&quot;T.&quot;</span>),
+             <span class="dt">names_prefix =</span> <span class="st">&quot;T.&quot;</span>,
+             <span class="dt">names_to =</span> <span class="st">&quot;Time&quot;</span>,
+             <span class="dt">values_to =</span> <span class="st">&quot;OD&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Time =</span> <span class="kw">as.integer</span>(Time)<span class="op">/</span><span class="dv">60</span>,
+           <span class="dt">Dilution =</span> <span class="kw">factor</span>(Dilution, <span class="dt">ordered =</span> T),
+           <span class="dt">Copy =</span> <span class="kw">factor</span>(.copy, <span class="dt">ordered =</span> T)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Content, Copy, Dilution, Time, OD)</code></pre>
+<p>Note that using the <code>names_prefix = &quot;T.&quot;</code> argument makes the <code>T.</code> prefix disappear so converting time to a number is easier. This conversion is done in the last step of this workflow, and it is also converted to hours instead of minutes. <code>Dilution</code> and <code>.copy</code> are converted to factors so they can be used as discrete values in ggplot2.</p>
+</div>
+<div id="create-a-growth-curve-visualization-1" class="section level4">
+<h4><span class="header-section-number">9.2.10.2</span> Create a growth curve visualization <sup><font size="3em">[❋❋❋❋]</font></sup></h4>
+<p>Let’s first look at the three copies of the same sample. Can they maybe be merged?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+growth_data_tidy <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Content <span class="op">==</span><span class="st"> &quot;Red&quot;</span>, ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> OD)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Dilution, <span class="dt">linetype =</span> Copy)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Time (H)&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">growth_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(.copy <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>Dilution <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="dv">2</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> OD)) <span class="op">+</span>
+<span class="st">        </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Dilution, <span class="dt">color =</span> Content)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">scale_color_manual</span>()</code></pre>
+</div>
+</div>
 <div id="the-dinos-1" class="section level3">
-<h3><span class="header-section-number">9.2.3</span> The dinos</h3>
+<h3><span class="header-section-number">9.2.11</span> The dinos</h3>
 <div id="export-to-csv-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.1</span> export to csv</h4>
+<h4><span class="header-section-number">9.2.11.1</span> export to csv <sup><font size="3em">[❋❋]</font></sup></h4>
 <p>This exercise has no code. I exported the data and placed the csv files under <code>data/dinos/</code> of this repo.</p>
 </div>
 <div id="clean-up-and-load-codebook.csv-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.2</span> clean up and load <code>codebook.csv</code></h4>
+<h4><span class="header-section-number">9.2.11.2</span> clean up and load <code>codebook.csv</code></h4>
 <p>Non-data lines were deleted. Lines 1-18 relate to skeleton data and 19-29 to footprint data.</p>
-<p><strong>1. Load the resulting file and assign it to variable <code>codebook</code>.</strong></p>
+<p><strong>A [❋]</strong></p>
 <p>The separator is “:” but it is not possible to define multi-character separators in <code>read.table()</code>. For now, simply use “:”.</p>
 <pre class="sourceCode r"><code class="sourceCode r">codebook_file &lt;-<span class="st"> &quot;data/dinos/codebook.csv&quot;</span>
 codebook &lt;-<span class="st"> </span><span class="kw">read.table</span>(codebook_file, 
                       <span class="dt">sep =</span> <span class="st">&quot;:&quot;</span>,
                       <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><strong>2. Give the dataframe column names: <code>variable</code> and <code>description</code>.</strong></p>
+<p><strong>B [❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(codebook) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;variable&#39;</span>, <span class="st">&#39;description&#39;</span>)</code></pre>
-<p><strong>3. Remove the leading space of the second column </strong></p>
+<p><strong>C [❋❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">codebook<span class="op">$</span>description &lt;-<span class="st"> </span><span class="kw">sub</span>(<span class="st">&#39;^ &#39;</span>, <span class="st">&#39;&#39;</span>, codebook<span class="op">$</span>description)</code></pre>
-<p><strong>4. Add a column called <code>dataset</code>: a factor with the value <code>skeleton</code> or <code>footprint</code>, depending on the file that is referred to.</strong></p>
+<p><strong>D [❋❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">codebook<span class="op">$</span>dataset &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&#39;skeleton&#39;</span>, <span class="dv">18</span>), <span class="kw">rep</span>(<span class="st">&#39;footprint&#39;</span>, <span class="dv">11</span>))</code></pre>
 </div>
 <div id="write-a-utility-function-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.3</span> Write a utility function</h4>
+<h4><span class="header-section-number">9.2.11.3</span> Write a utility function <sup><font size="3em">[❋❋❋]</font></sup></h4>
 <pre class="sourceCode r"><code class="sourceCode r">get_description &lt;-<span class="st"> </span><span class="cf">function</span>(column_name, <span class="dt">dataset =</span> <span class="st">&#39;skeleton&#39;</span>) {
     <span class="cf">if</span> (<span class="op">!</span><span class="st"> </span><span class="kw">is.element</span>(dataset, codebook<span class="op">$</span>dataset)) {
         <span class="kw">stop</span>(<span class="kw">paste0</span>(<span class="st">&#39;dataset &#39;</span>, dataset, <span class="st">&#39; does not exist&#39;</span>))
@@ -550,7 +836,7 @@ codebook &lt;-<span class="st"> </span><span class="kw">read.table</span>(codebo
 <pre><code>## [1] &quot;Number of genera of Dinosauria&quot;</code></pre>
 </div>
 <div id="load-skeleton-data-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.4</span> Load skeleton data</h4>
+<h4><span class="header-section-number">9.2.11.4</span> Load skeleton data <sup><font size="3em">[❋]</font></sup></h4>
 <pre class="sourceCode r"><code class="sourceCode r">skeleton_file &lt;-<span class="st"> &quot;data/dinos/skeletons.csv&quot;</span>
 
 (skeleton &lt;-<span class="st"> </span><span class="kw">read.table</span>(skeleton_file, 
@@ -560,7 +846,7 @@ codebook &lt;-<span class="st"> </span><span class="kw">read.table</span>(codebo
                         <span class="dt">as.is =</span> <span class="dv">1</span>))</code></pre>
 </div>
 <div id="plot-species-versus-time-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.5</span> Plot species versus time</h4>
+<h4><span class="header-section-number">9.2.11.5</span> Plot species versus time <sup><font size="3em">[❋❋❋]</font></sup></h4>
 <p>Note the use of the utility function previously created, <code>get_description()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> skeleton,
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Midpoint, <span class="dt">y =</span> <span class="kw">log2</span>(Total_spec))) <span class="op">+</span>
@@ -572,27 +858,27 @@ codebook &lt;-<span class="st"> </span><span class="kw">read.table</span>(codebo
 <div class="figure" style="text-align: center"><span id="fig:species-vs-time"></span>
 <img src="bookdown-demo_files/figure-html/species-vs-time-1.png" alt="A first visualization" width="80%" />
 <p class="caption">
-Figure 9.8: A first visualization
+Figure 9.16: A first visualization
 </p>
 </div>
 </div>
 <div id="reproducing-the-publication-figure-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.6</span> Reproducing the publication figure</h4>
-<p><strong>Part 1. calculate the proportions</strong></p>
+<h4><span class="header-section-number">9.2.11.6</span> Reproducing the publication figure</h4>
+<p><strong>A [❋❋]</strong></p>
 <p>We have not yet dealt with <code>dplyr</code> so we’ll use base R for this. Note that the column <code>Total_gen</code> already contains the sum of all tetrapods.</p>
 <pre class="sourceCode r"><code class="sourceCode r">skeleton<span class="op">$</span>genera_proportion &lt;-<span class="st"> </span>(skeleton<span class="op">$</span>Dinosaur_gen <span class="op">/</span><span class="st"> </span>skeleton<span class="op">$</span>Total_gen) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>
 skeleton<span class="op">$</span>specimen_proportion &lt;-<span class="st"> </span>(skeleton<span class="op">$</span>Dinosaur_spec <span class="op">/</span><span class="st"> </span>skeleton<span class="op">$</span>Total_spec) <span class="op">*</span><span class="st"> </span><span class="dv">100</span></code></pre>
-<p><strong>Part 2. calculate the mean of the proportions</strong></p>
+<p><strong>B [❋❋❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">skeleton_proportions &lt;-<span class="st"> </span><span class="kw">aggregate</span>(
     <span class="kw">cbind</span>(genera_proportion, specimen_proportion) <span class="op">~</span><span class="st"> </span>Epoch <span class="op">+</span><span class="st"> </span>Stage <span class="op">+</span><span class="st"> </span>Midpoint, 
     <span class="dt">data =</span> skeleton,
     <span class="dt">FUN =</span> mean)</code></pre>
-<p><strong>Part 3. flatten&quot; the data</strong></p>
+<p><strong>C [❋❋❋]</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">skeleton_proportions_long &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> skeleton_proportions, 
              <span class="dt">names_to =</span> <span class="st">&quot;level&quot;</span>, 
              <span class="dt">values_to =</span> <span class="st">&quot;Proportion&quot;</span>, 
              <span class="dt">cols =</span> <span class="kw">ends_with</span>(<span class="st">&quot;_proportion&quot;</span>))</code></pre>
-<p><strong>Part 4. generate the plot</strong></p>
+<p><strong>D [❋❋❋❋]</strong></p>
 <p>First it needs to be flattened for use in ggplot2:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> skeleton_proportions_long,
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Midpoint, <span class="dt">y =</span> Proportion, <span class="dt">color =</span> level)) <span class="op">+</span>
@@ -605,10 +891,10 @@ skeleton<span class="op">$</span>specimen_proportion &lt;-<span class="st"> </sp
 <div class="figure" style="text-align: center"><span id="fig:plot-reprodiction1"></span>
 <img src="bookdown-demo_files/figure-html/plot-reprodiction1-1.png" alt="A reproduction" width="80%" />
 <p class="caption">
-Figure 9.9: A reproduction
+Figure 9.17: A reproduction
 </p>
 </div>
-<p><strong>Part 5. Add the moving average</strong></p>
+<p><strong>E [❋❋❋❋❋]</strong></p>
 <p>Actually, this is not that simple to do with base R. What you want is a function that calculates the mean over a time period or over a fixed sequence of numbers. We’ll take the mean over a sequence of 3 numbers. This could be a possible solution, using a <code>for</code> loop.</p>
 <pre class="sourceCode r"><code class="sourceCode r">rows &lt;-<span class="st"> </span><span class="kw">nrow</span>(skeleton_proportions)
 moving_average_spec &lt;-<span class="st"> </span><span class="kw">numeric</span>(rows)
@@ -648,13 +934,13 @@ skeleton_prop_avg_long &lt;-<span class="st"> </span><span class="kw">pivot_long
 <div class="figure" style="text-align: center"><span id="fig:plot-reprodiction2"></span>
 <img src="bookdown-demo_files/figure-html/plot-reprodiction2-1.png" alt="A reproduction" width="80%" />
 <p class="caption">
-Figure 9.10: A reproduction
+Figure 9.18: A reproduction
 </p>
 </div>
 <p><strong>[THIS IS NOT CORRECT YET!!]</strong></p>
 </div>
 <div id="make-a-better-figure-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.7</span> Make a better figure</h4>
+<h4><span class="header-section-number">9.2.11.7</span> Make a better figure <sup><font size="3em">[❋❋❋❋]</font></sup></h4>
 <p>The Loess regression curve is a favorite of mine.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> skeleton_prop_avg_long, 
        <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Midpoint, <span class="dt">y =</span> proportion, <span class="dt">color =</span> level)) <span class="op">+</span>
@@ -668,12 +954,12 @@ Figure 9.10: A reproduction
 <div class="figure" style="text-align: center"><span id="fig:plot-reprodiction3"></span>
 <img src="bookdown-demo_files/figure-html/plot-reprodiction3-1.png" alt="A reproduction" width="80%" />
 <p class="caption">
-Figure 9.11: A reproduction
+Figure 9.19: A reproduction
 </p>
 </div>
 </div>
 <div id="use-the-size-aesthetic-1" class="section level4">
-<h4><span class="header-section-number">9.2.3.8</span> Use the size aesthetic</h4>
+<h4><span class="header-section-number">9.2.11.8</span> Use the size aesthetic <sup><font size="3em">[❋❋❋❋❋]</font></sup></h4>
 <p>We need more data for this, the totals for each “Stage”:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">## re-create mean proportions</span>
 skeleton_proportions &lt;-<span class="st"> </span><span class="kw">aggregate</span>(
@@ -731,14 +1017,234 @@ skeleton_prop_and_totals &lt;-<span class="st"> </span>skeleton_prop_and_totals[
 <div class="figure" style="text-align: center"><span id="fig:plot-reprodiction4"></span>
 <img src="bookdown-demo_files/figure-html/plot-reprodiction4-1.png" alt="A reproduction" width="80%" />
 <p class="caption">
-Figure 9.12: A reproduction
+Figure 9.20: A reproduction
 </p>
 </div>
 </div>
 </div>
 </div>
-<div id="tidyr-and-dplyr-1" class="section level2">
-<h2><span class="header-section-number">9.3</span> <code>tidyr</code> and <code>dplyr</code></h2>
+<div id="the-tidyr-and-dplyr-packages-1" class="section level2">
+<h2><span class="header-section-number">9.3</span> The <code>tidyr</code> and <code>dplyr</code> packages</h2>
+<div id="global-temperature-revisited-1" class="section level3">
+<h3><span class="header-section-number">9.3.1</span> Global temperature revisited</h3>
+<p><strong>A [❋❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">global_temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Source <span class="op">==</span><span class="st"> &quot;GCAG&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span> <span class="op">&amp;</span><span class="st"> </span>Mean <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.1</span>)
+global_temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Source <span class="op">==</span><span class="st"> &quot;GISTEMP&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&lt;</span><span class="st"> </span><span class="dv">1970</span> <span class="op">&amp;</span><span class="st"> </span>Mean <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.1</span>)</code></pre>
+<p><strong>B [❋❋]</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">global_temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Source <span class="op">==</span><span class="st"> &quot;GCAG&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1945</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Mean <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(Mean))
+
+global_temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Source <span class="op">==</span><span class="st"> &quot;GISTEMP&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1945</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Mean <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(Mean))</code></pre>
+<p><strong>C [❋❋❋]</strong></p>
+<p>This is a case for <code>filter(row_number() ...)</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">global_temp <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(Source) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Mean)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(<span class="kw">row_number</span>() <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">ungroup</span>()</code></pre>
+<p><strong>D [❋❋❋]</strong></p>
+<p>This is a case for splitting with <code>cut()</code>. Package dplyr has an equivalent named <code>ntile()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cut</span>(global_temp<span class="op">$</span>Year, <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="kw">min</span>(global_temp<span class="op">$</span>Year), <span class="kw">max</span>(global_temp<span class="op">$</span>Year), <span class="dv">10</span>))
+
+global_temp <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1970</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Decade =</span> <span class="kw">cut</span>(Year, 
+                        <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">1970</span>, <span class="dv">2020</span>, <span class="dv">10</span>), 
+                        <span class="dt">labels =</span> <span class="kw">seq</span>(<span class="dv">1970</span>, <span class="dv">2010</span>, <span class="dv">10</span>),
+                        <span class="dt">right =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Decade, Source) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">Mean =</span> <span class="kw">mean</span>(Mean))</code></pre>
+</div>
+<div id="chickweight-1" class="section level3">
+<h3><span class="header-section-number">9.3.2</span> ChickWeight</h3>
+<ol style="list-style-type: decimal">
+<li><strong>Starting weight [❋❋]</strong>.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">filter</span>(Time <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(weight)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(Chick, Diet, weight) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">head</span>(<span class="dv">1</span>)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Total weight gain [❋❋❋]</strong>.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">timepoints =</span> <span class="kw">n</span>(), 
+              <span class="dt">total_weight_gain =</span> <span class="kw">sum</span>(weight_gain, <span class="dt">na.rm =</span> T),
+              <span class="dt">Diet =</span> <span class="kw">first</span>(Diet)) <span class="op">%&gt;%</span>
+<span class="st">     </span><span class="kw">arrange</span>(<span class="kw">desc</span>(total_weight_gain)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">4</span>)</code></pre>
+<p>Note: you could also have selected the first and last measurement for each chic of course, but not simply the last timepoint since several chickens had died by then.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Average weight gain per diet [❋❋❋❋]</strong>.</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">ChickWeight <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">timepoints =</span> <span class="kw">n</span>(), 
+              <span class="dt">total_weight_gain =</span> <span class="kw">sum</span>(weight_gain, <span class="dt">na.rm =</span> T),
+              <span class="dt">Diet =</span> <span class="kw">unique</span>(Diet)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Diet) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">num_chicks =</span> <span class="kw">n</span>(),
+              <span class="dt">average_weight_gain =</span> <span class="kw">mean</span>(total_weight_gain))</code></pre>
+</div>
+<div id="population-numbers-1" class="section level3">
+<h3><span class="header-section-number">9.3.3</span> Population numbers</h3>
+<div id="load-the-data-3" class="section level4">
+<h4><span class="header-section-number">9.3.3.1</span> Load the data <sup><font size="3em">[❋]</font></sup></h4>
+<pre class="sourceCode r"><code class="sourceCode r">pop_data_file &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/population/EDU_DEM_05022020113225751.csv&quot;</span>
+local_file &lt;-<span class="st"> &quot;population_data.csv&quot;</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="st"> </span><span class="kw">file.exists</span>(local_file)) {
+    <span class="kw">download.file</span>(pop_data_file, <span class="dt">destfile =</span> local_file)
+}</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">population &lt;-<span class="st"> </span><span class="kw">read.table</span>(local_file,
+                         <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+                         <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</code></pre>
+</div>
+<div id="clean-up-1" class="section level4">
+<h4><span class="header-section-number">9.3.3.2</span> Clean up <sup><font size="3em">[❋❋</font></sup></h4>
+<p><strong>Which?</strong>
+<code>str(population)</code> tells me that <code>Unit.Code</code>, <code>Unit</code> and <code>PowerCode</code> are factors with one level. Using <code>table(population$PowerCode.Code, useNA = &quot;always&quot;)</code> tells me that there are only zeros there. Same for <code>Reference.Period.Code</code> and <code>Reference.Period</code>. The variables <code>Flags</code> and <code>Flag.Codes</code> refer to the same, so one of them can be removed (I choose to remove <code>Flag.Codes</code>). The same counts for <code>SEX</code>/<code>Sex</code>, <code>AGE</code>/<code>Age</code> and <code>YEAR</code>/<code>Year</code>.</p>
+<p><strong>Select</strong>
+This is my selection:</p>
+<pre class="sourceCode r"><code class="sourceCode r">keep &lt;-<span class="st"> </span><span class="kw">names</span>(population)[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>)]
+keep
+population &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(population[, keep]) <span class="co">#tibble is nicer!</span>
+<span class="kw">head</span>(population)</code></pre>
+</div>
+<div id="create-a-wide-yearly-report-of-totals" class="section level4">
+<h4><span class="header-section-number">9.3.3.3</span> Create a “wide” yearly report of totals <sup><font size="3em">[❋❋❋</font></sup></h4>
+<pre class="sourceCode r"><code class="sourceCode r">pop_totals &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(population, Sex <span class="op">==</span><span class="st"> &quot;Total&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Age <span class="op">==</span><span class="st"> &quot;Total: All age groups&quot;</span>)
+<span class="co">##or, using base R</span>
+<span class="co">#population[population$Sex == &quot;Total&quot; &amp; population$Age == &quot;Total: All age groups&quot;, ]</span>
+pop_totals_wide &lt;-<span class="st"> </span><span class="kw">pivot_wider</span>(
+    <span class="dt">data =</span> pop_totals[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>)],
+    <span class="dt">names_from =</span> Year,
+    <span class="dt">values_from =</span> Value)
+pop_totals_wide</code></pre>
+</div>
+<div id="create-a-wide-yearly-report-of-population-change-1" class="section level4">
+<h4><span class="header-section-number">9.3.3.4</span> Create a “wide” yearly report of population change <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
+<p>You could do this on the <code>pop_totals</code> dataset using the <code>lag()</code> function, after using <code>group_by()</code>, but since we have the wide format, you could also use a simple <code>for</code> loop, iterating the columns by index and subtracting the first from the second. I will demonstrate the only the first.</p>
+<pre class="sourceCode r"><code class="sourceCode r">pop_totals <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">group_by</span>(Country) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Pop_change =</span> <span class="kw">as.integer</span>(Value <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(Value))) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Value) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Year,
+        <span class="dt">values_from =</span> Pop_change) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span><span class="st">`</span><span class="dt">2005</span><span class="st">`</span>, <span class="op">-</span><span class="st">`</span><span class="dt">2010</span><span class="st">`</span>, <span class="op">-</span>Flag.Codes) 
+<span class="co">## backticks in above selection are required </span>
+<span class="co">## because we are selecting names that are numbers!</span></code></pre>
+</div>
+<div id="create-a-bar-plot" class="section level4">
+<h4><span class="header-section-number">9.3.3.5</span> Create a bar plot <sup><font size="3em">[❋❋❋</font></sup></h4>
+<pre class="sourceCode r"><code class="sourceCode r">sel &lt;-<span class="st"> </span>population <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Sex <span class="op">==</span><span class="st"> &quot;Women&quot;</span> <span class="op">|</span><span class="st"> </span>Sex <span class="op">==</span><span class="st"> &quot;Men&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(COUNTRY <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BEL&quot;</span>, <span class="st">&quot;CHE&quot;</span>, <span class="st">&quot;DNK&quot;</span>, <span class="st">&quot;FRA&quot;</span>, <span class="st">&quot;IRL&quot;</span>, <span class="st">&quot;DEU&quot;</span>, <span class="st">&quot;LUX&quot;</span>, <span class="st">&quot;NLD&quot;</span>, <span class="st">&quot;GBR&quot;</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">drop_na</span>()
+
+<span class="kw">ggplot</span>(sel, <span class="dt">mapping =</span> <span class="kw">aes</span>(Year)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">weight =</span> Value, <span class="dt">fill =</span> Sex))  <span class="op">+</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>COUNTRY)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:pop-barplot"></span>
+<img src="bookdown-demo_files/figure-html/pop-barplot-1.png" alt="Barplot of population numbers in some European countries" width="80%" />
+<p class="caption">
+Figure 9.21: Barplot of population numbers in some European countries
+</p>
+</div>
+</div>
+<div id="highest-growth-rate-1" class="section level4">
+<h4><span class="header-section-number">9.3.3.6</span> Highest growth rate <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
+<pre class="sourceCode r"><code class="sourceCode r">population <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(Sex <span class="op">==</span><span class="st"> &quot;Total&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Age <span class="op">==</span><span class="st"> &quot;Total: All age groups&quot;</span> <span class="op">&amp;</span><span class="st"> </span>(Year <span class="op">==</span><span class="st"> </span><span class="dv">2005</span> <span class="op">|</span><span class="st"> </span>Year <span class="op">==</span><span class="st"> </span><span class="dv">2017</span>)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(Country) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Change =</span> Value <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(Value), 
+           <span class="dt">Previous =</span> <span class="kw">lag</span>(Value)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">GrowthRate =</span> Change <span class="op">/</span><span class="st"> </span>Previous <span class="op">*</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">select</span>(COUNTRY, Country, GrowthRate ) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">arrange</span>(<span class="kw">desc</span>(GrowthRate)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre>
+</div>
+</div>
+<div id="rubella-and-measles-1" class="section level3">
+<h3><span class="header-section-number">9.3.4</span> Rubella and Measles</h3>
+<p>No solutions (yet) for this exercise.</p>
+</div>
+</div>
+<div id="the-lubridate-package-1" class="section level2">
+<h2><span class="header-section-number">9.4</span> The <code>lubridate</code> package</h2>
+<div id="female-births-1" class="section level3">
+<h3><span class="header-section-number">9.4.1</span> Female births</h3>
+<div id="load-the-data-4" class="section level4">
+<h4><span class="header-section-number">9.4.1.1</span> Load the data</h4>
+<p>Load the data using the <code>lubridate</code> package so that the Date column becomes a date type.</p>
+<pre class="sourceCode r"><code class="sourceCode r">remote_file &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/female_births/daily-total-female-births.csv&quot;</span>
+local_file &lt;-<span class="st"> &quot;../female_births.csv&quot;</span>
+
+<span class="cf">if</span> (<span class="op">!</span><span class="st"> </span><span class="kw">file.exists</span>(local_file)) {
+    <span class="kw">download.file</span>(remote_file, <span class="dt">destfile =</span> local_file)
+}
+female_births &lt;-<span class="st"> </span><span class="kw">read.table</span>(local_file,
+                          <span class="dt">header =</span> <span class="ot">TRUE</span>,
+                          <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+                          <span class="dt">stringsAsFactors =</span> F)
+female_births &lt;-<span class="st"> </span>female_births <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Date =</span> <span class="kw">as_date</span>(female_births<span class="op">$</span>Date))
+
+(female_births &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(female_births))</code></pre>
+<p>Note that in this case <code>as_tibble(female_births)</code> with the original dataframe would have converted the Date column to date objects as well.</p>
+</div>
+<div id="check-for-missing-rows-1" class="section level4">
+<h4><span class="header-section-number">9.4.1.2</span> Check for missing rows</h4>
+<pre class="sourceCode r"><code class="sourceCode r">female_births <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">lagged =</span> <span class="kw">lag</span>(Date),
+           <span class="dt">diff =</span> Date <span class="op">-</span><span class="st"> </span>lagged) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(diff) <span class="co">#%&gt;%</span>
+    <span class="co">#summarize(count = n())</span></code></pre>
+</div>
+<div id="report-1" class="section level4">
+<h4><span class="header-section-number">9.4.1.3</span> Report</h4>
+<p>First create the required columns:</p>
+<pre class="sourceCode r"><code class="sourceCode r">(female_births &lt;-<span class="st"> </span>female_births <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Day =</span> <span class="kw">wday</span>(Date, <span class="dt">label =</span> T),
+           <span class="dt">Month =</span> <span class="kw">month</span>(Date, <span class="dt">label =</span> T)))</code></pre>
+<p>Report monthly counts, as barplot.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+female_births <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">weight =</span> Births)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">fill =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:births-month-barplot"></span>
+<img src="bookdown-demo_files/figure-html/births-month-barplot-1.png" alt="Monthly birth counts" width="70%" />
+<p class="caption">
+Figure 9.22: Monthly birth counts
+</p>
+</div>
+<p>The days</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+female_births <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Day, <span class="dt">weight =</span> Births)) <span class="op">+</span>
+<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">fill =</span> <span class="st">&quot;darkblue&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme_bw</span>()</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:births-month-barplot2"></span>
+<img src="bookdown-demo_files/figure-html/births-month-barplot2-1.png" alt="Dayly birth counts" width="70%" />
+<p class="caption">
+Figure 9.23: Dayly birth counts
+</p>
+</div>
+</div>
+</div>
+<div id="diabetes-1" class="section level3">
+<h3><span class="header-section-number">9.4.2</span> Diabetes</h3>
+</div>
+</div>
+<div id="the-stringr-package-1" class="section level2">
+<h2><span class="header-section-number">9.5</span> The <code>stringr</code> package</h2>
 
 </div>
 </div>
@@ -748,7 +1254,7 @@ Figure 9.12: A reproduction
         </div>
       </div>
 <a href="exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="parsing-complex-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
