@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-03-23}
+    \date{2020-04-01}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -168,10 +168,10 @@ Since you're a life science student -that is my target audience at least-, you h
 \item
   Why am I doing this exact same series of mouse clicks again and again? Is there not a more efficient way?
 \item
-  How can I describe my work reproducibly as a series of mouse clicks?
+  How can I describe my work reproducible as a series of mouse clicks?
 \end{itemize}
 
-If so, then R may be your next favourite data analysis tool.
+If so, then R may be your next favorite data analysis tool.
 It takes a little effort at first, but once you get the hang of it you will never create a plot in Excel again.
 
 With R - as with any programming language,
@@ -185,7 +185,8 @@ With R - as with any programming language,
 \end{itemize}
 
 \hypertarget{overview-of-the-toolbox}{%
-\section{Overview of the toolbox}\label{overview-of-the-toolbox}}
+\subsection*{Overview of the toolbox}\label{overview-of-the-toolbox}}
+\addcontentsline{toc}{subsection}{Overview of the toolbox}
 
 This chapter will introduce you to a toolbox that will serve you well during your data quests.\\
 It consists of
@@ -193,7 +194,7 @@ It consists of
 \begin{itemize}
 \tightlist
 \item
-  The R programming language and builtin functionality
+  The R programming language and built-in functionality
 \item
   The RStudio Integrated Development Environment (IDE)
 \item
@@ -201,14 +202,14 @@ It consists of
 \end{itemize}
 
 \hypertarget{tool-1-the-r-programming-language}{%
-\subsection{Tool 1: The R programming language}\label{tool-1-the-r-programming-language}}
+\section{Tool 1: The R programming language}\label{tool-1-the-r-programming-language}}
 
 \includegraphics{figures/Rlogo.jpg}
 
 Nobody likes to pay for computer tools. R is completely free of charge. Moreover, it is completely open source. This is of course one of the main reasons for its popularity; other statistical tools are not free and sometimes downright expensive.
-Besides this free nature, R is very popular because it has an interactive mode. We call this a read--evaluate--print loop: REPL. This means you don't need to write programs to run code. You simply type a command in the \textbf{\emph{console}}, press ennter and immediately get the result on the line below.\\
+Besides this free nature, R is very popular because it has an interactive mode. We call this a read--evaluate--print loop: REPL. This means you don't need to write programs to run code. You simply type a command in the \textbf{\emph{console}}, press enter and immediately get the result on the line below.\\
 As stated above, because you store your analyses in code, repeating these analyses -possibly with with new data or changed settings- is very easy.
-One of my personal favorite features is that R supports ``literate programming'' for creating presentations (such as this one!) and other publications (reports, papers etc). Pdf documents, Microsoft Word documents, web pages (html) and e-books are all possible outputs of a single RMarkdown master document.
+One of my personal favorite features is that R supports ``literate programming'' for creating presentations (such as this one!) and other publications (reports, papers etc). Pdf documents, Microsoft Word documents, web pages (html) and e-books are all possible outputs of a single R Markdown master document.
 
 Finally, R has advanced embedded graphical support. This means that graphical output (a plot) is as easy to generate as textual output!
 
@@ -239,7 +240,7 @@ Here are some figures to whet your appetite. You will be able to create all of t
 \end{figure}
 
 \hypertarget{tool-2-rstudio-as-development-environment}{%
-\subsection{Tool 2: RStudio as development environment}\label{tool-2-rstudio-as-development-environment}}
+\section{Tool 2: RStudio as development environment}\label{tool-2-rstudio-as-development-environment}}
 
 \begin{figure}
 \centering
@@ -247,7 +248,7 @@ Here are some figures to whet your appetite. You will be able to create all of t
 \caption{RStudio logo}
 \end{figure}
 
-RStudio is a so-called Integrated Development Environment. This means it is a ``Swiss Mulitool'' for programming. With it, you manage and run code, files, documentation on the language (help pages), building different output formats.
+RStudio is a so-called Integrated Development Environment. This means it is a ``Swiss Multitool'' for programming. With it, you manage and run code, files, documentation on the language (help pages), building different output formats.
 The workbench has several panels and looks like this when you run the application.
 
 \includegraphics{figures/RStudio_screen3.png}
@@ -258,7 +259,7 @@ You primarily work with 4 panels of the workbench:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Code editor} where you write your scripts and RMarkdown documents: text files with code you want to execute more than once
+  \textbf{Code editor} where you write your scripts and R Markdown documents: text files with code you want to execute more than once
 \item
   \textbf{R console} where you execute lines of code one by one
 \item
@@ -267,10 +268,10 @@ You primarily work with 4 panels of the workbench:
   \textbf{Plots, Help \& Files}
 \end{enumerate}
 
-You use the console to do basic calculations, try pieces of code, develop a function, or load scripts (from the code editor) into memory. On the other hand, the code editor is used to work on code that has life span longer than a few minutes: analyses you may want to repeat, or develop further in the form of scripts and RMarkdown documents.
-The code editor supports many file types for viewing and editing: regular text, structured datafiles (text, csv, data files), scripts (programs), and analytical notebooks (RMarkdown).
+You use the console to do basic calculations, try pieces of code, develop a function, or load scripts (from the code editor) into memory. On the other hand, the code editor is used to work on code that has life span longer than a few minutes: analyses you may want to repeat, or develop further in the form of scripts and R Markdown documents.
+The code editor supports many file types for viewing and editing: regular text, structured datafiles (text, csv, data files), scripts (programs), and analytical notebooks (R Markdown).
 
-What is nice about the \textbf{\emph{code editor}} above regular text editors such as Notepad, Wordpad, TextEdit, is that it knows about different file types and their constituting elements and helps your read, write (autocomplete, error alerts), scan and organize them by displaying these elements using coloring, font types and other visual aids.
+What is nice about the \textbf{\emph{code editor}} above regular text editors such as Notepad, Wordpad, TextEdit, is that it knows about different file types and their constituting elements and helps your read, write (auto-complete, error alerts), scan and organize them by displaying these elements using coloring, font types and other visual aids.
 
 Here is the same piece of code, which is a plain text file, in two different editors. First as plain text in the Mac TextEdit app and next in the RStudio code editor:
 
@@ -288,31 +289,37 @@ Here is the same piece of code, which is a plain text file, in two different edi
 
 It is clearly visible where the code elements, numeric data and character data are within the code.
 
-\hypertarget{tool-3-rmarkdown}{%
-\subsection{Tool 3: RMarkdown}\label{tool-3-rmarkdown}}
+\hypertarget{tool-3-r-markdown}{%
+\section{Tool 3: R Markdown}\label{tool-3-r-markdown}}
 
 \includegraphics{figures/markdown_logo.jpg}
 
-In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.
+Using R Markdown you can combine regular text and figures with embedded R code that will be executed to generate a final document. We call this \emph{literate programming}.\\
+You can use it to create reports in word, pdf or web (html), presentations (pdf or web) and even eBooks and websites. This entire eBook itself is written in R Markdown!
 
-You can use it to create reports in word, pdf or web (html); create presentations (pdf or web); create entire ebooks and websites (such as this one). This entire ebook itself is written in RMarkdown!
-
-Markdown is a very basic \textbf{\emph{markup}} language. Markup means that you use textual elements to indicate structure instead of content. RMarkdown simply is Markdown with embedded pieces of R code. Consider this piece of Markdown:
+Markdown is, just like the language for the web, \texttt{html}, a \textbf{\emph{markup}} language. Markup means that you use textual elements to indicate structure instead of content. The R extension to Markdown, R Markdown, simply is Markdown with embedded pieces of R code. Consider this piece of Markdown:
 
 \begin{verbatim}
-### Tool 3: RMarkdown
+## Tool 3: R Markdown
 
 ![](figures/markdown_logo.jpg)
 
-In RMarkdown, you can combine regular text and figures with embedded R code that will be executed to generate a final document.
+Using RMarkdown you can combine regular text and figures with embedded R code that will be executed to generate a final document. 
 \end{verbatim}
 
-The result of this snippet is the top of the current paragraph you are reading.
+The result of this snippet, after it is converted into html, is the top of the current paragraph you are reading.
 
-Here is a piece of R code we call a \textbf{\emph{code chunk}} that plots some random data in a scatter plot. In RStudio this piece of R code within (the current) RMarkdown document looks like this:
+Here is a piece of R code we call a \textbf{\emph{code chunk}} that plots some random data in a scatter plot. In RStudio this piece of R code within (the current) R Markdown document looks like this:
 
 \includegraphics{figures/code_chunk.png}
-Next, when I \textbf{\emph{knit}} the document into web format it results in the piece below together with its output, a scatter plot.
+Every code chunk consists of two parts; its \emph{header} and \emph{body}. The header tells the conversion engine (\textbf{\emph{knitr}}) how to deal with the code within the chunk, and its output.
+In this case, this header is
+
+\texttt{\{r\ simple-scatter-demo-1,\ fig.asp=0.6,\ out.width=\textquotesingle{}80\%\textquotesingle{},\ fig.align=\textquotesingle{}center\textquotesingle{},\ fig.caption=\textquotesingle{}A\ simple\ scatter\ plot\textquotesingle{}\}}
+
+This header specifies quite a few things. First, the programming language (\texttt{r}) and the label, or ``name'', of the chunk (\texttt{simple-scatter-demo-1}). Next, several aspects of the generated plot are specified: its \emph{aspect ratio}, \emph{relative width}, \emph{alignment} on the page and the \emph{figure caption}. Only the programming language is required here.
+
+Next, when you \textbf{\emph{knit}} (translate) the document into web format it results in the piece below, together with its output, a scatter plot.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -331,7 +338,8 @@ Next, when I \textbf{\emph{knit}} the document into web format it results in the
 \caption{A simple scatter plot}\label{fig:simple-scatter-demo-1}
 \end{figure}
 
-RMarkdown is really basic; in fact it is translated into html, the markup language of the web, before any further processing occurs. That is why you can also embed html elements within it. Here are the most basic elements you can use in Markdown documents.
+R Markdown is translated into html, the markup language of the web, before any further processing occurs. That is why you can also embed html code elements within it but that is outside the scope of this course.\\
+Here are the most basic elements you can use in Markdown documents.
 
 \begin{figure}
 \centering
@@ -349,18 +357,22 @@ results in this:
 
 \[d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}\]
 
-Happy coding!
+RStudio provides several cheatsheets with R, including Markdown. Have a look at Help → Cheatsheets.
+
+A final note. To be able to convert R Markdown into Word format you need to have MS Word installed on that machine. If you want to be able to generate pdf documents, you will need a bit more: see the screencast \href{https://www.youtube.com/watch?v=YL3avjNu6Ak}{Setting up on a Windows system}. It is a bit outdated so you should update to more recent version numbers.
 
 \hypertarget{resources}{%
 \section{Resources}\label{resources}}
 
 \hypertarget{swirl-course}{%
-\subsection{Swirl course}\label{swirl-course}}
+\subsection*{Swirl course}\label{swirl-course}}
+\addcontentsline{toc}{subsection}{Swirl course}
 
 Swirl course to accompany this course: \url{http://github.com/MichielNoback/R_Data_Analysis}
 
 \hypertarget{data-files}{%
-\subsection{Data Files}\label{data-files}}
+\subsection*{Data Files}\label{data-files}}
+\addcontentsline{toc}{subsection}{Data Files}
 
 In this section all data files used or required for the course presentations or exercises are listed.\\
 
@@ -378,7 +390,8 @@ Wine review data:
 winemag-data-130k-v2.csv
 
 \hypertarget{web-resources-and-references}{%
-\subsection{Web resources and references}\label{web-resources-and-references}}
+\subsection*{Web resources and references}\label{web-resources-and-references}}
+\addcontentsline{toc}{subsection}{Web resources and references}
 
 \begin{itemize}
 \item
@@ -388,7 +401,7 @@ winemag-data-130k-v2.csv
   \textbf{R cheat sheet}\\
   The \href{figures/R_cheatsheet.pdf}{R cheat sheet}.
 \item
-  \textbf{RMarkdown reference}\\
+  \textbf{R Markdown reference}\\
   The \href{https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf}{RMarkdown reference} cards with extensive documentation. Also available at the computer exam!
 \item
   \textbf{Bioconductor}\\
@@ -396,13 +409,14 @@ winemag-data-130k-v2.csv
 \end{itemize}
 
 \hypertarget{screencasts}{%
-\subsubsection{Screencasts}\label{screencasts}}
+\subsubsection*{Screencasts}\label{screencasts}}
+\addcontentsline{toc}{subsubsection}{Screencasts}
 
 Setting up on a Windows system
-Youtube
+YouTube
 
-Starting with Rstudio
-Youtube
+Starting with R studio
+YouTube
 
 \hypertarget{basic-r---coding-basics}{%
 \chapter{Basic R - coding basics}\label{basic-r---coding-basics}}
@@ -1733,7 +1747,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     57     43
+##     52     48
 \end{verbatim}
 
 \begin{Shaded}
@@ -5585,9 +5599,17 @@ That's it. The lessons learned here:
 \hypertarget{exercises}{%
 \chapter{Exercises}\label{exercises}}
 
-This chapter only contains exercises. The solutions are in the next chapter which has a numbering parallel to this one.
+This chapter only contains exercises. The solutions are in the next chapter which has a numbering parallel to this one. To work on the exercises it is probably best to create either an RMarkdown Notebook (File → New File → R Notebook) or an RMarkdown document (File → New File → R Markdown\ldots{} → choose Document as type and give it a title). A Notebook has the advantage that you can toggle the visibility of the code, but it has fewer output options (no pdf or Word). I strongly suggest you play around with both.
 
 This is a link to an \href{figures/R_cheatsheet.pdf}{R cheat sheet} that you could use for selecting the right function for a task.
+
+\hypertarget{toolbox-1}{%
+\section{Toolbox}\label{toolbox-1}}
+
+\hypertarget{resume}{%
+\subsection{Résumé}\label{resume}}
+
+Create an R Markdown document called Résumé and create your Curriculum Vitae using Markdown syntax.
 
 \hypertarget{basic-r}{%
 \section{Basic R}\label{basic-r}}
@@ -5612,36 +5634,17 @@ In the console, calculate the following:
 \hypertarget{first-look-at-functions}{%
 \subsection{First look at functions}\label{first-look-at-functions}}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  View the help page for \texttt{paste()}. There are two variants of this function.
+\textbf{A}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Which? And what is the difference between them?
-  \item
-    Use both variants to generate exactly this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
-  \end{itemize}
-\item
-  What does the \texttt{abs} function do?
+View the help page for \texttt{paste()}. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate \emph{exactly} this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?\\
-  \end{itemize}
-\item
-  What does the \texttt{c} function do?
+\textbf{B}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    What is the difference in returned value of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments , or \texttt{1}, \texttt{2} and \texttt{3}?
-  \end{itemize}
-\end{enumerate}
+What does the \texttt{abs} function do? What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?
+
+\textbf{C}
+
+What does the \texttt{c} function do? What is the difference in returned value (result) of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments, or \texttt{1}, \texttt{2} and \texttt{3}? Use the function \texttt{class()} to answer this.
 
 \hypertarget{variables-1}{%
 \subsection{Variables}\label{variables-1}}
@@ -6267,6 +6270,56 @@ What food category has the highest mean energy content, and which has the lowest
 
 Assuming both unsaturated fats and sugar are bad for you, what food category do you consider the worst? Think of a means to answer this, explain it and carry it out.
 
+\hypertarget{urine-properties}{%
+\subsection{Urine properties}\label{urine-properties}}
+
+The \href{https://github.com/MichielNoback/datasets/tree/master/urine}{urine specimens dataset} contains a \texttt{readme.txt} file and a data file (\texttt{urine.csv}; direct link: ``\url{https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/urine.csv}''). Study the readme to get an idea of the data. Download the file like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{urine_file_name <-}\StringTok{ "urine.csv"}
+\NormalTok{url <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/"}\NormalTok{, urine_file_name)}
+\NormalTok{local_name <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"../"}\NormalTok{, urine_file_name) }\CommentTok{#specifiy your own folder!}
+\KeywordTok{download.file}\NormalTok{(}\DataTypeTok{url =}\NormalTok{ url, }\DataTypeTok{destfile =}\NormalTok{ local_name)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+Load the data into a dataframe with name \texttt{urine}.
+
+\textbf{B}
+
+Convert the column \texttt{r} into a factor with two levels: \texttt{yes} and \texttt{no}, and give it a better name: \texttt{ox\_crystals}.
+
+\textbf{C}
+
+Using \texttt{apply()}, report the mean and standard deviation of the numeric columns only. Give these with only two decimal digits. Use a \emph{named vector} so you get this output:
+
+\begin{verbatim}
+     gravity   ph   osmo  cond   urea calc
+mean    1.02 6.03 615.04 20.90 266.41 4.14
+sd      0.01 0.72 238.25  7.95 131.25 3.26
+\end{verbatim}
+
+\textbf{D}
+
+Using \texttt{aggregate}, report the mean of the numeric columns, but split over the \texttt{ox\_crystals} variable levels. Which variables seem most likely candidates for a relation with oxalate crystal formation.
+
+\textbf{E}
+
+Use the \texttt{pairs()} plotting function to explore the pairwise relationships between the different numeric variables
+
+\textbf{F}
+
+Use the \texttt{heatmap.2()} and \texttt{cor()} functions together to create a heatmap of pairwise variable correlations. You will need to install package \texttt{gplots} for the heatmap.2 function. Alternatively, use \texttt{heatmap()} from base R.
+
+Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.2()}?
+
+\textbf{G}
+
+{[}\textbf{Challenge}{]} There does not seem to be an interesting correlation between pH and any of the other variables. Sometimes this is becuase you are not looking in enough detail. Let's dig a little further. Use \texttt{cut()} to split the pH variable into a factor with three levels: ``acidic'', ``neutral'' and ``basic'' with breakpoints between them at pH 5.5 and 7. Next, use the \texttt{split()} and \texttt{lapply()} functions to calculate the mean, meadian and sd of the other numeric variables for each level of this pH factor. This exercise can of course be done in many ways. one of them is by using an \texttt{apply()} \emph{within} the applied function of \texttt{lapply()}.
+
 \hypertarget{bird-observations-revisited}{%
 \subsection{Bird observations revisited}\label{bird-observations-revisited}}
 
@@ -6295,23 +6348,19 @@ Report the different observed species (using \texttt{Common.name}) for each genu
 \hypertarget{exercise-solutions}{%
 \chapter{Exercise solutions}\label{exercise-solutions}}
 
+\hypertarget{toolbox-2}{%
+\section{Toolbox}\label{toolbox-2}}
+
+\hypertarget{resume-1}{%
+\subsection{Résumé}\label{resume-1}}
+
+No solution for this one.
+
 \hypertarget{basic-r-1}{%
 \section{Basic R}\label{basic-r-1}}
 
 \hypertarget{math-in-the-console-1}{%
 \subsection{Math in the console}\label{math-in-the-console-1}}
-
-\(31 + 11\)
-
-\(66 - 24\)
-
-\(\frac{126}{3}\)
-
-\(12^2\)
-
-\(\sqrt{256}\)
-
-\(\frac{3*(4+\sqrt{8})}{5^3}\)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6336,7 +6385,163 @@ Report the different observed species (using \texttt{Common.name}) for each genu
 \hypertarget{first-look-at-functions-1}{%
 \subsection{First look at functions}\label{first-look-at-functions-1}}
 
-\textbf{\texttt{{[}NO\ SOLUTION\ YET{]}}}
+\textbf{A}
+
+View the help page for \texttt{paste()}. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate \emph{exactly} this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
+
+Answer: \texttt{paste()} and \texttt{paste0()}. The difference lies in the \emph{separator}, which is an empty string in \texttt{paste0()} and one space in \texttt{paste()}. Moreover, the separator can be configured in \texttt{paste()} using the \texttt{sep\ =} parameter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste}\NormalTok{(}\StringTok{"welcome "}\NormalTok{, }\StringTok{"to "}\NormalTok{, }\StringTok{"R"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "welcome to R"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste0}\NormalTok{(}\StringTok{"welcome "}\NormalTok{, }\StringTok{"to "}\NormalTok{, }\StringTok{"R"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "welcome to R"
+\end{verbatim}
+
+\textbf{B}
+
+What does the \texttt{abs} function do? What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?
+
+Answer: \texttt{abs()} returns the \emph{absolute} value. Simply put, a number with the minus sign removed if present.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{abs}\NormalTok{(}\OperatorTok{-}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{abs}\NormalTok{(}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20
+\end{verbatim}
+
+\textbf{C}
+
+What does the \texttt{c} function do? What is the difference in returned value (result) of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments, or \texttt{1}, \texttt{2} and \texttt{3}? Use the function \texttt{class()} to answer this.
+
+Answer: it combines (\textbf{c}oncatenates) its arguments into a single vector. The first example creates a ``character'' (text data) and the second a ``numeric'' (numeric data).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\StringTok{"a"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1" "2" "a"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\StringTok{"a"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\hypertarget{variables-2}{%
+\subsection{Variables}\label{variables-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{20}
+\NormalTok{y <-}\StringTok{ }\DecValTok{10}
+\NormalTok{z <-}\StringTok{ }\DecValTok{3}
+
+\NormalTok{x }\OperatorTok{+}\StringTok{ }\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{^}\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#OR}
+\CommentTok{#x**z}
+\NormalTok{q <-}\StringTok{ }\NormalTok{x }\OperatorTok{*}\StringTok{ }\NormalTok{y }\OperatorTok{*}\StringTok{ }\NormalTok{z}
+\KeywordTok{sqrt}\NormalTok{(q)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 24.49
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q}\OperatorTok{/}\NormalTok{pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 191
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{log10}\NormalTok{(x }\OperatorTok{*}\StringTok{ }\NormalTok{y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.301
+\end{verbatim}
 
 \hypertarget{plotting-rules-1}{%
 \subsection*{Plotting rules}\label{plotting-rules-1}}
@@ -7484,6 +7689,252 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \textbf{F}
 
 \[NO WORKED SOLUTION HERE\]
+
+\hypertarget{urine-properties-1}{%
+\subsection{Urine properties}\label{urine-properties-1}}
+
+The \href{https://github.com/MichielNoback/datasets/tree/master/urine}{urine specimens dataset} contains a \texttt{readme.txt} file and a data file (\texttt{urine.csv}; direct link: ``\url{https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/urine.csv}''). Study the readme to get an idea of the data. Download the file like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{urine_file_name <-}\StringTok{ "urine.csv"}
+\NormalTok{url <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/"}\NormalTok{, urine_file_name)}
+\NormalTok{local_name <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"../"}\NormalTok{, urine_file_name) }\CommentTok{#specifiy your own folder!}
+\KeywordTok{download.file}\NormalTok{(}\DataTypeTok{url =}\NormalTok{ url, }\DataTypeTok{destfile =}\NormalTok{ local_name)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+Load the data into a dataframe with name \texttt{urine}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(urine <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(local_name, }
+                     \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+                     \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     X r gravity   ph osmo cond urea  calc
+## 1   1 0   1.021 4.91  725   NA  443  2.45
+## 2   2 0   1.017 5.74  577 20.0  296  4.49
+## 3   3 0   1.008 7.20  321 14.9  101  2.36
+## 4   4 0   1.011 5.51  408 12.6  224  2.15
+## 5   5 0   1.005 6.52  187  7.5   91  1.16
+## 6   6 0   1.020 5.27  668 25.3  252  3.34
+## 7   7 0   1.012 5.62  461 17.4  195  1.40
+## 8   8 0   1.029 5.67 1107 35.9  550  8.48
+## 9   9 0   1.015 5.41  543 21.9  170  1.16
+## 10 10 0   1.021 6.13  779 25.7  382  2.21
+## 11 11 0   1.011 6.19  345 11.5  152  1.93
+## 12 12 0   1.025 5.53  907 28.4  448  1.27
+## 13 13 0   1.006 7.12  242 11.3   64  1.03
+## 14 14 0   1.007 5.35  283  9.9  147  1.47
+## 15 15 0   1.011 5.21  450 17.9  161  1.53
+## 16 16 0   1.018 4.90  684 26.1  284  5.09
+## 17 17 0   1.007 6.63  253  8.4  133  1.05
+## 18 18 0   1.025 6.81  947 32.6  395  2.03
+## 19 19 0   1.008 6.88  395 26.1   95  7.68
+## 20 20 0   1.014 6.14  565 23.6  214  1.45
+## 21 21 0   1.024 6.30  874 29.9  380  5.16
+## 22 22 0   1.019 5.47  760 33.8  199  0.81
+## 23 23 0   1.014 7.38  577 30.1   87  1.32
+## 24 24 0   1.020 5.96  631 11.2  422  1.55
+## 25 25 0   1.023 5.68  749 29.0  239  1.52
+## 26 26 0   1.017 6.76  455  8.8  270  0.77
+## 27 27 0   1.017 7.61  527 25.8   75  2.17
+## 28 28 0   1.010 6.61  225  9.8   72  0.17
+## 29 29 0   1.008 5.87  241  5.1  159  0.83
+## 30 30 0   1.020 5.44  781 29.0  349  3.04
+## 31 31 0   1.017 7.92  680 25.3  282  1.06
+## 32 32 0   1.019 5.98  579 15.5  297  3.93
+## 33 33 0   1.017 6.56  559 15.8  317  5.38
+## 34 34 0   1.008 5.94  256  8.1  130  3.53
+## 35 35 0   1.023 5.85  970 38.0  362  4.54
+## 36 36 0   1.020 5.66  702 23.6  330  3.98
+## 37 37 0   1.008 6.40  341 14.6  125  1.02
+## 38 38 0   1.020 6.35  704 24.5  260  3.46
+## 39 39 0   1.009 6.37  325 12.2   97  1.19
+## 40 40 0   1.018 6.18  694 23.3  311  5.64
+## 41 41 0   1.021 5.33  815 26.0  385  2.66
+## 42 42 0   1.009 5.64  386 17.7  104  1.22
+## 43 43 0   1.015 6.79  541 20.9  187  2.64
+## 44 44 0   1.010 5.97  343 13.4  126  2.31
+## 45 45 0   1.020 5.68  876 35.8  308  4.49
+## 46 46 1   1.021 5.94  774 27.9  325  6.96
+## 47 47 1   1.024 5.77  698 19.5  354 13.00
+## 48 48 1   1.024 5.60  866 29.5  360  5.54
+## 49 49 1   1.021 5.53  775 31.2  302  6.19
+## 50 50 1   1.024 5.36  853 27.6  364  7.31
+## 51 51 1   1.026 5.16  822 26.0  301 14.34
+## 52 52 1   1.013 5.86  531 21.4  197  4.74
+## 53 53 1   1.010 6.27  371 11.2  188  2.50
+## 54 54 1   1.011 7.01  443 21.4  124  1.27
+## 55 55 1   1.022 6.21   NA 20.6  398  4.18
+## 56 56 1   1.011 6.13  364 10.9  159  3.10
+## 57 57 1   1.031 5.73  874 17.4  516  3.01
+## 58 58 1   1.020 7.94  567 19.7  212  6.81
+## 59 59 1   1.040 6.28  838 14.3  486  8.28
+## 60 60 1   1.021 5.56  658 23.6  224  2.33
+## 61 61 1   1.025 5.71  854 27.0  385  7.18
+## 62 62 1   1.026 6.19  956 27.6  473  5.67
+## 63 63 1   1.034 5.24 1236 27.3  620 12.68
+## 64 64 1   1.033 5.58 1032 29.1  430  8.94
+## 65 65 1   1.015 5.98  487 14.8  198  3.16
+## 66 66 1   1.013 5.58  516 20.8  184  3.30
+## 67 67 1   1.014 5.90  456 17.8  164  6.99
+## 68 68 1   1.012 6.75  251  5.1  141  0.65
+## 69 69 1   1.025 6.90  945 33.6  396  4.18
+## 70 70 1   1.026 6.29  833 22.2  457  4.45
+## 71 71 1   1.028 4.76  312 12.4   10  0.27
+## 72 72 1   1.027 5.40  840 24.5  395  7.64
+## 73 73 1   1.018 5.14  703 29.0  272  6.63
+## 74 74 1   1.022 5.09  736 19.8  418  8.53
+## 75 75 1   1.025 7.90  721 23.6  301  9.04
+## 76 76 1   1.017 4.81  410 13.3  195  0.58
+## 77 77 1   1.024 5.40  803 21.8  394  7.82
+## 78 78 1   1.016 6.81  594 21.4  255 12.20
+## 79 79 1   1.015 6.03  416 12.8  178  9.39
+\end{verbatim}
+
+\textbf{B}
+
+Convert the column \texttt{r} into a factor with two levels: \texttt{yes} and \texttt{no}, and give it a better name: \texttt{ox\_crystals}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(urine)[}\DecValTok{2}\NormalTok{] <-}\StringTok{ "ox_crystals"}
+\NormalTok{urine}\OperatorTok{$}\NormalTok{ox_crystals <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(urine}\OperatorTok{$}\NormalTok{ox_crystals, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{C}
+
+Using \texttt{apply()}, report the mean and standard deviation of the numeric columns only. Give these with only two decimal digits. Use a \emph{named vector} so you get this output:
+
+\begin{verbatim}
+     gravity   ph   osmo  cond   urea calc
+mean    1.02 6.03 615.04 20.90 266.41 4.14
+sd      0.01 0.72 238.25  7.95 131.25 3.26
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mean_sd <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \CommentTok{# returns a named vector}
+    \KeywordTok{c}\NormalTok{(}\StringTok{"mean"}\NormalTok{ =}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DecValTok{2}\NormalTok{), }
+      \StringTok{"sd"}\NormalTok{ =}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{sd}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DecValTok{2}\NormalTok{))}
+\NormalTok{\}}
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ urine[, }\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{], }\DataTypeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ mean_sd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      gravity   ph  osmo  cond  urea calc
+## mean    1.02 6.03 615.0 20.90 266.4 4.14
+## sd      0.01 0.72 238.2  7.95 131.2 3.26
+\end{verbatim}
+
+\textbf{D}
+
+Using \texttt{aggregate}, report the mean of the numeric columns, but split over the \texttt{ox\_crystals} variable levels. Which variables seem most likely candidates for a relation with oxalate crystal formation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{aggregate}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(gravity, ph, osmo, cond, urea, calc) }\OperatorTok{~}\StringTok{ }\NormalTok{ox_crystals, }
+          \DataTypeTok{data =}\NormalTok{ urine, }
+          \DataTypeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x) }\KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(x, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ox_crystals gravity   ph  osmo  cond  urea calc
+## 1          no    1.02 6.13 561.7 20.55 232.4 2.63
+## 2         yes    1.02 5.93 682.9 21.38 302.4 6.20
+\end{verbatim}
+
+\textbf{E}
+
+Use the \texttt{pairs()} plotting function to explore the pairwise relationships between the different numeric variables
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(urine[, }\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-113-1.pdf}
+
+\textbf{F}
+
+Use the \texttt{heatmap.2()} and \texttt{cor()} functions together to create a heatmap of pairwise variable correlations. You will need to install package \texttt{gplots} for the heatmap.2 function. Alternatively, use \texttt{heatmap()} from base R.
+
+Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.2()}?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#install.packages("gplots")}
+\KeywordTok{library}\NormalTok{(}\StringTok{"gplots"}\NormalTok{)}
+
+\NormalTok{cormat <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(urine[, }\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{], }\DataTypeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
+\KeywordTok{heatmap.2}\NormalTok{(cormat, }\DataTypeTok{col =} \KeywordTok{bluered}\NormalTok{(}\DecValTok{100}\NormalTok{), }\DataTypeTok{trace =} \StringTok{"none"}\NormalTok{, }\DataTypeTok{density.info =} \StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-114-1.pdf}
+
+\textbf{G}
+
+{[}\textbf{Challenge}{]} There does not seem to be an interesting correlation between pH and any of the other variables. Sometimes this is becuase you are not looking in enough detail. Let's dig a little further. Use \texttt{cut()} to split the pH variable into a factor with three levels: ``acidic'', ``neutral'' and ``basic'' with breakpoints between them at pH 5.5 and 7. Next, use the \texttt{split()} and \texttt{lapply()} functions to calculate the mean, meadian and sd of the other numeric variables for each level of this pH factor. This exercise can of course be done in many ways. one of them is by using an \texttt{apply()} \emph{within} the applied function of \texttt{lapply()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ph_factor <-}\StringTok{ }\KeywordTok{cut}\NormalTok{(urine}\OperatorTok{$}\NormalTok{ph, }
+    \DataTypeTok{breaks =} \KeywordTok{c}\NormalTok{(}\FloatTok{4.5}\NormalTok{, }\FloatTok{5.5}\NormalTok{, }\FloatTok{7.0}\NormalTok{, }\FloatTok{8.0}\NormalTok{), }
+    \DataTypeTok{labels =} \KeywordTok{c}\NormalTok{(}\StringTok{"acidic"}\NormalTok{, }\StringTok{"neutral"}\NormalTok{, }\StringTok{"basic"}\NormalTok{))}
+\NormalTok{urine}\OperatorTok{$}\NormalTok{ph_factor <-}\StringTok{ }\NormalTok{ph_factor}
+
+\NormalTok{mean_median_sd <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \CommentTok{# X is a dataframe!}
+    \KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ x[}\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{],}
+          \DataTypeTok{MARGIN =} \DecValTok{2}\NormalTok{,}
+          \DataTypeTok{FUN =} \ControlFlowTok{function}\NormalTok{(y) \{}
+              \CommentTok{# returns a named vector}
+              \KeywordTok{c}\NormalTok{(}\StringTok{"mean"}\NormalTok{ =}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(y, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DecValTok{2}\NormalTok{), }
+                \StringTok{"median"}\NormalTok{ =}\StringTok{ }\KeywordTok{median}\NormalTok{(y, }\DataTypeTok{na.rm =}\NormalTok{ T),}
+                \StringTok{"sd"}\NormalTok{ =}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{sd}\NormalTok{(y, }\DataTypeTok{na.rm =}\NormalTok{ T), }\DecValTok{2}\NormalTok{))            }
+\NormalTok{          \})}
+\NormalTok{\}}
+
+\NormalTok{urine_split <-}\StringTok{ }\KeywordTok{split}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urine, }
+      \DataTypeTok{f =}\NormalTok{ urine}\OperatorTok{$}\NormalTok{ph_factor)}
+
+\KeywordTok{lapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ urine_split,}
+       \DataTypeTok{FUN =}\NormalTok{ mean_median_sd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $acidic
+##        gravity    ph  osmo  cond  urea calc
+## mean      1.02 5.200 690.2 23.04 297.7 4.85
+## median    1.02 5.255 730.5 25.30 292.5 3.19
+## sd        0.01 0.230 227.1  6.52 140.7 4.19
+## 
+## $neutral
+##        gravity   ph  osmo  cond  urea calc
+## mean     1.020 6.09 605.2 20.12 272.5 4.05
+## median   1.017 5.98 578.0 20.60 260.0 3.46
+## sd       0.010 0.42 246.8  8.56 126.0 2.93
+## 
+## $basic
+##        gravity    ph  osmo  cond   urea  calc
+## mean     1.010 7.510 509.8 21.51 155.75 3.130
+## median   1.015 7.495 547.0 22.50 112.50 1.745
+## sd       0.010 0.380 166.2  6.12  95.52 3.060
+\end{verbatim}
 
 \hypertarget{bird-observations-revisited-1}{%
 \subsection{Bird observations revisited}\label{bird-observations-revisited-1}}
