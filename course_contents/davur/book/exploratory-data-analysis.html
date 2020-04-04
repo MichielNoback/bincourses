@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Scripting | Data Analysis &amp; Visualization using R (1)</title>
+  <title>Chapter 9 Exploratory Data Analysis | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Scripting | Data Analysis &amp; Visualization using R (1)" />
+  <meta property="og:title" content="Chapter 9 Exploratory Data Analysis | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Scripting | Data Analysis &amp; Visualization using R (1)" />
+  <meta name="twitter:title" content="Chapter 9 Exploratory Data Analysis | Data Analysis &amp; Visualization using R (1)" />
   
   <meta name="twitter:description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions-1.html">
-<link rel="next" href="dataframe-manipulations-1.html">
+<link rel="prev" href="dataframe-manipulations-1.html">
+<link rel="next" href="exercises.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -351,291 +351,509 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="scripting" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Scripting</h1>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">7.1</span> Introduction</h2>
-<p>So far you have only seen R code used in the console, in code chunks of an RMarkdown document, or maybe in an R script in the form of a scratchpad. The code you have seen consisted of (series of) R statements with one or more function calls.<br />
-There has been no conditional code, no repeated operations and no extraction of blocks of code into something reusable, a custom function. In short, you have not written any <em>program</em> or <em>script</em> yet.</p>
-<p>This chapter deals with that. It introduces conditional execution and custom functions.</p>
-</div>
-<div id="flow-control" class="section level2">
-<h2><span class="header-section-number">7.2</span> Flow control</h2>
-<blockquote>
-<p>Flow control constitutes a series of code elements used to control whether some code blocks are executed or not, and how many times</p>
-</blockquote>
-<p>These programming concepts and structures are used for flow control:</p>
+<div id="exploratory-data-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Exploratory Data Analysis</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<p>This chapter introduces you to the concept of Exploratory Data Analysis (EDA). In EDA a dataset is analysed with the goal of assessing its main characteristics, including its quality and usablity for subsequent statistical modelling and analysis. Data summary techniques and visualizations ore used in an EDA. There is no fixed set of activities; each dataset poses its own questions and challenges.</p>
+<p>Datasets are often expensive and time-consuming to collect, and therefore they are ususally collected with a specific goal in mind. The EDA you perform should always be with this goal on the horizon: is the dataset of sufficient quality to answer the scientific questions for which they were collected?</p>
+<div id="eda-outline" class="section level4 unnumbered">
+<h4>EDA outline</h4>
+<p>An EDA therefore may include:</p>
 <ul>
-<li>Conditional execution: <code>if(){} else if(){} else{}</code></li>
-<li>Repeated execution: <code>for() {}</code></li>
-<li>Repeated conditional execution: <code>while(){}</code></li>
+<li><strong>Dataset description</strong>: how were they collected, what data types do the variables have, what are the units and physical quantities, how are missing data encoded, etc.</li>
+<li><strong>Data summary</strong>: number of cases, number of variables, basic statistical description (i.e. mean, median, sd etc.), variable distributions (normal or not, outliers, missing data, skewed distributions)</li>
+<li><strong>Visual summaries</strong> using boxplots, histograms, density plots.</li>
+<li><strong>Recoding or transformations of variables</strong> may be required to get better results (e.g. from numeric to factor or vice versa, or log transformation of exponential data)</li>
+<li><strong>Exploration of variable relations/covariance</strong>. It is always interesting to know about correlations between variables, but this is especially the case when you have a <em>dependent</em> variable for which you wish to build a statistical model in a later stage of your analysis.</li>
 </ul>
-<p>For those of you with experience in other programming languages: there is no switch expression. There is a <code>switch()</code> function however, but it is not dealt with in this eBook.</p>
-<div id="conditional-execution-with-ifelse" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> Conditional execution with <code>if/else</code></h3>
-<p>There are several applications for conditionals, with differing language constructs:</p>
-<ul>
-<li>the <code>if(COND) {&lt;TRUE&gt;} else {&lt;FALSE&gt;}</code> code block for controlling program flow</li>
-<li>the <code>if (COND) &lt;TRUE&gt; else &lt;FALSE&gt;</code> expression as a shorthand for the code block</li>
-<li>the <code>ifelse(COND, &lt;TRUE&gt;, &lt;FALSE&gt;)</code> function for use on dataframes</li>
-</ul>
-<p>As you can see there is always a <strong><em>condition</em></strong> to be tested. This expression should return a logical value: TRUE or FALSE.</p>
-<p>All three are discussed in the following slides.</p>
-<div id="the-if-else-code-block" class="section level4 unnumbered">
-<h4>The <code>if() {} else {}</code> code block</h4>
-<p>The <code>if(COND) {&lt;TRUE&gt;} else {&lt;FALSE&gt;}</code> code block knows several required and several optional elements.<br />
-At the minimum there is an <code>if(COND) {}</code> element where <code>COND</code> is an expression evaluating to a Logical.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-}</code></pre>
-<pre><code>## [1] &quot;Adult&quot;</code></pre>
-</div>
-<div id="if-shorthand" class="section level4 unnumbered">
-<h4><code>if()</code> shorthand</h4>
-<p>If there is only one statement within a block you can omit the curly braces:</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;Adult&quot;</code></pre>
-<p>Remember that the semicolon at the end of a statement is optional in R and is usually omitted.</p>
-</div>
-<div id="if-can-have-an-else" class="section level4 unnumbered">
-<h4><code>if()</code> can have an <code>else {}</code></h4>
-<p>When there is an alternative course of action when the test evaluates to <code>FALSE</code> you use the <code>else{}</code> element of this structure.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)
-}</code></pre>
-<pre><code>## [1] &quot;Adult&quot;</code></pre>
-<p>Here the curly braces are required:</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-<span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)</code></pre>
-<pre><code>## Error: &lt;text&gt;:3:1: unexpected &#39;else&#39;
-## 2: if (age &gt;= 18) print(&quot;Adult&quot;)
-## 3: else
-##    ^</code></pre>
-</div>
-<div id="the-if-can-have-else-if-blocks" class="section level4 unnumbered">
-<h4>The <code>if()</code> can have <code>else if()</code> blocks</h4>
-<p>If there are more than two courses of action, you must reside to <code>else if()</code> blocks.
-Each of them should have its own CONDition to test on.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Minor&quot;</span>)
-} <span class="cf">else</span> <span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">65</span>){
-    <span class="kw">print</span>(<span class="st">&quot;Senior&quot;</span>)
-} <span class="cf">else</span> <span class="cf">if</span>(age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span> <span class="op">&amp;&amp;</span><span class="st"> </span>age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>){
-    <span class="kw">print</span>(<span class="st">&quot;Young Adult&quot;</span>)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-}</code></pre>
-<pre><code>## [1] &quot;Adult&quot;</code></pre>
-</div>
-<div id="ifelse-real-life-example" class="section level4 unnumbered">
-<h4>if/else real life example</h4>
-<p>This code chunk checks if a file exists and only downloads it if it is not present</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_data_file &lt;-<span class="st"> &quot;/some/file/on/disk&quot;</span>
-<span class="co">## fetch file</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(my_data_file)) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;downloading&quot;</span>, my_data_file))
-    <span class="kw">download.file</span>(<span class="dt">url =</span> remote_url, <span class="dt">destfile =</span> my_data_file)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;reading cached copy of&quot;</span>, my_data_file))
-}</code></pre>
-</div>
-<div id="ifelse-shorthand" class="section level4 unnumbered">
-<h4>ifelse shorthand</h4>
-<p>There is also a shorthand for <code>if(){} else{}</code>. It is also called a <strong><em>ternary</em></strong>.<br />
-It has the form<br />
-<code>if (COND) &lt;EXPRESSION_FOR_TRUE&gt; else &lt;EXPRESSION_FOR_FALSE&gt;</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">3</span>
-x &lt;-<span class="st"> </span><span class="cf">if</span> (a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="st">&quot;EVEN&quot;</span> <span class="cf">else</span> <span class="st">&quot;UNEVEN&quot;</span>
-x</code></pre>
-<pre><code>## [1] &quot;UNEVEN&quot;</code></pre>
-</div>
-<div id="ifelse-on-dataframes-ifelse" class="section level4 unnumbered">
-<h4>if/else on dataframes: <code>ifelse()</code></h4>
-<p>When you want to assign values to a vector based on some condition, you need to use the third form, the <code>ifelse()</code> function.</p>
-<p>When you use the regular if/else structures on dataframes you don’t get what you want:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Only first value (row) is evaluated and this value is cycled</span>
-<span class="co"># The whole column gets value 1</span>
-airquality<span class="op">$</span>foo &lt;-<span class="st"> </span><span class="cf">if</span> (airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>) <span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span> </code></pre>
-<pre><code>## Warning in if (airquality$Ozone &lt; 30) 0 else 1: the condition has length &gt;
-## 1 and only the first element will be used</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This works</span>
-airquality<span class="op">$</span>bar &lt;-<span class="st"> </span><span class="kw">ifelse</span>(airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="kw">head</span>(airquality)</code></pre>
-<pre><code>##   Ozone Solar.R Wind Temp Month Day foo bar
-## 1    41     190  7.4   67   May   1   1   1
-## 2    36     118  8.0   72   May   2   1   1
-## 3    12     149 12.6   74   May   3   1   0
-## 4    18     313 11.5   62   May   4   1   0
-## 5    NA      NA 14.3   56   May   5   1  NA
-## 6    28      NA 14.9   66   May   6   1   0</code></pre>
+<p>Note that your EDA results should <em>always</em> be accompanied by text that describes your results and discusses the implications of them. your figures should be well annotated with a caption and legend if relevant. An EDA is <em>not</em> a publication, but it will usually have a short introduction, a results section and a discussion. In contrast with a publication you usually <em>do</em> show the code. This ensures complete transparency and reproducibility.</p>
+<p>In this chapter I will demonstrate a short EDA on the “Yeast dataset” from the UCI Machine Learning repository.</p>
+<p>It is outside the scope of this short analysis to delve too deeply in the attribute background information, but you should realise that for a real analysis this is absolutely critical: without domain knowledge the you won’t have the insight to identify strange, worrying or surprising results.</p>
 </div>
 </div>
-<div id="iteration-with-for" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> Iteration with <code>for(){}</code></h3>
-<ul>
-<li>Iteration with <code>for</code> is used for looping a series of values from a vector.
-_ You should not use it to iterate columns or rows of a dataframe: the preferred way to do that is with <code>apply()</code> and its relatives (next presentation)</li>
-</ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (greeting <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)) {
-    <span class="kw">print</span>(greeting)
-}</code></pre>
-<pre><code>## [1] &quot;Hello&quot;
-## [1] &quot;&#39;Allo&quot;
-## [1] &quot;Moi&quot;</code></pre>
-<p>Sometimes you need a counter or index when iterating:</p>
-<pre class="sourceCode r"><code class="sourceCode r">greetings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="kw">length</span>(greetings)) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(i, greetings[i]))
-}</code></pre>
-<pre><code>## [1] &quot;1 Hello&quot;
-## [1] &quot;2 &#39;Allo&quot;
-## [1] &quot;3 Moi&quot;</code></pre>
+<div id="eda-of-the-yeast-dataset" class="section level2">
+<h2><span class="header-section-number">9.2</span> EDA of the Yeast dataset</h2>
+<div id="introduction-2" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> Introduction</h3>
+<p>The data were collected from the <a href="https://archive.ics.uci.edu/ml/datasets/Yeast">UCI Machine Learning website</a>. To ensure their continued availability the files were copied to a personal <a href="https://github.com/MichielNoback/datasets/tree/master/UCI_yeast_protein_loc">repository</a>.</p>
+<p>The data were accompanied by a <em>very</em> short abstract: <strong><em>“Predicting the Cellular Localization Sites of Proteins”</em></strong>. The data description states there are 1484 instances, each with 8 attributes (variables) and a class label. The class label is the variable we wish to biuld a model for so this is the dependent variable.</p>
+<p>The <em>Attribute Information</em> section descibes these variables:</p>
+<ol style="list-style-type: decimal">
+<li>Sequence Name: Accession number for the SWISS-PROT database</li>
+<li><code>mcg</code>: McGeoch’s method for signal sequence recognition.</li>
+<li><code>gvh</code>: von Heijne’s method for signal sequence recognition.</li>
+<li><code>alm</code>: Score of the ALOM membrane spanning region prediction program.</li>
+<li><code>mit</code>: Score of discriminant analysis of the amino acid content of the N-terminal region (20 residues long) of mitochondrial and non-mitochondrial proteins.</li>
+<li><code>erl</code>: Presence of “HDEL” substring (thought to act as a signal for retention in the endoplasmic reticulum lumen). Binary attribute.</li>
+<li><code>pox</code>: Peroxisomal targeting signal in the C-terminus.</li>
+<li><code>vac</code>: Score of discriminant analysis of the amino acid content of vacuolar and extracellular proteins.</li>
+<li><code>nuc</code>: Score of discriminant analysis of nuclear localization signals of nuclear and non-nuclear proteins.</li>
+</ol>
+<p>The sequence name is not interesting in this EDA: we are interested in patterns, not individuals. However, if there is an anomalous protein in the EDA it should be possible to retrace its origin so the identifier stays in the dataset.</p>
+<p>There seem to be two attributes (<code>mcg</code> and <code>gvh</code>) measuring the same property - the presence of a signal sequence which is the N-terminal part of a protein signalling the cellular machinery the protein should be exported.</p>
+<p>Very simply put, if this scoring system was perfect each of the attributes (except <code>mcg</code> and <code>gvh</code>) would unequivocally “assign” the protein in question to a cellular location: Cellular external matrix, membrane inserted, mitochondrial, endoplasmic reticulum lumen, peroxisomal, vacualar or nuclear.</p>
+<p>The tenth variable in the data is the dependent or explanatory variable. The <code>yeast.names</code> file describes it like this:</p>
+<pre><code>Class Distribution. The class is the localization site. Please see Nakai &amp;
+               Kanehisa referenced above for more details.
+  CYT (cytosolic or cytoskeletal)                    463
+  NUC (nuclear)                                      429
+  MIT (mitochondrial)                                244
+  ME3 (membrane protein, no N-terminal signal)       163
+  ME2 (membrane protein, uncleaved signal)            51
+  ME1 (membrane protein, cleaved signal)              44
+  EXC (extracellular)                                 37
+  VAC (vacuolar)                                      30
+  POX (peroxisomal)                                   20
+  ERL (endoplasmic reticulum lumen)                    5</code></pre>
+<p>This tells me the different localizations are by no means equally distributed; there is an overrepresentation of “cytosolic or cytoskeletal” and “nuclear” and a huge underrepresentation of especially endoplasmic reticulum lumen proteins.</p>
 </div>
-<div id="conditional-iteration-with-while" class="section level3">
-<h3><span class="header-section-number">7.2.3</span> Conditional iteration with <code>while(){}</code></h3>
-<p>This is the last flow control structure. It is used to execute a block <strong><em>as long as a certain condition is met</em></strong>. They are not used very much in R.</p>
-<pre class="sourceCode r"><code class="sourceCode r">counter &lt;-<span class="st"> </span><span class="dv">1</span>
-<span class="cf">while</span> (counter <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) {
-    <span class="kw">print</span>(counter)
-    counter =<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
-}</code></pre>
-<pre><code>## [1] 1
-## [1] 2
-## [1] 3
-## [1] 4</code></pre>
-</div>
-</div>
-<div id="creating-functions" class="section level2">
-<h2><span class="header-section-number">7.3</span> Creating functions</h2>
-<p>Here is the definition again.</p>
-<blockquote>
-<p><em>A function is a piece of functionality that you can execute by typing its name, followed by a pair of parentheses. Within these parentheses, you can pass data for the function to work on. Functions often, but not always, return a value</em>.</p>
-</blockquote>
-<p>Thus, functions are named blocks of code with a <strong><em>single well-defined purpose</em></strong> which make them reusable.
-You have already used many <strong><em>predefined</em></strong> or build in functions of R: <code>str</code>, <code>max</code>, <code>read.table</code> etc. If you type the name of a function without parenthesis you get its definition.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sum</code></pre>
-<pre><code>## function (..., na.rm = FALSE)  .Primitive(&quot;sum&quot;)</code></pre>
-<div id="anatomy-of-a-function" class="section level4 unnumbered">
-<h4>Anatomy of a function</h4>
-<p>A function</p>
-<ul>
-<li>usually, but not always, has a name. in the next chapter you will see examples of <em>anonymous</em> functions that are defined in the location where they are needed.<br />
-</li>
-<li>has a <strong><em>parameter list</em></strong> (sometimes of size zero) between parentheses. These parameters constitute the required input variables on which the function will operate.<br />
-</li>
-<li>has a <strong><em>method body</em></strong>. This is a block of one or more lines of code in which the actual work is performed.<br />
-</li>
-<li>may have a <strong><em>return value</em></strong>. Ther result of a function is usually, but not always returned. The print function, for instance, does not return a value but only outputs to the console. Functions can only retun one single value (vector). If more return values are needed, you need to wrap them in a complex datatype such as a list.<br />
-</li>
-<li>is defined using the _<strong>function keyword_</strong></li>
-</ul>
-<p>Here is a function prototype. It shows all characteristics of the above list of properties.</p>
-<pre><code>method_name &lt;- function(arg, arg, ...) {
-    &lt;function body&gt;
-    return(return_value)
-}</code></pre>
-</div>
-<div id="a-first-function" class="section level4 unnumbered">
-<h4>A first function</h4>
-<p>Here is a simple function determining whether some number is even</p>
-<pre class="sourceCode r"><code class="sourceCode r">is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    evens &lt;-<span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
-    <span class="kw">return</span>(evens) 
-}
-<span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre>
-<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-<p>Note that <code>return()</code> is a <strong><em>method call</em></strong> which is very unlike other programming languages.</p>
-<p>The <strong><em>return statement is optional</em></strong>.
-In R, the last statement of a method body is its <strong><em>implicit return value</em></strong>. Therefore, the previous example is equivalent to this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
-}
-<span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre>
-<pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-<p>Being explicit is always allowed when implicit return is possible, but using a <code>return()</code> for forcing return values at other points is required:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_message &lt;-<span class="st"> </span><span class="cf">function</span>(age) {
-    <span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">return</span>(<span class="st">&quot;have a lemonade!&quot;</span>) <span class="co"># explicit return</span>
-    <span class="st">&quot;have a beer!&quot;</span> <span class="co"># implicit return statement</span>
-}
-<span class="kw">my_message</span>(<span class="dv">20</span>)</code></pre>
-<pre><code>## [1] &quot;have a beer!&quot;</code></pre>
-</div>
-<div id="default-argument-values" class="section level4 unnumbered">
-<h4>Default argument values</h4>
-<p>It is possible to specify <strong><em>default values</em></strong> for function arguments. This is a value that is attached to a function parameter when the calling code does not provide one. A default value is specified in the parameter list, using this construct: <code>some_arg = &lt;default-value&gt;</code>. Almost all functions in R have (many) parameters with default values.</p>
-<p>You should use default values yourself for function parameters whenever possible. They make using the function so much easier. The following function calculates the exponent (power) of a number. When no <code>power =</code> value is provided, it defaults to two.</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">power =</span> <span class="dv">2</span>) {
-    x <span class="op">^</span><span class="st"> </span>power
-}
-<span class="kw">my_power</span>(<span class="dv">10</span>, <span class="dv">3</span>) <span class="co">## custom power</span></code></pre>
-<pre><code>## [1] 1000</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_power</span>(<span class="dv">10</span>) <span class="co">## defaults to 2</span></code></pre>
-<pre><code>## [1] 100</code></pre>
-</div>
-<div id="argument-order-when-calling-a-function" class="section level4 unnumbered">
-<h4>Argument order when calling a function</h4>
-<p>As we have seen many times before, you do not <em>need</em> to pass arguments by name. In the above example, the names were not used. When you do not use the names of arguments, the order in which you pass them is important; they must match the order in which they are declared in the function. If you use their names, their order is not important:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_power</span>(<span class="dt">power =</span> <span class="dv">4</span>, <span class="dt">x =</span> <span class="dv">2</span>)</code></pre>
-<pre><code>## [1] 16</code></pre>
-<p>To summarize: When calling a function,</p>
-<ul>
-<li>the parameters without default value are mandatory</li>
-<li>the unnamed arguments should come first and should be passed in the order in which they are declared</li>
-<li>passing named arguments may be done in any order</li>
-</ul>
-</div>
-<div id="errors-and-warnings" class="section level3">
-<h3><span class="header-section-number">7.3.1</span> Errors and warnings</h3>
-<p>When someting is not right, but not enought to quit execution, use a warning to let the user (or yourself) know that there is something wrong:</p>
-<p><code>warning(&quot;I am not happy&quot;)</code></p>
-<p>When something is terribly wrong, and you cannot continue, you should stop execution with an error message:</p>
-<p><code>stop(&quot;I can't go on&quot;)</code></p>
-<p>Here is a small errors demo:</p>
-<pre class="sourceCode r"><code class="sourceCode r">demo_inverse &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(x)) {
-        <span class="kw">stop</span>(<span class="st">&quot;non-numeric vector&quot;</span>)
-    }
-    <span class="kw">return</span>(x <span class="op">/</span><span class="st"> </span><span class="dv">3</span>)
-}
-result1 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)) <span class="co">#result1 not created!</span></code></pre>
-<pre><code>## Error in demo_inverse(c(&quot;a&quot;, &quot;b&quot;)): non-numeric vector</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">result2 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</code></pre>
-</div>
-</div>
-<div id="scripting-1" class="section level2">
-<h2><span class="header-section-number">7.4</span> Scripting</h2>
-<p>An R script is a text file with the extension <code>.R</code> that contains R code. When it is loaded, it is immediately evaluated. <strong><em>Functions are loaded/evaluated, but not executed</em></strong>. Declared variables are stored in main memory - the Global Environment to be precise.</p>
-<p>Here is the contents of a very simple R script called <code>source_demo.R</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">42</span>
-x <span class="co"># echo to console</span>
-<span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;x = &quot;</span>, x)) <span class="co">#explicit print</span>
+<div id="data-loading-and-prepping" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> Data loading and prepping</h3>
+<p>Since I am going to rerun the code in this notebook often I am going to create a local copy, and load that one.</p>
+<pre class="sourceCode r"><code class="sourceCode r">file_name &lt;-<span class="st"> &quot;yeast.data&quot;</span>
+yeast_data_url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/UCI_yeast_protein_loc/&quot;</span>, file_name)
+yeast_local_location &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;../&quot;</span>, file_name)
 
-<span class="co"># function defined but not called</span>
-demo_function &lt;-<span class="st"> </span><span class="cf">function</span>(message) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;you said&quot;</span>, message))
+<span class="co">#only download if not present</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="st"> </span><span class="kw">file.exists</span>(yeast_local_location)) {
+    <span class="kw">download.file</span>(<span class="dt">url =</span> yeast_data_url, 
+                  <span class="dt">destfile =</span> yeast_local_location)
+}
+
+yeast_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> yeast_local_location,
+                         <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+                         <span class="dt">as.is =</span> <span class="dv">1</span>)
+<span class="kw">str</span>(yeast_data)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    1484 obs. of  10 variables:
+##  $ V1 : chr  &quot;ADT1_YEAST&quot; &quot;ADT2_YEAST&quot; &quot;ADT3_YEAST&quot; &quot;AAR2_YEAST&quot; ...
+##  $ V2 : num  0.58 0.43 0.64 0.58 0.42 0.51 0.5 0.48 0.55 0.4 ...
+##  $ V3 : num  0.61 0.67 0.62 0.44 0.44 0.4 0.54 0.45 0.5 0.39 ...
+##  $ V4 : num  0.47 0.48 0.49 0.57 0.48 0.56 0.48 0.59 0.66 0.6 ...
+##  $ V5 : num  0.13 0.27 0.15 0.13 0.54 0.17 0.65 0.2 0.36 0.15 ...
+##  $ V6 : num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
+##  $ V7 : num  0 0 0 0 0 0.5 0 0 0 0 ...
+##  $ V8 : num  0.48 0.53 0.53 0.54 0.48 0.49 0.53 0.58 0.49 0.58 ...
+##  $ V9 : num  0.22 0.22 0.22 0.22 0.22 0.22 0.22 0.34 0.22 0.3 ...
+##  $ V10: Factor w/ 10 levels &quot;CYT&quot;,&quot;ERL&quot;,&quot;EXC&quot;,..: 7 7 7 8 7 1 7 8 7 1 ...</code></pre>
+<p>The data seems to have been loaded correctly and, as expected since that was stated in the original data description, there are no missing data.</p>
+<p>The column names were not defined in the data file so this will be fixed first. I will create a data frame that also holds the column desciptions. I have put the data in a small text file for easy loading and editing; the attribute descriptions copied/pasted into a text file and with find/replace converted in easy to load form, and a new <code>label</code> column added for use in plotting. There were a few occurences of the <code>'</code> character which always corrupt data import into R. They were removed.</p>
+<pre class="sourceCode r"><code class="sourceCode r">attribute_info &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/yeast_attribute_info.txt&quot;</span>, 
+                             <span class="dt">sep =</span> <span class="st">&quot;:&quot;</span>,
+                             <span class="dt">header =</span> <span class="ot">TRUE</span>,
+                             <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<span class="co">#attach column names</span>
+(<span class="kw">colnames</span>(yeast_data) &lt;-<span class="st"> </span>attribute_info<span class="op">$</span>attribute)</code></pre>
+<pre><code>##  [1] &quot;accno&quot; &quot;mcg&quot;   &quot;gvh&quot;   &quot;alm&quot;   &quot;mit&quot;   &quot;erl&quot;   &quot;pox&quot;   &quot;vac&quot;  
+##  [9] &quot;nuc&quot;   &quot;loc&quot;</code></pre>
+<p>To make this info easily accessible, a function is created that can be used to fetch either the description or the label.</p>
+<pre class="sourceCode r"><code class="sourceCode r">get_attribute_info &lt;-<span class="st"> </span><span class="cf">function</span>(attribute, <span class="dt">resource =</span> <span class="st">&quot;label&quot;</span>) {
+    <span class="cf">if</span> (<span class="op">!</span><span class="st"> </span>resource <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;label&quot;</span>, <span class="st">&quot;description&quot;</span>)) {
+        <span class="kw">stop</span>(<span class="kw">paste0</span>(<span class="st">&quot;type &quot;</span>, resource, <span class="st">&quot;is not an attribute resource&quot;</span>))
+    }
+    <span class="kw">return</span>(attribute_info[attribute_info<span class="op">$</span>attribute <span class="op">==</span><span class="st"> </span>attribute, resource])
+}
+
+<span class="co">#test it</span>
+<span class="kw">get_attribute_info</span>(<span class="st">&quot;gvh&quot;</span>)</code></pre>
+<pre><code>## [1] &quot;VonHeijne signal&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">get_attribute_info</span>(<span class="st">&quot;accno&quot;</span>, <span class="st">&quot;description&quot;</span>)</code></pre>
+<pre><code>## [1] &quot;Accession number for the SWISS-PROT database&quot;</code></pre>
+</div>
+<div id="data-verification" class="section level3">
+<h3><span class="header-section-number">9.2.3</span> Data verification</h3>
+<p>The original data description stated that 1484 instances with 9 attributes + a class label are present.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(yeast_data)</code></pre>
+<pre><code>## [1] 1484   10</code></pre>
+<p>This is correct.
+No missing data are supposed to be there:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">complete.cases</span>(yeast_data))</code></pre>
+<pre><code>## [1] 1484</code></pre>
+<p>Also correct.</p>
+<p>The classes of the columns are also OK so the data is verified and found correct.</p>
+</div>
+<div id="attribute-summaries" class="section level3">
+<h3><span class="header-section-number">9.2.4</span> Attribute summaries</h3>
+<p>A first scan of the attributes.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(yeast_data)</code></pre>
+<pre><code>##     accno                mcg            gvh            alm      
+##  Length:1484        Min.   :0.11   Min.   :0.13   Min.   :0.21  
+##  Class :character   1st Qu.:0.41   1st Qu.:0.42   1st Qu.:0.46  
+##  Mode  :character   Median :0.49   Median :0.49   Median :0.51  
+##                     Mean   :0.50   Mean   :0.50   Mean   :0.50  
+##                     3rd Qu.:0.58   3rd Qu.:0.57   3rd Qu.:0.55  
+##                     Max.   :1.00   Max.   :1.00   Max.   :1.00  
+##                                                                 
+##       mit             erl             pox              vac      
+##  Min.   :0.000   Min.   :0.500   Min.   :0.0000   Min.   :0.00  
+##  1st Qu.:0.170   1st Qu.:0.500   1st Qu.:0.0000   1st Qu.:0.48  
+##  Median :0.220   Median :0.500   Median :0.0000   Median :0.51  
+##  Mean   :0.261   Mean   :0.505   Mean   :0.0075   Mean   :0.50  
+##  3rd Qu.:0.320   3rd Qu.:0.500   3rd Qu.:0.0000   3rd Qu.:0.53  
+##  Max.   :1.000   Max.   :1.000   Max.   :0.8300   Max.   :0.73  
+##                                                                 
+##       nuc             loc     
+##  Min.   :0.000   CYT    :463  
+##  1st Qu.:0.220   NUC    :429  
+##  Median :0.220   MIT    :244  
+##  Mean   :0.276   ME3    :163  
+##  3rd Qu.:0.300   ME2    : 51  
+##  Max.   :1.000   ME1    : 44  
+##                  (Other): 90</code></pre>
+<p>All these attributes seem to be in the range zero to one, except of course for the localization attribute and the accession number. This is not surprising since these attributes are all probabilities. The class distribution corresponds with the published data.</p>
+<p>The
+The <code>pox</code> (Peroxisomal) and <code>erl</code> ( ER-retention) attributes, seem to have a really strange distribution and should be investigated further.</p>
+<p>Here are all the numeric attributes in a single panel. I chose histogram over boxplot or density plot because it is more fine-grained than boxplot and very easy to interpret.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>))
+
+<span class="cf">for</span> ( attrib <span class="cf">in</span> <span class="kw">colnames</span>(yeast_data[<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])) {
+    <span class="kw">hist</span>(yeast_data[, attrib],
+         <span class="dt">main =</span> <span class="ot">NULL</span>,
+         <span class="dt">xlab =</span> <span class="kw">paste0</span>(<span class="kw">get_attribute_info</span>(attrib), <span class="st">&quot; (prob)&quot;</span>))
 }</code></pre>
-<p>You can load this script int your R session by <em>sourcing</em> it; just call <code>source(path/to/source_demo.R)</code>. Alternatively, when you have it open in the RStudio editor, you can click the “source” button at the top right of the editor panel. After that, you can use the functions and variables defined within the script:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;data/source_demo.R&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;x = 42&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
-<pre><code>## [1] 42</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo_function</span>(<span class="st">&quot;hi!&quot;</span>)</code></pre>
-<pre><code>## [1] &quot;you said hi!&quot;</code></pre>
-<div id="why-scripts" class="section level4 unnumbered">
-<h4>Why scripts?</h4>
-<ul>
-<li>To store pieces of functionality you want to reuse (e.g. in different RMarkdown documents)</li>
-<li>To store entire workflows outside RMarkdown</li>
-<li>To run R code from the commandline (terminal)</li>
-<li>To call from other scripts and build <strong><em>applications</em></strong> or <strong><em>packages</em></strong></li>
-</ul>
+<div class="figure"><span id="fig:yeast-attributes-hist"></span>
+<img src="davur_ebook_files/figure-html/yeast-attributes-hist-1.png" alt="Distributions of the numeric variables" width="100%" />
+<p class="caption">
+Figure 9.1: Distributions of the numeric variables
+</p>
+</div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#reset par()</span>
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre>
+<p>Here, it can be seen that the attributes “ER-retention” and “Peroxisomal” are pretty much uninformative, a problem probably largely caused by the low abundance of protiens in these classes. Surprisingly enough, the “Vacuolar” property which is also low-abundant, does not have this extreme distribution.</p>
+<p>What is also striking is that, although these attributes are probablitities of targeting signals, none (with the exception of the two low-abundance ones) show a more or less bimodal distribution as you would naively expect.</p>
+</div>
+<div id="attribute-relationships" class="section level3">
+<h3><span class="header-section-number">9.2.5</span> Attribute relationships</h3>
+<p>Here is a quick scan of variable relationship, excluding the dependent variable. The <code>pairs()</code> function is used for that. I excluded <code>erl</code> and <code>pox</code> because they do not add information to the picture.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(yeast_data[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">9</span>)],
+      <span class="dt">panel =</span> <span class="st">&quot;panel.smooth&quot;</span>,
+      <span class="dt">pch =</span> <span class="dv">20</span>, 
+      <span class="dt">cex =</span> <span class="fl">0.35</span>,
+      <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>))</code></pre>
+<div class="figure"><span id="fig:yeast-pairs-plot"></span>
+<img src="davur_ebook_files/figure-html/yeast-pairs-plot-1.png" alt="Relations between the numeric variables" width="100%" />
+<p class="caption">
+Figure 9.2: Relations between the numeric variables
+</p>
+</div>
+<p>By adding the smoother it is made clear that the only pair which shows a clear correlation is the pair <code>mcg</code> / <code>gvh</code> which actually predict the same property. Therefore it would have been very surprising indeed if they would <em>not</em> have a correlation. The strength of this correlation -the <strong><em>R-squared</em></strong>- is this</p>
+<pre class="sourceCode r"><code class="sourceCode r">lin_mod &lt;-<span class="st"> </span><span class="kw">lm</span>(yeast_data<span class="op">$</span>mcg <span class="op">~</span><span class="st"> </span>yeast_data<span class="op">$</span>gvh)
+<span class="kw">summary</span>(lin_mod)<span class="op">$</span>r.squared</code></pre>
+<pre><code>## [1] 0.3383</code></pre>
+<p>This is not very strong.</p>
+</div>
+<div id="correlations-to-the-dependent-variable" class="section level3">
+<h3><span class="header-section-number">9.2.6</span> Correlations to the dependent variable</h3>
+<p>As a first investigation, numeric variables are split on the location variable.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
+colors &lt;-<span class="st"> </span>RColorBrewer<span class="op">::</span><span class="kw">brewer.pal</span>(<span class="dv">8</span>, <span class="dt">name =</span> <span class="st">&quot;Accent&quot;</span>)
+<span class="co">#col = c(&quot;darkblue&quot;, &quot;darkgreen&quot;, &quot;magenta&quot;, )</span>
+col_i &lt;-<span class="st"> </span><span class="dv">0</span>
+<span class="cf">for</span> (name <span class="cf">in</span> <span class="kw">names</span>(yeast_data[<span class="dv">2</span><span class="op">:</span><span class="dv">9</span>])) {
+    col_i &lt;-<span class="st"> </span>col_i <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+    <span class="kw">boxplot</span>(yeast_data[, name] <span class="op">~</span><span class="st"> </span>yeast_data<span class="op">$</span>loc,
+            <span class="dt">xlab =</span> <span class="ot">NULL</span>,
+            <span class="dt">ylab =</span> <span class="kw">get_attribute_info</span>(name),
+            <span class="dt">col =</span> colors[col_i])
+}</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent1"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-1.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.3: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent2"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-2.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.4: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent3"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-3.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.5: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent4"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-4.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.6: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent5"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-5.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.7: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent6"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-6.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.8: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent7"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-7.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.9: Correlations with the dependent variable
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:corr-to-dependent8"></span>
+<img src="davur_ebook_files/figure-html/corr-to-dependent-8.png" alt="Correlations with the dependent variable" width="70%" />
+<p class="caption">
+Figure 9.10: Correlations with the dependent variable
+</p>
+</div>
+<p>Quite a few of the variables correlate pretty well with the dependent variable. These do so very well: <code>alm</code>, <code>mit</code>, <code>erl</code>, <code>pox</code>. Others are not: <code>nuc</code>, <code>vac</code>, and some are ambiguous - they discriminate, but not exclusively: <code>mcg</code>, <code>gvh</code>.</p>
+<p>Here are some summary statistics for the numeric variables split on the dependent variable:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">options</span>(<span class="dt">digits=</span><span class="dv">2</span>)
+
+tmp &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">aggregate</span>( . <span class="op">~</span><span class="st"> </span>loc, <span class="dt">data =</span> yeast_data[, <span class="dv">-1</span>], <span class="dt">FUN =</span> mean))
+knitr<span class="op">::</span><span class="kw">kable</span>(tmp)</code></pre>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">loc</td>
+<td align="left">CYT</td>
+<td align="left">ERL</td>
+<td align="left">EXC</td>
+<td align="left">ME1</td>
+<td align="left">ME2</td>
+<td align="left">ME3</td>
+<td align="left">MIT</td>
+<td align="left">NUC</td>
+<td align="left">POX</td>
+<td align="left">VAC</td>
+</tr>
+<tr class="even">
+<td align="left">mcg</td>
+<td align="left">0.48</td>
+<td align="left">0.79</td>
+<td align="left">0.74</td>
+<td align="left">0.79</td>
+<td align="left">0.72</td>
+<td align="left">0.43</td>
+<td align="left">0.52</td>
+<td align="left">0.45</td>
+<td align="left">0.52</td>
+<td align="left">0.55</td>
+</tr>
+<tr class="odd">
+<td align="left">gvh</td>
+<td align="left">0.47</td>
+<td align="left">0.77</td>
+<td align="left">0.72</td>
+<td align="left">0.76</td>
+<td align="left">0.60</td>
+<td align="left">0.49</td>
+<td align="left">0.53</td>
+<td align="left">0.46</td>
+<td align="left">0.51</td>
+<td align="left">0.53</td>
+</tr>
+<tr class="even">
+<td align="left">alm</td>
+<td align="left">0.54</td>
+<td align="left">0.48</td>
+<td align="left">0.49</td>
+<td align="left">0.38</td>
+<td align="left">0.41</td>
+<td align="left">0.36</td>
+<td align="left">0.52</td>
+<td align="left">0.53</td>
+<td align="left">0.51</td>
+<td align="left">0.47</td>
+</tr>
+<tr class="odd">
+<td align="left">mit</td>
+<td align="left">0.23</td>
+<td align="left">0.34</td>
+<td align="left">0.29</td>
+<td align="left">0.31</td>
+<td align="left">0.28</td>
+<td align="left">0.21</td>
+<td align="left">0.40</td>
+<td align="left">0.23</td>
+<td align="left">0.25</td>
+<td align="left">0.20</td>
+</tr>
+<tr class="even">
+<td align="left">erl</td>
+<td align="left">0.50</td>
+<td align="left">1.00</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+<td align="left">0.51</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+</tr>
+<tr class="odd">
+<td align="left">pox</td>
+<td align="left">0.0011</td>
+<td align="left">0.0000</td>
+<td align="left">0.0000</td>
+<td align="left">0.0000</td>
+<td align="left">0.0000</td>
+<td align="left">0.0000</td>
+<td align="left">0.0089</td>
+<td align="left">0.0000</td>
+<td align="left">0.4235</td>
+<td align="left">0.0000</td>
+</tr>
+<tr class="even">
+<td align="left">vac</td>
+<td align="left">0.50</td>
+<td align="left">0.55</td>
+<td align="left">0.46</td>
+<td align="left">0.51</td>
+<td align="left">0.51</td>
+<td align="left">0.51</td>
+<td align="left">0.50</td>
+<td align="left">0.49</td>
+<td align="left">0.50</td>
+<td align="left">0.53</td>
+</tr>
+<tr class="odd">
+<td align="left">nuc</td>
+<td align="left">0.26</td>
+<td align="left">0.25</td>
+<td align="left">0.23</td>
+<td align="left">0.27</td>
+<td align="left">0.25</td>
+<td align="left">0.27</td>
+<td align="left">0.24</td>
+<td align="left">0.33</td>
+<td align="left">0.23</td>
+<td align="left">0.25</td>
+</tr>
+</tbody>
+</table>
+<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">aggregate</span>( . <span class="op">~</span><span class="st"> </span>loc, <span class="dt">data =</span> yeast_data[, <span class="dv">-1</span>], <span class="dt">FUN =</span> median))
+knitr<span class="op">::</span><span class="kw">kable</span>(tmp)</code></pre>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">loc</td>
+<td align="left">CYT</td>
+<td align="left">ERL</td>
+<td align="left">EXC</td>
+<td align="left">ME1</td>
+<td align="left">ME2</td>
+<td align="left">ME3</td>
+<td align="left">MIT</td>
+<td align="left">NUC</td>
+<td align="left">POX</td>
+<td align="left">VAC</td>
+</tr>
+<tr class="even">
+<td align="left">mcg</td>
+<td align="left">0.48</td>
+<td align="left">0.78</td>
+<td align="left">0.77</td>
+<td align="left">0.78</td>
+<td align="left">0.76</td>
+<td align="left">0.43</td>
+<td align="left">0.51</td>
+<td align="left">0.45</td>
+<td align="left">0.48</td>
+<td align="left">0.56</td>
+</tr>
+<tr class="odd">
+<td align="left">gvh</td>
+<td align="left">0.46</td>
+<td align="left">0.80</td>
+<td align="left">0.73</td>
+<td align="left">0.73</td>
+<td align="left">0.59</td>
+<td align="left">0.49</td>
+<td align="left">0.53</td>
+<td align="left">0.46</td>
+<td align="left">0.51</td>
+<td align="left">0.51</td>
+</tr>
+<tr class="even">
+<td align="left">alm</td>
+<td align="left">0.53</td>
+<td align="left">0.50</td>
+<td align="left">0.49</td>
+<td align="left">0.36</td>
+<td align="left">0.41</td>
+<td align="left">0.36</td>
+<td align="left">0.52</td>
+<td align="left">0.53</td>
+<td align="left">0.51</td>
+<td align="left">0.49</td>
+</tr>
+<tr class="odd">
+<td align="left">mit</td>
+<td align="left">0.19</td>
+<td align="left">0.37</td>
+<td align="left">0.28</td>
+<td align="left">0.29</td>
+<td align="left">0.26</td>
+<td align="left">0.20</td>
+<td align="left">0.41</td>
+<td align="left">0.20</td>
+<td align="left">0.21</td>
+<td align="left">0.17</td>
+</tr>
+<tr class="even">
+<td align="left">erl</td>
+<td align="left">0.5</td>
+<td align="left">1.0</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+<td align="left">0.5</td>
+</tr>
+<tr class="odd">
+<td align="left">pox</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.0</td>
+<td align="left">0.5</td>
+<td align="left">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">vac</td>
+<td align="left">0.51</td>
+<td align="left">0.54</td>
+<td align="left">0.48</td>
+<td align="left">0.53</td>
+<td align="left">0.52</td>
+<td align="left">0.51</td>
+<td align="left">0.50</td>
+<td align="left">0.50</td>
+<td align="left">0.51</td>
+<td align="left">0.53</td>
+</tr>
+<tr class="odd">
+<td align="left">nuc</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+<td align="left">0.28</td>
+<td align="left">0.22</td>
+<td align="left">0.22</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -645,8 +863,8 @@ demo_function &lt;-<span class="st"> </span><span class="cf">function</span>(mes
           </div>
         </div>
       </div>
-<a href="functions-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataframe-manipulations-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dataframe-manipulations-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-01}
+    \date{2020-04-04}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -157,6 +157,17 @@ Copyright © Michiel Noback, Hanze University of Applied Science, Groningen, The
 
 \hypertarget{toolbox}{%
 \chapter{The toolbox}\label{toolbox}}
+
+\hypertarget{embarking-on-data-science}{%
+\section{Embarking on Data Science}\label{embarking-on-data-science}}
+
+The picture below represents data science in 1918: it probably tool a clerk a day to generate the figure.
+
+\includegraphics{figures/influenza_1918_new_york.jpg}
+
+But disregarding the time investment: This is data science. You collect data (in this case, Influenza mortality), look for patterns and try to find underlying mechanisms that may explain the patterns (Age, Gender, Marital Status).
+
+(\href{https://www.nytimes.com/2020/04/02/nyregion/spanish-flu-nyc-virus.html}{source})
 
 \hypertarget{why-do-statistical-programming}{%
 \section{Why do statistical programming?}\label{why-do-statistical-programming}}
@@ -667,7 +678,7 @@ factor & nominal and ordinal scales & \textbackslash{}<dealt with later\textback
 \hline
 \end{tabular}
 
-All these types are created in similar ways, and can often be converted into other types.
+All these types are created in similar ways and can often be converted into other types.
 
 \textbf{Note 1:} If you type a number in the console, it will always be a \texttt{numeric} value, decimal part or not.\\
 \textbf{Note 2:} For character data, single and double quotes are equivalent but double are preferred; type \texttt{?Quotes} in the console to read more on this topic.
@@ -1747,7 +1758,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     52     48
+##     46     54
 \end{verbatim}
 
 \begin{Shaded}
@@ -2926,10 +2937,10 @@ Before proceeding with your data, you should always perform some checks. Several
 
 \begin{verbatim}
 ##   liver.Se tooth.Se
-## 1     6.23    140.2
-## 2     6.79    133.3
-## 3     7.92    135.3
-## 4     8.02    127.8
+## 1     6.23      140
+## 2     6.79      133
+## 3     7.92      135
+## 4     8.02      128
 \end{verbatim}
 
 \begin{Shaded}
@@ -2951,13 +2962,13 @@ Before proceeding with your data, you should always perform some checks. Several
 \end{Shaded}
 
 \begin{verbatim}
-##     liver.Se        tooth.Se  
-##  Min.   : 6.23   Min.   :109  
-##  1st Qu.: 9.84   1st Qu.:135  
-##  Median :14.90   Median :143  
-##  Mean   :20.68   Mean   :157  
-##  3rd Qu.:33.63   3rd Qu.:175  
-##  Max.   :45.47   Max.   :245
+##     liver.Se       tooth.Se  
+##  Min.   : 6.2   Min.   :109  
+##  1st Qu.: 9.8   1st Qu.:135  
+##  Median :14.9   Median :143  
+##  Mean   :20.7   Mean   :157  
+##  3rd Qu.:33.6   3rd Qu.:175  
+##  Max.   :45.5   Max.   :245
 \end{verbatim}
 
 There are various other helper methods the you can use to inspect the contents and nature of your dataframe columns and rows:
@@ -3008,8 +3019,8 @@ Sometimes the existing column names are not convenient to work with (unclear, to
 
 \begin{verbatim}
 ##   liver tooth
-## 1  6.23 140.2
-## 2  6.79 133.3
+## 1  6.23   140
+## 2  6.79   133
 \end{verbatim}
 
 \begin{Shaded}
@@ -3022,8 +3033,8 @@ Sometimes the existing column names are not convenient to work with (unclear, to
 
 \begin{verbatim}
 ##   pancreas colon
-## 1     6.23 140.2
-## 2     6.79 133.3
+## 1     6.23   140
+## 2     6.79   133
 \end{verbatim}
 
 \hypertarget{adding-columns}{%
@@ -3042,8 +3053,8 @@ You can add a single column by simply specifying its name and the value(s) to be
 
 \begin{verbatim}
 ##   liver tooth stomach
-## 1  6.23 140.2   52.53
-## 2  6.79 133.3   50.70
+## 1  6.23   140    52.5
+## 2  6.79   133    50.7
 \end{verbatim}
 
 Alternatively, use \texttt{cbind}. It is a bit more versatile because you can add multiple columns at once.
@@ -3056,26 +3067,26 @@ Alternatively, use \texttt{cbind}. It is a bit more versatile because you can ad
 
 \begin{verbatim}
 ##    liver tooth stomach brain
-## 1   6.23 140.2   52.53     1
-## 2   6.79 133.3   50.70     0
-## 3   7.92 135.3   39.31     1
-## 4   8.02 127.8   42.84     0
-## 5   9.34 108.7   39.76     1
-## 6  10.00 146.2   34.76     0
-## 7  10.57 131.2   26.03     1
-## 8  11.04 145.5   41.85     0
-## 9  12.36 163.2   41.79     1
-## 10 14.53 136.6   51.85     0
-## 11 15.28 112.6   30.03     1
-## 12 18.68 245.1   38.03     0
-## 13 22.08 140.5   47.28     1
-## 14 27.55 177.9   44.05     0
-## 15 32.83 160.7   42.73     1
-## 16 36.04 227.6   38.28     0
-## 17 37.74 177.7   43.21     1
-## 18 40.00 174.2   40.58     0
-## 19 41.23 206.3   42.68     1
-## 20 45.47 141.3   38.53     0
+## 1   6.23   140    52.5     1
+## 2   6.79   133    50.7     0
+## 3   7.92   135    39.3     1
+## 4   8.02   128    42.8     0
+## 5   9.34   109    39.8     1
+## 6  10.00   146    34.8     0
+## 7  10.57   131    26.0     1
+## 8  11.04   146    41.8     0
+## 9  12.36   163    41.8     1
+## 10 14.53   137    51.9     0
+## 11 15.28   113    30.0     1
+## 12 18.68   245    38.0     0
+## 13 22.08   140    47.3     1
+## 14 27.55   178    44.1     0
+## 15 32.83   161    42.7     1
+## 16 36.04   228    38.3     0
+## 17 37.74   178    43.2     1
+## 18 40.00   174    40.6     0
+## 19 41.23   206    42.7     1
+## 20 45.47   141    38.5     0
 \end{verbatim}
 
 \hypertarget{adding-rows-rbind}{%
@@ -3182,8 +3193,8 @@ This function gives the data values corresponding to the specified quantiles. Th
 \end{Shaded}
 
 \begin{verbatim}
-##    0%   25%   50%   75%  100% 
-##  35.0  63.0 103.0 163.8 373.0
+##   0%  25%  50%  75% 100% 
+##   35   63  103  164  373
 \end{verbatim}
 
 \begin{Shaded}
@@ -3193,8 +3204,8 @@ This function gives the data values corresponding to the specified quantiles. Th
 \end{Shaded}
 
 \begin{verbatim}
-##    0%   20%   40%   60%   80%  100% 
-##  35.0  57.0  85.0 126.0 181.6 373.0
+##   0%  20%  40%  60%  80% 100% 
+##   35   57   85  126  182  373
 \end{verbatim}
 
 \hypertarget{interquantile-range-iqr}{%
@@ -3210,7 +3221,7 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 100.8
+## [1] 101
 \end{verbatim}
 
 \begin{Shaded}
@@ -3221,8 +3232,8 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-##   75% 
-## 100.8
+## 75% 
+## 101
 \end{verbatim}
 
 \begin{Shaded}
@@ -3233,8 +3244,8 @@ Function \texttt{IQR()} gives the range between the 25\% and 75\% quantiles.
 \end{Shaded}
 
 \begin{verbatim}
-##   75% 
-## 100.8
+## 75% 
+## 101
 \end{verbatim}
 
 \hypertarget{boxplot-is-summary-visualized}{%
@@ -4121,7 +4132,7 @@ This is the last flow control structure. It is used to execute a block \textbf{\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{counter =}\StringTok{ }\DecValTok{1}
+\NormalTok{counter <-}\StringTok{ }\DecValTok{1}
 \ControlFlowTok{while}\NormalTok{ (counter }\OperatorTok{%%}\StringTok{ }\DecValTok{5} \OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{) \{}
     \KeywordTok{print}\NormalTok{(counter)}
 \NormalTok{    counter =}\StringTok{ }\NormalTok{counter }\OperatorTok{+}\StringTok{ }\DecValTok{1}
@@ -5596,6 +5607,478 @@ That's it. The lessons learned here:
   You really learn a lot by fiddling about with data
 \end{itemize}
 
+\hypertarget{exploratory-data-analysis}{%
+\chapter{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+This chapter introduces you to the concept of Exploratory Data Analysis (EDA). In EDA a dataset is analysed with the goal of assessing its main characteristics, including its quality and usablity for subsequent statistical modelling and analysis. Data summary techniques and visualizations ore used in an EDA. There is no fixed set of activities; each dataset poses its own questions and challenges.
+
+Datasets are often expensive and time-consuming to collect, and therefore they are ususally collected with a specific goal in mind. The EDA you perform should always be with this goal on the horizon: is the dataset of sufficient quality to answer the scientific questions for which they were collected?
+
+\hypertarget{eda-outline}{%
+\subsubsection*{EDA outline}\label{eda-outline}}
+\addcontentsline{toc}{subsubsection}{EDA outline}
+
+An EDA therefore may include:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Dataset description}: how were they collected, what data types do the variables have, what are the units and physical quantities, how are missing data encoded, etc.
+\item
+  \textbf{Data summary}: number of cases, number of variables, basic statistical description (i.e.~mean, median, sd etc.), variable distributions (normal or not, outliers, missing data, skewed distributions)
+\item
+  \textbf{Visual summaries} using boxplots, histograms, density plots.
+\item
+  \textbf{Recoding or transformations of variables} may be required to get better results (e.g.~from numeric to factor or vice versa, or log transformation of exponential data)
+\item
+  \textbf{Exploration of variable relations/covariance}. It is always interesting to know about correlations between variables, but this is especially the case when you have a \emph{dependent} variable for which you wish to build a statistical model in a later stage of your analysis.
+\end{itemize}
+
+Note that your EDA results should \emph{always} be accompanied by text that describes your results and discusses the implications of them. your figures should be well annotated with a caption and legend if relevant. An EDA is \emph{not} a publication, but it will usually have a short introduction, a results section and a discussion. In contrast with a publication you usually \emph{do} show the code. This ensures complete transparency and reproducibility.
+
+In this chapter I will demonstrate a short EDA on the ``Yeast dataset'' from the UCI Machine Learning repository.
+
+It is outside the scope of this short analysis to delve too deeply in the attribute background information, but you should realise that for a real analysis this is absolutely critical: without domain knowledge the you won't have the insight to identify strange, worrying or surprising results.
+
+\hypertarget{eda-of-the-yeast-dataset}{%
+\section{EDA of the Yeast dataset}\label{eda-of-the-yeast-dataset}}
+
+\hypertarget{introduction-2}{%
+\subsection{Introduction}\label{introduction-2}}
+
+The data were collected from the \href{https://archive.ics.uci.edu/ml/datasets/Yeast}{UCI Machine Learning website}. To ensure their continued availability the files were copied to a personal \href{https://github.com/MichielNoback/datasets/tree/master/UCI_yeast_protein_loc}{repository}.
+
+The data were accompanied by a \emph{very} short abstract: \textbf{\emph{``Predicting the Cellular Localization Sites of Proteins''}}. The data description states there are 1484 instances, each with 8 attributes (variables) and a class label. The class label is the variable we wish to biuld a model for so this is the dependent variable.
+
+The \emph{Attribute Information} section descibes these variables:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Sequence Name: Accession number for the SWISS-PROT database
+\item
+  \texttt{mcg}: McGeoch's method for signal sequence recognition.
+\item
+  \texttt{gvh}: von Heijne's method for signal sequence recognition.
+\item
+  \texttt{alm}: Score of the ALOM membrane spanning region prediction program.
+\item
+  \texttt{mit}: Score of discriminant analysis of the amino acid content of the N-terminal region (20 residues long) of mitochondrial and non-mitochondrial proteins.
+\item
+  \texttt{erl}: Presence of ``HDEL'' substring (thought to act as a signal for retention in the endoplasmic reticulum lumen). Binary attribute.
+\item
+  \texttt{pox}: Peroxisomal targeting signal in the C-terminus.
+\item
+  \texttt{vac}: Score of discriminant analysis of the amino acid content of vacuolar and extracellular proteins.
+\item
+  \texttt{nuc}: Score of discriminant analysis of nuclear localization signals of nuclear and non-nuclear proteins.
+\end{enumerate}
+
+The sequence name is not interesting in this EDA: we are interested in patterns, not individuals. However, if there is an anomalous protein in the EDA it should be possible to retrace its origin so the identifier stays in the dataset.
+
+There seem to be two attributes (\texttt{mcg} and \texttt{gvh}) measuring the same property - the presence of a signal sequence which is the N-terminal part of a protein signalling the cellular machinery the protein should be exported.
+
+Very simply put, if this scoring system was perfect each of the attributes (except \texttt{mcg} and \texttt{gvh}) would unequivocally ``assign'' the protein in question to a cellular location: Cellular external matrix, membrane inserted, mitochondrial, endoplasmic reticulum lumen, peroxisomal, vacualar or nuclear.
+
+The tenth variable in the data is the dependent or explanatory variable. The \texttt{yeast.names} file describes it like this:
+
+\begin{verbatim}
+Class Distribution. The class is the localization site. Please see Nakai &
+               Kanehisa referenced above for more details.
+  CYT (cytosolic or cytoskeletal)                    463
+  NUC (nuclear)                                      429
+  MIT (mitochondrial)                                244
+  ME3 (membrane protein, no N-terminal signal)       163
+  ME2 (membrane protein, uncleaved signal)            51
+  ME1 (membrane protein, cleaved signal)              44
+  EXC (extracellular)                                 37
+  VAC (vacuolar)                                      30
+  POX (peroxisomal)                                   20
+  ERL (endoplasmic reticulum lumen)                    5
+\end{verbatim}
+
+This tells me the different localizations are by no means equally distributed; there is an overrepresentation of ``cytosolic or cytoskeletal'' and ``nuclear'' and a huge underrepresentation of especially endoplasmic reticulum lumen proteins.
+
+\hypertarget{data-loading-and-prepping}{%
+\subsection{Data loading and prepping}\label{data-loading-and-prepping}}
+
+Since I am going to rerun the code in this notebook often I am going to create a local copy, and load that one.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{file_name <-}\StringTok{ "yeast.data"}
+\NormalTok{yeast_data_url <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/MichielNoback/datasets/master/UCI_yeast_protein_loc/"}\NormalTok{, file_name)}
+\NormalTok{yeast_local_location <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"../"}\NormalTok{, file_name)}
+
+\CommentTok{#only download if not present}
+\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\StringTok{ }\KeywordTok{file.exists}\NormalTok{(yeast_local_location)) \{}
+    \KeywordTok{download.file}\NormalTok{(}\DataTypeTok{url =}\NormalTok{ yeast_data_url, }
+                  \DataTypeTok{destfile =}\NormalTok{ yeast_local_location)}
+\NormalTok{\}}
+
+\NormalTok{yeast_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\DataTypeTok{file =}\NormalTok{ yeast_local_location,}
+                         \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+                         \DataTypeTok{as.is =} \DecValTok{1}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(yeast_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    1484 obs. of  10 variables:
+##  $ V1 : chr  "ADT1_YEAST" "ADT2_YEAST" "ADT3_YEAST" "AAR2_YEAST" ...
+##  $ V2 : num  0.58 0.43 0.64 0.58 0.42 0.51 0.5 0.48 0.55 0.4 ...
+##  $ V3 : num  0.61 0.67 0.62 0.44 0.44 0.4 0.54 0.45 0.5 0.39 ...
+##  $ V4 : num  0.47 0.48 0.49 0.57 0.48 0.56 0.48 0.59 0.66 0.6 ...
+##  $ V5 : num  0.13 0.27 0.15 0.13 0.54 0.17 0.65 0.2 0.36 0.15 ...
+##  $ V6 : num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
+##  $ V7 : num  0 0 0 0 0 0.5 0 0 0 0 ...
+##  $ V8 : num  0.48 0.53 0.53 0.54 0.48 0.49 0.53 0.58 0.49 0.58 ...
+##  $ V9 : num  0.22 0.22 0.22 0.22 0.22 0.22 0.22 0.34 0.22 0.3 ...
+##  $ V10: Factor w/ 10 levels "CYT","ERL","EXC",..: 7 7 7 8 7 1 7 8 7 1 ...
+\end{verbatim}
+
+The data seems to have been loaded correctly and, as expected since that was stated in the original data description, there are no missing data.
+
+The column names were not defined in the data file so this will be fixed first. I will create a data frame that also holds the column desciptions. I have put the data in a small text file for easy loading and editing; the attribute descriptions copied/pasted into a text file and with find/replace converted in easy to load form, and a new \texttt{label} column added for use in plotting. There were a few occurences of the \texttt{\textquotesingle{}} character which always corrupt data import into R. They were removed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{attribute_info <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"data/yeast_attribute_info.txt"}\NormalTok{, }
+                             \DataTypeTok{sep =} \StringTok{":"}\NormalTok{,}
+                             \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{,}
+                             \DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{#attach column names}
+\NormalTok{(}\KeywordTok{colnames}\NormalTok{(yeast_data) <-}\StringTok{ }\NormalTok{attribute_info}\OperatorTok{$}\NormalTok{attribute)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "accno" "mcg"   "gvh"   "alm"   "mit"   "erl"   "pox"   "vac"  
+##  [9] "nuc"   "loc"
+\end{verbatim}
+
+To make this info easily accessible, a function is created that can be used to fetch either the description or the label.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{get_attribute_info <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(attribute, }\DataTypeTok{resource =} \StringTok{"label"}\NormalTok{) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\StringTok{ }\NormalTok{resource }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"label"}\NormalTok{, }\StringTok{"description"}\NormalTok{)) \{}
+        \KeywordTok{stop}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"type "}\NormalTok{, resource, }\StringTok{"is not an attribute resource"}\NormalTok{))}
+\NormalTok{    \}}
+    \KeywordTok{return}\NormalTok{(attribute_info[attribute_info}\OperatorTok{$}\NormalTok{attribute }\OperatorTok{==}\StringTok{ }\NormalTok{attribute, resource])}
+\NormalTok{\}}
+
+\CommentTok{#test it}
+\KeywordTok{get_attribute_info}\NormalTok{(}\StringTok{"gvh"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "VonHeijne signal"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{get_attribute_info}\NormalTok{(}\StringTok{"accno"}\NormalTok{, }\StringTok{"description"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Accession number for the SWISS-PROT database"
+\end{verbatim}
+
+\hypertarget{data-verification}{%
+\subsection{Data verification}\label{data-verification}}
+
+The original data description stated that 1484 instances with 9 attributes + a class label are present.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(yeast_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1484   10
+\end{verbatim}
+
+This is correct.
+No missing data are supposed to be there:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{complete.cases}\NormalTok{(yeast_data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1484
+\end{verbatim}
+
+Also correct.
+
+The classes of the columns are also OK so the data is verified and found correct.
+
+\hypertarget{attribute-summaries}{%
+\subsection{Attribute summaries}\label{attribute-summaries}}
+
+A first scan of the attributes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(yeast_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     accno                mcg            gvh            alm      
+##  Length:1484        Min.   :0.11   Min.   :0.13   Min.   :0.21  
+##  Class :character   1st Qu.:0.41   1st Qu.:0.42   1st Qu.:0.46  
+##  Mode  :character   Median :0.49   Median :0.49   Median :0.51  
+##                     Mean   :0.50   Mean   :0.50   Mean   :0.50  
+##                     3rd Qu.:0.58   3rd Qu.:0.57   3rd Qu.:0.55  
+##                     Max.   :1.00   Max.   :1.00   Max.   :1.00  
+##                                                                 
+##       mit             erl             pox              vac      
+##  Min.   :0.000   Min.   :0.500   Min.   :0.0000   Min.   :0.00  
+##  1st Qu.:0.170   1st Qu.:0.500   1st Qu.:0.0000   1st Qu.:0.48  
+##  Median :0.220   Median :0.500   Median :0.0000   Median :0.51  
+##  Mean   :0.261   Mean   :0.505   Mean   :0.0075   Mean   :0.50  
+##  3rd Qu.:0.320   3rd Qu.:0.500   3rd Qu.:0.0000   3rd Qu.:0.53  
+##  Max.   :1.000   Max.   :1.000   Max.   :0.8300   Max.   :0.73  
+##                                                                 
+##       nuc             loc     
+##  Min.   :0.000   CYT    :463  
+##  1st Qu.:0.220   NUC    :429  
+##  Median :0.220   MIT    :244  
+##  Mean   :0.276   ME3    :163  
+##  3rd Qu.:0.300   ME2    : 51  
+##  Max.   :1.000   ME1    : 44  
+##                  (Other): 90
+\end{verbatim}
+
+All these attributes seem to be in the range zero to one, except of course for the localization attribute and the accession number. This is not surprising since these attributes are all probabilities. The class distribution corresponds with the published data.
+
+The
+The \texttt{pox} (Peroxisomal) and \texttt{erl} ( ER-retention) attributes, seem to have a really strange distribution and should be investigated further.
+
+Here are all the numeric attributes in a single panel. I chose histogram over boxplot or density plot because it is more fine-grained than boxplot and very easy to interpret.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+
+\ControlFlowTok{for}\NormalTok{ ( attrib }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(yeast_data[}\DecValTok{2}\OperatorTok{:}\DecValTok{9}\NormalTok{])) \{}
+    \KeywordTok{hist}\NormalTok{(yeast_data[, attrib],}
+         \DataTypeTok{main =} \OtherTok{NULL}\NormalTok{,}
+         \DataTypeTok{xlab =} \KeywordTok{paste0}\NormalTok{(}\KeywordTok{get_attribute_info}\NormalTok{(attrib), }\StringTok{" (prob)"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{davur_ebook_files/figure-latex/yeast-attributes-hist-1} \caption{Distributions of the numeric variables}\label{fig:yeast-attributes-hist}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#reset par()}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Here, it can be seen that the attributes ``ER-retention'' and ``Peroxisomal'' are pretty much uninformative, a problem probably largely caused by the low abundance of protiens in these classes. Surprisingly enough, the ``Vacuolar'' property which is also low-abundant, does not have this extreme distribution.
+
+What is also striking is that, although these attributes are probablitities of targeting signals, none (with the exception of the two low-abundance ones) show a more or less bimodal distribution as you would naively expect.
+
+\hypertarget{attribute-relationships}{%
+\subsection{Attribute relationships}\label{attribute-relationships}}
+
+Here is a quick scan of variable relationship, excluding the dependent variable. The \texttt{pairs()} function is used for that. I excluded \texttt{erl} and \texttt{pox} because they do not add information to the picture.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(yeast_data[}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)],}
+      \DataTypeTok{panel =} \StringTok{"panel.smooth"}\NormalTok{,}
+      \DataTypeTok{pch =} \DecValTok{20}\NormalTok{, }
+      \DataTypeTok{cex =} \FloatTok{0.35}\NormalTok{,}
+      \DataTypeTok{col =} \KeywordTok{rgb}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{davur_ebook_files/figure-latex/yeast-pairs-plot-1} \caption{Relations between the numeric variables}\label{fig:yeast-pairs-plot}
+\end{figure}
+
+By adding the smoother it is made clear that the only pair which shows a clear correlation is the pair \texttt{mcg} / \texttt{gvh} which actually predict the same property. Therefore it would have been very surprising indeed if they would \emph{not} have a correlation. The strength of this correlation -the \textbf{\emph{R-squared}}- is this
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{lin_mod <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(yeast_data}\OperatorTok{$}\NormalTok{mcg }\OperatorTok{~}\StringTok{ }\NormalTok{yeast_data}\OperatorTok{$}\NormalTok{gvh)}
+\KeywordTok{summary}\NormalTok{(lin_mod)}\OperatorTok{$}\NormalTok{r.squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3383
+\end{verbatim}
+
+This is not very strong.
+
+\hypertarget{correlations-to-the-dependent-variable}{%
+\subsection{Correlations to the dependent variable}\label{correlations-to-the-dependent-variable}}
+
+As a first investigation, numeric variables are split on the location variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(RColorBrewer)}
+\NormalTok{colors <-}\StringTok{ }\NormalTok{RColorBrewer}\OperatorTok{::}\KeywordTok{brewer.pal}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DataTypeTok{name =} \StringTok{"Accent"}\NormalTok{)}
+\CommentTok{#col = c("darkblue", "darkgreen", "magenta", )}
+\NormalTok{col_i <-}\StringTok{ }\DecValTok{0}
+\ControlFlowTok{for}\NormalTok{ (name }\ControlFlowTok{in} \KeywordTok{names}\NormalTok{(yeast_data[}\DecValTok{2}\OperatorTok{:}\DecValTok{9}\NormalTok{])) \{}
+\NormalTok{    col_i <-}\StringTok{ }\NormalTok{col_i }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+    \KeywordTok{boxplot}\NormalTok{(yeast_data[, name] }\OperatorTok{~}\StringTok{ }\NormalTok{yeast_data}\OperatorTok{$}\NormalTok{loc,}
+            \DataTypeTok{xlab =} \OtherTok{NULL}\NormalTok{,}
+            \DataTypeTok{ylab =} \KeywordTok{get_attribute_info}\NormalTok{(name),}
+            \DataTypeTok{col =}\NormalTok{ colors[col_i])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-1} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent1}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-2} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent2}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-3} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent3}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-4} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent4}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-5} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent5}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-6} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent6}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-7} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent7}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.7\linewidth]{davur_ebook_files/figure-latex/corr-to-dependent-8} 
+
+}
+
+\caption{Correlations with the dependent variable}\label{fig:corr-to-dependent8}
+\end{figure}
+
+Quite a few of the variables correlate pretty well with the dependent variable. These do so very well: \texttt{alm}, \texttt{mit}, \texttt{erl}, \texttt{pox}. Others are not: \texttt{nuc}, \texttt{vac}, and some are ambiguous - they discriminate, but not exclusively: \texttt{mcg}, \texttt{gvh}.
+
+Here are some summary statistics for the numeric variables split on the dependent variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits=}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{tmp <-}\StringTok{ }\KeywordTok{t}\NormalTok{(}\KeywordTok{aggregate}\NormalTok{( . }\OperatorTok{~}\StringTok{ }\NormalTok{loc, }\DataTypeTok{data =}\NormalTok{ yeast_data[, }\DecValTok{-1}\NormalTok{], }\DataTypeTok{FUN =}\NormalTok{ mean))}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(tmp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
+\hline
+loc & CYT & ERL & EXC & ME1 & ME2 & ME3 & MIT & NUC & POX & VAC\\
+\hline
+mcg & 0.48 & 0.79 & 0.74 & 0.79 & 0.72 & 0.43 & 0.52 & 0.45 & 0.52 & 0.55\\
+\hline
+gvh & 0.47 & 0.77 & 0.72 & 0.76 & 0.60 & 0.49 & 0.53 & 0.46 & 0.51 & 0.53\\
+\hline
+alm & 0.54 & 0.48 & 0.49 & 0.38 & 0.41 & 0.36 & 0.52 & 0.53 & 0.51 & 0.47\\
+\hline
+mit & 0.23 & 0.34 & 0.29 & 0.31 & 0.28 & 0.21 & 0.40 & 0.23 & 0.25 & 0.20\\
+\hline
+erl & 0.50 & 1.00 & 0.50 & 0.50 & 0.51 & 0.50 & 0.50 & 0.50 & 0.50 & 0.50\\
+\hline
+pox & 0.0011 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0000 & 0.0089 & 0.0000 & 0.4235 & 0.0000\\
+\hline
+vac & 0.50 & 0.55 & 0.46 & 0.51 & 0.51 & 0.51 & 0.50 & 0.49 & 0.50 & 0.53\\
+\hline
+nuc & 0.26 & 0.25 & 0.23 & 0.27 & 0.25 & 0.27 & 0.24 & 0.33 & 0.23 & 0.25\\
+\hline
+\end{tabular}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tmp <-}\StringTok{ }\KeywordTok{t}\NormalTok{(}\KeywordTok{aggregate}\NormalTok{( . }\OperatorTok{~}\StringTok{ }\NormalTok{loc, }\DataTypeTok{data =}\NormalTok{ yeast_data[, }\DecValTok{-1}\NormalTok{], }\DataTypeTok{FUN =}\NormalTok{ median))}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(tmp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l}
+\hline
+loc & CYT & ERL & EXC & ME1 & ME2 & ME3 & MIT & NUC & POX & VAC\\
+\hline
+mcg & 0.48 & 0.78 & 0.77 & 0.78 & 0.76 & 0.43 & 0.51 & 0.45 & 0.48 & 0.56\\
+\hline
+gvh & 0.46 & 0.80 & 0.73 & 0.73 & 0.59 & 0.49 & 0.53 & 0.46 & 0.51 & 0.51\\
+\hline
+alm & 0.53 & 0.50 & 0.49 & 0.36 & 0.41 & 0.36 & 0.52 & 0.53 & 0.51 & 0.49\\
+\hline
+mit & 0.19 & 0.37 & 0.28 & 0.29 & 0.26 & 0.20 & 0.41 & 0.20 & 0.21 & 0.17\\
+\hline
+erl & 0.5 & 1.0 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5 & 0.5\\
+\hline
+pox & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.5 & 0.0\\
+\hline
+vac & 0.51 & 0.54 & 0.48 & 0.53 & 0.52 & 0.51 & 0.50 & 0.50 & 0.51 & 0.53\\
+\hline
+nuc & 0.22 & 0.22 & 0.22 & 0.22 & 0.22 & 0.22 & 0.22 & 0.28 & 0.22 & 0.22\\
+\hline
+\end{tabular}
+
 \hypertarget{exercises}{%
 \chapter{Exercises}\label{exercises}}
 
@@ -5603,13 +6086,35 @@ This chapter only contains exercises. The solutions are in the next chapter whic
 
 This is a link to an \href{figures/R_cheatsheet.pdf}{R cheat sheet} that you could use for selecting the right function for a task.
 
+\hypertarget{plotting-rules}{%
+\subsubsection*{Plotting rules}\label{plotting-rules}}
+\addcontentsline{toc}{subsubsection}{Plotting rules}
+
+With all plots, take care to adhere to the rules regarding titles and other decorations. Tip: the site \href{http://www.statmethods.net/}{Quick-R} has nice detailed information with examples on the different plot types and their configuration. Especially the section \href{http://www.statmethods.net/graphs/index.html}{on plotting} is helpful for these assignments.
+
 \hypertarget{toolbox-1}{%
 \section{Toolbox}\label{toolbox-1}}
+
+\hypertarget{get-set-up}{%
+\subsection{Get set up}\label{get-set-up}}
+
+Install these tools on your own PC or laptop, in this order:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  R itself \url{https://cran.r-project.org/bin/windows/base/}\\
+\item
+  RStudio \url{https://rstudio.com/products/rstudio/download/} (choose the free version of course)
+\item
+  {[}Optionally{]} If you want to generate pdf documents you should also install a Latex version: MikTeX or TinyTex for Windows or MacTeX on MacOS. If you want to keep things simple I suggest you stick to HTML and MS Word output (Word can also export to PDF).
+\end{enumerate}
 
 \hypertarget{resume}{%
 \subsection{Résumé}\label{resume}}
 
-Create an R Markdown document called Résumé and create your Curriculum Vitae using Markdown syntax.
+Create an R Markdown document called Résumé.Rmd and create your Curriculum Vitae using Markdown syntax. Use the R Markdown Reference Guide or Cheat Sheet or this \href{https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf}{Markdown Cheatsheet} (you don't need R for your résumé so markdown alone is enough).
 
 \hypertarget{basic-r}{%
 \section{Basic R}\label{basic-r}}
@@ -5634,17 +6139,17 @@ In the console, calculate the following:
 \hypertarget{first-look-at-functions}{%
 \subsection{First look at functions}\label{first-look-at-functions}}
 
-\textbf{A}
-
+\textbf{A}\\
 View the help page for \texttt{paste()}. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate \emph{exactly} this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
 
-\textbf{B}
-
+\textbf{B}\\
 What does the \texttt{abs} function do? What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?
 
-\textbf{C}
-
+\textbf{C}\\
 What does the \texttt{c} function do? What is the difference in returned value (result) of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments, or \texttt{1}, \texttt{2} and \texttt{3}? Use the function \texttt{class()} to answer this.
+
+\textbf{D}\\
+What does the function \texttt{install.packages()} do? Use it to install the package \texttt{RColorBrewer}. We'll have a look at this package later on.
 
 \hypertarget{variables-1}{%
 \subsection{Variables}\label{variables-1}}
@@ -5668,11 +6173,57 @@ Create three variables with the given values - x=20, y=10 and z=3. Next, calcula
   \(\log_{10}{(x \times y)}\)
 \end{enumerate}
 
-\hypertarget{plotting-rules}{%
-\subsection*{Plotting rules}\label{plotting-rules}}
-\addcontentsline{toc}{subsection}{Plotting rules}
+\hypertarget{vectors-1}{%
+\subsection{Vectors}\label{vectors-1}}
 
-With all plots, take care to adhere to the rules regarding titles and other decorations. Tip: the site \href{http://www.statmethods.net/}{Quick-R} has nice detailed information with examples on the different plot types and their configuration. Especially the section \href{http://www.statmethods.net/graphs/index.html}{on plotting} is helpful for these assignments.
+\hypertarget{circles}{%
+\subsubsection*{Circles}\label{circles}}
+\addcontentsline{toc}{subsubsection}{Circles}
+
+The circumference of a circle is \(2\pi\cdot r\), its surface \(4\pi \cdot r^2\) and its volume \(4/3 \pi\cdot r^3\).
+Given this vector of circle radiuses,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{radiuses <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, pi, }\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}\\
+Calculate their cirumference.
+
+\textbf{B}\\
+Calculate their surface.
+
+\textbf{C}\\
+Calculate their volume.
+
+\hypertarget{creating-vectors-1}{%
+\subsubsection*{Creating vectors}\label{creating-vectors-1}}
+\addcontentsline{toc}{subsubsection}{Creating vectors}
+
+Create the following vectors, \emph{as efficiently as possible}. The functions \texttt{rep()}, \texttt{seq()}, \texttt{paste0()} and the colon operator \texttt{:} can be used, in any combination.
+
+\textbf{A}\\
+\texttt{{[}1{]}\ 1\ 2\ 5\ 1\ 2\ 5}
+
+\textbf{B}\\
+\texttt{{[}1{]}\ 9\ 9\ 9\ 8\ 8\ 8\ 7\ 7\ 7\ 6\ 6\ 6\ 5\ 5\ 5}
+
+\textbf{C}\\
+\texttt{{[}1{]}\ 1\ 1\ 1\ 4\ 4\ 4\ 9\ 9\ 9\ 1\ 1\ 1\ 4\ 4\ 4\ 9\ 9\ 9}
+
+\textbf{D}\\
+\texttt{{[}1{]}\ "1a"\ "2b"\ "3c"\ "4d"\ "5e"\ "1a"\ "2b"\ "3c"\ "4d"\ "5e"}
+
+\textbf{E}\\
+\texttt{{[}1{]}\ "0z"\ \ \ "0.2y"\ "0.4x"\ "0.6w"\ "0.8v"\ "1u"}
+
+\textbf{F}\\
+\texttt{{[}1{]}\ "505"\ "404"\ "303"\ "202"\ "101"\ "000"}
+
+\textbf{G {[}Challenge{]}}\\
+\texttt{{[}1{]}\ "0.5A5.0"\ "0.4B4.0"\ "0.3C3.0"\ "0.2D2.0"\ "0.1E1.0"}
 
 \hypertarget{stair-walking-and-heart-rate}{%
 \subsection{Stair walking and heart rate}\label{stair-walking-and-heart-rate}}
@@ -5733,16 +6284,13 @@ With the data from the previous question, create a bar plot of the maximum weigh
 
 The R language comes with a wealth of datasets for you to use as practice materials. We will see several of these. One of these datasets is The Time-Series dataset called \texttt{discoveries} holding the numbers of ``great'' inventions and scientific discoveries in each year from 1860 to 1959. Type its name in the console to see it. Create plot(s) answering these questions:
 
-\textbf{A}
-
+\textbf{A}\\
 What is the number of discoveries per year? Use the \texttt{barplot()} and \texttt{table()} functions for this.
 
-\textbf{B}
-
+\textbf{B}\\
 What is the 5-number summary of discoveries per year?
 
-\textbf{C}
-
+\textbf{C}\\
 What is the trend over time for the numbers of discoveries per year?
 
 PS: This is actually not a simple vector but a vector with some time-related attributes. It is called a Time-Series (a \texttt{ts} class), but this does not really matter for this assignment.
@@ -5765,13 +6313,11 @@ The R datasets package has three related timeseries datasets relating to lung ca
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/legend-demo-1} \end{center}
 
-\textbf{A}
-
+\textbf{A}\\
 Create the mentioned line plot. Do you see trends and/or patterns and if so, can you explain these?
 
-\textbf{B}
-
-Create a combined boxplot of the three time-series. Are there outliers? If so, can you figure out when this occurred?
+\textbf{B}\\
+Create a combined boxplot of the three time-series. Are there outliers? If so, can you figure out when this occurred, and why?
 
 \hypertarget{complex-datatypes}{%
 \section{Complex datatypes}\label{complex-datatypes}}
@@ -5781,8 +6327,7 @@ This section serves you some datatype challenges.
 \hypertarget{creating-factors}{%
 \subsection{Creating factors}\label{creating-factors}}
 
-\textbf{A}
-
+\textbf{A}\\
 Given this vector:
 
 \begin{Shaded}
@@ -5799,8 +6344,7 @@ and these possible levels:
 
 Create a factor from this data and then barplot the result.
 
-\textbf{B}
-
+\textbf{B}\\
 Given this data, a simulation of wealth distribution of ``poor'', ``middle class'', ``wealthy'' "rich:
 
 \begin{Shaded}
@@ -5850,12 +6394,10 @@ If I wanted to create and use a DNA codon translation table, and use it to trans
 ## [1] " Gly Pro Lys Ser"
 \end{verbatim}
 
-\textbf{A}
-
+\textbf{A}\\
 Make a modified copy of this code chunk in such a way that no spaces are present between the amino acid residues (use help on \texttt{paste()} to figure this out) and that single-letter codes of amino acids are used instead of three-letter codes.
 
-\textbf{B}
-
+\textbf{B}\\
 \textbf{{[}Challenge{]}} Here is a vector called \texttt{nuc\_weights}. It holds the weights for the nucleotides A, C, G and U respectively. Make it a named vector, iterate \texttt{my\_DNA} from the above code chunk and calculate its molecular weight.
 
 \begin{Shaded}
@@ -5869,24 +6411,19 @@ Make a modified copy of this code chunk in such a way that no spaces are present
 
 The \texttt{airquality} dataset is also one of the datasets included in the \texttt{datasets} package. We'll explore this for a few questions.
 
-\textbf{A}
-
+\textbf{A}\\
 Create a scatterplot of Temperature as a function of Solar radiation. Is there, as you might naively expect, a strong correlation? You could use \texttt{cor.test()} to find out. Add a linear model using \texttt{lm()} to extend your plot.
 
-\textbf{B}
-
+\textbf{B}\\
 Create a boxplot-series of \texttt{Temp} as a function of \texttt{Month} (use \texttt{?boxplot} to find out how this works). What appears to be the warmest month?
 
-\textbf{C}
-
+\textbf{C}\\
 What date (day/month) has the lowest recorded temperature? Which the highest? Please give temperature values in Celsius, not Fahrenheit! (Yes, this is an extra challenge!)
 
-\textbf{D}
-
+\textbf{D}\\
 Create a histogram of the wind speeds, and add a thick blue vertical line for the value of the mean and a fat red line for the median (use \texttt{abline()} for this).
 
-\textbf{E}
-
+\textbf{E}\\
 Use the \texttt{pairs()} function with argument \texttt{panel\ =\ panel.smooth} to plot all pairwise correlations between Ozone, Solar radiation, Wind and Temperature. Which pair shows the strongest correlation in your opinion? Verify this using the \texttt{cor()} function after removing incomplete cases. Create a separate well annotated scatterplot of this pair.
 
 \hypertarget{bird-observations}{%
@@ -5909,8 +6446,7 @@ Load the observation data into R and assign it to a variable called \texttt{bird
 
 From here on, it is assumed that you have the dataframe \texttt{bird\_obs} loaded. This series of exercises deals with cleaning and transforming data, and exploring a cleaned dataset using basic plotting techniques and descriptive statistics.
 
-\textbf{A}
-
+\textbf{A}\\
 First, explore the raw data as they are.
 
 \begin{itemize}
@@ -5923,30 +6459,24 @@ First, explore the raw data as they are.
   Are all column names clear to you?
 \end{itemize}
 
-\textbf{B}
-
+\textbf{B}\\
 How many bird observations were recorded?
 
-\textbf{C}
-
+\textbf{C}\\
 The column holding observation ``Number'' is actually not a number. Into what type has R converted it?
 
-\textbf{D}
-
+\textbf{D}\\
 Convert the ``Number'' column into an integer column using \texttt{as.integer()}, but assign it to a new column called ``Count'' (i.e.~do not overwrite the original values). Compare the first 50 values or so of these two columns. What happened to the data? Is this OK?
 
-\textbf{E}
-
+\textbf{E}\\
 The previous question has shown that converting factors to numbers is a bit dangerous. It is often easiest to convert characters to numbers. The best way to do this is by using the \texttt{as.is\ =\ c(\textless{}column\ indices\textgreater{})} argument for the \texttt{read.table()} function.
 
 So, which columns should be loaded as real factor data and which as plain character data? Use \texttt{read.table()} and the \texttt{as.is} argument to reload the data, and then transform the \texttt{Number} column to integer again as \texttt{Count}.
 
-\textbf{F}
-
+\textbf{F}\\
 Compare the first 50 values of the Number and Count columns again. Has the conversion succeeded? How many \texttt{Number} values could not be transformed into an integer value? Hint: use \texttt{is.na()}
 
-\textbf{G}
-
+\textbf{G}\\
 Explore the sighting counts:
 
 \begin{itemize}
@@ -5959,12 +6489,10 @@ Explore the sighting counts:
   What is the median of the sighting count
 \end{itemize}
 
-\textbf{H}
-
+\textbf{H}\\
 Is the \texttt{Count} variable a normal distributed value? You can use \texttt{hist(...)}, \texttt{table()} or \texttt{plot(density(...))} to explore this further.
 
-\textbf{I}
-
+\textbf{I}\\
 Explore the species constitution:
 
 \begin{itemize}
@@ -5988,25 +6516,21 @@ This is a challenge exercise for those who like to grind their brains! Think of 
 \hypertarget{restriction-enzymes-1}{%
 \subsection{Restriction enzymes}\label{restriction-enzymes-1}}
 
-\textbf{A}
-
+\textbf{A}\\
 The restriction enzyme PacI has the recognition sequence ``TTAATTAA''. Define (at least) three alternative regex patterns that will catch these sites.
 
-\textbf{B}
-
+\textbf{B}\\
 The restriction enzyme SfiI has the recognition sequence ``GGCCNNNNNGGCC''. Define (at least) three alternative regex patterns that will catch these sites.
 
 \hypertarget{prosite-patterns-1}{%
 \subsection{Prosite Patterns}\label{prosite-patterns-1}}
 
-\textbf{A}
-
+\textbf{A}\\
 The Prosite pattern PS00211 (ABC-transporter-1; \url{https://prosite.expasy.org/PS00211}) has the pattern:\\
 ``{[}LIVMFYC{]}-{[}SA{]}-{[}SAPGLVFYKQH{]}-G-{[}DENQMW{]}-{[}KRQASPCLIMFW{]}-{[}KRNQSTAVM{]}-{[}KRACLVM{]}-{[}LIVMFYPAN{]}-\{PHY\}-{[}LIVMFW{]}-{[}SAGCLIVP{]}-\{FYWHP\}-\{KRHP\}-{[}LIVMFYWSTA{]}.''
 Translate it into a regex pattern. Info on the syntax is here: \url{https://prosite.expasy.org/prosuser.html\#conv_pa}
 
-\textbf{B}
-
+\textbf{B}\\
 The Prosite pattern PS00018 (EF-hand calcium-binding domain; \url{https://prosite.expasy.org/PS00018}) has the pattern:
 ``D-\{W\}-{[}DNS{]}-\{ILVFYW\}-{[}DENSTG{]}-{[}DNQGHRK{]}-\{GP\}-{[}LIVMC{]}-{[}DENQSTAGC{]}-x(2)- {[}DE{]}-{[}LIVMFYW{]}.''
 Translate it into a regex pattern.
@@ -6079,22 +6603,14 @@ Thus, each set of parentheses will yield a column in the returned matrix. Simply
 Now, given the fasta headers in \url{./data/fasta_headers.txt}
 which you can simply load into a character vector using \texttt{readLines()}, extract the following.
 
-\textbf{A}
+\textbf{A}\\
+- Extract all complete organism names.\\
+- Extract all species-level organism names (omitting subspecies and strains etc).
 
-\begin{itemize}
-\tightlist
-\item
-  Extract all complete organism names.\\
-\item
-  Extract all species-level organism names (omitting subspecies and strains etc).
-\end{itemize}
-
-\textbf{B}
-
+\textbf{B}\\
 Extract all \textbf{\emph{first}} database identifiers. So in this header element \texttt{\textgreater{}gi\textbar{}224017144\textbar{}gb\textbar{}EEF75156.1\textbar{}} you should extract only \texttt{gi\textbar{}224017144}
 
-\textbf{C}
-
+\textbf{C}\\
 Extract all protein names/descriptions.
 
 \hypertarget{scripting-2}{%
@@ -6182,24 +6698,19 @@ On the course website under \href{https://michielnoback.github.io/bincourses/cou
 
 Note: when you are going to load a file many times it is probably better to store a local copy.
 
-\textbf{A}
-
+\textbf{A}\\
 Report the means of both columns using \texttt{apply()}.
 
 \textbf{B}
-
 Report the standard deviation of both columns, using \texttt{apply()}
 
-\textbf{C}
-
+\textbf{C}\\
 Report the standard error of the mean of both columns, using \texttt{apply()} The SEM is calculated as \[\frac{sd}{\sqrt{n}}\] where \(sd\) is the sample standard deviation and \(n\) the number of measurements. You should create the function calculating this statistic yourself.
 
-\textbf{D}
-
+\textbf{D}\\
 Using \texttt{apply()}, calculate the ratio of \(Se_{tooth} / Se_{liver}\) and attach it to the \texttt{whale\_selenium} dataframe as column \texttt{ratio}. Create a histogram of this ratio.
 
-\textbf{E}
-
+\textbf{E}\\
 Using \texttt{print()} and \texttt{paste()}, report the mean and the standard deviation of the ratio column, but do this with an inline expression, e.g.~an expression embedded in the R markdown paragraph text.
 
 \hypertarget{chickweight}{%
@@ -6207,25 +6718,20 @@ Using \texttt{print()} and \texttt{paste()}, report the mean and the standard de
 
 This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \texttt{datasets} package.
 
-\textbf{A}
-
+\textbf{A}\\
 Report the number of chickens used in the experiment.
 
-\textbf{B}
-
+\textbf{B}\\
 Use \texttt{aggregate()} to get the mean weight of the chickens for the different Diets.
 
-\textbf{C}
-
+\textbf{C}\\
 Use \texttt{coplot()} to plot a panel with weight as function of Time, split over Diet.
 
-\textbf{D}
-
+\textbf{D}\\
 Add a column called \texttt{weight\_gain} to the dataframe holding values for the weight gain since the last measurement. Take special care with rows marking the boundaries between individual chickens! You could consider using a traditional for loop here.
 In the next course, we'll see a more efficient way of doing this.
 
-\textbf{E}
-
+\textbf{E}\\
 Split the \texttt{weight\_gain} column on Diet and report the mean, median and standard deviation for each diet.
 If you were not successful in the previous question, load and attach the data from file \texttt{ChickWeight\_weight\_gain.Rdata} downloadable from \url{https://github.com/MichielNoback/davur1_gitbook/raw/master/data/ChickWeight_weight_gain.Rdata}. You can use this code chunk for downloading and loading the data into variable \texttt{stored\_weight\_gain}. Don't forget to attach the column to the data frame!
 
@@ -6237,8 +6743,7 @@ If you were not successful in the previous question, load and attach the data fr
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{F}
-
+\textbf{F}\\
 Create a (single-panel) boxplot for weight gain, split over Diet. Hint: read the \texttt{boxplot()} help page!
 
 \hypertarget{food-constituents}{%
@@ -6246,28 +6751,22 @@ Create a (single-panel) boxplot for weight gain, split over Diet. Hint: read the
 
 The \href{https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/food_constituents.txt}{food constituents dataset} holds information on ingredients for different foods. Individual foods are simply marked with an id.
 
-\textbf{A}
-
+\textbf{A}\\
 Load the data and report the different food categories (\texttt{Type}). Also report the numbers of entries for each Type.
 
-\textbf{B}
-
+\textbf{B}\\
 What is the mean energy content of chocolate foods?
 
-\textbf{C}
-
+\textbf{C}\\
 What is the food category with the highest mean fat content?
 
-\textbf{D}
-
+\textbf{D}\\
 What food category has the highest mean energy content, and which has the lowest?
 
-\textbf{E}
-
+\textbf{E}\\
 \textbf{{[}Challenge{]}} Create a boxplot showing the difference in sugar content between drink and solid food.
 
-\textbf{F}
-
+\textbf{F}\\
 Assuming both unsaturated fats and sugar are bad for you, what food category do you consider the worst? Think of a means to answer this, explain it and carry it out.
 
 \hypertarget{urine-properties}{%
@@ -6284,16 +6783,13 @@ The \href{https://github.com/MichielNoback/datasets/tree/master/urine}{urine spe
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{A}
-
+\textbf{A}\\
 Load the data into a dataframe with name \texttt{urine}.
 
-\textbf{B}
-
+\textbf{B}\\
 Convert the column \texttt{r} into a factor with two levels: \texttt{yes} and \texttt{no}, and give it a better name: \texttt{ox\_crystals}.
 
-\textbf{C}
-
+\textbf{C}\\
 Using \texttt{apply()}, report the mean and standard deviation of the numeric columns only. Give these with only two decimal digits. Use a \emph{named vector} so you get this output:
 
 \begin{verbatim}
@@ -6302,22 +6798,18 @@ mean    1.02 6.03 615.04 20.90 266.41 4.14
 sd      0.01 0.72 238.25  7.95 131.25 3.26
 \end{verbatim}
 
-\textbf{D}
-
+\textbf{D}\\
 Using \texttt{aggregate}, report the mean of the numeric columns, but split over the \texttt{ox\_crystals} variable levels. Which variables seem most likely candidates for a relation with oxalate crystal formation.
 
-\textbf{E}
-
+\textbf{E}\\
 Use the \texttt{pairs()} plotting function to explore the pairwise relationships between the different numeric variables
 
-\textbf{F}
-
+\textbf{F}\\
 Use the \texttt{heatmap.2()} and \texttt{cor()} functions together to create a heatmap of pairwise variable correlations. You will need to install package \texttt{gplots} for the heatmap.2 function. Alternatively, use \texttt{heatmap()} from base R.
 
 Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.2()}?
 
-\textbf{G}
-
+\textbf{G}\\
 {[}\textbf{Challenge}{]} There does not seem to be an interesting correlation between pH and any of the other variables. Sometimes this is becuase you are not looking in enough detail. Let's dig a little further. Use \texttt{cut()} to split the pH variable into a factor with three levels: ``acidic'', ``neutral'' and ``basic'' with breakpoints between them at pH 5.5 and 7. Next, use the \texttt{split()} and \texttt{lapply()} functions to calculate the mean, meadian and sd of the other numeric variables for each level of this pH factor. This exercise can of course be done in many ways. one of them is by using an \texttt{apply()} \emph{within} the applied function of \texttt{lapply()}.
 
 \hypertarget{bird-observations-revisited}{%
@@ -6325,31 +6817,38 @@ Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.
 
 This exercise revisits the bird observations dataset. You can download it \href{data/Observations-Data-2014.csv}{here}. (Re)load the dataset.
 
-\textbf{A}
-
+\textbf{A}\\
 Report the number of observations per \texttt{County}. Use both a textual as a barplot representation. With the barplot, you should order the bars according to observation numbers.
 
-\textbf{B}
-
+\textbf{B}\\
 Report the number of observations per \texttt{Observer.1} but only for observers with more than 10 observations, ordered from high to low observation count. Use \texttt{order()} to achieve this.
 
-\textbf{C}
-
+\textbf{C}\\
 Which observer has the highest number of observations listed (and how many is that)?
 
-\textbf{D}
-
+\textbf{D}\\
 Report the different observed species (using \texttt{Common.name}) for each genus. \textbf{{[}Challenge{]}} Report only the 5 Genera with the highest number of observed species.
 
-\textbf{E}
-
+\textbf{E}\\
 \textbf{{[}Challenge{]}} Create a Dataframe holding the number of birds per day (use Date.start) and plot it with date on the x-axis and number of birds on the y-axis. Hint: use \texttt{as.Date()} to convert the character date to a real date field. See this page how you can do that \href{http://www.statmethods.net/input/dates.html}{Date Values}.
 
 \hypertarget{exercise-solutions}{%
 \chapter{Exercise solutions}\label{exercise-solutions}}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#this is for rounding numbers in this session}
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{digits=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{toolbox-2}{%
 \section{Toolbox}\label{toolbox-2}}
+
+\hypertarget{get-set-up-1}{%
+\subsection{Get set up}\label{get-set-up-1}}
+
+No solution for this one.
 
 \hypertarget{resume-1}{%
 \subsection{Résumé}\label{resume-1}}
@@ -6379,16 +6878,13 @@ No solution for this one.
 ## [1] 42
 ## [1] 144
 ## [1] 16
-## [1] 0.1639
+## [1] 0.164
 \end{verbatim}
 
 \hypertarget{first-look-at-functions-1}{%
 \subsection{First look at functions}\label{first-look-at-functions-1}}
 
-\textbf{A}
-
-View the help page for \texttt{paste()}. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate \emph{exactly} this message \texttt{"welcome\ to\ R"} from these arguments: \texttt{"welcome\ ",\ "to\ ",\ "R"}
-
+\textbf{A}\\
 Answer: \texttt{paste()} and \texttt{paste0()}. The difference lies in the \emph{separator}, which is an empty string in \texttt{paste0()} and one space in \texttt{paste()}. Moreover, the separator can be configured in \texttt{paste()} using the \texttt{sep\ =} parameter.
 
 \begin{Shaded}
@@ -6411,10 +6907,7 @@ Answer: \texttt{paste()} and \texttt{paste0()}. The difference lies in the \emph
 ## [1] "welcome to R"
 \end{verbatim}
 
-\textbf{B}
-
-What does the \texttt{abs} function do? What is returned by \texttt{abs(-20)} and what is \texttt{abs(20)}?
-
+\textbf{B}\\
 Answer: \texttt{abs()} returns the \emph{absolute} value. Simply put, a number with the minus sign removed if present.
 
 \begin{Shaded}
@@ -6437,10 +6930,7 @@ Answer: \texttt{abs()} returns the \emph{absolute} value. Simply put, a number w
 ## [1] 20
 \end{verbatim}
 
-\textbf{C}
-
-What does the \texttt{c} function do? What is the difference in returned value (result) of \texttt{c()} when you combine either \texttt{1}, \texttt{3} and \texttt{"a"} as arguments, or \texttt{1}, \texttt{2} and \texttt{3}? Use the function \texttt{class()} to answer this.
-
+\textbf{C}\\
 Answer: it combines (\textbf{c}oncatenates) its arguments into a single vector. The first example creates a ``character'' (text data) and the second a ``numeric'' (numeric data).
 
 \begin{Shaded}
@@ -6483,6 +6973,17 @@ Answer: it combines (\textbf{c}oncatenates) its arguments into a single vector. 
 ## [1] "numeric"
 \end{verbatim}
 
+\textbf{D}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#install it. Note the quotes}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"RColorBrewer"}\NormalTok{)}
+\CommentTok{#load it into your session. Note the absence of quotes}
+\KeywordTok{library}\NormalTok{(RColorBrewer)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{variables-2}{%
 \subsection{Variables}\label{variables-2}}
 
@@ -6520,7 +7021,7 @@ Answer: it combines (\textbf{c}oncatenates) its arguments into a single vector. 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 24.49
+## [1] 24.5
 \end{verbatim}
 
 \begin{Shaded}
@@ -6540,14 +7041,160 @@ Answer: it combines (\textbf{c}oncatenates) its arguments into a single vector. 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.301
+## [1] 2.3
 \end{verbatim}
 
-\hypertarget{plotting-rules-1}{%
-\subsection*{Plotting rules}\label{plotting-rules-1}}
-\addcontentsline{toc}{subsection}{Plotting rules}
+\hypertarget{vectors-2}{%
+\subsection{Vectors}\label{vectors-2}}
 
-Since everything needs to be done in a (corona virus induced) rush, plots may be (far) from perfect. Sorry about that.
+\hypertarget{circles-1}{%
+\subsubsection*{Circles}\label{circles-1}}
+\addcontentsline{toc}{subsubsection}{Circles}
+
+The circumference of a circle is \(2\pi\cdot r\), its surface \(4\pi \cdot r^2\) and its volume \(4/3 \pi\cdot r^3\).
+Given this vector of circle radiuses,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{radiuses <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, pi, }\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}\\
+Calculate their cirumference.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\NormalTok{radiuses}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  0.00  6.28 12.57 19.74 25.13
+\end{verbatim}
+
+\textbf{B}\\
+Calculate their surface.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4} \OperatorTok{*}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\NormalTok{radiuses}\OperatorTok{^}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   0.0  12.6  50.3 124.0 201.1
+\end{verbatim}
+
+\textbf{C}\\
+Calculate their volume.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{4}\OperatorTok{/}\DecValTok{3} \OperatorTok{*}\StringTok{ }\NormalTok{pi }\OperatorTok{*}\StringTok{ }\NormalTok{radiuses}\OperatorTok{^}\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]   0.00   4.19  33.51 129.88 268.08
+\end{verbatim}
+
+\hypertarget{creating-vectors-2}{%
+\subsubsection*{Creating vectors}\label{creating-vectors-2}}
+\addcontentsline{toc}{subsubsection}{Creating vectors}
+
+Create the following vectors, as efficiently as possible. The functions \texttt{rep()}, \texttt{seq()} and \texttt{paste0()} and the colon operator \texttt{:} can be used, in any combination.
+
+\textbf{A}\\
+\texttt{{[}1{]}\ 1\ 2\ 5\ 1\ 2\ 5}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DataTypeTok{times =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 5 1 2 5
+\end{verbatim}
+
+\textbf{B}\\
+\texttt{{[}1{]}\ 9\ 9\ 9\ 8\ 8\ 8\ 7\ 7\ 7\ 6\ 6\ 6\ 5\ 5\ 5}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\DecValTok{9}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{each =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 9 9 9 8 8 8 7 7 7 6 6 6 5 5 5
+\end{verbatim}
+
+\textbf{C}\\
+\texttt{{[}1{]}\ 1\ 1\ 1\ 4\ 4\ 4\ 9\ 9\ 9\ 1\ 1\ 1\ 4\ 4\ 4\ 9\ 9\ 9}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DataTypeTok{times =} \DecValTok{2}\NormalTok{, }\DataTypeTok{each =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 1 1 4 4 4 9 9 9 1 1 1 4 4 4 9 9 9
+\end{verbatim}
+
+\textbf{D}\\
+\texttt{{[}1{]}\ "1a"\ "2b"\ "3c"\ "4d"\ "5e"\ "1a"\ "2b"\ "3c"\ "4d"\ "5e"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, letters[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{]), }\DataTypeTok{times =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "1a" "2b" "3c" "4d" "5e" "1a" "2b" "3c" "4d" "5e"
+\end{verbatim}
+
+\textbf{E}\\
+\texttt{{[}1{]}\ "0z"\ \ \ "0.2y"\ "0.4x"\ "0.6w"\ "0.8v"\ "1u"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste0}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \DecValTok{1}\NormalTok{, }\DataTypeTok{length.out =} \DecValTok{6}\NormalTok{), letters[}\DecValTok{26}\OperatorTok{:}\DecValTok{21}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "0z"   "0.2y" "0.4x" "0.6w" "0.8v" "1u"
+\end{verbatim}
+
+\textbf{F}\\
+\texttt{{[}1{]}\ "505"\ "404"\ "303"\ "202"\ "101"\ "000"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste0}\NormalTok{(}\DecValTok{5}\OperatorTok{:}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{5}\OperatorTok{:}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "505" "404" "303" "202" "101" "000"
+\end{verbatim}
+
+\textbf{G {[}Challenge{]}}\\
+\texttt{{[}1{]}\ "0.5A5.0"\ "0.4B4.0"\ "0.3C3.0"\ "0.2D2.0"\ "0.1E1.0"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{paste0}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{to =} \FloatTok{0.1}\NormalTok{, }\DataTypeTok{by =} \FloatTok{-0.1}\NormalTok{),  LETTERS[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{], }\DecValTok{5}\OperatorTok{:}\DecValTok{1}\NormalTok{, }\StringTok{".0"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "0.5A5.0" "0.4B4.0" "0.3C3.0" "0.2D2.0" "0.1E1.0"
+\end{verbatim}
 
 \hypertarget{stair-walking-and-heart-rate-1}{%
 \subsection{Stair walking and heart rate}\label{stair-walking-and-heart-rate-1}}
@@ -6611,6 +7258,8 @@ Since everything needs to be done in a (corona virus induced) rush, plots may be
 \end{Shaded}
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/stair-walking-exp-2-1} \end{center}
+
+Yes! there is a better more efficient way to do this, but we have not dealt with that yet.
 
 \hypertarget{chickens-on-a-diet-1}{%
 \subsection{Chickens on a diet}\label{chickens-on-a-diet-1}}
@@ -6737,8 +7386,6 @@ Since everything needs to be done in a (corona virus induced) rush, plots may be
 
 \textbf{B}
 
-Create a combined boxplot of the three time-series. Are they indicative of a normal distribution? Are there outliers? If so, can you figure out when this occurred?
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{boxplot}\NormalTok{(}
@@ -6748,6 +7395,54 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Shaded}
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/lung-cancer-2-1} \end{center}
+
+ANSWER: You can see a single outlier in the \texttt{fdeaths} set. We can identify the year by finding out when this occurred:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{max}\NormalTok{(fdeaths) }\CommentTok{## 1141}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1141
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{which}\NormalTok{(fdeaths }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(fdeaths)) }\CommentTok{## index 26}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 26
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fdeaths}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec
+## 1974  901  689  827  677  522  406  441  393  387  582  578  666
+## 1975  830  752  785  664  467  438  421  412  343  440  531  771
+## 1976  767 1141  896  532  447  420  376  330  357  445  546  764
+## 1977  862  660  663  643  502  392  411  348  387  385  411  638
+## 1978  796  853  737  546  530  446  431  362  387  430  425  679
+## 1979  821  785  727  612  478  429  405  379  393  411  487  574
+\end{verbatim}
+
+So this was February 1976. A quick Google search turned up a pdf document ``CDC Influenza Surveillance'' that states
+
+\begin{quote}
+``The 1975-1976 influenza season was noteworthy because of several events. a) An H3N2 influenza virus (A/Victoria/3/75), isolated first in April 1975, caused a wide- spread epidemic late in the influenza season in the United States. Based on pneumonia- and influenza-associated mortality which peaked in February and March 1976, this was the most severe epidemic experienced by the United States since the 1968-1969 Hong Kong epidemic.''
+\end{quote}
+
+(\href{https://stacks.cdc.gov/view/cdc/287/cdc_287_DS1.pdf}{direct link})
+
+As you may know, (lung) cancer patients are especially vulnerable for influenza infections.
 
 \hypertarget{complex-datatypes-1}{%
 \section{Complex datatypes}\label{complex-datatypes-1}}
@@ -6820,7 +7515,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 \hypertarget{a-dictionary-with-a-named-vector-1}{%
 \subsection{A dictionary with a named vector}\label{a-dictionary-with-a-named-vector-1}}
@@ -6908,7 +7603,7 @@ Create a combined boxplot of the three time-series. Are they indicative of a nor
 
 \begin{verbatim}
 ##   Temp.C Month Day
-## 5  13.33   May   5
+## 5   13.3   May   5
 \end{verbatim}
 
 \textbf{D}
@@ -7223,8 +7918,7 @@ Better results with a log transformation (and some coloring)
 \hypertarget{prosite-patterns-2}{%
 \subsection{Prosite Patterns}\label{prosite-patterns-2}}
 
-\textbf{A}
-
+\textbf{A}\\
 PS00211:\\
 ``{[}LIVMFYC{]}-{[}SA{]}-{[}SAPGLVFYKQH{]}-G-{[}DENQMW{]}-{[}KRQASPCLIMFW{]}-{[}KRNQSTAVM{]}-{[}KRACLVM{]}-{[}LIVMFYPAN{]}-\{PHY\}-{[}LIVMFW{]}-{[}SAGCLIVP{]}-\{FYWHP\}-\{KRHP\}-{[}LIVMFYWSTA{]}.''
 
@@ -7234,8 +7928,7 @@ PS00211:\\
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{B}
-
+\textbf{B}\\
 PS00018:
 ``D-\{W\}-{[}DNS{]}-\{ILVFYW\}-{[}DENSTG{]}-{[}DNQGHRK{]}-\{GP\}-{[}LIVMC{]}-{[}DENQSTAGC{]}-x(2)- {[}DE{]}-{[}LIVMFYW{]}.''
 
@@ -7479,8 +8172,7 @@ To test you method, you can compare \texttt{interquantile\_range(some\_vector,\ 
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/whale-selenium-hist-1} \end{center}
 
-\textbf{E}
-
+\textbf{E}\\
 Inline expressions are like this: 15.4 MpH.
 
 \hypertarget{chickweight-1}{%
@@ -7544,10 +8236,10 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 
 \begin{verbatim}
 ##   Diet weight
-## 1    1  102.6
-## 2    2  122.6
-## 3    3  142.9
-## 4    4  135.3
+## 1    1    103
+## 2    2    123
+## 3    3    143
+## 4    4    135
 \end{verbatim}
 
 \begin{Shaded}
@@ -7558,11 +8250,11 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Shaded}
 
 \begin{verbatim}
-##   Diet     x
-## 1    1 102.6
-## 2    2 122.6
-## 3    3 142.9
-## 4    4 135.3
+##   Diet   x
+## 1    1 103
+## 2    2 123
+## 3    3 143
+## 4    4 135
 \end{verbatim}
 
 \textbf{C}
@@ -7573,7 +8265,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-104-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 \textbf{D}
 
@@ -7686,14 +8378,11 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/foods-boxplot-1} \end{center}
 
-\textbf{F}
-
+\textbf{F}\\
 \[NO WORKED SOLUTION HERE\]
 
 \hypertarget{urine-properties-1}{%
 \subsection{Urine properties}\label{urine-properties-1}}
-
-The \href{https://github.com/MichielNoback/datasets/tree/master/urine}{urine specimens dataset} contains a \texttt{readme.txt} file and a data file (\texttt{urine.csv}; direct link: ``\url{https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/urine.csv}''). Study the readme to get an idea of the data. Download the file like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7706,102 +8395,15 @@ The \href{https://github.com/MichielNoback/datasets/tree/master/urine}{urine spe
 
 \textbf{A}
 
-Load the data into a dataframe with name \texttt{urine}.
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{(urine <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(local_name, }
+\NormalTok{urine <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(local_name, }
                      \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
-                     \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{))}
+                     \DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##     X r gravity   ph osmo cond urea  calc
-## 1   1 0   1.021 4.91  725   NA  443  2.45
-## 2   2 0   1.017 5.74  577 20.0  296  4.49
-## 3   3 0   1.008 7.20  321 14.9  101  2.36
-## 4   4 0   1.011 5.51  408 12.6  224  2.15
-## 5   5 0   1.005 6.52  187  7.5   91  1.16
-## 6   6 0   1.020 5.27  668 25.3  252  3.34
-## 7   7 0   1.012 5.62  461 17.4  195  1.40
-## 8   8 0   1.029 5.67 1107 35.9  550  8.48
-## 9   9 0   1.015 5.41  543 21.9  170  1.16
-## 10 10 0   1.021 6.13  779 25.7  382  2.21
-## 11 11 0   1.011 6.19  345 11.5  152  1.93
-## 12 12 0   1.025 5.53  907 28.4  448  1.27
-## 13 13 0   1.006 7.12  242 11.3   64  1.03
-## 14 14 0   1.007 5.35  283  9.9  147  1.47
-## 15 15 0   1.011 5.21  450 17.9  161  1.53
-## 16 16 0   1.018 4.90  684 26.1  284  5.09
-## 17 17 0   1.007 6.63  253  8.4  133  1.05
-## 18 18 0   1.025 6.81  947 32.6  395  2.03
-## 19 19 0   1.008 6.88  395 26.1   95  7.68
-## 20 20 0   1.014 6.14  565 23.6  214  1.45
-## 21 21 0   1.024 6.30  874 29.9  380  5.16
-## 22 22 0   1.019 5.47  760 33.8  199  0.81
-## 23 23 0   1.014 7.38  577 30.1   87  1.32
-## 24 24 0   1.020 5.96  631 11.2  422  1.55
-## 25 25 0   1.023 5.68  749 29.0  239  1.52
-## 26 26 0   1.017 6.76  455  8.8  270  0.77
-## 27 27 0   1.017 7.61  527 25.8   75  2.17
-## 28 28 0   1.010 6.61  225  9.8   72  0.17
-## 29 29 0   1.008 5.87  241  5.1  159  0.83
-## 30 30 0   1.020 5.44  781 29.0  349  3.04
-## 31 31 0   1.017 7.92  680 25.3  282  1.06
-## 32 32 0   1.019 5.98  579 15.5  297  3.93
-## 33 33 0   1.017 6.56  559 15.8  317  5.38
-## 34 34 0   1.008 5.94  256  8.1  130  3.53
-## 35 35 0   1.023 5.85  970 38.0  362  4.54
-## 36 36 0   1.020 5.66  702 23.6  330  3.98
-## 37 37 0   1.008 6.40  341 14.6  125  1.02
-## 38 38 0   1.020 6.35  704 24.5  260  3.46
-## 39 39 0   1.009 6.37  325 12.2   97  1.19
-## 40 40 0   1.018 6.18  694 23.3  311  5.64
-## 41 41 0   1.021 5.33  815 26.0  385  2.66
-## 42 42 0   1.009 5.64  386 17.7  104  1.22
-## 43 43 0   1.015 6.79  541 20.9  187  2.64
-## 44 44 0   1.010 5.97  343 13.4  126  2.31
-## 45 45 0   1.020 5.68  876 35.8  308  4.49
-## 46 46 1   1.021 5.94  774 27.9  325  6.96
-## 47 47 1   1.024 5.77  698 19.5  354 13.00
-## 48 48 1   1.024 5.60  866 29.5  360  5.54
-## 49 49 1   1.021 5.53  775 31.2  302  6.19
-## 50 50 1   1.024 5.36  853 27.6  364  7.31
-## 51 51 1   1.026 5.16  822 26.0  301 14.34
-## 52 52 1   1.013 5.86  531 21.4  197  4.74
-## 53 53 1   1.010 6.27  371 11.2  188  2.50
-## 54 54 1   1.011 7.01  443 21.4  124  1.27
-## 55 55 1   1.022 6.21   NA 20.6  398  4.18
-## 56 56 1   1.011 6.13  364 10.9  159  3.10
-## 57 57 1   1.031 5.73  874 17.4  516  3.01
-## 58 58 1   1.020 7.94  567 19.7  212  6.81
-## 59 59 1   1.040 6.28  838 14.3  486  8.28
-## 60 60 1   1.021 5.56  658 23.6  224  2.33
-## 61 61 1   1.025 5.71  854 27.0  385  7.18
-## 62 62 1   1.026 6.19  956 27.6  473  5.67
-## 63 63 1   1.034 5.24 1236 27.3  620 12.68
-## 64 64 1   1.033 5.58 1032 29.1  430  8.94
-## 65 65 1   1.015 5.98  487 14.8  198  3.16
-## 66 66 1   1.013 5.58  516 20.8  184  3.30
-## 67 67 1   1.014 5.90  456 17.8  164  6.99
-## 68 68 1   1.012 6.75  251  5.1  141  0.65
-## 69 69 1   1.025 6.90  945 33.6  396  4.18
-## 70 70 1   1.026 6.29  833 22.2  457  4.45
-## 71 71 1   1.028 4.76  312 12.4   10  0.27
-## 72 72 1   1.027 5.40  840 24.5  395  7.64
-## 73 73 1   1.018 5.14  703 29.0  272  6.63
-## 74 74 1   1.022 5.09  736 19.8  418  8.53
-## 75 75 1   1.025 7.90  721 23.6  301  9.04
-## 76 76 1   1.017 4.81  410 13.3  195  0.58
-## 77 77 1   1.024 5.40  803 21.8  394  7.82
-## 78 78 1   1.016 6.81  594 21.4  255 12.20
-## 79 79 1   1.015 6.03  416 12.8  178  9.39
-\end{verbatim}
-
 \textbf{B}
-
-Convert the column \texttt{r} into a factor with two levels: \texttt{yes} and \texttt{no}, and give it a better name: \texttt{ox\_crystals}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7811,14 +8413,6 @@ Convert the column \texttt{r} into a factor with two levels: \texttt{yes} and \t
 \end{Shaded}
 
 \textbf{C}
-
-Using \texttt{apply()}, report the mean and standard deviation of the numeric columns only. Give these with only two decimal digits. Use a \emph{named vector} so you get this output:
-
-\begin{verbatim}
-     gravity   ph   osmo  cond   urea calc
-mean    1.02 6.03 615.04 20.90 266.41 4.14
-sd      0.01 0.72 238.25  7.95 131.25 3.26
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7832,14 +8426,12 @@ sd      0.01 0.72 238.25  7.95 131.25 3.26
 \end{Shaded}
 
 \begin{verbatim}
-##      gravity   ph  osmo  cond  urea calc
-## mean    1.02 6.03 615.0 20.90 266.4 4.14
-## sd      0.01 0.72 238.2  7.95 131.2 3.26
+##      gravity   ph osmo  cond urea calc
+## mean    1.02 6.03  615 20.90  266 4.14
+## sd      0.01 0.72  238  7.95  131 3.26
 \end{verbatim}
 
 \textbf{D}
-
-Using \texttt{aggregate}, report the mean of the numeric columns, but split over the \texttt{ox\_crystals} variable levels. Which variables seem most likely candidates for a relation with oxalate crystal formation.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7850,14 +8442,12 @@ Using \texttt{aggregate}, report the mean of the numeric columns, but split over
 \end{Shaded}
 
 \begin{verbatim}
-##   ox_crystals gravity   ph  osmo  cond  urea calc
-## 1          no    1.02 6.13 561.7 20.55 232.4 2.63
-## 2         yes    1.02 5.93 682.9 21.38 302.4 6.20
+##   ox_crystals gravity   ph osmo cond urea calc
+## 1          no    1.02 6.13  562 20.6  232 2.63
+## 2         yes    1.02 5.93  683 21.4  302 6.20
 \end{verbatim}
 
 \textbf{E}
-
-Use the \texttt{pairs()} plotting function to explore the pairwise relationships between the different numeric variables
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7865,29 +8455,22 @@ Use the \texttt{pairs()} plotting function to explore the pairwise relationships
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-113-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-115-1.pdf}
 
 \textbf{F}
-
-Use the \texttt{heatmap.2()} and \texttt{cor()} functions together to create a heatmap of pairwise variable correlations. You will need to install package \texttt{gplots} for the heatmap.2 function. Alternatively, use \texttt{heatmap()} from base R.
-
-Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.2()}?
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#install.packages("gplots")}
 \KeywordTok{library}\NormalTok{(}\StringTok{"gplots"}\NormalTok{)}
-
 \NormalTok{cormat <-}\StringTok{ }\KeywordTok{cor}\NormalTok{(urine[, }\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{], }\DataTypeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
 \KeywordTok{heatmap.2}\NormalTok{(cormat, }\DataTypeTok{col =} \KeywordTok{bluered}\NormalTok{(}\DecValTok{100}\NormalTok{), }\DataTypeTok{trace =} \StringTok{"none"}\NormalTok{, }\DataTypeTok{density.info =} \StringTok{"none"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-114-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-116-1.pdf}
 
 \textbf{G}
-
-{[}\textbf{Challenge}{]} There does not seem to be an interesting correlation between pH and any of the other variables. Sometimes this is becuase you are not looking in enough detail. Let's dig a little further. Use \texttt{cut()} to split the pH variable into a factor with three levels: ``acidic'', ``neutral'' and ``basic'' with breakpoints between them at pH 5.5 and 7. Next, use the \texttt{split()} and \texttt{lapply()} functions to calculate the mean, meadian and sd of the other numeric variables for each level of this pH factor. This exercise can of course be done in many ways. one of them is by using an \texttt{apply()} \emph{within} the applied function of \texttt{lapply()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7918,22 +8501,22 @@ Which visualization do you prefer - the \texttt{pairs()} or the \texttt{heatmap.
 
 \begin{verbatim}
 ## $acidic
-##        gravity    ph  osmo  cond  urea calc
-## mean      1.02 5.200 690.2 23.04 297.7 4.85
-## median    1.02 5.255 730.5 25.30 292.5 3.19
-## sd        0.01 0.230 227.1  6.52 140.7 4.19
+##        gravity   ph osmo  cond urea calc
+## mean      1.02 5.20  690 23.04  298 4.85
+## median    1.02 5.25  730 25.30  292 3.19
+## sd        0.01 0.23  227  6.52  141 4.19
 ## 
 ## $neutral
-##        gravity   ph  osmo  cond  urea calc
-## mean     1.020 6.09 605.2 20.12 272.5 4.05
-## median   1.017 5.98 578.0 20.60 260.0 3.46
-## sd       0.010 0.42 246.8  8.56 126.0 2.93
+##        gravity   ph osmo  cond urea calc
+## mean      1.02 6.09  605 20.12  272 4.05
+## median    1.02 5.98  578 20.60  260 3.46
+## sd        0.01 0.42  247  8.56  126 2.93
 ## 
 ## $basic
-##        gravity    ph  osmo  cond   urea  calc
-## mean     1.010 7.510 509.8 21.51 155.75 3.130
-## median   1.015 7.495 547.0 22.50 112.50 1.745
-## sd       0.010 0.380 166.2  6.12  95.52 3.060
+##        gravity   ph osmo  cond  urea calc
+## mean      1.01 7.51  510 21.51 155.8 3.13
+## median    1.02 7.50  547 22.50 112.5 1.75
+## sd        0.01 0.38  166  6.12  95.5 3.06
 \end{verbatim}
 
 \hypertarget{bird-observations-revisited-1}{%
