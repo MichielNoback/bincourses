@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-04}
+    \date{2020-04-07}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -429,8 +429,8 @@ YouTube
 Starting with R studio
 YouTube
 
-\hypertarget{basic-r---coding-basics}{%
-\chapter{Basic R - coding basics}\label{basic-r---coding-basics}}
+\hypertarget{basic-r---coding}{%
+\chapter{Basic R - coding}\label{basic-r---coding}}
 
 \hypertarget{first-look-at-vectors-fuctions-and-variables}{%
 \section{First look at vectors, fuctions and variables}\label{first-look-at-vectors-fuctions-and-variables}}
@@ -1584,8 +1584,8 @@ Follow Hadleys' style guide \url{http://adv-r.had.co.nz/Style.html}
   \texttt{ctr\ +\ shift\ +\ o} source the current document
 \end{itemize}
 
-\hypertarget{basic-r---plotting-basics}{%
-\chapter{Basic R - plotting basics}\label{basic-r---plotting-basics}}
+\hypertarget{basic-r---plotting}{%
+\chapter{Basic R - plotting}\label{basic-r---plotting}}
 
 \hypertarget{basic-embedded-plot-types}{%
 \section{Basic embedded plot types}\label{basic-embedded-plot-types}}
@@ -1758,7 +1758,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     46     54
+##     54     46
 \end{verbatim}
 
 \begin{Shaded}
@@ -5613,9 +5613,9 @@ That's it. The lessons learned here:
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
 
-This chapter introduces you to the concept of Exploratory Data Analysis (EDA). In EDA a dataset is analysed with the goal of assessing its main characteristics, including its quality and usablity for subsequent statistical modelling and analysis. Data summary techniques and visualizations ore used in an EDA. There is no fixed set of activities; each dataset poses its own questions and challenges.
+This chapter introduces you to the concept of Exploratory Data Analysis (EDA). In EDA a dataset is analysed with the goal of assessing its main characteristics, including its quality and usability for subsequent statistical modelling and analysis. Data summary techniques and visualizations ore used in an EDA. There is no fixed set of activities; each dataset poses its own questions and challenges.
 
-Datasets are often expensive and time-consuming to collect, and therefore they are ususally collected with a specific goal in mind. The EDA you perform should always be with this goal on the horizon: is the dataset of sufficient quality to answer the scientific questions for which they were collected?
+Datasets are often expensive and time-consuming to collect, and therefore they are usually collected with a specific goal in mind. The EDA you perform should always be with this goal on the horizon: is the dataset of sufficient quality to answer the scientific questions for which they were collected?
 
 \hypertarget{eda-outline}{%
 \subsubsection*{EDA outline}\label{eda-outline}}
@@ -5641,7 +5641,7 @@ Note that your EDA results should \emph{always} be accompanied by text that desc
 
 In this chapter I will demonstrate a short EDA on the ``Yeast dataset'' from the UCI Machine Learning repository.
 
-It is outside the scope of this short analysis to delve too deeply in the attribute background information, but you should realise that for a real analysis this is absolutely critical: without domain knowledge the you won't have the insight to identify strange, worrying or surprising results.
+It is outside the scope of this short analysis to delve too deeply in the attribute background information, but you should realize that for a real analysis this is absolutely critical: without domain knowledge the you won't have the insight to identify strange, worrying or surprising results.
 
 \hypertarget{eda-of-the-yeast-dataset}{%
 \section{EDA of the Yeast dataset}\label{eda-of-the-yeast-dataset}}
@@ -5651,9 +5651,9 @@ It is outside the scope of this short analysis to delve too deeply in the attrib
 
 The data were collected from the \href{https://archive.ics.uci.edu/ml/datasets/Yeast}{UCI Machine Learning website}. To ensure their continued availability the files were copied to a personal \href{https://github.com/MichielNoback/datasets/tree/master/UCI_yeast_protein_loc}{repository}.
 
-The data were accompanied by a \emph{very} short abstract: \textbf{\emph{``Predicting the Cellular Localization Sites of Proteins''}}. The data description states there are 1484 instances, each with 8 attributes (variables) and a class label. The class label is the variable we wish to biuld a model for so this is the dependent variable.
+The data were accompanied by a \emph{very} short abstract: \textbf{\emph{``Predicting the Cellular Localization Sites of Proteins''}}. The data description states there are 1484 instances, each with 8 attributes (variables) and a class label. The class label is the variable we wish to build a model for so this is the dependent variable.
 
-The \emph{Attribute Information} section descibes these variables:
+The \emph{Attribute Information} section describes these variables:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5682,7 +5682,7 @@ The sequence name is not interesting in this EDA: we are interested in patterns,
 
 There seem to be two attributes (\texttt{mcg} and \texttt{gvh}) measuring the same property - the presence of a signal sequence which is the N-terminal part of a protein signalling the cellular machinery the protein should be exported.
 
-Very simply put, if this scoring system was perfect each of the attributes (except \texttt{mcg} and \texttt{gvh}) would unequivocally ``assign'' the protein in question to a cellular location: Cellular external matrix, membrane inserted, mitochondrial, endoplasmic reticulum lumen, peroxisomal, vacualar or nuclear.
+Very simply put, if this scoring system was perfect each of the attributes (except \texttt{mcg} and \texttt{gvh}) would unequivocally ``assign'' the protein in question to a cellular location: Cellular external matrix, membrane inserted, mitochondrial, endoplasmic reticulum lumen, peroxisomal, vacuolar or nuclear.
 
 The tenth variable in the data is the dependent or explanatory variable. The \texttt{yeast.names} file describes it like this:
 
@@ -5701,7 +5701,7 @@ Class Distribution. The class is the localization site. Please see Nakai &
   ERL (endoplasmic reticulum lumen)                    5
 \end{verbatim}
 
-This tells me the different localizations are by no means equally distributed; there is an overrepresentation of ``cytosolic or cytoskeletal'' and ``nuclear'' and a huge underrepresentation of especially endoplasmic reticulum lumen proteins.
+This tells me the different localizations are by no means equally distributed; there is an over representation of ``cytosolic or cytoskeletal'' and ``nuclear'' and a huge under representation of especially endoplasmic reticulum lumen proteins.
 
 \hypertarget{data-loading-and-prepping}{%
 \subsection{Data loading and prepping}\label{data-loading-and-prepping}}
@@ -5743,7 +5743,7 @@ Since I am going to rerun the code in this notebook often I am going to create a
 
 The data seems to have been loaded correctly and, as expected since that was stated in the original data description, there are no missing data.
 
-The column names were not defined in the data file so this will be fixed first. I will create a data frame that also holds the column desciptions. I have put the data in a small text file for easy loading and editing; the attribute descriptions copied/pasted into a text file and with find/replace converted in easy to load form, and a new \texttt{label} column added for use in plotting. There were a few occurences of the \texttt{\textquotesingle{}} character which always corrupt data import into R. They were removed.
+The column names were not defined in the data file so this will be fixed first. I will create a data frame that also holds the column descriptions. I have put the data in a small text file for easy loading and editing; the attribute descriptions copied/pasted into a text file and with find/replace converted in easy to load form, and a new \texttt{label} column added for use in plotting. There were a few occurrences of the \texttt{\textquotesingle{}} character which always corrupt data import into R. They were removed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5891,9 +5891,9 @@ Here are all the numeric attributes in a single panel. I chose histogram over bo
 \end{Highlighting}
 \end{Shaded}
 
-Here, it can be seen that the attributes ``ER-retention'' and ``Peroxisomal'' are pretty much uninformative, a problem probably largely caused by the low abundance of protiens in these classes. Surprisingly enough, the ``Vacuolar'' property which is also low-abundant, does not have this extreme distribution.
+Here, it can be seen that the attributes ``ER-retention'' and ``Peroxisomal'' are pretty much uninformative, a problem probably largely caused by the low abundance of proteins in these classes. Surprisingly enough, the ``Vacuolar'' property which is also low-abundant, does not have this extreme distribution.
 
-What is also striking is that, although these attributes are probablitities of targeting signals, none (with the exception of the two low-abundance ones) show a more or less bimodal distribution as you would naively expect.
+What is also striking is that, although these attributes are probabilities of targeting signals, none (with the exception of the two low-abundance ones) show a more or less bi-modal distribution as you would naively expect.
 
 \hypertarget{attribute-relationships}{%
 \subsection{Attribute relationships}\label{attribute-relationships}}
@@ -6285,7 +6285,7 @@ With the data from the previous question, create a bar plot of the maximum weigh
 The R language comes with a wealth of datasets for you to use as practice materials. We will see several of these. One of these datasets is The Time-Series dataset called \texttt{discoveries} holding the numbers of ``great'' inventions and scientific discoveries in each year from 1860 to 1959. Type its name in the console to see it. Create plot(s) answering these questions:
 
 \textbf{A}\\
-What is the number of discoveries per year? Use the \texttt{barplot()} and \texttt{table()} functions for this.
+What is the frequency distribution of the number of discoveries per year? Use the \texttt{barplot()} and \texttt{table()} functions for this.
 
 \textbf{B}\\
 What is the 5-number summary of discoveries per year?
@@ -7559,7 +7559,7 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 \end{Shaded}
 
 \hypertarget{airquality-1}{%
-\subsection{airquality}\label{airquality-1}}
+\subsection{Airquality}\label{airquality-1}}
 
 \textbf{A}
 
@@ -7579,15 +7579,18 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{with}\NormalTok{(airquality, }
-        \KeywordTok{boxplot}\NormalTok{(Temp }\OperatorTok{~}\StringTok{ }\NormalTok{Month, }
-        \DataTypeTok{main =} \StringTok{"Temperature over the months"}\NormalTok{,}
-        \DataTypeTok{xlab =} \StringTok{"Month"}\NormalTok{,}
-        \DataTypeTok{ylab =} \StringTok{"Temperature (F)"}\NormalTok{))}
+\KeywordTok{with}\NormalTok{(datasets}\OperatorTok{::}\NormalTok{airquality, \{}
+\NormalTok{  m <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(Month, }\DataTypeTok{levels =} \DecValTok{5}\OperatorTok{:}\DecValTok{9}\NormalTok{, }\DataTypeTok{labels =}\NormalTok{ month.abb[}\DecValTok{5}\OperatorTok{:}\DecValTok{9}\NormalTok{])}
+  \KeywordTok{boxplot}\NormalTok{(Temp }\OperatorTok{~}\StringTok{ }\NormalTok{m, }
+    \DataTypeTok{main =} \StringTok{"Temperature over the months"}\NormalTok{,}
+    \DataTypeTok{xlab =} \StringTok{"Month"}\NormalTok{,}
+    \DataTypeTok{ylab =} \StringTok{"Temperature (F)"}\NormalTok{)\})}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/airquality-2-1} \end{center}
+
+(No output: Evaluation of this chunk in book building gave an error. )
 
 \textbf{C}
 
