@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-04-07" />
+<meta name="date" content="2020-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="exercises.html"><a href="exercises.html#complex-datatypes"><i class="fa fa-check"></i><b>10.3</b> Complex datatypes</a><ul>
 <li class="chapter" data-level="10.3.1" data-path="exercises.html"><a href="exercises.html#creating-factors"><i class="fa fa-check"></i><b>10.3.1</b> Creating factors</a></li>
 <li class="chapter" data-level="10.3.2" data-path="exercises.html"><a href="exercises.html#a-dictionary-with-a-named-vector"><i class="fa fa-check"></i><b>10.3.2</b> A dictionary with a named vector</a></li>
-<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.3</b> airquality</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.3</b> Airquality</a></li>
 <li class="chapter" data-level="10.3.4" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.4</b> Bird observations</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
@@ -559,7 +559,7 @@ Make a modified copy of this code chunk in such a way that no spaces are present
 <pre class="sourceCode r"><code class="sourceCode r">nuc_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">491.2</span>, <span class="fl">467.2</span>, <span class="fl">507.2</span>, <span class="fl">482.2</span>)</code></pre>
 </div>
 <div id="airquality" class="section level3">
-<h3><span class="header-section-number">10.3.3</span> airquality</h3>
+<h3><span class="header-section-number">10.3.3</span> Airquality</h3>
 <p>The <code>airquality</code> dataset is also one of the datasets included in the <code>datasets</code> package. We’ll explore this for a few questions.</p>
 <p><strong>A</strong><br />
 Create a scatterplot of Temperature as a function of Solar radiation. Is there, as you might naively expect, a strong correlation? You could use <code>cor.test()</code> to find out. Add a linear model using <code>lm()</code> to extend your plot.</p>
@@ -571,6 +571,7 @@ What date (day/month) has the lowest recorded temperature? Which the highest? Pl
 Create a histogram of the wind speeds, and add a thick blue vertical line for the value of the mean and a fat red line for the median (use <code>abline()</code> for this).</p>
 <p><strong>E</strong><br />
 Use the <code>pairs()</code> function with argument <code>panel = panel.smooth</code> to plot all pairwise correlations between Ozone, Solar radiation, Wind and Temperature. Which pair shows the strongest correlation in your opinion? Verify this using the <code>cor()</code> function after removing incomplete cases. Create a separate well annotated scatterplot of this pair.</p>
+<p>[<strong>Challenge</strong>] Through the <code>summary()</code> function you can obtain the R-squared value -the strength of the correlation- like this: <code>summary(your_linear_model)$r.squared</code>. Can you place it within the plot using the <code>text()</code> function?</p>
 </div>
 <div id="bird-observations" class="section level3">
 <h3><span class="header-section-number">10.3.4</span> Bird observations</h3>
@@ -603,9 +604,9 @@ Compare the first 50 values of the Number and Count columns again. Has the conve
 <p><strong>G</strong><br />
 Explore the sighting counts:</p>
 <ul>
-<li>What is the maximum number of birds in a single sighting? (Use max() and which() or is.na() to solve this)</li>
-<li>What is the mean sighting count</li>
-<li>What is the median of the sighting count</li>
+<li>Report the sighting with the maximum number of birds in a single sighting?</li>
+<li>What is the mean sighting count?</li>
+<li>What is the median of the sighting count?</li>
 </ul>
 <p><strong>H</strong><br />
 Is the <code>Count</code> variable a normal distributed value? You can use <code>hist(...)</code>, <code>table()</code> or <code>plot(density(...))</code> to explore this further.</p>
@@ -617,6 +618,7 @@ Explore the species constitution:</p>
 <li>What species from the genus “Puffinus” have been observed?</li>
 </ul>
 <p>Hint: use the function <code>unique()</code> here.</p>
+<p>[<strong>Challenge</strong>] The number of unique “common names” should equal the number of unique “scientific names” since each species has a common name and a scientific name. The scientific name can be generated from Genus and Species. Investigate this. Is it correct? If not, what went wrong?</p>
 <p><strong>J [Challenge]</strong><br />
 This is a challenge exercise for those who like to grind their brains! Think of a strategy to “rescue” the NAs that appear after transforming “Number” to “Count”. Hint: use <code>gsub()</code> or<code>grep()</code></p>
 </div>
@@ -717,7 +719,7 @@ Where <em>p</em> and <em>q</em> are the two vectors and <em>n</em> the length of
 You should first perform a check whether the two vectors are of equal length and both of type <code>numeric</code> or <code>integer</code>. If not, the function should abort with an appropriate error message.</p>
 <div id="other-distance-measures" class="section level4 unnumbered">
 <h4>Other distance measures</h4>
-<p>Extend the function of the previous assignment in such a way that a third argument is accepted, <code>method =</code>, which defaults to “euclidean”. Other possible distance measures are “Manhattan” (same as “city block” and “taxicab”) and Pearson correlation. Look the equations for these up in Wikipedia or some other place.</p>
+<p>Extend the function of the previous assignment in such a way that a third argument is accepted, <code>method =</code>, which defaults to “euclidean”. Other possible distance measures are “Manhattan” (same as “city block” and “taxicab”) and [<strong>Challenge</strong>] Pearson correlation. Look the equations for these up in Wikipedia or some other place.</p>
 </div>
 </div>
 <div id="gc-percentage-of-dna" class="section level3">
@@ -758,7 +760,7 @@ Use <code>aggregate()</code> to get the mean weight of the chickens for the diff
 <p><strong>C</strong><br />
 Use <code>coplot()</code> to plot a panel with weight as function of Time, split over Diet.</p>
 <p><strong>D</strong><br />
-Add a column called <code>weight_gain</code> to the dataframe holding values for the weight gain since the last measurement. Take special care with rows marking the boundaries between individual chickens! You could consider using a traditional for loop here.
+[<strong>Challenge</strong>] Add a column called <code>weight_gain</code> to the dataframe holding values for the weight gain since the last measurement. Take special care with rows marking the boundaries between individual chickens! You could consider using a traditional for loop here.
 In the next course, we’ll see a more efficient way of doing this.</p>
 <p><strong>E</strong><br />
 Split the <code>weight_gain</code> column on Diet and report the mean, median and standard deviation for each diet.

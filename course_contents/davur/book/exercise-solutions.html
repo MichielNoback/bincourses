@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-04-07" />
+<meta name="date" content="2020-04-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="exercises.html"><a href="exercises.html#complex-datatypes"><i class="fa fa-check"></i><b>10.3</b> Complex datatypes</a><ul>
 <li class="chapter" data-level="10.3.1" data-path="exercises.html"><a href="exercises.html#creating-factors"><i class="fa fa-check"></i><b>10.3.1</b> Creating factors</a></li>
 <li class="chapter" data-level="10.3.2" data-path="exercises.html"><a href="exercises.html#a-dictionary-with-a-named-vector"><i class="fa fa-check"></i><b>10.3.2</b> A dictionary with a named vector</a></li>
-<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.3</b> airquality</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.3</b> Airquality</a></li>
 <li class="chapter" data-level="10.3.4" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.4</b> Bird observations</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
@@ -741,7 +741,6 @@ mol_weight</code></pre>
     <span class="dt">xlab =</span> <span class="st">&quot;Month&quot;</span>,
     <span class="dt">ylab =</span> <span class="st">&quot;Temperature (F)&quot;</span>)})</code></pre>
 <p><img src="davur_ebook_files/figure-html/airquality-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>(No output: Evaluation of this chunk in book building gave an error. )</p>
 <p><strong>C</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#first create Temp Celcius column:</span>
 <span class="co">#(°F    -    32)    x    5/9 = °C</span>
@@ -756,10 +755,27 @@ airquality[airquality<span class="op">$</span>Temp.C <span class="op">==</span><
 <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">median</span>(airquality<span class="op">$</span>Wind), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre>
 <p><img src="davur_ebook_files/figure-html/airquality-4-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><strong>E</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(airquality, <span class="dt">panel =</span> panel.smooth)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##remove temp celcius agan</span>
+airquality<span class="op">$</span>Temp.C &lt;-<span class="st"> </span><span class="ot">NULL</span>
+<span class="kw">pairs</span>(airquality, <span class="dt">panel =</span> panel.smooth)</code></pre>
 <p><img src="davur_ebook_files/figure-html/airquality-5-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Calculate pairwise correlation.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(<span class="kw">na.omit</span>(airquality))</code></pre>
+<p>The Ozone~Temp pair has the strongest correlation. A scatterplot of this pair:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(airquality<span class="op">$</span>Ozone <span class="op">~</span><span class="st"> </span>airquality<span class="op">$</span>Temp,
+     <span class="dt">xlab =</span> <span class="st">&quot;Temperature (F)&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Ozone (ppb)&quot;</span>,
+     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+ozone_wind_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(airquality<span class="op">$</span>Ozone <span class="op">~</span><span class="st"> </span>airquality<span class="op">$</span>Temp)
+r_squared &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">summary</span>(ozone_wind_lm)<span class="op">$</span>r.squared, <span class="dv">2</span>)
+<span class="kw">abline</span>(ozone_wind_lm, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="kw">text</span>(<span class="dt">x =</span> <span class="dv">60</span>, <span class="dt">y =</span> <span class="dv">125</span>, <span class="dt">labels =</span> <span class="kw">paste0</span>(<span class="st">&quot;R^2 = &quot;</span>, r_squared))</code></pre>
+<div class="figure"><span id="fig:airquality-strongest-corr"></span>
+<img src="davur_ebook_files/figure-html/airquality-strongest-corr-1.png" alt="Ozone dependency on Temp" width="672" />
+<p class="caption">
+Figure 11.1: Ozone dependency on Temp
+</p>
+</div>
 </div>
 <div id="bird-observations-1" class="section level3">
 <h3><span class="header-section-number">11.3.4</span> Bird observations</h3>
@@ -833,7 +849,7 @@ airquality[airquality<span class="op">$</span>Temp.C <span class="op">==</span><
 ## 50            Blue-winged Teal      1     1</code></pre>
 <p>The factor <strong><em>levels</em></strong> have been converted into integers, not the original values!</p>
 <p><strong>E</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read with as.is argument</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#best is to get it right from the start: read with as.is argument</span>
 bird_obs &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/Observations-Data-2014.csv&quot;</span>,
                                 <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,
                                 <span class="dt">head=</span>T,
@@ -856,6 +872,8 @@ bird_obs &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span 
 ##  $ Observer.1 : Factor w/ 692 levels &quot;A Sojourner&quot;,..: 216 351 544 623 333 623 623 623 323 206 ...
 ##  $ Other.Obs  : Factor w/ 157 levels &quot;Aaron Maizlish&quot;,..: NA NA NA NA NA NA NA NA 155 NA ...
 ##  $ Notes      : chr  &quot;Adult bird seen on golf course grounds with Canada geese!&quot; &quot;Saw 6 along the shoreline of Napa Creek in mid-afternoon.  About 10 Mallards also  swimming nearby and a Caspia&quot;| __truncated__ NA &quot;This is the only bird that matches up with what I saw. Canada like goose, snow white bum prominent, coloring sl&quot;| __truncated__ ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##alternatively, convert it after loading:</span>
+<span class="co">#bird_obs$Count &lt;- as.numeric(as.character(bird_obs$Number))</span></code></pre>
 <p>Convert Number column to Count of integers.</p>
 <pre class="sourceCode r"><code class="sourceCode r">bird_obs<span class="op">$</span>Count &lt;-<span class="st"> </span><span class="kw">as.integer</span>(bird_obs<span class="op">$</span>Number)</code></pre>
 <pre><code>## Warning: NAs introduced by coercion</code></pre>
@@ -865,7 +883,8 @@ bird_obs &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span 
 <span class="kw">sum</span>(<span class="kw">is.na</span>(bird_obs<span class="op">$</span>Count))</code></pre>
 <p><strong>G</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#What is the maximum number of birds in a single sighting?</span>
-bird_obs[<span class="kw">which</span>(bird_obs<span class="op">$</span>Count <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(bird_obs<span class="op">$</span>Count, <span class="dt">na.rm =</span> T)), ]
+
+bird_obs[bird_obs<span class="op">$</span>Count <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(bird_obs<span class="op">$</span>Count, <span class="dt">na.rm =</span> T), ]
 <span class="co">##OR</span>
 bird_obs[<span class="op">!</span><span class="kw">is.na</span>(bird_obs<span class="op">$</span>Count) <span class="op">&amp;</span><span class="st"> </span>bird_obs<span class="op">$</span>Count <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(bird_obs<span class="op">$</span>Count, <span class="dt">na.rm =</span> T), ]
 
@@ -886,6 +905,14 @@ bird_obs[<span class="op">!</span><span class="kw">is.na</span>(bird_obs<span cl
 <span class="kw">plot</span>(d, <span class="dt">main =</span> <span class="st">&quot;density of log-transformed Counts&quot;</span>)
 <span class="kw">polygon</span>(d, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">border =</span> <span class="st">&quot;blue&quot;</span>)</code></pre>
 <p><img src="davur_ebook_files/figure-html/bird-obs-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>The Shapiro test gives us a numeric indication of the fit to a normal distribution:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>(bird_obs<span class="op">$</span>Count)</code></pre>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  bird_obs$Count
+## W = 0.01, p-value &lt;2e-16</code></pre>
+<p>The P-value -way below 0.05- indicates this is not a normal distribution. But we’ve seen that already of course.</p>
 <p><strong>I</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#How many different species were recorded?</span>
 <span class="kw">length</span>(<span class="kw">unique</span>(bird_obs<span class="op">$</span>Common.name))
@@ -898,6 +925,51 @@ bird_obs[<span class="op">!</span><span class="kw">is.na</span>(bird_obs<span cl
 bird_obs[bird_obs<span class="op">$</span>Genus <span class="op">==</span><span class="st"> &quot;Puffinus&quot;</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">14</span>)]
 <span class="co">#the species</span>
 <span class="kw">unique</span>(bird_obs[bird_obs<span class="op">$</span>Genus <span class="op">==</span><span class="st"> &quot;Puffinus&quot;</span>, <span class="st">&quot;Common.name&quot;</span>])</code></pre>
+<p>The challenge</p>
+<pre class="sourceCode r"><code class="sourceCode r">common_names &lt;-<span class="st"> </span><span class="kw">unique</span>(bird_obs<span class="op">$</span>Common.name)
+scientific_names &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">paste0</span>(bird_obs<span class="op">$</span>Genus, <span class="st">&quot; &quot;</span>, bird_obs<span class="op">$</span>Species))
+<span class="kw">paste0</span>(<span class="st">&quot;number of common names: &quot;</span>, <span class="kw">length</span>(common_names), <span class="st">&quot;; number of scientific names: &quot;</span>,  <span class="kw">length</span>(scientific_names))</code></pre>
+<pre><code>## [1] &quot;number of common names: 330; number of scientific names: 325&quot;</code></pre>
+<p>So there is something fishy going on.
+My guess is that one more species has two common names for two <em>subspecies</em> where, of course, there will be only one scientific species name. Which? Dunno. Can you find out?</p>
+<p>OK, I couldn’t help myself. I do NOT expect you to be able to do serious mangling like this at the end of this course!</p>
+<pre class="sourceCode r"><code class="sourceCode r">scientific_all &lt;-<span class="st"> </span><span class="kw">paste0</span>(bird_obs<span class="op">$</span>Genus, <span class="st">&quot; &quot;</span>, bird_obs<span class="op">$</span>Species)
+<span class="co">##combine scientific and common andf make unique</span>
+combined &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">paste0</span>(scientific_all, <span class="st">&quot;:&quot;</span>, bird_obs<span class="op">$</span>Common.name))
+<span class="co">#split it again, and convert to dataframe (strsplit gives a list)</span>
+combined_split &lt;-<span class="st"> </span><span class="kw">strsplit</span>(<span class="dt">x =</span> combined, <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)</code></pre>
+<pre><code>## Warning in strsplit(x = combined, split = &quot;:&quot;): input string 189 is invalid
+## in this locale</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">combined_split &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">do.call</span>(rbind, combined_split))
+<span class="co">#count frequencies of Scinetific names</span>
+combined_split_table &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">table</span>(combined_split[,<span class="dv">1</span>]))
+<span class="co">#where is the count above 1?</span>
+combined_split_table[combined_split_table<span class="op">$</span>Freq <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, ]</code></pre>
+<pre><code>##                       Var1 Freq
+## 25           Asio flammeus    2
+## 85       Clangula hyemalis    2
+## 225      Pterodroma ultima    2
+## 292    Tachycineta bicolor    2
+## 305 Tyrannus melancholicus    2</code></pre>
+<p>And which are tehse as Common Name?</p>
+<pre class="sourceCode r"><code class="sourceCode r">species_sel &lt;-<span class="st"> </span>combined_split_table[combined_split_table<span class="op">$</span>Freq <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, ]<span class="op">$</span>Var1
+species_sel</code></pre>
+<pre><code>## [1] Asio flammeus          Clangula hyemalis      Pterodroma ultima     
+## [4] Tachycineta bicolor    Tyrannus melancholicus
+## 325 Levels: Accipiter gentilis Accipiter striatus ... Zonotrichia querula</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">combined_split[combined_split<span class="op">$</span>V1 <span class="op">%in%</span><span class="st"> </span>species_sel, ]</code></pre>
+<pre><code>##                         V1                 V2
+## 27       Clangula hyemalis   Long-tailed Duck
+## 28       Clangula hyemalis   long-tailed duck
+## 45       Pterodroma ultima    Murphy&#39;s Petrel
+## 46       Pterodroma ultima          Mute Swan
+## 160          Asio flammeus    Short-eared Owl
+## 161          Asio flammeus    short-eared owl
+## 201 Tyrannus melancholicus  Tropical Kingbird
+## 202 Tyrannus melancholicus  tropical kingbird
+## 220    Tachycineta bicolor Clark&#39;s Nutcracker
+## 223    Tachycineta bicolor       Tree Swallow</code></pre>
+<p>Ahhh simple typos, for 3 out of 5, and data entering errors: The cause of so many data analysis problems. Scientific name <em>Pterodroma ultima</em> is certainly not that of the Mute Swan: a data entering error, and the same counts for <em>Tachycineta bicolor</em>: it is the name of the Tree Swallow.</p>
 <p><strong>J</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#these are the values that need to be rescued:</span>
 <span class="kw">table</span>(bird_obs[<span class="kw">is.na</span>(bird_obs<span class="op">$</span>Count), <span class="st">&quot;Number&quot;</span>])
@@ -1019,7 +1091,25 @@ tst &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
 }</code></pre>
 <div id="other-distance-measures-1" class="section level4 unnumbered">
 <h4>Other distance measures</h4>
-<p><strong><code>[NO SOLUTION YET]</code></strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_distance &lt;-<span class="st"> </span><span class="cf">function</span>(p, q, <span class="dt">method =</span> <span class="st">&quot;euclidean&quot;</span>) {
+  <span class="cf">if</span> (<span class="op">!</span><span class="st"> </span>(<span class="kw">is.numeric</span>(p) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.numeric</span>(q))) {
+    <span class="kw">stop</span>(<span class="st">&quot;One or both of the vectors is not numeric&quot;</span>)
+  }
+  <span class="cf">if</span> (<span class="kw">length</span>(p) <span class="op">!=</span><span class="st"> </span><span class="kw">length</span>(q)) {
+    <span class="kw">stop</span>(<span class="st">&quot;Vectors are not of equal length&quot;</span>)
+  }
+  <span class="cf">if</span> (method <span class="op">==</span><span class="st"> &quot;euclidean&quot;</span>) {
+    <span class="kw">return</span>(<span class="kw">sqrt</span>(<span class="kw">sum</span>((p <span class="op">-</span><span class="st"> </span>q)<span class="op">^</span><span class="dv">2</span>)))
+  }
+  <span class="cf">else</span> <span class="cf">if</span> (method <span class="op">==</span><span class="st"> &quot;manhattan&quot;</span>) {
+    <span class="kw">return</span>(<span class="kw">sum</span>(<span class="kw">abs</span>(p<span class="op">-</span>q)))
+  }
+  <span class="cf">else</span> {
+    <span class="kw">stop</span>(<span class="kw">paste0</span>(<span class="st">&quot;Method not found: &quot;</span>, method))
+  }
+}
+<span class="kw">my_distance</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</code></pre>
+<pre><code>## [1] 1.73</code></pre>
 </div>
 </div>
 <div id="gc-percentage-of-dna-1" class="section level3">
@@ -1119,8 +1209,9 @@ Inline expressions are like this: 15.4 MpH.</p>
 ## 4    4 135</code></pre>
 <p><strong>C</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet, <span class="dt">data =</span> ChickWeight, <span class="dt">panel =</span> panel.smooth)</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
-<p><strong>D</strong></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p><strong>D</strong><br />
+This is the “naive” solution:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#A naive for-loop here - is this the best solution?</span>
 ChickWeight<span class="op">$</span>weight_gain &lt;-<span class="st"> </span><span class="ot">NA</span> <span class="co">#create the column with missing values</span>
 <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ChickWeight)) {
@@ -1129,6 +1220,26 @@ ChickWeight<span class="op">$</span>weight_gain &lt;-<span class="st"> </span><s
                 ChickWeight[i, <span class="st">&quot;weight_gain&quot;</span>] &lt;-<span class="st"> </span>ChickWeight<span class="op">$</span>weight[i] <span class="op">-</span><span class="st"> </span>ChickWeight<span class="op">$</span>weight[i<span class="dv">-1</span>] 
         }
 }</code></pre>
+<p>This is the most efficient way of dealing with this in base R. Function <code>do.call()</code> is way out of scope for this course!</p>
+<pre class="sourceCode r"><code class="sourceCode r">weight_gain &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
+    <span class="co">#x is a dataframe</span>
+    leaded &lt;-<span class="st"> </span><span class="kw">c</span>(x<span class="op">$</span>weight)
+    lagged &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, x<span class="op">$</span>weight[<span class="dv">1</span><span class="op">:</span>(<span class="kw">length</span>(x<span class="op">$</span>weight)<span class="op">-</span><span class="dv">1</span>)])
+    x<span class="op">$</span>gain &lt;-<span class="st"> </span>leaded <span class="op">-</span><span class="st"> </span>lagged
+    x
+}
+
+split_cw &lt;-<span class="st"> </span><span class="kw">split</span>(<span class="dt">x =</span> ChickWeight, <span class="dt">f =</span> ChickWeight<span class="op">$</span>Chick)
+new_cw &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, <span class="kw">lapply</span>(<span class="dt">X =</span> split_cw, <span class="dt">FUN =</span> weight_gain))
+
+<span class="kw">head</span>(new_cw)</code></pre>
+<pre><code>##        weight Time Chick Diet weight_gain gain
+## 18.195     39    0    18    1          NA   NA
+## 18.196     35    2    18    1          -4   -4
+## 16.176     41    0    16    1          NA   NA
+## 16.177     45    2    16    1           4    4
+## 16.178     49    4    16    1           4    4
+## 16.179     51    6    16    1           2    2</code></pre>
 <p><strong>E</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">local_file &lt;-<span class="st"> &quot;ChickWeight_weight_gain.Rdata&quot;</span>
 <span class="kw">download.file</span>(<span class="kw">paste0</span>(<span class="st">&quot;https://github.com/MichielNoback/davur1_gitbook/raw/master/data/&quot;</span>, local_file), local_file)
@@ -1206,7 +1317,7 @@ urine<span class="op">$</span>ox_crystals &lt;-<span class="st"> </span><span cl
 ## 2         yes    1.02 5.93  683 21.4  302 6.20</code></pre>
 <p><strong>E</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(urine[, <span class="dv">3</span><span class="op">:</span><span class="dv">8</span>])</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
 <p><strong>F</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;gplots&quot;)</span>
 <span class="kw">library</span>(<span class="st">&quot;gplots&quot;</span>)</code></pre>
@@ -1217,7 +1328,7 @@ urine<span class="op">$</span>ox_crystals &lt;-<span class="st"> </span><span cl
 ##     lowess</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">cormat &lt;-<span class="st"> </span><span class="kw">cor</span>(urine[, <span class="dv">3</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>)
 <span class="kw">heatmap.2</span>(cormat, <span class="dt">col =</span> <span class="kw">bluered</span>(<span class="dv">100</span>), <span class="dt">trace =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">density.info =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <p><strong>G</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">ph_factor &lt;-<span class="st"> </span><span class="kw">cut</span>(urine<span class="op">$</span>ph, 
     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">7.0</span>, <span class="fl">8.0</span>), 

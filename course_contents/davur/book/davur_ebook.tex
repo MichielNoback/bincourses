@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-07}
+    \date{2020-04-13}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1758,7 +1758,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     54     46
+##     52     48
 \end{verbatim}
 
 \begin{Shaded}
@@ -6407,7 +6407,7 @@ Make a modified copy of this code chunk in such a way that no spaces are present
 \end{Shaded}
 
 \hypertarget{airquality}{%
-\subsection{airquality}\label{airquality}}
+\subsection{Airquality}\label{airquality}}
 
 The \texttt{airquality} dataset is also one of the datasets included in the \texttt{datasets} package. We'll explore this for a few questions.
 
@@ -6425,6 +6425,8 @@ Create a histogram of the wind speeds, and add a thick blue vertical line for th
 
 \textbf{E}\\
 Use the \texttt{pairs()} function with argument \texttt{panel\ =\ panel.smooth} to plot all pairwise correlations between Ozone, Solar radiation, Wind and Temperature. Which pair shows the strongest correlation in your opinion? Verify this using the \texttt{cor()} function after removing incomplete cases. Create a separate well annotated scatterplot of this pair.
+
+{[}\textbf{Challenge}{]} Through the \texttt{summary()} function you can obtain the R-squared value -the strength of the correlation- like this: \texttt{summary(your\_linear\_model)\$r.squared}. Can you place it within the plot using the \texttt{text()} function?
 
 \hypertarget{bird-observations}{%
 \subsection{Bird observations}\label{bird-observations}}
@@ -6482,11 +6484,11 @@ Explore the sighting counts:
 \begin{itemize}
 \tightlist
 \item
-  What is the maximum number of birds in a single sighting? (Use max() and which() or is.na() to solve this)
+  Report the sighting with the maximum number of birds in a single sighting?
 \item
-  What is the mean sighting count
+  What is the mean sighting count?
 \item
-  What is the median of the sighting count
+  What is the median of the sighting count?
 \end{itemize}
 
 \textbf{H}\\
@@ -6506,6 +6508,8 @@ Explore the species constitution:
 \end{itemize}
 
 Hint: use the function \texttt{unique()} here.
+
+{[}\textbf{Challenge}{]} The number of unique ``common names'' should equal the number of unique ``scientific names'' since each species has a common name and a scientific name. The scientific name can be generated from Genus and Species. Investigate this. Is it correct? If not, what went wrong?
 
 \textbf{J {[}Challenge{]}}\\
 This is a challenge exercise for those who like to grind their brains! Think of a strategy to ``rescue'' the NAs that appear after transforming ``Number'' to ``Count''. Hint: use \texttt{gsub()} or\texttt{grep()}
@@ -6669,7 +6673,7 @@ You should first perform a check whether the two vectors are of equal length and
 \subsubsection*{Other distance measures}\label{other-distance-measures}}
 \addcontentsline{toc}{subsubsection}{Other distance measures}
 
-Extend the function of the previous assignment in such a way that a third argument is accepted, \texttt{method\ =}, which defaults to ``euclidean''. Other possible distance measures are ``Manhattan'' (same as ``city block'' and ``taxicab'') and Pearson correlation. Look the equations for these up in Wikipedia or some other place.
+Extend the function of the previous assignment in such a way that a third argument is accepted, \texttt{method\ =}, which defaults to ``euclidean''. Other possible distance measures are ``Manhattan'' (same as ``city block'' and ``taxicab'') and {[}\textbf{Challenge}{]} Pearson correlation. Look the equations for these up in Wikipedia or some other place.
 
 \hypertarget{gc-percentage-of-dna}{%
 \subsection{G/C percentage of DNA}\label{gc-percentage-of-dna}}
@@ -6728,7 +6732,7 @@ Use \texttt{aggregate()} to get the mean weight of the chickens for the differen
 Use \texttt{coplot()} to plot a panel with weight as function of Time, split over Diet.
 
 \textbf{D}\\
-Add a column called \texttt{weight\_gain} to the dataframe holding values for the weight gain since the last measurement. Take special care with rows marking the boundaries between individual chickens! You could consider using a traditional for loop here.
+{[}\textbf{Challenge}{]} Add a column called \texttt{weight\_gain} to the dataframe holding values for the weight gain since the last measurement. Take special care with rows marking the boundaries between individual chickens! You could consider using a traditional for loop here.
 In the next course, we'll see a more efficient way of doing this.
 
 \textbf{E}\\
@@ -7590,8 +7594,6 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/airquality-2-1} \end{center}
 
-(No output: Evaluation of this chunk in book building gave an error. )
-
 \textbf{C}
 
 \begin{Shaded}
@@ -7625,6 +7627,8 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{##remove temp celcius agan}
+\NormalTok{airquality}\OperatorTok{$}\NormalTok{Temp.C <-}\StringTok{ }\OtherTok{NULL}
 \KeywordTok{pairs}\NormalTok{(airquality, }\DataTypeTok{panel =}\NormalTok{ panel.smooth)}
 \end{Highlighting}
 \end{Shaded}
@@ -7638,6 +7642,27 @@ Calculate pairwise correlation.
 \KeywordTok{cor}\NormalTok{(}\KeywordTok{na.omit}\NormalTok{(airquality))}
 \end{Highlighting}
 \end{Shaded}
+
+The Ozone\textasciitilde{}Temp pair has the strongest correlation. A scatterplot of this pair:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Ozone }\OperatorTok{~}\StringTok{ }\NormalTok{airquality}\OperatorTok{$}\NormalTok{Temp,}
+     \DataTypeTok{xlab =} \StringTok{"Temperature (F)"}\NormalTok{,}
+     \DataTypeTok{ylab =} \StringTok{"Ozone (ppb)"}\NormalTok{,}
+     \DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\NormalTok{ozone_wind_lm <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(airquality}\OperatorTok{$}\NormalTok{Ozone }\OperatorTok{~}\StringTok{ }\NormalTok{airquality}\OperatorTok{$}\NormalTok{Temp)}
+\NormalTok{r_squared <-}\StringTok{ }\KeywordTok{round}\NormalTok{(}\KeywordTok{summary}\NormalTok{(ozone_wind_lm)}\OperatorTok{$}\NormalTok{r.squared, }\DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(ozone_wind_lm, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{text}\NormalTok{(}\DataTypeTok{x =} \DecValTok{60}\NormalTok{, }\DataTypeTok{y =} \DecValTok{125}\NormalTok{, }\DataTypeTok{labels =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"R^2 = "}\NormalTok{, r_squared))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{davur_ebook_files/figure-latex/airquality-strongest-corr-1.pdf}
+\caption{\label{fig:airquality-strongest-corr}Ozone dependency on Temp}
+\end{figure}
 
 \hypertarget{bird-observations-1}{%
 \subsection{Bird observations}\label{bird-observations-1}}
@@ -7749,7 +7774,7 @@ The factor \textbf{\emph{levels}} have been converted into integers, not the ori
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#read with as.is argument}
+\CommentTok{#best is to get it right from the start: read with as.is argument}
 \NormalTok{bird_obs <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"data/Observations-Data-2014.csv"}\NormalTok{,}
                                 \DataTypeTok{sep=}\StringTok{";"}\NormalTok{,}
                                 \DataTypeTok{head=}\NormalTok{T,}
@@ -7777,6 +7802,13 @@ The factor \textbf{\emph{levels}} have been converted into integers, not the ori
 ##  $ Other.Obs  : Factor w/ 157 levels "Aaron Maizlish",..: NA NA NA NA NA NA NA NA 155 NA ...
 ##  $ Notes      : chr  "Adult bird seen on golf course grounds with Canada geese!" "Saw 6 along the shoreline of Napa Creek in mid-afternoon.  About 10 Mallards also  swimming nearby and a Caspia"| __truncated__ NA "This is the only bird that matches up with what I saw. Canada like goose, snow white bum prominent, coloring sl"| __truncated__ ...
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{##alternatively, convert it after loading:}
+\CommentTok{#bird_obs$Count <- as.numeric(as.character(bird_obs$Number))}
+\end{Highlighting}
+\end{Shaded}
 
 Convert Number column to Count of integers.
 
@@ -7806,7 +7838,8 @@ Note that there are other ways to achieve this, e.g.~the \texttt{colClasses} arg
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#What is the maximum number of birds in a single sighting?}
-\NormalTok{bird_obs[}\KeywordTok{which}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count, }\DataTypeTok{na.rm =}\NormalTok{ T)), ]}
+
+\NormalTok{bird_obs[bird_obs}\OperatorTok{$}\NormalTok{Count }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count, }\DataTypeTok{na.rm =}\NormalTok{ T), ]}
 \CommentTok{##OR}
 \NormalTok{bird_obs[}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count) }\OperatorTok{&}\StringTok{ }\NormalTok{bird_obs}\OperatorTok{$}\NormalTok{Count }\OperatorTok{==}\StringTok{ }\KeywordTok{max}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count, }\DataTypeTok{na.rm =}\NormalTok{ T), ]}
 
@@ -7851,6 +7884,24 @@ Better results with a log transformation (and some coloring)
 
 \begin{center}\includegraphics[width=0.8\linewidth]{davur_ebook_files/figure-latex/bird-obs-3-1} \end{center}
 
+The Shapiro test gives us a numeric indication of the fit to a normal distribution:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Count)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  bird_obs$Count
+## W = 0.01, p-value <2e-16
+\end{verbatim}
+
+The P-value -way below 0.05- indicates this is not a normal distribution. But we've seen that already of course.
+
 \textbf{I}
 
 \begin{Shaded}
@@ -7868,6 +7919,96 @@ Better results with a log transformation (and some coloring)
 \KeywordTok{unique}\NormalTok{(bird_obs[bird_obs}\OperatorTok{$}\NormalTok{Genus }\OperatorTok{==}\StringTok{ "Puffinus"}\NormalTok{, }\StringTok{"Common.name"}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
+
+The challenge
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{common_names <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Common.name)}
+\NormalTok{scientific_names <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Genus, }\StringTok{" "}\NormalTok{, bird_obs}\OperatorTok{$}\NormalTok{Species))}
+\KeywordTok{paste0}\NormalTok{(}\StringTok{"number of common names: "}\NormalTok{, }\KeywordTok{length}\NormalTok{(common_names), }\StringTok{"; number of scientific names: "}\NormalTok{,  }\KeywordTok{length}\NormalTok{(scientific_names))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "number of common names: 330; number of scientific names: 325"
+\end{verbatim}
+
+So there is something fishy going on.
+My guess is that one more species has two common names for two \emph{subspecies} where, of course, there will be only one scientific species name. Which? Dunno. Can you find out?
+
+OK, I couldn't help myself. I do NOT expect you to be able to do serious mangling like this at the end of this course!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{scientific_all <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(bird_obs}\OperatorTok{$}\NormalTok{Genus, }\StringTok{" "}\NormalTok{, bird_obs}\OperatorTok{$}\NormalTok{Species)}
+\CommentTok{##combine scientific and common andf make unique}
+\NormalTok{combined <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(scientific_all, }\StringTok{":"}\NormalTok{, bird_obs}\OperatorTok{$}\NormalTok{Common.name))}
+\CommentTok{#split it again, and convert to dataframe (strsplit gives a list)}
+\NormalTok{combined_split <-}\StringTok{ }\KeywordTok{strsplit}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ combined, }\DataTypeTok{split =} \StringTok{":"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in strsplit(x = combined, split = ":"): input string 189 is invalid
+## in this locale
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{combined_split <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{do.call}\NormalTok{(rbind, combined_split))}
+\CommentTok{#count frequencies of Scinetific names}
+\NormalTok{combined_split_table <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{table}\NormalTok{(combined_split[,}\DecValTok{1}\NormalTok{]))}
+\CommentTok{#where is the count above 1?}
+\NormalTok{combined_split_table[combined_split_table}\OperatorTok{$}\NormalTok{Freq }\OperatorTok{>}\StringTok{ }\DecValTok{1}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                       Var1 Freq
+## 25           Asio flammeus    2
+## 85       Clangula hyemalis    2
+## 225      Pterodroma ultima    2
+## 292    Tachycineta bicolor    2
+## 305 Tyrannus melancholicus    2
+\end{verbatim}
+
+And which are tehse as Common Name?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{species_sel <-}\StringTok{ }\NormalTok{combined_split_table[combined_split_table}\OperatorTok{$}\NormalTok{Freq }\OperatorTok{>}\StringTok{ }\DecValTok{1}\NormalTok{, ]}\OperatorTok{$}\NormalTok{Var1}
+\NormalTok{species_sel}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Asio flammeus          Clangula hyemalis      Pterodroma ultima     
+## [4] Tachycineta bicolor    Tyrannus melancholicus
+## 325 Levels: Accipiter gentilis Accipiter striatus ... Zonotrichia querula
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{combined_split[combined_split}\OperatorTok{$}\NormalTok{V1 }\OperatorTok{%in%}\StringTok{ }\NormalTok{species_sel, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                         V1                 V2
+## 27       Clangula hyemalis   Long-tailed Duck
+## 28       Clangula hyemalis   long-tailed duck
+## 45       Pterodroma ultima    Murphy's Petrel
+## 46       Pterodroma ultima          Mute Swan
+## 160          Asio flammeus    Short-eared Owl
+## 161          Asio flammeus    short-eared owl
+## 201 Tyrannus melancholicus  Tropical Kingbird
+## 202 Tyrannus melancholicus  tropical kingbird
+## 220    Tachycineta bicolor Clark's Nutcracker
+## 223    Tachycineta bicolor       Tree Swallow
+\end{verbatim}
+
+Ahhh simple typos, for 3 out of 5, and data entering errors: The cause of so many data analysis problems. Scientific name \emph{Pterodroma ultima} is certainly not that of the Mute Swan: a data entering error, and the same counts for \emph{Tachycineta bicolor}: it is the name of the Tree Swallow.
 
 \textbf{J}
 
@@ -8075,7 +8216,32 @@ To test you method, you can compare \texttt{interquantile\_range(some\_vector,\ 
 \subsubsection*{Other distance measures}\label{other-distance-measures-1}}
 \addcontentsline{toc}{subsubsection}{Other distance measures}
 
-\textbf{\texttt{{[}NO\ SOLUTION\ YET{]}}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_distance <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(p, q, }\DataTypeTok{method =} \StringTok{"euclidean"}\NormalTok{) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\StringTok{ }\NormalTok{(}\KeywordTok{is.numeric}\NormalTok{(p) }\OperatorTok{&}\StringTok{ }\KeywordTok{is.numeric}\NormalTok{(q))) \{}
+    \KeywordTok{stop}\NormalTok{(}\StringTok{"One or both of the vectors is not numeric"}\NormalTok{)}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{length}\NormalTok{(p) }\OperatorTok{!=}\StringTok{ }\KeywordTok{length}\NormalTok{(q)) \{}
+    \KeywordTok{stop}\NormalTok{(}\StringTok{"Vectors are not of equal length"}\NormalTok{)}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{ (method }\OperatorTok{==}\StringTok{ "euclidean"}\NormalTok{) \{}
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{sqrt}\NormalTok{(}\KeywordTok{sum}\NormalTok{((p }\OperatorTok{-}\StringTok{ }\NormalTok{q)}\OperatorTok{^}\DecValTok{2}\NormalTok{)))}
+\NormalTok{  \}}
+  \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (method }\OperatorTok{==}\StringTok{ "manhattan"}\NormalTok{) \{}
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{sum}\NormalTok{(}\KeywordTok{abs}\NormalTok{(p}\OperatorTok{-}\NormalTok{q)))}
+\NormalTok{  \}}
+  \ControlFlowTok{else}\NormalTok{ \{}
+    \KeywordTok{stop}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"Method not found: "}\NormalTok{, method))}
+\NormalTok{  \}}
+\NormalTok{\}}
+\KeywordTok{my_distance}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.73
+\end{verbatim}
 
 \hypertarget{gc-percentage-of-dna-1}{%
 \subsection{G/C percentage of DNA}\label{gc-percentage-of-dna-1}}
@@ -8268,9 +8434,10 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-107-1.pdf}
 
-\textbf{D}
+\textbf{D}\\
+This is the ``naive'' solution:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8284,6 +8451,35 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+
+This is the most efficient way of dealing with this in base R. Function \texttt{do.call()} is way out of scope for this course!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weight_gain <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \CommentTok{#x is a dataframe}
+\NormalTok{    leaded <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x}\OperatorTok{$}\NormalTok{weight)}
+\NormalTok{    lagged <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{NA}\NormalTok{, x}\OperatorTok{$}\NormalTok{weight[}\DecValTok{1}\OperatorTok{:}\NormalTok{(}\KeywordTok{length}\NormalTok{(x}\OperatorTok{$}\NormalTok{weight)}\OperatorTok{-}\DecValTok{1}\NormalTok{)])}
+\NormalTok{    x}\OperatorTok{$}\NormalTok{gain <-}\StringTok{ }\NormalTok{leaded }\OperatorTok{-}\StringTok{ }\NormalTok{lagged}
+\NormalTok{    x}
+\NormalTok{\}}
+
+\NormalTok{split_cw <-}\StringTok{ }\KeywordTok{split}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ChickWeight, }\DataTypeTok{f =}\NormalTok{ ChickWeight}\OperatorTok{$}\NormalTok{Chick)}
+\NormalTok{new_cw <-}\StringTok{ }\KeywordTok{do.call}\NormalTok{(rbind, }\KeywordTok{lapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ split_cw, }\DataTypeTok{FUN =}\NormalTok{ weight_gain))}
+
+\KeywordTok{head}\NormalTok{(new_cw)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        weight Time Chick Diet weight_gain gain
+## 18.195     39    0    18    1          NA   NA
+## 18.196     35    2    18    1          -4   -4
+## 16.176     41    0    16    1          NA   NA
+## 16.177     45    2    16    1           4    4
+## 16.178     49    4    16    1           4    4
+## 16.179     51    6    16    1           2    2
+\end{verbatim}
 
 \textbf{E}
 
@@ -8458,7 +8654,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-115-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-117-1.pdf}
 
 \textbf{F}
 
@@ -8471,7 +8667,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-118-1.pdf}
 
 \textbf{G}
 
