@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Michiel Noback" />
-  <title>Data analysis and visualization using R 2</title>
+  <title>The stringr package</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
@@ -1294,8 +1294,8 @@ background-color: #eee;
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Data analysis and visualization using R 2</h1>
-  <h1 class="subtitle">The stringr package</h1>
+  <h1 class="title">The stringr package</h1>
+  <h1 class="subtitle">Data analysis and visualization using R 2</h1>
   <p class="author">
 Michiel Noback
   </p>
@@ -1389,8 +1389,8 @@ Michiel Noback
 <li>The difference is that the latter function only shows the first match - if present.</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">str_view_all</span>(pc, <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">d{4}[ -]?[a-zA-Z]{2}$&quot;</span>)</a></code></pre></div>
-<div id="htmlwidget-7afd455126bb0dfd7bc8" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7afd455126bb0dfd7bc8">{"x":{"html":"<ul>\n  <li><span class='match'>1234 AA<\/span><\/li>\n  <li><span class='match'>2345-BB<\/span><\/li>\n  <li><span class='match'>3456CC<\/span><\/li>\n  <li><span class='match'>4567 dd<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8c4667b5af5dcfe20208" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8c4667b5af5dcfe20208">{"x":{"html":"<ul>\n  <li><span class='match'>1234 AA<\/span><\/li>\n  <li><span class='match'>2345-BB<\/span><\/li>\n  <li><span class='match'>3456CC<\/span><\/li>\n  <li><span class='match'>4567 dd<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>As you can see, the last element (“56789aa”) is not a good postal code. Note that <code>[a-zA-Z]</code> could have been replaced by <code>[[:alpha:]]</code>.</p>
 </div><div id="anchoring" class="slide section level2">
 <h1>Anchoring</h1>
@@ -1402,11 +1402,11 @@ Michiel Noback
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">sntc &lt;-<span class="st"> &quot;the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men.&quot;</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil&quot;</span>) <span class="co">##matches</span></a></code></pre></div>
-<div id="htmlwidget-a919f1f9c84eecd2ca46" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a919f1f9c84eecd2ca46">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of <span class='match'>evil<\/span> men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2780deb314691f550d45" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2780deb314691f550d45">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of <span class='match'>evil<\/span> men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil$&quot;</span>) <span class="co">## does not match</span></a></code></pre></div>
-<div id="htmlwidget-5383418dc9a327186308" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5383418dc9a327186308">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-220a27c50582e36e84c8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-220a27c50582e36e84c8">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div><div id="alternatives" class="slide section level2">
 <h1>Alternatives</h1>
 <ul>
@@ -1415,8 +1415,8 @@ Michiel Noback
 <li>You can us parentheses <code>(foo[])</code> to fence alternatives off.</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">str_view_all</span>(sntc, <span class="st">&quot;(y</span><span class="ch">\\</span><span class="st">s)|(</span><span class="ch">\\</span><span class="st">sf)&quot;</span>)</a></code></pre></div>
-<div id="htmlwidget-3c4f0f24475f4a279b3a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c4f0f24475f4a279b3a">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides b<span class='match'>y <\/span>the iniquities of the selfish,  and the tyrann<span class='match'>y <\/span>of evil men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-57282a73f1c11e9b1643" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-57282a73f1c11e9b1643">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides b<span class='match'>y <\/span>the iniquities of the selfish,  and the tyrann<span class='match'>y <\/span>of evil men.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="the-stringr-essentials" class="title-slide slide section level1"><h1>The <code>stringr</code> essentials</h1></div><div id="case-conversion" class="slide section level2">
 <h1>Case conversion</h1>
