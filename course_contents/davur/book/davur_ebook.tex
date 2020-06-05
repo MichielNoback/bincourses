@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-13}
+    \date{2020-05-28}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -1758,7 +1758,7 @@ With a table object:
 \begin{verbatim}
 ## persons
 ## female   male 
-##     52     48
+##     54     46
 \end{verbatim}
 
 \begin{Shaded}
@@ -6086,6 +6086,15 @@ This chapter only contains exercises. The solutions are in the next chapter whic
 
 This is a link to an \href{figures/R_cheatsheet.pdf}{R cheat sheet} that you could use for selecting the right function for a task.
 
+If you want you can download this chapter as separate file and work in that. You can download it \href{https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/07-exercises.Rmd}{here}. Before commencing you should put in a new Markdown header at the top of the file, with at least this contents:
+
+\begin{verbatim}
+---
+title: "Exercise solutions DAVuR1"
+author: "<YOUR NAME>"
+---
+\end{verbatim}
+
 \hypertarget{plotting-rules}{%
 \subsubsection*{Plotting rules}\label{plotting-rules}}
 \addcontentsline{toc}{subsubsection}{Plotting rules}
@@ -6406,6 +6415,154 @@ Make a modified copy of this code chunk in such a way that no spaces are present
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{protein-concentrations-with-lowry}{%
+\subsection{Protein concentrations with Lowry}\label{protein-concentrations-with-lowry}}
+
+The Lowry method is a widely used spectroscopic method to quantify protein amounts in solutions. Here are some real Lowry results for the quantification of proteins:
+The calibration curve is made using BSA (bovine serum albumin) as a standard.
+The concentrations are in mg/ml:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bsa_conc <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,    }\DecValTok{0}\NormalTok{,  }\FloatTok{0.025}\NormalTok{,  }\FloatTok{0.025}\NormalTok{,  }\FloatTok{0.075}\NormalTok{,  }\FloatTok{0.075}\NormalTok{,  }\FloatTok{0.125}\NormalTok{,  }\FloatTok{0.125}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the duplos are all put into one vector. We'll deal with that later.
+
+These are the obtained absorption values at 750 nm (again for the duplos):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{OD750 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.063}\NormalTok{,   }\FloatTok{0.033}\NormalTok{,  }\FloatTok{0.16}\NormalTok{,   }\FloatTok{0.181}\NormalTok{,  }\FloatTok{0.346}\NormalTok{,  }\FloatTok{0.352}\NormalTok{,  }\FloatTok{0.491}\NormalTok{,  }\FloatTok{0.488}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+Combine these two vectors in a dataframe and assign to a variable with name \texttt{dilution}. Do not add column names yet!
+
+\textbf{B}
+
+Now add the appropriate column names: \texttt{prot\_conc} and \texttt{absorption}.
+
+\textbf{C}
+
+You forgot to include the last datapoints (again these are duplos):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bsa_conc2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.175}\NormalTok{,   }\FloatTok{0.175}\NormalTok{,  }\FloatTok{0.25}\NormalTok{,   }\FloatTok{0.25}\NormalTok{)}
+\NormalTok{OD750_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.597}\NormalTok{, }\FloatTok{0.595}\NormalTok{,  }\FloatTok{0.743}\NormalTok{,  }\FloatTok{0.742}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Generate a dataframe assigned to the variable \texttt{df\_temp} from these datapoints. This time, add the appropriate column names with creation of the dataframe. be sure you use exactly the same comlumn names.
+
+\textbf{D}
+
+Now add the second dataframe \texttt{df\_temp} to dataframe with name \texttt{dilution} and assign it to the name \texttt{dilution} (thus overwrite the original variable):
+
+\textbf{E}
+
+Generate a line plot with the following properties:
+
+\begin{itemize}
+\tightlist
+\item
+  Title: ``Absorbance as a function of protein concentration''.\\
+\item
+  Axis labels with clear indicated quantities and units.\\
+\item
+  Datapoints and connector lines should be visible and have a blue color.\\
+\item
+  Y-axis lower limit should be 0 and the upper limit should be 1.\\
+\item
+  The plot character (symbol) should be a filled circle.
+\end{itemize}
+
+Use \texttt{col\ =\ rgb(0,\ 0,\ 1,\ 0.5)} to get transparent blue plot symbols.
+
+\textbf{F}
+
+Generate a new dataframe from the dataframe \texttt{dilution}, now with the duplo measurements side-by-side. So, instead of 2 you will now have 4 columns.
+
+\begin{itemize}
+\tightlist
+\item
+  Fist generate a dataframe \texttt{even} using the even numbered rows.\\
+\item
+  Then generate a dataframe \texttt{odd}using the odd numbered rows.\\
+\item
+  Finally combine these two new dataframes into one and assign it to the variable \texttt{dilution\_duplo}.
+\end{itemize}
+
+Hint: use subsetting with TRUE and FALSE and vector cycling.
+
+\textbf{G}
+
+The result will be a dataframe with two columns named \texttt{prot\_conc} and two columns named \texttt{absorption}. Delete the second column named \texttt{prot\_conc} (this is an exact copy after all!) and rename the column names to \texttt{prot\_conc}, \texttt{abs1} and \texttt{abs2}.
+
+\textbf{H}
+
+Calculate the mean of the two abs measurements and add it as a column named \texttt{mean\_abs}:
+
+\textbf{I}
+
+Generate a \textbf{bar} plot with the following properties:
+
+\begin{itemize}
+\tightlist
+\item
+  Title: ``Absorbance versus protein concentration''.\\
+\item
+  Axis labels with clear indicated quantities and units.\\
+\item
+  Y-axis lower-limit should be 0, upper-limit should be 1.\\
+\item
+  Plot the mean absorbance on the Y-axis.\\
+\item
+  Bars should have a green color.
+\end{itemize}
+
+\hypertarget{hplc-data}{%
+\subsection{HPLC data}\label{hplc-data}}
+
+The data below are from an educational experiment ``Thymol quantification in Thyme''.
+This data are obtained by a reverse-phase HPLC method using thymol in a standard curve. Peak areas were calculated using an integrator device. Note that peak areas are dimensionless. The concentration thymol is in μg/ml.
+
+\begin{itemize}
+\tightlist
+\item
+  co = concentration
+\item
+  pa = peak area
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{co <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{,    }\DecValTok{100}\NormalTok{,    }\DecValTok{75}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{pa <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1969017}\NormalTok{,    }\DecValTok{1858012}\NormalTok{,    }\DecValTok{1399762}\NormalTok{,    }\DecValTok{1449423}\NormalTok{,    }\DecValTok{963014}\NormalTok{, }\DecValTok{832137}\NormalTok{, }\DecValTok{467856}\NormalTok{, }\DecValTok{562012}\NormalTok{, }\DecValTok{200123}\NormalTok{, }\DecValTok{145545}\NormalTok{, }\DecValTok{94567}\NormalTok{,  }\DecValTok{64752}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+Add the vectors to a dataframe named \texttt{hplc\_data}. Use appropriate and clear column names.
+
+\textbf{B}
+
+The concentrations are in descending order. Use \texttt{order()} to sort the dataframe so that the concentrations are in ascending order.
+
+\textbf{C}
+
+Generate a scatter plot with the following settings:
+- Title: ``Peak area as a function of thymol concentration''
+- Axis labels with clear indicated quantities and units.
+- Datapoints should be visible (no connector lines).
+- Datapoints should be blue
+- Add a red colored linear regression line with a lineweigth of 2.
+
 \hypertarget{airquality}{%
 \subsection{Airquality}\label{airquality}}
 
@@ -6427,6 +6584,51 @@ Create a histogram of the wind speeds, and add a thick blue vertical line for th
 Use the \texttt{pairs()} function with argument \texttt{panel\ =\ panel.smooth} to plot all pairwise correlations between Ozone, Solar radiation, Wind and Temperature. Which pair shows the strongest correlation in your opinion? Verify this using the \texttt{cor()} function after removing incomplete cases. Create a separate well annotated scatterplot of this pair.
 
 {[}\textbf{Challenge}{]} Through the \texttt{summary()} function you can obtain the R-squared value -the strength of the correlation- like this: \texttt{summary(your\_linear\_model)\$r.squared}. Can you place it within the plot using the \texttt{text()} function?
+
+\hypertarget{file-reading-practice}{%
+\subsection{File reading practice}\label{file-reading-practice}}
+
+The files in the \url{data/file_reading/} directory contain some (simulated) gene-array data. The dataset contains a selection of induced transcripts after some stimulus. The columns represent:
+
+\begin{itemize}
+\tightlist
+\item
+  the mRNA entry\\
+\item
+  fold induction after some stimulus\\
+\item
+  the protein entry number\\
+\item
+  protein length in number of amino acids of the corresponding NP entry\\
+\item
+  the protein family the protein belongs to\\
+\item
+  the predicted cellular localization
+\end{itemize}
+
+Whatever the contents of a file, you always need to address (some of) these questions:
+
+\begin{itemize}
+\tightlist
+\item
+  Are there comment lines at the top?\\
+\item
+  Is there a header line with column names?\\
+\item
+  What is the column separator?\\
+\item
+  Are there quotes around character data?\\
+\item
+  How are missing values encoded?\\
+\item
+  How are numeric values encoded?\\
+\item
+  What is the type in each column?
+\end{itemize}
+
+Also: read the help for the \texttt{read.table} function carefully.
+
+Read the content of the each file in the \texttt{file\_reading} directory into a dataframe object and assign it to the variable name \texttt{df}. There are 15 different files to practice your file loading skills.
 
 \hypertarget{bird-observations}{%
 \subsection{Bird observations}\label{bird-observations}}
@@ -6771,7 +6973,7 @@ What food category has the highest mean energy content, and which has the lowest
 \textbf{{[}Challenge{]}} Create a boxplot showing the difference in sugar content between drink and solid food.
 
 \textbf{F}\\
-Assuming both unsaturated fats and sugar are bad for you, what food category do you consider the worst? Think of a means to answer this, explain it and carry it out.
+Assuming both saturated fats and sugar are bad for you, what food category do you consider the worst? Think of a means to answer this, explain it and carry it out.
 
 \hypertarget{urine-properties}{%
 \subsection{Urine properties}\label{urine-properties}}
@@ -7519,7 +7721,7 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-76-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 \hypertarget{a-dictionary-with-a-named-vector-1}{%
 \subsection{A dictionary with a named vector}\label{a-dictionary-with-a-named-vector-1}}
@@ -7561,6 +7763,215 @@ As you may know, (lung) cancer patients are especially vulnerable for influenza 
 \NormalTok{mol_weight}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{protein-concentrations-with-lowry-1}{%
+\subsection{Protein concentrations with Lowry}\label{protein-concentrations-with-lowry-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bsa_conc <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,    }\DecValTok{0}\NormalTok{,  }\FloatTok{0.025}\NormalTok{,  }\FloatTok{0.025}\NormalTok{,  }\FloatTok{0.075}\NormalTok{,  }\FloatTok{0.075}\NormalTok{,  }\FloatTok{0.125}\NormalTok{,  }\FloatTok{0.125}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{OD750 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.063}\NormalTok{,   }\FloatTok{0.033}\NormalTok{,  }\FloatTok{0.16}\NormalTok{,   }\FloatTok{0.181}\NormalTok{,  }\FloatTok{0.346}\NormalTok{,  }\FloatTok{0.352}\NormalTok{,  }\FloatTok{0.491}\NormalTok{,  }\FloatTok{0.488}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dilution <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(bsa_conc, OD750)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{B}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(dilution) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"prot_conc"}\NormalTok{, }\StringTok{"absorption"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{C}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bsa_conc2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.175}\NormalTok{,   }\FloatTok{0.175}\NormalTok{,  }\FloatTok{0.25}\NormalTok{,   }\FloatTok{0.25}\NormalTok{)}
+\NormalTok{OD750_}\DecValTok{2}\NormalTok{ <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{0.597}\NormalTok{, }\FloatTok{0.595}\NormalTok{,  }\FloatTok{0.743}\NormalTok{,  }\FloatTok{0.742}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df_temp <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\StringTok{"prot_conc"}\NormalTok{ =}\StringTok{ }\NormalTok{bsa_conc2,}
+                      \StringTok{"absorption"}\NormalTok{ =}\StringTok{ }\NormalTok{OD750_}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{D}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dilution <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(dilution, df_temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{E}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Your code here}
+\KeywordTok{plot}\NormalTok{(dilution}\OperatorTok{$}\NormalTok{abs }\OperatorTok{~}\StringTok{ }\NormalTok{dilution}\OperatorTok{$}\NormalTok{prot_conc,}
+     \DataTypeTok{main =} \StringTok{"Absorbance as a function of protein concentration"}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{"Protein concentration (mg/ml)"}\NormalTok{,}
+     \DataTypeTok{ylab =} \StringTok{"Absorbance at 750 nm (AU)"}\NormalTok{,}
+     \DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+     \DataTypeTok{col =} \KeywordTok{rgb}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\FloatTok{0.5}\NormalTok{),}
+     \DataTypeTok{pch =} \DecValTok{19}\NormalTok{,}
+     \DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{,}
+     \DataTypeTok{type =} \StringTok{"b"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-89-1.pdf}
+
+\textbf{F}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{even <-}\StringTok{ }\NormalTok{dilution[}\KeywordTok{c}\NormalTok{(T, F), ]}
+\NormalTok{odd <-}\StringTok{ }\NormalTok{dilution[}\KeywordTok{c}\NormalTok{(F, T), ]}
+\NormalTok{dilution_duplo <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(odd, even)}
+\NormalTok{dilution_duplo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    prot_conc absorption prot_conc absorption
+## 2      0.000      0.033     0.000      0.063
+## 4      0.025      0.181     0.025      0.160
+## 6      0.075      0.352     0.075      0.346
+## 8      0.125      0.488     0.125      0.491
+## 10     0.175      0.595     0.175      0.597
+## 12     0.250      0.742     0.250      0.743
+\end{verbatim}
+
+\textbf{G}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dilution_duplo[, }\DecValTok{3}\NormalTok{] <-}\StringTok{ }\OtherTok{NULL}
+\KeywordTok{names}\NormalTok{(dilution_duplo) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"prot_conc"}\NormalTok{, }\StringTok{"abs1"}\NormalTok{, }\StringTok{"abs2"}\NormalTok{)}
+\NormalTok{dilution_duplo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    prot_conc  abs1  abs2
+## 2      0.000 0.033 0.063
+## 4      0.025 0.181 0.160
+## 6      0.075 0.352 0.346
+## 8      0.125 0.488 0.491
+## 10     0.175 0.595 0.597
+## 12     0.250 0.742 0.743
+\end{verbatim}
+
+\textbf{H}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dilution_duplo}\OperatorTok{$}\NormalTok{mean <-}\StringTok{ }\NormalTok{(dilution_duplo}\OperatorTok{$}\NormalTok{abs1 }\OperatorTok{+}\StringTok{ }\NormalTok{dilution_duplo}\OperatorTok{$}\NormalTok{abs2) }\OperatorTok{/}\StringTok{ }\DecValTok{2}
+\NormalTok{dilution_duplo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    prot_conc  abs1  abs2  mean
+## 2      0.000 0.033 0.063 0.048
+## 4      0.025 0.181 0.160 0.170
+## 6      0.075 0.352 0.346 0.349
+## 8      0.125 0.488 0.491 0.489
+## 10     0.175 0.595 0.597 0.596
+## 12     0.250 0.742 0.743 0.742
+\end{verbatim}
+
+\textbf{I}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(dilution_duplo}\OperatorTok{$}\NormalTok{mean }\OperatorTok{~}\StringTok{ }\NormalTok{dilution_duplo}\OperatorTok{$}\NormalTok{prot_conc,}
+     \DataTypeTok{main =} \StringTok{"Absorbance as a function of protein concentration"}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{"Protein concentration (mg/ml)"}\NormalTok{,}
+     \DataTypeTok{ylab =} \StringTok{"Absorbance 750nm (AU)"}\NormalTok{,}
+     \DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+     \DataTypeTok{col =} \StringTok{"darkgreen"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-93-1.pdf}
+
+\hypertarget{hplc-data-1}{%
+\subsection{HPLC data}\label{hplc-data-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{co <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{100}\NormalTok{,    }\DecValTok{100}\NormalTok{,    }\DecValTok{75}\NormalTok{, }\DecValTok{75}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{pa <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1969017}\NormalTok{,    }\DecValTok{1858012}\NormalTok{,    }\DecValTok{1399762}\NormalTok{,    }\DecValTok{1449423}\NormalTok{,    }\DecValTok{963014}\NormalTok{, }\DecValTok{832137}\NormalTok{, }\DecValTok{467856}\NormalTok{, }\DecValTok{562012}\NormalTok{, }\DecValTok{200123}\NormalTok{, }\DecValTok{145545}\NormalTok{, }\DecValTok{94567}\NormalTok{,  }\DecValTok{64752}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{A}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Your code here}
+\NormalTok{hplc_data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\StringTok{"conc"}\NormalTok{ =}\StringTok{ }\NormalTok{co, }\StringTok{"peak_area"}\NormalTok{ =}\StringTok{ }\NormalTok{pa)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{B}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Your code here}
+\NormalTok{hplc_data <-}\StringTok{ }\NormalTok{hplc_data[}\KeywordTok{order}\NormalTok{(hplc_data}\OperatorTok{$}\NormalTok{conc), ]}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{C}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Your code here}
+\KeywordTok{plot}\NormalTok{(hplc_data}\OperatorTok{$}\NormalTok{peak_area }\OperatorTok{~}\StringTok{ }\NormalTok{hplc_data}\OperatorTok{$}\NormalTok{conc,}
+     \DataTypeTok{main =} \StringTok{"Peak area as a function of thymol concentration"}\NormalTok{,}
+     \DataTypeTok{xlab =} \StringTok{"Thymol concentration (μg/ml)"}\NormalTok{,}
+     \DataTypeTok{ylab =} \StringTok{"Peak area (AU)"}\NormalTok{,}
+     \DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Thymol concentration (μg/ml)'
+## in 'mbcsToSbcs': dot substituted for <ce>
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in title(...): conversion failure on 'Thymol concentration (μg/ml)'
+## in 'mbcsToSbcs': dot substituted for <bc>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg_mod =}\StringTok{ }\KeywordTok{lm}\NormalTok{(hplc_data}\OperatorTok{$}\NormalTok{peak_area }\OperatorTok{~}\StringTok{ }\NormalTok{hplc_data}\OperatorTok{$}\NormalTok{conc)}
+\KeywordTok{abline}\NormalTok{(reg_mod, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 \hypertarget{airquality-1}{%
 \subsection{Airquality}\label{airquality-1}}
@@ -7663,6 +8074,264 @@ The Ozone\textasciitilde{}Temp pair has the strongest correlation. A scatterplot
 \includegraphics{davur_ebook_files/figure-latex/airquality-strongest-corr-1.pdf}
 \caption{\label{fig:airquality-strongest-corr}Ozone dependency on Temp}
 \end{figure}
+
+\hypertarget{file-reading-practice-1}{%
+\subsection{File reading practice}\label{file-reading-practice-1}}
+
+\textbf{File 01}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_dir <-}\StringTok{ "data/file_reading"}
+\NormalTok{my_file <-}\StringTok{ "file01.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"#"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"ND"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 02}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file02.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"$"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"?"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 03}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file03.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"ND"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 04}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file04.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"no data"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 05}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file05.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"#"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"ND"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 06}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file06.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"#"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"-"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\NormalTok{my_data}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 07}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file07.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"#"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ F,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"-"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 08}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file08.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"@"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"ND"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 09}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file09.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"?"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 10}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file10.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ F,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"no data"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 11}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file11.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{";"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"-"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 12}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file12.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"-1"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 13}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file13.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"$"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ F,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"?"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 14}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file14.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"$"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{"."}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"no data"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{File 15}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_file <-}\StringTok{ "file15.txt"}
+\NormalTok{my_path <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(my_dir, }\StringTok{"/"}\NormalTok{, my_file)}
+\NormalTok{my_data <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}
+\NormalTok{    my_path,}
+    \DataTypeTok{comment.char =} \StringTok{"#"}\NormalTok{,}
+    \DataTypeTok{header =}\NormalTok{ T,}
+    \DataTypeTok{sep =} \StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{,}
+    \DataTypeTok{dec =} \StringTok{","}\NormalTok{,}
+    \DataTypeTok{na.strings =} \StringTok{"?"}\NormalTok{,}
+    \DataTypeTok{as.is =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{bird-observations-1}{%
 \subsection{Bird observations}\label{bird-observations-1}}
@@ -8434,7 +9103,7 @@ This exercise revolves around the \texttt{ChickWeight} dataset of the built-in \
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-142-1.pdf}
 
 \textbf{D}\\
 This is the ``naive'' solution:
@@ -8654,7 +9323,7 @@ This is the most efficient way of dealing with this in base R. Function \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-117-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-152-1.pdf}
 
 \textbf{F}
 
@@ -8667,7 +9336,7 @@ This is the most efficient way of dealing with this in base R. Function \texttt{
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-118-1.pdf}
+\includegraphics{davur_ebook_files/figure-latex/unnamed-chunk-153-1.pdf}
 
 \textbf{G}
 

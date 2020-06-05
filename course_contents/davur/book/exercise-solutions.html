@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-04-13" />
+<meta name="date" content="2020-05-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -266,8 +266,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="exercises.html"><a href="exercises.html#complex-datatypes"><i class="fa fa-check"></i><b>10.3</b> Complex datatypes</a><ul>
 <li class="chapter" data-level="10.3.1" data-path="exercises.html"><a href="exercises.html#creating-factors"><i class="fa fa-check"></i><b>10.3.1</b> Creating factors</a></li>
 <li class="chapter" data-level="10.3.2" data-path="exercises.html"><a href="exercises.html#a-dictionary-with-a-named-vector"><i class="fa fa-check"></i><b>10.3.2</b> A dictionary with a named vector</a></li>
-<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.3</b> Airquality</a></li>
-<li class="chapter" data-level="10.3.4" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.4</b> Bird observations</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercises.html"><a href="exercises.html#protein-concentrations-with-lowry"><i class="fa fa-check"></i><b>10.3.3</b> Protein concentrations with Lowry</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercises.html"><a href="exercises.html#hplc-data"><i class="fa fa-check"></i><b>10.3.4</b> HPLC data</a></li>
+<li class="chapter" data-level="10.3.5" data-path="exercises.html"><a href="exercises.html#airquality"><i class="fa fa-check"></i><b>10.3.5</b> Airquality</a></li>
+<li class="chapter" data-level="10.3.6" data-path="exercises.html"><a href="exercises.html#file-reading-practice"><i class="fa fa-check"></i><b>10.3.6</b> File reading practice</a></li>
+<li class="chapter" data-level="10.3.7" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.7</b> Bird observations</a></li>
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
 <li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.4.1</b> Restriction enzymes</a></li>
@@ -308,8 +311,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#complex-datatypes-1"><i class="fa fa-check"></i><b>11.3</b> Complex datatypes</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#creating-factors-1"><i class="fa fa-check"></i><b>11.3.1</b> Creating factors</a></li>
 <li class="chapter" data-level="11.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#a-dictionary-with-a-named-vector-1"><i class="fa fa-check"></i><b>11.3.2</b> A dictionary with a named vector</a></li>
-<li class="chapter" data-level="11.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#airquality-1"><i class="fa fa-check"></i><b>11.3.3</b> Airquality</a></li>
-<li class="chapter" data-level="11.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.4</b> Bird observations</a></li>
+<li class="chapter" data-level="11.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#protein-concentrations-with-lowry-1"><i class="fa fa-check"></i><b>11.3.3</b> Protein concentrations with Lowry</a></li>
+<li class="chapter" data-level="11.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#hplc-data-1"><i class="fa fa-check"></i><b>11.3.4</b> HPLC data</a></li>
+<li class="chapter" data-level="11.3.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#airquality-1"><i class="fa fa-check"></i><b>11.3.5</b> Airquality</a></li>
+<li class="chapter" data-level="11.3.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#file-reading-practice-1"><i class="fa fa-check"></i><b>11.3.6</b> File reading practice</a></li>
+<li class="chapter" data-level="11.3.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.7</b> Bird observations</a></li>
 </ul></li>
 <li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.4</b> Regular Expressions</a><ul>
 <li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.4.1</b> Restriction enzymes</a></li>
@@ -696,7 +702,7 @@ bar_data &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class
 <span class="kw">rownames</span>(bar_data) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)
 
 <span class="kw">barplot</span>(bar_data, <span class="dt">beside =</span> T, <span class="dt">legend =</span> <span class="kw">rownames</span>(bar_data))</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 </div>
 <div id="a-dictionary-with-a-named-vector-1" class="section level3">
 <h3><span class="header-section-number">11.3.2</span> A dictionary with a named vector</h3>
@@ -724,8 +730,98 @@ mol_weight &lt;-<span class="st"> </span><span class="dv">0</span>
 }
 mol_weight</code></pre>
 </div>
+<div id="protein-concentrations-with-lowry-1" class="section level3">
+<h3><span class="header-section-number">11.3.3</span> Protein concentrations with Lowry</h3>
+<pre class="sourceCode r"><code class="sourceCode r">bsa_conc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,    <span class="dv">0</span>,  <span class="fl">0.025</span>,  <span class="fl">0.025</span>,  <span class="fl">0.075</span>,  <span class="fl">0.075</span>,  <span class="fl">0.125</span>,  <span class="fl">0.125</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">OD750 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.063</span>,   <span class="fl">0.033</span>,  <span class="fl">0.16</span>,   <span class="fl">0.181</span>,  <span class="fl">0.346</span>,  <span class="fl">0.352</span>,  <span class="fl">0.491</span>,  <span class="fl">0.488</span>)</code></pre>
+<p><strong>A</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">dilution &lt;-<span class="st"> </span><span class="kw">data.frame</span>(bsa_conc, OD750)</code></pre>
+<p><strong>B</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(dilution) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;prot_conc&quot;</span>, <span class="st">&quot;absorption&quot;</span>)</code></pre>
+<p><strong>C</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">bsa_conc2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.175</span>,   <span class="fl">0.175</span>,  <span class="fl">0.25</span>,   <span class="fl">0.25</span>)
+OD750_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.597</span>, <span class="fl">0.595</span>,  <span class="fl">0.743</span>,  <span class="fl">0.742</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df_temp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;prot_conc&quot;</span> =<span class="st"> </span>bsa_conc2,
+                      <span class="st">&quot;absorption&quot;</span> =<span class="st"> </span>OD750_<span class="dv">2</span>)</code></pre>
+<p><strong>D</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">dilution &lt;-<span class="st"> </span><span class="kw">rbind</span>(dilution, df_temp)</code></pre>
+<p><strong>E</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Your code here</span>
+<span class="kw">plot</span>(dilution<span class="op">$</span>abs <span class="op">~</span><span class="st"> </span>dilution<span class="op">$</span>prot_conc,
+     <span class="dt">main =</span> <span class="st">&quot;Absorbance as a function of protein concentration&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Protein concentration (mg/ml)&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Absorbance at 750 nm (AU)&quot;</span>,
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),
+     <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>),
+     <span class="dt">pch =</span> <span class="dv">19</span>,
+     <span class="dt">cex =</span> <span class="fl">0.8</span>,
+     <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</code></pre>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
+<p><strong>F</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">even &lt;-<span class="st"> </span>dilution[<span class="kw">c</span>(T, F), ]
+odd &lt;-<span class="st"> </span>dilution[<span class="kw">c</span>(F, T), ]
+dilution_duplo &lt;-<span class="st"> </span><span class="kw">cbind</span>(odd, even)
+dilution_duplo</code></pre>
+<pre><code>##    prot_conc absorption prot_conc absorption
+## 2      0.000      0.033     0.000      0.063
+## 4      0.025      0.181     0.025      0.160
+## 6      0.075      0.352     0.075      0.346
+## 8      0.125      0.488     0.125      0.491
+## 10     0.175      0.595     0.175      0.597
+## 12     0.250      0.742     0.250      0.743</code></pre>
+<p><strong>G</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">dilution_duplo[, <span class="dv">3</span>] &lt;-<span class="st"> </span><span class="ot">NULL</span>
+<span class="kw">names</span>(dilution_duplo) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;prot_conc&quot;</span>, <span class="st">&quot;abs1&quot;</span>, <span class="st">&quot;abs2&quot;</span>)
+dilution_duplo</code></pre>
+<pre><code>##    prot_conc  abs1  abs2
+## 2      0.000 0.033 0.063
+## 4      0.025 0.181 0.160
+## 6      0.075 0.352 0.346
+## 8      0.125 0.488 0.491
+## 10     0.175 0.595 0.597
+## 12     0.250 0.742 0.743</code></pre>
+<p><strong>H</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">dilution_duplo<span class="op">$</span>mean &lt;-<span class="st"> </span>(dilution_duplo<span class="op">$</span>abs1 <span class="op">+</span><span class="st"> </span>dilution_duplo<span class="op">$</span>abs2) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>
+dilution_duplo</code></pre>
+<pre><code>##    prot_conc  abs1  abs2  mean
+## 2      0.000 0.033 0.063 0.048
+## 4      0.025 0.181 0.160 0.170
+## 6      0.075 0.352 0.346 0.349
+## 8      0.125 0.488 0.491 0.489
+## 10     0.175 0.595 0.597 0.596
+## 12     0.250 0.742 0.743 0.742</code></pre>
+<p><strong>I</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(dilution_duplo<span class="op">$</span>mean <span class="op">~</span><span class="st"> </span>dilution_duplo<span class="op">$</span>prot_conc,
+     <span class="dt">main =</span> <span class="st">&quot;Absorbance as a function of protein concentration&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Protein concentration (mg/ml)&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Absorbance 750nm (AU)&quot;</span>,
+     <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),
+     <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</code></pre>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+</div>
+<div id="hplc-data-1" class="section level3">
+<h3><span class="header-section-number">11.3.4</span> HPLC data</h3>
+<pre class="sourceCode r"><code class="sourceCode r">co &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>,    <span class="dv">100</span>,    <span class="dv">75</span>, <span class="dv">75</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">5</span>)
+pa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1969017</span>,    <span class="dv">1858012</span>,    <span class="dv">1399762</span>,    <span class="dv">1449423</span>,    <span class="dv">963014</span>, <span class="dv">832137</span>, <span class="dv">467856</span>, <span class="dv">562012</span>, <span class="dv">200123</span>, <span class="dv">145545</span>, <span class="dv">94567</span>,  <span class="dv">64752</span>)</code></pre>
+<p><strong>A</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Your code here</span>
+hplc_data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="st">&quot;conc&quot;</span> =<span class="st"> </span>co, <span class="st">&quot;peak_area&quot;</span> =<span class="st"> </span>pa)</code></pre>
+<p><strong>B</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Your code here</span>
+hplc_data &lt;-<span class="st"> </span>hplc_data[<span class="kw">order</span>(hplc_data<span class="op">$</span>conc), ]</code></pre>
+<p><strong>C</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Your code here</span>
+<span class="kw">plot</span>(hplc_data<span class="op">$</span>peak_area <span class="op">~</span><span class="st"> </span>hplc_data<span class="op">$</span>conc,
+     <span class="dt">main =</span> <span class="st">&quot;Peak area as a function of thymol concentration&quot;</span>,
+     <span class="dt">xlab =</span> <span class="st">&quot;Thymol concentration (μg/ml)&quot;</span>,
+     <span class="dt">ylab =</span> <span class="st">&quot;Peak area (AU)&quot;</span>,
+     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+reg_mod =<span class="st"> </span><span class="kw">lm</span>(hplc_data<span class="op">$</span>peak_area <span class="op">~</span><span class="st"> </span>hplc_data<span class="op">$</span>conc)
+<span class="kw">abline</span>(reg_mod, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
+</div>
 <div id="airquality-1" class="section level3">
-<h3><span class="header-section-number">11.3.3</span> Airquality</h3>
+<h3><span class="header-section-number">11.3.5</span> Airquality</h3>
 <p><strong>A</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(airquality<span class="op">$</span>Solar.R, airquality<span class="op">$</span>Temp,
          <span class="dt">main =</span> <span class="st">&quot;Temperature as a function of Solar radiation&quot;</span>,
@@ -777,8 +873,176 @@ Figure 11.1: Ozone dependency on Temp
 </p>
 </div>
 </div>
+<div id="file-reading-practice-1" class="section level3">
+<h3><span class="header-section-number">11.3.6</span> File reading practice</h3>
+<p><strong>File 01</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_dir &lt;-<span class="st"> &quot;data/file_reading&quot;</span>
+my_file &lt;-<span class="st"> &quot;file01.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;ND&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 02</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file02.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;$&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)
+)</code></pre>
+<p><strong>File 03</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file03.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;ND&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)
+)</code></pre>
+<p><strong>File 04</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file04.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;no data&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)
+)</code></pre>
+<p><strong>File 05</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file05.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;ND&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)
+)</code></pre>
+<p><strong>File 06</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file06.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;-&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))
+my_data</code></pre>
+<p><strong>File 07</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file07.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>,
+    <span class="dt">header =</span> F,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;-&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 08</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file08.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;@&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;ND&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 09</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file09.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 10</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file10.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> F,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;no data&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 11</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file11.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;-&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 12</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file12.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;-1&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 13</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file13.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;$&quot;</span>,
+    <span class="dt">header =</span> F,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 14</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file14.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;$&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;no data&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+<p><strong>File 15</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">my_file &lt;-<span class="st"> &quot;file15.txt&quot;</span>
+my_path &lt;-<span class="st"> </span><span class="kw">paste0</span>(my_dir, <span class="st">&quot;/&quot;</span>, my_file)
+my_data &lt;-<span class="st"> </span><span class="kw">read.table</span>(
+    my_path,
+    <span class="dt">comment.char =</span> <span class="st">&quot;#&quot;</span>,
+    <span class="dt">header =</span> T,
+    <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,
+    <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>,
+    <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>,
+    <span class="dt">as.is =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</code></pre>
+</div>
 <div id="bird-observations-1" class="section level3">
-<h3><span class="header-section-number">11.3.4</span> Bird observations</h3>
+<h3><span class="header-section-number">11.3.7</span> Bird observations</h3>
 <pre class="sourceCode r"><code class="sourceCode r">bird_obs &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/Observations-Data-2014.csv&quot;</span>, 
                                              <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, 
                                              <span class="dt">head=</span>T, 
@@ -1209,7 +1473,7 @@ Inline expressions are like this: 15.4 MpH.</p>
 ## 4    4 135</code></pre>
 <p><strong>C</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(weight <span class="op">~</span><span class="st"> </span>Time <span class="op">|</span><span class="st"> </span>Diet, <span class="dt">data =</span> ChickWeight, <span class="dt">panel =</span> panel.smooth)</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
 <p><strong>D</strong><br />
 This is the “naive” solution:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#A naive for-loop here - is this the best solution?</span>
@@ -1317,7 +1581,7 @@ urine<span class="op">$</span>ox_crystals &lt;-<span class="st"> </span><span cl
 ## 2         yes    1.02 5.93  683 21.4  302 6.20</code></pre>
 <p><strong>E</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(urine[, <span class="dv">3</span><span class="op">:</span><span class="dv">8</span>])</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p><strong>F</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;gplots&quot;)</span>
 <span class="kw">library</span>(<span class="st">&quot;gplots&quot;</span>)</code></pre>
@@ -1328,7 +1592,7 @@ urine<span class="op">$</span>ox_crystals &lt;-<span class="st"> </span><span cl
 ##     lowess</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r">cormat &lt;-<span class="st"> </span><span class="kw">cor</span>(urine[, <span class="dv">3</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">use =</span> <span class="st">&quot;complete.obs&quot;</span>)
 <span class="kw">heatmap.2</span>(cormat, <span class="dt">col =</span> <span class="kw">bluered</span>(<span class="dv">100</span>), <span class="dt">trace =</span> <span class="st">&quot;none&quot;</span>, <span class="dt">density.info =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
-<p><img src="davur_ebook_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
+<p><img src="davur_ebook_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <p><strong>G</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r">ph_factor &lt;-<span class="st"> </span><span class="kw">cut</span>(urine<span class="op">$</span>ph, 
     <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">5.5</span>, <span class="fl">7.0</span>, <span class="fl">8.0</span>), 
