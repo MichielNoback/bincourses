@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Basic R - plotting | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Basic R - plotting | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-05-28" />
+<meta name="date" content="2020-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="basic-r-coding.html">
-<link rel="next" href="complex-datatypes-and-file-reading.html">
+<link rel="prev" href="basic-r-coding.html"/>
+<link rel="next" href="complex-datatypes-and-file-reading.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,29 +48,35 @@
 
 
 
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -249,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>10</b> Exercises</a><ul>
 <li class="chapter" data-level="10.1" data-path="exercises.html"><a href="exercises.html#toolbox-1"><i class="fa fa-check"></i><b>10.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="exercises.html"><a href="exercises.html#get-set-up"><i class="fa fa-check"></i><b>10.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#resume"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#résumé"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="exercises.html"><a href="exercises.html#basic-r"><i class="fa fa-check"></i><b>10.2</b> Basic R</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="exercises.html"><a href="exercises.html#math-in-the-console"><i class="fa fa-check"></i><b>10.2.1</b> Math in the console</a></li>
@@ -272,29 +279,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3.6" data-path="exercises.html"><a href="exercises.html#file-reading-practice"><i class="fa fa-check"></i><b>10.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="10.3.7" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="10.4.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#functions-2"><i class="fa fa-check"></i><b>10.4</b> Functions</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#the-cut-function-i"><i class="fa fa-check"></i><b>10.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#the-cut-function-ii"><i class="fa fa-check"></i><b>10.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.5</b> Scripting</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="10.5.4" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.6</b> Scripting</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#count-odd-and-even-numbers"><i class="fa fa-check"></i><b>10.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#add-column-compared-to-mean"><i class="fa fa-check"></i><b>10.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="10.6.6" data-path="exercises.html"><a href="exercises.html#quadratic-equation-solver"><i class="fa fa-check"></i><b>10.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="10.6.7" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="10.7.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.7.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="10.7.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="10.7.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>11</b> Exercise solutions</a><ul>
 <li class="chapter" data-level="11.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toolbox-2"><i class="fa fa-check"></i><b>11.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#get-set-up-1"><i class="fa fa-check"></i><b>11.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#resume-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#résumé-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#basic-r-1"><i class="fa fa-check"></i><b>11.2</b> Basic R</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#math-in-the-console-1"><i class="fa fa-check"></i><b>11.2.1</b> Math in the console</a></li>
@@ -317,23 +331,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#file-reading-practice-1"><i class="fa fa-check"></i><b>11.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="11.3.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="11.4.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#functions-3"><i class="fa fa-check"></i><b>11.4</b> Functions</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-i-1"><i class="fa fa-check"></i><b>11.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-ii-1"><i class="fa fa-check"></i><b>11.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.5</b> Scripting</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="11.5.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.6</b> Scripting</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="" data-path="exercise-solutions.html"><a href="exercise-solutions.html#find-match-locations-1"><i class="fa fa-check"></i>Find match locations</a></li>
+<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#count-odd-and-even-numbers-1"><i class="fa fa-check"></i><b>11.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#add-column-compared-to-mean-1"><i class="fa fa-check"></i><b>11.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="11.6.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#quadratic-equation-solver-1"><i class="fa fa-check"></i><b>11.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="11.6.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="11.7.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="11.7.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="11.7.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="11.7.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -373,9 +395,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="scatter-and-line-plots" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Scatter and line plots</h3>
 <p>Meet <code>plot()</code> - the workhorse of R plotting.</p>
-<pre class="sourceCode r"><code class="sourceCode r">time &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)
-response &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.09</span>, <span class="fl">0.30</span>, <span class="fl">0.41</span>, <span class="fl">0.48</span>, <span class="fl">0.72</span>, <span class="fl">1.12</span>)
-<span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response)</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="basic-r-plotting.html#cb138-1"></a>time &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb138-2"><a href="basic-r-plotting.html#cb138-2"></a>response &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.09</span>, <span class="fl">0.30</span>, <span class="fl">0.41</span>, <span class="fl">0.48</span>, <span class="fl">0.72</span>, <span class="fl">1.12</span>)</span>
+<span id="cb138-3"><a href="basic-r-plotting.html#cb138-3"></a><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:plot-hello-1"></span>
 <img src="davur_ebook_files/figure-html/plot-hello-1-1.png" alt="Here is a nice figure!" width="80%" />
 <p class="caption">
@@ -386,7 +408,7 @@ Figure 4.1: Here is a nice figure!
 <div id="formula-notation" class="section level4 unnumbered">
 <h4>Formula notation</h4>
 <p>Instead of passing an <code>x =</code> and <code>y =</code> set of arguments, it is also possible to call the plot fuction with a <strong><em>formula notation</em></strong>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(response <span class="op">~</span><span class="st"> </span>time)</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="basic-r-plotting.html#cb139-1"></a><span class="kw">plot</span>(response <span class="op">~</span><span class="st"> </span>time)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/plot-hello-with-formula-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>You can read <code>response ~ time</code> as <em>response as a function of time</em>. This is a nice, readable alternative in this case, but for many functions it is the only or preferred way to specify the relationship you want to investigate.</p>
 </div>
@@ -400,24 +422,24 @@ Figure 4.1: Here is a nice figure!
 </ul>
 <p>The first plots of this chapters were very bare (and a bit boring to look at): the plot has no axis labels (quantity and units) and no decoration whatsoever. By passing arguments to <code>plot()</code> you can modify or add many features of your plot. Basic decoration includes</p>
 <ul>
-<li>adjusting markers (<code>pch = 19</code>, <code>col = &quot;blue&quot;</code>)</li>
-<li>adding connector lines (<code>type = &quot;b&quot;</code>) or removing points (<code>type = &quot;l&quot;</code>)</li>
-<li>adding axis labels and title (<code>xlab = &quot;Time (hours)&quot;</code>, <code>ylab = &quot;Systemic response&quot;</code>, <code>main = &quot;Systemic response to agent X&quot;</code>)</li>
+<li>adjusting markers (<code>pch = 19</code>, <code>col = "blue"</code>)</li>
+<li>adding connector lines (<code>type = "b"</code>) or removing points (<code>type = "l"</code>)</li>
+<li>adding axis labels and title (<code>xlab = "Time (hours)"</code>, <code>ylab = "Systemic response"</code>, <code>main = "Systemic response to agent X"</code>)</li>
 <li>adjusting axis limits (<code>xlim = c(0, 8)</code>)</li>
 </ul>
 <p>This is not an exhaustive listing; these are listed in the last section of this chapter.</p>
 <p>Here is a more complete plot using a variety of arguments.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>),
-     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="basic-r-plotting.html#cb140-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>),</span>
+<span id="cb140-2"><a href="basic-r-plotting.html#cb140-2"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,</span>
+<span id="cb140-3"><a href="basic-r-plotting.html#cb140-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/plot-hello-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="adjusting-the-plot-symbol" class="section level4 unnumbered">
 <h4>Adjusting the plot symbol</h4>
 <p>When you have many data points they will overlap. Using transparency with the <code>rgb(,, alpha=)</code> color definition and/or smaller plot symbols (<code>cex=</code>) solves this.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dv">10</span>, <span class="dv">2</span>); y &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)
-<span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.6</span>,
-     <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dt">red =</span> <span class="dv">0</span>, <span class="dt">green =</span> <span class="dv">0</span>, <span class="dt">blue =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>))</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="basic-r-plotting.html#cb141-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dv">10</span>, <span class="dv">2</span>); y &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="fl">0.5</span>, <span class="fl">0.5</span>)</span>
+<span id="cb141-2"><a href="basic-r-plotting.html#cb141-2"></a><span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">cex =</span> <span class="fl">0.6</span>,</span>
+<span id="cb141-3"><a href="basic-r-plotting.html#cb141-3"></a>     <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="dt">red =</span> <span class="dv">0</span>, <span class="dt">green =</span> <span class="dv">0</span>, <span class="dt">blue =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/plot-hello-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -429,49 +451,49 @@ Figure 4.1: Here is a nice figure!
 <li>By using <code>barplot()</code>. The advantage of this is that accepts some graphical parameters that are not relevant and accepted by <code>plot()</code>, such as <code>beside =</code>, <code>height =</code>, <code>width =</code> and others (type <code>?barplot</code> to see all).</li>
 </ul>
 <p>Here is an example:</p>
-<pre class="sourceCode r"><code class="sourceCode r">persons &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> T))
-<span class="kw">plot</span>(persons)</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="basic-r-plotting.html#cb142-1"></a>persons &lt;-<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> T))</span>
+<span id="cb142-2"><a href="basic-r-plotting.html#cb142-2"></a><span class="kw">plot</span>(persons)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/barplot-0-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div id="barplot-with-a-vector" class="section level4 unnumbered">
 <h4><code>barplot()</code> with a vector</h4>
 <p>The function <code>barplot()</code> can be called with a vector specifying the bar heights (frequencies), or a <code>table</code> object.</p>
-<pre class="sourceCode r"><code class="sourceCode r">frequencies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">54</span>, <span class="dv">12</span>, <span class="dv">29</span>)
-<span class="kw">barplot</span>(frequencies, <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>, <span class="st">&quot;four&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="basic-r-plotting.html#cb143-1"></a>frequencies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">22</span>, <span class="dv">54</span>, <span class="dv">12</span>, <span class="dv">29</span>)</span>
+<span id="cb143-2"><a href="basic-r-plotting.html#cb143-2"></a><span class="kw">barplot</span>(frequencies, <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>, <span class="st">&quot;three&quot;</span>, <span class="st">&quot;four&quot;</span>))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/barplot-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>With a table object:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(persons)</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="basic-r-plotting.html#cb144-1"></a><span class="kw">table</span>(persons)</span></code></pre></div>
 <pre><code>## persons
 ## female   male 
 ##     50     50</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">table</span>(persons))</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="basic-r-plotting.html#cb146-1"></a><span class="kw">barplot</span>(<span class="kw">table</span>(persons))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/barplot-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="barplot-with-a-2d-table-object" class="section level4 unnumbered">
 <h4><code>barplot()</code> with a 2D table object</h4>
 <p>Suppose you have this data:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>) 
-course &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;biology&quot;</span>, <span class="st">&quot;chemistry&quot;</span>), <span class="dt">each =</span> <span class="dv">10</span>)
-passed &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Passed&quot;</span>, <span class="st">&quot;Failed&quot;</span>), <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> T)
-tbl &lt;-<span class="st"> </span><span class="kw">table</span>(passed, course) <span class="co"># the order matters!</span>
-tbl</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="basic-r-plotting.html#cb147-1"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>) </span>
+<span id="cb147-2"><a href="basic-r-plotting.html#cb147-2"></a>course &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;biology&quot;</span>, <span class="st">&quot;chemistry&quot;</span>), <span class="dt">each =</span> <span class="dv">10</span>)</span>
+<span id="cb147-3"><a href="basic-r-plotting.html#cb147-3"></a>passed &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Passed&quot;</span>, <span class="st">&quot;Failed&quot;</span>), <span class="dt">size =</span> <span class="dv">20</span>, <span class="dt">replace =</span> T)</span>
+<span id="cb147-4"><a href="basic-r-plotting.html#cb147-4"></a>tbl &lt;-<span class="st"> </span><span class="kw">table</span>(passed, course) <span class="co"># the order matters!</span></span>
+<span id="cb147-5"><a href="basic-r-plotting.html#cb147-5"></a>tbl</span></code></pre></div>
 <pre><code>##         course
 ## passed   biology chemistry
 ##   Failed       6         8
 ##   Passed       4         2</code></pre>
 <p>The <code>set.seed(1234)</code> makes the <em>sampling</em> reproducible, although that sounds really unlogical. Discussing <strong><em>pseudorandom</em></strong> sampling is not within the scope of this course however.</p>
 <p>You can create a <strong><em>stacked bar chart</em></strong> like this.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(tbl, 
-        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkblue&quot;</span>), 
-        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">ncol</span>(tbl) <span class="op">+</span><span class="st"> </span><span class="dv">2</span>), 
-        <span class="dt">legend =</span> <span class="kw">rownames</span>(tbl))</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="basic-r-plotting.html#cb149-1"></a><span class="kw">barplot</span>(tbl, </span>
+<span id="cb149-2"><a href="basic-r-plotting.html#cb149-2"></a>        <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkblue&quot;</span>), </span>
+<span id="cb149-3"><a href="basic-r-plotting.html#cb149-3"></a>        <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">ncol</span>(tbl) <span class="op">+</span><span class="st"> </span><span class="dv">2</span>), </span>
+<span id="cb149-4"><a href="basic-r-plotting.html#cb149-4"></a>        <span class="dt">legend =</span> <span class="kw">rownames</span>(tbl))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/barplot-4-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>The <code>xlim =</code> setting is a trick to get the legend beside the plot.</p>
 <p>Using the <code>beside = TRUE</code> argument, you get the bars <strong><em>side by side</em></strong>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(tbl, 
-        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkblue&quot;</span>), 
-        <span class="dt">beside =</span> <span class="ot">TRUE</span>, 
-        <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">ncol</span>(tbl)<span class="op">*</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>), 
-        <span class="dt">legend =</span> <span class="kw">rownames</span>(tbl))</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="basic-r-plotting.html#cb150-1"></a><span class="kw">barplot</span>(tbl, </span>
+<span id="cb150-2"><a href="basic-r-plotting.html#cb150-2"></a>        <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;darkblue&quot;</span>), </span>
+<span id="cb150-3"><a href="basic-r-plotting.html#cb150-3"></a>        <span class="dt">beside =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb150-4"><a href="basic-r-plotting.html#cb150-4"></a>        <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">ncol</span>(tbl)<span class="op">*</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>), </span>
+<span id="cb150-5"><a href="basic-r-plotting.html#cb150-5"></a>        <span class="dt">legend =</span> <span class="kw">rownames</span>(tbl))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/barplot-5-1.png" width="480" /></p>
 <p>Later, we’ll see another data structure to feed to barplot: the matrix.</p>
 </div>
@@ -479,51 +501,51 @@ tbl</code></pre>
 <div id="histograms" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Histograms</h3>
 <p>Histograms help you visualise the distribution of your data.</p>
-<pre class="sourceCode r"><code class="sourceCode r">male_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">500</span>, <span class="dv">80</span>, <span class="dv">8</span>)) <span class="co">## create 500 random numbers around 80</span>
-<span class="kw">hist</span>(male_weights)</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="basic-r-plotting.html#cb151-1"></a>male_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">500</span>, <span class="dv">80</span>, <span class="dv">8</span>)) <span class="co">## create 500 random numbers around 80</span></span>
+<span id="cb151-2"><a href="basic-r-plotting.html#cb151-2"></a><span class="kw">hist</span>(male_weights)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/histogram-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Using the <code>breaks</code> argument, you can adjust the bin width. Always explore this option when creating histograms!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make 2 plots to sit side by side</span>
-<span class="kw">hist</span>(male_weights, <span class="dt">breaks =</span> <span class="dv">5</span>, <span class="dt">col =</span> <span class="st">&quot;gold&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Male weights&quot;</span>)
-<span class="kw">hist</span>(male_weights, <span class="dt">breaks =</span> <span class="dv">25</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Male weights&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="basic-r-plotting.html#cb152-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make 2 plots to sit side by side</span></span>
+<span id="cb152-2"><a href="basic-r-plotting.html#cb152-2"></a><span class="kw">hist</span>(male_weights, <span class="dt">breaks =</span> <span class="dv">5</span>, <span class="dt">col =</span> <span class="st">&quot;gold&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Male weights&quot;</span>)</span>
+<span id="cb152-3"><a href="basic-r-plotting.html#cb152-3"></a><span class="kw">hist</span>(male_weights, <span class="dt">breaks =</span> <span class="dv">25</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Male weights&quot;</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/histogram-2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>If you want a more detailed</p>
 </div>
 <div id="density-plot-as-alternative-to-hist" class="section level3">
 <h3><span class="header-section-number">4.1.4</span> Density plot as alternative to <code>hist()</code></h3>
 <p>When you want a bit more fine-grained view of the distribution you can use a plot of a density function; by adding a <code>polygon()</code> you can even have some nice shading under the line:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(male_weights),
-     <span class="dt">main =</span> <span class="st">&quot;A density plot of male weights&quot;</span>,
-     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
-<span class="kw">polygon</span>(<span class="kw">density</span>(male_weights), <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="basic-r-plotting.html#cb153-1"></a><span class="kw">plot</span>(<span class="kw">density</span>(male_weights),</span>
+<span id="cb153-2"><a href="basic-r-plotting.html#cb153-2"></a>     <span class="dt">main =</span> <span class="st">&quot;A density plot of male weights&quot;</span>,</span>
+<span id="cb153-3"><a href="basic-r-plotting.html#cb153-3"></a>     <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb153-4"><a href="basic-r-plotting.html#cb153-4"></a><span class="kw">polygon</span>(<span class="kw">density</span>(male_weights), <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/density-plot-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="boxplots" class="section level3">
 <h3><span class="header-section-number">4.1.5</span> Boxplots</h3>
 <p>This is the last of the basic plot types. A boxplot is a visual representation of the <em>5-number summary</em> of a numeric variable: minimum, maximum, median, first and third quartile.</p>
-<pre class="sourceCode r"><code class="sourceCode r">persons &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)
-weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">80</span>, <span class="dv">6</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">75</span>, <span class="dv">8</span>))
-<span class="co">#print 6-number summary (5-number + mean)</span>
-<span class="kw">summary</span>(weights[persons <span class="op">==</span><span class="st"> &quot;female&quot;</span>])</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="basic-r-plotting.html#cb154-1"></a>persons &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;male&quot;</span>, <span class="st">&quot;female&quot;</span>), <span class="dt">each =</span> <span class="dv">100</span>)</span>
+<span id="cb154-2"><a href="basic-r-plotting.html#cb154-2"></a>weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">80</span>, <span class="dv">6</span>), <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">75</span>, <span class="dv">8</span>))</span>
+<span id="cb154-3"><a href="basic-r-plotting.html#cb154-3"></a><span class="co">#print 6-number summary (5-number + mean)</span></span>
+<span id="cb154-4"><a href="basic-r-plotting.html#cb154-4"></a><span class="kw">summary</span>(weights[persons <span class="op">==</span><span class="st"> &quot;female&quot;</span>])</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   57.68   69.36   74.12   73.99   78.97   92.23</code></pre>
 <p>Boxplots tell the same story as histograms, but are less precise. however, they are excellent when you want to show a series of subsets split over some variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make 2 plots to sit side by side</span>
-<span class="co"># create boxplots of weights depending on sex</span>
-<span class="kw">boxplot</span>(weights <span class="op">~</span><span class="st"> </span>persons, <span class="dt">ylab =</span> <span class="st">&quot;weight&quot;</span>)
-<span class="kw">boxplot</span>(weights <span class="op">~</span><span class="st"> </span>persons, <span class="dt">notch =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;magenta&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="basic-r-plotting.html#cb156-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># make 2 plots to sit side by side</span></span>
+<span id="cb156-2"><a href="basic-r-plotting.html#cb156-2"></a><span class="co"># create boxplots of weights depending on sex</span></span>
+<span id="cb156-3"><a href="basic-r-plotting.html#cb156-3"></a><span class="kw">boxplot</span>(weights <span class="op">~</span><span class="st"> </span>persons, <span class="dt">ylab =</span> <span class="st">&quot;weight&quot;</span>)</span>
+<span id="cb156-4"><a href="basic-r-plotting.html#cb156-4"></a><span class="kw">boxplot</span>(weights <span class="op">~</span><span class="st"> </span>persons, <span class="dt">notch =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;magenta&quot;</span>))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/boxplots-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Use <code>varwidth = TRUE</code> when you want to visualize the difference in group sizes.</p>
 </div>
 <div id="adding-more-data-and-a-legend" class="section level3">
 <h3><span class="header-section-number">4.1.6</span> Adding more data and a legend</h3>
 <p>When you have more than one data series to plot, add them using the function <code>points()</code>. You call this function <em>after</em> you created the primary plot. Since there are multiple lines you will also need a legend.</p>
-<pre class="sourceCode r"><code class="sourceCode r">response2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.07</span>, <span class="fl">0.10</span>, <span class="fl">0.17</span>, <span class="fl">0.28</span>, <span class="fl">0.46</span>, <span class="fl">0.61</span>)
-<span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response2, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
-<span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">1.0</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>)</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="basic-r-plotting.html#cb157-1"></a>response2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.07</span>, <span class="fl">0.10</span>, <span class="fl">0.17</span>, <span class="fl">0.28</span>, <span class="fl">0.46</span>, <span class="fl">0.61</span>)</span>
+<span id="cb157-2"><a href="basic-r-plotting.html#cb157-2"></a><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>,</span>
+<span id="cb157-3"><a href="basic-r-plotting.html#cb157-3"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,</span>
+<span id="cb157-4"><a href="basic-r-plotting.html#cb157-4"></a>     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb157-5"><a href="basic-r-plotting.html#cb157-5"></a><span class="kw">points</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response2, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb157-6"><a href="basic-r-plotting.html#cb157-6"></a><span class="kw">legend</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="fl">1.0</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;one&quot;</span>, <span class="st">&quot;two&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="dt">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/plot-legend-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>The <code>legend()</code> function is <em>very</em> versatile. Have a look at the docs!
 In its most basic form you pass it a position (x and y), series names, colors and plot character.</p>
@@ -540,61 +562,61 @@ Use the function <code>abline()</code> for this.</p>
 <li>A linear model, determined with the <code>lm()</code> function. The linear model object actually contains an intercept and a slope value which is taken by <code>abline()</code>.</li>
 </ul>
 <p>In the following plot, these four basic helper lines are demonstrated:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>,
-     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,
-     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="co">#horizontal line</span>
-<span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.3</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
-<span class="co">#vertical line</span>
-<span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">4</span>, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)
-<span class="co">#line with slope</span>
-<span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">-0.1</span>, <span class="dt">b =</span> <span class="fl">0.3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>)
-<span class="co">#linear model </span>
-<span class="kw">abline</span>(<span class="kw">lm</span>(response <span class="op">~</span><span class="st"> </span>time),  <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;maroon&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="basic-r-plotting.html#cb158-1"></a><span class="kw">plot</span>(<span class="dt">x =</span> time, <span class="dt">y =</span> response, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>,</span>
+<span id="cb158-2"><a href="basic-r-plotting.html#cb158-2"></a>     <span class="dt">xlab =</span> <span class="st">&quot;Time (hours)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Systemic response (a.u.)&quot;</span>,</span>
+<span id="cb158-3"><a href="basic-r-plotting.html#cb158-3"></a>     <span class="dt">main =</span> <span class="st">&quot;Systemic response to agent X&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb158-4"><a href="basic-r-plotting.html#cb158-4"></a><span class="co">#horizontal line</span></span>
+<span id="cb158-5"><a href="basic-r-plotting.html#cb158-5"></a><span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.3</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb158-6"><a href="basic-r-plotting.html#cb158-6"></a><span class="co">#vertical line</span></span>
+<span id="cb158-7"><a href="basic-r-plotting.html#cb158-7"></a><span class="kw">abline</span>(<span class="dt">v =</span> <span class="dv">4</span>, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>)</span>
+<span id="cb158-8"><a href="basic-r-plotting.html#cb158-8"></a><span class="co">#line with slope</span></span>
+<span id="cb158-9"><a href="basic-r-plotting.html#cb158-9"></a><span class="kw">abline</span>(<span class="dt">a =</span> <span class="fl">-0.1</span>, <span class="dt">b =</span> <span class="fl">0.3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>)</span>
+<span id="cb158-10"><a href="basic-r-plotting.html#cb158-10"></a><span class="co">#linear model </span></span>
+<span id="cb158-11"><a href="basic-r-plotting.html#cb158-11"></a><span class="kw">abline</span>(<span class="kw">lm</span>(response <span class="op">~</span><span class="st"> </span>time),  <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;maroon&quot;</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/plot-helpers-1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="graphical-parameters-to-plot" class="section level2">
 <h2><span class="header-section-number">4.2</span> Graphical parameters to <code>plot()</code></h2>
 <p>There are <em>many</em> parameters that can be passed to the plotting functions. Here is a small sample and their possible values.</p>
-<pre class="sourceCode r"><code class="sourceCode r">series &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span>
-<span class="kw">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">20</span>) , <span class="dt">ylim=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">7.5</span>), <span class="dt">col=</span><span class="st">&quot;white&quot;</span> , <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span> , <span class="dt">ylab=</span><span class="st">&quot;&quot;</span> , <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)
-
-<span class="co"># the rainbow() function gives a nice palette across all colors</span>
-<span class="co"># or use hcl.colors() to specify another palette</span>
-<span class="co"># use  hcl.pals() to get an overview of available pallettes</span>
-colors =<span class="st"> </span><span class="kw">hcl.colors</span>(<span class="dv">20</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>, <span class="dt">palette =</span> <span class="st">&#39;viridis&#39;</span>)
-
-<span class="co">#pch</span>
-<span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="dt">pch =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">cex =</span> <span class="dv">2</span>)
-<span class="co">#col</span>
-<span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">20</span>), <span class="dt">col =</span> colors, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>)
-<span class="co">#cex</span>
-<span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">20</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span> , <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> series <span class="op">*</span><span class="st"> </span><span class="fl">0.2</span>)
-
-<span class="co">#overlay to create new symbol</span>
-<span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">20</span>), <span class="dt">pch =</span> series, <span class="dt">cex =</span> <span class="fl">2.5</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
-<span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">20</span>), <span class="dt">pch =</span> series, <span class="dt">cex =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> colors)
- 
-<span class="co">#lty</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>) {
-    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">lty =</span> i, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)
-    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="fl">5.25</span> , i)
-}
-<span class="co">#type and lwd</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {
-    <span class="co">#type</span>
-    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">6</span>, <span class="dv">4</span>),
-           <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;o&quot;</span>)[i], <span class="dt">lwd=</span><span class="dv">2</span>)
-    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>) <span class="op">-</span><span class="st"> </span><span class="fl">2.5</span>, <span class="fl">6.4</span> , <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;o&quot;</span>)[i] )
-    <span class="co">#lwd</span>
-    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">7</span>, <span class="dv">4</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> i)
-    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>) <span class="op">-</span><span class="st"> </span><span class="fl">2.5</span>, <span class="fl">7.23</span>, i)
-}
-<span class="co">#add axis</span>
-<span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>),
-    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;pch&quot;</span> , <span class="st">&quot;col&quot;</span> , <span class="st">&quot;cex&quot;</span> , <span class="st">&quot;combine&quot;</span>, <span class="st">&quot;lty&quot;</span>, <span class="st">&quot;type&quot;</span> , <span class="st">&quot;lwd&quot;</span> ),
-    <span class="dt">tick =</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex.axis =</span> <span class="fl">0.8</span>)</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="basic-r-plotting.html#cb159-1"></a>series &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span></span>
+<span id="cb159-2"><a href="basic-r-plotting.html#cb159-2"></a><span class="kw">plot</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">20</span>) , <span class="dt">ylim=</span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">7.5</span>), <span class="dt">col=</span><span class="st">&quot;white&quot;</span> , <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span> , <span class="dt">ylab=</span><span class="st">&quot;&quot;</span> , <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb159-3"><a href="basic-r-plotting.html#cb159-3"></a></span>
+<span id="cb159-4"><a href="basic-r-plotting.html#cb159-4"></a><span class="co"># the rainbow() function gives a nice palette across all colors</span></span>
+<span id="cb159-5"><a href="basic-r-plotting.html#cb159-5"></a><span class="co"># or use hcl.colors() to specify another palette</span></span>
+<span id="cb159-6"><a href="basic-r-plotting.html#cb159-6"></a><span class="co"># use  hcl.pals() to get an overview of available pallettes</span></span>
+<span id="cb159-7"><a href="basic-r-plotting.html#cb159-7"></a>colors =<span class="st"> </span><span class="kw">hcl.colors</span>(<span class="dv">20</span>, <span class="dt">alpha =</span> <span class="fl">0.8</span>, <span class="dt">palette =</span> <span class="st">&#39;viridis&#39;</span>)</span>
+<span id="cb159-8"><a href="basic-r-plotting.html#cb159-8"></a></span>
+<span id="cb159-9"><a href="basic-r-plotting.html#cb159-9"></a><span class="co">#pch</span></span>
+<span id="cb159-10"><a href="basic-r-plotting.html#cb159-10"></a><span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>), <span class="dt">pch =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb159-11"><a href="basic-r-plotting.html#cb159-11"></a><span class="co">#col</span></span>
+<span id="cb159-12"><a href="basic-r-plotting.html#cb159-12"></a><span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">20</span>), <span class="dt">col =</span> colors, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>)</span>
+<span id="cb159-13"><a href="basic-r-plotting.html#cb159-13"></a><span class="co">#cex</span></span>
+<span id="cb159-14"><a href="basic-r-plotting.html#cb159-14"></a><span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">3</span>, <span class="dv">20</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span> , <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> series <span class="op">*</span><span class="st"> </span><span class="fl">0.2</span>)</span>
+<span id="cb159-15"><a href="basic-r-plotting.html#cb159-15"></a></span>
+<span id="cb159-16"><a href="basic-r-plotting.html#cb159-16"></a><span class="co">#overlay to create new symbol</span></span>
+<span id="cb159-17"><a href="basic-r-plotting.html#cb159-17"></a><span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">20</span>), <span class="dt">pch =</span> series, <span class="dt">cex =</span> <span class="fl">2.5</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb159-18"><a href="basic-r-plotting.html#cb159-18"></a><span class="kw">points</span>(series, <span class="kw">rep</span>(<span class="dv">4</span>, <span class="dv">20</span>), <span class="dt">pch =</span> series, <span class="dt">cex =</span> <span class="fl">1.5</span>, <span class="dt">col =</span> colors)</span>
+<span id="cb159-19"><a href="basic-r-plotting.html#cb159-19"></a> </span>
+<span id="cb159-20"><a href="basic-r-plotting.html#cb159-20"></a><span class="co">#lty</span></span>
+<span id="cb159-21"><a href="basic-r-plotting.html#cb159-21"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>) {</span>
+<span id="cb159-22"><a href="basic-r-plotting.html#cb159-22"></a>    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">lty =</span> i, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb159-23"><a href="basic-r-plotting.html#cb159-23"></a>    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>, <span class="fl">5.25</span> , i)</span>
+<span id="cb159-24"><a href="basic-r-plotting.html#cb159-24"></a>}</span>
+<span id="cb159-25"><a href="basic-r-plotting.html#cb159-25"></a><span class="co">#type and lwd</span></span>
+<span id="cb159-26"><a href="basic-r-plotting.html#cb159-26"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb159-27"><a href="basic-r-plotting.html#cb159-27"></a>    <span class="co">#type</span></span>
+<span id="cb159-28"><a href="basic-r-plotting.html#cb159-28"></a>    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">6</span>, <span class="dv">4</span>),</span>
+<span id="cb159-29"><a href="basic-r-plotting.html#cb159-29"></a>           <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;o&quot;</span>)[i], <span class="dt">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb159-30"><a href="basic-r-plotting.html#cb159-30"></a>    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>) <span class="op">-</span><span class="st"> </span><span class="fl">2.5</span>, <span class="fl">6.4</span> , <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;o&quot;</span>)[i] )</span>
+<span id="cb159-31"><a href="basic-r-plotting.html#cb159-31"></a>    <span class="co">#lwd</span></span>
+<span id="cb159-32"><a href="basic-r-plotting.html#cb159-32"></a>    <span class="kw">points</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">-3</span>, <span class="dv">-2</span>, <span class="dv">-1</span>) <span class="op">+</span><span class="st"> </span>(i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>), <span class="kw">rep</span>(<span class="dv">7</span>, <span class="dv">4</span>), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> i)</span>
+<span id="cb159-33"><a href="basic-r-plotting.html#cb159-33"></a>    <span class="kw">text</span>((i <span class="op">*</span><span class="st"> </span><span class="dv">5</span>) <span class="op">-</span><span class="st"> </span><span class="fl">2.5</span>, <span class="fl">7.23</span>, i)</span>
+<span id="cb159-34"><a href="basic-r-plotting.html#cb159-34"></a>}</span>
+<span id="cb159-35"><a href="basic-r-plotting.html#cb159-35"></a><span class="co">#add axis</span></span>
+<span id="cb159-36"><a href="basic-r-plotting.html#cb159-36"></a><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>),</span>
+<span id="cb159-37"><a href="basic-r-plotting.html#cb159-37"></a>    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;pch&quot;</span> , <span class="st">&quot;col&quot;</span> , <span class="st">&quot;cex&quot;</span> , <span class="st">&quot;combine&quot;</span>, <span class="st">&quot;lty&quot;</span>, <span class="st">&quot;type&quot;</span> , <span class="st">&quot;lwd&quot;</span> ),</span>
+<span id="cb159-38"><a href="basic-r-plotting.html#cb159-38"></a>    <span class="dt">tick =</span> <span class="ot">FALSE</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex.axis =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 
 </div>
@@ -610,11 +632,13 @@ colors =<span class="st"> </span><span class="kw">hcl.colors</span>(<span class=
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -622,12 +646,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -639,6 +662,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -657,8 +684,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

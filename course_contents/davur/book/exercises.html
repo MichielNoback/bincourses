@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Exercises | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Exercises | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-05-28" />
+<meta name="date" content="2020-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="exploratory-data-analysis.html">
-<link rel="next" href="exercise-solutions.html">
+<link rel="prev" href="exploratory-data-analysis.html"/>
+<link rel="next" href="exercise-solutions.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,29 +48,35 @@
 
 
 
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -249,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>10</b> Exercises</a><ul>
 <li class="chapter" data-level="10.1" data-path="exercises.html"><a href="exercises.html#toolbox-1"><i class="fa fa-check"></i><b>10.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="exercises.html"><a href="exercises.html#get-set-up"><i class="fa fa-check"></i><b>10.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#resume"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#résumé"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="exercises.html"><a href="exercises.html#basic-r"><i class="fa fa-check"></i><b>10.2</b> Basic R</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="exercises.html"><a href="exercises.html#math-in-the-console"><i class="fa fa-check"></i><b>10.2.1</b> Math in the console</a></li>
@@ -272,29 +279,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3.6" data-path="exercises.html"><a href="exercises.html#file-reading-practice"><i class="fa fa-check"></i><b>10.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="10.3.7" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="10.4.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#functions-2"><i class="fa fa-check"></i><b>10.4</b> Functions</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#the-cut-function-i"><i class="fa fa-check"></i><b>10.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#the-cut-function-ii"><i class="fa fa-check"></i><b>10.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.5</b> Scripting</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="10.5.4" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.6</b> Scripting</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#count-odd-and-even-numbers"><i class="fa fa-check"></i><b>10.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#add-column-compared-to-mean"><i class="fa fa-check"></i><b>10.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="10.6.6" data-path="exercises.html"><a href="exercises.html#quadratic-equation-solver"><i class="fa fa-check"></i><b>10.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="10.6.7" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="10.7.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.7.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="10.7.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="10.7.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>11</b> Exercise solutions</a><ul>
 <li class="chapter" data-level="11.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toolbox-2"><i class="fa fa-check"></i><b>11.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#get-set-up-1"><i class="fa fa-check"></i><b>11.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#resume-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#résumé-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#basic-r-1"><i class="fa fa-check"></i><b>11.2</b> Basic R</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#math-in-the-console-1"><i class="fa fa-check"></i><b>11.2.1</b> Math in the console</a></li>
@@ -317,23 +331,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#file-reading-practice-1"><i class="fa fa-check"></i><b>11.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="11.3.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="11.4.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#functions-3"><i class="fa fa-check"></i><b>11.4</b> Functions</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-i-1"><i class="fa fa-check"></i><b>11.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-ii-1"><i class="fa fa-check"></i><b>11.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.5</b> Scripting</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="11.5.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.6</b> Scripting</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="" data-path="exercise-solutions.html"><a href="exercise-solutions.html#find-match-locations-1"><i class="fa fa-check"></i>Find match locations</a></li>
+<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#count-odd-and-even-numbers-1"><i class="fa fa-check"></i><b>11.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#add-column-compared-to-mean-1"><i class="fa fa-check"></i><b>11.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="11.6.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#quadratic-equation-solver-1"><i class="fa fa-check"></i><b>11.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="11.6.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="11.7.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="11.7.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="11.7.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="11.7.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -382,7 +404,7 @@ author: &quot;&lt;YOUR NAME&gt;&quot;
 <li>[Optionally] If you want to generate pdf documents you should also install a Latex version: MikTeX or TinyTex for Windows or MacTeX on MacOS. If you want to keep things simple I suggest you stick to HTML and MS Word output (Word can also export to PDF).</li>
 </ol>
 </div>
-<div id="resume" class="section level3">
+<div id="résumé" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> Résumé</h3>
 <p>Create an R Markdown document called Résumé.Rmd and create your Curriculum Vitae using Markdown syntax. Use the R Markdown Reference Guide or Cheat Sheet or this <a href="https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf">Markdown Cheatsheet</a> (you don’t need R for your résumé so markdown alone is enough).</p>
 </div>
@@ -402,11 +424,11 @@ author: &quot;&lt;YOUR NAME&gt;&quot;
 <div id="first-look-at-functions" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> First look at functions</h3>
 <p><strong>A</strong><br />
-View the help page for <code>paste()</code>. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate <em>exactly</em> this message <code>&quot;welcome to R&quot;</code> from these arguments: <code>&quot;welcome &quot;, &quot;to &quot;, &quot;R&quot;</code></p>
+View the help page for <code>paste()</code>. There are two variants of this function. Which? And what is the difference between them? Use both variants to generate <em>exactly</em> this message <code>"welcome to R"</code> from these arguments: <code>"welcome ", "to ", "R"</code></p>
 <p><strong>B</strong><br />
 What does the <code>abs</code> function do? What is returned by <code>abs(-20)</code> and what is <code>abs(20)</code>?</p>
 <p><strong>C</strong><br />
-What does the <code>c</code> function do? What is the difference in returned value (result) of <code>c()</code> when you combine either <code>1</code>, <code>3</code> and <code>&quot;a&quot;</code> as arguments, or <code>1</code>, <code>2</code> and <code>3</code>? Use the function <code>class()</code> to answer this.</p>
+What does the <code>c</code> function do? What is the difference in returned value (result) of <code>c()</code> when you combine either <code>1</code>, <code>3</code> and <code>"a"</code> as arguments, or <code>1</code>, <code>2</code> and <code>3</code>? Use the function <code>class()</code> to answer this.</p>
 <p><strong>D</strong><br />
 What does the function <code>install.packages()</code> do? Use it to install the package <code>RColorBrewer</code>. We’ll have a look at this package later on.</p>
 </div>
@@ -428,7 +450,7 @@ What does the function <code>install.packages()</code> do? Use it to install the
 <h4>Circles</h4>
 <p>The circumference of a circle is <span class="math inline">\(2\pi\cdot r\)</span>, its surface <span class="math inline">\(4\pi \cdot r^2\)</span> and its volume <span class="math inline">\(4/3 \pi\cdot r^3\)</span>.
 Given this vector of circle radiuses,</p>
-<pre class="sourceCode r"><code class="sourceCode r">radiuses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, pi, <span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="exercises.html#cb514-1"></a>radiuses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, pi, <span class="dv">4</span>)</span></code></pre></div>
 <p><strong>A</strong><br />
 Calculate their cirumference.</p>
 <p><strong>B</strong><br />
@@ -446,45 +468,45 @@ Calculate their volume.</p>
 <p><strong>C</strong><br />
 <code>[1] 1 1 1 4 4 4 9 9 9 1 1 1 4 4 4 9 9 9</code></p>
 <p><strong>D</strong><br />
-<code>[1] &quot;1a&quot; &quot;2b&quot; &quot;3c&quot; &quot;4d&quot; &quot;5e&quot; &quot;1a&quot; &quot;2b&quot; &quot;3c&quot; &quot;4d&quot; &quot;5e&quot;</code></p>
+<code>[1] "1a" "2b" "3c" "4d" "5e" "1a" "2b" "3c" "4d" "5e"</code></p>
 <p><strong>E</strong><br />
-<code>[1] &quot;0z&quot;   &quot;0.2y&quot; &quot;0.4x&quot; &quot;0.6w&quot; &quot;0.8v&quot; &quot;1u&quot;</code></p>
+<code>[1] "0z"   "0.2y" "0.4x" "0.6w" "0.8v" "1u"</code></p>
 <p><strong>F</strong><br />
-<code>[1] &quot;505&quot; &quot;404&quot; &quot;303&quot; &quot;202&quot; &quot;101&quot; &quot;000&quot;</code></p>
+<code>[1] "505" "404" "303" "202" "101" "000"</code></p>
 <p><strong>G [Challenge]</strong><br />
-<code>[1] &quot;0.5A5.0&quot; &quot;0.4B4.0&quot; &quot;0.3C3.0&quot; &quot;0.2D2.0&quot; &quot;0.1E1.0&quot;</code></p>
+<code>[1] "0.5A5.0" "0.4B4.0" "0.3C3.0" "0.2D2.0" "0.1E1.0"</code></p>
 </div>
 </div>
 <div id="stair-walking-and-heart-rate" class="section level3">
 <h3><span class="header-section-number">10.2.5</span> Stair walking and heart rate</h3>
 <p>The vectors below hold data for a staircase walking experiment. A subject of normal weight and height was asked to ascend a (long) stairs wearing a heart-rate monitor. The subjects’ heart was registered for different step heights. Create a <strong>line plot</strong> showing the dependence of heart rate (y axis) on stair height (x axis).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#number of steps on the stairs</span>
-stair_height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>)
-<span class="co">#heart rate after ascending the stairs</span>
-heart_rate &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">66</span>, <span class="dv">65</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">97</span>)</code></pre>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="exercises.html#cb515-1"></a><span class="co">#number of steps on the stairs</span></span>
+<span id="cb515-2"><a href="exercises.html#cb515-2"></a>stair_height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>)</span>
+<span id="cb515-3"><a href="exercises.html#cb515-3"></a><span class="co">#heart rate after ascending the stairs</span></span>
+<span id="cb515-4"><a href="exercises.html#cb515-4"></a>heart_rate &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">66</span>, <span class="dv">65</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">97</span>)</span></code></pre></div>
 </div>
 <div id="more-subjects" class="section level3">
 <h3><span class="header-section-number">10.2.6</span> More subjects</h3>
 <p>The experiment from the previous question was extended with three more subjects. One of these subjects was like the first of normal weight, whereas the two others were obese. The data are given below. Create a single <strong>scatter plot</strong> with connector lines between the points showing the data for all four subjects. Give the normal-weighted subjects a green line and symbol and the obese subjects a red line and symbol.<br />
 You can add new data series to a plot by using the <code>points(x, y)</code> function. Use the <code>ylim()</code> function to adjust the Y-axis range.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#number of steps on the stairs</span>
-stair_height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>)
-<span class="co">#heart rates for subjects with normal weight</span>
-heart_rate_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">66</span>, <span class="dv">65</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">97</span>)
-heart_rate_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">61</span>, <span class="dv">61</span>, <span class="dv">63</span>, <span class="dv">68</span>, <span class="dv">74</span>, <span class="dv">81</span>, <span class="dv">89</span>, <span class="dv">104</span>)
-<span class="co">#heart rates for obese subjects</span>
-heart_rate_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">60</span>, <span class="dv">67</span>, <span class="dv">71</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">104</span>, <span class="dv">121</span>)
-heart_rate_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">77</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">96</span>, <span class="dv">102</span>, <span class="dv">127</span>)</code></pre>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="exercises.html#cb516-1"></a><span class="co">#number of steps on the stairs</span></span>
+<span id="cb516-2"><a href="exercises.html#cb516-2"></a>stair_height &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>)</span>
+<span id="cb516-3"><a href="exercises.html#cb516-3"></a><span class="co">#heart rates for subjects with normal weight</span></span>
+<span id="cb516-4"><a href="exercises.html#cb516-4"></a>heart_rate_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">66</span>, <span class="dv">65</span>, <span class="dv">67</span>, <span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">86</span>, <span class="dv">97</span>)</span>
+<span id="cb516-5"><a href="exercises.html#cb516-5"></a>heart_rate_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">61</span>, <span class="dv">61</span>, <span class="dv">63</span>, <span class="dv">68</span>, <span class="dv">74</span>, <span class="dv">81</span>, <span class="dv">89</span>, <span class="dv">104</span>)</span>
+<span id="cb516-6"><a href="exercises.html#cb516-6"></a><span class="co">#heart rates for obese subjects</span></span>
+<span id="cb516-7"><a href="exercises.html#cb516-7"></a>heart_rate_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">60</span>, <span class="dv">67</span>, <span class="dv">71</span>, <span class="dv">78</span>, <span class="dv">89</span>, <span class="dv">104</span>, <span class="dv">121</span>)</span>
+<span id="cb516-8"><a href="exercises.html#cb516-8"></a>heart_rate_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">69</span>, <span class="dv">73</span>, <span class="dv">77</span>, <span class="dv">83</span>, <span class="dv">88</span>, <span class="dv">96</span>, <span class="dv">102</span>, <span class="dv">127</span>)</span></code></pre></div>
 </div>
 <div id="chickens-on-a-diet" class="section level3">
 <h3><span class="header-section-number">10.2.7</span> Chickens on a diet</h3>
 <p>The body weights of chicks were measured at birth and every second day thereafter until day 20. They were also measured on day 21. In the experiment there were four groups of chicks on different protein diets. Here are the data for the first four chicks. Chick one and two were on diet 1 and chick three and four were on diet 2. Create a single line plot showing the data for all four chicks. Give each chick its own color.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># chick weight data</span>
-time &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">21</span>)
-chick_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">51</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">76</span>, <span class="dv">93</span>, <span class="dv">106</span>, <span class="dv">125</span>, <span class="dv">149</span>, <span class="dv">171</span>, <span class="dv">199</span>, <span class="dv">205</span>)
-chick_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">49</span>, <span class="dv">58</span>, <span class="dv">72</span>, <span class="dv">84</span>, <span class="dv">103</span>, <span class="dv">122</span>, <span class="dv">138</span>, <span class="dv">162</span>, <span class="dv">187</span>, <span class="dv">209</span>, <span class="dv">215</span>)
-chick_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">53</span>, <span class="dv">62</span>, <span class="dv">73</span>, <span class="dv">85</span>, <span class="dv">102</span>, <span class="dv">123</span>, <span class="dv">138</span>, <span class="dv">170</span>, <span class="dv">204</span>, <span class="dv">235</span>, <span class="dv">256</span>)
-chick_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">41</span>, <span class="dv">49</span>, <span class="dv">61</span>, <span class="dv">74</span>, <span class="dv">98</span>, <span class="dv">109</span>, <span class="dv">128</span>, <span class="dv">154</span>, <span class="dv">192</span>, <span class="dv">232</span>, <span class="dv">280</span>, <span class="dv">290</span>)</code></pre>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="exercises.html#cb517-1"></a><span class="co"># chick weight data</span></span>
+<span id="cb517-2"><a href="exercises.html#cb517-2"></a>time &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">21</span>)</span>
+<span id="cb517-3"><a href="exercises.html#cb517-3"></a>chick_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">51</span>, <span class="dv">59</span>, <span class="dv">64</span>, <span class="dv">76</span>, <span class="dv">93</span>, <span class="dv">106</span>, <span class="dv">125</span>, <span class="dv">149</span>, <span class="dv">171</span>, <span class="dv">199</span>, <span class="dv">205</span>)</span>
+<span id="cb517-4"><a href="exercises.html#cb517-4"></a>chick_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">49</span>, <span class="dv">58</span>, <span class="dv">72</span>, <span class="dv">84</span>, <span class="dv">103</span>, <span class="dv">122</span>, <span class="dv">138</span>, <span class="dv">162</span>, <span class="dv">187</span>, <span class="dv">209</span>, <span class="dv">215</span>)</span>
+<span id="cb517-5"><a href="exercises.html#cb517-5"></a>chick_<span class="dv">3</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">53</span>, <span class="dv">62</span>, <span class="dv">73</span>, <span class="dv">85</span>, <span class="dv">102</span>, <span class="dv">123</span>, <span class="dv">138</span>, <span class="dv">170</span>, <span class="dv">204</span>, <span class="dv">235</span>, <span class="dv">256</span>)</span>
+<span id="cb517-6"><a href="exercises.html#cb517-6"></a>chick_<span class="dv">4</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">41</span>, <span class="dv">49</span>, <span class="dv">61</span>, <span class="dv">74</span>, <span class="dv">98</span>, <span class="dv">109</span>, <span class="dv">128</span>, <span class="dv">154</span>, <span class="dv">192</span>, <span class="dv">232</span>, <span class="dv">280</span>, <span class="dv">290</span>)</span></code></pre></div>
 </div>
 <div id="chicken-bar-plot" class="section level3">
 <h3><span class="header-section-number">10.2.8</span> Chicken bar plot</h3>
@@ -504,12 +526,12 @@ What is the trend over time for the numbers of discoveries per year?</p>
 <div id="lung-cancer" class="section level3">
 <h3><span class="header-section-number">10.2.10</span> Lung cancer</h3>
 <p>The R datasets package has three related timeseries datasets relating to lung cancer deaths. These are <code>ldeaths</code>, <code>mdeaths</code> and <code>fdeaths</code> for total, male and female deaths respectively. Create a line plot showing the monthly mortality holding all three of these datasets. Use the <code>legend()</code> function to add a legend to the plot, as demonstrated in this example:</p>
-<pre class="sourceCode r"><code class="sourceCode r">t &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>
-y1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)
-y2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)
-<span class="kw">plot</span>(t, y1, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;response&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))
-<span class="kw">points</span>(t, y2, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;series 1&quot;</span>, <span class="st">&quot;series 2&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">lty =</span> <span class="dv">1</span>)</code></pre>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="exercises.html#cb518-1"></a>t &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
+<span id="cb518-2"><a href="exercises.html#cb518-2"></a>y1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb518-3"><a href="exercises.html#cb518-3"></a>y2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb518-4"><a href="exercises.html#cb518-4"></a><span class="kw">plot</span>(t, y1, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;response&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
+<span id="cb518-5"><a href="exercises.html#cb518-5"></a><span class="kw">points</span>(t, y2, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb518-6"><a href="exercises.html#cb518-6"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;series 1&quot;</span>, <span class="st">&quot;series 2&quot;</span>), <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="dv">1</span>, <span class="dt">lty =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/legend-demo-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p><strong>A</strong><br />
 Create the mentioned line plot. Do you see trends and/or patterns and if so, can you explain these?</p>
@@ -524,7 +546,7 @@ Create a combined boxplot of the three time-series. Are there outliers? If so, c
 <h3><span class="header-section-number">10.3.1</span> Creating factors</h3>
 <p><strong>A</strong><br />
 Given this vector:</p>
-<pre class="sourceCode r"><code class="sourceCode r">animal_risk &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</code></pre>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="exercises.html#cb519-1"></a>animal_risk &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span></code></pre></div>
 <p>and these possible levels:
 1: harmless
 2: risky
@@ -532,16 +554,16 @@ Given this vector:</p>
 4: deadly</p>
 <p>Create a factor from this data and then barplot the result.</p>
 <p><strong>B</strong><br />
-Given this data, a simulation of wealth distribution of “poor”, “middle class”, “wealthy” &quot;rich:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1234</span>)
-wealth_male &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], 
-                 <span class="dt">size =</span> <span class="dv">1000</span>,
-                 <span class="dt">replace=</span> <span class="ot">TRUE</span>, 
-                 <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.17</span>, <span class="fl">0.12</span>, <span class="fl">0.01</span>))
-wealth_female &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], 
-                 <span class="dt">size =</span> <span class="dv">1000</span>,
-                 <span class="dt">replace=</span> <span class="ot">TRUE</span>, 
-                 <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.15</span>, <span class="fl">0.497</span>, <span class="fl">0.003</span>))</code></pre>
+Given this data, a simulation of wealth distribution of “poor”, “middle class”, “wealthy” "rich:</p>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="exercises.html#cb520-1"></a><span class="kw">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb520-2"><a href="exercises.html#cb520-2"></a>wealth_male &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], </span>
+<span id="cb520-3"><a href="exercises.html#cb520-3"></a>                 <span class="dt">size =</span> <span class="dv">1000</span>,</span>
+<span id="cb520-4"><a href="exercises.html#cb520-4"></a>                 <span class="dt">replace=</span> <span class="ot">TRUE</span>, </span>
+<span id="cb520-5"><a href="exercises.html#cb520-5"></a>                 <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.17</span>, <span class="fl">0.12</span>, <span class="fl">0.01</span>))</span>
+<span id="cb520-6"><a href="exercises.html#cb520-6"></a>wealth_female &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>], </span>
+<span id="cb520-7"><a href="exercises.html#cb520-7"></a>                 <span class="dt">size =</span> <span class="dv">1000</span>,</span>
+<span id="cb520-8"><a href="exercises.html#cb520-8"></a>                 <span class="dt">replace=</span> <span class="ot">TRUE</span>, </span>
+<span id="cb520-9"><a href="exercises.html#cb520-9"></a>                 <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.15</span>, <span class="fl">0.497</span>, <span class="fl">0.003</span>))</span></code></pre></div>
 <p>Create a factor from these two and report the cumulative percentage of its individual levels starting at the most abundant level, combined for male and female. Hint: use <code>table()</code> and <code>prop.table()</code>.</p>
 <p>Next, create a side-by-side barplot of this data. Don’t forget the legend!</p>
 </div>
@@ -549,43 +571,43 @@ wealth_female &lt;-<span class="st"> </span><span class="kw">sample</span>(<span
 <h3><span class="header-section-number">10.3.2</span> A dictionary with a named vector</h3>
 <p>Almost all programming languages know the (hash)map / dictionary data structure storing so-called “key-and-value” pairs. They make it possible to “look up” the value belonging to a “key”. That is where the term dictionary comes from. A dictionary holds keys (the words) and their meaning (values). R does not have a dictionary type but you could make a dict-like structure using a <strong><em>vector with named elements</em></strong>. Here follows an example.</p>
 <p>If I wanted to create and use a DNA codon translation table, and use it to translate a piece of DNA, I could do something like what is shown below (there are only 4 of the 64 codons included). See if you can figure out what is going on there</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## define codon table as named vector</span>
-codons &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Gly&quot;</span>, <span class="st">&quot;Pro&quot;</span>, <span class="st">&quot;Lys&quot;</span>, <span class="st">&quot;Ser&quot;</span>)
-<span class="kw">names</span>(codons) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GGA&quot;</span>, <span class="st">&quot;CCU&quot;</span>, <span class="st">&quot;AAA&quot;</span>, <span class="st">&quot;AGU&quot;</span>)
-
-<span class="co">## the DNA to translate</span>
-my_DNA &lt;-<span class="st"> &quot;GGACCUAAAAGU&quot;</span>
-my_prot &lt;-<span class="st"> &quot;&quot;</span>
-<span class="co">## iterate the DNA and take only every position</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="kw">nchar</span>(my_DNA), <span class="dt">by=</span><span class="dv">3</span>)) {
-    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(my_DNA, i, i<span class="op">+</span><span class="dv">2</span>);
-    my_prot &lt;-<span class="st"> </span><span class="kw">paste</span>(my_prot, codons[codon])
-}
-<span class="kw">print</span>(my_prot)</code></pre>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="exercises.html#cb521-1"></a><span class="co">## define codon table as named vector</span></span>
+<span id="cb521-2"><a href="exercises.html#cb521-2"></a>codons &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Gly&quot;</span>, <span class="st">&quot;Pro&quot;</span>, <span class="st">&quot;Lys&quot;</span>, <span class="st">&quot;Ser&quot;</span>)</span>
+<span id="cb521-3"><a href="exercises.html#cb521-3"></a><span class="kw">names</span>(codons) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GGA&quot;</span>, <span class="st">&quot;CCU&quot;</span>, <span class="st">&quot;AAA&quot;</span>, <span class="st">&quot;AGU&quot;</span>)</span>
+<span id="cb521-4"><a href="exercises.html#cb521-4"></a></span>
+<span id="cb521-5"><a href="exercises.html#cb521-5"></a><span class="co">## the DNA to translate</span></span>
+<span id="cb521-6"><a href="exercises.html#cb521-6"></a>my_DNA &lt;-<span class="st"> &quot;GGACCUAAAAGU&quot;</span></span>
+<span id="cb521-7"><a href="exercises.html#cb521-7"></a>my_prot &lt;-<span class="st"> &quot;&quot;</span></span>
+<span id="cb521-8"><a href="exercises.html#cb521-8"></a><span class="co">## iterate the DNA and take only every position</span></span>
+<span id="cb521-9"><a href="exercises.html#cb521-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq</span>(<span class="dv">1</span>, <span class="kw">nchar</span>(my_DNA), <span class="dt">by=</span><span class="dv">3</span>)) {</span>
+<span id="cb521-10"><a href="exercises.html#cb521-10"></a>    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(my_DNA, i, i<span class="op">+</span><span class="dv">2</span>);</span>
+<span id="cb521-11"><a href="exercises.html#cb521-11"></a>    my_prot &lt;-<span class="st"> </span><span class="kw">paste</span>(my_prot, codons[codon])</span>
+<span id="cb521-12"><a href="exercises.html#cb521-12"></a>}</span>
+<span id="cb521-13"><a href="exercises.html#cb521-13"></a><span class="kw">print</span>(my_prot)</span></code></pre></div>
 <pre><code>## [1] &quot; Gly Pro Lys Ser&quot;</code></pre>
 <p><strong>A</strong><br />
 Make a modified copy of this code chunk in such a way that no spaces are present between the amino acid residues (use help on <code>paste()</code> to figure this out) and that single-letter codes of amino acids are used instead of three-letter codes.</p>
 <p><strong>B</strong><br />
 <strong>[Challenge]</strong> Here is a vector called <code>nuc_weights</code>. It holds the weights for the nucleotides A, C, G and U respectively. Make it a named vector, iterate <code>my_DNA</code> from the above code chunk and calculate its molecular weight.</p>
-<pre class="sourceCode r"><code class="sourceCode r">nuc_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">491.2</span>, <span class="fl">467.2</span>, <span class="fl">507.2</span>, <span class="fl">482.2</span>)</code></pre>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="exercises.html#cb523-1"></a>nuc_weights &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">491.2</span>, <span class="fl">467.2</span>, <span class="fl">507.2</span>, <span class="fl">482.2</span>)</span></code></pre></div>
 </div>
 <div id="protein-concentrations-with-lowry" class="section level3">
 <h3><span class="header-section-number">10.3.3</span> Protein concentrations with Lowry</h3>
 <p>The Lowry method is a widely used spectroscopic method to quantify protein amounts in solutions. Here are some real Lowry results for the quantification of proteins:
 The calibration curve is made using BSA (bovine serum albumin) as a standard.
 The concentrations are in mg/ml:</p>
-<pre class="sourceCode r"><code class="sourceCode r">bsa_conc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,    <span class="dv">0</span>,  <span class="fl">0.025</span>,  <span class="fl">0.025</span>,  <span class="fl">0.075</span>,  <span class="fl">0.075</span>,  <span class="fl">0.125</span>,  <span class="fl">0.125</span>)</code></pre>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="exercises.html#cb524-1"></a>bsa_conc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>,    <span class="dv">0</span>,  <span class="fl">0.025</span>,  <span class="fl">0.025</span>,  <span class="fl">0.075</span>,  <span class="fl">0.075</span>,  <span class="fl">0.125</span>,  <span class="fl">0.125</span>)</span></code></pre></div>
 <p>Note that the duplos are all put into one vector. We’ll deal with that later.</p>
 <p>These are the obtained absorption values at 750 nm (again for the duplos):</p>
-<pre class="sourceCode r"><code class="sourceCode r">OD750 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.063</span>,   <span class="fl">0.033</span>,  <span class="fl">0.16</span>,   <span class="fl">0.181</span>,  <span class="fl">0.346</span>,  <span class="fl">0.352</span>,  <span class="fl">0.491</span>,  <span class="fl">0.488</span>)</code></pre>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="exercises.html#cb525-1"></a>OD750 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.063</span>,   <span class="fl">0.033</span>,  <span class="fl">0.16</span>,   <span class="fl">0.181</span>,  <span class="fl">0.346</span>,  <span class="fl">0.352</span>,  <span class="fl">0.491</span>,  <span class="fl">0.488</span>)</span></code></pre></div>
 <p><strong>A</strong></p>
 <p>Combine these two vectors in a dataframe and assign to a variable with name <code>dilution</code>. Do not add column names yet!</p>
 <p><strong>B</strong></p>
 <p>Now add the appropriate column names: <code>prot_conc</code> and <code>absorption</code>.</p>
 <p><strong>C</strong></p>
 <p>You forgot to include the last datapoints (again these are duplos):</p>
-<pre class="sourceCode r"><code class="sourceCode r">bsa_conc2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.175</span>,   <span class="fl">0.175</span>,  <span class="fl">0.25</span>,   <span class="fl">0.25</span>)
-OD750_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.597</span>, <span class="fl">0.595</span>,  <span class="fl">0.743</span>,  <span class="fl">0.742</span>)</code></pre>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="exercises.html#cb526-1"></a>bsa_conc2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.175</span>,   <span class="fl">0.175</span>,  <span class="fl">0.25</span>,   <span class="fl">0.25</span>)</span>
+<span id="cb526-2"><a href="exercises.html#cb526-2"></a>OD750_<span class="dv">2</span> &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.597</span>, <span class="fl">0.595</span>,  <span class="fl">0.743</span>,  <span class="fl">0.742</span>)</span></code></pre></div>
 <p>Generate a dataframe assigned to the variable <code>df_temp</code> from these datapoints. This time, add the appropriate column names with creation of the dataframe. be sure you use exactly the same comlumn names.</p>
 <p><strong>D</strong></p>
 <p>Now add the second dataframe <code>df_temp</code> to dataframe with name <code>dilution</code> and assign it to the name <code>dilution</code> (thus overwrite the original variable):</p>
@@ -639,8 +661,8 @@ This data are obtained by a reverse-phase HPLC method using thymol in a standard
 <li>co = concentration</li>
 <li>pa = peak area</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">co &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>,    <span class="dv">100</span>,    <span class="dv">75</span>, <span class="dv">75</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">5</span>)
-pa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1969017</span>,    <span class="dv">1858012</span>,    <span class="dv">1399762</span>,    <span class="dv">1449423</span>,    <span class="dv">963014</span>, <span class="dv">832137</span>, <span class="dv">467856</span>, <span class="dv">562012</span>, <span class="dv">200123</span>, <span class="dv">145545</span>, <span class="dv">94567</span>,  <span class="dv">64752</span>)</code></pre>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="exercises.html#cb527-1"></a>co &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>,    <span class="dv">100</span>,    <span class="dv">75</span>, <span class="dv">75</span>, <span class="dv">50</span>, <span class="dv">50</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb527-2"><a href="exercises.html#cb527-2"></a>pa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1969017</span>,    <span class="dv">1858012</span>,    <span class="dv">1399762</span>,    <span class="dv">1449423</span>,    <span class="dv">963014</span>, <span class="dv">832137</span>, <span class="dv">467856</span>, <span class="dv">562012</span>, <span class="dv">200123</span>, <span class="dv">145545</span>, <span class="dv">94567</span>,  <span class="dv">64752</span>)</span></code></pre></div>
 <p><strong>A</strong></p>
 <p>Add the vectors to a dataframe named <code>hplc_data</code>. Use appropriate and clear column names.</p>
 <p><strong>B</strong></p>
@@ -670,7 +692,7 @@ Use the <code>pairs()</code> function with argument <code>panel = panel.smooth</
 </div>
 <div id="file-reading-practice" class="section level3">
 <h3><span class="header-section-number">10.3.6</span> File reading practice</h3>
-<p>The files in the <a href="data/file_reading/">data/file_reading/</a> directory contain some (simulated) gene-array data. The dataset contains a selection of induced transcripts after some stimulus. The columns represent:</p>
+<p>The files in this online folder on <a href="https://github.com/MichielNoback/davur1_gitbook/tree/master/data/file_reading">github</a> directory contain some (simulated) gene-array data. The dataset contains a selection of induced transcripts after some stimulus. The columns represent:</p>
 <ul>
 <li>the mRNA entry<br />
 </li>
@@ -702,15 +724,20 @@ Use the <code>pairs()</code> function with argument <code>panel = panel.smooth</
 </ul>
 <p>Also: read the help for the <code>read.table</code> function carefully.</p>
 <p>Read the content of the each file in the <code>file_reading</code> directory into a dataframe object and assign it to the variable name <code>df</code>. There are 15 different files to practice your file loading skills.</p>
+<p>You don’t need to download them manually; simply use this:</p>
+<pre class="reval"><code>download.file(url = &quot;https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/file_reading/file01.txt&quot;,
+              destfile = &quot;file01.txt&quot;)</code></pre>
+<p>Then you’ll have the file in the current working directory.
+Replace the file number as needed.</p>
 </div>
 <div id="bird-observations" class="section level3">
 <h3><span class="header-section-number">10.3.7</span> Bird observations</h3>
 <p>You will explore a bird observation dataset, downloaded from <a href="http://goldengateaudubon.org/birding-resources/observations/">GOLDEN GATE AUDUBON SOCIETY</a>. This file lists bird observations collected by this bird monitoring group in the San Francisco Bay Area. I already cleaned it a bit and placed it here: <a href="data/Observations-Data-2014.csv">data/Observations-Data-2014.csv</a>.</p>
 <p>You can download it as follows:</p>
-<pre class="sourceCode r"><code class="sourceCode r">file_name &lt;-<span class="st"> &quot;Observations-Data-2014.csv&quot;</span>
-remote_url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/&quot;</span>, file_name)
-
-<span class="kw">download.file</span>(<span class="dt">url =</span> remote_url, <span class="dt">destfile =</span> file_name)</code></pre>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="exercises.html#cb529-1"></a>file_name &lt;-<span class="st"> &quot;Observations-Data-2014.csv&quot;</span></span>
+<span id="cb529-2"><a href="exercises.html#cb529-2"></a>remote_url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/&quot;</span>, file_name)</span>
+<span id="cb529-3"><a href="exercises.html#cb529-3"></a></span>
+<span id="cb529-4"><a href="exercises.html#cb529-4"></a><span class="kw">download.file</span>(<span class="dt">url =</span> remote_url, <span class="dt">destfile =</span> file_name)</span></code></pre></div>
 <p>Load the observation data into R and assign it to a variable called <code>bird_obs</code>.</p>
 <p>From here on, it is assumed that you have the dataframe <code>bird_obs</code> loaded. This series of exercises deals with cleaning and transforming data, and exploring a cleaned dataset using basic plotting techniques and descriptive statistics.</p>
 <p><strong>A</strong><br />
@@ -753,17 +780,57 @@ Explore the species constitution:</p>
 This is a challenge exercise for those who like to grind their brains! Think of a strategy to “rescue” the NAs that appear after transforming “Number” to “Count”. Hint: use <code>gsub()</code> or<code>grep()</code></p>
 </div>
 </div>
+<div id="functions-2" class="section level2">
+<h2><span class="header-section-number">10.4</span> Functions</h2>
+<div id="the-cut-function-i" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> The <code>cut()</code> function I</h3>
+<p>Suppose we have a gene expression data set of gene array data. The vector below contains the fold-change of genome-wide mRNA expression after exposure of cells to dihydrotestosterone.
+A value above 1 means an induction of gene expression, a value below 1 means a repression of gene expression. However, we know that the accuracy of the fold induction measurements is approximately plus or minus 0.1. This means that we can set the breakpoints as follows:</p>
+<ul>
+<li>range 0 &lt; x &lt; 0.9 is a repression<br />
+</li>
+<li>range 0.9 &lt;= x &lt; 1.1 is no net change<br />
+</li>
+<li>range x &gt;= 1.1 is an induction</li>
+</ul>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="exercises.html#cb530-1"></a>fold_change &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.10</span>, <span class="fl">8.50</span>, <span class="fl">0.95</span>, <span class="fl">56.08</span>, <span class="fl">0.90</span>, <span class="fl">99.15</span>, <span class="fl">1.00</span>, <span class="fl">0.01</span>, <span class="fl">0.65</span>, <span class="fl">1.10</span>, <span class="fl">2.34</span>, <span class="fl">62.2</span>)</span></code></pre></div>
+<p><strong>A</strong></p>
+<p>Use the <code>cut()</code> function to convert the data into a factor that tells you if there is an <code>induction</code>, no net change (<code>no_change</code>) or a <code>repression</code>. Make sure that you get an ordered factor. Assign the factor to the variable <code>induct_type</code>.</p>
+<p><strong>B</strong></p>
+<p>Create a data frame of both vectors and assign it to <code>induction</code>. Use <code>fold_change</code> and <code>induction_type</code> as column names.</p>
+<p><strong>C</strong></p>
+<p>Create a well annotated plot of the induction type that shows the number of genes that are repressed, have no change or are induced upon dihydrotestosterone treatment. Bars should have a blue color. The bars should be named <code>repressed</code>, <code>no change</code>, <code>induced</code>.</p>
+</div>
+<div id="the-cut-function-ii" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> The <code>cut()</code> function II</h3>
+<p>We will use the <code>cut()</code> function on a slightly larger data set with fictitious gene array data. The text file is located <a href="https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/gene_expression_data.txt">here</a>.You can simply use that as argument to <code>read.table()</code>:</p>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="exercises.html#cb531-1"></a>remote_location &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/gene_expression_data.txt&quot;</span></span>
+<span id="cb531-2"><a href="exercises.html#cb531-2"></a><span class="kw">read.table</span>(remote_location,  )</span></code></pre></div>
+<p>The columns are:
+- transcript_ID: NM_ entry number of the reference mRNA.<br />
+- fold_change: the same rules as in the previous exercise for repression, no change and induction apply here.<br />
+- family: the protein family that the gene encodes for.<br />
+- location: the cellular localization of the gene product.</p>
+<p><strong>A</strong></p>
+<p>Load the file and assign it to the variable <code>gene_array</code>.</p>
+<p><strong>B</strong></p>
+<p>Add a column <code>induction_repression</code> to the data frame based on the fold_induction column.
+Use the <code>cut</code> function to accomplish this. The same rules apply for the breakpoints.</p>
+<p><strong>C</strong></p>
+<p>Create a well annotated plot of the induction type that shows the number of genes that are repressed, have no change or are induced upon dihydrotestosterone treatment. Bars should be blue. The bars should be named <code>repressed</code>, <code>no change</code>, <code>induced</code>. Make sure that the bars are within the axis borders.</p>
+</div>
+</div>
 <div id="regular-expressions" class="section level2">
-<h2><span class="header-section-number">10.4</span> Regular Expressions</h2>
+<h2><span class="header-section-number">10.5</span> Regular Expressions</h2>
 <div id="restriction-enzymes-1" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Restriction enzymes</h3>
+<h3><span class="header-section-number">10.5.1</span> Restriction enzymes</h3>
 <p><strong>A</strong><br />
 The restriction enzyme PacI has the recognition sequence “TTAATTAA”. Define (at least) three alternative regex patterns that will catch these sites.</p>
 <p><strong>B</strong><br />
 The restriction enzyme SfiI has the recognition sequence “GGCCNNNNNGGCC”. Define (at least) three alternative regex patterns that will catch these sites.</p>
 </div>
 <div id="prosite-patterns-1" class="section level3">
-<h3><span class="header-section-number">10.4.2</span> Prosite Patterns</h3>
+<h3><span class="header-section-number">10.5.2</span> Prosite Patterns</h3>
 <p><strong>A</strong><br />
 The Prosite pattern PS00211 (ABC-transporter-1; <a href="https://prosite.expasy.org/PS00211" class="uri">https://prosite.expasy.org/PS00211</a>) has the pattern:<br />
 “[LIVMFYC]-[SA]-[SAPGLVFYKQH]-G-[DENQMW]-[KRQASPCLIMFW]-[KRNQSTAVM]-[KRACLVM]-[LIVMFYPAN]-{PHY}-[LIVMFW]-[SAGCLIVP]-{FYWHP}-{KRHP}-[LIVMFYWSTA].”
@@ -775,7 +842,7 @@ Translate it into a regex pattern.</p>
 <p>You could exercise more by simply browsing Prosite. Test your pattern by fetching the proteins referred to within the Prosite pattern details page.</p>
 </div>
 <div id="fasta-headers" class="section level3">
-<h3><span class="header-section-number">10.4.3</span> Fasta Headers</h3>
+<h3><span class="header-section-number">10.5.3</span> Fasta Headers</h3>
 <p>The fasta sequence format is a very common sequence file format used in molecular biology.
 It looks like this (I omitted most of the actual protein sequences for better representation):</p>
 <pre><code>&gt;gi|21595364|gb|AAH32336.1| FHIT protein [Homo sapiens]
@@ -786,23 +853,23 @@ MSFRFGQHLIK...RVYFQA
 MSFRFGQHLIK...LRVYFQ</code></pre>
 <p>As you can see there are several distinct elements within the Fasta <strong><em>header</em></strong> which is the description line above the actual sequence: one or more database identification strings, a protein description or name and an organism name. Study the format - we are going to extract some elements from these fasta headers using the <code>stringr</code> package. Install it if you don’t have it yet.</p>
 <p>Here is a small example:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
-hinfII_re &lt;-<span class="st"> &quot;GA[GATC]TC&quot;</span>
-sequences &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GGGAATCC&quot;</span>, <span class="st">&quot;TCGATTCGC&quot;</span>, <span class="st">&quot;ACGAGTCTA&quot;</span>)
-<span class="kw">str_extract</span>(<span class="dt">string =</span> sequences,
-            <span class="dt">pattern =</span> hinfII_re)</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="exercises.html#cb533-1"></a><span class="kw">library</span>(stringr)</span>
+<span id="cb533-2"><a href="exercises.html#cb533-2"></a>hinfII_re &lt;-<span class="st"> &quot;GA[GATC]TC&quot;</span></span>
+<span id="cb533-3"><a href="exercises.html#cb533-3"></a>sequences &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;GGGAATCC&quot;</span>, <span class="st">&quot;TCGATTCGC&quot;</span>, <span class="st">&quot;ACGAGTCTA&quot;</span>)</span>
+<span id="cb533-4"><a href="exercises.html#cb533-4"></a><span class="kw">str_extract</span>(<span class="dt">string =</span> sequences,</span>
+<span id="cb533-5"><a href="exercises.html#cb533-5"></a>            <span class="dt">pattern =</span> hinfII_re)</span></code></pre></div>
 <pre><code>## [1] &quot;GAATC&quot; &quot;GATTC&quot; &quot;GAGTC&quot;</code></pre>
 <p>Function <code>str_extract()</code> simply extracts the exact match of your regex (shown above). On the other hand, function <code>str_match()</code> supports <strong><em>grouping capture</em></strong> through bounding parentheses:</p>
-<pre class="sourceCode r"><code class="sourceCode r">phones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;+31-6-23415239&quot;</span>, <span class="st">&quot;+49-51-55523146&quot;</span>, <span class="st">&quot;+31-50-5956566&quot;</span>)
-phones_re &lt;-<span class="st"> &quot;</span><span class="ch">\\</span><span class="st">+(</span><span class="ch">\\</span><span class="st">d{2})-(</span><span class="ch">\\</span><span class="st">d{1,2})&quot;</span> <span class="co">#matching country codes and area codes</span>
-matches &lt;-<span class="st"> </span><span class="kw">str_match</span>(phones, phones_re) 
-matches</code></pre>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="exercises.html#cb535-1"></a>phones &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;+31-6-23415239&quot;</span>, <span class="st">&quot;+49-51-55523146&quot;</span>, <span class="st">&quot;+31-50-5956566&quot;</span>)</span>
+<span id="cb535-2"><a href="exercises.html#cb535-2"></a>phones_re &lt;-<span class="st"> &quot;</span><span class="ch">\\</span><span class="st">+(</span><span class="ch">\\</span><span class="st">d{2})-(</span><span class="ch">\\</span><span class="st">d{1,2})&quot;</span> <span class="co">#matching country codes and area codes</span></span>
+<span id="cb535-3"><a href="exercises.html#cb535-3"></a>matches &lt;-<span class="st"> </span><span class="kw">str_match</span>(phones, phones_re) </span>
+<span id="cb535-4"><a href="exercises.html#cb535-4"></a>matches</span></code></pre></div>
 <pre><code>##      [,1]     [,2] [,3]
 ## [1,] &quot;+31-6&quot;  &quot;31&quot; &quot;6&quot; 
 ## [2,] &quot;+49-51&quot; &quot;49&quot; &quot;51&quot;
 ## [3,] &quot;+31-50&quot; &quot;31&quot; &quot;50&quot;</code></pre>
 <p>Thus, each set of parentheses will yield a column in the returned matrix. Simply use its column index to get that result set:</p>
-<pre class="sourceCode r"><code class="sourceCode r">matches[, <span class="dv">2</span>] <span class="co">##the country codes</span></code></pre>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="exercises.html#cb537-1"></a>matches[, <span class="dv">2</span>] <span class="co">##the country codes</span></span></code></pre></div>
 <pre><code>## [1] &quot;31&quot; &quot;49&quot; &quot;31&quot;</code></pre>
 <p>Now, given the fasta headers in <a href="./data/fasta_headers.txt">./data/fasta_headers.txt</a>
 which you can simply load into a character vector using <code>readLines()</code>, extract the following.</p>
@@ -816,10 +883,10 @@ Extract all protein names/descriptions.</p>
 </div>
 </div>
 <div id="scripting-2" class="section level2">
-<h2><span class="header-section-number">10.5</span> Scripting</h2>
+<h2><span class="header-section-number">10.6</span> Scripting</h2>
 <p>This section serves you some exercises that will help you improve your function-writing skills.</p>
 <div id="illegal-reproductions" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> Illegal reproductions</h3>
+<h3><span class="header-section-number">10.6.1</span> Illegal reproductions</h3>
 <p>As an exercise, you will re-invent the wheel here for some statistical functions.</p>
 <div id="the-mean" class="section level4 unnumbered">
 <h4>The mean</h4>
@@ -829,45 +896,100 @@ Extract all protein names/descriptions.</p>
 <h4>Standard deviation</h4>
 <p>Create a function, <code>my_sd()</code>, that duplicates the R function <code>sd()</code>, i.e. calculates and returns the standard deviation of a vector of numbers, without actually using <code>sd()</code>.</p>
 </div>
+<div id="maximum" class="section level4 unnumbered">
+<h4>Maximum</h4>
+<p>Suppose we have some random numbers:</p>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="exercises.html#cb539-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>) </span>
+<span id="cb539-2"><a href="exercises.html#cb539-2"></a>my_nums &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">10000</span>, <span class="dv">1000</span>)</span></code></pre></div>
+<p>The use of <code>set.seed()</code> assures that the generated random numbers will always be the same, for everyone who runs it, every time.</p>
+<p>Use a <code>for</code> loop and <code>if/else</code> flow control to find the largest number in <code>my_nums</code>.
+Do not use the build in <code>max()</code> or <code>sort()</code> functions.
+Put this in a function with the name <code>my_max</code> and demonstrate its use.
+You may use the build in <code>max()</code> function to verify your result.</p>
+</div>
+<div id="find-match-locations" class="section level4">
+<h4><span class="header-section-number">10.6.1.1</span> Find match locations</h4>
+<p>Create a function that will report the match locations some value in a given vector. Name it <code>where_is_it()</code>.
+Use only <code>for()</code> and <code>if/else</code> to get to your solution, no functions except <code>c()</code>.</p>
+<p>So, this snippet should return the given expected reult</p>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="exercises.html#cb540-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Pro&quot;</span>, <span class="st">&quot;Glu&quot;</span>, <span class="st">&quot;Lys&quot;</span>, <span class="st">&quot;Pro&quot;</span>, <span class="st">&quot;Ser&quot;</span>)</span>
+<span id="cb540-2"><a href="exercises.html#cb540-2"></a><span class="kw">where_is_it</span>(x, <span class="st">&quot;Pro&quot;</span>)</span>
+<span id="cb540-3"><a href="exercises.html#cb540-3"></a><span class="co">##expected:</span></span>
+<span id="cb540-4"><a href="exercises.html#cb540-4"></a><span class="co">#[1] 1 4</span></span></code></pre></div>
+</div>
 <div id="median" class="section level4 unnumbered">
 <h4>Median</h4>
 <p><strong>[Challenge]</strong> Create a function, <code>my_median()</code>, that duplicates the R function <code>median()</code>, i.e. calculates and returns the median of a vector of numbers. This is actually a bit harder than you might expect. Hint: use the <code>sort()</code> function.</p>
 </div>
 </div>
+<div id="count-odd-and-even-numbers" class="section level3">
+<h3><span class="header-section-number">10.6.2</span> Count odd and even numbers</h3>
+<p>Create a function, <code>count_odd_even()</code>, that counts the number of even and odd numbers in an input vector.
+It should return the result as a <em>named vector</em>.
+Do not make use of R base functions.</p>
+</div>
+<div id="add-column-compared-to-mean" class="section level3">
+<h3><span class="header-section-number">10.6.3</span> Add column compared to mean</h3>
+<p>Create a function that accepts as input:</p>
+<ul>
+<li>a dataframe</li>
+<li>a column name. This column name should refer to a numeric column</li>
+</ul>
+<p>The function should return a copy of this dataframe with an extra column attached. The column with name ‘compared_to_mean’ should have values “greater” (greater than mean) or “less” (less than or equal to the mean) when compared to the indicated column. Apply a check to the users’ input and stop with an appropriate error message if something is not right (not a dataframe, column does not exist, not a numeric column).</p>
+</div>
 <div id="interquantile-ranges" class="section level3">
-<h3><span class="header-section-number">10.5.2</span> Interquantile ranges</h3>
+<h3><span class="header-section-number">10.6.4</span> Interquantile ranges</h3>
 <p>Create a function that will calculate a custom “interquantile range”. The function should accept three arguments: a numeric vector, a lower quantile and an upper quantile. It should return the difference (range) between these two quantile values. The lower quantile should default to 0 and the higher to 1, thus returning <code>max(x)</code> minus <code>min(x)</code>. The function therefore has this “signature”:</p>
-<pre class="sourceCode r"><code class="sourceCode r">interquantile_range &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">higher =</span> <span class="dv">100</span>) {}</code></pre>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="exercises.html#cb541-1"></a>interquantile_range &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">higher =</span> <span class="dv">100</span>) {}</span></code></pre></div>
 <p>Perform some tests on the arguments to make a robust method: are all arguments numeric?</p>
 <p>To test you method, you can compare <code>interquantile_range(some_vector, 0.25, 0.75)</code> with <code>IQR(some_vector)</code> - they should be the same.</p>
 </div>
 <div id="vector-distance" class="section level3">
-<h3><span class="header-section-number">10.5.3</span> Vector distance</h3>
+<h3><span class="header-section-number">10.6.5</span> Vector distance</h3>
 <p>Create a function, <code>distance(p, q)</code>, that will calculate and return the Euclidean distance between two vectors of equal length. A numeric vector can be seen as a point in multidimensional space. Euclidean distance is defined as</p>
 <p><span class="math display">\[d(p, q) = \sqrt{\sum_{i = 1}^{n}(q_i-p_i)^2}\]</span>
 Where <em>p</em> and <em>q</em> are the two vectors and <em>n</em> the length of the two vectors.<br />
 You should first perform a check whether the two vectors are of equal length and both of type <code>numeric</code> or <code>integer</code>. If not, the function should abort with an appropriate error message.</p>
 <div id="other-distance-measures" class="section level4 unnumbered">
 <h4>Other distance measures</h4>
-<p>Extend the function of the previous assignment in such a way that a third argument is accepted, <code>method =</code>, which defaults to “euclidean”. Other possible distance measures are “Manhattan” (same as “city block” and “taxicab”) and [<strong>Challenge</strong>] Pearson correlation. Look the equations for these up in Wikipedia or some other place.</p>
+<p>Extend the function of the previous assignment in such a way that a third argument is accepted, <code>method =</code>, which defaults to “euclidean”. Other possible distance measures are “Manhattan” (same as “city block” and “taxicab”) and [<strong>Challenge</strong>] Pearson correlation.</p>
+<p>Look up the equations for these in Wikipedia or some other place.</p>
 </div>
+</div>
+<div id="quadratic-equation-solver" class="section level3">
+<h3><span class="header-section-number">10.6.6</span> Quadratic equation solver</h3>
+<p>Write a function that will use the quadratic equation (ABC formula) to solve an equation in the form <span class="math inline">\(ax^2 + bx + c = 0\)</span>. Call the function <code>abc_solver</code>.
+Use flow control to perform the following:</p>
+<ul>
+<li>First calculate the discriminant (you should know the equation from your math lessons). The website of Khan Academy (<a href="https://www.khanacademy.org/" class="uri">https://www.khanacademy.org/</a>) gives ample review.<br />
+</li>
+<li>Test if the discriminant is negative. If so, return a <em>warning</em> message that tells the user that the equation can not be solved.<br />
+</li>
+<li>Then test if the discriminant is positive. If so, there are two solutions for the equation. Return them in a <em>named</em> vector.<br />
+</li>
+<li>Then test if the discriminant is 0. If so, there is one solution for the equation. Return the solution as a <em>named</em> vector.</li>
+</ul>
+<p>Test your function for the following quadratic models:<br />
+- <span class="math inline">\(ax^1 + 2x + 3\)</span> (no solution)<br />
+- <span class="math inline">\(ax^3 + 7x + 4\)</span> (two intersections)<br />
+- <span class="math inline">\(ax^2 + 4x + 2\)</span> (1 intersection)</p>
 </div>
 <div id="gc-percentage-of-dna" class="section level3">
-<h3><span class="header-section-number">10.5.4</span> G/C percentage of DNA</h3>
+<h3><span class="header-section-number">10.6.7</span> G/C percentage of DNA</h3>
 <p><strong>[Challenge XL]</strong> Create a function, <code>GC_perc()</code>, that calculates and returns the GC percentage of a DNA or RNA sequence. Accept as input a sequence and a flag -<code>strict</code>- indicating whether other characters are accepted than core DNA/RNA (GATUC). If <code>strict = FALSE</code>, the percentage of other characters should be reported using a <code>warning()</code> call. If <code>strict = TRUE</code>, the function should terminate with an error message. Use <code>stop()</code> for this. <code>strict</code> should default to <code>TRUE</code>. NOTE, usage of <code>strict</code> can complicate things, so start with the core functionality!
 You can use <code>strsplit()</code> or <code>substr()</code> to get hold of individual sequence characters.</p>
 </div>
 </div>
 <div id="function-apply-and-its-relatives" class="section level2">
-<h2><span class="header-section-number">10.6</span> Function <code>apply</code> and its relatives</h2>
+<h2><span class="header-section-number">10.7</span> Function <code>apply</code> and its relatives</h2>
 <p>In this section you will encounter some exercises revolving around the different flavors of apply.</p>
 <div id="whale-selenium" class="section level3">
-<h3><span class="header-section-number">10.6.1</span> Whale selenium</h3>
+<h3><span class="header-section-number">10.7.1</span> Whale selenium</h3>
 <p>On the course website under <a href="https://michielnoback.github.io/bincourses/course_contents/davur/resources.html">Resources</a> you will find a link to file <code>whale_selenium.txt</code>. You could download it into your working directory manually or use <code>download.file()</code> to obtain it. However, there is a third way to get its contents without actually downloading it as a local copy. You can read it directly using <code>read.table()</code> as shown here.</p>
-<pre class="sourceCode r"><code class="sourceCode r">whale_sel_url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/davur1/gh-pages/exercises/data/whale_selenium.txt&quot;</span>
-whale_selenium &lt;-<span class="st"> </span><span class="kw">read.table</span>(whale_sel_url,
-    <span class="dt">header =</span> T,
-    <span class="dt">row.names =</span> <span class="dv">1</span>)</code></pre>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="exercises.html#cb542-1"></a>whale_sel_url &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/MichielNoback/davur1/gh-pages/exercises/data/whale_selenium.txt&quot;</span></span>
+<span id="cb542-2"><a href="exercises.html#cb542-2"></a>whale_selenium &lt;-<span class="st"> </span><span class="kw">read.table</span>(whale_sel_url,</span>
+<span id="cb542-3"><a href="exercises.html#cb542-3"></a>    <span class="dt">header =</span> T,</span>
+<span id="cb542-4"><a href="exercises.html#cb542-4"></a>    <span class="dt">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Note: when you are going to load a file many times it is probably better to store a local copy.</p>
 <p><strong>A</strong><br />
 Report the means of both columns using <code>apply()</code>.</p>
@@ -881,7 +1003,7 @@ Using <code>apply()</code>, calculate the ratio of <span class="math inline">\(S
 Using <code>print()</code> and <code>paste()</code>, report the mean and the standard deviation of the ratio column, but do this with an inline expression, e.g. an expression embedded in the R markdown paragraph text.</p>
 </div>
 <div id="chickweight" class="section level3">
-<h3><span class="header-section-number">10.6.2</span> ChickWeight</h3>
+<h3><span class="header-section-number">10.7.2</span> ChickWeight</h3>
 <p>This exercise revolves around the <code>ChickWeight</code> dataset of the built-in <code>datasets</code> package.</p>
 <p><strong>A</strong><br />
 Report the number of chickens used in the experiment.</p>
@@ -895,14 +1017,14 @@ In the next course, we’ll see a more efficient way of doing this.</p>
 <p><strong>E</strong><br />
 Split the <code>weight_gain</code> column on Diet and report the mean, median and standard deviation for each diet.
 If you were not successful in the previous question, load and attach the data from file <code>ChickWeight_weight_gain.Rdata</code> downloadable from <a href="https://github.com/MichielNoback/davur1_gitbook/raw/master/data/ChickWeight_weight_gain.Rdata">https://github.com/MichielNoback/davur1_gitbook/raw/master/data/ChickWeight_weight_gain.Rdata</a>. You can use this code chunk for downloading and loading the data into variable <code>stored_weight_gain</code>. Don’t forget to attach the column to the data frame!</p>
-<pre class="sourceCode r"><code class="sourceCode r">local_file &lt;-<span class="st"> &quot;ChickWeight_weight_gain.Rdata&quot;</span>
-<span class="kw">download.file</span>(<span class="kw">paste0</span>(<span class="st">&quot;https://github.com/MichielNoback/davur1_gitbook/raw/master/data/&quot;</span>, local_file), local_file)
-<span class="kw">load</span>(local_file)</code></pre>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="exercises.html#cb543-1"></a>local_file &lt;-<span class="st"> &quot;ChickWeight_weight_gain.Rdata&quot;</span></span>
+<span id="cb543-2"><a href="exercises.html#cb543-2"></a><span class="kw">download.file</span>(<span class="kw">paste0</span>(<span class="st">&quot;https://github.com/MichielNoback/davur1_gitbook/raw/master/data/&quot;</span>, local_file), local_file)</span>
+<span id="cb543-3"><a href="exercises.html#cb543-3"></a><span class="kw">load</span>(local_file)</span></code></pre></div>
 <p><strong>F</strong><br />
 Create a (single-panel) boxplot for weight gain, split over Diet. Hint: read the <code>boxplot()</code> help page!</p>
 </div>
 <div id="food-constituents" class="section level3">
-<h3><span class="header-section-number">10.6.3</span> Food constituents</h3>
+<h3><span class="header-section-number">10.7.3</span> Food constituents</h3>
 <p>The <a href="https://raw.githubusercontent.com/MichielNoback/davur1_gitbook/master/data/food_constituents.txt">food constituents dataset</a> holds information on ingredients for different foods. Individual foods are simply marked with an id.</p>
 <p><strong>A</strong><br />
 Load the data and report the different food categories (<code>Type</code>). Also report the numbers of entries for each Type.</p>
@@ -918,12 +1040,12 @@ What food category has the highest mean energy content, and which has the lowest
 Assuming both saturated fats and sugar are bad for you, what food category do you consider the worst? Think of a means to answer this, explain it and carry it out.</p>
 </div>
 <div id="urine-properties" class="section level3">
-<h3><span class="header-section-number">10.6.4</span> Urine properties</h3>
+<h3><span class="header-section-number">10.7.4</span> Urine properties</h3>
 <p>The <a href="https://github.com/MichielNoback/datasets/tree/master/urine">urine specimens dataset</a> contains a <code>readme.txt</code> file and a data file (<code>urine.csv</code>; direct link: “<a href="https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/urine.csv" class="uri">https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/urine.csv</a>”). Study the readme to get an idea of the data. Download the file like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">urine_file_name &lt;-<span class="st"> &quot;urine.csv&quot;</span>
-url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/&quot;</span>, urine_file_name)
-local_name &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;../&quot;</span>, urine_file_name) <span class="co">#specifiy your own folder!</span>
-<span class="kw">download.file</span>(<span class="dt">url =</span> url, <span class="dt">destfile =</span> local_name)</code></pre>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="exercises.html#cb544-1"></a>urine_file_name &lt;-<span class="st"> &quot;urine.csv&quot;</span></span>
+<span id="cb544-2"><a href="exercises.html#cb544-2"></a>url &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://raw.githubusercontent.com/MichielNoback/datasets/master/urine/&quot;</span>, urine_file_name)</span>
+<span id="cb544-3"><a href="exercises.html#cb544-3"></a>local_name &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;../&quot;</span>, urine_file_name) <span class="co">#specifiy your own folder!</span></span>
+<span id="cb544-4"><a href="exercises.html#cb544-4"></a><span class="kw">download.file</span>(<span class="dt">url =</span> url, <span class="dt">destfile =</span> local_name)</span></code></pre></div>
 <p><strong>A</strong><br />
 Load the data into a dataframe with name <code>urine</code>.</p>
 <p><strong>B</strong><br />
@@ -944,7 +1066,7 @@ Use the <code>heatmap.2()</code> and <code>cor()</code> functions together to cr
 [<strong>Challenge</strong>] There does not seem to be an interesting correlation between pH and any of the other variables. Sometimes this is becuase you are not looking in enough detail. Let’s dig a little further. Use <code>cut()</code> to split the pH variable into a factor with three levels: “acidic”, “neutral” and “basic” with breakpoints between them at pH 5.5 and 7. Next, use the <code>split()</code> and <code>lapply()</code> functions to calculate the mean, meadian and sd of the other numeric variables for each level of this pH factor. This exercise can of course be done in many ways. one of them is by using an <code>apply()</code> <em>within</em> the applied function of <code>lapply()</code>.</p>
 </div>
 <div id="bird-observations-revisited" class="section level3">
-<h3><span class="header-section-number">10.6.5</span> Bird observations revisited</h3>
+<h3><span class="header-section-number">10.7.5</span> Bird observations revisited</h3>
 <p>This exercise revisits the bird observations dataset. You can download it <a href="data/Observations-Data-2014.csv">here</a>. (Re)load the dataset.</p>
 <p><strong>A</strong><br />
 Report the number of observations per <code>County</code>. Use both a textual as a barplot representation. With the barplot, you should order the bars according to observation numbers.</p>
@@ -971,11 +1093,13 @@ Report the different observed species (using <code>Common.name</code>) for each 
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -983,12 +1107,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1000,6 +1123,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1018,8 +1145,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

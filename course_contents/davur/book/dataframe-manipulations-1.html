@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Dataframe manipulations | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Dataframe manipulations | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-05-28" />
+<meta name="date" content="2020-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="scripting.html">
-<link rel="next" href="exploratory-data-analysis.html">
+<link rel="prev" href="scripting.html"/>
+<link rel="next" href="exploratory-data-analysis.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,29 +48,35 @@
 
 
 
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -249,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>10</b> Exercises</a><ul>
 <li class="chapter" data-level="10.1" data-path="exercises.html"><a href="exercises.html#toolbox-1"><i class="fa fa-check"></i><b>10.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="exercises.html"><a href="exercises.html#get-set-up"><i class="fa fa-check"></i><b>10.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#resume"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#résumé"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="exercises.html"><a href="exercises.html#basic-r"><i class="fa fa-check"></i><b>10.2</b> Basic R</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="exercises.html"><a href="exercises.html#math-in-the-console"><i class="fa fa-check"></i><b>10.2.1</b> Math in the console</a></li>
@@ -272,29 +279,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3.6" data-path="exercises.html"><a href="exercises.html#file-reading-practice"><i class="fa fa-check"></i><b>10.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="10.3.7" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="10.4.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#functions-2"><i class="fa fa-check"></i><b>10.4</b> Functions</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#the-cut-function-i"><i class="fa fa-check"></i><b>10.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#the-cut-function-ii"><i class="fa fa-check"></i><b>10.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.5</b> Scripting</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="10.5.4" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.6</b> Scripting</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#count-odd-and-even-numbers"><i class="fa fa-check"></i><b>10.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#add-column-compared-to-mean"><i class="fa fa-check"></i><b>10.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="10.6.6" data-path="exercises.html"><a href="exercises.html#quadratic-equation-solver"><i class="fa fa-check"></i><b>10.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="10.6.7" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="10.7.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.7.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="10.7.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="10.7.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>11</b> Exercise solutions</a><ul>
 <li class="chapter" data-level="11.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toolbox-2"><i class="fa fa-check"></i><b>11.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#get-set-up-1"><i class="fa fa-check"></i><b>11.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#resume-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#résumé-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#basic-r-1"><i class="fa fa-check"></i><b>11.2</b> Basic R</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#math-in-the-console-1"><i class="fa fa-check"></i><b>11.2.1</b> Math in the console</a></li>
@@ -317,23 +331,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#file-reading-practice-1"><i class="fa fa-check"></i><b>11.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="11.3.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="11.4.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#functions-3"><i class="fa fa-check"></i><b>11.4</b> Functions</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-i-1"><i class="fa fa-check"></i><b>11.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-ii-1"><i class="fa fa-check"></i><b>11.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.5</b> Scripting</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="11.5.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.6</b> Scripting</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="" data-path="exercise-solutions.html"><a href="exercise-solutions.html#find-match-locations-1"><i class="fa fa-check"></i>Find match locations</a></li>
+<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#count-odd-and-even-numbers-1"><i class="fa fa-check"></i><b>11.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#add-column-compared-to-mean-1"><i class="fa fa-check"></i><b>11.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="11.6.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#quadratic-equation-solver-1"><i class="fa fa-check"></i><b>11.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="11.6.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="11.7.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="11.7.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="11.7.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="11.7.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -390,13 +412,13 @@ In this presentation, we’ll explore a few new functions and techniques for wor
 <li>what function to apply (<code>FUN</code>)</li>
 </ol></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> cars, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean) <span class="co"># apply over columns</span></code></pre>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="dataframe-manipulations-1.html#cb381-1"></a><span class="kw">apply</span>(<span class="dt">X =</span> cars, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean) <span class="co"># apply over columns</span></span></code></pre></div>
 <pre><code>## speed  dist 
 ## 15.40 42.98</code></pre>
 <p>Here, a function is applied to both columns and rows</p>
-<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">y =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)
-minus_one_squared &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-1</span>)<span class="op">^</span><span class="dv">2</span>
-<span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">FUN =</span> minus_one_squared)</code></pre>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="dataframe-manipulations-1.html#cb383-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">y =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb383-2"><a href="dataframe-manipulations-1.html#cb383-2"></a>minus_one_squared &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-1</span>)<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb383-3"><a href="dataframe-manipulations-1.html#cb383-3"></a><span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">FUN =</span> minus_one_squared)</span></code></pre></div>
 <pre><code>##       x  y
 ## [1,]  0 25
 ## [2,]  1 36
@@ -405,15 +427,15 @@ minus_one_squared &lt;-<span class="st"> </span><span class="cf">function</span>
 ## [5,] 16 81</code></pre>
 <p>(Ok, that was a bit lame: <code>minus_one_squared(df)</code> does the same)</p>
 <p>The Body Mass Index, or BMI, is calculated as <span class="math inline">\((weight / height ^ 2) * 703\)</span> where weight is in pounds and height in inches. Here it is calculated for the build in dataset <code>women</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(women, <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="dataframe-manipulations-1.html#cb385-1"></a><span class="kw">head</span>(women, <span class="dt">n=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##   height weight
 ## 1     58    115
 ## 2     59    117
 ## 3     60    120</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">women<span class="op">$</span>bmi &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="dt">X =</span> women, 
-                   <span class="dt">MARGIN =</span> <span class="dv">1</span>, 
-                   <span class="dt">FUN =</span> <span class="cf">function</span>(x) (x[<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span>)
-<span class="kw">head</span>(women, <span class="dt">n=</span><span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="dataframe-manipulations-1.html#cb387-1"></a>women<span class="op">$</span>bmi &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="dt">X =</span> women, </span>
+<span id="cb387-2"><a href="dataframe-manipulations-1.html#cb387-2"></a>                   <span class="dt">MARGIN =</span> <span class="dv">1</span>, </span>
+<span id="cb387-3"><a href="dataframe-manipulations-1.html#cb387-3"></a>                   <span class="dt">FUN =</span> <span class="cf">function</span>(x) (x[<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span>)</span>
+<span id="cb387-4"><a href="dataframe-manipulations-1.html#cb387-4"></a><span class="kw">head</span>(women, <span class="dt">n=</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##   height weight   bmi
 ## 1     58    115 24.03
 ## 2     59    117 23.63
@@ -422,22 +444,22 @@ minus_one_squared &lt;-<span class="st"> </span><span class="cf">function</span>
 <div id="pass-arguments-to-the-applied-function" class="section level4 unnumbered">
 <h4>Pass arguments to the applied function</h4>
 <p>Sometimes the applied function needs to have other arguments passed besides the row or column. The <code>...</code> argument to <code>apply()</code> makes this possible (type <code>?apply</code> to see more info)</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function sums and powers up</span>
-spwr &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">p =</span> <span class="dv">2</span>) {<span class="kw">sum</span>(x)<span class="op">^</span>p}
-<span class="co"># a simple dataframe</span>
-df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)
-df</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="dataframe-manipulations-1.html#cb389-1"></a><span class="co"># function sums and powers up</span></span>
+<span id="cb389-2"><a href="dataframe-manipulations-1.html#cb389-2"></a>spwr &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">p =</span> <span class="dv">2</span>) {<span class="kw">sum</span>(x)<span class="op">^</span>p}</span>
+<span id="cb389-3"><a href="dataframe-manipulations-1.html#cb389-3"></a><span class="co"># a simple dataframe</span></span>
+<span id="cb389-4"><a href="dataframe-manipulations-1.html#cb389-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>)</span>
+<span id="cb389-5"><a href="dataframe-manipulations-1.html#cb389-5"></a>df</span></code></pre></div>
 <pre><code>##   a  b
 ## 1 1  6
 ## 2 2  7
 ## 3 3  8
 ## 4 4  9
 ## 5 5 10</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># spwr will use the default value for p (p = 2)</span>
-<span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> spwr) </code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="dataframe-manipulations-1.html#cb391-1"></a><span class="co"># spwr will use the default value for p (p = 2)</span></span>
+<span id="cb391-2"><a href="dataframe-manipulations-1.html#cb391-2"></a><span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> spwr) </span></code></pre></div>
 <pre><code>## [1]  49  81 121 169 225</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># pass power p = 3 to function spwr (argument names omitted)</span>
-<span class="kw">apply</span>(df, <span class="dv">1</span>, spwr, <span class="dt">p =</span> <span class="dv">3</span>) </code></pre>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="dataframe-manipulations-1.html#cb393-1"></a><span class="co"># pass power p = 3 to function spwr (argument names omitted)</span></span>
+<span id="cb393-2"><a href="dataframe-manipulations-1.html#cb393-2"></a><span class="kw">apply</span>(df, <span class="dv">1</span>, spwr, <span class="dt">p =</span> <span class="dv">3</span>) </span></code></pre></div>
 <pre><code>## [1]  343  729 1331 2197 3375</code></pre>
 <p>Note: The <code>...</code> argument works for all <code>..apply..</code> functions.</p>
 </div>
@@ -445,11 +467,11 @@ df</code></pre>
 <div id="lapply-apply-a-function-over-a-list-or-vector" class="section level3">
 <h3><span class="header-section-number">8.1.2</span> <code>lapply()</code>: Apply a Function over a List or Vector</h3>
 <p>Function <code>lapply()</code> applies a function to all elements of a list and returns a list with the same length, each element the result of applying the function</p>
-<pre class="sourceCode r"><code class="sourceCode r">myNumbers =<span class="st"> </span><span class="kw">list</span>(
-    <span class="dt">one =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>), 
-    <span class="dt">two =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>), 
-    <span class="dt">three =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">9</span>))
-<span class="kw">lapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="dataframe-manipulations-1.html#cb395-1"></a>myNumbers =<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb395-2"><a href="dataframe-manipulations-1.html#cb395-2"></a>    <span class="dt">one =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>), </span>
+<span id="cb395-3"><a href="dataframe-manipulations-1.html#cb395-3"></a>    <span class="dt">two =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>), </span>
+<span id="cb395-4"><a href="dataframe-manipulations-1.html#cb395-4"></a>    <span class="dt">three =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb395-5"><a href="dataframe-manipulations-1.html#cb395-5"></a><span class="kw">lapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>## $one
 ## [1] 2.667
 ## 
@@ -459,7 +481,7 @@ df</code></pre>
 ## $three
 ## [1] 7</code></pre>
 <p>Here is the same list, but now with <code>sqrt()</code> applied. Notice how the nature of the applied function influences the result.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> sqrt)</code></pre>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="dataframe-manipulations-1.html#cb397-1"></a><span class="kw">lapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> sqrt)</span></code></pre></div>
 <pre><code>## $one
 ## [1] 1.000 1.732 2.000
 ## 
@@ -472,15 +494,15 @@ df</code></pre>
 <div id="sapply-apply-a-function-over-a-list-or-vector-and-simplify" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> <code>sapply()</code>: Apply a Function over a List or Vector and Simplify</h3>
 <p>When using the same example as above, but with <code>sapply</code>, you get a vector returned. Note that the resulting vector is a named vector, a convenient feature of <code>sapply</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">myNumbers =<span class="st"> </span><span class="kw">list</span>(
-    <span class="dt">one =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>),
-    <span class="dt">two =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>),
-    <span class="dt">three =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">9</span>))
-<span class="kw">sapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="dataframe-manipulations-1.html#cb399-1"></a>myNumbers =<span class="st"> </span><span class="kw">list</span>(</span>
+<span id="cb399-2"><a href="dataframe-manipulations-1.html#cb399-2"></a>    <span class="dt">one =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb399-3"><a href="dataframe-manipulations-1.html#cb399-3"></a>    <span class="dt">two =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>),</span>
+<span id="cb399-4"><a href="dataframe-manipulations-1.html#cb399-4"></a>    <span class="dt">three =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="dv">9</span>))</span>
+<span id="cb399-5"><a href="dataframe-manipulations-1.html#cb399-5"></a><span class="kw">sapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##   one   two three 
 ## 2.667 3.000 7.000</code></pre>
 <p>When the result can not be simplified, you get the same list as with <code>lapply()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> sqrt)</code></pre>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="dataframe-manipulations-1.html#cb401-1"></a><span class="kw">sapply</span>(<span class="dt">X =</span> myNumbers, <span class="dt">FUN =</span> sqrt)</span></code></pre></div>
 <pre><code>## $one
 ## [1] 1.000 1.732 2.000
 ## 
@@ -492,13 +514,13 @@ df</code></pre>
 <div id="wasnt-a-dataframe-also-a-list" class="section level4">
 <h4><span class="header-section-number">8.1.3.1</span> wasn’t a dataframe also a list?</h4>
 <p>Yes! It is also list(ish). Both <code>lapply()</code> and <code>sapply()</code> work just fine on dataframes:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(<span class="dt">X =</span> cars, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="dataframe-manipulations-1.html#cb403-1"></a><span class="kw">lapply</span>(<span class="dt">X =</span> cars, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>## $speed
 ## [1] 15.4
 ## 
 ## $dist
 ## [1] 42.98</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="dt">X =</span> cars, <span class="dt">FUN =</span> mean) </code></pre>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="dataframe-manipulations-1.html#cb405-1"></a><span class="kw">sapply</span>(<span class="dt">X =</span> cars, <span class="dt">FUN =</span> mean) </span></code></pre></div>
 <pre><code>## speed  dist 
 ## 15.40 42.98</code></pre>
 <p>By the way, sapply and lapply also work with vectors.</p>
@@ -507,7 +529,7 @@ df</code></pre>
 <div id="tapply-apply-a-function-over-a-ragged-array" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> <code>tapply()</code>: Apply a Function Over a Ragged Array</h3>
 <p>What <code>tapply()</code> does is apply a function over subsets of a vector; it splits a vector into groups according to the levels in a second vector and applies the given function to each group.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(<span class="dt">X =</span> chickwts<span class="op">$</span>weight, <span class="dt">INDEX =</span> chickwts<span class="op">$</span>feed, <span class="dt">FUN =</span> sd)</code></pre>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="dataframe-manipulations-1.html#cb407-1"></a><span class="kw">tapply</span>(<span class="dt">X =</span> chickwts<span class="op">$</span>weight, <span class="dt">INDEX =</span> chickwts<span class="op">$</span>feed, <span class="dt">FUN =</span> sd)</span></code></pre></div>
 <pre><code>##    casein horsebean   linseed  meatmeal   soybean sunflower 
 ##     64.43     38.63     52.24     64.90     54.13     48.84</code></pre>
 </div>
@@ -516,12 +538,12 @@ df</code></pre>
 <p>This is similar to <code>tapply()</code> in the sense that is uses a factor to split its first argument. But where <code>tapply()</code> splits a vector, <code>split()</code> splits a dataframe - into <em>list of dataframes</em>.
 You use <code>split()</code> when a dataframe needs to be divided depending on the value of some grouping variable.<br />
 Here we have the response of Treated (T) and Untreated (UT) subjects</p>
-<pre class="sourceCode r"><code class="sourceCode r">myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-    <span class="dt">response =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">2</span>),
-    <span class="dt">treatment =</span> <span class="kw">factor</span>(
-        <span class="kw">c</span>(<span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>)))
-splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class="dt">x =</span> myData, <span class="dt">f =</span> myData<span class="op">$</span>treatment)
-<span class="kw">str</span>(splData)</code></pre>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="dataframe-manipulations-1.html#cb409-1"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb409-2"><a href="dataframe-manipulations-1.html#cb409-2"></a>    <span class="dt">response =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb409-3"><a href="dataframe-manipulations-1.html#cb409-3"></a>    <span class="dt">treatment =</span> <span class="kw">factor</span>(</span>
+<span id="cb409-4"><a href="dataframe-manipulations-1.html#cb409-4"></a>        <span class="kw">c</span>(<span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;UT&quot;</span>)))</span>
+<span id="cb409-5"><a href="dataframe-manipulations-1.html#cb409-5"></a>splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class="dt">x =</span> myData, <span class="dt">f =</span> myData<span class="op">$</span>treatment)</span>
+<span id="cb409-6"><a href="dataframe-manipulations-1.html#cb409-6"></a><span class="kw">str</span>(splData)</span></code></pre></div>
 <pre><code>## List of 2
 ##  $ T :&#39;data.frame&#39;:  6 obs. of  2 variables:
 ##   ..$ response : num [1:6] 8 9 6 7 6 5
@@ -529,12 +551,12 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 ##  $ UT:&#39;data.frame&#39;:  6 obs. of  2 variables:
 ##   ..$ response : num [1:6] 5 4 5 3 3 2
 ##   ..$ treatment: Factor w/ 2 levels &quot;T&quot;,&quot;UT&quot;: 2 2 2 2 2 2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(splData<span class="op">$</span>T<span class="op">$</span>response, splData<span class="op">$</span>UT<span class="op">$</span>response, 
-        <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Treated&quot;</span>, <span class="st">&quot;Untreated&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="dataframe-manipulations-1.html#cb411-1"></a><span class="kw">boxplot</span>(splData<span class="op">$</span>T<span class="op">$</span>response, splData<span class="op">$</span>UT<span class="op">$</span>response, </span>
+<span id="cb411-2"><a href="dataframe-manipulations-1.html#cb411-2"></a>        <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;Treated&quot;</span>, <span class="st">&quot;Untreated&quot;</span>))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/split_demo1-1.png" width="672" /></p>
 <p>Note that this trivial example could also have been done with <code>boxplot(myData$response ~ myData$treatment)</code>.</p>
 <p>Here you can see that <code>split()</code> also works with vectors.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">split</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">f =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;sick&quot;</span>, <span class="st">&quot;healthy&quot;</span>), <span class="dt">each=</span><span class="dv">5</span>))</code></pre>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dataframe-manipulations-1.html#cb412-1"></a><span class="kw">split</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">f =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;sick&quot;</span>, <span class="st">&quot;healthy&quot;</span>), <span class="dt">each=</span><span class="dv">5</span>))</span></code></pre></div>
 <pre><code>## $healthy
 ## [1] -0.35028  1.37414 -0.29972  0.09764  0.38119
 ## 
@@ -544,7 +566,7 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 <div id="aggregate-compute-summary-statistics-of-data-subsets" class="section level3">
 <h3><span class="header-section-number">8.1.6</span> <code>aggregate()</code>: Compute Summary Statistics of Data Subsets</h3>
 <p>Splits the data into subsets, computes summary statistics for each, and returns the result in a convenient form.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(<span class="dt">formula =</span> Temp <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="dataframe-manipulations-1.html#cb414-1"></a><span class="kw">aggregate</span>(<span class="dt">formula =</span> Temp <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##       Month  Temp
 ## 1       May 65.55
 ## 2      June 79.10
@@ -563,16 +585,16 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 <div id="aggregate-with-formula" class="section level4 unnumbered">
 <h4>Aggregate with formula</h4>
 <p>The left part of the formula accepts one, several or all columns as dependent variables.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##two dependents</span>
-<span class="kw">aggregate</span>(<span class="kw">cbind</span>(Temp, Ozone) <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="dataframe-manipulations-1.html#cb416-1"></a><span class="co">##two dependents</span></span>
+<span id="cb416-2"><a href="dataframe-manipulations-1.html#cb416-2"></a><span class="kw">aggregate</span>(<span class="kw">cbind</span>(Temp, Ozone) <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##       Month  Temp Ozone
 ## 1       May 66.73 23.62
 ## 2      June 78.22 29.44
 ## 3      July 83.88 59.12
 ## 4    August 83.96 59.96
 ## 5 September 76.90 31.45</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##all</span>
-<span class="kw">aggregate</span>(. <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="dataframe-manipulations-1.html#cb418-1"></a><span class="co">##all</span></span>
+<span id="cb418-2"><a href="dataframe-manipulations-1.html#cb418-2"></a><span class="kw">aggregate</span>(. <span class="op">~</span><span class="st"> </span>Month, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##       Month Ozone Solar.R   Wind  Temp   Day foo    bar
 ## 1       May 24.12   182.0 11.504 66.46 16.08   1 0.3333
 ## 2      June 29.44   184.2 12.178 78.22 14.33   1 0.3333
@@ -580,8 +602,8 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 ## 4    August 60.00   173.1  8.861 83.70 17.17   1 0.6957
 ## 5 September 31.45   168.2 10.076 76.90 15.10   1 0.3448</code></pre>
 <p>The right part can also accept multiple independent variables</p>
-<pre class="sourceCode r"><code class="sourceCode r">airquality<span class="op">$</span>Temp_factor &lt;-<span class="st"> </span><span class="kw">cut</span>(airquality<span class="op">$</span>Temp, <span class="dt">breaks =</span> <span class="dv">2</span>, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>))
-<span class="kw">aggregate</span>(Ozone <span class="op">~</span><span class="st"> </span>Month <span class="op">+</span><span class="st"> </span>Temp_factor, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="dataframe-manipulations-1.html#cb420-1"></a>airquality<span class="op">$</span>Temp_factor &lt;-<span class="st"> </span><span class="kw">cut</span>(airquality<span class="op">$</span>Temp, <span class="dt">breaks =</span> <span class="dv">2</span>, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>))</span>
+<span id="cb420-2"><a href="dataframe-manipulations-1.html#cb420-2"></a><span class="kw">aggregate</span>(Ozone <span class="op">~</span><span class="st"> </span>Month <span class="op">+</span><span class="st"> </span>Temp_factor, <span class="dt">data =</span> airquality, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        Month Temp_factor Ozone
 ## 1        May         low 18.92
 ## 2       June         low 20.50
@@ -597,7 +619,7 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 <div id="the-by-list...-form" class="section level4 unnumbered">
 <h4>The <code>by = list(...)</code> form</h4>
 <p>This is the other form of aggregate. It is more elaborate in my opinion because you need te spell out all vectors you want to work on.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(<span class="dt">x =</span> chickwts<span class="op">$</span>weight, <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">feed =</span> chickwts<span class="op">$</span>feed), <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="dataframe-manipulations-1.html#cb422-1"></a><span class="kw">aggregate</span>(<span class="dt">x =</span> chickwts<span class="op">$</span>weight, <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">feed =</span> chickwts<span class="op">$</span>feed), <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        feed     x
 ## 1    casein 323.6
 ## 2 horsebean 160.2
@@ -606,9 +628,9 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 ## 5   soybean 246.4
 ## 6 sunflower 328.9</code></pre>
 <p>Here is another example:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, 
-          <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">month =</span> airquality<span class="op">$</span>Month, <span class="dt">temperature =</span> airquality<span class="op">$</span>Temp_factor), 
-          <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="dataframe-manipulations-1.html#cb424-1"></a><span class="kw">aggregate</span>(<span class="dt">x =</span> airquality<span class="op">$</span>Wind, </span>
+<span id="cb424-2"><a href="dataframe-manipulations-1.html#cb424-2"></a>          <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">month =</span> airquality<span class="op">$</span>Month, <span class="dt">temperature =</span> airquality<span class="op">$</span>Temp_factor), </span>
+<span id="cb424-3"><a href="dataframe-manipulations-1.html#cb424-3"></a>          <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        month temperature      x
 ## 1        May         low 11.714
 ## 2       June         low  9.855
@@ -621,15 +643,15 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 ## 9     August        high  8.511
 ## 10 September        high  8.793</code></pre>
 <p>But it is better to wrap it in <code>with()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(airquality, <span class="kw">aggregate</span>(<span class="dt">x =</span> Wind, 
-                           <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">month =</span> Month, <span class="dt">temperature =</span> Temp_factor), 
-                           <span class="dt">FUN =</span> mean))</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="dataframe-manipulations-1.html#cb426-1"></a><span class="kw">with</span>(airquality, <span class="kw">aggregate</span>(<span class="dt">x =</span> Wind, </span>
+<span id="cb426-2"><a href="dataframe-manipulations-1.html#cb426-2"></a>                           <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">month =</span> Month, <span class="dt">temperature =</span> Temp_factor), </span>
+<span id="cb426-3"><a href="dataframe-manipulations-1.html#cb426-3"></a>                           <span class="dt">FUN =</span> mean))</span></code></pre></div>
 </div>
 </div>
 <div id="many-roads-lead-to-rome" class="section level3">
 <h3><span class="header-section-number">8.1.7</span> Many roads lead to Rome</h3>
 <p>The next series of examples are all essentially the same. The message is: there is more than one way to do it!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="dataframe-manipulations-1.html#cb427-1"></a><span class="kw">aggregate</span>(weight <span class="op">~</span><span class="st"> </span>feed, <span class="dt">data =</span> chickwts, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        feed weight
 ## 1    casein  323.6
 ## 2 horsebean  160.2
@@ -638,25 +660,25 @@ splData &lt;-<span class="st"> </span><span class="kw">split</span>(<span class=
 ## 5   soybean  246.4
 ## 6 sunflower  328.9</code></pre>
 <p>same as</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">aggregate</span>(<span class="dt">x =</span> chickwts<span class="op">$</span>weight, <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">feed =</span> chickwts<span class="op">$</span>feed), <span class="dt">FUN =</span> mean), <span class="dt">n=</span><span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="dataframe-manipulations-1.html#cb429-1"></a><span class="kw">head</span>(<span class="kw">aggregate</span>(<span class="dt">x =</span> chickwts<span class="op">$</span>weight, <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">feed =</span> chickwts<span class="op">$</span>feed), <span class="dt">FUN =</span> mean), <span class="dt">n=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##        feed     x
 ## 1    casein 323.6
 ## 2 horsebean 160.2
 ## 3   linseed 218.8</code></pre>
 <p>same as</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(chickwts<span class="op">$</span>weight, chickwts<span class="op">$</span>feed, mean)</code></pre>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="dataframe-manipulations-1.html#cb431-1"></a><span class="kw">tapply</span>(chickwts<span class="op">$</span>weight, chickwts<span class="op">$</span>feed, mean)</span></code></pre></div>
 <pre><code>##    casein horsebean   linseed  meatmeal   soybean sunflower 
 ##     323.6     160.2     218.8     276.9     246.4     328.9</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(chickwts, <span class="kw">tapply</span>(weight, feed, mean))</code></pre>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="dataframe-manipulations-1.html#cb433-1"></a><span class="kw">with</span>(chickwts, <span class="kw">tapply</span>(weight, feed, mean))</span></code></pre></div>
 <pre><code>##    casein horsebean   linseed  meatmeal   soybean sunflower 
 ##     323.6     160.2     218.8     276.9     246.4     328.9</code></pre>
 <p>same as</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="kw">split</span>(chickwts, chickwts<span class="op">$</span>feed), <span class="cf">function</span>(x){<span class="kw">mean</span>(x<span class="op">$</span>weight)})</code></pre>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="dataframe-manipulations-1.html#cb435-1"></a><span class="kw">sapply</span>(<span class="kw">split</span>(chickwts, chickwts<span class="op">$</span>feed), <span class="cf">function</span>(x){<span class="kw">mean</span>(x<span class="op">$</span>weight)})</span></code></pre></div>
 <pre><code>##    casein horsebean   linseed  meatmeal   soybean sunflower 
 ##     323.6     160.2     218.8     276.9     246.4     328.9</code></pre>
 <p>And this is the topic of the next course:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-<span class="kw">group_by</span>(chickwts, feed) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_weigth =</span> <span class="kw">mean</span>(weight))</code></pre>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="dataframe-manipulations-1.html#cb437-1"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb437-2"><a href="dataframe-manipulations-1.html#cb437-2"></a><span class="kw">group_by</span>(chickwts, feed) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">mean_weigth =</span> <span class="kw">mean</span>(weight))</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   feed      mean_weigth
 ##   &lt;fct&gt;           &lt;dbl&gt;
@@ -676,7 +698,7 @@ The topics for these use cases are selected because they appear to be harder to 
 <h3><span class="header-section-number">8.2.1</span> Dataframe Selections</h3>
 <p>R offers a wealth of methods to make selection on dataframes by columns, rows, or both.</p>
 <p>We’ll explore the <code>iris</code> dataset, a dataframe holding morphological data on several species of plants from the genus <em>Iris</em>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris, <span class="dv">10</span>))</code></pre>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="dataframe-manipulations-1.html#cb439-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(iris, <span class="dv">10</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -761,99 +783,96 @@ The topics for these use cases are selected because they appear to be harder to 
 </tbody>
 </table>
 <p>There are only three species in this dataset</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(iris<span class="op">$</span>Species)</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="dataframe-manipulations-1.html#cb440-1"></a><span class="kw">table</span>(iris<span class="op">$</span>Species)</span></code></pre></div>
 <pre><code>## 
 ##     setosa versicolor  virginica 
 ##         50         50         50</code></pre>
 <p>but how do they relate to each other with repect to Sepal length?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(iris, <span class="kw">boxplot</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Species,
-                   <span class="dt">ylab =</span> <span class="st">&quot;Sepal length (cm)&quot;</span>,
-                   <span class="dt">xlab =</span> <span class="st">&quot;Iris species&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="dataframe-manipulations-1.html#cb442-1"></a><span class="kw">with</span>(iris, <span class="kw">boxplot</span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Species,</span>
+<span id="cb442-2"><a href="dataframe-manipulations-1.html#cb442-2"></a>                   <span class="dt">ylab =</span> <span class="st">&quot;Sepal length (cm)&quot;</span>,</span>
+<span id="cb442-3"><a href="dataframe-manipulations-1.html#cb442-3"></a>                   <span class="dt">xlab =</span> <span class="st">&quot;Iris species&quot;</span>))</span></code></pre></div>
 <p><img src="davur_ebook_files/figure-html/boxplot_sepal_length-1.png" width="672" /></p>
 <p>Now suppose I want to get the data from <em>virginica</em> plants that have a Sepal length smaller than the largest Sepal length of <em>setosa</em> plants?
 First of course we’ll need the maximum of the <em>setosa</em> plants:</p>
-<pre class="sourceCode r"><code class="sourceCode r">max.setosa &lt;-<span class="st"> </span><span class="kw">max</span>(iris[iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="st">&quot;Sepal.Length&quot;</span>])
-max.setosa</code></pre>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="dataframe-manipulations-1.html#cb443-1"></a>max.setosa &lt;-<span class="st"> </span><span class="kw">max</span>(iris[iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="st">&quot;Sepal.Length&quot;</span>])</span>
+<span id="cb443-2"><a href="dataframe-manipulations-1.html#cb443-2"></a>max.setosa</span></code></pre></div>
 <pre><code>## [1] 5.8</code></pre>
 <p>Which plant is it? Let’s use the subset function to find out.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(<span class="dt">x =</span> iris,
-       <span class="dt">subset =</span> (Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Sepal.Length <span class="op">==</span><span class="st"> </span>max.setosa))</code></pre>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="dataframe-manipulations-1.html#cb445-1"></a><span class="kw">subset</span>(<span class="dt">x =</span> iris,</span>
+<span id="cb445-2"><a href="dataframe-manipulations-1.html#cb445-2"></a>       <span class="dt">subset =</span> (Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Sepal.Length <span class="op">==</span><span class="st"> </span>max.setosa))</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 15          5.8           4          1.2         0.2  setosa</code></pre>
 <p>Now filter out the <em>virginica</em> plants that have a Sepal length smaller than this value. I’ll show two approaches, one with logical indexing and one with <code>subset</code></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##get a logical for small plants</span>
-logi.small.sepal &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa
-logi.small.sepal</code></pre>
-<pre><code>##   [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [12]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [23]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [34]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-##  [45]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE
-##  [56]  TRUE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE
-##  [67]  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [78] FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE
-##  [89]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
-## [100]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
-## [111] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [122]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [144] FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##get a logical for virginica plants</span>
-logi.virginica &lt;-<span class="st"> </span>iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>
-logi.virginica</code></pre>
-<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [100] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [111]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [122]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-## [144]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##combine the two via a boolean operation</span>
-logi.both &lt;-<span class="st"> </span>logi.small.sepal <span class="op">&amp;</span><span class="st"> </span>logi.virginica
-logi.both</code></pre>
-<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [100] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
-## [111] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [122]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [144] FALSE FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##use it as a selector on the rows of the iris DF</span>
-iris[logi.both, ]</code></pre>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="dataframe-manipulations-1.html#cb447-1"></a><span class="co">##get a logical for small plants</span></span>
+<span id="cb447-2"><a href="dataframe-manipulations-1.html#cb447-2"></a>logi.small.sepal &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa</span>
+<span id="cb447-3"><a href="dataframe-manipulations-1.html#cb447-3"></a>logi.small.sepal</span></code></pre></div>
+<pre><code>##   [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [13]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+##  [49]  TRUE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE  TRUE FALSE  TRUE
+##  [61]  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
+##  [85]  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+##  [97]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+## [109] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+## [121] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [145] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="dataframe-manipulations-1.html#cb449-1"></a><span class="co">##get a logical for virginica plants</span></span>
+<span id="cb449-2"><a href="dataframe-manipulations-1.html#cb449-2"></a>logi.virginica &lt;-<span class="st"> </span>iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span></span>
+<span id="cb449-3"><a href="dataframe-manipulations-1.html#cb449-3"></a>logi.virginica</span></code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [121]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [145]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="dataframe-manipulations-1.html#cb451-1"></a><span class="co">##combine the two via a boolean operation</span></span>
+<span id="cb451-2"><a href="dataframe-manipulations-1.html#cb451-2"></a>logi.both &lt;-<span class="st"> </span>logi.small.sepal <span class="op">&amp;</span><span class="st"> </span>logi.virginica</span>
+<span id="cb451-3"><a href="dataframe-manipulations-1.html#cb451-3"></a>logi.both</span></code></pre></div>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+## [109] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+## [121] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [145] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="dataframe-manipulations-1.html#cb453-1"></a><span class="co">##use it as a selector on the rows of the iris DF</span></span>
+<span id="cb453-2"><a href="dataframe-manipulations-1.html#cb453-2"></a>iris[logi.both, ]</span></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 107          4.9         2.5          4.5         1.7 virginica
 ## 114          5.7         2.5          5.0         2.0 virginica
 ## 122          5.6         2.8          4.9         2.0 virginica</code></pre>
 <p>Of course, you will usually perform this selection in one statement, but the operations carried out by R will be exactly the same (but without creating any variables of course):</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris[iris<span class="op">$</span>Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;</span><span class="st"> </span>iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>, ]</code></pre>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="dataframe-manipulations-1.html#cb455-1"></a>iris[iris<span class="op">$</span>Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;</span><span class="st"> </span>iris<span class="op">$</span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>, ]</span></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 107          4.9         2.5          4.5         1.7 virginica
 ## 114          5.7         2.5          5.0         2.0 virginica
 ## 122          5.6         2.8          4.9         2.0 virginica</code></pre>
 <p>The function <code>subset</code> will do the same behind the scenes, but your code may be more to your liking:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(<span class="dt">x =</span> iris,
-       <span class="dt">subset =</span> Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="dataframe-manipulations-1.html#cb457-1"></a><span class="kw">subset</span>(<span class="dt">x =</span> iris,</span>
+<span id="cb457-2"><a href="dataframe-manipulations-1.html#cb457-2"></a>       <span class="dt">subset =</span> Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>)</span></code></pre></div>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 107          4.9         2.5          4.5         1.7 virginica
 ## 114          5.7         2.5          5.0         2.0 virginica
 ## 122          5.6         2.8          4.9         2.0 virginica</code></pre>
 <p>By the way, <strong>beware to use only one boolean and: &amp;, not &amp;&amp;</strong>. This will not give an error but only an empty result set</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">subset</span>(<span class="dt">x =</span> iris,
-       <span class="dt">subset =</span> Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="dataframe-manipulations-1.html#cb459-1"></a><span class="kw">subset</span>(<span class="dt">x =</span> iris,</span>
+<span id="cb459-2"><a href="dataframe-manipulations-1.html#cb459-2"></a>       <span class="dt">subset =</span> Sepal.Length <span class="op">&lt;</span><span class="st"> </span>max.setosa <span class="op">&amp;&amp;</span><span class="st"> </span>Species <span class="op">==</span><span class="st"> &quot;virginica&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
 ## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 <blockquote>
@@ -865,7 +884,7 @@ iris[logi.both, ]</code></pre>
 <div id="apply" class="section level3">
 <h3><span class="header-section-number">8.2.2</span> Apply</h3>
 <p>Consider the <code>women</code> dataset, holding height and weight of a population sample of 15 women:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(women)</code></pre>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="dataframe-manipulations-1.html#cb461-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(women)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -953,21 +972,21 @@ iris[logi.both, ]</code></pre>
 </tbody>
 </table>
 <p>To calculate the average height and the average weight of this sample, one could of course simply do</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(women, {
-    <span class="kw">print</span>(<span class="kw">mean</span>(height))
-    <span class="kw">print</span>(<span class="kw">mean</span>(weight))
-})</code></pre>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="dataframe-manipulations-1.html#cb462-1"></a><span class="kw">with</span>(women, {</span>
+<span id="cb462-2"><a href="dataframe-manipulations-1.html#cb462-2"></a>    <span class="kw">print</span>(<span class="kw">mean</span>(height))</span>
+<span id="cb462-3"><a href="dataframe-manipulations-1.html#cb462-3"></a>    <span class="kw">print</span>(<span class="kw">mean</span>(weight))</span>
+<span id="cb462-4"><a href="dataframe-manipulations-1.html#cb462-4"></a>})</span></code></pre></div>
 <pre><code>## [1] 65
 ## [1] 136.7</code></pre>
 <p>However, when your dataset has (a lot) more columns, repeating this will be quite tedious…unless you use a <code>for</code> loop</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(women)) {
-    <span class="kw">print</span>(<span class="kw">mean</span>(women[,i]))
-}</code></pre>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="dataframe-manipulations-1.html#cb464-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(women)) {</span>
+<span id="cb464-2"><a href="dataframe-manipulations-1.html#cb464-2"></a>    <span class="kw">print</span>(<span class="kw">mean</span>(women[,i]))</span>
+<span id="cb464-3"><a href="dataframe-manipulations-1.html#cb464-3"></a>}</span></code></pre></div>
 <pre><code>## [1] 65
 ## [1] 136.7
 ## [1] 22.72</code></pre>
 <p>Enter <code>apply()</code>, a very nice function to do this in a handy one-liner</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> women, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="dataframe-manipulations-1.html#cb466-1"></a><span class="kw">apply</span>(<span class="dt">X =</span> women, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>## height weight    bmi 
 ##  65.00 136.73  22.72</code></pre>
 <p>The arguments I supplied to <code>apply</code>have the following purpose:</p>
@@ -983,7 +1002,7 @@ iris[logi.both, ]</code></pre>
 <li>it requires less code; a good programmer types as little as possible - except for Java programmers of course :-)</li>
 </ul>
 <p>If you really have strongh feelings about typing no more than strictly required, you can of course also omit the method parameters:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(women, <span class="dv">2</span>, mean)</code></pre>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="dataframe-manipulations-1.html#cb468-1"></a><span class="kw">apply</span>(women, <span class="dv">2</span>, mean)</span></code></pre></div>
 <pre><code>## height weight    bmi 
 ##  65.00 136.73  22.72</code></pre>
 <p>But if you are just starting out with R, I suggest you invest those few character strokes for readability later on.</p>
@@ -992,28 +1011,28 @@ The BMI formula is
 <span class="math display">\[weight/height^2*703\]</span></p>
 <p>where weight is in pounds and height is in inches.</p>
 <p>This formula is implemented in the following function.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bmi &lt;-<span class="st"> </span><span class="cf">function</span>(height, weight) {
-    (weight <span class="op">/</span><span class="st"> </span>height<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span>
-}
-<span class="kw">bmi</span>(<span class="dv">65</span>, <span class="dv">150</span>)</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="dataframe-manipulations-1.html#cb470-1"></a>bmi &lt;-<span class="st"> </span><span class="cf">function</span>(height, weight) {</span>
+<span id="cb470-2"><a href="dataframe-manipulations-1.html#cb470-2"></a>    (weight <span class="op">/</span><span class="st"> </span>height<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span></span>
+<span id="cb470-3"><a href="dataframe-manipulations-1.html#cb470-3"></a>}</span>
+<span id="cb470-4"><a href="dataframe-manipulations-1.html#cb470-4"></a><span class="kw">bmi</span>(<span class="dv">65</span>, <span class="dv">150</span>)</span></code></pre></div>
 <pre><code>## [1] 24.96</code></pre>
 <p>You can also apply the formula to the <code>women</code> dataset:</p>
-<pre class="sourceCode r"><code class="sourceCode r">women<span class="op">$</span>bmi1 &lt;-<span class="st"> </span><span class="kw">apply</span>(
-    <span class="dt">X =</span> women, 
-    <span class="dt">MARGIN =</span> <span class="dv">1</span>, 
-    <span class="dt">FUN =</span> <span class="cf">function</span>(x){(x[<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span>})
-<span class="kw">head</span>(women, <span class="dt">n =</span> <span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="dataframe-manipulations-1.html#cb472-1"></a>women<span class="op">$</span>bmi1 &lt;-<span class="st"> </span><span class="kw">apply</span>(</span>
+<span id="cb472-2"><a href="dataframe-manipulations-1.html#cb472-2"></a>    <span class="dt">X =</span> women, </span>
+<span id="cb472-3"><a href="dataframe-manipulations-1.html#cb472-3"></a>    <span class="dt">MARGIN =</span> <span class="dv">1</span>, </span>
+<span id="cb472-4"><a href="dataframe-manipulations-1.html#cb472-4"></a>    <span class="dt">FUN =</span> <span class="cf">function</span>(x){(x[<span class="dv">2</span>] <span class="op">/</span><span class="st"> </span>x[<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">703</span>})</span>
+<span id="cb472-5"><a href="dataframe-manipulations-1.html#cb472-5"></a><span class="kw">head</span>(women, <span class="dt">n =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##   height weight   bmi  bmi1
 ## 1     58    115 24.03 24.03
 ## 2     59    117 23.63 23.63
 ## 3     60    120 23.43 23.43
 ## 4     61    123 23.24 23.24</code></pre>
 <p>if you like to use your own formula (it’s always a good idea to write logic only once and reuse it in different places), you’ll still need to wrap it inside an anonymous function call:</p>
-<pre class="sourceCode r"><code class="sourceCode r">women<span class="op">$</span>bmi2 &lt;-<span class="st"> </span><span class="kw">apply</span>(
-    <span class="dt">X =</span> women, 
-    <span class="dt">MARGIN =</span> <span class="dv">1</span>, 
-    <span class="dt">FUN =</span> <span class="cf">function</span>(x){<span class="kw">bmi</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>])})
-<span class="kw">head</span>(women, <span class="dt">n =</span> <span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dataframe-manipulations-1.html#cb474-1"></a>women<span class="op">$</span>bmi2 &lt;-<span class="st"> </span><span class="kw">apply</span>(</span>
+<span id="cb474-2"><a href="dataframe-manipulations-1.html#cb474-2"></a>    <span class="dt">X =</span> women, </span>
+<span id="cb474-3"><a href="dataframe-manipulations-1.html#cb474-3"></a>    <span class="dt">MARGIN =</span> <span class="dv">1</span>, </span>
+<span id="cb474-4"><a href="dataframe-manipulations-1.html#cb474-4"></a>    <span class="dt">FUN =</span> <span class="cf">function</span>(x){<span class="kw">bmi</span>(x[<span class="dv">1</span>], x[<span class="dv">2</span>])})</span>
+<span id="cb474-5"><a href="dataframe-manipulations-1.html#cb474-5"></a><span class="kw">head</span>(women, <span class="dt">n =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##   height weight   bmi  bmi1  bmi2
 ## 1     58    115 24.03 24.03 24.03
 ## 2     59    117 23.63 23.63 23.63
@@ -1023,13 +1042,13 @@ The BMI formula is
 <div id="embeddeddf" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Processing Embedded Dataframes</h3>
 <p>Suppose you have imported some data that has a structure like this</p>
-<pre class="sourceCode r"><code class="sourceCode r">genes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gene A&quot;</span>, <span class="st">&quot;gene B&quot;</span>, <span class="st">&quot;gene C&quot;</span>, <span class="st">&quot;gene D&quot;</span>)
-positions &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chr01:128757:129667&quot;</span>, 
-               <span class="st">&quot;chr01:366389:486990&quot;</span>,
-               <span class="st">&quot;chr02:8986463:9100856&quot;</span>,
-               <span class="st">&quot;chr03:53536:87201&quot;</span>)
-my.genome &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene =</span> genes, <span class="dt">position =</span> positions)
-my.genome</code></pre>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dataframe-manipulations-1.html#cb476-1"></a>genes &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gene A&quot;</span>, <span class="st">&quot;gene B&quot;</span>, <span class="st">&quot;gene C&quot;</span>, <span class="st">&quot;gene D&quot;</span>)</span>
+<span id="cb476-2"><a href="dataframe-manipulations-1.html#cb476-2"></a>positions &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;chr01:128757:129667&quot;</span>, </span>
+<span id="cb476-3"><a href="dataframe-manipulations-1.html#cb476-3"></a>               <span class="st">&quot;chr01:366389:486990&quot;</span>,</span>
+<span id="cb476-4"><a href="dataframe-manipulations-1.html#cb476-4"></a>               <span class="st">&quot;chr02:8986463:9100856&quot;</span>,</span>
+<span id="cb476-5"><a href="dataframe-manipulations-1.html#cb476-5"></a>               <span class="st">&quot;chr03:53536:87201&quot;</span>)</span>
+<span id="cb476-6"><a href="dataframe-manipulations-1.html#cb476-6"></a>my.genome &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene =</span> genes, <span class="dt">position =</span> positions)</span>
+<span id="cb476-7"><a href="dataframe-manipulations-1.html#cb476-7"></a>my.genome</span></code></pre></div>
 <pre><code>##     gene              position
 ## 1 gene A   chr01:128757:129667
 ## 2 gene B   chr01:366389:486990
@@ -1038,7 +1057,7 @@ my.genome</code></pre>
 <p>The problem here is that the second column, <code>positions</code>, of type <code>character</code>, actually holds three different variables: the chromosome identifyer, the start position and the stop position on the chromosome. To be able to perform analyses of chromosomal contents, or positional contexts, we will need to split this column into separate columns, each holding exactly one variable of the correct type (<code>factor</code>, <code>integer</code> and <code>integer</code>).</p>
 <p>When I first encountered this type of problem (it is a <em>challenge</em> actually, some teachers would object, not a <em>problem</em>…), my first thought was “easy, simply apply a split and bind as three columns”.</p>
 <p>Let’s have a look at how the <code>strsplit</code> function works in splitting strings</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">strsplit</span>(<span class="dt">x =</span> positions[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dataframe-manipulations-1.html#cb478-1"></a><span class="kw">strsplit</span>(<span class="dt">x =</span> positions[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot;:&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;chr01&quot;  &quot;128757&quot; &quot;129667&quot;
 ## 
@@ -1046,18 +1065,18 @@ my.genome</code></pre>
 ## [1] &quot;chr01&quot;  &quot;366389&quot; &quot;486990&quot;</code></pre>
 <p>As you can see, strsplit generates a list of vectors, with each vector corresponding to the string at the same index of the original character vector.
 So, easy, I thought. Simply assign these elements to three new columns of the original dataframe (assuming every split character results in a vector of three). I first created the columns, defined my splitter function and then used apply to get the job done</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## create columns</span>
-my.genome[, <span class="kw">c</span>(<span class="st">&quot;chromosome&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;stop&quot;</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
-<span class="co">## define splitter function</span>
-loc.splitter &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    <span class="co">## strsplit returns a list!</span>
-    <span class="kw">strsplit</span>(x[<span class="st">&quot;position&quot;</span>], <span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]]
-}
-<span class="co">## use apply to fill the columns</span>
-my.genome[, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="dt">X =</span> my.genome,
-                          <span class="dt">MARGIN =</span> <span class="dv">1</span>,
-                          <span class="dt">FUN =</span> loc.splitter)
-my.genome</code></pre>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="dataframe-manipulations-1.html#cb480-1"></a><span class="co">## create columns</span></span>
+<span id="cb480-2"><a href="dataframe-manipulations-1.html#cb480-2"></a>my.genome[, <span class="kw">c</span>(<span class="st">&quot;chromosome&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;stop&quot;</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb480-3"><a href="dataframe-manipulations-1.html#cb480-3"></a><span class="co">## define splitter function</span></span>
+<span id="cb480-4"><a href="dataframe-manipulations-1.html#cb480-4"></a>loc.splitter &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb480-5"><a href="dataframe-manipulations-1.html#cb480-5"></a>    <span class="co">## strsplit returns a list!</span></span>
+<span id="cb480-6"><a href="dataframe-manipulations-1.html#cb480-6"></a>    <span class="kw">strsplit</span>(x[<span class="st">&quot;position&quot;</span>], <span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb480-7"><a href="dataframe-manipulations-1.html#cb480-7"></a>}</span>
+<span id="cb480-8"><a href="dataframe-manipulations-1.html#cb480-8"></a><span class="co">## use apply to fill the columns</span></span>
+<span id="cb480-9"><a href="dataframe-manipulations-1.html#cb480-9"></a>my.genome[, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">apply</span>(<span class="dt">X =</span> my.genome,</span>
+<span id="cb480-10"><a href="dataframe-manipulations-1.html#cb480-10"></a>                          <span class="dt">MARGIN =</span> <span class="dv">1</span>,</span>
+<span id="cb480-11"><a href="dataframe-manipulations-1.html#cb480-11"></a>                          <span class="dt">FUN =</span> loc.splitter)</span>
+<span id="cb480-12"><a href="dataframe-manipulations-1.html#cb480-12"></a>my.genome</span></code></pre></div>
 <pre><code>##     gene              position chromosome   start    stop
 ## 1 gene A   chr01:128757:129667      chr01  366389 9100856
 ## 2 gene B   chr01:366389:486990     128757  486990   chr03
@@ -1066,32 +1085,32 @@ my.genome</code></pre>
 <p>Whoa, what happened here?! This was not what I had in mind. Can you figure out what happened?</p>
 <p>…</p>
 <p>I did figure it out (eventually…). The applied function returned three elements at a time, and I had apply fill three columns of my dataframe. And that is exactly what R did, fill the three columns, but not by row but by column! Have a look at the output from apply and you can see:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> my.genome,
-      <span class="dt">MARGIN =</span> <span class="dv">1</span>,
-      <span class="dt">FUN =</span> loc.splitter)</code></pre>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="dataframe-manipulations-1.html#cb482-1"></a><span class="kw">apply</span>(<span class="dt">X =</span> my.genome,</span>
+<span id="cb482-2"><a href="dataframe-manipulations-1.html#cb482-2"></a>      <span class="dt">MARGIN =</span> <span class="dv">1</span>,</span>
+<span id="cb482-3"><a href="dataframe-manipulations-1.html#cb482-3"></a>      <span class="dt">FUN =</span> loc.splitter)</span></code></pre></div>
 <pre><code>##      [,1]     [,2]     [,3]      [,4]   
 ## [1,] &quot;chr01&quot;  &quot;chr01&quot;  &quot;chr02&quot;   &quot;chr03&quot;
 ## [2,] &quot;128757&quot; &quot;366389&quot; &quot;8986463&quot; &quot;53536&quot;
 ## [3,] &quot;129667&quot; &quot;486990&quot; &quot;9100856&quot; &quot;87201&quot;</code></pre>
 <p>Fortunately, R has a function to transpose this kind of structure (a matrix actually): the <code>t()</code> function, so that is what I did:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my.genome[, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">apply</span>(<span class="dt">X =</span> my.genome,
-                            <span class="dt">MARGIN =</span> <span class="dv">1</span>,
-                            <span class="dt">FUN =</span> loc.splitter))
-my.genome</code></pre>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="dataframe-manipulations-1.html#cb484-1"></a>my.genome[, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">apply</span>(<span class="dt">X =</span> my.genome,</span>
+<span id="cb484-2"><a href="dataframe-manipulations-1.html#cb484-2"></a>                            <span class="dt">MARGIN =</span> <span class="dv">1</span>,</span>
+<span id="cb484-3"><a href="dataframe-manipulations-1.html#cb484-3"></a>                            <span class="dt">FUN =</span> loc.splitter))</span>
+<span id="cb484-4"><a href="dataframe-manipulations-1.html#cb484-4"></a>my.genome</span></code></pre></div>
 <pre><code>##     gene              position chromosome   start    stop
 ## 1 gene A   chr01:128757:129667      chr01  128757  129667
 ## 2 gene B   chr01:366389:486990      chr01  366389  486990
 ## 3 gene C chr02:8986463:9100856      chr02 8986463 9100856
 ## 4 gene D     chr03:53536:87201      chr03   53536   87201</code></pre>
 <p>Yeah, that’s what I’m talking about! (Feeling very happy with myself…until I googled this problem). I found out there are a gazillion solutions to this problem, but only one of them is very very simple, because it uses a function you know really well: <code>read.table</code>, but not with the <code>file =</code> argument but with <code>text =</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my.genome &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene =</span> genes, <span class="dt">position =</span> positions)
-my.genome &lt;-<span class="st"> </span><span class="kw">cbind</span>(
-    my.genome,
-    <span class="kw">read.table</span>(
-        <span class="dt">text =</span> <span class="kw">as.character</span>(my.genome<span class="op">$</span>position),
-        <span class="dt">sep =</span> <span class="st">&quot;:&quot;</span>))
-<span class="kw">colnames</span>(my.genome) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">colnames</span>(my.genome)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="st">&quot;chr&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;stop&quot;</span>)
-my.genome</code></pre>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="dataframe-manipulations-1.html#cb486-1"></a>my.genome &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gene =</span> genes, <span class="dt">position =</span> positions)</span>
+<span id="cb486-2"><a href="dataframe-manipulations-1.html#cb486-2"></a>my.genome &lt;-<span class="st"> </span><span class="kw">cbind</span>(</span>
+<span id="cb486-3"><a href="dataframe-manipulations-1.html#cb486-3"></a>    my.genome,</span>
+<span id="cb486-4"><a href="dataframe-manipulations-1.html#cb486-4"></a>    <span class="kw">read.table</span>(</span>
+<span id="cb486-5"><a href="dataframe-manipulations-1.html#cb486-5"></a>        <span class="dt">text =</span> <span class="kw">as.character</span>(my.genome<span class="op">$</span>position),</span>
+<span id="cb486-6"><a href="dataframe-manipulations-1.html#cb486-6"></a>        <span class="dt">sep =</span> <span class="st">&quot;:&quot;</span>))</span>
+<span id="cb486-7"><a href="dataframe-manipulations-1.html#cb486-7"></a><span class="kw">colnames</span>(my.genome) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">colnames</span>(my.genome)[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="st">&quot;chr&quot;</span>, <span class="st">&quot;start&quot;</span>, <span class="st">&quot;stop&quot;</span>)</span>
+<span id="cb486-8"><a href="dataframe-manipulations-1.html#cb486-8"></a>my.genome</span></code></pre></div>
 <pre><code>##     gene              position   chr   start    stop
 ## 1 gene A   chr01:128757:129667 chr01  128757  129667
 ## 2 gene B   chr01:366389:486990 chr01  366389  486990
@@ -1118,11 +1137,13 @@ my.genome</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1130,12 +1151,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1147,6 +1167,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1165,8 +1189,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

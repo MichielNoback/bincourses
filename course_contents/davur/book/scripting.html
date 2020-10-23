@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Scripting | Data Analysis &amp; Visualization using R (1)</title>
   <meta name="description" content="This gitbook accompanies the course Data Analysis &amp; Visualization using R 1 (DAVuR1) of the minor Bioinformatics for Life Science Students. It is organized by the Hanze University of Applied Science." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Scripting | Data Analysis &amp; Visualization using R (1)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-05-28" />
+<meta name="date" content="2020-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="functions-1.html">
-<link rel="next" href="dataframe-manipulations-1.html">
+<link rel="prev" href="functions-1.html"/>
+<link rel="next" href="dataframe-manipulations-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,29 +48,35 @@
 
 
 
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -78,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -249,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>10</b> Exercises</a><ul>
 <li class="chapter" data-level="10.1" data-path="exercises.html"><a href="exercises.html#toolbox-1"><i class="fa fa-check"></i><b>10.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="10.1.1" data-path="exercises.html"><a href="exercises.html#get-set-up"><i class="fa fa-check"></i><b>10.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#resume"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="10.1.2" data-path="exercises.html"><a href="exercises.html#résumé"><i class="fa fa-check"></i><b>10.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="exercises.html"><a href="exercises.html#basic-r"><i class="fa fa-check"></i><b>10.2</b> Basic R</a><ul>
 <li class="chapter" data-level="10.2.1" data-path="exercises.html"><a href="exercises.html#math-in-the-console"><i class="fa fa-check"></i><b>10.2.1</b> Math in the console</a></li>
@@ -272,29 +279,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3.6" data-path="exercises.html"><a href="exercises.html#file-reading-practice"><i class="fa fa-check"></i><b>10.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="10.3.7" data-path="exercises.html"><a href="exercises.html#bird-observations"><i class="fa fa-check"></i><b>10.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="10.4.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="10.4" data-path="exercises.html"><a href="exercises.html#functions-2"><i class="fa fa-check"></i><b>10.4</b> Functions</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercises.html"><a href="exercises.html#the-cut-function-i"><i class="fa fa-check"></i><b>10.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercises.html"><a href="exercises.html#the-cut-function-ii"><i class="fa fa-check"></i><b>10.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.5</b> Scripting</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="10.5.4" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="10.5" data-path="exercises.html"><a href="exercises.html#regular-expressions"><i class="fa fa-check"></i><b>10.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="exercises.html"><a href="exercises.html#restriction-enzymes-1"><i class="fa fa-check"></i><b>10.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="10.5.2" data-path="exercises.html"><a href="exercises.html#prosite-patterns-1"><i class="fa fa-check"></i><b>10.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="10.5.3" data-path="exercises.html"><a href="exercises.html#fasta-headers"><i class="fa fa-check"></i><b>10.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="10.6" data-path="exercises.html"><a href="exercises.html#scripting-2"><i class="fa fa-check"></i><b>10.6</b> Scripting</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="exercises.html"><a href="exercises.html#illegal-reproductions"><i class="fa fa-check"></i><b>10.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="10.6.2" data-path="exercises.html"><a href="exercises.html#count-odd-and-even-numbers"><i class="fa fa-check"></i><b>10.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="10.6.3" data-path="exercises.html"><a href="exercises.html#add-column-compared-to-mean"><i class="fa fa-check"></i><b>10.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="10.6.4" data-path="exercises.html"><a href="exercises.html#interquantile-ranges"><i class="fa fa-check"></i><b>10.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="10.6.5" data-path="exercises.html"><a href="exercises.html#vector-distance"><i class="fa fa-check"></i><b>10.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="10.6.6" data-path="exercises.html"><a href="exercises.html#quadratic-equation-solver"><i class="fa fa-check"></i><b>10.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="10.6.7" data-path="exercises.html"><a href="exercises.html#gc-percentage-of-dna"><i class="fa fa-check"></i><b>10.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="exercises.html"><a href="exercises.html#function-apply-and-its-relatives"><i class="fa fa-check"></i><b>10.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="exercises.html"><a href="exercises.html#whale-selenium"><i class="fa fa-check"></i><b>10.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="10.7.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>10.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.7.3" data-path="exercises.html"><a href="exercises.html#food-constituents"><i class="fa fa-check"></i><b>10.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="10.7.4" data-path="exercises.html"><a href="exercises.html#urine-properties"><i class="fa fa-check"></i><b>10.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="10.7.5" data-path="exercises.html"><a href="exercises.html#bird-observations-revisited"><i class="fa fa-check"></i><b>10.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>11</b> Exercise solutions</a><ul>
 <li class="chapter" data-level="11.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toolbox-2"><i class="fa fa-check"></i><b>11.1</b> Toolbox</a><ul>
 <li class="chapter" data-level="11.1.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#get-set-up-1"><i class="fa fa-check"></i><b>11.1.1</b> Get set up</a></li>
-<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#resume-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
+<li class="chapter" data-level="11.1.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#résumé-1"><i class="fa fa-check"></i><b>11.1.2</b> Résumé</a></li>
 </ul></li>
 <li class="chapter" data-level="11.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#basic-r-1"><i class="fa fa-check"></i><b>11.2</b> Basic R</a><ul>
 <li class="chapter" data-level="11.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#math-in-the-console-1"><i class="fa fa-check"></i><b>11.2.1</b> Math in the console</a></li>
@@ -317,23 +331,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#file-reading-practice-1"><i class="fa fa-check"></i><b>11.3.6</b> File reading practice</a></li>
 <li class="chapter" data-level="11.3.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-1"><i class="fa fa-check"></i><b>11.3.7</b> Bird observations</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.4</b> Regular Expressions</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.4.1</b> Restriction enzymes</a></li>
-<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.4.2</b> Prosite Patterns</a></li>
-<li class="chapter" data-level="11.4.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.4.3</b> Fasta Headers</a></li>
+<li class="chapter" data-level="11.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#functions-3"><i class="fa fa-check"></i><b>11.4</b> Functions</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-i-1"><i class="fa fa-check"></i><b>11.4.1</b> The <code>cut()</code> function I</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-cut-function-ii-1"><i class="fa fa-check"></i><b>11.4.2</b> The <code>cut()</code> function II</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.5</b> Scripting</a><ul>
-<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.5.1</b> Illegal reproductions</a></li>
-<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.5.2</b> Interquantile ranges</a></li>
-<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.5.3</b> Vector distance</a></li>
-<li class="chapter" data-level="11.5.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.5.4</b> G/C percentage of DNA</a></li>
+<li class="chapter" data-level="11.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#regular-expressions-1"><i class="fa fa-check"></i><b>11.5</b> Regular Expressions</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#restriction-enzymes-2"><i class="fa fa-check"></i><b>11.5.1</b> Restriction enzymes</a></li>
+<li class="chapter" data-level="11.5.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#prosite-patterns-2"><i class="fa fa-check"></i><b>11.5.2</b> Prosite Patterns</a></li>
+<li class="chapter" data-level="11.5.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#fasta-headers-1"><i class="fa fa-check"></i><b>11.5.3</b> Fasta Headers</a></li>
 </ul></li>
-<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.6</b> Function <code>apply</code> and its relatives</a><ul>
-<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.6.1</b> Whale selenium</a></li>
-<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.6.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.6.3</b> Food constituents</a></li>
-<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.6.4</b> Urine properties</a></li>
-<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.6.5</b> Bird observations revisited</a></li>
+<li class="chapter" data-level="11.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#scripting-3"><i class="fa fa-check"></i><b>11.6</b> Scripting</a><ul>
+<li class="chapter" data-level="11.6.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#illegal-reproductions-1"><i class="fa fa-check"></i><b>11.6.1</b> Illegal reproductions</a></li>
+<li class="chapter" data-level="" data-path="exercise-solutions.html"><a href="exercise-solutions.html#find-match-locations-1"><i class="fa fa-check"></i>Find match locations</a></li>
+<li class="chapter" data-level="11.6.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#count-odd-and-even-numbers-1"><i class="fa fa-check"></i><b>11.6.2</b> Count odd and even numbers</a></li>
+<li class="chapter" data-level="11.6.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#add-column-compared-to-mean-1"><i class="fa fa-check"></i><b>11.6.3</b> Add column compared to mean</a></li>
+<li class="chapter" data-level="11.6.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#interquantile-ranges-1"><i class="fa fa-check"></i><b>11.6.4</b> Interquantile ranges</a></li>
+<li class="chapter" data-level="11.6.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#vector-distance-1"><i class="fa fa-check"></i><b>11.6.5</b> Vector distance</a></li>
+<li class="chapter" data-level="11.6.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#quadratic-equation-solver-1"><i class="fa fa-check"></i><b>11.6.6</b> Quadratic equation solver</a></li>
+<li class="chapter" data-level="11.6.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#gc-percentage-of-dna-1"><i class="fa fa-check"></i><b>11.6.7</b> G/C percentage of DNA</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#function-apply-and-its-relatives-1"><i class="fa fa-check"></i><b>11.7</b> Function <code>apply</code> and its relatives</a><ul>
+<li class="chapter" data-level="11.7.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#whale-selenium-1"><i class="fa fa-check"></i><b>11.7.1</b> Whale selenium</a></li>
+<li class="chapter" data-level="11.7.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>11.7.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="11.7.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#food-constituents-1"><i class="fa fa-check"></i><b>11.7.3</b> Food constituents</a></li>
+<li class="chapter" data-level="11.7.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#urine-properties-1"><i class="fa fa-check"></i><b>11.7.4</b> Urine properties</a></li>
+<li class="chapter" data-level="11.7.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bird-observations-revisited-1"><i class="fa fa-check"></i><b>11.7.5</b> Bird observations revisited</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -391,34 +413,34 @@ There has been no conditional code, no repeated operations and no extraction of 
 <h4>The <code>if() {} else {}</code> code block</h4>
 <p>The <code>if(COND) {&lt;TRUE&gt;} else {&lt;FALSE&gt;}</code> code block knows several required and several optional elements.<br />
 At the minimum there is an <code>if(COND) {}</code> element where <code>COND</code> is an expression evaluating to a Logical.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-}</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="scripting.html#cb333-1"></a>age &lt;-<span class="st"> </span><span class="dv">43</span></span>
+<span id="cb333-2"><a href="scripting.html#cb333-2"></a><span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {</span>
+<span id="cb333-3"><a href="scripting.html#cb333-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</span>
+<span id="cb333-4"><a href="scripting.html#cb333-4"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Adult&quot;</code></pre>
 </div>
 <div id="if-shorthand" class="section level4 unnumbered">
 <h4><code>if()</code> shorthand</h4>
 <p>If there is only one statement within a block you can omit the curly braces:</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="scripting.html#cb335-1"></a>age &lt;-<span class="st"> </span><span class="dv">43</span></span>
+<span id="cb335-2"><a href="scripting.html#cb335-2"></a><span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Adult&quot;</code></pre>
 <p>Remember that the semicolon at the end of a statement is optional in R and is usually omitted.</p>
 </div>
 <div id="if-can-have-an-else" class="section level4 unnumbered">
 <h4><code>if()</code> can have an <code>else {}</code></h4>
 <p>When there is an alternative course of action when the test evaluates to <code>FALSE</code> you use the <code>else{}</code> element of this structure.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)
-}</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="scripting.html#cb337-1"></a>age &lt;-<span class="st"> </span><span class="dv">43</span></span>
+<span id="cb337-2"><a href="scripting.html#cb337-2"></a><span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) {</span>
+<span id="cb337-3"><a href="scripting.html#cb337-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</span>
+<span id="cb337-4"><a href="scripting.html#cb337-4"></a>} <span class="cf">else</span> {</span>
+<span id="cb337-5"><a href="scripting.html#cb337-5"></a>    <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)</span>
+<span id="cb337-6"><a href="scripting.html#cb337-6"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Adult&quot;</code></pre>
 <p>Here the curly braces are required:</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-<span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="scripting.html#cb339-1"></a>age &lt;-<span class="st"> </span><span class="dv">43</span></span>
+<span id="cb339-2"><a href="scripting.html#cb339-2"></a><span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</span>
+<span id="cb339-3"><a href="scripting.html#cb339-3"></a><span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;Junior&quot;</span>)</span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:3:1: unexpected &#39;else&#39;
 ## 2: if (age &gt;= 18) print(&quot;Adult&quot;)
 ## 3: else
@@ -428,52 +450,52 @@ At the minimum there is an <code>if(COND) {}</code> element where <code>COND</co
 <h4>The <code>if()</code> can have <code>else if()</code> blocks</h4>
 <p>If there are more than two courses of action, you must reside to <code>else if()</code> blocks.
 Each of them should have its own CONDition to test on.</p>
-<pre class="sourceCode r"><code class="sourceCode r">age &lt;-<span class="st"> </span><span class="dv">43</span>
-<span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) {
-    <span class="kw">print</span>(<span class="st">&quot;Minor&quot;</span>)
-} <span class="cf">else</span> <span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">65</span>){
-    <span class="kw">print</span>(<span class="st">&quot;Senior&quot;</span>)
-} <span class="cf">else</span> <span class="cf">if</span>(age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span> <span class="op">&amp;&amp;</span><span class="st"> </span>age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>){
-    <span class="kw">print</span>(<span class="st">&quot;Young Adult&quot;</span>)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)
-}</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="scripting.html#cb341-1"></a>age &lt;-<span class="st"> </span><span class="dv">43</span></span>
+<span id="cb341-2"><a href="scripting.html#cb341-2"></a><span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) {</span>
+<span id="cb341-3"><a href="scripting.html#cb341-3"></a>    <span class="kw">print</span>(<span class="st">&quot;Minor&quot;</span>)</span>
+<span id="cb341-4"><a href="scripting.html#cb341-4"></a>} <span class="cf">else</span> <span class="cf">if</span> (age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">65</span>){</span>
+<span id="cb341-5"><a href="scripting.html#cb341-5"></a>    <span class="kw">print</span>(<span class="st">&quot;Senior&quot;</span>)</span>
+<span id="cb341-6"><a href="scripting.html#cb341-6"></a>} <span class="cf">else</span> <span class="cf">if</span>(age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">18</span> <span class="op">&amp;&amp;</span><span class="st"> </span>age <span class="op">&lt;=</span><span class="st"> </span><span class="dv">30</span>){</span>
+<span id="cb341-7"><a href="scripting.html#cb341-7"></a>    <span class="kw">print</span>(<span class="st">&quot;Young Adult&quot;</span>)</span>
+<span id="cb341-8"><a href="scripting.html#cb341-8"></a>} <span class="cf">else</span> {</span>
+<span id="cb341-9"><a href="scripting.html#cb341-9"></a>    <span class="kw">print</span>(<span class="st">&quot;Adult&quot;</span>)</span>
+<span id="cb341-10"><a href="scripting.html#cb341-10"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Adult&quot;</code></pre>
 </div>
 <div id="ifelse-real-life-example" class="section level4 unnumbered">
 <h4>if/else real life example</h4>
 <p>This code chunk checks if a file exists and only downloads it if it is not present</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_data_file &lt;-<span class="st"> &quot;/some/file/on/disk&quot;</span>
-<span class="co">## fetch file</span>
-<span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(my_data_file)) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;downloading&quot;</span>, my_data_file))
-    <span class="kw">download.file</span>(<span class="dt">url =</span> remote_url, <span class="dt">destfile =</span> my_data_file)
-} <span class="cf">else</span> {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;reading cached copy of&quot;</span>, my_data_file))
-}</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="scripting.html#cb343-1"></a>my_data_file &lt;-<span class="st"> &quot;/some/file/on/disk&quot;</span></span>
+<span id="cb343-2"><a href="scripting.html#cb343-2"></a><span class="co">## fetch file</span></span>
+<span id="cb343-3"><a href="scripting.html#cb343-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(my_data_file)) {</span>
+<span id="cb343-4"><a href="scripting.html#cb343-4"></a>    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;downloading&quot;</span>, my_data_file))</span>
+<span id="cb343-5"><a href="scripting.html#cb343-5"></a>    <span class="kw">download.file</span>(<span class="dt">url =</span> remote_url, <span class="dt">destfile =</span> my_data_file)</span>
+<span id="cb343-6"><a href="scripting.html#cb343-6"></a>} <span class="cf">else</span> {</span>
+<span id="cb343-7"><a href="scripting.html#cb343-7"></a>    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;reading cached copy of&quot;</span>, my_data_file))</span>
+<span id="cb343-8"><a href="scripting.html#cb343-8"></a>}</span></code></pre></div>
 </div>
 <div id="ifelse-shorthand" class="section level4 unnumbered">
 <h4>ifelse shorthand</h4>
 <p>There is also a shorthand for <code>if(){} else{}</code>. It is also called a <strong><em>ternary</em></strong>.<br />
 It has the form<br />
 <code>if (COND) &lt;EXPRESSION_FOR_TRUE&gt; else &lt;EXPRESSION_FOR_FALSE&gt;</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="dv">3</span>
-x &lt;-<span class="st"> </span><span class="cf">if</span> (a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="st">&quot;EVEN&quot;</span> <span class="cf">else</span> <span class="st">&quot;UNEVEN&quot;</span>
-x</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="scripting.html#cb344-1"></a>a &lt;-<span class="st"> </span><span class="dv">3</span></span>
+<span id="cb344-2"><a href="scripting.html#cb344-2"></a>x &lt;-<span class="st"> </span><span class="cf">if</span> (a <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="st">&quot;EVEN&quot;</span> <span class="cf">else</span> <span class="st">&quot;UNEVEN&quot;</span></span>
+<span id="cb344-3"><a href="scripting.html#cb344-3"></a>x</span></code></pre></div>
 <pre><code>## [1] &quot;UNEVEN&quot;</code></pre>
 </div>
 <div id="ifelse-on-dataframes-ifelse" class="section level4 unnumbered">
 <h4>if/else on dataframes: <code>ifelse()</code></h4>
 <p>When you want to assign values to a vector based on some condition, you need to use the third form, the <code>ifelse()</code> function.</p>
 <p>When you use the regular if/else structures on dataframes you don’t get what you want:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Only first value (row) is evaluated and this value is cycled</span>
-<span class="co"># The whole column gets value 1</span>
-airquality<span class="op">$</span>foo &lt;-<span class="st"> </span><span class="cf">if</span> (airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>) <span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span> </code></pre>
-<pre><code>## Warning in if (airquality$Ozone &lt; 30) 0 else 1: the condition has length &gt;
-## 1 and only the first element will be used</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This works</span>
-airquality<span class="op">$</span>bar &lt;-<span class="st"> </span><span class="kw">ifelse</span>(airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">1</span>)
-<span class="kw">head</span>(airquality)</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="scripting.html#cb346-1"></a><span class="co"># Only first value (row) is evaluated and this value is cycled</span></span>
+<span id="cb346-2"><a href="scripting.html#cb346-2"></a><span class="co"># The whole column gets value 1</span></span>
+<span id="cb346-3"><a href="scripting.html#cb346-3"></a>airquality<span class="op">$</span>foo &lt;-<span class="st"> </span><span class="cf">if</span> (airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>) <span class="dv">0</span> <span class="cf">else</span> <span class="dv">1</span> </span></code></pre></div>
+<pre><code>## Warning in if (airquality$Ozone &lt; 30) 0 else 1: the condition has length &gt; 1 and
+## only the first element will be used</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="scripting.html#cb348-1"></a><span class="co"># This works</span></span>
+<span id="cb348-2"><a href="scripting.html#cb348-2"></a>airquality<span class="op">$</span>bar &lt;-<span class="st"> </span><span class="kw">ifelse</span>(airquality<span class="op">$</span>Ozone <span class="op">&lt;</span><span class="st"> </span><span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb348-3"><a href="scripting.html#cb348-3"></a><span class="kw">head</span>(airquality)</span></code></pre></div>
 <pre><code>##   Ozone Solar.R Wind Temp Month Day foo bar
 ## 1    41     190  7.4   67   May   1   1   1
 ## 2    36     118  8.0   72   May   2   1   1
@@ -489,17 +511,17 @@ airquality<span class="op">$</span>bar &lt;-<span class="st"> </span><span class
 <li>Iteration with <code>for</code> is used for looping a series of values from a vector.
 _ You should not use it to iterate columns or rows of a dataframe: the preferred way to do that is with <code>apply()</code> and its relatives (next presentation)</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (greeting <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)) {
-    <span class="kw">print</span>(greeting)
-}</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="scripting.html#cb350-1"></a><span class="cf">for</span> (greeting <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)) {</span>
+<span id="cb350-2"><a href="scripting.html#cb350-2"></a>    <span class="kw">print</span>(greeting)</span>
+<span id="cb350-3"><a href="scripting.html#cb350-3"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot;
 ## [1] &quot;&#39;Allo&quot;
 ## [1] &quot;Moi&quot;</code></pre>
 <p>Sometimes you need a counter or index when iterating:</p>
-<pre class="sourceCode r"><code class="sourceCode r">greetings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="kw">length</span>(greetings)) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(i, greetings[i]))
-}</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="scripting.html#cb352-1"></a>greetings &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;&#39;Allo&quot;</span>, <span class="st">&quot;Moi&quot;</span>)</span>
+<span id="cb352-2"><a href="scripting.html#cb352-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span> <span class="op">:</span><span class="st"> </span><span class="kw">length</span>(greetings)) {</span>
+<span id="cb352-3"><a href="scripting.html#cb352-3"></a>    <span class="kw">print</span>(<span class="kw">paste</span>(i, greetings[i]))</span>
+<span id="cb352-4"><a href="scripting.html#cb352-4"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;1 Hello&quot;
 ## [1] &quot;2 &#39;Allo&quot;
 ## [1] &quot;3 Moi&quot;</code></pre>
@@ -507,11 +529,11 @@ _ You should not use it to iterate columns or rows of a dataframe: the preferred
 <div id="conditional-iteration-with-while" class="section level3">
 <h3><span class="header-section-number">7.2.3</span> Conditional iteration with <code>while(){}</code></h3>
 <p>This is the last flow control structure. It is used to execute a block <strong><em>as long as a certain condition is met</em></strong>. They are not used very much in R.</p>
-<pre class="sourceCode r"><code class="sourceCode r">counter &lt;-<span class="st"> </span><span class="dv">1</span>
-<span class="cf">while</span> (counter <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) {
-    <span class="kw">print</span>(counter)
-    counter =<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
-}</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="scripting.html#cb354-1"></a>counter &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb354-2"><a href="scripting.html#cb354-2"></a><span class="cf">while</span> (counter <span class="op">%%</span><span class="st"> </span><span class="dv">5</span> <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb354-3"><a href="scripting.html#cb354-3"></a>    <span class="kw">print</span>(counter)</span>
+<span id="cb354-4"><a href="scripting.html#cb354-4"></a>    counter =<span class="st"> </span>counter <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb354-5"><a href="scripting.html#cb354-5"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -526,7 +548,7 @@ _ You should not use it to iterate columns or rows of a dataframe: the preferred
 </blockquote>
 <p>Thus, functions are named blocks of code with a <strong><em>single well-defined purpose</em></strong> which make them reusable.
 You have already used many <strong><em>predefined</em></strong> or build in functions of R: <code>str</code>, <code>max</code>, <code>read.table</code> etc. If you type the name of a function without parenthesis you get its definition.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sum</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="scripting.html#cb356-1"></a>sum</span></code></pre></div>
 <pre><code>## function (..., na.rm = FALSE)  .Primitive(&quot;sum&quot;)</code></pre>
 <div id="anatomy-of-a-function" class="section level4 unnumbered">
 <h4>Anatomy of a function</h4>
@@ -551,44 +573,44 @@ You have already used many <strong><em>predefined</em></strong> or build in func
 <div id="a-first-function" class="section level4 unnumbered">
 <h4>A first function</h4>
 <p>Here is a simple function determining whether some number is even</p>
-<pre class="sourceCode r"><code class="sourceCode r">is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    evens &lt;-<span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
-    <span class="kw">return</span>(evens) 
-}
-<span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="scripting.html#cb359-1"></a>is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb359-2"><a href="scripting.html#cb359-2"></a>    evens &lt;-<span class="st"> </span>x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb359-3"><a href="scripting.html#cb359-3"></a>    <span class="kw">return</span>(evens) </span>
+<span id="cb359-4"><a href="scripting.html#cb359-4"></a>}</span>
+<span id="cb359-5"><a href="scripting.html#cb359-5"></a><span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
 <p>Note that <code>return()</code> is a <strong><em>method call</em></strong> which is very unlike other programming languages.</p>
 <p>The <strong><em>return statement is optional</em></strong>.
 In R, the last statement of a method body is its <strong><em>implicit return value</em></strong>. Therefore, the previous example is equivalent to this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>
-}
-<span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="scripting.html#cb361-1"></a>is_even &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb361-2"><a href="scripting.html#cb361-2"></a>    x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span></span>
+<span id="cb361-3"><a href="scripting.html#cb361-3"></a>}</span>
+<span id="cb361-4"><a href="scripting.html#cb361-4"></a><span class="kw">is_even</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
 <p>Being explicit is always allowed when implicit return is possible, but using a <code>return()</code> for forcing return values at other points is required:</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_message &lt;-<span class="st"> </span><span class="cf">function</span>(age) {
-    <span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">return</span>(<span class="st">&quot;have a lemonade!&quot;</span>) <span class="co"># explicit return</span>
-    <span class="st">&quot;have a beer!&quot;</span> <span class="co"># implicit return statement</span>
-}
-<span class="kw">my_message</span>(<span class="dv">20</span>)</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="scripting.html#cb363-1"></a>my_message &lt;-<span class="st"> </span><span class="cf">function</span>(age) {</span>
+<span id="cb363-2"><a href="scripting.html#cb363-2"></a>    <span class="cf">if</span> (age <span class="op">&lt;</span><span class="st"> </span><span class="dv">18</span>) <span class="kw">return</span>(<span class="st">&quot;have a lemonade!&quot;</span>) <span class="co"># explicit return</span></span>
+<span id="cb363-3"><a href="scripting.html#cb363-3"></a>    <span class="st">&quot;have a beer!&quot;</span> <span class="co"># implicit return statement</span></span>
+<span id="cb363-4"><a href="scripting.html#cb363-4"></a>}</span>
+<span id="cb363-5"><a href="scripting.html#cb363-5"></a><span class="kw">my_message</span>(<span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;have a beer!&quot;</code></pre>
 </div>
 <div id="default-argument-values" class="section level4 unnumbered">
 <h4>Default argument values</h4>
 <p>It is possible to specify <strong><em>default values</em></strong> for function arguments. This is a value that is attached to a function parameter when the calling code does not provide one. A default value is specified in the parameter list, using this construct: <code>some_arg = &lt;default-value&gt;</code>. Almost all functions in R have (many) parameters with default values.</p>
 <p>You should use default values yourself for function parameters whenever possible. They make using the function so much easier. The following function calculates the exponent (power) of a number. When no <code>power =</code> value is provided, it defaults to two.</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">power =</span> <span class="dv">2</span>) {
-    x <span class="op">^</span><span class="st"> </span>power
-}
-<span class="kw">my_power</span>(<span class="dv">10</span>, <span class="dv">3</span>) <span class="co">## custom power</span></code></pre>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="scripting.html#cb365-1"></a>my_power &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">power =</span> <span class="dv">2</span>) {</span>
+<span id="cb365-2"><a href="scripting.html#cb365-2"></a>    x <span class="op">^</span><span class="st"> </span>power</span>
+<span id="cb365-3"><a href="scripting.html#cb365-3"></a>}</span>
+<span id="cb365-4"><a href="scripting.html#cb365-4"></a><span class="kw">my_power</span>(<span class="dv">10</span>, <span class="dv">3</span>) <span class="co">## custom power</span></span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_power</span>(<span class="dv">10</span>) <span class="co">## defaults to 2</span></code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="scripting.html#cb367-1"></a><span class="kw">my_power</span>(<span class="dv">10</span>) <span class="co">## defaults to 2</span></span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 </div>
 <div id="argument-order-when-calling-a-function" class="section level4 unnumbered">
 <h4>Argument order when calling a function</h4>
 <p>As we have seen many times before, you do not <em>need</em> to pass arguments by name. In the above example, the names were not used. When you do not use the names of arguments, the order in which you pass them is important; they must match the order in which they are declared in the function. If you use their names, their order is not important:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">my_power</span>(<span class="dt">power =</span> <span class="dv">4</span>, <span class="dt">x =</span> <span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="scripting.html#cb369-1"></a><span class="kw">my_power</span>(<span class="dt">power =</span> <span class="dv">4</span>, <span class="dt">x =</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
 <p>To summarize: When calling a function,</p>
 <ul>
@@ -600,39 +622,39 @@ In R, the last statement of a method body is its <strong><em>implicit return val
 <div id="errors-and-warnings" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Errors and warnings</h3>
 <p>When someting is not right, but not enought to quit execution, use a warning to let the user (or yourself) know that there is something wrong:</p>
-<p><code>warning(&quot;I am not happy&quot;)</code></p>
+<p><code>warning("I am not happy")</code></p>
 <p>When something is terribly wrong, and you cannot continue, you should stop execution with an error message:</p>
-<p><code>stop(&quot;I can't go on&quot;)</code></p>
+<p><code>stop("I can't go on")</code></p>
 <p>Here is a small errors demo:</p>
-<pre class="sourceCode r"><code class="sourceCode r">demo_inverse &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(x)) {
-        <span class="kw">stop</span>(<span class="st">&quot;non-numeric vector&quot;</span>)
-    }
-    <span class="kw">return</span>(x <span class="op">/</span><span class="st"> </span><span class="dv">3</span>)
-}
-result1 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)) <span class="co">#result1 not created!</span></code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="scripting.html#cb371-1"></a>demo_inverse &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb371-2"><a href="scripting.html#cb371-2"></a>    <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(x)) {</span>
+<span id="cb371-3"><a href="scripting.html#cb371-3"></a>        <span class="kw">stop</span>(<span class="st">&quot;non-numeric vector&quot;</span>)</span>
+<span id="cb371-4"><a href="scripting.html#cb371-4"></a>    }</span>
+<span id="cb371-5"><a href="scripting.html#cb371-5"></a>    <span class="kw">return</span>(x <span class="op">/</span><span class="st"> </span><span class="dv">3</span>)</span>
+<span id="cb371-6"><a href="scripting.html#cb371-6"></a>}</span>
+<span id="cb371-7"><a href="scripting.html#cb371-7"></a>result1 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)) <span class="co">#result1 not created!</span></span></code></pre></div>
 <pre><code>## Error in demo_inverse(c(&quot;a&quot;, &quot;b&quot;)): non-numeric vector</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">result2 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="scripting.html#cb373-1"></a>result2 &lt;-<span class="st"> </span><span class="kw">demo_inverse</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="scripting-1" class="section level2">
 <h2><span class="header-section-number">7.4</span> Scripting</h2>
 <p>An R script is a text file with the extension <code>.R</code> that contains R code. When it is loaded, it is immediately evaluated. <strong><em>Functions are loaded/evaluated, but not executed</em></strong>. Declared variables are stored in main memory - the Global Environment to be precise.</p>
 <p>Here is the contents of a very simple R script called <code>source_demo.R</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">42</span>
-x <span class="co"># echo to console</span>
-<span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;x = &quot;</span>, x)) <span class="co">#explicit print</span>
-
-<span class="co"># function defined but not called</span>
-demo_function &lt;-<span class="st"> </span><span class="cf">function</span>(message) {
-    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;you said&quot;</span>, message))
-}</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="scripting.html#cb374-1"></a>x &lt;-<span class="st"> </span><span class="dv">42</span></span>
+<span id="cb374-2"><a href="scripting.html#cb374-2"></a>x <span class="co"># echo to console</span></span>
+<span id="cb374-3"><a href="scripting.html#cb374-3"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;x = &quot;</span>, x)) <span class="co">#explicit print</span></span>
+<span id="cb374-4"><a href="scripting.html#cb374-4"></a></span>
+<span id="cb374-5"><a href="scripting.html#cb374-5"></a><span class="co"># function defined but not called</span></span>
+<span id="cb374-6"><a href="scripting.html#cb374-6"></a>demo_function &lt;-<span class="st"> </span><span class="cf">function</span>(message) {</span>
+<span id="cb374-7"><a href="scripting.html#cb374-7"></a>    <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;you said&quot;</span>, message))</span>
+<span id="cb374-8"><a href="scripting.html#cb374-8"></a>}</span></code></pre></div>
 <p>You can load this script int your R session by <em>sourcing</em> it; just call <code>source(path/to/source_demo.R)</code>. Alternatively, when you have it open in the RStudio editor, you can click the “source” button at the top right of the editor panel. After that, you can use the functions and variables defined within the script:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;data/source_demo.R&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="scripting.html#cb375-1"></a><span class="kw">source</span>(<span class="st">&quot;data/source_demo.R&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;x = 42&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">x</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="scripting.html#cb377-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 42</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">demo_function</span>(<span class="st">&quot;hi!&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="scripting.html#cb379-1"></a><span class="kw">demo_function</span>(<span class="st">&quot;hi!&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;you said hi!&quot;</code></pre>
 <div id="why-scripts" class="section level4 unnumbered">
 <h4>Why scripts?</h4>
@@ -657,11 +679,13 @@ demo_function &lt;-<span class="st"> </span><span class="cf">function</span>(mes
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -669,12 +693,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -686,6 +709,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -704,8 +731,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
