@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Processing text with: stringr and regex | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Processing text with: stringr and regex | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="date-time.html">
-<link rel="next" href="eda.html">
+<link rel="prev" href="date-time.html"/>
+<link rel="next" href="eda.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,32 +48,38 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -171,7 +178,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
+<li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
+<li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
+<li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -192,13 +209,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
-<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
-<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#split-columns-with-separate"><i class="fa fa-check"></i><b>3.5</b> Split columns with <code>separate()</code></a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
@@ -289,61 +304,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
-<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
-<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
-<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>10.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="10.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>10.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="10.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>10.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="10.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>10.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="10.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>10.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="10.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>10.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>10.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>11</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -371,7 +391,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Introduction</h2>
 <p>This is the last presentation in the tidyverse series. It revolves around processing textual data: finding, extracting, and replacing patterns. Central to this task is <strong><em>pattern matching</em></strong> using regular expressions. Pattern matching is the process of finding, locating, extracting and replacing patterns in character data that usually cannot be literally described. <strong><em>Regular expression syntax</em></strong> is the language in which patterns are described in a wide range of programming languages, including R.</p>
 <p>This topic has been dealt with in an introductory manner previously (course DAVuR1). And is repeated and expanded here. Instead of the base R functions we now switch to the <code>stringr</code> package.</p>
-<p>As all packages from the tidyverse, <code>stringr</code> has many many functions (type <code>help(package = &quot;stringr&quot;)</code> to see which). this package has a great <a href="graphics/stringr.pdf">cheat sheet</a> as well.</p>
+<p>As all packages from the tidyverse, <code>stringr</code> has many many functions (type <code>help(package = "stringr")</code> to see which). this package has a great <a href="graphics/stringr.pdf">cheat sheet</a> as well.</p>
 <p>Here, a few of them will be reviewed.</p>
 <div id="a-few-remarks-on-locale" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> A few remarks on “locale”</h3>
@@ -418,7 +438,7 @@ Regular expression syntax has been dealt with in a previous course/presentation.
 <li><strong>lowercase characters</strong> <code>[[:lower:]]</code>: equivalent to <code>[a-z]</code></li>
 <li><strong>uppercase characters</strong> <code>[[:upper:]]</code>: equivalent to <code>[A-Z]</code></li>
 <li><strong>whitespace characters</strong> <code>[[:space:]]</code> or <code>\\s</code>: Space, tab, vertical tab, newline, form feed, carriage return</li>
-<li><strong>punctuation characters</strong> <code>[[:punct:]]</code>: One of !&quot;#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~</li>
+<li><strong>punctuation characters</strong> <code>[[:punct:]]</code>: One of !"#$%&amp;’()*+,-./:;&lt;=&gt;?@[]^_`{|}~</li>
 </ul>
 <p>(have a look at the cheat sheet for all)</p>
 </div>
@@ -435,12 +455,12 @@ Regular expression syntax has been dealt with in a previous course/presentation.
 <li><strong><code>{n, m}</code></strong>: at least <code>n</code> and at most <code>m</code> times.</li>
 </ul>
 <p>The <code>*</code> zero or more times and <code>?</code> zero or one time quantifiers are sometimes confusing. Why zero? A good example is the Dutch postal code. These are all valid postal codes</p>
-<pre class="sourceCode r"><code class="sourceCode r">pc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1234 AA&quot;</span>, <span class="st">&quot;2345-BB&quot;</span>, <span class="st">&quot;3456CC&quot;</span>, <span class="st">&quot;4567 dd&quot;</span>)
-pc</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="stringr.html#cb318-1"></a>pc &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;1234 AA&quot;</span>, <span class="st">&quot;2345-BB&quot;</span>, <span class="st">&quot;3456CC&quot;</span>, <span class="st">&quot;4567 dd&quot;</span>)</span>
+<span id="cb318-2"><a href="stringr.html#cb318-2"></a>pc</span></code></pre></div>
 <pre><code>## [1] &quot;1234 AA&quot; &quot;2345-BB&quot; &quot;3456CC&quot;  &quot;4567 dd&quot;</code></pre>
-<p>and therefore a pattern could be <code>&quot;\\d{4}[ -]?[a-zA-Z]{2}&quot;</code> where the question mark specifies that either a space or a hyphen may occur zero or one time: It may or may not be present.</p>
+<p>and therefore a pattern could be <code>"\\d{4}[ -]?[a-zA-Z]{2}"</code> where the question mark specifies that either a space or a hyphen may occur zero or one time: It may or may not be present.</p>
 <p>The <code>stringr</code> package provides two nice utility functions to visualize regex matches in a character: <code>str_view_all()</code> and <code>str_view()</code>. The difference is that the latter function only shows the first match - if present.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view_all</span>(pc, <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">d{4}[ -]?[a-zA-Z]{2}$&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="stringr.html#cb320-1"></a><span class="kw">str_view_all</span>(pc, <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">d{4}[ -]?[a-zA-Z]{2}$&quot;</span>)</span></code></pre></div>
 <div id="htmlwidget-6b82562872f5e3479f29" style="width:960px;height:100%;" class="str_view html-widget"></div>
 <script type="application/json" data-for="htmlwidget-6b82562872f5e3479f29">{"x":{"html":"<ul>\n  <li><span class='match'>1234 AA<\/span><\/li>\n  <li><span class='match'>2345-BB<\/span><\/li>\n  <li><span class='match'>3456CC<\/span><\/li>\n  <li><span class='match'>4567 dd<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <p>As you can see, the last element (“56789aa”) is not a good postal code.</p>
@@ -453,19 +473,19 @@ pc</code></pre>
 <li><code>^</code> anchors a pattern to the start of a string</li>
 <li><code>$</code> anchors a regex to the end of a string</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">sntc &lt;-<span class="st"> &quot;the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?&quot;</span>
-
-<span class="kw">str_view</span>(sntc, <span class="st">&quot;evil&quot;</span>) <span class="co">##matches</span></code></pre>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="stringr.html#cb321-1"></a>sntc &lt;-<span class="st"> &quot;the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?&quot;</span></span>
+<span id="cb321-2"><a href="stringr.html#cb321-2"></a></span>
+<span id="cb321-3"><a href="stringr.html#cb321-3"></a><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil&quot;</span>) <span class="co">##matches</span></span></code></pre></div>
 <div id="htmlwidget-2a01744eb53065b73285" style="width:960px;height:100%;" class="str_view html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2a01744eb53065b73285">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of <span class='match'>evil<\/span> men. --quote from?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil$&quot;</span>) <span class="co">## does not match</span></code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="stringr.html#cb322-1"></a><span class="kw">str_view</span>(sntc, <span class="st">&quot;evil$&quot;</span>) <span class="co">## does not match</span></span></code></pre></div>
 <div id="htmlwidget-30dcdf3038871990be7a" style="width:960px;height:100%;" class="str_view html-widget"></div>
 <script type="application/json" data-for="htmlwidget-30dcdf3038871990be7a">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="alternatives" class="section level3">
 <h3><span class="header-section-number">6.2.5</span> Alternatives</h3>
 <p>To apply two alternative choices for a single regex element you use the pipe symbol <code>|</code>. You can us parentheses <code>(foo[])</code> to fence alternatives off.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view_all</span>(sntc, <span class="st">&quot;(y</span><span class="ch">\\</span><span class="st">s)|(</span><span class="ch">\\</span><span class="st">sf)&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="stringr.html#cb323-1"></a><span class="kw">str_view_all</span>(sntc, <span class="st">&quot;(y</span><span class="ch">\\</span><span class="st">s)|(</span><span class="ch">\\</span><span class="st">sf)&quot;</span>)</span></code></pre></div>
 <div id="htmlwidget-07e95fee152228cf8255" style="width:960px;height:100%;" class="str_view html-widget"></div>
 <script type="application/json" data-for="htmlwidget-07e95fee152228cf8255">{"x":{"html":"<ul>\n  <li>the path of the righteous man is beset on all sides b<span class='match'>y <\/span>the iniquities of the selfish,  and the tyrann<span class='match'>y <\/span>of evil men. --quote<span class='match'> f<\/span>rom?<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 </div>
@@ -481,33 +501,33 @@ pc</code></pre>
 <li><code>str_to_title()</code> capitalizes all first characters of words</li>
 <li><code>str_to_sentence()</code> capitalizes the first character in the string, not after every period</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_to_title</span>(sntc)</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="stringr.html#cb324-1"></a><span class="kw">str_to_title</span>(sntc)</span></code></pre></div>
 <pre><code>## [1] &quot;The Path Of The Righteous Man Is Beset On All Sides By The Iniquities Of The Selfish,  And The Tyranny Of Evil Men. --Quote From?&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_to_sentence</span>(sntc)</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="stringr.html#cb326-1"></a><span class="kw">str_to_sentence</span>(sntc)</span></code></pre></div>
 <pre><code>## [1] &quot;The path of the righteous man is beset on all sides by the iniquities of the selfish,  and the tyranny of evil men. --quote from?&quot;</code></pre>
 </div>
 <div id="split-join-and-substring" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Split, join and substring</h3>
 <p>Combining two vectors into one, one vector into one, or doing the reverse: splitting. These are all string-based operation that are carried out in scripting quite often.</p>
 <p>Here are some joining operations, using <code>str_c()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">l1 &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
-l2 &lt;-<span class="st"> </span>letters[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>]
-
-<span class="kw">str_c</span>(l1, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="stringr.html#cb328-1"></a>l1 &lt;-<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span>
+<span id="cb328-2"><a href="stringr.html#cb328-2"></a>l2 &lt;-<span class="st"> </span>letters[<span class="dv">6</span><span class="op">:</span><span class="dv">10</span>]</span>
+<span id="cb328-3"><a href="stringr.html#cb328-3"></a></span>
+<span id="cb328-4"><a href="stringr.html#cb328-4"></a><span class="kw">str_c</span>(l1, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;a=b=c=d=e&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="stringr.html#cb330-1"></a><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;a+f&quot; &quot;b+g&quot; &quot;c+h&quot; &quot;d+i&quot; &quot;e+j&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="stringr.html#cb332-1"></a><span class="kw">str_c</span>(l1, l2, <span class="dt">sep =</span> <span class="st">&quot;+&quot;</span>, <span class="dt">collapse =</span> <span class="st">&quot;=&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;a+f=b+g=c+h=d+i=e+j&quot;</code></pre>
 <p>When you want to combine variables and text <code>str_glue()</code> comes in handy:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_glue</span>(<span class="st">&quot;The value of pi is {pi} and the first month of the year is {month.name[1]}&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="stringr.html#cb334-1"></a><span class="kw">str_glue</span>(<span class="st">&quot;The value of pi is {pi} and the first month of the year is {month.name[1]}&quot;</span>)</span></code></pre></div>
 <pre><code>## The value of pi is 3.14159265358979 and the first month of the year is January</code></pre>
 <p>This is a more friendly approach than with <code>paste()</code>.</p>
 <p><strong>Splitting</strong> is slightly more tricky since it accepts a regex pattern as split argument. For instance, you can get the words of a sentence by splitting like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">words &lt;-<span class="st"> </span><span class="kw">str_split</span>(sntc, <span class="st">&quot;([[:punct:]]|[[:space:]])+&quot;</span>)
-words
-<span class="co">##alternative</span>
-<span class="co">#str_split(sntc, &quot;[^a-zA-Z]+&quot;)</span></code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="stringr.html#cb336-1"></a>words &lt;-<span class="st"> </span><span class="kw">str_split</span>(sntc, <span class="st">&quot;([[:punct:]]|[[:space:]])+&quot;</span>)</span>
+<span id="cb336-2"><a href="stringr.html#cb336-2"></a>words</span>
+<span id="cb336-3"><a href="stringr.html#cb336-3"></a><span class="co">##alternative</span></span>
+<span id="cb336-4"><a href="stringr.html#cb336-4"></a><span class="co">#str_split(sntc, &quot;[^a-zA-Z]+&quot;)</span></span></code></pre></div>
 <pre><code>## [[1]]
 ##  [1] &quot;the&quot;        &quot;path&quot;       &quot;of&quot;         &quot;the&quot;        &quot;righteous&quot; 
 ##  [6] &quot;man&quot;        &quot;is&quot;         &quot;beset&quot;      &quot;on&quot;         &quot;all&quot;       
@@ -516,15 +536,15 @@ words
 ## [21] &quot;of&quot;         &quot;evil&quot;       &quot;men&quot;        &quot;quote&quot;      &quot;from&quot;      
 ## [26] &quot;&quot;</code></pre>
 <p>There are two ways to get parts of character strings, or <strong><em>substrings</em></strong>. The first is by index. You can omit both <code>start</code> and <code>end</code> arguments; they will default to start and end of the string, respectively.</p>
-<pre class="sourceCode r"><code class="sourceCode r">nucs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>)
-<span class="kw">str_sub</span>(nucs, <span class="dt">end =</span> <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="stringr.html#cb338-1"></a>nucs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>)</span>
+<span id="cb338-2"><a href="stringr.html#cb338-2"></a><span class="kw">str_sub</span>(nucs, <span class="dt">end =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Ade&quot; &quot;Gua&quot; &quot;Cyt&quot; &quot;Thy&quot;</code></pre>
 <p>You can even use this function to change the substring that is removed</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_sub</span>(nucs, <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span>
-nucs</code></pre>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="stringr.html#cb340-1"></a><span class="kw">str_sub</span>(nucs, <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span></span>
+<span id="cb340-2"><a href="stringr.html#cb340-2"></a>nucs</span></code></pre></div>
 <pre><code>## [1] &quot;Ade......&quot; &quot;Gua......&quot; &quot;Cyt......&quot; &quot;Thy......&quot;</code></pre>
 <p>This does not work with literals! The following chunk gives and error:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_sub</span>(<span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>), <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span></code></pre>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="stringr.html#cb342-1"></a><span class="kw">str_sub</span>(<span class="kw">c</span>(<span class="st">&quot;Adenine&quot;</span>, <span class="st">&quot;Guanine&quot;</span>, <span class="st">&quot;Cytosine&quot;</span>, <span class="st">&quot;Thymine&quot;</span>), <span class="dt">start =</span> <span class="dv">4</span>) &lt;-<span class="st"> &quot;......&quot;</span></span></code></pre></div>
 <pre><code>## Error in str_sub(c(&quot;Adenine&quot;, &quot;Guanine&quot;, &quot;Cytosine&quot;, &quot;Thymine&quot;), start = 4) &lt;- &quot;......&quot;: target of assignment expands to non-language object</code></pre>
 </div>
 <div id="matching" class="section level3">
@@ -532,19 +552,19 @@ nucs</code></pre>
 <p>When you <strong>match</strong> a pattern to a string, you usually want to know <strong><em>if</em></strong> it is there, <strong>which</strong> elements have it, <strong><em>where</em></strong> it is located in those elements or <strong><em>how often</em></strong> it is present. For each of these question there is a dedicated function:</p>
 <ul>
 <li><p><code>str_detect(string, pattern)</code> detects the presence of a pattern match in a string.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_detect</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="stringr.html#cb344-1"></a><span class="kw">str_detect</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre></li>
 <li><p><code>str_subset(string, pattern)</code> returns only the strings that contain a pattern match</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_subset</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="stringr.html#cb346-1"></a><span class="kw">str_subset</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Banana&quot; &quot;Apple&quot;  &quot;Orange&quot;</code></pre></li>
 <li><p><code>str_which(string, pattern)</code> finds the indexes of strings that contain a pattern match.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_which</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="stringr.html#cb348-1"></a><span class="kw">str_which</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre></li>
 <li><p><code>str_count(string, pattern)</code> counts the number of matches in a string.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_count</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="stringr.html#cb350-1"></a><span class="kw">str_count</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 3 1 1 0</code></pre></li>
 <li><p><code>str_locate(string, pattern)</code> and <code>str_locate_all(string, pattern)</code> locate the positions of pattern matches in a string</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_locate_all</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="stringr.html#cb352-1"></a><span class="kw">str_locate_all</span>(fruits, <span class="st">&quot;[Aa]&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ##      start end
 ## [1,]     2   2
@@ -566,7 +586,7 @@ nucs</code></pre>
 <div id="extracting-and-replacing" class="section level3">
 <h3><span class="header-section-number">6.3.4</span> Extracting and replacing</h3>
 <p>If you want to obtain the character sequences matching your pattern you can use the <code>str_extract()</code> and <code>str_extract_all()</code> functions:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_extract_all</span>(fruits, <span class="st">&quot;an&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="stringr.html#cb354-1"></a><span class="kw">str_extract_all</span>(fruits, <span class="st">&quot;an&quot;</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;an&quot; &quot;an&quot;
 ## 
@@ -579,7 +599,7 @@ nucs</code></pre>
 ## [[4]]
 ## character(0)</code></pre>
 <p>Finally, replacing occurrences of a pattern is carried out using <code>str_replace()</code> or <code>str_replace_all()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_replace_all</span>(fruits, <span class="st">&quot;an&quot;</span>, <span class="st">&quot;..&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="stringr.html#cb356-1"></a><span class="kw">str_replace_all</span>(fruits, <span class="st">&quot;an&quot;</span>, <span class="st">&quot;..&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;B....a&quot; &quot;Apple&quot;  &quot;Or..ge&quot; &quot;Cherry&quot;</code></pre>
 
 </div>
@@ -596,11 +616,13 @@ nucs</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -608,12 +630,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -625,6 +646,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -643,8 +668,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

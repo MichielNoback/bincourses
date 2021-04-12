@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Exploratory Data Analysis | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Exploratory Data Analysis | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="stringr.html">
-<link rel="next" href="exercises.html">
+<link rel="prev" href="stringr.html"/>
+<link rel="next" href="publish.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,32 +48,38 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -171,7 +178,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
+<li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
+<li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
+<li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -192,13 +209,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
-<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
-<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#split-columns-with-separate"><i class="fa fa-check"></i><b>3.5</b> Split columns with <code>separate()</code></a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
@@ -289,61 +304,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
-<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
-<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
-<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>10.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="10.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>10.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="10.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>10.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="10.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>10.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="10.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>10.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="10.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>10.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>10.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>11</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -381,16 +401,11 @@ s. (Wikipedia)</p>
 <div id="libraries" class="section level4">
 <h4><span class="header-section-number">7.1.0.2</span> Libraries</h4>
 <p>These are the packages used in this EDA:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyr)
-<span class="kw">library</span>(dplyr)
-<span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(gridExtra)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;gridExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     combine</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="eda.html#cb358-1"></a><span class="kw">library</span>(tidyr)</span>
+<span id="cb358-2"><a href="eda.html#cb358-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb358-3"><a href="eda.html#cb358-3"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb358-4"><a href="eda.html#cb358-4"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb358-5"><a href="eda.html#cb358-5"></a><span class="kw">library</span>(stringr)</span></code></pre></div>
 </div>
 </div>
 <div id="getting-to-know-the-dataset" class="section level2">
@@ -421,7 +436,7 @@ s. (Wikipedia)</p>
 <li><strong>Full name</strong> what it abbreviates (“Number of sexual partners”)</li>
 <li>(optionally) <strong>Label</strong> the label you want to use in graphs and above tables.</li>
 <li><strong>Data type</strong> One of the R data (derived) data types: int/numeric/Date/factor/boolean…</li>
-<li><strong>Unit</strong> the unit of measurement (e.g. “mg/l plasma”)</li>
+<li><strong>Unit</strong> the unit of measurement (e.g. “mg/l plasma”)</li>
 <li><strong>Description</strong> A full description of what is measured, and the way its value was collected (e.g. questionnaire, lab protocol xxxx).</li>
 </ul>
 <p>Now look again at the codebook above and answer again: is this a good codebook?</p>
@@ -434,9 +449,9 @@ s. (Wikipedia)</p>
 <li>as a <em>last resort</em>: try to deduce from context and domain knowledge</li>
 </ul>
 <p>I have cleaned it up a bit and came to this. It is still not perfect; how would you improve on this?</p>
-<pre class="sourceCode r"><code class="sourceCode r">codebook &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/cerv_cancer_codebook.csv&quot;</span>, 
-                     <span class="dt">as.is =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)
-<span class="kw">head</span>(codebook)</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="eda.html#cb360-1"></a>codebook &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/cerv_cancer_codebook.csv&quot;</span>, </span>
+<span id="cb360-2"><a href="eda.html#cb360-2"></a>                     <span class="dt">as.is =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb360-3"><a href="eda.html#cb360-3"></a><span class="kw">head</span>(codebook)</span></code></pre></div>
 <pre><code>##   abbreviation   class                      full.name
 ## 1          age     int                            Age
 ## 2 num.partners     int      Number of sexual partners
@@ -451,40 +466,40 @@ s. (Wikipedia)</p>
 <p>Load the data and check the data type of the columns. Always beware of unusual encodings for missing data! This is one of the most common causes of erroneous analyses, besides data entry errors and sample swaps.</p>
 <p>You should get data loading right in an iterative process, using several functions to inspect the result each time you have adjusted a parameter. Use <code>head()</code> and -especially- <code>str()</code> to do this. Tibbles print their data type automatically so that gives an advantage over <code>data.frame</code>.</p>
 <p>Here is a first attempt:</p>
-<pre class="sourceCode r"><code class="sourceCode r">datafile &lt;-<span class="st"> &quot;data/risk_factors_cervical_cancer.csv&quot;</span>
-data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile, 
-                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, 
-                   <span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="kw">str</span>(data)</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="eda.html#cb362-1"></a>datafile &lt;-<span class="st"> &quot;data/risk_factors_cervical_cancer.csv&quot;</span></span>
+<span id="cb362-2"><a href="eda.html#cb362-2"></a>data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile, </span>
+<span id="cb362-3"><a href="eda.html#cb362-3"></a>                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, </span>
+<span id="cb362-4"><a href="eda.html#cb362-4"></a>                   <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb362-5"><a href="eda.html#cb362-5"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
 ##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
-##  $ Number.of.sexual.partners         : Factor w/ 13 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 8 2 2 9 7 7 7 2 2 7 ...
-##  $ First.sexual.intercourse          : Factor w/ 22 levels &quot;?&quot;,&quot;10.0&quot;,&quot;11.0&quot;,..: 7 6 1 8 13 15 9 18 12 7 ...
-##  $ Num.of.pregnancies                : Factor w/ 12 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;,..: 3 3 3 8 8 6 10 7 9 1 ...
-##  $ Smokes                            : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 3 2 2 3 2 2 3 ...
-##  $ Smokes..years.                    : Factor w/ 31 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.16&quot;,..: 2 2 2 25 2 2 24 2 2 6 ...
-##  $ Smokes..packs.year.               : Factor w/ 63 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.001&quot;,..: 2 2 2 51 2 2 49 2 2 44 ...
-##  $ Hormonal.Contraceptives           : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 3 3 2 2 3 2 2 ...
-##  $ Hormonal.Contraceptives..years.   : Factor w/ 41 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.08&quot;,..: 2 2 2 31 22 2 2 26 2 2 ...
-##  $ IUD                               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 3 3 2 1 ...
-##  $ IUD..years.                       : Factor w/ 27 levels &quot;?&quot;,&quot;0.0&quot;,&quot;0.08&quot;,..: 2 2 2 2 2 2 25 25 2 1 ...
-##  $ STDs                              : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs..number.                     : Factor w/ 6 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.condylomatosis               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.cervical.condylomatosis      : Factor w/ 2 levels &quot;?&quot;,&quot;0.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.vaginal.condylomatosis       : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.vulvo.perineal.condylomatosis: Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.syphilis                     : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.pelvic.inflammatory.disease  : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.genital.herpes               : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.molluscum.contagiosum        : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.AIDS                         : Factor w/ 2 levels &quot;?&quot;,&quot;0.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.HIV                          : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.Hepatitis.B                  : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
-##  $ STDs.HPV                          : Factor w/ 3 levels &quot;?&quot;,&quot;0.0&quot;,&quot;1.0&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ Number.of.sexual.partners         : chr  &quot;4.0&quot; &quot;1.0&quot; &quot;1.0&quot; &quot;5.0&quot; ...
+##  $ First.sexual.intercourse          : chr  &quot;15.0&quot; &quot;14.0&quot; &quot;?&quot; &quot;16.0&quot; ...
+##  $ Num.of.pregnancies                : chr  &quot;1.0&quot; &quot;1.0&quot; &quot;1.0&quot; &quot;4.0&quot; ...
+##  $ Smokes                            : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;1.0&quot; ...
+##  $ Smokes..years.                    : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;37.0&quot; ...
+##  $ Smokes..packs.year.               : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;37.0&quot; ...
+##  $ Hormonal.Contraceptives           : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;1.0&quot; ...
+##  $ Hormonal.Contraceptives..years.   : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;3.0&quot; ...
+##  $ IUD                               : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ IUD..years.                       : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs                              : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs..number.                     : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.condylomatosis               : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.cervical.condylomatosis      : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.vaginal.condylomatosis       : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.vulvo.perineal.condylomatosis: chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.syphilis                     : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.pelvic.inflammatory.disease  : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.genital.herpes               : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.molluscum.contagiosum        : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.AIDS                         : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.HIV                          : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.Hepatitis.B                  : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
+##  $ STDs.HPV                          : chr  &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; &quot;0.0&quot; ...
 ##  $ STDs..Number.of.diagnosis         : int  0 0 0 0 0 0 0 0 0 0 ...
-##  $ STDs..Time.since.first.diagnosis  : Factor w/ 19 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ STDs..Time.since.last.diagnosis   : Factor w/ 19 levels &quot;?&quot;,&quot;1.0&quot;,&quot;10.0&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ STDs..Time.since.first.diagnosis  : chr  &quot;?&quot; &quot;?&quot; &quot;?&quot; &quot;?&quot; ...
+##  $ STDs..Time.since.last.diagnosis   : chr  &quot;?&quot; &quot;?&quot; &quot;?&quot; &quot;?&quot; ...
 ##  $ Dx.Cancer                         : int  0 0 0 1 0 0 0 0 1 0 ...
 ##  $ Dx.CIN                            : int  0 0 0 0 0 0 0 0 0 0 ...
 ##  $ Dx.HPV                            : int  0 0 0 1 0 0 0 0 1 0 ...
@@ -495,11 +510,11 @@ data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile,
 ##  $ Biopsy                            : int  0 0 0 0 0 0 1 0 0 0 ...</code></pre>
 <p>As you can see, many of the variables have been read incorrectly. These can be recognized by the fact that they have been read as <code>Factor</code> instead of the expected <code>int</code>. A closer look at the output also tells me why: missing values are apparently encoded with a question mark.
 This is fixed in iteration two:</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile,
-                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, 
-                   <span class="dt">header =</span> <span class="ot">TRUE</span>,
-                   <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)
-<span class="kw">str</span>(data)</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="eda.html#cb364-1"></a>data &lt;-<span class="st"> </span><span class="kw">read.table</span>(datafile,</span>
+<span id="cb364-2"><a href="eda.html#cb364-2"></a>                   <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, </span>
+<span id="cb364-3"><a href="eda.html#cb364-3"></a>                   <span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb364-4"><a href="eda.html#cb364-4"></a>                   <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
+<span id="cb364-5"><a href="eda.html#cb364-5"></a><span class="kw">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
 ##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
 ##  $ Number.of.sexual.partners         : num  4 1 1 5 3 3 3 1 1 3 ...
@@ -547,37 +562,36 @@ This is fixed in iteration two:</p>
 This kind of inspection should make you aware of possible problems that are going to arise later on. Booleans are very different from numbers after all. What is even more dangerous is that they can be treated interchangeably - in R you can treat a logical as an integer and an integer in a boolean context.</p>
 <p>This kind of discrepancy is the first thing you should address after loading your data. We’ll get back to this shortly.</p>
 <p>I will now first change the column names to something shorter, using the codebook. Also, the data will be converted into a tibble because this is really a nicer data structure:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]
-data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data)
-data</code></pre>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="eda.html#cb367-1"></a><span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]</span>
+<span id="cb367-2"><a href="eda.html#cb367-2"></a>data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data)</span>
+<span id="cb367-3"><a href="eda.html#cb367-3"></a>data</span></code></pre></div>
 <pre><code>## # A tibble: 858 x 36
-##      age num.partners first.sex num.preg smoker smoke.years
-##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;
-##  1    18            4        15        1      0        0   
-##  2    15            1        14        1      0        0   
-##  3    34            1        NA        1      0        0   
-##  4    52            5        16        4      1       37   
-##  5    46            3        21        4      0        0   
-##  6    42            3        23        2      0        0   
-##  7    51            3        17        6      1       34   
-##  8    26            1        26        3      0        0   
-##  9    45            1        20        5      0        0   
-## 10    44            3        15       NA      1        1.27
-## # … with 848 more rows, and 30 more variables: smokes.packs.year &lt;dbl&gt;,
-## #   horm.contracept.ever &lt;dbl&gt;, horm.contracept.years &lt;dbl&gt;,
-## #   IUD.ever &lt;dbl&gt;, IUD.years &lt;dbl&gt;, STD.ever &lt;dbl&gt;, STDs.number &lt;dbl&gt;,
-## #   STD_condylomatosis &lt;dbl&gt;, STD_cervical.cond &lt;dbl&gt;,
-## #   STD_vaginal.cond &lt;dbl&gt;, STD_vulvo.per.cond &lt;dbl&gt;, STD_syph &lt;dbl&gt;,
-## #   STD_pid &lt;dbl&gt;, STD_gen.herpes &lt;dbl&gt;, STD_moll.cont &lt;dbl&gt;,
+##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.ye…
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;
+##  1    18            4        15        1      0        0                 0  
+##  2    15            1        14        1      0        0                 0  
+##  3    34            1        NA        1      0        0                 0  
+##  4    52            5        16        4      1       37                37  
+##  5    46            3        21        4      0        0                 0  
+##  6    42            3        23        2      0        0                 0  
+##  7    51            3        17        6      1       34                 3.4
+##  8    26            1        26        3      0        0                 0  
+##  9    45            1        20        5      0        0                 0  
+## 10    44            3        15       NA      1        1.27              2.8
+## # … with 848 more rows, and 29 more variables: horm.contracept.ever &lt;dbl&gt;,
+## #   horm.contracept.years &lt;dbl&gt;, IUD.ever &lt;dbl&gt;, IUD.years &lt;dbl&gt;,
+## #   STD.ever &lt;dbl&gt;, STDs.number &lt;dbl&gt;, STD_condylomatosis &lt;dbl&gt;,
+## #   STD_cervical.cond &lt;dbl&gt;, STD_vaginal.cond &lt;dbl&gt;, STD_vulvo.per.cond &lt;dbl&gt;,
+## #   STD_syph &lt;dbl&gt;, STD_pid &lt;dbl&gt;, STD_gen.herpes &lt;dbl&gt;, STD_moll.cont &lt;dbl&gt;,
 ## #   STD_aids &lt;dbl&gt;, STD_hiv &lt;dbl&gt;, STD_hepB &lt;dbl&gt;, STD_HPV &lt;dbl&gt;,
-## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;,
-## #   STD.time.since.last &lt;dbl&gt;, Dx.cancer &lt;int&gt;, Dx.cin &lt;int&gt;,
-## #   Dx.hpv &lt;int&gt;, Dx &lt;int&gt;, target.hinselman &lt;int&gt;, target.schiller &lt;int&gt;,
-## #   target.cytology &lt;int&gt;, target.biopsy &lt;int&gt;</code></pre>
+## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;, STD.time.since.last &lt;dbl&gt;,
+## #   Dx.cancer &lt;int&gt;, Dx.cin &lt;int&gt;, Dx.hpv &lt;int&gt;, Dx &lt;int&gt;,
+## #   target.hinselman &lt;int&gt;, target.schiller &lt;int&gt;, target.cytology &lt;int&gt;,
+## #   target.biopsy &lt;int&gt;</code></pre>
 <p>Now let’s have a look at the <code>smoke.years</code> variable:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>smoke.years)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>, <span class="dt">na.rm =</span> T) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</code></pre>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="eda.html#cb369-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x=</span>smoke.years)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb369-2"><a href="eda.html#cb369-2"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">4</span>, <span class="dt">na.rm =</span> T) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb369-3"><a href="eda.html#cb369-3"></a><span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:smoke-years-inspection"></span>
 <img src="bookdown-demo_files/figure-html/smoke-years-inspection-1.png" alt="A histogram of the 'smoke.years' attribute" width="80%" />
 <p class="caption">
@@ -590,38 +604,37 @@ Figure 7.1: A histogram of the ‘smoke.years’ attribute
 <div id="getting-it-right-in-the-end" class="section level4">
 <h4><span class="header-section-number">7.2.2.2</span> Getting it right in the end</h4>
 <p>Here, for demonstration purposes I use a wrapper function <code>read.csv()</code> instead of <code>read.table()</code>. The tidyverse has data reading facilities as well of course, but these were not dealt with in this course.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(datafile, <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)
-<span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(codebook)) {
-  <span class="cf">if</span>(codebook[i, <span class="dv">2</span>] <span class="op">==</span><span class="st"> &quot;logical&quot;</span>){
-    data[,i] &lt;-<span class="st"> </span><span class="kw">as.logical</span>(data[,i])
-  }
-}
-(data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data))</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="eda.html#cb370-1"></a>data &lt;-<span class="st"> </span><span class="kw">read.csv</span>(datafile, <span class="dt">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
+<span id="cb370-2"><a href="eda.html#cb370-2"></a><span class="kw">names</span>(data) &lt;-<span class="st"> </span>codebook[,<span class="dv">1</span>]</span>
+<span id="cb370-3"><a href="eda.html#cb370-3"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(codebook)) {</span>
+<span id="cb370-4"><a href="eda.html#cb370-4"></a>  <span class="cf">if</span>(codebook[i, <span class="dv">2</span>] <span class="op">==</span><span class="st"> &quot;logical&quot;</span>){</span>
+<span id="cb370-5"><a href="eda.html#cb370-5"></a>    data[,i] &lt;-<span class="st"> </span><span class="kw">as.logical</span>(data[,i])</span>
+<span id="cb370-6"><a href="eda.html#cb370-6"></a>  }</span>
+<span id="cb370-7"><a href="eda.html#cb370-7"></a>}</span>
+<span id="cb370-8"><a href="eda.html#cb370-8"></a>(data &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(data))</span></code></pre></div>
 <pre><code>## # A tibble: 858 x 36
-##      age num.partners first.sex num.preg smoker smoke.years
-##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;        &lt;dbl&gt;
-##  1    18            4        15        1 FALSE         0   
-##  2    15            1        14        1 FALSE         0   
-##  3    34            1        NA        1 FALSE         0   
-##  4    52            5        16        4 TRUE         37   
-##  5    46            3        21        4 FALSE         0   
-##  6    42            3        23        2 FALSE         0   
-##  7    51            3        17        6 TRUE         34   
-##  8    26            1        26        3 FALSE         0   
-##  9    45            1        20        5 FALSE         0   
-## 10    44            3        15       NA TRUE          1.27
-## # … with 848 more rows, and 30 more variables: smokes.packs.year &lt;dbl&gt;,
-## #   horm.contracept.ever &lt;lgl&gt;, horm.contracept.years &lt;dbl&gt;,
-## #   IUD.ever &lt;lgl&gt;, IUD.years &lt;dbl&gt;, STD.ever &lt;lgl&gt;, STDs.number &lt;dbl&gt;,
-## #   STD_condylomatosis &lt;lgl&gt;, STD_cervical.cond &lt;lgl&gt;,
-## #   STD_vaginal.cond &lt;lgl&gt;, STD_vulvo.per.cond &lt;lgl&gt;, STD_syph &lt;lgl&gt;,
-## #   STD_pid &lt;lgl&gt;, STD_gen.herpes &lt;lgl&gt;, STD_moll.cont &lt;lgl&gt;,
+##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.ye…
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;        &lt;dbl&gt;            &lt;dbl&gt;
+##  1    18            4        15        1 FALSE         0                 0  
+##  2    15            1        14        1 FALSE         0                 0  
+##  3    34            1        NA        1 FALSE         0                 0  
+##  4    52            5        16        4 TRUE         37                37  
+##  5    46            3        21        4 FALSE         0                 0  
+##  6    42            3        23        2 FALSE         0                 0  
+##  7    51            3        17        6 TRUE         34                 3.4
+##  8    26            1        26        3 FALSE         0                 0  
+##  9    45            1        20        5 FALSE         0                 0  
+## 10    44            3        15       NA TRUE          1.27              2.8
+## # … with 848 more rows, and 29 more variables: horm.contracept.ever &lt;lgl&gt;,
+## #   horm.contracept.years &lt;dbl&gt;, IUD.ever &lt;lgl&gt;, IUD.years &lt;dbl&gt;,
+## #   STD.ever &lt;lgl&gt;, STDs.number &lt;dbl&gt;, STD_condylomatosis &lt;lgl&gt;,
+## #   STD_cervical.cond &lt;lgl&gt;, STD_vaginal.cond &lt;lgl&gt;, STD_vulvo.per.cond &lt;lgl&gt;,
+## #   STD_syph &lt;lgl&gt;, STD_pid &lt;lgl&gt;, STD_gen.herpes &lt;lgl&gt;, STD_moll.cont &lt;lgl&gt;,
 ## #   STD_aids &lt;lgl&gt;, STD_hiv &lt;lgl&gt;, STD_hepB &lt;lgl&gt;, STD_HPV &lt;lgl&gt;,
-## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;,
-## #   STD.time.since.last &lt;dbl&gt;, Dx.cancer &lt;lgl&gt;, Dx.cin &lt;lgl&gt;,
-## #   Dx.hpv &lt;lgl&gt;, Dx &lt;lgl&gt;, target.hinselman &lt;lgl&gt;, target.schiller &lt;lgl&gt;,
-## #   target.cytology &lt;lgl&gt;, target.biopsy &lt;lgl&gt;</code></pre>
+## #   STD.num.diagn &lt;int&gt;, STD.time.since.first &lt;dbl&gt;, STD.time.since.last &lt;dbl&gt;,
+## #   Dx.cancer &lt;lgl&gt;, Dx.cin &lt;lgl&gt;, Dx.hpv &lt;lgl&gt;, Dx &lt;lgl&gt;,
+## #   target.hinselman &lt;lgl&gt;, target.schiller &lt;lgl&gt;, target.cytology &lt;lgl&gt;,
+## #   target.biopsy &lt;lgl&gt;</code></pre>
 </div>
 <div id="why-such-a-hassle" class="section level4">
 <h4><span class="header-section-number">7.2.2.3</span> Why such a hassle?</h4>
@@ -648,7 +661,7 @@ Besides this, it will make adding labels to plots a breeze.</p>
 <div id="inspecting-some-columns" class="section level4">
 <h4><span class="header-section-number">7.3.1.1</span> Inspecting some columns</h4>
 <p>Here, I will only inspect some columns since this entire process is for demonstration purposes only. I will start with columns 2 and three.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data[, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>])</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="eda.html#cb372-1"></a><span class="kw">summary</span>(data[, <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>##   num.partners     first.sex 
 ##  Min.   : 1.00   Min.   :10  
 ##  1st Qu.: 2.00   1st Qu.:15  
@@ -658,20 +671,20 @@ Besides this, it will make adding labels to plots a breeze.</p>
 ##  Max.   :28.00   Max.   :32  
 ##  NA&#39;s   :26      NA&#39;s   :7</code></pre>
 <p>Here is a visualization. I used <code>grid.arrange()</code> from the <code>gridExtra</code> package for arranging two plots in a single panel.</p>
-<pre class="sourceCode r"><code class="sourceCode r">tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
-p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> num.partners)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;number of partners&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)
-    
-p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> first.sex)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;age of first sex&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)
-
-<span class="kw">grid.arrange</span>(p1, p2, <span class="dt">nrow =</span> <span class="dv">1</span>)</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="eda.html#cb374-1"></a>tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()</span>
+<span id="cb374-2"><a href="eda.html#cb374-2"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> num.partners)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb374-3"><a href="eda.html#cb374-3"></a><span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb374-4"><a href="eda.html#cb374-4"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb374-5"><a href="eda.html#cb374-5"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;number of partners&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb374-6"><a href="eda.html#cb374-6"></a><span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)</span>
+<span id="cb374-7"><a href="eda.html#cb374-7"></a>    </span>
+<span id="cb374-8"><a href="eda.html#cb374-8"></a>p2 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>, <span class="dt">y =</span> first.sex)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb374-9"><a href="eda.html#cb374-9"></a><span class="st">    </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb374-10"><a href="eda.html#cb374-10"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.4</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb374-11"><a href="eda.html#cb374-11"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;age of first sex&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb374-12"><a href="eda.html#cb374-12"></a><span class="st">    </span><span class="kw">xlab</span>(<span class="ot">NULL</span>)</span>
+<span id="cb374-13"><a href="eda.html#cb374-13"></a></span>
+<span id="cb374-14"><a href="eda.html#cb374-14"></a><span class="kw">grid.arrange</span>(p1, p2, <span class="dt">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:num-partners-inspection1"></span>
 <img src="bookdown-demo_files/figure-html/num-partners-inspection1-1.png" alt="The 'num.partners' (left) and 'first.sex' (right) attributes" width="80%" />
 <p class="caption">
@@ -686,28 +699,28 @@ Figure 7.2: The ‘num.partners’ (left) and ‘first.sex’ (right) attributes
 </ul>
 <p>Here is another boxplot, the workhorse of data visualization. The problem with discrete data is that they overlap 100% in plots, as is the case with the outliers here. Instead of overlaying with all jittered data you could apply this trick to only jitter the outliers. The trick there is to provide a <code>data = function(x) dplyr::filter(x, outlier)</code> argument in <code>geom_jitter()</code> where only the rows with outliers are selected.<br />
 Note that I already moved away from univeriate analysis.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##define outlier function</span>
-my_outlier &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    x <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(x) <span class="op">+</span><span class="st"> </span><span class="kw">IQR</span>(x) <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span>
-}
-
-tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="kw">c</span>(horm.contracept.years, target.biopsy)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">outlier =</span> <span class="kw">my_outlier</span>(horm.contracept.years)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ungroup</span>()
-
-<span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>target.biopsy, <span class="dt">y=</span>horm.contracept.years)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>) <span class="op">+</span><span class="st"> </span><span class="co">##no outliers plotted here</span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> <span class="cf">function</span>(x) dplyr<span class="op">::</span><span class="kw">filter</span>(x, outlier), 
-                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="eda.html#cb375-1"></a><span class="co">##define outlier function</span></span>
+<span id="cb375-2"><a href="eda.html#cb375-2"></a>my_outlier &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb375-3"><a href="eda.html#cb375-3"></a>    x <span class="op">&gt;</span><span class="st"> </span><span class="kw">median</span>(x) <span class="op">+</span><span class="st"> </span><span class="kw">IQR</span>(x) <span class="op">*</span><span class="st"> </span><span class="fl">1.5</span></span>
+<span id="cb375-4"><a href="eda.html#cb375-4"></a>}</span>
+<span id="cb375-5"><a href="eda.html#cb375-5"></a></span>
+<span id="cb375-6"><a href="eda.html#cb375-6"></a>tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb375-7"><a href="eda.html#cb375-7"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">c</span>(horm.contracept.years, target.biopsy)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb375-8"><a href="eda.html#cb375-8"></a><span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></span>
+<span id="cb375-9"><a href="eda.html#cb375-9"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">outlier =</span> <span class="kw">my_outlier</span>(horm.contracept.years)) <span class="op">%&gt;%</span></span>
+<span id="cb375-10"><a href="eda.html#cb375-10"></a><span class="st">    </span><span class="kw">ungroup</span>()</span>
+<span id="cb375-11"><a href="eda.html#cb375-11"></a></span>
+<span id="cb375-12"><a href="eda.html#cb375-12"></a><span class="kw">ggplot</span>(tmp, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x=</span>target.biopsy, <span class="dt">y=</span>horm.contracept.years)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb375-13"><a href="eda.html#cb375-13"></a><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.shape =</span> <span class="ot">NA</span>) <span class="op">+</span><span class="st"> </span><span class="co">##no outliers plotted here</span></span>
+<span id="cb375-14"><a href="eda.html#cb375-14"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">data =</span> <span class="cf">function</span>(x) dplyr<span class="op">::</span><span class="kw">filter</span>(x, outlier), </span>
+<span id="cb375-15"><a href="eda.html#cb375-15"></a>                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.1</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
 <p>Let’s also look at the STDs.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data<span class="op">$</span>STDs.number)</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="eda.html#cb376-1"></a><span class="kw">summary</span>(data<span class="op">$</span>STDs.number)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##     0.0     0.0     0.0     0.2     0.0     4.0     105</code></pre>
 <p>These are strange numbers! Many missing values and many outliers apparently. A simple table view may help get insight here.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(STDs.number) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</code></pre>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="eda.html#cb378-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(STDs.number) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   STDs.number     n
 ##         &lt;dbl&gt; &lt;int&gt;
@@ -722,7 +735,7 @@ tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class
 </div>
 <div id="smoking-data-corrupted" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Smoking data corrupted?</h3>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data[, <span class="dv">5</span><span class="op">:</span><span class="dv">7</span>])</code></pre>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="eda.html#cb380-1"></a><span class="kw">summary</span>(data[, <span class="dv">5</span><span class="op">:</span><span class="dv">7</span>])</span></code></pre></div>
 <pre><code>##    smoker         smoke.years   smokes.packs.year
 ##  Mode :logical   Min.   : 0.0   Min.   : 0.0     
 ##  FALSE:722       1st Qu.: 0.0   1st Qu.: 0.0     
@@ -732,29 +745,29 @@ tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class
 ##                  Max.   :37.0   Max.   :37.0     
 ##                  NA&#39;s   :13     NA&#39;s   :13</code></pre>
 <p>Obviously, these three variables describe the exact same thing: smoking behavior. But there is something funny going on. Let’s investigate this further and deal with it.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(smoker) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="eda.html#cb382-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(smoker) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   smoker     n
 ##   &lt;lgl&gt;  &lt;int&gt;
 ## 1 FALSE    722
 ## 2 TRUE     123
 ## 3 NA        13</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">perc &lt;-<span class="st"> </span><span class="kw">length</span>(data<span class="op">$</span>smoker) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(data<span class="op">$</span>smoker, <span class="dt">na.rm =</span> T)</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="eda.html#cb384-1"></a>perc &lt;-<span class="st"> </span><span class="kw">length</span>(data<span class="op">$</span>smoker) <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(data<span class="op">$</span>smoker, <span class="dt">na.rm =</span> T)</span></code></pre></div>
 <p>So 6.98% of the subjects in this study is smoker.</p>
 <p>Verify the number of smokers via another route:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(data<span class="op">$</span>smoker <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="eda.html#cb385-1"></a><span class="kw">sum</span>(data<span class="op">$</span>smoker <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dt">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1] 123</code></pre>
 <p>So is the smoker data corrupted? Probably not, but row 4 is dodgy at the least, and worth further investigation:</p>
-<pre class="sourceCode r"><code class="sourceCode r">data[<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)]</code></pre>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="eda.html#cb387-1"></a>data[<span class="dv">4</span>, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)]</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##     age smoker smoke.years smokes.packs.year
 ##   &lt;int&gt; &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
 ## 1    52 TRUE            37                37</code></pre>
 <p>Let’s look at the values in the the smoker columns in another way:</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(smoker, smoke.years, smokes.packs.year) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>smoke.years <span class="op">==</span><span class="st"> </span>smokes.packs.year)</code></pre>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="eda.html#cb389-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb389-2"><a href="eda.html#cb389-2"></a><span class="st">    </span><span class="kw">select</span>(smoker, smoke.years, smokes.packs.year) <span class="op">%&gt;%</span></span>
+<span id="cb389-3"><a href="eda.html#cb389-3"></a><span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></span>
+<span id="cb389-4"><a href="eda.html#cb389-4"></a><span class="st">    </span><span class="kw">filter</span>(smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>smoke.years <span class="op">==</span><span class="st"> </span>smokes.packs.year)</span></code></pre></div>
 <pre><code>## # A tibble: 14 x 3
 ##    smoker smoke.years smokes.packs.year
 ##    &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
@@ -773,16 +786,16 @@ tmp &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class
 ## 13 TRUE             3                 3
 ## 14 TRUE            22                22</code></pre>
 <p>As reminder, here is the equivalent base R code - which do you prefer?</p>
-<pre class="sourceCode r"><code class="sourceCode r">data[<span class="op">!</span><span class="kw">is.na</span>(data<span class="op">$</span>smoke.years) 
-     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> 
-     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">==</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year, <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="eda.html#cb391-1"></a>data[<span class="op">!</span><span class="kw">is.na</span>(data<span class="op">$</span>smoke.years) </span>
+<span id="cb391-2"><a href="eda.html#cb391-2"></a>     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> </span>
+<span id="cb391-3"><a href="eda.html#cb391-3"></a>     <span class="op">&amp;</span><span class="st"> </span>data<span class="op">$</span>smoke.years <span class="op">==</span><span class="st"> </span>data<span class="op">$</span>smokes.packs.year, <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</span></code></pre></div>
 <p>What do you think happened here?<br />
 I personally think there was a sleepy person doing data entry in the wrong column, or something like that.</p>
 <p>Now the packs per year attribute.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> smokes.packs.year)) <span class="op">+</span><span class="st">  </span>
-<span class="st">        </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="eda.html#cb392-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(smokes.packs.year <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb392-2"><a href="eda.html#cb392-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> smokes.packs.year)) <span class="op">+</span><span class="st">  </span></span>
+<span id="cb392-3"><a href="eda.html#cb392-3"></a><span class="st">        </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">25</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <p>Do you know any smoker? Do they smoke at most 37 packs per year? I think not! This cannot be packs per year! Most smokers smoke 1-7 packs per week! This is exactly what this histogram shows.</p>
 <div id="dealing-with-data-corruption" class="section level4">
 <h4><span class="header-section-number">7.3.2.1</span> Dealing with data corruption</h4>
@@ -815,12 +828,12 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <h4><span class="header-section-number">7.4.1.1</span> min-max normalization</h4>
 <p>All data is scaled from 0 to 1, where the lowest value in your data is mapped to zero and the highest to one. This method is easy and transparent, but the danger lies in unseen data. When new data is encountered with a wider distribution analyses with this approach may break.</p>
 <p>This is how to do it in R</p>
-<pre class="sourceCode r"><code class="sourceCode r">scale_min_max &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-     (x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)) <span class="op">/</span><span class="st"> </span>(<span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x))
-}</code></pre>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="eda.html#cb393-1"></a>scale_min_max &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb393-2"><a href="eda.html#cb393-2"></a>     (x <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)) <span class="op">/</span><span class="st"> </span>(<span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x))</span>
+<span id="cb393-3"><a href="eda.html#cb393-3"></a>}</span></code></pre></div>
 <p>Here is a demo of min-max normalization.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)
-<span class="kw">scale_min_max</span>(x)</code></pre>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="eda.html#cb394-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb394-2"><a href="eda.html#cb394-2"></a><span class="kw">scale_min_max</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.500 0.000 0.667 1.000 0.167 0.833</code></pre>
 </div>
 <div id="scaling-normalization" class="section level4">
@@ -828,8 +841,8 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <p>A slightly more used normalization technique is scaling normalization. It scales all variable to a mean of zero and with the same standard deviation.</p>
 <p><span class="math display">\[x&#39; = \frac{x-\bar{x}}{\sigma}\]</span></p>
 <p>It is built right into R:</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)
-<span class="kw">scale</span>(x)</code></pre>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="eda.html#cb396-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">-1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb396-2"><a href="eda.html#cb396-2"></a><span class="kw">scale</span>(x)</span></code></pre></div>
 <pre><code>##         [,1]
 ## [1,] -0.0719
 ## [2,] -1.3669
@@ -847,9 +860,9 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <p>How to change this factor in a numeric representation usable for techniques that require numeric input such as clustering, linear modelling or regression?</p>
 <p>This is done with a technique called dummy coding and the essence is binary splitting.
 Here is a small data set:</p>
-<pre class="sourceCode r"><code class="sourceCode r">pet_favour &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">subject =</span> <span class="kw">c</span>(<span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Roger&quot;</span>, <span class="st">&quot;Rose&quot;</span>, <span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Caitlin&quot;</span>),
-                    <span class="dt">favour =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;rat&quot;</span>)))
-pet_favour</code></pre>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="eda.html#cb398-1"></a>pet_favour &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">subject =</span> <span class="kw">c</span>(<span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Roger&quot;</span>, <span class="st">&quot;Rose&quot;</span>, <span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Caitlin&quot;</span>),</span>
+<span id="cb398-2"><a href="eda.html#cb398-2"></a>                    <span class="dt">favour =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;rat&quot;</span>)))</span>
+<span id="cb398-3"><a href="eda.html#cb398-3"></a>pet_favour</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   subject favour
 ##   &lt;chr&gt;   &lt;fct&gt; 
@@ -865,20 +878,18 @@ pet_favour</code></pre>
 <li>rat/not rat</li>
 </ul>
 <p>Below you can see an approach to this using some techniques from base R.</p>
-<pre class="sourceCode r"><code class="sourceCode r">encode_dummy &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    lvls &lt;-<span class="st"> </span><span class="kw">levels</span>(x)
-    tmp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">sapply</span>(lvls, <span class="cf">function</span>(y) <span class="kw">as.integer</span>(x <span class="op">==</span><span class="st"> </span>y)))
-    <span class="kw">names</span>(tmp) &lt;-<span class="st"> </span><span class="kw">paste0</span>(lvls, <span class="st">&quot;_y&quot;</span>)
-    tmp
-}
-<span class="kw">bind_cols</span>(<span class="dt">subject =</span> pet_favour<span class="op">$</span>subject, <span class="kw">encode_dummy</span>(pet_favour<span class="op">$</span>favour))</code></pre>
-<pre><code>## # A tibble: 5 x 4
-##   subject cat_y dog_y rat_y
-##   &lt;chr&gt;   &lt;int&gt; &lt;int&gt; &lt;int&gt;
-## 1 Mike        0     1     0
-## 2 Roger       1     0     0
-## 3 Rose        1     0     0
-## 4 Megan       0     1     0
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="eda.html#cb400-1"></a>encode_dummy &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb400-2"><a href="eda.html#cb400-2"></a>    lvls &lt;-<span class="st"> </span><span class="kw">levels</span>(x)</span>
+<span id="cb400-3"><a href="eda.html#cb400-3"></a>    tmp &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">sapply</span>(lvls, <span class="cf">function</span>(y) <span class="kw">as.integer</span>(x <span class="op">==</span><span class="st"> </span>y)))</span>
+<span id="cb400-4"><a href="eda.html#cb400-4"></a>    <span class="kw">names</span>(tmp) &lt;-<span class="st"> </span><span class="kw">paste0</span>(lvls, <span class="st">&quot;_y&quot;</span>)</span>
+<span id="cb400-5"><a href="eda.html#cb400-5"></a>    tmp</span>
+<span id="cb400-6"><a href="eda.html#cb400-6"></a>}</span>
+<span id="cb400-7"><a href="eda.html#cb400-7"></a><span class="kw">bind_cols</span>(<span class="dt">subject =</span> pet_favour<span class="op">$</span>subject, <span class="kw">encode_dummy</span>(pet_favour<span class="op">$</span>favour))</span></code></pre></div>
+<pre><code>##   subject cat_y dog_y rat_y
+## 1    Mike     0     1     0
+## 2   Roger     1     0     0
+## 3    Rose     1     0     0
+## 4   Megan     0     1     0
 ## 5 Caitlin     0     0     1</code></pre>
 <p>There are of course also packages that can do this; e.g. have a look at <code>dummies</code>.</p>
 </div>
@@ -888,16 +899,16 @@ pet_favour</code></pre>
 <p>Especially for visualization purposes, it can be more convenient to have a variable in a factor form instead of numeric form. For instance, this is the case with the smoking-related data in the current dataset.</p>
 <p>I will reduce all three ‘smoking’ variables to one variable and start building a ‘clean’ dataset.
 Here, the new variable <code>smoking</code> is the result of cutting the <code>smoke.years</code> variable into factor levels.</p>
-<pre class="sourceCode r"><code class="sourceCode r">smoking_f &lt;-<span class="st"> </span><span class="kw">cut</span>(data<span class="op">$</span>smoke.years, 
-               <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">100</span>), 
-               <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;short&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;long&quot;</span>),
-               <span class="dt">ordered_result =</span> T,
-               <span class="dt">right =</span> F)
-
-clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">smoking =</span> smoking_f) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(age<span class="op">:</span>num.preg, smoking, horm.contracept.ever<span class="op">:</span>target.biopsy)
-<span class="kw">table</span>(clean_data<span class="op">$</span>smoking, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="eda.html#cb402-1"></a>smoking_f &lt;-<span class="st"> </span><span class="kw">cut</span>(data<span class="op">$</span>smoke.years, </span>
+<span id="cb402-2"><a href="eda.html#cb402-2"></a>               <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">100</span>), </span>
+<span id="cb402-3"><a href="eda.html#cb402-3"></a>               <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;short&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;long&quot;</span>),</span>
+<span id="cb402-4"><a href="eda.html#cb402-4"></a>               <span class="dt">ordered_result =</span> T,</span>
+<span id="cb402-5"><a href="eda.html#cb402-5"></a>               <span class="dt">right =</span> F)</span>
+<span id="cb402-6"><a href="eda.html#cb402-6"></a></span>
+<span id="cb402-7"><a href="eda.html#cb402-7"></a>clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb402-8"><a href="eda.html#cb402-8"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">smoking =</span> smoking_f) <span class="op">%&gt;%</span></span>
+<span id="cb402-9"><a href="eda.html#cb402-9"></a><span class="st">    </span><span class="kw">select</span>(age<span class="op">:</span>num.preg, smoking, horm.contracept.ever<span class="op">:</span>target.biopsy)</span>
+<span id="cb402-10"><a href="eda.html#cb402-10"></a><span class="kw">table</span>(clean_data<span class="op">$</span>smoking, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  never  short medium   long   &lt;NA&gt; 
 ##    726     42     44     33     13</code></pre>
@@ -905,9 +916,9 @@ clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><spa
 <div id="data-redundancy-in-std-variables" class="section level3">
 <h3><span class="header-section-number">7.4.3</span> Data redundancy in STD variables</h3>
 <p>There are many variables related to STDs:</p>
-<pre class="sourceCode r"><code class="sourceCode r">(std_columns &lt;-<span class="st"> </span>codebook <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(abbreviation) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(abbreviation, <span class="st">&quot;STD_&quot;</span>)))</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="eda.html#cb404-1"></a>(std_columns &lt;-<span class="st"> </span>codebook <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb404-2"><a href="eda.html#cb404-2"></a><span class="st">    </span><span class="kw">select</span>(abbreviation) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb404-3"><a href="eda.html#cb404-3"></a><span class="st">    </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(abbreviation, <span class="st">&quot;STD_&quot;</span>)))</span></code></pre></div>
 <pre><code>##          abbreviation
 ## 1  STD_condylomatosis
 ## 2   STD_cervical.cond
@@ -921,20 +932,20 @@ clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><spa
 ## 10            STD_hiv
 ## 11           STD_hepB
 ## 12            STD_HPV</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">std_columns &lt;-<span class="st"> </span>std_columns<span class="op">$</span>abbreviation
-<span class="co">##alternative with base R:</span>
-<span class="co">#codebook[grep(pattern = &quot;STD_&quot;, x = codebook$abbreviation), 1]</span></code></pre>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="eda.html#cb406-1"></a>std_columns &lt;-<span class="st"> </span>std_columns<span class="op">$</span>abbreviation</span>
+<span id="cb406-2"><a href="eda.html#cb406-2"></a><span class="co">##alternative with base R:</span></span>
+<span id="cb406-3"><a href="eda.html#cb406-3"></a><span class="co">#codebook[grep(pattern = &quot;STD_&quot;, x = codebook$abbreviation), 1]</span></span></code></pre></div>
 <p>Some of these are almost completely redundant, and most with extremely low -and thus useless- counts. Seen in absolute numbers, not many have multiple STDs, but statistically seen they are highly over represented - there are even more with two than with one STD:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(data<span class="op">$</span>STDs.number, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="eda.html#cb407-1"></a><span class="kw">table</span>(data<span class="op">$</span>STDs.number, <span class="dt">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##    0    1    2    3    4 &lt;NA&gt; 
 ##  674   34   37    7    1  105</code></pre>
 <p>Only 79 subjects have STDs (luckily!).</p>
 <p>These are the counts of occurrences of individual STDs:</p>
 <p>They are listed below. You can see a nice application of the <code>gather()</code> function to put the results in long format instead of wide.</p>
-<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarise_at</span>(std_columns, <span class="cf">function</span>(x) <span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;disease&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">everything</span>()) </code></pre>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="eda.html#cb409-1"></a>clean_data <span class="op">%&gt;%</span></span>
+<span id="cb409-2"><a href="eda.html#cb409-2"></a><span class="st">    </span><span class="kw">summarise_at</span>(std_columns, <span class="cf">function</span>(x) <span class="kw">sum</span>(x, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></span>
+<span id="cb409-3"><a href="eda.html#cb409-3"></a><span class="st">    </span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;disease&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">everything</span>()) </span></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##    disease            count
 ##    &lt;chr&gt;              &lt;int&gt;
@@ -951,23 +962,22 @@ clean_data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><spa
 ## 11 STD_hepB               1
 ## 12 STD_HPV                2</code></pre>
 <p>This is the same in base R using <code>apply()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(data[ ,std_columns], <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">&gt;</span><span class="dv">0</span>, <span class="dt">na.rm=</span>T))</code></pre>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="eda.html#cb411-1"></a><span class="kw">apply</span>(data[ ,std_columns], <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">sum</span>(x<span class="op">&gt;</span><span class="dv">0</span>, <span class="dt">na.rm=</span>T))</span></code></pre></div>
 </div>
 </div>
 <div id="the-dependent-variable" class="section level2">
 <h2><span class="header-section-number">7.5</span> The dependent variable</h2>
 <p>In many datasets there is a single <strong><em>dependent variable</em></strong>, the variable you try to explain or model using all the other variables (hence the name “target” used here. In this case it is the question whether the subject has cervical cancer yes or no.</p>
 <p>Unfortunately there are four dependent variables:</p>
-<pre class="sourceCode r"><code class="sourceCode r">last &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">names</span>(data))
-(target_vars &lt;-<span class="st"> </span><span class="kw">names</span>(data)[(last<span class="dv">-3</span>)<span class="op">:</span>last])</code></pre>
-<pre><code>## [1] &quot;target.hinselman&quot; &quot;target.schiller&quot;  &quot;target.cytology&quot; 
-## [4] &quot;target.biopsy&quot;</code></pre>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="eda.html#cb412-1"></a>last &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">names</span>(data))</span>
+<span id="cb412-2"><a href="eda.html#cb412-2"></a>(target_vars &lt;-<span class="st"> </span><span class="kw">names</span>(data)[(last<span class="dv">-3</span>)<span class="op">:</span>last])</span></code></pre></div>
+<pre><code>## [1] &quot;target.hinselman&quot; &quot;target.schiller&quot;  &quot;target.cytology&quot;  &quot;target.biopsy&quot;</code></pre>
 <p><strong>Which one(s) are you going to use?</strong></p>
 <p>Let’s investigate the pairwise correlations between them.</p>
-<pre class="sourceCode r"><code class="sourceCode r">target_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hinselman&quot;</span>, <span class="st">&quot;Schiller&quot;</span>, <span class="st">&quot;cytology&quot;</span>, <span class="st">&quot;biopsy&quot;</span>)
-cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(data[, <span class="dv">33</span><span class="op">:</span><span class="dv">36</span>])
-<span class="kw">colnames</span>(cor_matrix) &lt;-<span class="st"> </span>target_names
-(cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix))</code></pre>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="eda.html#cb414-1"></a>target_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Hinselman&quot;</span>, <span class="st">&quot;Schiller&quot;</span>, <span class="st">&quot;cytology&quot;</span>, <span class="st">&quot;biopsy&quot;</span>)</span>
+<span id="cb414-2"><a href="eda.html#cb414-2"></a>cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(data[, <span class="dv">33</span><span class="op">:</span><span class="dv">36</span>])</span>
+<span id="cb414-3"><a href="eda.html#cb414-3"></a><span class="kw">colnames</span>(cor_matrix) &lt;-<span class="st"> </span>target_names</span>
+<span id="cb414-4"><a href="eda.html#cb414-4"></a>(cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   Hinselman Schiller cytology biopsy
 ##       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
@@ -975,7 +985,7 @@ cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(data[, <spa
 ## 2     0.650    1        0.361  0.733
 ## 3     0.192    0.361    1      0.327
 ## 4     0.547    0.733    0.327  1</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">target_name =</span> target_names) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="eda.html#cb416-1"></a>cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">target_name =</span> target_names) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</span></code></pre></div>
 <p>A <strong><em>
 map</em></strong> is a nice visualization for this type of data. Of course, ggplot really likes the long format so that needs to be done first with <code>gather()</code> (try to do this with <code>pivot_longer()</code> as an exercise):</p>
 <pre class="{r"><code>map, fig.asp=.9, out.width=&#39;70%&#39;, fig.align=&#39;center&#39;, fig.cap=&quot;A correlation 
@@ -987,7 +997,7 @@ ggplot(data = cor_matrix_long, aes(x=target_name, y=method, fill=correlation)) +
     scale_fill_gradient(high = &quot;red&quot;, low = &quot;white&quot; )</code></pre>
 <p>This shows the correlation between the four target variables.</p>
 <p>Another way to explore this is a <strong><em>contingency table</em></strong>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## TO BE DONE</span></code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="eda.html#cb418-1"></a><span class="co">## TO BE DONE</span></span></code></pre></div>
 </div>
 <div id="exploring-relationships-between-variables" class="section level2">
 <h2><span class="header-section-number">7.6</span> Exploring relationships between variables</h2>
@@ -995,9 +1005,9 @@ ggplot(data = cor_matrix_long, aes(x=target_name, y=method, fill=correlation)) +
 <div id="the-scatterplot" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> The scatterplot</h3>
 <p>A simple scatterplot looking at the relationship between <code>first.sex</code> and <code>num.partners</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(clean_data, <span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span>
-<span class="st">   </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) 
-baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">na.rm=</span>T)</code></pre>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="eda.html#cb419-1"></a>baseplot_sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(clean_data, <span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span></span>
+<span id="cb419-2"><a href="eda.html#cb419-2"></a><span class="st">   </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) </span>
+<span id="cb419-3"><a href="eda.html#cb419-3"></a>baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="dt">na.rm=</span>T)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot1"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot1-1.png" alt="scatterplot first version" width="70%" />
 <p class="caption">
@@ -1008,12 +1018,13 @@ Figure 7.3: scatterplot first version
 More importantly, this is not showing the correct picture: there is a limited number of discrete values for each variable. Only around 100 points are visible where {r nrow(data)} are expected, so apparently many points overlap. This can be improved with alpha parameter to <code>geom_point</code>. Another strategy to improve is by using the <code>geom_jitter()</code> function, and combined with the <code>alpha</code> parameter.
 Omitting outliers could improve the picture, but will of course not show the complete picture anymore.</p>
 <p>Here, I choose the transparency option together with a bit of jitter (but not too much to still show the discreteness of the measurements). I also added a trend line in the form of a smoother. The trend line is an addition that is a great visual help to guide your reader. My question to you is: look at the trend line and decide whether it is showing a false pattern.</p>
-<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, 
-                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, 
-                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,
-                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="eda.html#cb420-1"></a>baseplot_sp <span class="op">+</span><span class="st"> </span></span>
+<span id="cb420-2"><a href="eda.html#cb420-2"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, </span>
+<span id="cb420-3"><a href="eda.html#cb420-3"></a>                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, </span>
+<span id="cb420-4"><a href="eda.html#cb420-4"></a>                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,</span>
+<span id="cb420-5"><a href="eda.html#cb420-5"></a>                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb420-6"><a href="eda.html#cb420-6"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot2"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot2-1.png" alt="scatterplot  with trendline" width="70%" />
 <p class="caption">
@@ -1021,14 +1032,15 @@ Figure 7.4: scatterplot with trendline
 </p>
 </div>
 <p>The trend line shows the high impact of a single outlier! In contrast to common belief about age of first sex and “promiscuity”, no apparent relationship is visible in this dataset when you omit the single outlier:</p>
-<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span>
-<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) <span class="op">+</span>
-<span class="st">        </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, 
-                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, 
-                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,
-                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">        </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="eda.html#cb422-1"></a>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb422-2"><a href="eda.html#cb422-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.partners)) <span class="op">+</span></span>
+<span id="cb422-3"><a href="eda.html#cb422-3"></a><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) <span class="op">+</span></span>
+<span id="cb422-4"><a href="eda.html#cb422-4"></a><span class="st">        </span><span class="kw">geom_jitter</span>(<span class="dt">na.rm=</span>T, <span class="dt">alpha=</span><span class="fl">0.2</span>, </span>
+<span id="cb422-5"><a href="eda.html#cb422-5"></a>                <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="dv">2</span>, </span>
+<span id="cb422-6"><a href="eda.html#cb422-6"></a>                <span class="dt">width =</span> <span class="fl">0.2</span>, <span class="dt">height =</span> <span class="fl">0.2</span>,</span>
+<span id="cb422-7"><a href="eda.html#cb422-7"></a>                <span class="dt">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb422-8"><a href="eda.html#cb422-8"></a><span class="st">        </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot3"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot3-1.png" alt="scatterplot  with trendline" width="70%" />
 <p class="caption">
@@ -1038,54 +1050,59 @@ Figure 7.5: scatterplot with trendline
 <div id="binning" class="section level4">
 <h4><span class="header-section-number">7.6.1.1</span> Binning</h4>
 <p>A method not discussed before is <strong><em>binning</em></strong>, With binning, you cluster the individual data points into “buckets”. The amount of cases in a bucket is then displayed using a color gradient.</p>
-<pre class="sourceCode r"><code class="sourceCode r">baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_bin2d</span>(<span class="dt">na.rm=</span>T)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-168-1.png" width="624" /></p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="eda.html#cb424-1"></a>baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_bin2d</span>(<span class="dt">na.rm=</span>T)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-125-1.png" width="624" /></p>
 <p>Here is a variation of binning - the hexagonal bin (requires package <code>hexbin</code>):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hexbin)
-baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_hex</span>(<span class="dt">na.rm=</span>T)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="eda.html#cb425-1"></a><span class="kw">library</span>(hexbin)</span>
+<span id="cb425-2"><a href="eda.html#cb425-2"></a>baseplot_sp <span class="op">+</span><span class="st"> </span><span class="kw">geom_hex</span>(<span class="dt">na.rm=</span>T)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 </div>
 </div>
 </div>
 <div id="look-for-patterns-with-the-dependent-variable" class="section level2">
 <h2><span class="header-section-number">7.7</span> Look for patterns with the dependent variable</h2>
 <p>Why would you do that? The dependent variable is the thing you are interested in! Therefore it is a good idea to investigate variables in relation with the dependent variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r">clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.preg, <span class="dt">color=</span>target.biopsy)) <span class="op">+</span>
-<span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of pregnancies&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color=</span>target.biopsy), 
-                <span class="dt">na.rm=</span>T, <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">height=</span><span class="fl">0.2</span>, 
-                <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.8</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-170-1.png" width="624" /></p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="eda.html#cb426-1"></a>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(num.partners <span class="op">&lt;</span><span class="st"> </span><span class="dv">25</span> ) <span class="op">%&gt;%</span></span>
+<span id="cb426-2"><a href="eda.html#cb426-2"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>first.sex, <span class="dt">y=</span>num.preg, <span class="dt">color=</span>target.biopsy)) <span class="op">+</span></span>
+<span id="cb426-3"><a href="eda.html#cb426-3"></a><span class="st">        </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Number of pregnancies&quot;</span>) <span class="op">+</span></span>
+<span id="cb426-4"><a href="eda.html#cb426-4"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color=</span>target.biopsy), </span>
+<span id="cb426-5"><a href="eda.html#cb426-5"></a>                <span class="dt">na.rm=</span>T, <span class="dt">width=</span><span class="fl">0.2</span>, <span class="dt">height=</span><span class="fl">0.2</span>, </span>
+<span id="cb426-6"><a href="eda.html#cb426-6"></a>                <span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="dt">shape=</span><span class="dv">16</span>, <span class="dt">size=</span><span class="fl">0.8</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb426-7"><a href="eda.html#cb426-7"></a><span class="st">    </span><span class="kw">ylim</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="op">+</span></span>
+<span id="cb426-8"><a href="eda.html#cb426-8"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>, <span class="dt">na.rm=</span>T)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-127-1.png" width="624" /></p>
 <p>Again, the heatmap comes in handy. Start with creating the matrix.</p>
-<pre class="sourceCode r"><code class="sourceCode r">selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)
-
-tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
-cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(tmp)
-<span class="co">#cor_matrix</span>
-
-<span class="co">#colnames(cor_matrix) &lt;- target_names</span>
-cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix)
-(cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">var1 =</span> selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">8</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>))</code></pre>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="eda.html#cb428-1"></a>selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
+<span id="cb428-2"><a href="eda.html#cb428-2"></a></span>
+<span id="cb428-3"><a href="eda.html#cb428-3"></a>tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()</span></code></pre></div>
+<pre><code>## Note: Using an external vector in selections is ambiguous.
+## ℹ Use `all_of(selection)` instead of `selection` to silence this message.
+## ℹ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.
+## This message is displayed once per session.</code></pre>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="eda.html#cb430-1"></a>cor_matrix &lt;-<span class="st"> </span><span class="kw">cor</span>(tmp)</span>
+<span id="cb430-2"><a href="eda.html#cb430-2"></a><span class="co">#cor_matrix</span></span>
+<span id="cb430-3"><a href="eda.html#cb430-3"></a></span>
+<span id="cb430-4"><a href="eda.html#cb430-4"></a><span class="co">#colnames(cor_matrix) &lt;- target_names</span></span>
+<span id="cb430-5"><a href="eda.html#cb430-5"></a>cor_matrix &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(cor_matrix)</span>
+<span id="cb430-6"><a href="eda.html#cb430-6"></a>(cor_matrix &lt;-<span class="st"> </span>cor_matrix <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">var1 =</span> selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dv">8</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 8
-##   var1  num.partners first.sex num.preg horm.contracept… IUD.years
-##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;
-## 1 num.…      1        -0.148    0.0937           0.0209    0.00705
-## 2 firs…     -0.148     1       -0.0704           0.00434  -0.0357 
-## 3 num.…      0.0937   -0.0704   1                0.217     0.156  
-## 4 horm…      0.0209    0.00434  0.217            1        -0.00885
-## 5 IUD.…      0.00705  -0.0357   0.156           -0.00885   1      
-## 6 STDs…      0.0370    0.00188 -0.00460         -0.0175    0.00262
-## 7 targ…     -0.00266   0.0296   0.0452           0.0799    0.0422 
-## # … with 2 more variables: STDs.number &lt;dbl&gt;, target.biopsy &lt;dbl&gt;</code></pre>
+##   var1  num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 num.…      1        -0.148    0.0937           0.0209    0.00705     0.0370 
+## 2 firs…     -0.148     1       -0.0704           0.00434  -0.0357      0.00188
+## 3 num.…      0.0937   -0.0704   1                0.217     0.156      -0.00460
+## 4 horm…      0.0209    0.00434  0.217            1        -0.00885    -0.0175 
+## 5 IUD.…      0.00705  -0.0357   0.156           -0.00885   1           0.00262
+## 6 STDs…      0.0370    0.00188 -0.00460         -0.0175    0.00262     1      
+## 7 targ…     -0.00266   0.0296   0.0452           0.0799    0.0422      0.105  
+## # … with 1 more variable: target.biopsy &lt;dbl&gt;</code></pre>
 <p>And then create the plot. Here I used <code>pivot_longer()</code> instead of <code>gather()</code> to obtain the longer format required for ggplot2.</p>
-<pre class="sourceCode r"><code class="sourceCode r">cor_matrix_long &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> cor_matrix, <span class="dt">cols =</span> selection, <span class="dt">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cor&quot;</span>)
-<span class="kw">ggplot</span>(<span class="dt">data =</span> cor_matrix_long, <span class="kw">aes</span>(<span class="dt">x=</span>var1, <span class="dt">y=</span>variable, <span class="dt">fill=</span>cor)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="ot">NULL</span>, <span class="dt">y=</span><span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">high =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;white&quot;</span> )</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="eda.html#cb432-1"></a>cor_matrix_long &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> cor_matrix, <span class="dt">cols =</span> selection, <span class="dt">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;cor&quot;</span>)</span>
+<span id="cb432-2"><a href="eda.html#cb432-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> cor_matrix_long, <span class="kw">aes</span>(<span class="dt">x=</span>var1, <span class="dt">y=</span>variable, <span class="dt">fill=</span>cor)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb432-3"><a href="eda.html#cb432-3"></a><span class="st">    </span><span class="kw">geom_tile</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb432-4"><a href="eda.html#cb432-4"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="ot">NULL</span>, <span class="dt">y=</span><span class="ot">NULL</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb432-5"><a href="eda.html#cb432-5"></a><span class="st">    </span><span class="kw">scale_fill_gradient</span>(<span class="dt">high =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">low =</span> <span class="st">&quot;white&quot;</span> )</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:heatmap2"></span>
 <img src="bookdown-demo_files/figure-html/heatmap2-1.png" alt="A heatmap pairwise correlation of selected numeric variables" width="100%" />
 <p class="caption">
@@ -1097,25 +1114,25 @@ Figure 7.6: A heatmap pairwise correlation of selected numeric variables
 <div id="density-plots-show-class-distinction" class="section level2">
 <h2><span class="header-section-number">7.8</span> Density plots show class distinction</h2>
 <p>A density plot, split over the categories of your target variable, will often quickly reveal whether there is promise in a variable. I’ll demonstrate with the <code>iris</code> dataset since the cervical cancer dataset is not so nice in that respect.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Petal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Species))</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-172-1.png" width="624" />
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="eda.html#cb433-1"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x=</span>Petal.Length)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Species))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-129-1.png" width="624" />
 In this plot, you can see that Setosa separates quite nicely, by the other two don’t.</p>
 <div id="the-xor-problem" class="section level3">
 <h3><span class="header-section-number">7.8.1</span> The ‘xor’ problem</h3>
 <p>The density approach is not flawless! Consider this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">var_x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>))
-var_y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>))
-label =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;sick&quot;</span>, <span class="dv">150</span>), <span class="kw">rep</span>(<span class="st">&quot;healthy&quot;</span>, <span class="dv">150</span>)), <span class="dv">2</span>)
-df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dosage =</span> var_x, <span class="dt">response=</span>var_y, <span class="dt">patient_type =</span> label)
-<span class="kw">ggplot</span>(<span class="dt">data=</span>df, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>dosage)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>patient_type))</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-173-1.png" width="624" /></p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="eda.html#cb434-1"></a>var_x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb434-2"><a href="eda.html#cb434-2"></a>var_y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="kw">runif</span>(<span class="dv">150</span>, <span class="dv">-1</span>, <span class="dv">0</span>))</span>
+<span id="cb434-3"><a href="eda.html#cb434-3"></a>label =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;sick&quot;</span>, <span class="dv">150</span>), <span class="kw">rep</span>(<span class="st">&quot;healthy&quot;</span>, <span class="dv">150</span>)), <span class="dv">2</span>)</span>
+<span id="cb434-4"><a href="eda.html#cb434-4"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">dosage =</span> var_x, <span class="dt">response=</span>var_y, <span class="dt">patient_type =</span> label)</span>
+<span id="cb434-5"><a href="eda.html#cb434-5"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>df, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>dosage)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>(<span class="kw">aes</span>(<span class="dt">color=</span>patient_type))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-130-1.png" width="624" /></p>
 <p>This looks like there is little to win, doesn’t it?<br />
 Here’s another view of the same data!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-174-1.png" width="624" />
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="eda.html#cb435-1"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-131-1.png" width="624" />
 Still not interesting! Give it one more shot:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response, <span class="dt">color=</span>patient_type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-175-1.png" width="624" /></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="eda.html#cb436-1"></a><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>dosage, <span class="dt">y=</span>response, <span class="dt">color=</span>patient_type)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-132-1.png" width="624" /></p>
 <p>This is called the <strong><em>XOR</em></strong> problem because the cases follow an “Exclusive Or” rule.</p>
 </div>
 </div>
@@ -1124,10 +1141,10 @@ Still not interesting! Give it one more shot:</p>
 <div id="pca" class="section level3">
 <h3><span class="header-section-number">7.9.1</span> PCA</h3>
 <p>First PCA will be shown with the iris dataset and then with the cervical cancer dataset.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ir.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(iris[, <span class="dv">-5</span>],
-                 <span class="dt">center =</span> <span class="ot">TRUE</span>,
-                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)
-<span class="kw">print</span>(ir.pca)</code></pre>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="eda.html#cb437-1"></a>ir.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(iris[, <span class="dv">-5</span>],</span>
+<span id="cb437-2"><a href="eda.html#cb437-2"></a>                 <span class="dt">center =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb437-3"><a href="eda.html#cb437-3"></a>                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb437-4"><a href="eda.html#cb437-4"></a><span class="kw">print</span>(ir.pca)</span></code></pre></div>
 <pre><code>## Standard deviations (1, .., p=4):
 ## [1] 1.708 0.956 0.383 0.144
 ## 
@@ -1138,44 +1155,40 @@ Still not interesting! Give it one more shot:</p>
 ## Petal.Length  0.580 -0.0245 -0.142 -0.801
 ## Petal.Width   0.565 -0.0669 -0.634  0.524</code></pre>
 <p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(ir.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="eda.html#cb439-1"></a><span class="kw">plot</span>(ir.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <p>The summary method describe the importance of the PCs.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(ir.pca)</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="eda.html#cb440-1"></a><span class="kw">summary</span>(ir.pca)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                         PC1   PC2    PC3     PC4
 ## Standard deviation     1.71 0.956 0.3831 0.14393
 ## Proportion of Variance 0.73 0.229 0.0367 0.00518
 ## Cumulative Proportion  0.73 0.958 0.9948 1.00000</code></pre>
 <p>The PC plot</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggbiplot)</code></pre>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="eda.html#cb442-1"></a><span class="kw">library</span>(ggbiplot)</span></code></pre></div>
 <pre><code>## Loading required package: plyr</code></pre>
-<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
 <pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
 ## If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
 ## library(plyr); library(dplyr)</code></pre>
-<pre><code>## -------------------------------------------------------------------------</code></pre>
+<pre><code>## ------------------------------------------------------------------------------</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;plyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:lubridate&#39;:
-## 
-##     here</code></pre>
 <pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
 ## 
 ##     arrange, count, desc, failwith, id, mutate, rename, summarise,
 ##     summarize</code></pre>
 <pre><code>## Loading required package: scales</code></pre>
-<pre><code>## Loading required package: grid</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggbiplot</span>(ir.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, 
-              <span class="dt">groups =</span> iris[,<span class="dv">5</span>], <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, 
-              <span class="dt">circle =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="eda.html#cb450-1"></a><span class="kw">ggbiplot</span>(ir.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, </span>
+<span id="cb450-2"><a href="eda.html#cb450-2"></a>              <span class="dt">groups =</span> iris[,<span class="dv">5</span>], <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb450-3"><a href="eda.html#cb450-3"></a>              <span class="dt">circle =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb450-4"><a href="eda.html#cb450-4"></a><span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span></span>
+<span id="cb450-5"><a href="eda.html#cb450-5"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>Now the same procedure for the cervical cancer dataset, with a selection of numerical variables.</p>
-<pre class="sourceCode r"><code class="sourceCode r">selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)
-tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()
-tmp</code></pre>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="eda.html#cb451-1"></a>selection &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
+<span id="cb451-2"><a href="eda.html#cb451-2"></a>tmp &lt;-<span class="st"> </span>clean_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(selection) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>()</span>
+<span id="cb451-3"><a href="eda.html#cb451-3"></a>tmp</span></code></pre></div>
 <pre><code>## # A tibble: 676 x 7
 ##    num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
 ##           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
@@ -1190,10 +1203,10 @@ tmp</code></pre>
 ##  9            3        26        4                2         0           0
 ## 10            1        17        3                8         0           0
 ## # … with 666 more rows, and 1 more variable: target.biopsy &lt;lgl&gt;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">cc.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(tmp[, <span class="dv">-7</span>],
-                 <span class="dt">center =</span> <span class="ot">TRUE</span>,
-                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)
-<span class="kw">print</span>(cc.pca)</code></pre>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="eda.html#cb453-1"></a>cc.pca &lt;-<span class="st"> </span><span class="kw">prcomp</span>(tmp[, <span class="dv">-7</span>],</span>
+<span id="cb453-2"><a href="eda.html#cb453-2"></a>                 <span class="dt">center =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb453-3"><a href="eda.html#cb453-3"></a>                 <span class="dt">scale. =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb453-4"><a href="eda.html#cb453-4"></a><span class="kw">print</span>(cc.pca)</span></code></pre></div>
 <pre><code>## Standard deviations (1, .., p=6):
 ## [1] 1.151 1.052 1.005 0.999 0.918 0.848
 ## 
@@ -1206,21 +1219,21 @@ tmp</code></pre>
 ## IUD.years             -0.3457 -0.104 -0.8319 -0.0899 -0.0903 -0.40168
 ## STDs.number           -0.0113  0.266 -0.1506  0.9336  0.1875  0.00171</code></pre>
 <p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(cc.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="eda.html#cb455-1"></a><span class="kw">plot</span>(cc.pca, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p>The summary method describe the importance of the PCs.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cc.pca)</code></pre>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="eda.html#cb456-1"></a><span class="kw">summary</span>(cc.pca)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                          PC1   PC2   PC3   PC4   PC5   PC6
 ## Standard deviation     1.151 1.052 1.005 0.999 0.918 0.848
 ## Proportion of Variance 0.221 0.185 0.168 0.166 0.140 0.120
 ## Cumulative Proportion  0.221 0.405 0.574 0.740 0.880 1.000</code></pre>
 <p>PC plot</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggbiplot</span>(cc.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, 
-              <span class="dt">groups =</span> tmp<span class="op">$</span>target.biopsy, <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, 
-              <span class="dt">circle =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="eda.html#cb458-1"></a><span class="kw">ggbiplot</span>(cc.pca, <span class="dt">obs.scale =</span> <span class="dv">1</span>, <span class="dt">var.scale =</span> <span class="dv">1</span>, </span>
+<span id="cb458-2"><a href="eda.html#cb458-2"></a>              <span class="dt">groups =</span> tmp<span class="op">$</span>target.biopsy, <span class="dt">ellipse =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb458-3"><a href="eda.html#cb458-3"></a>              <span class="dt">circle =</span> <span class="ot">TRUE</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb458-4"><a href="eda.html#cb458-4"></a><span class="st">    </span><span class="kw">scale_color_discrete</span>(<span class="dt">name =</span> <span class="st">&#39;&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb458-5"><a href="eda.html#cb458-5"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="dt">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pca2"></span>
 <img src="bookdown-demo_files/figure-html/pca2-1.png" alt="A PCA plot of the numerical variables" width="100%" />
 <p class="caption">
@@ -1244,7 +1257,7 @@ Figure 7.7: A PCA plot of the numerical variables
 <div id="k-means-clustering" class="section level3">
 <h3><span class="header-section-number">7.9.3</span> k-Means clustering</h3>
 <p>k-means is very sensitive to the scale of your data so you’ll need to normalize it.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#km_clusters &lt;- kmeans()</span></code></pre>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="eda.html#cb459-1"></a><span class="co">#km_clusters &lt;- kmeans()</span></span></code></pre></div>
 </div>
 <div id="hierarchical-clustering" class="section level3">
 <h3><span class="header-section-number">7.9.4</span> hierarchical clustering</h3>
@@ -1258,16 +1271,18 @@ Figure 7.7: A PCA plot of the numerical variables
         </div>
       </div>
 <a href="stringr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="publish.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1275,12 +1290,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1292,6 +1306,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1310,8 +1328,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

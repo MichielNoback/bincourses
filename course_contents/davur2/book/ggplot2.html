@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 The ggplot2 package | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 The ggplot2 package | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="developing-a-custom-visualization.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="developing-a-custom-visualization.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,32 +48,38 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -171,7 +178,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
+<li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
+<li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
+<li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -192,13 +209,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
-<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
-<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#split-columns-with-separate"><i class="fa fa-check"></i><b>3.5</b> Split columns with <code>separate()</code></a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
@@ -289,61 +304,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
-<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
-<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
-<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>10.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="10.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>10.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="10.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>10.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="10.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>10.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="10.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>10.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="10.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>10.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>10.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>11</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -370,8 +390,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="introduction" class="section level2">
 <h2><span class="header-section-number">1.1</span> Introduction</h2>
 <p>In this chapter, we’ll explore the package <code>ggplot2</code>. Package ggplot2 is one of the most popular packages of R, and a de facto standard for creating publishable visualizations.</p>
-<p>Whole books have been written about ggplot2 (e.g. [INSERT REF]); these will not be repeated here. Instead, I have selected the minimal amount of information and examples to get you going in your own research visualization endeavors in biomedical research. For that reason, this chapter only deals with the base <code>ggplot()</code> function and its most important usage scenarios.<br />
-In my opinion, you are best prepared when first learning the ggplot “language” structure, not the complete listing of possibilities. You can check these out later on your own. If you are interested in what the package has to offer, type <code>help(package=&quot;ggplot2&quot;)</code> on the console.</p>
+<p>Whole books have been written about ggplot2 (e.g. [INSERT REF]); these will not be repeated here. Instead, I have selected the minimal amount of information and examples to get you going in your own research visualization endeavors in biomedical research. For that reason, this chapter only deals with the base <code>ggplot()</code> function and its most important usage scenarios.<br />
+In my opinion, you are best prepared when first learning the ggplot “language” structure, not the complete listing of possibilities. You can check these out later on your own. If you are interested in what the package has to offer, type <code>help(package="ggplot2")</code> on the console.</p>
 <div id="keep-the-goal-in-mind" class="section level3 unnumbered">
 <h3>Keep the goal in mind</h3>
 <p>You should always remember the purpose with which you create a plot:</p>
@@ -386,16 +406,16 @@ In my opinion, you are best prepared when first learning the ggplot “language�
 <div id="getting-started" class="section level2">
 <h2><span class="header-section-number">1.2</span> Getting started</h2>
 <p>Install the packages <code>ggplot2</code> and <code>tidyr</code> first, if not already installed. The package ggplot2 is the topic of this chapter of course. Package tidyr is the topic of a later chapter, but we’ll see a use case of it here already.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)
-<span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="ggplot2.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb1-2"><a href="ggplot2.html#cb1-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
 <p>After installing, you’ll need to load the packages.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(tidyr)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="ggplot2.html#cb2-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="ggplot2.html#cb2-2"></a><span class="kw">library</span>(tidyr)</span></code></pre></div>
 <div id="a-first-plot" class="section level3 unnumbered">
 <h3>A first plot</h3>
 <p>Let’s dive right in and create a first plot, and walk through the different parts of this code.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="ggplot2.html#cb3-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb3-2"><a href="ggplot2.html#cb3-2"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:first-plot"></span>
 <img src="bookdown-demo_files/figure-html/first-plot-1.png" alt="A scatter plot visualizing Ozone as a function of Temperature" width="80%" />
@@ -404,7 +424,7 @@ Figure 1.1: A scatter plot visualizing Ozone as a function of Temperature
 </p>
 </div>
 <p>There are two <strong><em>chained function calls</em></strong>: <code>ggplot()</code> and <code>geom_point()</code>. They are chained using the <code>+</code> operator. The first function, <code>ggplot()</code>, creates the base layer of the plot It receives the data and defines how it maps to the two axes. By itself, <code>ggplot()</code>, will not display anything of your data. It creates an empty plot where the axes are defined and have the correct scale:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="ggplot2.html#cb5-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:empty-plot"></span>
 <img src="bookdown-demo_files/figure-html/empty-plot-1.png" alt="An empty plot pane" width="80%" />
 <p class="caption">
@@ -413,12 +433,12 @@ Figure 1.2: An empty plot pane
 </div>
 <p>The next function, <code>geom_point()</code>, builds on the base layer it receives via the <code>+</code> operator and adds a new layer to the plot, a data representation using points.</p>
 <p>The <code>geom_point()</code> function encounters rows with missing data and issues a warning (<code>Warning: Removed 37 rows...</code>) but proceeds anyway. There are two ways to prevent this annoying warning message. The first is to put a <code>warning=FALSE</code> statement in the RMarkdown chunk header. This is usually <strong>not</strong> a good idea because you should be explicit about problem handling when implementing a data analysis workflow because it hinders the reproducibility of your work. Therefore, removing the missing values explicitly is a better solution:</p>
-<pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">na.omit</span>(airquality)
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ggplot2.html#cb6-1"></a>airquality &lt;-<span class="st"> </span><span class="kw">na.omit</span>(airquality)</span>
+<span id="cb6-2"><a href="ggplot2.html#cb6-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone)) <span class="op">+</span></span>
+<span id="cb6-3"><a href="ggplot2.html#cb6-3"></a><span class="st">  </span><span class="kw">geom_point</span>()</span></code></pre></div>
 <p>Note that this overwrites the build-in dataset <code>airquality</code> for the duration of this R session.</p>
 <p>To obtain a similar plot as created above with “base” R, you would have done something like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(airquality, <span class="kw">plot</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ggplot2.html#cb7-1"></a><span class="kw">with</span>(airquality, <span class="kw">plot</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:first-plot-baseR"></span>
 <img src="bookdown-demo_files/figure-html/first-plot-baseR-1.png" alt="The same visualization with base R" width="80%" />
 <p class="caption">
@@ -430,10 +450,10 @@ Figure 1.3: The same visualization with base R
 <div id="adding-a-dimension-using-color" class="section level3 unnumbered">
 <h3>Adding a dimension using color</h3>
 <p>This plot shows the power of ggplot2: building complex visualizations with minimal code.</p>
-<pre class="sourceCode r"><code class="sourceCode r">airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">as.factor</span>(airquality<span class="op">$</span>Month)
-airquality<span class="op">$</span>TempFac &lt;-<span class="st"> </span><span class="kw">cut</span>(airquality<span class="op">$</span>Temp, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dt">ordered_result =</span> T)
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone, <span class="dt">color=</span>Month)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>() </code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ggplot2.html#cb8-1"></a>airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">as.factor</span>(airquality<span class="op">$</span>Month)</span>
+<span id="cb8-2"><a href="ggplot2.html#cb8-2"></a>airquality<span class="op">$</span>TempFac &lt;-<span class="st"> </span><span class="kw">cut</span>(airquality<span class="op">$</span>Temp, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>), <span class="dt">ordered_result =</span> T)</span>
+<span id="cb8-3"><a href="ggplot2.html#cb8-3"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temp, <span class="dt">y =</span> Ozone, <span class="dt">color=</span>Month)) <span class="op">+</span></span>
+<span id="cb8-4"><a href="ggplot2.html#cb8-4"></a><span class="st">  </span><span class="kw">geom_point</span>() </span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:first-plot-w-color1"></span>
 <img src="bookdown-demo_files/figure-html/first-plot-w-color1-1.png" alt="Ozone as function of Temp with plot symbols colored by Month" width="80%" />
 <p class="caption">
@@ -453,13 +473,14 @@ Figure 1.4: Ozone as function of Temp with plot symbols colored by Month
 <li>a detail: temperature is measured in whole degrees only. This will give plotting artifacts: discrete vertical lines of data points.</li>
 </ol>
 <p>The plot below fixes and addresses the above issues to create a publication-ready figure. We’ll get to the details of this code as we proceed in this chapter. For now the message is <strong><em>be meticulous in constructing your plot</em></strong>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">factor</span>(airquality<span class="op">$</span>Month, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">labels=</span>month.abb)
-<span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="ggplot2.html#cb9-1"></a>airquality<span class="op">$</span>Month &lt;-<span class="st"> </span><span class="kw">factor</span>(airquality<span class="op">$</span>Month, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">labels=</span>month.abb)</span>
+<span id="cb9-2"><a href="ggplot2.html#cb9-2"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span></span>
+<span id="cb9-3"><a href="ggplot2.html#cb9-3"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb9-4"><a href="ggplot2.html#cb9-4"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span></span>
+<span id="cb9-5"><a href="ggplot2.html#cb9-5"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span></span>
+<span id="cb9-6"><a href="ggplot2.html#cb9-6"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span></span>
+<span id="cb9-7"><a href="ggplot2.html#cb9-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:first-plot-w-color2"></span>
 <img src="bookdown-demo_files/figure-html/first-plot-w-color2-1.png" alt="Ozone level dependency on Temperature. Grey area: Loess smoother with 95% confidence interval. Source: R dataset &quot;Daily air quality measurements in New York, May to September 1973.&quot;" width="80%" />
 <p class="caption">
@@ -513,23 +534,23 @@ Figure 1.5: Ozone level dependency on Temperature. Grey area: Loess smoother wit
 </table>
 <p>First, there is the <strong><em>data</em></strong> layer - the input data that you want to visualize:</p>
 <div class="figure">
-<img src="graphics/data_layer_50p.png#center" alt="The data layer" />
+<img src="graphics/data_layer_50p.png#center" alt="" />
 <p class="caption">The data layer</p>
 </div>
 <p>Next, using the <code>aes()</code> function, the data is <strong><em>mapped</em></strong> to a coordinate system. This encompasses not only the xy-coordinates but also possible extra plot dimensions such as color and shape.</p>
 <div class="figure">
-<img src="graphics/data_aes_layers_50p.png#center" alt="The data and aesthetic layers" />
+<img src="graphics/data_aes_layers_50p.png#center" alt="" />
 <p class="caption">The data and aesthetic layers</p>
 </div>
 <p>As a third step, the data is <strong><em>visually represented</em></strong> in some way, using a <strong><em>geometry</em></strong> (dealt with by one of the many <code>geom_....()</code> functions). Examples of geometries are <strong><em>point</em></strong> for scatterplots, <strong><em>boxplot</em></strong>, <strong><em>line</em></strong> etc.</p>
 <div class="figure">
-<img src="graphics/data_aes_geom_layers_50p.png#center" alt="The data, aesthetic and geometry layers" />
+<img src="graphics/data_aes_geom_layers_50p.png#center" alt="" />
 <p class="caption">The data, aesthetic and geometry layers</p>
 </div>
 <p>At a minimum, these three layers are used in every plot you create.</p>
 <p>Besides these fundamental aspects there are other elements you may wish to add or modify: axis labels, legend, titles, etc. These constitute additional, optional layers:</p>
 <div class="figure">
-<img src="graphics/all_layers_50p.png#center" alt="All layers" />
+<img src="graphics/all_layers_50p.png#center" alt="" />
 <p class="caption">All layers</p>
 </div>
 <p>Except for Statistics and Coordinates, each of these layers will be discussed in detail in subsequent paragraphs.</p>
@@ -543,7 +564,7 @@ Figure 1.5: Ozone level dependency on Temperature. Grey area: Loess smoother wit
 <li>Each observation has its own row.</li>
 <li>Each value has its own cell.</li>
 </ol>
-<p>Want to know more about tidy data? Read the paper by Hadley Wickham: <span class="citation">(Wickham <a href="#ref-tidy-data">2014</a>)</span>.</p>
+<p>Want to know more about tidy data? Read the paper by Hadley Wickham: <span class="citation">(Wickham <a href="#ref-tidy-data" role="doc-biblioref">2014</a>)</span>.</p>
 <p>Here is an example dataset that requires some mangling, or <strong><em>tidying</em></strong>, to adhere to these rules.</p>
 <table>
 <thead>
@@ -589,13 +610,13 @@ Figure 1.5: Ozone level dependency on Temperature. Grey area: Loess smoother wit
 </table>
 <p>This dataset is not tidy because there is an independent variable -the dose- that should have its own column; its value is now buried inside two column headers (<code>dose10mg</code> and <code>dose10mg</code>). Also, there is actually a single variable -the response- that is now split into two columns. Thus, a row now contains two observations.</p>
 <p>Suppose you want to plot the response as a function of the dose. That is not quite possible right now in ggplot2. This is because you want to do something like</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>dose_response,
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&lt;I want to get the dose levels here&gt;&quot;</span>,
-                     <span class="dt">y =</span> <span class="st">&quot;&lt;I want to get the response here&gt;&quot;</span>)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="ggplot2.html#cb11-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>dose_response,</span>
+<span id="cb11-2"><a href="ggplot2.html#cb11-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">&quot;&lt;I want to get the dose levels here&gt;&quot;</span>,</span>
+<span id="cb11-3"><a href="ggplot2.html#cb11-3"></a>                     <span class="dt">y =</span> <span class="st">&quot;&lt;I want to get the response here&gt;&quot;</span>)) <span class="op">+</span></span>
+<span id="cb11-4"><a href="ggplot2.html#cb11-4"></a><span class="st">    </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p>The problem is you cannot <strong><em>specify the mapping in a straightforward manner</em></strong>.
 Note that in base R you would probably do this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(dose_response<span class="op">$</span>dose10mg, dose_response<span class="op">$</span>dose100mg)</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="ggplot2.html#cb12-1"></a><span class="kw">boxplot</span>(dose_response<span class="op">$</span>dose10mg, dose_response<span class="op">$</span>dose100mg)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:plot-with-untidy-data"></span>
 <img src="bookdown-demo_files/figure-html/plot-with-untidy-data-1.png" alt="Selecting untidy data" width="80%" />
 <p class="caption">
@@ -603,23 +624,23 @@ Figure 1.6: Selecting untidy data
 </p>
 </div>
 <p>So, we need to tidy this dataframe since the <code>dose_10_response</code> and <code>dose_100_response</code> columns actually describe the same variable (measurement) but with different <em>conditions</em>. As an exercise, I tried it using base R. Here is my solution.</p>
-<pre class="sourceCode r"><code class="sourceCode r">tidy_my_df &lt;-<span class="st"> </span><span class="cf">function</span>(df) {
-    create_tidy_columns &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-        <span class="kw">data.frame</span>(<span class="dt">patient =</span> <span class="kw">rep</span>(x[<span class="dv">1</span>], <span class="dv">2</span>),
-                   <span class="dt">sex =</span> <span class="kw">rep</span>(x[<span class="dv">2</span>], <span class="dv">2</span>),
-                   <span class="dt">dose =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>),
-                   <span class="dt">response =</span> <span class="kw">c</span>(x[<span class="dv">3</span>], x[<span class="dv">4</span>]))
-    }
-    
-    tmp &lt;-<span class="st"> </span><span class="kw">Reduce</span>(<span class="cf">function</span>(x, y) <span class="kw">merge</span>(x, y, <span class="dt">all=</span><span class="ot">TRUE</span>), 
-           <span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> create_tidy_columns))
-    tmp[<span class="kw">order</span>(tmp<span class="op">$</span>dose), ]
-}
-knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">tidy_my_df</span>(dose_response), <span class="dt">n=</span><span class="dv">10</span>))</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="ggplot2.html#cb13-1"></a>tidy_my_df &lt;-<span class="st"> </span><span class="cf">function</span>(df) {</span>
+<span id="cb13-2"><a href="ggplot2.html#cb13-2"></a>    create_tidy_columns &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb13-3"><a href="ggplot2.html#cb13-3"></a>        <span class="kw">data.frame</span>(<span class="dt">patient =</span> <span class="kw">rep</span>(x[<span class="dv">1</span>], <span class="dv">2</span>),</span>
+<span id="cb13-4"><a href="ggplot2.html#cb13-4"></a>                   <span class="dt">sex =</span> <span class="kw">rep</span>(x[<span class="dv">2</span>], <span class="dv">2</span>),</span>
+<span id="cb13-5"><a href="ggplot2.html#cb13-5"></a>                   <span class="dt">dose =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>),</span>
+<span id="cb13-6"><a href="ggplot2.html#cb13-6"></a>                   <span class="dt">response =</span> <span class="kw">c</span>(x[<span class="dv">3</span>], x[<span class="dv">4</span>]))</span>
+<span id="cb13-7"><a href="ggplot2.html#cb13-7"></a>    }</span>
+<span id="cb13-8"><a href="ggplot2.html#cb13-8"></a>    </span>
+<span id="cb13-9"><a href="ggplot2.html#cb13-9"></a>    tmp &lt;-<span class="st"> </span><span class="kw">Reduce</span>(<span class="cf">function</span>(x, y) <span class="kw">merge</span>(x, y, <span class="dt">all=</span><span class="ot">TRUE</span>), </span>
+<span id="cb13-10"><a href="ggplot2.html#cb13-10"></a>           <span class="kw">apply</span>(<span class="dt">X =</span> df, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> create_tidy_columns))</span>
+<span id="cb13-11"><a href="ggplot2.html#cb13-11"></a>    tmp[<span class="kw">order</span>(tmp<span class="op">$</span>dose), ]</span>
+<span id="cb13-12"><a href="ggplot2.html#cb13-12"></a>}</span>
+<span id="cb13-13"><a href="ggplot2.html#cb13-13"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(<span class="kw">tidy_my_df</span>(dose_response), <span class="dt">n=</span><span class="dv">10</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th align="left"></th>
 <th align="left">patient</th>
 <th align="left">sex</th>
 <th align="right">dose</th>
@@ -628,70 +649,70 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
+<td align="left">1</td>
 <td align="left">001</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">12</td>
 </tr>
 <tr class="even">
-<td>3</td>
+<td align="left">3</td>
 <td align="left">002</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">11</td>
 </tr>
 <tr class="odd">
-<td>5</td>
+<td align="left">5</td>
 <td align="left">003</td>
 <td align="left">m</td>
 <td align="right">10</td>
 <td align="left">54</td>
 </tr>
 <tr class="even">
-<td>7</td>
+<td align="left">7</td>
 <td align="left">004</td>
 <td align="left">m</td>
 <td align="right">10</td>
 <td align="left">71</td>
 </tr>
 <tr class="odd">
-<td>9</td>
+<td align="left">9</td>
 <td align="left">005</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">19</td>
 </tr>
 <tr class="even">
-<td>11</td>
+<td align="left">11</td>
 <td align="left">006</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">22</td>
 </tr>
 <tr class="odd">
-<td>13</td>
+<td align="left">13</td>
 <td align="left">007</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">23</td>
 </tr>
 <tr class="even">
-<td>15</td>
+<td align="left">15</td>
 <td align="left">008</td>
 <td align="left">m</td>
 <td align="right">10</td>
 <td align="left">68</td>
 </tr>
 <tr class="odd">
-<td>17</td>
+<td align="left">17</td>
 <td align="left">009</td>
 <td align="left">f</td>
 <td align="right">10</td>
 <td align="left">30</td>
 </tr>
 <tr class="even">
-<td>19</td>
+<td align="left">19</td>
 <td align="left">010</td>
 <td align="left">m</td>
 <td align="right">10</td>
@@ -702,16 +723,16 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <p>Luckily, there is a very nice package that makes this quite easy: <code>tidyr</code>.</p>
 <div id="tidying-data-using-tidyrgather" class="section level4 unnumbered">
 <h4>Tidying data using <code>tidyr::gather()</code></h4>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## tidy</span>
-dose_response_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data=</span>dose_response, 
-                             <span class="dt">key=</span>dose, 
-                             <span class="dt">value=</span>response, 
-                             <span class="st">&quot;dose10mg&quot;</span>, <span class="st">&quot;dose100mg&quot;</span>)
-<span class="co">## transform dose column to nice factor</span>
-dose_response_tidy<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(
-    dose_response_tidy<span class="op">$</span>dose <span class="op">==</span><span class="st"> &quot;dose10mg&quot;</span>, <span class="dv">10</span>, <span class="dv">100</span>), 
-  <span class="dt">ordered =</span> T)
-knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(dose_response_tidy, <span class="dt">n=</span><span class="dv">10</span>))</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="ggplot2.html#cb14-1"></a><span class="co">## tidy</span></span>
+<span id="cb14-2"><a href="ggplot2.html#cb14-2"></a>dose_response_tidy &lt;-<span class="st"> </span><span class="kw">gather</span>(<span class="dt">data=</span>dose_response, </span>
+<span id="cb14-3"><a href="ggplot2.html#cb14-3"></a>                             <span class="dt">key=</span>dose, </span>
+<span id="cb14-4"><a href="ggplot2.html#cb14-4"></a>                             <span class="dt">value=</span>response, </span>
+<span id="cb14-5"><a href="ggplot2.html#cb14-5"></a>                             <span class="st">&quot;dose10mg&quot;</span>, <span class="st">&quot;dose100mg&quot;</span>)</span>
+<span id="cb14-6"><a href="ggplot2.html#cb14-6"></a><span class="co">## transform dose column to nice factor</span></span>
+<span id="cb14-7"><a href="ggplot2.html#cb14-7"></a>dose_response_tidy<span class="op">$</span>dose &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">ifelse</span>(</span>
+<span id="cb14-8"><a href="ggplot2.html#cb14-8"></a>    dose_response_tidy<span class="op">$</span>dose <span class="op">==</span><span class="st"> &quot;dose10mg&quot;</span>, <span class="dv">10</span>, <span class="dv">100</span>), </span>
+<span id="cb14-9"><a href="ggplot2.html#cb14-9"></a>  <span class="dt">ordered =</span> T)</span>
+<span id="cb14-10"><a href="ggplot2.html#cb14-10"></a>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(dose_response_tidy, <span class="dt">n=</span><span class="dv">10</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -787,9 +808,9 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <p>The data is tidy now, and ready for use within ggplot2.</p>
 <p>We’ll explore the <code>gather()</code> function in detail in a next chapter.</p>
 <p>Now, creating the plot in ggplot2 is a breeze</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
-dr_plot <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>()</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="ggplot2.html#cb15-1"></a>dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))</span>
+<span id="cb15-2"><a href="ggplot2.html#cb15-2"></a>dr_plot <span class="op">+</span><span class="st"> </span></span>
+<span id="cb15-3"><a href="ggplot2.html#cb15-3"></a><span class="st">    </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot-tidy-basic-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Would you proceed with this hypothetical drug?</p>
 </div>
@@ -814,45 +835,45 @@ dr_plot <span class="op">+</span><span class="st"> </span>
 </ul>
 <p>Below is a panel displaying all named colors you can use in R</p>
 <p><img src="bookdown-demo_files/figure-html/color-names-1.png" width="100%" /></p>
-<p>When you provide a literal (character) for the color aesthetic it will simply be that color. If you want to map a property (e.g. “Month”) to a range of colors, you should use a color palette. Since ggplot has build-in color palettes, you can simply use <code>color=&lt;my-third-dimension-variable&gt;</code>. This variable mapping to color can be either a factor (discrete scale) or numeric (continuous scale).
+<p>When you provide a literal (character) for the color aesthetic it will simply be that color. If you want to map a property (e.g. “Month”) to a range of colors, you should use a color palette. Since ggplot has build-in color palettes, you can simply use <code>color=&lt;my-third-dimension-variable&gt;</code>. This variable mapping to color can be either a factor (discrete scale) or numeric (continuous scale).
 The ggplot function will map the variable the default color palette.</p>
 <p>Here are some ways to work with color palettes</p>
 <div id="the-default-palette" class="section level4 unnumbered">
 <h4>The default palette</h4>
-<pre class="sourceCode r"><code class="sourceCode r">sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species))
-sp</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="ggplot2.html#cb16-1"></a>sp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species))</span>
+<span id="cb16-2"><a href="ggplot2.html#cb16-2"></a>sp</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/color-palette-default-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="manual-palettes" class="section level4 unnumbered">
 <h4>Manual palettes</h4>
 <p>You can specify your own colors using <code>scale_color_manual()</code> for scatter plots or <code>scale_fill_manual()</code> for boxplots and bar plots.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#00AFBB&quot;</span>, <span class="st">&quot;#E7B800&quot;</span>, <span class="st">&quot;#FC4E07&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="ggplot2.html#cb17-1"></a>sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;#00AFBB&quot;</span>, <span class="st">&quot;#E7B800&quot;</span>, <span class="st">&quot;#FC4E07&quot;</span>))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/color-palette-manual-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Here is a nice set of colors:</p>
-<pre class="sourceCode r"><code class="sourceCode r">custom_col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#FFDB6D&quot;</span>, <span class="st">&quot;#C4961A&quot;</span>, <span class="st">&quot;#F4EDCA&quot;</span>, 
-                <span class="st">&quot;#D16103&quot;</span>, <span class="st">&quot;#C3D7A4&quot;</span>, <span class="st">&quot;#52854C&quot;</span>, <span class="st">&quot;#4E84C4&quot;</span>, <span class="st">&quot;#293352&quot;</span>)
-<span class="kw">show_palette</span>(custom_col, <span class="dt">cols=</span><span class="kw">length</span>(custom_col))</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="ggplot2.html#cb18-1"></a>custom_col &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#FFDB6D&quot;</span>, <span class="st">&quot;#C4961A&quot;</span>, <span class="st">&quot;#F4EDCA&quot;</span>, </span>
+<span id="cb18-2"><a href="ggplot2.html#cb18-2"></a>                <span class="st">&quot;#D16103&quot;</span>, <span class="st">&quot;#C3D7A4&quot;</span>, <span class="st">&quot;#52854C&quot;</span>, <span class="st">&quot;#4E84C4&quot;</span>, <span class="st">&quot;#293352&quot;</span>)</span>
+<span id="cb18-3"><a href="ggplot2.html#cb18-3"></a><span class="kw">show_palette</span>(custom_col, <span class="dt">cols=</span><span class="kw">length</span>(custom_col))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/custom-palette1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Here is a colorblind-friendly palette:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The palette with grey:</span>
-cbp1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>,
-          <span class="st">&quot;#F0E442&quot;</span>, <span class="st">&quot;#0072B2&quot;</span>, <span class="st">&quot;#D55E00&quot;</span>, <span class="st">&quot;#CC79A7&quot;</span>)
-
-<span class="kw">show_palette</span>(cbp1, <span class="dt">cols=</span><span class="kw">length</span>(cbp1))</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ggplot2.html#cb19-1"></a><span class="co"># The palette with grey:</span></span>
+<span id="cb19-2"><a href="ggplot2.html#cb19-2"></a>cbp1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#999999&quot;</span>, <span class="st">&quot;#E69F00&quot;</span>, <span class="st">&quot;#56B4E9&quot;</span>, <span class="st">&quot;#009E73&quot;</span>,</span>
+<span id="cb19-3"><a href="ggplot2.html#cb19-3"></a>          <span class="st">&quot;#F0E442&quot;</span>, <span class="st">&quot;#0072B2&quot;</span>, <span class="st">&quot;#D55E00&quot;</span>, <span class="st">&quot;#CC79A7&quot;</span>)</span>
+<span id="cb19-4"><a href="ggplot2.html#cb19-4"></a></span>
+<span id="cb19-5"><a href="ggplot2.html#cb19-5"></a><span class="kw">show_palette</span>(cbp1, <span class="dt">cols=</span><span class="kw">length</span>(cbp1))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/custom-palette2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>When you pass a palette that is longer than the number of levels in your factor, R will only use as many as required:</p>
-<pre class="sourceCode r"><code class="sourceCode r">sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> cbp1)</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ggplot2.html#cb20-1"></a>sp <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_manual</span>(<span class="dt">values =</span> cbp1)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/color-palette-manual2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="rcolorbrewer-palettes" class="section level4 unnumbered">
 <h4>RColorBrewer palettes</h4>
 <p>R provides the “RColorBrewer” package. The <code>brewer.pal</code> function has several palettes for various applications at your disposal. Have a look at <code>brewer.pal.info</code>, which lists all:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RColorBrewer)
-knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="ggplot2.html#cb21-1"></a><span class="kw">library</span>(RColorBrewer)</span>
+<span id="cb21-2"><a href="ggplot2.html#cb21-2"></a>knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
-<th></th>
+<th align="left"></th>
 <th align="right">maxcolors</th>
 <th align="left">category</th>
 <th align="left">colorblind</th>
@@ -860,211 +881,211 @@ knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</c
 </thead>
 <tbody>
 <tr class="odd">
-<td>BrBG</td>
+<td align="left">BrBG</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>PiYG</td>
+<td align="left">PiYG</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>PRGn</td>
+<td align="left">PRGn</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>PuOr</td>
+<td align="left">PuOr</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>RdBu</td>
+<td align="left">RdBu</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>RdGy</td>
+<td align="left">RdGy</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="odd">
-<td>RdYlBu</td>
+<td align="left">RdYlBu</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>RdYlGn</td>
+<td align="left">RdYlGn</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="odd">
-<td>Spectral</td>
+<td align="left">Spectral</td>
 <td align="right">11</td>
 <td align="left">div</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
-<td>Accent</td>
+<td align="left">Accent</td>
 <td align="right">8</td>
 <td align="left">qual</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="odd">
-<td>Dark2</td>
+<td align="left">Dark2</td>
 <td align="right">8</td>
 <td align="left">qual</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>Paired</td>
+<td align="left">Paired</td>
 <td align="right">12</td>
 <td align="left">qual</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>Pastel1</td>
+<td align="left">Pastel1</td>
 <td align="right">9</td>
 <td align="left">qual</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
-<td>Pastel2</td>
+<td align="left">Pastel2</td>
 <td align="right">8</td>
 <td align="left">qual</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="odd">
-<td>Set1</td>
+<td align="left">Set1</td>
 <td align="right">9</td>
 <td align="left">qual</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
-<td>Set2</td>
+<td align="left">Set2</td>
 <td align="right">8</td>
 <td align="left">qual</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>Set3</td>
+<td align="left">Set3</td>
 <td align="right">12</td>
 <td align="left">qual</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
-<td>Blues</td>
+<td align="left">Blues</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>BuGn</td>
+<td align="left">BuGn</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>BuPu</td>
+<td align="left">BuPu</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>GnBu</td>
+<td align="left">GnBu</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>Greens</td>
+<td align="left">Greens</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>Greys</td>
+<td align="left">Greys</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>Oranges</td>
+<td align="left">Oranges</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>OrRd</td>
+<td align="left">OrRd</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>PuBu</td>
+<td align="left">PuBu</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>PuBuGn</td>
+<td align="left">PuBuGn</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>PuRd</td>
+<td align="left">PuRd</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>Purples</td>
+<td align="left">Purples</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>RdPu</td>
+<td align="left">RdPu</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>Reds</td>
+<td align="left">Reds</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>YlGn</td>
+<td align="left">YlGn</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>YlGnBu</td>
+<td align="left">YlGnBu</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="even">
-<td>YlOrBr</td>
+<td align="left">YlOrBr</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
 </tr>
 <tr class="odd">
-<td>YlOrRd</td>
+<td align="left">YlOrRd</td>
 <td align="right">9</td>
 <td align="left">seq</td>
 <td align="left">TRUE</td>
@@ -1072,29 +1093,29 @@ knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</c
 </tbody>
 </table>
 <p>For instance, here is <code>Pastel2</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">show_palette</span>(<span class="kw">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Pastel2&quot;</span>), <span class="dt">cols =</span> <span class="dv">8</span>)</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ggplot2.html#cb22-1"></a><span class="kw">show_palette</span>(<span class="kw">brewer.pal</span>(<span class="dv">8</span>, <span class="st">&quot;Pastel2&quot;</span>), <span class="dt">cols =</span> <span class="dv">8</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/rcolorbrewer-pastel-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Here, an RColorBrewer palette is used with the Iris data.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>, <span class="st">&quot;Dark2&quot;</span>)) <span class="co">#only 3 required</span></code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ggplot2.html#cb23-1"></a><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(Sepal.Length, Sepal.Width)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb23-2"><a href="ggplot2.html#cb23-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span></span>
+<span id="cb23-3"><a href="ggplot2.html#cb23-3"></a><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values=</span><span class="kw">brewer.pal</span>(<span class="dv">6</span>, <span class="st">&quot;Dark2&quot;</span>)) <span class="co">#only 3 required</span></span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/rcolorbrewer-palette-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="shapes" class="section level3 unnumbered">
 <h3>Shapes</h3>
 <p>These are the shapes available in ggplot2 (and base R as well).</p>
-<pre class="sourceCode r"><code class="sourceCode r">shapes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
-  <span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">20</span>),
-  <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">5</span>,
-  <span class="dt">y =</span> <span class="op">-</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%%</span><span class="st"> </span><span class="dv">5</span>)
-)
-<span class="kw">ggplot</span>(shapes, <span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> shape), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> shape), <span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">nudge_x =</span> <span class="fl">0.15</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">scale_shape_identity</span>() <span class="op">+</span>
-<span class="st">  </span><span class="kw">expand_limits</span>(<span class="dt">x =</span> <span class="fl">4.1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_void</span>()</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="ggplot2.html#cb24-1"></a>shapes &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</span>
+<span id="cb24-2"><a href="ggplot2.html#cb24-2"></a>  <span class="dt">shape =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">21</span>, <span class="dv">24</span>, <span class="dv">23</span>, <span class="dv">20</span>),</span>
+<span id="cb24-3"><a href="ggplot2.html#cb24-3"></a>  <span class="dt">x =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%/%</span><span class="st"> </span><span class="dv">5</span>,</span>
+<span id="cb24-4"><a href="ggplot2.html#cb24-4"></a>  <span class="dt">y =</span> <span class="op">-</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">24</span> <span class="op">%%</span><span class="st"> </span><span class="dv">5</span>)</span>
+<span id="cb24-5"><a href="ggplot2.html#cb24-5"></a>)</span>
+<span id="cb24-6"><a href="ggplot2.html#cb24-6"></a><span class="kw">ggplot</span>(shapes, <span class="kw">aes</span>(x, y)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb24-7"><a href="ggplot2.html#cb24-7"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">shape =</span> shape), <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>) <span class="op">+</span></span>
+<span id="cb24-8"><a href="ggplot2.html#cb24-8"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> shape), <span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">nudge_x =</span> <span class="fl">0.15</span>) <span class="op">+</span></span>
+<span id="cb24-9"><a href="ggplot2.html#cb24-9"></a><span class="st">  </span><span class="kw">scale_shape_identity</span>() <span class="op">+</span></span>
+<span id="cb24-10"><a href="ggplot2.html#cb24-10"></a><span class="st">  </span><span class="kw">expand_limits</span>(<span class="dt">x =</span> <span class="fl">4.1</span>) <span class="op">+</span></span>
+<span id="cb24-11"><a href="ggplot2.html#cb24-11"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/shapes-overview,-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Warning: do not clutter your plot with too many dimensions/aesthetics!</p>
 </div>
@@ -1104,16 +1125,16 @@ knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</c
 <p>Legal values are the strings “blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, and “twodash”. Alternatively, the numbers 0 to 6 can be used (0 for “blank”, 1 for “solid”, …).</p>
 <p>You can set line type to a constant value. For this you use the linetype geom parameter. For instance, <code>geom_line(data=d, mapping=aes(x=x, y=y), linetype=3)</code> sets the line type of all lines in that layer to 3, which corresponds to a dotted line), but you can also use it dynamically.</p>
 <p>Here is an example where the female and male deaths in the UK for 72 successive months are plotted.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> deaths, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> month, <span class="dt">y =</span> deaths, <span class="dt">linetype=</span>sex)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_line</span>()</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="ggplot2.html#cb25-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> deaths, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> month, <span class="dt">y =</span> deaths, <span class="dt">linetype=</span>sex)) <span class="op">+</span></span>
+<span id="cb25-2"><a href="ggplot2.html#cb25-2"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/linecolor-dim-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="size" class="section level3 unnumbered">
 <h3>Size</h3>
 <p>The size of the plotting symbol can also be used as an extra “dimension” in your visualization. Here is an example showing the solar radiation of the airquality data as third dimension.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), 
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind, <span class="dt">y =</span> Ozone, <span class="dt">size=</span>Solar.R)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>)</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="ggplot2.html#cb26-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), </span>
+<span id="cb26-2"><a href="ggplot2.html#cb26-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Wind, <span class="dt">y =</span> Ozone, <span class="dt">size=</span>Solar.R)) <span class="op">+</span></span>
+<span id="cb26-3"><a href="ggplot2.html#cb26-3"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;red&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.5</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/sizes-demo-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -1126,31 +1147,31 @@ knitr<span class="op">::</span><span class="kw">kable</span>(brewer.pal.info)</c
 <div id="boxplot" class="section level3 unnumbered">
 <h3>Boxplot</h3>
 <p>Boxplot is one of the most-used data visualizations. It displays the 5-number summary containing from bottom to top: minimum, first quartile, median (= second quartile), third quartile, maximum. Outliers, usually defined as more than <code>1.5 * IQR</code> from the median, are displayed as separate points. Some color was added in the example below.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
-dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="ggplot2.html#cb27-1"></a>dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))</span>
+<span id="cb27-2"><a href="ggplot2.html#cb27-2"></a>dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot_geom_boxplot-1.png" width="576" /></p>
 </div>
 <div id="jitter" class="section level3 unnumbered">
 <h3>Jitter</h3>
 <p>Jitter is a good alternative to boxplot when you have small sample sizes, or discrete measurements with many exact copies, resulting in much overlap. Use the width and height attributes to adjust the jittering.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>)</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="ggplot2.html#cb28-1"></a>dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot_geom_jitter-1.png" width="576" /></p>
 <p>Here, a split over the sexes is added. Suddenly, a dramatic dosage effect becomes apparent that was smoothed out when the two sexes were combined.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex))</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="ggplot2.html#cb29-1"></a>dr_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot_tidy_color-1.png" width="672" /></p>
 <p>Alternatively, use a grid of plots</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">facet_wrap</span>( . <span class="op">~</span><span class="st"> </span>sex)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="ggplot2.html#cb30-1"></a>dr_plot <span class="op">+</span><span class="st"> </span></span>
+<span id="cb30-2"><a href="ggplot2.html#cb30-2"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="kw">aes</span>(<span class="dt">colour =</span> sex)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb30-3"><a href="ggplot2.html#cb30-3"></a><span class="st">    </span><span class="kw">facet_wrap</span>( . <span class="op">~</span><span class="st"> </span>sex)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot_tidy_facet-1.png" width="672" /></p>
 </div>
 <div id="plot-overlays-boxplot-jitter" class="section level3 unnumbered">
 <h3>Plot overlays: boxplot + jitter</h3>
 <p>This example shows how you can overlay plots on top of each other as much as you like.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))
-dr_plot <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>)</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="ggplot2.html#cb31-1"></a>dr_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(dose_response_tidy, <span class="kw">aes</span>(<span class="dt">x =</span> dose, <span class="dt">y =</span> response))</span>
+<span id="cb31-2"><a href="ggplot2.html#cb31-2"></a>dr_plot <span class="op">+</span><span class="st"> </span></span>
+<span id="cb31-3"><a href="ggplot2.html#cb31-3"></a><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&#39;#E69F00&#39;</span>) <span class="op">+</span></span>
+<span id="cb31-4"><a href="ggplot2.html#cb31-4"></a><span class="st">    </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">0.1</span>, <span class="dt">height =</span> <span class="dv">0</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">alpha =</span> <span class="fl">0.6</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/plot-overlays-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="scatterplot-points" class="section level3 unnumbered">
@@ -1165,34 +1186,34 @@ dr_plot <span class="op">+</span><span class="st"> </span>
 <h3>Histograms</h3>
 <p>A histogram is a means to visualize a distribution.</p>
 <p>Here we look at the eruption intervals of the “faithful” geyser. A <code>binwidth</code> argument is used to adjust the number of bins. Alternative use the <code>bins</code> argument.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="ggplot2.html#cb32-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb32-2"><a href="ggplot2.html#cb32-2"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/histogram1-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>There are some statistics available to adjust what is shown on the y axis. The default that is used by <code>geom_histogram</code> is <code>stat(count)</code>, so if you don’t specify anything this will be used. But if you want it scaled to a maximum of 1, use <code>stat(count / max(count))</code>. The <code>stat()</code> function is a flag to ggplot2 that you want to use calculated aesthetics produced by the statistic.You can use any transformation of the statistic, e.g. <code>y = stat(log2(count))</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">max</span>(count)))) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;normalized proportion&quot;</span>)</code></pre>
+<p>There are some statistics available to adjust what is shown on the y axis. The default that is used by <code>geom_histogram</code> is <code>stat(count)</code>, so if you don’t specify anything this will be used. But if you want it scaled to a maximum of 1, use <code>stat(count / max(count))</code>. The <code>stat()</code> function is a flag to ggplot2 that you want to use calculated aesthetics produced by the statistic.You can use any transformation of the statistic, e.g. <code>y = stat(log2(count))</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="ggplot2.html#cb33-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-2"><a href="ggplot2.html#cb33-2"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">max</span>(count)))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb33-3"><a href="ggplot2.html#cb33-3"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;normalized proportion&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/histogram2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Alternatively, if you want percentages, you can use <code>y = stat(count / sum(count) * 100)</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>))) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;%&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="ggplot2.html#cb34-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>faithful, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> waiting)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb34-2"><a href="ggplot2.html#cb34-2"></a><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">3</span>, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> <span class="kw">stat</span>(count <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(count) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>))) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb34-3"><a href="ggplot2.html#cb34-3"></a><span class="st">    </span><span class="kw">ylab</span>(<span class="dt">label =</span> <span class="st">&quot;%&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/histogram3-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="violin-plot" class="section level3 unnumbered">
 <h3>Violin plot</h3>
 <p>A violin plot is a compact display of a continuous distribution. It is a blend of geom_boxplot() and geom_density(): a violin plot is a mirrored density plot displayed in the same way as a boxplot. It is not seen as often as should be. An example best explains.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data=</span>airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> Temp, <span class="dt">fill=</span>Month)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_violin</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="ggplot2.html#cb35-1"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Month, <span class="dt">y =</span> Temp, <span class="dt">fill=</span>Month)) <span class="op">+</span></span>
+<span id="cb35-2"><a href="ggplot2.html#cb35-2"></a><span class="st">    </span><span class="kw">geom_violin</span>() <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/violinplot-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="barplot" class="section level3 unnumbered">
 <h3>Barplot</h3>
 <p>The bar plot is similar to a histogram in appearance, but quite different in intent. Where a histogram visualizes the density of a continuous variable, a bar plot tries to visualize the counts or weights of distinct groups.</p>
 <p>Here is a small example where the ten subjects of the <code>sleep</code> dataset have been charted (the x axis), and the <code>extra</code> column provided the height of the bar, split over the two groups. When no weight is provided, the occurrences of the different group levels will be counted and sued as weight.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> sleep,
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(ID)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">weight =</span> extra, <span class="dt">fill =</span> group))</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="ggplot2.html#cb36-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> sleep,</span>
+<span id="cb36-2"><a href="ggplot2.html#cb36-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(ID)) <span class="op">+</span></span>
+<span id="cb36-3"><a href="ggplot2.html#cb36-3"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">weight =</span> extra, <span class="dt">fill =</span> group))</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/barplot1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="overview-of-the-main-geoms" class="section level3 unnumbered">
@@ -1201,6 +1222,10 @@ dr_plot <span class="op">+</span><span class="st"> </span>
 Here is a small overview of some of them.</p>
 <table>
 <caption><span id="tab:ggplot2-building-blocks-2">Table 1.2: </span>Some more geoms</caption>
+<colgroup>
+<col width="11%" />
+<col width="88%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">function.</th>
@@ -1250,17 +1275,19 @@ Here is a small overview of some of them.</p>
 <p>Like the main <code>ggplot()</code> function, every <code>geom_</code> function accepts its own <code>mapping = aes(...)</code>. The mapping is <em>inherited</em> from the ggplot() function, but you can specify your own “local” aesthetic mapping. Aesthetics defined within a geom_ function are scoped to that function only.</p>
 <p>In the plot below you see how this works (it is not a nice plot anymore, I know).
 Note that any aesthetic value specified outside the aes() function is simply a static property (in that scope).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) </code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="ggplot2.html#cb37-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span></span>
+<span id="cb37-2"><a href="ggplot2.html#cb37-2"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span></span>
+<span id="cb37-3"><a href="ggplot2.html#cb37-3"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) </span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="bookdown-demo_files/figure-html/inheritace-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="faceting" class="section level2">
 <h2><span class="header-section-number">1.8</span> Faceting</h2>
 <p>Faceting is the process of splitting into multiple plots with exactly the same coordinate system where each plot show a subset of the data. It can be applied to any geom. The figure above could be improved slightly with this technique.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>Month)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="ggplot2.html#cb39-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Solar.R, <span class="dt">y =</span> Ozone)) <span class="op">+</span></span>
+<span id="cb39-2"><a href="ggplot2.html#cb39-2"></a><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">linetype =</span> Month), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>) <span class="op">+</span></span>
+<span id="cb39-3"><a href="ggplot2.html#cb39-3"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Month), <span class="dt">alpha =</span> <span class="fl">0.7</span>) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(. <span class="op">~</span><span class="st"> </span>Month)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="bookdown-demo_files/figure-html/facetting-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="experimenting-with-geoms-and-aesthetics" class="section level2">
@@ -1275,32 +1302,190 @@ You start with the base plot, passing it the <strong><em>aesthetic</em></strong>
 <p>Only after you finish this phase you should apply make-up (labels, texts).
 Maybe new questions have arisen as a result of the plot you created?</p>
 </div>
+<div id="multivariate-categorical-data" class="section level2">
+<h2><span class="header-section-number">1.10</span> Multivariate Categorical Data</h2>
+<p>Visualizing multivariate categorical data requires another approach. Scatter- and line plots and histograms are all unsuitable for factor data. Here are some plotting examples that work well for categorical data. Copied and adapted from <a href="http://www.sthda.com/english/articles/32-r-graphics-essentials/129-visualizing-multivariate-categorical-data/">STHDA site</a>.</p>
+<p>The first example deals with the builtin dataset <code>HairEyeColor</code>. It is a contingency table and a <code>table</code> object so it must be converted into a dataframe before use.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="ggplot2.html#cb41-1"></a>hair_eye_col_df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(HairEyeColor)</span>
+<span id="cb41-2"><a href="ggplot2.html#cb41-2"></a><span class="kw">head</span>(hair_eye_col_df)</span></code></pre></div>
+<pre><code>##    Hair   Eye  Sex Freq
+## 1 Black Brown Male   32
+## 2 Brown Brown Male   53
+## 3   Red Brown Male   10
+## 4 Blond Brown Male    3
+## 5 Black  Blue Male   11
+## 6 Brown  Blue Male   50</code></pre>
+<div id="bar-plots-of-contingency-tables" class="section level3">
+<h3><span class="header-section-number">1.10.1</span> Bar plots of contingency tables</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="ggplot2.html#cb43-1"></a><span class="kw">ggplot</span>(hair_eye_col_df, <span class="kw">aes</span>(<span class="dt">x =</span> Hair, <span class="dt">y =</span> Freq)) <span class="op">+</span></span>
+<span id="cb43-2"><a href="ggplot2.html#cb43-2"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Eye), </span>
+<span id="cb43-3"><a href="ggplot2.html#cb43-3"></a>           <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, </span>
+<span id="cb43-4"><a href="ggplot2.html#cb43-4"></a>           <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb43-5"><a href="ggplot2.html#cb43-5"></a>           <span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="fl">0.7</span>)) <span class="op">+</span><span class="st"> </span><span class="co">#causes overlapping bars</span></span>
+<span id="cb43-6"><a href="ggplot2.html#cb43-6"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Sex) </span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/faceted-barplot-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="balloon-plot" class="section level3">
+<h3><span class="header-section-number">1.10.2</span> Balloon plot</h3>
+<p>Here is a dataset called housetasks that contains data on who does what tasks within the household.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ggplot2.html#cb44-1"></a>(housetasks &lt;-<span class="st"> </span><span class="kw">read.delim</span>(</span>
+<span id="cb44-2"><a href="ggplot2.html#cb44-2"></a>  <span class="kw">system.file</span>(<span class="st">&quot;demo-data/housetasks.txt&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;ggpubr&quot;</span>),</span>
+<span id="cb44-3"><a href="ggplot2.html#cb44-3"></a>  <span class="dt">row.names =</span> <span class="dv">1</span></span>
+<span id="cb44-4"><a href="ggplot2.html#cb44-4"></a>  ))</span></code></pre></div>
+<pre><code>##            Wife Alternating Husband Jointly
+## Laundry     156          14       2       4
+## Main_meal   124          20       5       4
+## Dinner       77          11       7      13
+## Breakfeast   82          36      15       7
+## Tidying      53          11       1      57
+## Dishes       32          24       4      53
+## Shopping     33          23       9      55
+## Official     12          46      23      15
+## Driving      10          51      75       3
+## Finances     13          13      21      66
+## Insurance     8           1      53      77
+## Repairs       0           3     160       2
+## Holidays      0           1       6     153</code></pre>
+<p>A balloon plot is an excellent way to visualize this kind of data:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ggplot2.html#cb46-1"></a>ggpubr<span class="op">::</span><span class="kw">ggballoonplot</span>(housetasks, </span>
+<span id="cb46-2"><a href="ggplot2.html#cb46-2"></a>              <span class="dt">fill =</span> <span class="st">&quot;value&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/balloonplot1-1.png" width="80%" style="display: block; margin: auto;" />
+As you can see the counts map to both size and color.
+Balloon plots can also be faceted.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ggplot2.html#cb47-1"></a>ggpubr<span class="op">::</span><span class="kw">ggballoonplot</span>(hair_eye_col_df, <span class="dt">x =</span> <span class="st">&quot;Hair&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Eye&quot;</span>, <span class="dt">size =</span> <span class="st">&quot;Freq&quot;</span>,</span>
+<span id="cb47-2"><a href="ggplot2.html#cb47-2"></a>              <span class="dt">fill =</span> <span class="st">&quot;Freq&quot;</span>, <span class="dt">facet.by =</span> <span class="st">&quot;Sex&quot;</span>,</span>
+<span id="cb47-3"><a href="ggplot2.html#cb47-3"></a>              <span class="dt">ggtheme =</span> <span class="kw">theme_bw</span>()) <span class="op">+</span></span>
+<span id="cb47-4"><a href="ggplot2.html#cb47-4"></a><span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;C&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/balloonplot2-1.png" width="80%" style="display: block; margin: auto;" />
+### Mosaic plot</p>
+<p>A mosaic plot (library vcd) scales the tiles according to the count.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ggplot2.html#cb48-1"></a><span class="kw">library</span>(vcd)</span></code></pre></div>
+<pre><code>## Loading required package: grid</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ggplot2.html#cb50-1"></a><span class="kw">mosaic</span>(HairEyeColor, <span class="co">#needs the table object</span></span>
+<span id="cb50-2"><a href="ggplot2.html#cb50-2"></a>       <span class="dt">shade =</span> <span class="ot">TRUE</span>, </span>
+<span id="cb50-3"><a href="ggplot2.html#cb50-3"></a>       <span class="dt">legend =</span> <span class="ot">TRUE</span>) </span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/mosaic-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="correspondence-analysis" class="section level3">
+<h3><span class="header-section-number">1.10.3</span> Correspondence analysis</h3>
+<p>This type needs at least 3 columns, otherwise you get hard-to solve errors!
+Row names should not be in the first column, but assigned as <code>row.names</code>.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ggplot2.html#cb51-1"></a><span class="kw">library</span>(FactoMineR)</span>
+<span id="cb51-2"><a href="ggplot2.html#cb51-2"></a><span class="kw">library</span>(factoextra)</span></code></pre></div>
+<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ggplot2.html#cb53-1"></a>res.ca &lt;-<span class="st"> </span><span class="kw">CA</span>(housetasks, <span class="dt">graph =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb53-2"><a href="ggplot2.html#cb53-2"></a><span class="kw">fviz_ca_biplot</span>(res.ca, <span class="dt">repel =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/correspondence-analysis-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="advanced-plotting-aspects" class="section level2">
+<h2><span class="header-section-number">1.11</span> Advanced plotting aspects</h2>
+<div id="plot-panels-from-for-loops-using-gridextragrid.arrange" class="section level3">
+<h3><span class="header-section-number">1.11.1</span> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></h3>
+<p>Sometimes you may wish to create a panel of plots using a <code>for</code> loop, similarly to the use of <code>par(mfrow = c(rwos, cols))</code> in base R. There are a few caveats to this seemingly simple notion.</p>
+<p>For instance, to create a set of boxplots for a few columns of the <code>airquality</code> dataset, you would do something like this in base R:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ggplot2.html#cb54-1"></a><span class="co"># set the number of rows and columns</span></span>
+<span id="cb54-2"><a href="ggplot2.html#cb54-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb54-3"><a href="ggplot2.html#cb54-3"></a></span>
+<span id="cb54-4"><a href="ggplot2.html#cb54-4"></a><span class="co"># iterate the column names</span></span>
+<span id="cb54-5"><a href="ggplot2.html#cb54-5"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="kw">names</span>(airquality[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])) {</span>
+<span id="cb54-6"><a href="ggplot2.html#cb54-6"></a>    <span class="kw">boxplot</span>(airquality[, n], </span>
+<span id="cb54-7"><a href="ggplot2.html#cb54-7"></a>            <span class="dt">xlab =</span> n)</span>
+<span id="cb54-8"><a href="ggplot2.html#cb54-8"></a>}</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/panel-plots-base-R-1.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ggplot2.html#cb55-1"></a><span class="co"># reset par</span></span>
+<span id="cb55-2"><a href="ggplot2.html#cb55-2"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>When you naively migrate this structure to a ggplot setting, it will become something like this.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ggplot2.html#cb56-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb56-2"><a href="ggplot2.html#cb56-2"></a></span>
+<span id="cb56-3"><a href="ggplot2.html#cb56-3"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="kw">names</span>(airquality[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])) {</span>
+<span id="cb56-4"><a href="ggplot2.html#cb56-4"></a>    plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,</span>
+<span id="cb56-5"><a href="ggplot2.html#cb56-5"></a>                  <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">y =</span> n)) <span class="op">+</span></span>
+<span id="cb56-6"><a href="ggplot2.html#cb56-6"></a><span class="st">        </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb56-7"><a href="ggplot2.html#cb56-7"></a><span class="st">        </span><span class="kw">xlab</span>(n)</span>
+<span id="cb56-8"><a href="ggplot2.html#cb56-8"></a>    <span class="kw">print</span>(plt)</span>
+<span id="cb56-9"><a href="ggplot2.html#cb56-9"></a>}</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-1-1.png" width="30%" /><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-1-2.png" width="30%" /><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-1-3.png" width="30%" /><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-1-4.png" width="30%" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="ggplot2.html#cb57-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>This is surely not the plot you would have expected: a single straight line, and no panel of plots. It turns out you can not use variables as selectors in <code>aes()</code>. You need to use <code>aes_string()</code> for that purpose.
+Also note that if you omit the <code>print(plt)</code> call this outputs <em>nothing</em>, which is really quite confusing. You need to explicitely print the plot, not implicitly as you normally can.<br />
+Here is a second version.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ggplot2.html#cb58-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb58-2"><a href="ggplot2.html#cb58-2"></a></span>
+<span id="cb58-3"><a href="ggplot2.html#cb58-3"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="kw">names</span>(airquality[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])) {</span>
+<span id="cb58-4"><a href="ggplot2.html#cb58-4"></a>    plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality,</span>
+<span id="cb58-5"><a href="ggplot2.html#cb58-5"></a>                  <span class="dt">mapping =</span> <span class="kw">aes_string</span>(<span class="dt">y =</span> n)) <span class="op">+</span></span>
+<span id="cb58-6"><a href="ggplot2.html#cb58-6"></a><span class="st">        </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb58-7"><a href="ggplot2.html#cb58-7"></a><span class="st">        </span><span class="kw">xlab</span>(n)</span>
+<span id="cb58-8"><a href="ggplot2.html#cb58-8"></a>    <span class="kw">print</span>(plt)</span>
+<span id="cb58-9"><a href="ggplot2.html#cb58-9"></a>}</span></code></pre></div>
+<pre><code>## Warning: Removed 37 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-2-1.png" width="30%" /></p>
+<pre><code>## Warning: Removed 7 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-2-2.png" width="30%" /><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-2-3.png" width="30%" /><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-2-4.png" width="30%" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="ggplot2.html#cb61-1"></a><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p>This works as required except for the panel-of-plots part. The <code>mfrow</code> option to <code>par()</code> does not work with <code>ggplot2</code>. This can be fixed by the use of the <code>gridExtra</code> package, together with the base R <code>do.call()</code> function.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="ggplot2.html#cb62-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb62-2"><a href="ggplot2.html#cb62-2"></a><span class="co"># a list to store the plots</span></span>
+<span id="cb62-3"><a href="ggplot2.html#cb62-3"></a>my_plots &lt;-<span class="st"> </span><span class="kw">list</span>()</span>
+<span id="cb62-4"><a href="ggplot2.html#cb62-4"></a></span>
+<span id="cb62-5"><a href="ggplot2.html#cb62-5"></a></span>
+<span id="cb62-6"><a href="ggplot2.html#cb62-6"></a><span class="co">#use of indices instead of names is important!</span></span>
+<span id="cb62-7"><a href="ggplot2.html#cb62-7"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</span>
+<span id="cb62-8"><a href="ggplot2.html#cb62-8"></a>    n &lt;-<span class="st"> </span><span class="kw">names</span>(airquality)[i]</span>
+<span id="cb62-9"><a href="ggplot2.html#cb62-9"></a>    <span class="co">#omitting rows with NA for each single column</span></span>
+<span id="cb62-10"><a href="ggplot2.html#cb62-10"></a>    plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality[<span class="op">!</span><span class="kw">is.na</span>(airquality[, n]), ],</span>
+<span id="cb62-11"><a href="ggplot2.html#cb62-11"></a>                  <span class="dt">mapping =</span> <span class="kw">aes_string</span>(<span class="dt">y =</span> n)) <span class="op">+</span></span>
+<span id="cb62-12"><a href="ggplot2.html#cb62-12"></a><span class="st">        </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb62-13"><a href="ggplot2.html#cb62-13"></a><span class="st">        </span><span class="kw">xlab</span>(n)</span>
+<span id="cb62-14"><a href="ggplot2.html#cb62-14"></a>    my_plots[[i]] &lt;-<span class="st"> </span>plt   <span class="co"># has to be integer, not name!</span></span>
+<span id="cb62-15"><a href="ggplot2.html#cb62-15"></a>}</span>
+<span id="cb62-16"><a href="ggplot2.html#cb62-16"></a><span class="co">#use do.call() to process the list in grid.arrange</span></span>
+<span id="cb62-17"><a href="ggplot2.html#cb62-17"></a><span class="kw">do.call</span>(grid.arrange, <span class="kw">c</span>(my_plots, <span class="dt">nrow =</span> <span class="dv">2</span>))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/panel-plots-ggplot-3-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>So the rules for useage of a for-loop to create a panel of plots:</p>
+<ul>
+<li>use <code>aes_string()</code> to specify your columns</li>
+<li>store the plots in a list</li>
+<li>use <code>grid.arrange()</code> to create the panel, wrapped in the <code>do.call()</code> function.</li>
+</ul>
+</div>
+<div id="the-ggallyggpairs-function" class="section level3">
+<h3><span class="header-section-number">1.11.2</span> The <code>GGally::ggPairs()</code> function</h3>
+</div>
+<div id="marginal-plots-using-ggextraggmarginal" class="section level3">
+<h3><span class="header-section-number">1.11.3</span> Marginal plots using <code>ggExtra::ggMarginal()</code></h3>
+</div>
+</div>
 <div id="final-tweaks" class="section level2">
-<h2><span class="header-section-number">1.10</span> Final tweaks</h2>
+<h2><span class="header-section-number">1.12</span> Final tweaks</h2>
 <p>This section describes aspects that fall outside the standard realm of plot construction.</p>
 <div id="scales-coordinates-and-annotations" class="section level3 unnumbered">
 <h3>Scales, Coordinates and Annotations</h3>
 <p>Scales and Coordinates are used to adjust the way your data is mapped and displayed. Here, a log10 scale is applied to the y axis using <code>scale_y_log10()</code> and the x axis is reversed (from high to low values instead of low to high) using <code>scale_x_reverse()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> cars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">scale_x_reverse</span>() </code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="ggplot2.html#cb63-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> cars, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb63-2"><a href="ggplot2.html#cb63-2"></a><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb63-3"><a href="ggplot2.html#cb63-3"></a><span class="st">    </span><span class="kw">scale_y_log10</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb63-4"><a href="ggplot2.html#cb63-4"></a><span class="st">    </span><span class="kw">scale_x_reverse</span>() </span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/tweeking-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>In other contexts, such as geographic information analysis, the scale is extremely important.
 The default coordinate system in ggplot2 is <code>coord_cartesian()</code>. In the plot below, a different coordinate system is used.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># function to compute standard error of mean</span>
-se &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">sqrt</span>(<span class="kw">var</span>(x)<span class="op">/</span><span class="kw">length</span>(x)) 
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="ggplot2.html#cb64-1"></a><span class="co"># function to compute standard error of mean</span></span>
+<span id="cb64-2"><a href="ggplot2.html#cb64-2"></a>se &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">sqrt</span>(<span class="kw">var</span>(x)<span class="op">/</span><span class="kw">length</span>(x)) </span>
+<span id="cb64-3"><a href="ggplot2.html#cb64-3"></a></span>
+<span id="cb64-4"><a href="ggplot2.html#cb64-4"></a>DF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">variable =</span> <span class="kw">as.factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">value =</span> <span class="kw">log2</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">11</span>))</span>
+<span id="cb64-5"><a href="ggplot2.html#cb64-5"></a></span>
+<span id="cb64-6"><a href="ggplot2.html#cb64-6"></a><span class="kw">ggplot</span>(DF, <span class="kw">aes</span>(variable, value, <span class="dt">fill =</span> variable)) <span class="op">+</span></span>
+<span id="cb64-7"><a href="ggplot2.html#cb64-7"></a><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span></span>
+<span id="cb64-8"><a href="ggplot2.html#cb64-8"></a><span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> value <span class="op">-</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), </span>
+<span id="cb64-9"><a href="ggplot2.html#cb64-9"></a>                      <span class="dt">ymax =</span> value <span class="op">+</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), </span>
+<span id="cb64-10"><a href="ggplot2.html#cb64-10"></a>                      <span class="dt">color =</span> variable), </span>
+<span id="cb64-11"><a href="ggplot2.html#cb64-11"></a>                      <span class="dt">width =</span> <span class="fl">.2</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb64-12"><a href="ggplot2.html#cb64-12"></a><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="kw">nlevels</span>(DF<span class="op">$</span>variable)) <span class="op">+</span></span>
+<span id="cb64-13"><a href="ggplot2.html#cb64-13"></a><span class="st">    </span><span class="kw">coord_polar</span>() </span></code></pre></div>
+<pre><code>## Warning: Use of `DF$value` is discouraged. Use `value` instead.
 
-DF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">variable =</span> <span class="kw">as.factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">value =</span> <span class="kw">log2</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">11</span>))
-
-<span class="kw">ggplot</span>(DF, <span class="kw">aes</span>(variable, value, <span class="dt">fill =</span> variable)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">width =</span> <span class="dv">1</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> value <span class="op">-</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), 
-                      <span class="dt">ymax =</span> value <span class="op">+</span><span class="st"> </span><span class="kw">se</span>(DF<span class="op">$</span>value), 
-                      <span class="dt">color =</span> variable), 
-                      <span class="dt">width =</span> <span class="fl">.2</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks =</span> <span class="dv">0</span><span class="op">:</span><span class="kw">nlevels</span>(DF<span class="op">$</span>variable)) <span class="op">+</span>
-<span class="st">    </span><span class="kw">coord_polar</span>() </code></pre>
+## Warning: Use of `DF$value` is discouraged. Use `value` instead.</code></pre>
 <p><img src="bookdown-demo_files/figure-html/polarplot-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="labels" class="section level3 unnumbered">
@@ -1311,57 +1496,64 @@ DF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class=
 <h3>Themes</h3>
 <p>The theme is used to make changes to the overall appearance of the plot. Two approaches exist. The simplest one is selecting a specific theme and make some minor adjustments at most.
 Here are is the minimal theme where the text sizes have been modified somewhat.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">14</span>)</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="ggplot2.html#cb66-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span></span>
+<span id="cb66-2"><a href="ggplot2.html#cb66-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb66-3"><a href="ggplot2.html#cb66-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span></span>
+<span id="cb66-4"><a href="ggplot2.html#cb66-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="st">&quot;Temperature &quot;</span> (degree<span class="op">~</span>F))) <span class="op">+</span></span>
+<span id="cb66-5"><a href="ggplot2.html#cb66-5"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span></span>
+<span id="cb66-6"><a href="ggplot2.html#cb66-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span></span>
+<span id="cb66-7"><a href="ggplot2.html#cb66-7"></a><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dt">base_size =</span> <span class="dv">14</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 37 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
 <p><img src="bookdown-demo_files/figure-html/themes1-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Note that if the <code>color = Month</code> aesthetic would have been put in the main ggplot call, the smoother would have been split over the Month groups.</p>
 <p>Alternatively, the theme can be specified completely, as show below.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
-        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),
-        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">16</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),
-        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),
-        <span class="dt">axis.line =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),
-        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),
-        <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="ggplot2.html#cb70-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> airquality, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span></span>
+<span id="cb70-2"><a href="ggplot2.html#cb70-2"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb70-3"><a href="ggplot2.html#cb70-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span></span>
+<span id="cb70-4"><a href="ggplot2.html#cb70-4"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span></span>
+<span id="cb70-5"><a href="ggplot2.html#cb70-5"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span></span>
+<span id="cb70-6"><a href="ggplot2.html#cb70-6"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">color=</span><span class="st">&quot;Month&quot;</span>) <span class="op">+</span></span>
+<span id="cb70-7"><a href="ggplot2.html#cb70-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb70-8"><a href="ggplot2.html#cb70-8"></a>        <span class="dt">axis.text.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb70-9"><a href="ggplot2.html#cb70-9"></a>        <span class="dt">axis.title.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">16</span>, <span class="dt">colour =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb70-10"><a href="ggplot2.html#cb70-10"></a>        <span class="dt">axis.title.y =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">14</span>, <span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">face =</span> <span class="st">&quot;bold.italic&quot;</span>),</span>
+<span id="cb70-11"><a href="ggplot2.html#cb70-11"></a>        <span class="dt">axis.line =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),</span>
+<span id="cb70-12"><a href="ggplot2.html#cb70-12"></a>        <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>),</span>
+<span id="cb70-13"><a href="ggplot2.html#cb70-13"></a>        <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 37 rows containing non-finite values (stat_smooth).</code></pre>
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
 <p><img src="bookdown-demo_files/figure-html/themes2-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>As you can see, there are <code>element_text()</code>, <code>element_line()</code> and <code>element_rect()</code> functions to specify these types of plot elements. The <code>element_blank()</code> function can be used in various theme aspects to prevent it from being displayed.</p>
+<div id="adjust-or-set-global-theme" class="section level4">
+<h4><span class="header-section-number">1.12.0.1</span> Adjust or set global theme</h4>
+<p>You can specify within your document or R session that a certain theme should be used throughout. You can do this by using the <code>theme_set()</code>, <code>theme_update()</code> and <code>theme_replace()</code> functions, or with the esoteric <code>%+replace%</code> operator. Type <code>?theme_set</code> to find out more.</p>
+</div>
 </div>
 <div id="annotation" class="section level3 unnumbered">
 <h3>Annotation</h3>
 <p>A final layer that can be added one containing <strong><em>annotations</em></strong>. Annotations are elements that are added manually to the plot. This can be a text label, a fictitious data point, a shaded box or an arrow indicating a region of interest.</p>
-<p>In the <code>annotate()</code> method, you specify the geom you wish to add (e.g. “text”, “point”)
+<p>In the <code>annotate()</code> method, you specify the geom you wish to add (e.g. “text”, “point”)
 The panel below demonstrates a few.</p>
-<pre class="sourceCode r"><code class="sourceCode r">(outlier &lt;-<span class="st"> </span>airquality[<span class="op">!</span><span class="kw">is.na</span>(airquality<span class="op">$</span>Ozone) <span class="op">&amp;</span><span class="st"> </span>airquality<span class="op">$</span>Ozone <span class="op">&gt;</span><span class="st"> </span><span class="dv">150</span>, ])</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="ggplot2.html#cb74-1"></a>(outlier &lt;-<span class="st"> </span>airquality[<span class="op">!</span><span class="kw">is.na</span>(airquality<span class="op">$</span>Ozone) <span class="op">&amp;</span><span class="st"> </span>airquality<span class="op">$</span>Ozone <span class="op">&gt;</span><span class="st"> </span><span class="dv">150</span>, ])</span></code></pre></div>
 <pre><code>##     Ozone Solar.R Wind Temp Month Day TempFac
 ## 117   168     238  3.4   81   Aug  25    high</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="dv">72</span>, <span class="dt">xmax=</span><span class="dv">77</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="dv">50</span>, 
-           <span class="dt">alpha=</span><span class="fl">0.1</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone, 
-           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="dv">-5</span>, <span class="dt">label =</span> <span class="st">&quot;Outlier&quot;</span>) <span class="op">+</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">5</span>, <span class="dt">xend =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, 
-           <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="op">+</span><span class="st"> </span><span class="dv">4</span>, <span class="dt">yend =</span> outlier<span class="op">$</span>Ozone, 
-           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">arrow =</span> <span class="kw">arrow</span>()) </code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="ggplot2.html#cb76-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> <span class="kw">na.omit</span>(airquality), <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone)) <span class="op">+</span></span>
+<span id="cb76-2"><a href="ggplot2.html#cb76-2"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;rect&quot;</span>, <span class="dt">xmin=</span><span class="dv">72</span>, <span class="dt">xmax=</span><span class="dv">77</span>, <span class="dt">ymin=</span><span class="dv">0</span>, <span class="dt">ymax=</span><span class="dv">50</span>, </span>
+<span id="cb76-3"><a href="ggplot2.html#cb76-3"></a>           <span class="dt">alpha=</span><span class="fl">0.1</span>, <span class="dt">color=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;blue&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-4"><a href="ggplot2.html#cb76-4"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;point&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone, </span>
+<span id="cb76-5"><a href="ggplot2.html#cb76-5"></a>           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">alpha =</span> <span class="fl">0.3</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb76-6"><a href="ggplot2.html#cb76-6"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">color=</span>Month)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb76-7"><a href="ggplot2.html#cb76-7"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;loess&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-8"><a href="ggplot2.html#cb76-8"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature (F)&quot;</span>) <span class="op">+</span></span>
+<span id="cb76-9"><a href="ggplot2.html#cb76-9"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Ozone (ppb)&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb76-10"><a href="ggplot2.html#cb76-10"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp, <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="dv">-5</span>, <span class="dt">label =</span> <span class="st">&quot;Outlier&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb76-11"><a href="ggplot2.html#cb76-11"></a><span class="st">  </span><span class="kw">annotate</span>(<span class="st">&quot;segment&quot;</span>, <span class="dt">x =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">5</span>, <span class="dt">xend =</span> outlier<span class="op">$</span>Temp <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, </span>
+<span id="cb76-12"><a href="ggplot2.html#cb76-12"></a>           <span class="dt">y =</span> outlier<span class="op">$</span>Ozone <span class="op">+</span><span class="st"> </span><span class="dv">4</span>, <span class="dt">yend =</span> outlier<span class="op">$</span>Ozone, </span>
+<span id="cb76-13"><a href="ggplot2.html#cb76-13"></a>           <span class="dt">color =</span> <span class="st">&quot;darkred&quot;</span>, <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">arrow =</span> <span class="kw">arrow</span>()) </span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="bookdown-demo_files/figure-html/annotation-1.png" width="80%" style="display: block; margin: auto;" /></p>
 
 </div>
@@ -1384,11 +1576,13 @@ The panel below demonstrates a few.</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1396,12 +1590,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1413,6 +1606,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1431,8 +1628,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

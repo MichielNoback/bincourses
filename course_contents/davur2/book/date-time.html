@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Working with date-time data: lubridate | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Working with date-time data: lubridate | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dplyr.html">
-<link rel="next" href="stringr.html">
+<link rel="prev" href="dplyr.html"/>
+<link rel="next" href="stringr.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,32 +48,38 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -171,7 +178,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
+<li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
+<li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
+<li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -192,13 +209,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
-<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
-<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#split-columns-with-separate"><i class="fa fa-check"></i><b>3.5</b> Split columns with <code>separate()</code></a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
@@ -289,61 +304,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
-<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
-<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
-<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>10.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="10.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>10.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="10.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>10.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="10.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>10.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="10.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>10.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="10.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>10.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>10.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>11</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -370,12 +390,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When working in a lab you will often encounter time-measured data. For instance, growth curves, animal behavior observations etc.</p>
 <p>The tidyverse package <code>lubridate</code> can help you with that. It is quite an expensive package; only the bare essentials will be dealt with here. For a bit more complete overview have a look at the <a href="graphics/lubridate.pdf">cheat sheet</a>.</p>
 <p>A small fictitious dataset will be used here to explore some of the concepts. It can be found in file <code>data/time_series_drug_test.txt</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/time_series_drug_test.txt&quot;</span>, 
-                 <span class="dt">header =</span> T,
-                 <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,
-                 <span class="dt">as.is =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>)
-ts &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(ts)
-ts</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="date-time.html#cb278-1"></a>ts &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;data/time_series_drug_test.txt&quot;</span>, </span>
+<span id="cb278-2"><a href="date-time.html#cb278-2"></a>                 <span class="dt">header =</span> T,</span>
+<span id="cb278-3"><a href="date-time.html#cb278-3"></a>                 <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>,</span>
+<span id="cb278-4"><a href="date-time.html#cb278-4"></a>                 <span class="dt">as.is =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">3</span>)</span>
+<span id="cb278-5"><a href="date-time.html#cb278-5"></a>ts &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(ts)</span>
+<span id="cb278-6"><a href="date-time.html#cb278-6"></a>ts</span></code></pre></div>
 <pre><code>## # A tibble: 48 x 5
 ##    subject date       time  control response
 ##    &lt;fct&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;fct&gt;      &lt;int&gt;
@@ -391,9 +411,9 @@ ts</code></pre>
 ## 10 S002    29/12/2019 12:09 n             73
 ## # … with 38 more rows</code></pre>
 <p>If you simply want to show the timeseries as a plot, the date and time columns need to be combined first. The tidyr package has <code>unite()</code>, or do it with <code>mutate()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">unite</span>(<span class="st">&quot;date_time&quot;</span>, date, time, <span class="dt">sep =</span> <span class="st">&quot;T&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="date-time.html#cb280-1"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb280-2"><a href="date-time.html#cb280-2"></a><span class="st">    </span><span class="kw">unite</span>(<span class="st">&quot;date_time&quot;</span>, date, time, <span class="dt">sep =</span> <span class="st">&quot;T&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb280-3"><a href="date-time.html#cb280-3"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   subject date_time        control response
 ##   &lt;fct&gt;   &lt;chr&gt;            &lt;fct&gt;      &lt;int&gt;
@@ -401,9 +421,9 @@ ts</code></pre>
 ## 2 S001    29/12/2019T12:06 n             68
 ## 3 S001    29/12/2019T17:28 n            112</code></pre>
 <p>As you can see, the original data columns are lost in this operation. Using <code>mutate()</code> and <code>paste()</code> does keep them intact however. I will take this approach because I want the old columns for demonstration purposes.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">paste</span>(date, time, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>))
-<span class="kw">head</span>(ts, <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="date-time.html#cb282-1"></a>ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb282-2"><a href="date-time.html#cb282-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">paste</span>(date, time, <span class="dt">sep=</span><span class="st">&quot; &quot;</span>))</span>
+<span id="cb282-3"><a href="date-time.html#cb282-3"></a><span class="kw">head</span>(ts, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 6
 ##   subject date       time  control response date_time       
 ##   &lt;fct&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;fct&gt;      &lt;int&gt; &lt;chr&gt;           
@@ -411,8 +431,8 @@ ts</code></pre>
 ## 2 S001    29/12/2019 12:06 n             68 29/12/2019 12:06
 ## 3 S001    29/12/2019 17:28 n            112 29/12/2019 17:28</code></pre>
 <p>Let’s reshuffle. I like it when my dependent variable comes last.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(subject, date, time, date_time, control, response)
-<span class="kw">head</span>(ts, <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="date-time.html#cb284-1"></a>ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(subject, date, time, date_time, control, response)</span>
+<span id="cb284-2"><a href="date-time.html#cb284-2"></a><span class="kw">head</span>(ts, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 6
 ##   subject date       time  date_time        control response
 ##   &lt;fct&gt;   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;            &lt;fct&gt;      &lt;int&gt;
@@ -420,17 +440,17 @@ ts</code></pre>
 ## 2 S001    29/12/2019 12:06 29/12/2019 12:06 n             68
 ## 3 S001    29/12/2019 17:28 29/12/2019 17:28 n            112</code></pre>
 <p>If I attempt to plot the response over time for each of the subjects I get into trouble:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, 
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> response, <span class="dt">linetype =</span> subject)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_line</span>()</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="date-time.html#cb286-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, </span>
+<span id="cb286-2"><a href="date-time.html#cb286-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> response, <span class="dt">linetype =</span> subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb286-3"><a href="date-time.html#cb286-3"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>Also, when I would like to calculate something like the change per hour in response level over the different measurements this would be difficult indeed. Take a minute to think about this. Do you know any technique in base R that you’ve encountered so far that supports this?<br />
 Actually there are some functions in baser R that can do this, but we’ll stick to the tidyverse.</p>
 <p>So this is the area of the <code>lubridate</code> package. I included a <code>library(lubridate)</code> statement at the top of this document so that’s not needed anymore.</p>
 <p>Let’s start with reading in date and time variables. There are many dedicated (wrapper) functions for reading date and time data. The <code>date</code> variable has the format “<strong>D</strong>ay/<strong>M</strong>onth/<strong>Y</strong>ear” so the function <code>dmy()</code> should be fine here:</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">dmy</span>(ts<span class="op">$</span>date))
-ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="date-time.html#cb287-1"></a>ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb287-2"><a href="date-time.html#cb287-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">dmy</span>(ts<span class="op">$</span>date))</span>
+<span id="cb287-3"><a href="date-time.html#cb287-3"></a>ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 6
 ##   subject date       time  date_time        control response
 ##   &lt;fct&gt;   &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;            &lt;fct&gt;      &lt;int&gt;
@@ -438,16 +458,16 @@ ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head<
 ## 2 S001    2019-12-29 12:06 29/12/2019 12:06 n             68
 ## 3 S001    2019-12-29 17:28 29/12/2019 17:28 n            112</code></pre>
 <p>As you can see, the type has changed into <code>date</code>. Let’s try the plot again:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, 
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> response, <span class="dt">linetype =</span> subject)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_line</span>()</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="date-time.html#cb289-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, </span>
+<span id="cb289-2"><a href="date-time.html#cb289-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> response, <span class="dt">linetype =</span> subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb289-3"><a href="date-time.html#cb289-3"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p>Now we’re getting somewhere. The times are not taken into account yet, so it is simply mapped to 00:00 hours on that day. Also, we’re not really interested in the specific date, we want to know the change from T = 0. We’ll get to that.</p>
 <p>Parsing time is the same as parsing the date, we have an “<strong>H</strong>our:<strong>M</strong>inute” format so the function to take is <code>hm()</code> (there is also an <code>hms()</code>):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hm</span>(ts<span class="op">$</span>time)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="date-time.html#cb290-1"></a><span class="kw">hm</span>(ts<span class="op">$</span>time)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;7H 44M 0S&quot;  &quot;12H 6M 0S&quot;  &quot;17H 28M 0S&quot; &quot;22H 1M 0S&quot;  &quot;7H 22M 0S&quot;</code></pre>
 <p>And yes, there is also an <code>dmy_hm()</code> function:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dmy_hm</span>(ts<span class="op">$</span>date_time)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="date-time.html#cb292-1"></a><span class="kw">dmy_hm</span>(ts<span class="op">$</span>date_time)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;2019-12-29 07:44:00 UTC&quot; &quot;2019-12-29 12:06:00 UTC&quot;
 ## [3] &quot;2019-12-29 17:28:00 UTC&quot; &quot;2019-12-29 22:01:00 UTC&quot;
 ## [5] &quot;2019-12-30 07:22:00 UTC&quot;</code></pre>
@@ -466,12 +486,12 @@ ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head<
 <li><strong><code>Y</code></strong> Year with century.</li>
 </ul>
 <p>Function <code>parse_date_time()</code> is the most lenient of the two with respect to the <strong><em>format string</em></strong>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">parse_date_time</span>(ts<span class="op">$</span>date_time, <span class="st">&quot;d.m-y H:M&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co">##doesn&#39;t care I have a typo in my format string</span></code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="date-time.html#cb294-1"></a><span class="kw">parse_date_time</span>(ts<span class="op">$</span>date_time, <span class="st">&quot;d.m-y H:M&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] <span class="co">##doesn&#39;t care I have a typo in my format string</span></span></code></pre></div>
 <pre><code>## [1] &quot;2019-12-29 07:44:00 UTC&quot; &quot;2019-12-29 12:06:00 UTC&quot;
 ## [3] &quot;2019-12-29 17:28:00 UTC&quot; &quot;2019-12-29 22:01:00 UTC&quot;
 ## [5] &quot;2019-12-30 07:22:00 UTC&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">parse_date_time</span>(ts<span class="op">$</span>date_time, <span class="st">&quot;d/m/y H:M&quot;</span>))
-<span class="kw">head</span>(ts, <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="date-time.html#cb296-1"></a>ts &lt;-<span class="st"> </span>ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">parse_date_time</span>(ts<span class="op">$</span>date_time, <span class="st">&quot;d/m/y H:M&quot;</span>))</span>
+<span id="cb296-2"><a href="date-time.html#cb296-2"></a><span class="kw">head</span>(ts, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 6
 ##   subject date       time  date_time           control response
 ##   &lt;fct&gt;   &lt;date&gt;     &lt;chr&gt; &lt;dttm&gt;              &lt;fct&gt;      &lt;int&gt;
@@ -479,20 +499,20 @@ ts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head<
 ## 2 S001    2019-12-29 12:06 2019-12-29 12:06:00 n             68
 ## 3 S001    2019-12-29 17:28 2019-12-29 17:28:00 n            112</code></pre>
 <p>The <code>fast_strptime()</code> is much more picky, but much faster. You specify the date(-time) format using<code>%</code> sign together with one of the symbols listed above:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fast_strptime</span>(<span class="st">&#39;29/12/2019 07:44&#39;</span>, <span class="st">&#39;%d/%m/%Y %H:%M&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="date-time.html#cb298-1"></a><span class="kw">fast_strptime</span>(<span class="st">&#39;29/12/2019 07:44&#39;</span>, <span class="st">&#39;%d/%m/%Y %H:%M&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2019-12-29 07:44:00 UTC&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## When in tibble context, you need to set `lt = F`...</span>
-ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">fast_strptime</span>(date_time, <span class="st">&#39;%d/%m/%Y %H:%M&#39;</span>, <span class="dt">lt =</span> F))</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="date-time.html#cb300-1"></a><span class="co">## When in tibble context, you need to set `lt = F`...</span></span>
+<span id="cb300-2"><a href="date-time.html#cb300-2"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb300-3"><a href="date-time.html#cb300-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">date_time =</span> <span class="kw">fast_strptime</span>(date_time, <span class="st">&#39;%d/%m/%Y %H:%M&#39;</span>, <span class="dt">lt =</span> F))</span></code></pre></div>
 <p>I think sticking to the first will suffice.</p>
 <div id="current-time" class="section level2">
 <h2><span class="header-section-number">5.1</span> Current time</h2>
 <p>The functions <code>today()</code> and <code>now()</code> are your friends.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##output will vary!</span>
-<span class="kw">paste</span>(<span class="st">&quot;the day is &quot;</span>, <span class="kw">today</span>())</code></pre>
-<pre><code>## [1] &quot;the day is  2020-03-28&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="st">&quot;and to be really exact: &quot;</span>, <span class="kw">now</span>())</code></pre>
-<pre><code>## [1] &quot;and to be really exact:  2020-03-28 21:28:36&quot;</code></pre>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="date-time.html#cb301-1"></a><span class="co">##output will vary!</span></span>
+<span id="cb301-2"><a href="date-time.html#cb301-2"></a><span class="kw">paste</span>(<span class="st">&quot;the day is &quot;</span>, <span class="kw">today</span>())</span></code></pre></div>
+<pre><code>## [1] &quot;the day is  2021-04-12&quot;</code></pre>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="date-time.html#cb303-1"></a><span class="kw">paste</span>(<span class="st">&quot;and to be really exact: &quot;</span>, <span class="kw">now</span>())</span></code></pre></div>
+<pre><code>## [1] &quot;and to be really exact:  2021-04-12 11:32:25&quot;</code></pre>
 </div>
 <div id="getting-elements-from-date-time-objects" class="section level2">
 <h2><span class="header-section-number">5.2</span> Getting elements from date-time objects</h2>
@@ -510,20 +530,22 @@ ts <span class="op">%&gt;%</span><span class="st"> </span>
 <li><strong><code>week(x)</code></strong> Week of the year.</li>
 </ul>
 <p>A use case demonstration: On what days were the samples taken of the times series used so far?</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(<span class="dt">day_of_week =</span> <span class="kw">wday</span>(date_time, <span class="dt">label=</span>T)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">sample_count =</span> <span class="kw">n</span>())
-<span class="co"># or, shorter</span>
-<span class="co">#ts %&gt;% group_by(day_of_week = wday(date_time, label=T)) %&gt;% tally()</span></code></pre>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="date-time.html#cb305-1"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb305-2"><a href="date-time.html#cb305-2"></a><span class="st">    </span><span class="kw">group_by</span>(<span class="dt">day_of_week =</span> <span class="kw">wday</span>(date_time, <span class="dt">label=</span>T)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb305-3"><a href="date-time.html#cb305-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">sample_count =</span> <span class="kw">n</span>())</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="date-time.html#cb307-1"></a><span class="co"># or, shorter</span></span>
+<span id="cb307-2"><a href="date-time.html#cb307-2"></a><span class="co">#ts %&gt;% group_by(day_of_week = wday(date_time, label=T)) %&gt;% tally()</span></span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   day_of_week sample_count
 ##   &lt;ord&gt;              &lt;int&gt;
 ## 1 Sun                   24
 ## 2 Mon                   24</code></pre>
 <p>What was the mean response on the different times of the day:</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(<span class="dt">hour_of_day =</span> <span class="kw">hour</span>(date_time)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response))</code></pre>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="date-time.html#cb309-1"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb309-2"><a href="date-time.html#cb309-2"></a><span class="st">    </span><span class="kw">group_by</span>(<span class="dt">hour_of_day =</span> <span class="kw">hour</span>(date_time)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb309-3"><a href="date-time.html#cb309-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(response))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 4 x 2
 ##   hour_of_day  mean
 ##         &lt;int&gt; &lt;dbl&gt;
@@ -532,10 +554,11 @@ ts <span class="op">%&gt;%</span><span class="st"> </span>
 ## 3          17  68.8
 ## 4          22  52</code></pre>
 <p>And when split over the control/treatment group as well:</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(control, <span class="dt">hour_of_day =</span> <span class="kw">hour</span>(date_time)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">median</span>(response),
-              <span class="dt">n =</span> <span class="kw">n</span>())</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="date-time.html#cb312-1"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb312-2"><a href="date-time.html#cb312-2"></a><span class="st">    </span><span class="kw">group_by</span>(control, <span class="dt">hour_of_day =</span> <span class="kw">hour</span>(date_time)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb312-3"><a href="date-time.html#cb312-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">median</span>(response),</span>
+<span id="cb312-4"><a href="date-time.html#cb312-4"></a>              <span class="dt">n =</span> <span class="kw">n</span>())</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;control&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 8 x 4
 ## # Groups:   control [2]
 ##   control hour_of_day  mean     n
@@ -549,20 +572,20 @@ ts <span class="op">%&gt;%</span><span class="st"> </span>
 ## 7 y                17  42.5     6
 ## 8 y                22  34.5     6</code></pre>
 <p>Finally, let’s close off with a plot</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, 
-       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date_time, <span class="dt">y =</span> response, <span class="dt">color =</span> subject)) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_line</span>()</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="date-time.html#cb315-1"></a><span class="kw">ggplot</span>(<span class="dt">data =</span> ts, </span>
+<span id="cb315-2"><a href="date-time.html#cb315-2"></a>       <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> date_time, <span class="dt">y =</span> response, <span class="dt">color =</span> subject)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb315-3"><a href="date-time.html#cb315-3"></a><span class="st">    </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 <p>As practice, you could try to generate a response plot like this where subjects 1 to 3 have corrected values based on the non-treated group.</p>
 </div>
 <div id="calculations-with-date-time" class="section level2">
 <h2><span class="header-section-number">5.3</span> Calculations with date-time</h2>
 <p>The example below shows the most basic calculation: the difference between two date-time objects.</p>
-<pre class="sourceCode r"><code class="sourceCode r">ts <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(subject) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(subject, date_time) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">lagged =</span> <span class="kw">lag</span>(date_time), 
-           <span class="dt">diff =</span> date_time <span class="op">-</span><span class="st"> </span>lagged) </code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="date-time.html#cb316-1"></a>ts <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb316-2"><a href="date-time.html#cb316-2"></a><span class="st">    </span><span class="kw">group_by</span>(subject) <span class="op">%&gt;%</span></span>
+<span id="cb316-3"><a href="date-time.html#cb316-3"></a><span class="st">    </span><span class="kw">select</span>(subject, date_time) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb316-4"><a href="date-time.html#cb316-4"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">lagged =</span> <span class="kw">lag</span>(date_time), </span>
+<span id="cb316-5"><a href="date-time.html#cb316-5"></a>           <span class="dt">diff =</span> date_time <span class="op">-</span><span class="st"> </span>lagged) </span></code></pre></div>
 <pre><code>## # A tibble: 48 x 4
 ## # Groups:   subject [6]
 ##    subject date_time           lagged              diff      
@@ -594,11 +617,13 @@ For this more advanced time math you should refer to the cheat sheet or the offi
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -606,12 +631,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -623,6 +647,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -641,8 +669,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

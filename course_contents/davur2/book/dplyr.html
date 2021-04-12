@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Data mangling with package dplyr | Data Analysis and Visualization using R (2)</title>
   <meta name="description" content="This is the ebook accompanying the course Data Analysis and Visualization using R 2 (DAVuR2)." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Data mangling with package dplyr | Data Analysis and Visualization using R (2)" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2020-03-28" />
+<meta name="date" content="2021-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tidyr.html">
-<link rel="next" href="date-time.html">
+<link rel="prev" href="tidyr.html"/>
+<link rel="next" href="date-time.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,32 +48,38 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -81,9 +88,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -171,7 +178,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.10</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
+<li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
+<li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
+<li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
@@ -192,13 +209,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-gather-function"><i class="fa fa-check"></i><b>3.2</b> The <code>gather()</code> function</a></li>
-<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyr.html"><a href="tidyr.html#use-pivot_longer-as-versatile-alternative-to-gather"><i class="fa fa-check"></i><b>3.3.1</b> Use <code>pivot_longer()</code> as versatile alternative to <code>gather()</code></a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-spread-and-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>spread()</code> and <code>pivot_wider()</code></a></li>
-<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#separate-columns"><i class="fa fa-check"></i><b>3.5</b> <code>separate()</code> columns</a></li>
-<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> combine columns</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
+<li class="chapter" data-level="3.4" data-path="tidyr.html"><a href="tidyr.html#widening-with-pivot_wider"><i class="fa fa-check"></i><b>3.4</b> Widening with <code>pivot_wider()</code></a></li>
+<li class="chapter" data-level="3.5" data-path="tidyr.html"><a href="tidyr.html#split-columns-with-separate"><i class="fa fa-check"></i><b>3.5</b> Split columns with <code>separate()</code></a></li>
+<li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
@@ -289,61 +304,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>8</b> Exercises</a><ul>
-<li class="chapter" data-level="8.1" data-path="exercises.html"><a href="exercises.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
-<li class="chapter" data-level="8.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>8.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>8.2.1</b> Trees</a></li>
-<li class="chapter" data-level="8.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>8.2.2</b> Insect Sprays</a></li>
-<li class="chapter" data-level="8.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>8.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="8.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>8.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="8.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>8.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>8.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>8.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="8.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>8.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="8.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>8.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="8.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>8.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="8.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>8.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>8.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>8.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="8.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>8.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="8.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>8.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="8.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>8.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
+<li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="9.2.4" data-path="exercises.html"><a href="exercises.html#virginia-death-rates"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="9.2.5" data-path="exercises.html"><a href="exercises.html#investigate-new-visualization"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></a></li>
+<li class="chapter" data-level="9.2.6" data-path="exercises.html"><a href="exercises.html#toothgrowth"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="9.2.7" data-path="exercises.html"><a href="exercises.html#puromycin"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="9.2.8" data-path="exercises.html"><a href="exercises.html#global-temperature"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="9.2.9" data-path="exercises.html"><a href="exercises.html#epilepsy-drug-trial"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>8.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>8.4.1</b> Female births</a></li>
-<li class="chapter" data-level="8.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>8.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>8.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
+<li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>9</b> Exercise Solutions</a><ul>
-<li class="chapter" data-level="9.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
-<li class="chapter" data-level="9.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
-<li class="chapter" data-level="9.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>9.2.4</b> Virginia Death Rates</a></li>
-<li class="chapter" data-level="9.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>9.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>9.2.6</b> ToothGrowth <sup><font size="3em">[❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>9.2.7</b> Puromycin <sup><font size="3em">[❋❋❋]</font></sup></a></li>
-<li class="chapter" data-level="9.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>9.2.8</b> Global temperature</a></li>
-<li class="chapter" data-level="9.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>9.2.9</b> Epilepsy drug trial</a></li>
-<li class="chapter" data-level="9.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
-<li class="chapter" data-level="9.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
+<li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
-<li class="chapter" data-level="9.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
-<li class="chapter" data-level="9.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
-<li class="chapter" data-level="9.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
-<li class="chapter" data-level="9.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
+<li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
+<li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
+<li class="chapter" data-level="10.2.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#virginia-death-rates-1"><i class="fa fa-check"></i><b>10.2.4</b> Virginia Death Rates</a></li>
+<li class="chapter" data-level="10.2.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#investigate-new-visualization-1"><i class="fa fa-check"></i><b>10.2.5</b> Investigate new visualization <sup><font size="3em">[❋❋]</font></sup></a></li>
+<li class="chapter" data-level="10.2.6" data-path="exercise-solutions.html"><a href="exercise-solutions.html#toothgrowth-1"><i class="fa fa-check"></i><b>10.2.6</b> ToothGrowth</a></li>
+<li class="chapter" data-level="10.2.7" data-path="exercise-solutions.html"><a href="exercise-solutions.html#puromycin-1"><i class="fa fa-check"></i><b>10.2.7</b> Puromycin</a></li>
+<li class="chapter" data-level="10.2.8" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-1"><i class="fa fa-check"></i><b>10.2.8</b> Global temperature</a></li>
+<li class="chapter" data-level="10.2.9" data-path="exercise-solutions.html"><a href="exercise-solutions.html#epilepsy-drug-trial-1"><i class="fa fa-check"></i><b>10.2.9</b> Epilepsy drug trial</a></li>
+<li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
+<li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
-<li class="chapter" data-level="9.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
+<li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
+<li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
+<li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
+<li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>10</b> Parsing complex data</a></li>
+<li class="chapter" data-level="10.5" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-stringr-package-1"><i class="fa fa-check"></i><b>10.5</b> The <code>stringr</code> package</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="parsing-complex-data.html"><a href="parsing-complex-data.html"><i class="fa fa-check"></i><b>11</b> Parsing complex data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -385,10 +405,10 @@ Some examples are</p>
 <p>Tibbles are a modern take on data frames. They keep the features that have stood the test of time, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors). There is an entire package dedicated to tibbles, not surprisingly called <code>tibble</code> you usually do not have to load the package because dplyr and tidyr do that already (they depend on it themselves).</p>
 <p>Use the <code>tibble()</code> constructor to create them as literals. There are several advantages over the old <code>data.frame</code> constructor:</p>
 <ul>
-<li>It never changes an input’s type (i.e., no more <code>stringsAsFactors = FALSE</code>!).</li>
-<li>It never adjusts the names of variables: <code>name with space</code> does not become <code>name.with.space</code>.</li>
+<li><p>It never changes an input’s type (i.e., no more <code>stringsAsFactors = FALSE</code>!).</p></li>
+<li><p>It never adjusts the names of variables: <code>name with space</code> does not become <code>name.with.space</code>.</p></li>
 <li><p>It evaluates its arguments lazily and sequentially:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">y =</span> x <span class="op">^</span><span class="st"> </span><span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="dplyr.html#cb113-1"></a><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">y =</span> x <span class="op">^</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##       x     y
 ##   &lt;int&gt; &lt;dbl&gt;
@@ -397,7 +417,7 @@ Some examples are</p>
 ## 3     3     9
 ## 4     4    16
 ## 5     5    25</code></pre></li>
-<li>It never uses <code>row.names()</code>. The whole point of tidy data is to store variables in a consistent way. So it never stores a variable as special attribute.</li>
+<li><p>It never uses <code>row.names()</code>. The whole point of tidy data is to store variables in a consistent way. So it never stores a variable as special attribute.</p></li>
 <li><p>It only recycles vectors of length 1. This is because recycling vectors of greater lengths is a frequent source of bugs.</p></li>
 </ul>
 <p><strong>Coercion</strong>
@@ -405,12 +425,12 @@ To complement <code>tibble()</code>, tibble provides <code>as_tibble()</code> to
 <div id="by-row-constructor" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> By-row constructor</h3>
 <p>There is a third function, <code>tribble()</code> that you can use to define a table in an alternative way: row-wise.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tribble</span>(
-  <span class="op">~</span>colA, <span class="op">~</span>colB,
-  <span class="st">&quot;a&quot;</span>,   <span class="dv">1</span>,
-  <span class="st">&quot;b&quot;</span>,   <span class="dv">2</span>,
-  <span class="st">&quot;c&quot;</span>,   <span class="dv">3</span>
-)</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="dplyr.html#cb115-1"></a><span class="kw">tribble</span>(</span>
+<span id="cb115-2"><a href="dplyr.html#cb115-2"></a>  <span class="op">~</span>colA, <span class="op">~</span>colB,</span>
+<span id="cb115-3"><a href="dplyr.html#cb115-3"></a>  <span class="st">&quot;a&quot;</span>,   <span class="dv">1</span>,</span>
+<span id="cb115-4"><a href="dplyr.html#cb115-4"></a>  <span class="st">&quot;b&quot;</span>,   <span class="dv">2</span>,</span>
+<span id="cb115-5"><a href="dplyr.html#cb115-5"></a>  <span class="st">&quot;c&quot;</span>,   <span class="dv">3</span></span>
+<span id="cb115-6"><a href="dplyr.html#cb115-6"></a>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   colA   colB
 ##   &lt;chr&gt; &lt;dbl&gt;
@@ -434,13 +454,13 @@ When constructing a tibble, only values of length 1 are recycled. The first colu
 <div id="the-str-equivalent-glimpse" class="section level3">
 <h3><span class="header-section-number">4.1.3</span> The <code>str()</code> equivalent: <code>glimpse()</code></h3>
 <p>The <code>glimpse()</code> function is the dplyr equivalent of <code>str()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(dose_response_long)</code></pre>
-<pre><code>## Observations: 52
-## Variables: 4
-## $ patient  &lt;chr&gt; &quot;001&quot;, &quot;002&quot;, &quot;003&quot;, &quot;004&quot;, &quot;005&quot;, &quot;006&quot;, &quot;007&quot;, &quot;008&quot;,…
-## $ sex      &lt;fct&gt; f, f, m, m, f, f, f, m, f, m, m, m, m, f, m, f, f, m, m…
-## $ Dose     &lt;chr&gt; &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10…
-## $ Response &lt;int&gt; 12, 11, 54, 71, 19, 22, 23, 68, 30, 83, 72, 48, 67, 13,…</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="dplyr.html#cb117-1"></a><span class="kw">glimpse</span>(dose_response_long)</span></code></pre></div>
+<pre><code>## Rows: 52
+## Columns: 4
+## $ patient  &lt;chr&gt; &quot;001&quot;, &quot;002&quot;, &quot;003&quot;, &quot;004&quot;, &quot;005&quot;, &quot;006&quot;, &quot;007&quot;, &quot;008&quot;, &quot;009…
+## $ sex      &lt;fct&gt; f, f, m, m, f, f, f, m, f, m, m, m, m, f, m, f, f, m, m, f, …
+## $ Dose     &lt;chr&gt; &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10mg&quot;, &quot;dose10mg&quot;, …
+## $ Response &lt;int&gt; 12, 11, 54, 71, 19, 22, 23, 68, 30, 83, 72, 48, 67, 13, 73, …</code></pre>
 </div>
 </div>
 <div id="the-chaining-operator" class="section level2">
@@ -450,7 +470,7 @@ There are two undesirable results with this. The first is cluttered code: many v
 <p>This is where the chaining operator comes in. It helps you create clean workflows where intermediate results are only stored when opportune.</p>
 <p>It comes down to this simple notion: <code>x %&gt;% f(y))</code> is equivalent to f(x, y) where <code>f</code> is any function.</p>
 <p>Here is the good old dose-response example again, converted to a tibble.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="dplyr.html#cb119-1"></a>dose_response_long</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 4
 ##    patient sex   Dose     Response
 ##    &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;       &lt;int&gt;
@@ -467,30 +487,32 @@ There are two undesirable results with this. The first is cluttered code: many v
 ## # … with 42 more rows</code></pre>
 <p>Suppose I want to remove cases with missing values (there aren’t any - this is for the sake of argument), select the female subjects and then calculate the mean response for the two doses.
 In base R, you could do something like this.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long_no_na &lt;-<span class="st"> </span><span class="kw">na.omit</span>(dose_response_long)
-dose_response_long_no_na_only_female &lt;-<span class="st"> </span><span class="kw">subset</span>(<span class="dt">x =</span> dose_response_long_no_na, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>)
-<span class="kw">aggregate</span>(Response <span class="op">~</span><span class="st"> </span>Dose, <span class="dt">data =</span> dose_response_long_no_na_only_female, <span class="dt">FUN =</span> mean)</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="dplyr.html#cb121-1"></a>dose_response_long_no_na &lt;-<span class="st"> </span><span class="kw">na.omit</span>(dose_response_long)</span>
+<span id="cb121-2"><a href="dplyr.html#cb121-2"></a>dose_response_long_no_na_only_female &lt;-<span class="st"> </span><span class="kw">subset</span>(<span class="dt">x =</span> dose_response_long_no_na, <span class="dt">subset =</span> sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>)</span>
+<span id="cb121-3"><a href="dplyr.html#cb121-3"></a><span class="kw">aggregate</span>(Response <span class="op">~</span><span class="st"> </span>Dose, <span class="dt">data =</span> dose_response_long_no_na_only_female, <span class="dt">FUN =</span> mean)</span></code></pre></div>
 <pre><code>##        Dose Response
 ## 1 dose100mg     80.9
 ## 2  dose10mg     19.6</code></pre>
 <p>I know, I exaggerated a bit with the variable names.</p>
 <p>Here is the same workflow, using <code>dplyr</code>, but with the intermediate variables. It even has an explicit operation extra (<code>group_by()</code>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long_no_na &lt;-<span class="st"> </span><span class="kw">drop_na</span>(dose_response_long)
-dose_response_long_no_na_only_female &lt;-<span class="st"> </span><span class="kw">filter</span>(dose_response_long_no_na, sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>)
-dose_response_long_no_na_only_female_grouped &lt;-<span class="st"> </span><span class="kw">group_by</span>(dose_response_long_no_na_only_female,
-                                                         Dose)
-<span class="kw">summarize</span>(dose_response_long_no_na_only_female_grouped, <span class="dt">mean_response =</span> <span class="kw">mean</span>(Response))</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="dplyr.html#cb123-1"></a>dose_response_long_no_na &lt;-<span class="st"> </span><span class="kw">drop_na</span>(dose_response_long)</span>
+<span id="cb123-2"><a href="dplyr.html#cb123-2"></a>dose_response_long_no_na_only_female &lt;-<span class="st"> </span><span class="kw">filter</span>(dose_response_long_no_na, sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>)</span>
+<span id="cb123-3"><a href="dplyr.html#cb123-3"></a>dose_response_long_no_na_only_female_grouped &lt;-<span class="st"> </span><span class="kw">group_by</span>(dose_response_long_no_na_only_female,</span>
+<span id="cb123-4"><a href="dplyr.html#cb123-4"></a>                                                         Dose)</span>
+<span id="cb123-5"><a href="dplyr.html#cb123-5"></a><span class="kw">summarize</span>(dose_response_long_no_na_only_female_grouped, <span class="dt">mean_response =</span> <span class="kw">mean</span>(Response))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##   Dose      mean_response
 ##   &lt;chr&gt;             &lt;dbl&gt;
 ## 1 dose100mg          80.9
 ## 2 dose10mg           19.6</code></pre>
 <p>And, finally, how dplyr is supposed to be used.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_response =</span> <span class="kw">mean</span>(Response))</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="dplyr.html#cb126-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb126-2"><a href="dplyr.html#cb126-2"></a><span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></span>
+<span id="cb126-3"><a href="dplyr.html#cb126-3"></a><span class="st">    </span><span class="kw">filter</span>(sex <span class="op">==</span><span class="st"> &quot;f&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb126-4"><a href="dplyr.html#cb126-4"></a><span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span></span>
+<span id="cb126-5"><a href="dplyr.html#cb126-5"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_response =</span> <span class="kw">mean</span>(Response))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##   Dose      mean_response
 ##   &lt;chr&gt;             &lt;dbl&gt;
@@ -501,11 +523,11 @@ Note that <code>drop_na</code> is actually from the tidyr package. However, it w
 <p>This is the power of dplyr and the chaining operator!
 If you do actually want the result stored, you only need to assign to a single variable at the beginning of the chain.</p>
 <p>Does it work with <code>ggplot2</code> as well?</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> Response)) <span class="op">+</span>
-<span class="st">        </span><span class="kw">geom_boxplot</span>() <span class="op">+</span>
-<span class="st">        </span><span class="kw">facet_wrap</span>(Dose <span class="op">~</span><span class="st"> </span>.)</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="dplyr.html#cb129-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb129-2"><a href="dplyr.html#cb129-2"></a><span class="st">    </span><span class="kw">drop_na</span>() <span class="op">%&gt;%</span></span>
+<span id="cb129-3"><a href="dplyr.html#cb129-3"></a><span class="st">    </span><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">y =</span> Response)) <span class="op">+</span></span>
+<span id="cb129-4"><a href="dplyr.html#cb129-4"></a><span class="st">        </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb129-5"><a href="dplyr.html#cb129-5"></a><span class="st">        </span><span class="kw">facet_wrap</span>(Dose <span class="op">~</span><span class="st"> </span>.)</span></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/chain-to-ggplot-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>I don’t know about you, but this kind of thing makes me happy!
 The only thing that bothers me slightly is the <code>+</code> instead of <code>%&gt;%</code> in ggplot2 context.
@@ -525,7 +547,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <div id="selecting-rows-by-index-slice" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Selecting rows by index: <code>slice()</code></h3>
 <p>If you simply want to select rows by index, use <code>slice()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">slice</span>(dose_response_long, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="dplyr.html#cb130-1"></a><span class="kw">slice</span>(dose_response_long, <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   patient sex   Dose     Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;       &lt;int&gt;
@@ -537,7 +559,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <div id="get-unique-cases-with-distinct" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Get unique cases with <code>distinct()</code></h3>
 <p>The <code>distinct()</code> function retains only unique/distinct cases from an input <code>tbl</code> or <code>data.frame</code>. You provide variables to use when determining uniqueness. If there are multiple cases for a given combination of inputs, only the first case will be preserved. If omitted, will use all variables. The <code>.keep_all</code> argument specifies whether all variables in the tbl should be kept.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(sex, Dose, <span class="dt">.keep_all =</span> T)</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="dplyr.html#cb132-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(sex, Dose, <span class="dt">.keep_all =</span> T)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
@@ -545,7 +567,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 2 003     m     dose10mg        54
 ## 3 001     f     dose100mg       88
 ## 4 003     m     dose100mg       14</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(Dose)</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="dplyr.html#cb134-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>(Dose)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 1
 ##   Dose     
 ##   &lt;chr&gt;    
@@ -556,7 +578,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <h3><span class="header-section-number">4.3.3</span> <code>filter()</code> cases</h3>
 <p>This function is similar to the <code>subset</code> argument of the <code>subset()</code> function.</p>
 <p>The filter function <code>filter()</code> allows you to select a subset of cases in a data frame. The first argument is the tibble or data frame. The second and subsequent arguments refer to variables within that data frame, selecting cases where the expression is TRUE.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose10mg&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Response <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>)</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="dplyr.html#cb136-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose10mg&quot;</span> <span class="op">&amp;</span><span class="st"> </span>Response <span class="op">&gt;</span><span class="st"> </span><span class="dv">60</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 4
 ##   patient sex   Dose     Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;       &lt;int&gt;
@@ -568,7 +590,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 6 015     m     dose10mg       73
 ## 7 024     m     dose10mg       61</code></pre>
 <p>When you want to filter rows based on a regular expression pattern matching a character value you can do something like the chunk below, because the only thing select needs is a logical vector.</p>
-<pre class="sourceCode r"><code class="sourceCode r">(t &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;abb&quot;</span>, <span class="st">&quot;bbc&quot;</span>, <span class="st">&quot;dbbd&quot;</span>, <span class="st">&quot;aacc&quot;</span>), <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>))</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="dplyr.html#cb138-1"></a>(t &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&quot;abb&quot;</span>, <span class="st">&quot;bbc&quot;</span>, <span class="st">&quot;dbbd&quot;</span>, <span class="st">&quot;aacc&quot;</span>), <span class="dt">y =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 2
 ##   x         y
 ##   &lt;chr&gt; &lt;int&gt;
@@ -576,7 +598,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 2 bbc       2
 ## 3 dbbd      3
 ## 4 aacc      4</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">t <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">grepl</span>(<span class="st">&quot;bb&quot;</span>, x))</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="dplyr.html#cb140-1"></a>t <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">grepl</span>(<span class="st">&quot;bb&quot;</span>, x))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   x         y
 ##   &lt;chr&gt; &lt;int&gt;
@@ -584,7 +606,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 2 bbc       2
 ## 3 dbbd      3</code></pre>
 <p>Using <code>str_detect()</code> from the <code>stringr</code> tidyverse package this is also possible:</p>
-<pre class="sourceCode r"><code class="sourceCode r">t <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(x, <span class="st">&quot;bb&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="dplyr.html#cb142-1"></a>t <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(x, <span class="st">&quot;bb&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   x         y
 ##   &lt;chr&gt; &lt;int&gt;
@@ -597,7 +619,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <p>This function is similar to the <code>select</code> argument of the <code>subset()</code> function.</p>
 <p>Choose variables from a table. Closely related to <code>rename()</code> discussed below; <code>select()</code> keeps only the listed variables and <code>rename()</code> keeps all variables.</p>
 <p>When you use the <code>key = value</code> format this will result in a rename of the variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(dose_response_long, patient, <span class="dt">gender =</span> sex)</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="dplyr.html#cb144-1"></a><span class="kw">select</span>(dose_response_long, patient, <span class="dt">gender =</span> sex)</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 2
 ##    patient gender
 ##    &lt;chr&gt;   &lt;fct&gt; 
@@ -613,7 +635,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 10 010     m     
 ## # … with 42 more rows</code></pre>
 <p>Use the minus sign when you want to select everything <em>but</em> a variable:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(dose_response_long, <span class="op">-</span>patient, <span class="op">-</span>sex)</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="dplyr.html#cb146-1"></a><span class="kw">select</span>(dose_response_long, <span class="op">-</span>patient, <span class="op">-</span>sex)</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 2
 ##    Dose     Response
 ##    &lt;chr&gt;       &lt;int&gt;
@@ -628,10 +650,10 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ##  9 dose10mg       30
 ## 10 dose10mg       83
 ## # … with 42 more rows</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## same as </span>
-<span class="co">#select(dose_response_long, -c(patient, sex))</span></code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="dplyr.html#cb148-1"></a><span class="co">## same as </span></span>
+<span id="cb148-2"><a href="dplyr.html#cb148-2"></a><span class="co">#select(dose_response_long, -c(patient, sex))</span></span></code></pre></div>
 <p>You can use the colon operator to indicate a range of variables:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(dose_response_long, patient<span class="op">:</span>Dose)</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="dplyr.html#cb149-1"></a><span class="kw">select</span>(dose_response_long, patient<span class="op">:</span>Dose)</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 3
 ##    patient sex   Dose    
 ##    &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;   
@@ -659,7 +681,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <li><code>everything()</code>: Matches all variables.</li>
 <li><code>last_col()</code>: Select last variable, possibly with an offset.</li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(dose_response_long, <span class="kw">contains</span>(<span class="st">&quot;o&quot;</span>))</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="dplyr.html#cb151-1"></a><span class="kw">select</span>(dose_response_long, <span class="kw">contains</span>(<span class="st">&quot;o&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 2
 ##    Dose     Response
 ##    &lt;chr&gt;       &lt;int&gt;
@@ -679,7 +701,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <div id="renaming-variables-rename" class="section level3">
 <h3><span class="header-section-number">4.3.5</span> Renaming variables: <code>rename()</code></h3>
 <p>Rename variables from a table.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Patient =</span> patient, <span class="dt">Gender =</span> sex)</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="dplyr.html#cb153-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Patient =</span> patient, <span class="dt">Gender =</span> sex)</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 4
 ##    Patient Gender Dose     Response
 ##    &lt;chr&gt;   &lt;fct&gt;  &lt;chr&gt;       &lt;int&gt;
@@ -698,7 +720,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <div id="selecting-from-ranked-data" class="section level3">
 <h3><span class="header-section-number">4.3.6</span> Selecting from ranked data</h3>
 <p>The <code>top_n()</code> function makes it easy to select a few cases that based on the ranking of a value:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">3</span>, Response)</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="dplyr.html#cb155-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">3</span>, Response)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
@@ -708,7 +730,7 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 ## 4 021     f     dose100mg       89</code></pre>
 <p>We see 4 cases returned because the third rank is the same for two cases.</p>
 <p>This is especially interesting with grouped data:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">3</span>, Response)</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="dplyr.html#cb157-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">3</span>, Response)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 4
 ## # Groups:   Dose [2]
 ##   patient sex   Dose      Response
@@ -724,17 +746,17 @@ On the other hand it is layering, not chaining what ggplot2 does, so there is cl
 <div id="extract-a-column-as-vector" class="section level3">
 <h3><span class="header-section-number">4.3.7</span> Extract a column as vector</h3>
 <p>Using <code>pull()</code> you can obtain atomic vectors.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pull</span>(dose_response_long, Response)</code></pre>
-<pre><code>##  [1] 12 11 54 71 19 22 23 68 30 83 72 48 67 13 73 20 22 40 57 26 17 29 54
-## [24] 61 57 11 88 54 14 21 89 99 69 31 85 18 37 28 16 79 22 84 96 14 12 63
-## [47] 89 77 21 10 36 80</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="dplyr.html#cb159-1"></a><span class="kw">pull</span>(dose_response_long, Response)</span></code></pre></div>
+<pre><code>##  [1] 12 11 54 71 19 22 23 68 30 83 72 48 67 13 73 20 22 40 57 26 17 29 54 61 57
+## [26] 11 88 54 14 21 89 99 69 31 85 18 37 28 16 79 22 84 96 14 12 63 89 77 21 10
+## [51] 36 80</code></pre>
 <p>This is of course the same as <code>dose_response_long[[4]]</code> or <code>dose_response_long$Response</code> but the difference is that <code>pull()</code> can be applied in a <code>%&gt;%</code> pipeline.<br />
 With <code>dose_response_long[, 4]</code> it matters whether you are working with a tibble or a dataframe; a tibble returns a tibble and a dataframe returns a vector.</p>
 </div>
 <div id="sorting-with-arrange" class="section level3">
 <h3><span class="header-section-number">4.3.8</span> Sorting with <code>arrange()</code></h3>
 <p>If you want to sort the rows of a dataframe/tibble by the values of one or more columns, use <code>arrange()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="dplyr.html#cb161-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
@@ -742,13 +764,13 @@ With <code>dose_response_long[, 4]</code> it matters whether you are working wit
 ## 2 002     f     dose10mg        11
 ## 3 026     f     dose10mg        11</code></pre>
 <p>Use the function <code>desc()</code> to reverse the ordering</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Response)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">1</span>)</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="dplyr.html#cb163-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(Response)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
 ## 1 006     f     dose100mg       99</code></pre>
 <p>Note that the previous chunk is equivalent to this</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">1</span>, Response)</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="dplyr.html#cb165-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">1</span>, Response)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
@@ -758,7 +780,7 @@ With <code>dose_response_long[, 4]</code> it matters whether you are working wit
 <div id="random-sampling" class="section level3">
 <h3><span class="header-section-number">4.3.9</span> Random sampling</h3>
 <p>There are two functions available for random sampling: <code>sample_n()</code> and <code>sample_frac()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample_frac</span>(dose_response_long, <span class="fl">0.05</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="dplyr.html#cb167-1"></a><span class="kw">sample_frac</span>(dose_response_long, <span class="fl">0.05</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
@@ -774,57 +796,57 @@ With <code>dose_response_long[, 4]</code> it matters whether you are working wit
 <h3><span class="header-section-number">4.4.1</span> Window functions</h3>
 <p>A new variable is usually the result of some operation on one or more previous variables. The data in an original variables is processed such that for each old value a new value is generated. Functions that carry out this kind of operation are called <strong><em>window</em></strong> functions. Thus, window functions are functions that take a vector and return another vector of the same length.</p>
 <p>For instance, the <code>cumsum()</code> function returns the cumulative sum of a numeric vector:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cumsum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="dplyr.html#cb169-1"></a><span class="kw">cumsum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1]  1  3  6 10 15</code></pre>
 <p>Here are the main window functions. Note that some of them come from base R. Later you will see the use of several of them in concert with the <code>mutate()</code> function.</p>
 <ul>
 <li><p><strong><em><code>dplyr::lead</code></em></strong><br />
 Copy with values shifted by 1.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lead</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="dplyr.html#cb171-1"></a><span class="kw">lead</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span></code></pre></div>
 <pre><code>## [1]  4  2  8 NA</code></pre></li>
 <li><p><strong><em><code>dplyr::lag</code></em></strong><br />
 Copy with values lagged by 1.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lag</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="dplyr.html#cb173-1"></a><span class="kw">lag</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span></code></pre></div>
 <pre><code>## [1] NA  1  4  2</code></pre></li>
 <li><p><strong><em><code>dplyr::min_rank</code></em></strong><br />
 Ranks on values, from low to high. Use <code>desc()</code> to reverse.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min_rank</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="dplyr.html#cb175-1"></a><span class="kw">min_rank</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span></code></pre></div>
 <pre><code>## [1] 3 2 1 4</code></pre></li>
 <li><p><strong><em><code>dplyr::ntile</code></em></strong><br />
 Bin vector into n buckets.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ntile</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="dplyr.html#cb177-1"></a><span class="kw">ntile</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 2 2 1 3 1</code></pre></li>
 <li><p><strong><em><code>dplyr::between</code></em></strong><br />
 Are values between a and b?</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">between</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="dplyr.html#cb179-1"></a><span class="kw">between</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="dv">3</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE FALSE FALSE FALSE</code></pre></li>
 <li><p><strong><em><code>dplyr::cummean</code></em></strong><br />
 Cumulative mean</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cummean</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="dplyr.html#cb181-1"></a><span class="kw">cummean</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 5.00 4.50 3.67 4.75 4.00</code></pre></li>
 <li><p><strong><em><code>cumsum</code></em></strong><br />
 Cumulative sum</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cumsum</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="dplyr.html#cb183-1"></a><span class="kw">cumsum</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1]  5  9 11 19 20</code></pre></li>
 <li><p><strong><em><code>cummax</code></em></strong><br />
 Cumulative maximum</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cummax</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="dplyr.html#cb185-1"></a><span class="kw">cummax</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 5 5 5 8 8</code></pre></li>
 <li><p><strong><em><code>cummin</code></em></strong><br />
 Cumulative minimum</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cummin</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dplyr.html#cb187-1"></a><span class="kw">cummin</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 5 4 2 2 1</code></pre></li>
 <li><p><strong><em><code>cumprod</code></em></strong><br />
 Cumulative product</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cumprod</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="dplyr.html#cb189-1"></a><span class="kw">cumprod</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1]   5  20  40 320 320</code></pre></li>
 <li><p><strong><em><code>pmax</code></em></strong><br />
 Element-wise maximum</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pmax</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>))</code></pre>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dplyr.html#cb191-1"></a><span class="kw">pmax</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] 5 4 3 8 3</code></pre></li>
 <li><p><strong><em><code>pmin</code></em></strong><br />
 Element-wise minimum</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pmin</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>))</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="dplyr.html#cb193-1"></a><span class="kw">pmin</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] 2 2 2 4 1</code></pre></li>
 </ul>
 </div>
@@ -832,8 +854,8 @@ Element-wise minimum</p>
 <h3><span class="header-section-number">4.4.2</span> Add one or more variables: <code>mutate()</code></h3>
 <p>The function <code>mutate()</code> can be used to calculate and append one or more columns.The window functions from the previous section are often-used helpers.</p>
 <p>For instance, given the <code>ChickWeight</code> dataset which shows weight gain for 50 chicks:</p>
-<pre class="sourceCode r"><code class="sourceCode r">chicks &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(ChickWeight) 
-chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="dplyr.html#cb195-1"></a>chicks &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(ChickWeight) </span>
+<span id="cb195-2"><a href="dplyr.html#cb195-2"></a>chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 4
 ##   weight  Time Chick Diet 
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;
@@ -844,7 +866,7 @@ chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">h
 ## 5     76     8 1     1</code></pre>
 <p>Suppose we want to know the daily weight gain of these chicks (as a challenge, you could try to do this in base R).</p>
 <p>Using <code>lag()</code> and <code>mutate()</code> this is a breeze (or so it seems):</p>
-<pre class="sourceCode r"><code class="sourceCode r">(chicks &lt;-<span class="st"> </span>chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)))</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="dplyr.html#cb197-1"></a>(chicks &lt;-<span class="st"> </span>chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)))</span></code></pre></div>
 <pre><code>## # A tibble: 578 x 5
 ##    weight  Time Chick Diet  weight_gain
 ##     &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;       &lt;dbl&gt;
@@ -860,7 +882,7 @@ chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">h
 ## 10    171    18 1     1              22
 ## # … with 568 more rows</code></pre>
 <p>…but the devil is in the details:</p>
-<pre class="sourceCode r"><code class="sourceCode r">chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>)</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="dplyr.html#cb199-1"></a>chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   weight  Time Chick Diet  weight_gain
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;       &lt;dbl&gt;
@@ -872,11 +894,11 @@ chicks <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">h
 ## 6     58     4 2     1               9</code></pre>
 <p>The transition from chick 1 to chick 2 is not taken into account!
 So to get the weight gain for each chick, we need to split the data first. This is dealt with in a later section but here is a preview:</p>
-<pre class="sourceCode r"><code class="sourceCode r">chicks &lt;-<span class="st"> </span>chicks <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#split on chicks</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ungroup</span>() <span class="co">#put together again</span>
-<span class="kw">slice</span>(chicks, <span class="dv">10</span><span class="op">:</span><span class="dv">15</span>)</code></pre>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="dplyr.html#cb201-1"></a>chicks &lt;-<span class="st"> </span>chicks <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb201-2"><a href="dplyr.html#cb201-2"></a><span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#split on chicks</span></span>
+<span id="cb201-3"><a href="dplyr.html#cb201-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">weight_gain =</span> weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb201-4"><a href="dplyr.html#cb201-4"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="co">#put together again</span></span>
+<span id="cb201-5"><a href="dplyr.html#cb201-5"></a><span class="kw">slice</span>(chicks, <span class="dv">10</span><span class="op">:</span><span class="dv">15</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   weight  Time Chick Diet  weight_gain
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;ord&gt; &lt;fct&gt;       &lt;dbl&gt;
@@ -887,12 +909,12 @@ So to get the weight gain for each chick, we need to split the data first. This 
 ## 5     49     2 2     1               9
 ## 6     58     4 2     1               9</code></pre>
 <p>Can you use a custom function in a <code>mutate</code> context? Of course you can!</p>
-<pre class="sourceCode r"><code class="sourceCode r">my_z &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    <span class="kw">abs</span>((<span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x)))
-}
-women <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z_score =</span> <span class="kw">my_z</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>()</code></pre>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="dplyr.html#cb203-1"></a>my_z &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb203-2"><a href="dplyr.html#cb203-2"></a>    <span class="kw">abs</span>((<span class="kw">abs</span>(x <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(x)) <span class="op">/</span><span class="st"> </span><span class="kw">sd</span>(x)))</span>
+<span id="cb203-3"><a href="dplyr.html#cb203-3"></a>}</span>
+<span id="cb203-4"><a href="dplyr.html#cb203-4"></a>women <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb203-5"><a href="dplyr.html#cb203-5"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z_score =</span> <span class="kw">my_z</span>(weight)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb203-6"><a href="dplyr.html#cb203-6"></a><span class="st">    </span><span class="kw">head</span>()</span></code></pre></div>
 <pre><code>##   height weight z_score
 ## 1     58    115   1.402
 ## 2     59    117   1.273
@@ -901,10 +923,10 @@ women <span class="op">%&gt;%</span><span class="st"> </span>
 ## 5     62    126   0.693
 ## 6     63    129   0.499</code></pre>
 <p>And what’s more, you can make multiple columns in one operation where the calculations for the subsequent columns are interdependent.</p>
-<pre class="sourceCode r"><code class="sourceCode r">women <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z_score =</span> <span class="kw">my_z</span>(weight),
-           <span class="dt">z_bin =</span> <span class="kw">ntile</span>(z_score, <span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>()</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="dplyr.html#cb205-1"></a>women <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb205-2"><a href="dplyr.html#cb205-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">z_score =</span> <span class="kw">my_z</span>(weight),</span>
+<span id="cb205-3"><a href="dplyr.html#cb205-3"></a>           <span class="dt">z_bin =</span> <span class="kw">ntile</span>(z_score, <span class="dv">3</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb205-4"><a href="dplyr.html#cb205-4"></a><span class="st">    </span><span class="kw">head</span>()</span></code></pre></div>
 <pre><code>##   height weight z_score z_bin
 ## 1     58    115   1.402     3
 ## 2     59    117   1.273     3
@@ -921,7 +943,7 @@ women <span class="op">%&gt;%</span><span class="st"> </span>
 <p>Its syntax is a bit puzzling at first, and this has not been made easier by the introduction of new ways to code it.</p>
 <p>Suppose you want to calculate the log2 of all numeric values in the <code>iris</code> dataset.
 In base R you would probably do it like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">apply</span>(iris[, <span class="dv">-5</span>], <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> log2))</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="dplyr.html#cb207-1"></a><span class="kw">head</span>(<span class="kw">apply</span>(iris[, <span class="dv">-5</span>], <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> log2))</span></code></pre></div>
 <pre><code>##      Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## [1,]         2.35        1.81        0.485       -2.32
 ## [2,]         2.29        1.58        0.485       -2.32
@@ -930,11 +952,11 @@ In base R you would probably do it like this:</p>
 ## [5,]         2.32        1.85        0.485       -2.32
 ## [6,]         2.43        1.96        0.766       -1.32</code></pre>
 <p>When you do it with <code>mutate_all()</code> this is the solution you will encounter most in a Google search:</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">funs</span>(<span class="kw">log2</span>(.))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre>
-<pre><code>## Warning: funs() is soft deprecated as of dplyr 0.8.0
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="dplyr.html#cb209-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb209-2"><a href="dplyr.html#cb209-2"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span></span>
+<span id="cb209-3"><a href="dplyr.html#cb209-3"></a><span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">funs</span>(<span class="kw">log2</span>(.))) <span class="op">%&gt;%</span></span>
+<span id="cb209-4"><a href="dplyr.html#cb209-4"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Warning: `funs()` is deprecated as of dplyr 0.8.0.
 ## Please use a list of either functions or lambdas: 
 ## 
 ##   # Simple named list: 
@@ -945,17 +967,18 @@ In base R you would probably do it like this:</p>
 ## 
 ##   # Using lambdas
 ##   list(~ mean(., trim = .2), ~ median(., na.rm = TRUE))
-## This warning is displayed once per session.</code></pre>
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## 1         2.35        1.81        0.485       -2.32
 ## 2         2.29        1.58        0.485       -2.32
 ## 3         2.23        1.68        0.379       -2.32</code></pre>
 <p>It gives a deprecation warning, so apparently there are new and improved ways to specify the function(s) to be applied. Let’s review these.</p>
 <p><strong><em>A simple named list</em></strong>. This is actually much like the <code>apply()</code> approach.</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">list</span>(<span class="dt">mean =</span> mean)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="dplyr.html#cb212-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb212-2"><a href="dplyr.html#cb212-2"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span></span>
+<span id="cb212-3"><a href="dplyr.html#cb212-3"></a><span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">list</span>(<span class="dt">mean =</span> mean)) <span class="op">%&gt;%</span></span>
+<span id="cb212-4"><a href="dplyr.html#cb212-4"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Sepal.Length_mean
 ## 1          5.1         3.5          1.4         0.2              5.84
 ## 2          4.9         3.0          1.4         0.2              5.84
@@ -963,13 +986,13 @@ In base R you would probably do it like this:</p>
 ## 1             3.06              3.76              1.2
 ## 2             3.06              3.76              1.2</code></pre>
 <p>So this adds 4 additional rows to the selection without Species and generates variable names by appending <code>_mean</code>. This is different from the first approach in that the old variables are kept beside the new ones.</p>
-<p>When you supply two functions, e.g. <code>list(mean = mean, sd = sd)</code>, a variable is added for another four columns (8 in total).</p>
+<p>When you supply two functions, e.g. <code>list(mean = mean, sd = sd)</code>, a variable is added for another four columns (8 in total).</p>
 <p>Personally I do not like this. I like it when a method is called directly, with parentheses.</p>
 <p><strong><em>Auto named with</em> <code>tibble::lst()</code></strong>. This is similar to the previous one; you supply a list of function names. The names of these functions define the postfix of the variable name.</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">lst</span>(mean, sd)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="dplyr.html#cb214-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb214-2"><a href="dplyr.html#cb214-2"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span></span>
+<span id="cb214-3"><a href="dplyr.html#cb214-3"></a><span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">lst</span>(mean, sd)) <span class="op">%&gt;%</span></span>
+<span id="cb214-4"><a href="dplyr.html#cb214-4"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Sepal.Length_mean
 ## 1          5.1         3.5          1.4         0.2              5.84
 ## 2          4.9         3.0          1.4         0.2              5.84
@@ -980,10 +1003,10 @@ In base R you would probably do it like this:</p>
 ## 1          0.436            1.77          0.762
 ## 2          0.436            1.77          0.762</code></pre>
 <p><strong><em>Using lambdas</em></strong>. Lambda’s are anonymous function-like expressions. Although this form is harder to grasp, it does make it easier to pass arguments to the function you want executed by <code>mutate_all</code> (in this case <code>trim = .2</code> to <code>mean</code>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">list</span>(<span class="op">~</span><span class="st"> </span><span class="kw">mean</span>(., <span class="dt">trim =</span> <span class="fl">0.2</span>), <span class="op">~</span><span class="st"> </span><span class="kw">sd</span>(.))) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="dplyr.html#cb216-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb216-2"><a href="dplyr.html#cb216-2"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span></span>
+<span id="cb216-3"><a href="dplyr.html#cb216-3"></a><span class="st">    </span><span class="kw">mutate_all</span>(<span class="kw">list</span>(<span class="op">~</span><span class="st"> </span><span class="kw">mean</span>(., <span class="dt">trim =</span> <span class="fl">0.2</span>), <span class="op">~</span><span class="st"> </span><span class="kw">sd</span>(.))) <span class="op">%&gt;%</span></span>
+<span id="cb216-4"><a href="dplyr.html#cb216-4"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Sepal.Length_mean
 ## 1          5.1         3.5          1.4         0.2               5.8
 ## 2          4.9         3.0          1.4         0.2               5.8
@@ -996,10 +1019,10 @@ In base R you would probably do it like this:</p>
 <p>The expression <code>~ mean(., trim = 0.2)</code> is therefore equivalent to something like
 <code>function (.) mean(., trim = 0.2)</code> so the tilde is shorthand for <code>function (.)</code></p>
 <p>Strangely enough, when experimenting further, I find that this simple solution also works for a single function to be applied:</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate_all</span>(my_z) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># or mutate_all(function(x){abs((abs(x - mean(x)) / sd(x)))})</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="dplyr.html#cb218-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb218-2"><a href="dplyr.html#cb218-2"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span></span>
+<span id="cb218-3"><a href="dplyr.html#cb218-3"></a><span class="st">    </span><span class="kw">mutate_all</span>(my_z) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># or mutate_all(function(x){abs((abs(x - mean(x)) / sd(x)))})</span></span>
+<span id="cb218-4"><a href="dplyr.html#cb218-4"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## 1        0.898       1.016         1.34        1.31
 ## 2        1.139       0.132         1.34        1.31</code></pre>
@@ -1009,9 +1032,9 @@ In base R you would probably do it like this:</p>
 <div id="mutate_at" class="section level4">
 <h4><span class="header-section-number">4.4.3.2</span> <code>mutate_at()</code></h4>
 <p>In the previous examples, a selection of the numeric columns was required before <code>mutate_all()</code> could be executed. An alternative approach is to use <code>mutate_at()</code> which has an additional argument for the column selection.</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="kw">contains</span>(<span class="st">&quot;.&quot;</span>)), my_z) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="dplyr.html#cb220-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb220-2"><a href="dplyr.html#cb220-2"></a><span class="st">    </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(<span class="kw">contains</span>(<span class="st">&quot;.&quot;</span>)), my_z) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb220-3"><a href="dplyr.html#cb220-3"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1        0.898       1.016         1.34        1.31  setosa
 ## 2        1.139       0.132         1.34        1.31  setosa</code></pre>
@@ -1020,8 +1043,8 @@ In base R you would probably do it like this:</p>
 <li><code>mutate_at(vars(-Species), my_z)</code></li>
 <li><code>mutate_at(1:4, my_z)</code></li>
 <li><code>mutate_at(vars(-Species), my_z)</code></li>
-<li><code>mutate_at(vars(matches(&quot;Width|Length&quot;)), my_z)</code></li>
-<li><code>mutate_at(vars(contains(&quot;.&quot;)), my_z)</code></li>
+<li><code>mutate_at(vars(matches("Width|Length")), my_z)</code></li>
+<li><code>mutate_at(vars(contains(".")), my_z)</code></li>
 </ul>
 <p>and there are probably more ways to make a column selection.</p>
 <p>You can see that the original variables are replaced with the original variables - that is, in the modified copy of the tibble. As you know it is customary in R to return a modified copy, not to overwrite original data unless you are explicitly saying so.</p>
@@ -1029,9 +1052,9 @@ In base R you would probably do it like this:</p>
 <div id="mutate_if" class="section level4">
 <h4><span class="header-section-number">4.4.3.3</span> <code>mutate_if()</code></h4>
 <p>Even simpler in the case of the iris data is the <code>mutate_if()</code> function. After all, the entire point was to modify the numeric variables:</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate_if</span>(is.numeric, my_z) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="dplyr.html#cb222-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb222-2"><a href="dplyr.html#cb222-2"></a><span class="st">    </span><span class="kw">mutate_if</span>(is.numeric, my_z) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb222-3"><a href="dplyr.html#cb222-3"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1        0.898       1.016         1.34        1.31  setosa
 ## 2        1.139       0.132         1.34        1.31  setosa</code></pre>
@@ -1040,15 +1063,15 @@ In base R you would probably do it like this:</p>
 <div id="change-a-variable-recode-and-recode_factor" class="section level3">
 <h3><span class="header-section-number">4.4.4</span> Change a variable: <code>recode()</code> and <code>recode_factor()</code></h3>
 <p>These two functions help you to quickly change the values of a variable. Here, the Dose variable is overwritten with new -numeric- values. Note that the original <code>dose_response_long</code> tibble has <strong><em>not</em></strong> been modified!</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dose_response_long, <span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="dplyr.html#cb224-1"></a><span class="kw">head</span>(dose_response_long, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   patient sex   Dose     Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;       &lt;int&gt;
 ## 1 001     f     dose10mg       12
 ## 2 002     f     dose10mg       11</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Dose =</span> <span class="kw">recode</span>(Dose, <span class="dt">dose10mg =</span> <span class="dv">10</span>, <span class="dt">dose100mg =</span> <span class="dv">100</span>)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="dplyr.html#cb226-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb226-2"><a href="dplyr.html#cb226-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Dose =</span> <span class="kw">recode</span>(Dose, <span class="dt">dose10mg =</span> <span class="dv">10</span>, <span class="dt">dose100mg =</span> <span class="dv">100</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb226-3"><a href="dplyr.html#cb226-3"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   patient sex    Dose Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;dbl&gt;    &lt;int&gt;
@@ -1058,11 +1081,11 @@ In base R you would probably do it like this:</p>
 - the Response variable is created based on the <code>sex</code> variable,
 - the <code>sex</code> variable is deleted and
 - the variables are reordered to the original format</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">recode_factor</span>(sex, <span class="dt">f =</span> <span class="st">&quot;female&quot;</span>, <span class="dt">m =</span> <span class="st">&quot;male&quot;</span>), 
-           <span class="dt">sex =</span> <span class="ot">NULL</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(patient, Gender, Dose, Response) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</code></pre>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="dplyr.html#cb228-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb228-2"><a href="dplyr.html#cb228-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Gender =</span> <span class="kw">recode_factor</span>(sex, <span class="dt">f =</span> <span class="st">&quot;female&quot;</span>, <span class="dt">m =</span> <span class="st">&quot;male&quot;</span>), </span>
+<span id="cb228-3"><a href="dplyr.html#cb228-3"></a>           <span class="dt">sex =</span> <span class="ot">NULL</span>) <span class="op">%&gt;%</span></span>
+<span id="cb228-4"><a href="dplyr.html#cb228-4"></a><span class="st">    </span><span class="kw">select</span>(patient, Gender, Dose, Response) <span class="op">%&gt;%</span></span>
+<span id="cb228-5"><a href="dplyr.html#cb228-5"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   patient Gender Dose     Response
 ##   &lt;chr&gt;   &lt;fct&gt;  &lt;chr&gt;       &lt;int&gt;
@@ -1080,18 +1103,20 @@ In base R you would probably do it like this:</p>
 <h3><span class="header-section-number">4.5.1</span> <code>group_by()</code> and <code>ungroup()</code></h3>
 <p>This is the most used set of grouping functions. It is usually followed by some summary function -discussed below- but sometimes, as in the case of the weight gain outlined in section <a href="dplyr.html#mutate">4.4.2</a>, you want to progress with all data combined. In that case you need to ungroup again.</p>
 <p>Here is the summary use case. No need for ungrouping.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Response))</code></pre>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="dplyr.html#cb230-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-2"><a href="dplyr.html#cb230-2"></a><span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb230-3"><a href="dplyr.html#cb230-3"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Response))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##   sex    mean
 ##   &lt;fct&gt; &lt;dbl&gt;
 ## 1 f      50.3
 ## 2 m      41.7</code></pre>
 <p>Of course you can group by multiple variables.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(Dose, sex) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Response))</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="dplyr.html#cb233-1"></a>dose_response_long <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb233-2"><a href="dplyr.html#cb233-2"></a><span class="st">    </span><span class="kw">group_by</span>(Dose, sex) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb233-3"><a href="dplyr.html#cb233-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(Response))</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;Dose&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ## # Groups:   Dose [2]
 ##   Dose      sex    mean
@@ -1100,59 +1125,65 @@ In base R you would probably do it like this:</p>
 ## 2 dose100mg m      21.5
 ## 3 dose10mg  f      19.6
 ## 4 dose10mg  m      61.9</code></pre>
-<p>After grouping on a variable, you will sometimes be interested in the top or bottom <em>n</em> rows. The <code>head()</code> and <code>slice()</code> functions will not work then, surprisingly enough. Suppose you want the top 2 responses from both the males and females in the dose100mg group. Surprisingly enough this does not work:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose100mg&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ungroup</span>() </code></pre>
+<p>After grouping on a variable, you will sometimes be interested in the top or bottom <em>n</em> rows. The <code>head()</code> function will not work then, surprisingly enough. Suppose you want the bottom 2 responses from both the males and females in the dose100mg group. Surprisingly enough this does not work:</p>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="dplyr.html#cb236-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb236-2"><a href="dplyr.html#cb236-2"></a><span class="st">    </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose100mg&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb236-3"><a href="dplyr.html#cb236-3"></a><span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
+<span id="cb236-4"><a href="dplyr.html#cb236-4"></a><span class="st">    </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span></span>
+<span id="cb236-5"><a href="dplyr.html#cb236-5"></a><span class="st">    </span><span class="kw">head</span>(<span class="dv">2</span>) <span class="op">%&gt;%</span></span>
+<span id="cb236-6"><a href="dplyr.html#cb236-6"></a><span class="st">    </span><span class="kw">ungroup</span>() </span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
 ## 1 024     m     dose100mg       10
 ## 2 019     m     dose100mg       12</code></pre>
-<p>Instead, to select the top <em>n</em> values after grouping you need to use <code>filter(row_number() &lt;some-logical-test&gt;)</code>. Here is the correct solution.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose100mg&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(<span class="kw">row_number</span>() <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ungroup</span>() <span class="co">#ungrouping not required but I added it for clarity of code</span></code></pre>
+<p>Instead, to select the top <em>n</em> values after grouping you need to use either <code>slice()</code> or <code>filter(row_number() &lt;some-logical-test&gt;)</code>. Here is the correct solution.</p>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="dplyr.html#cb238-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb238-2"><a href="dplyr.html#cb238-2"></a><span class="st">    </span><span class="kw">filter</span>(Dose <span class="op">==</span><span class="st"> &quot;dose100mg&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb238-3"><a href="dplyr.html#cb238-3"></a><span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
+<span id="cb238-4"><a href="dplyr.html#cb238-4"></a><span class="st">    </span><span class="kw">arrange</span>(Response) <span class="op">%&gt;%</span></span>
+<span id="cb238-5"><a href="dplyr.html#cb238-5"></a><span class="st">    </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>) <span class="op">%&gt;%</span></span>
+<span id="cb238-6"><a href="dplyr.html#cb238-6"></a><span class="st">    </span><span class="co">#filter(row_number() %in% 1:2) %&gt;% #also works</span></span>
+<span id="cb238-7"><a href="dplyr.html#cb238-7"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="co">#ungrouping not required but I added it for clarity of code</span></span></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   patient sex   Dose      Response
 ##   &lt;chr&gt;   &lt;fct&gt; &lt;chr&gt;        &lt;int&gt;
-## 1 024     m     dose100mg       10
-## 2 019     m     dose100mg       12
-## 3 002     f     dose100mg       54
-## 4 020     f     dose100mg       63</code></pre>
+## 1 002     f     dose100mg       54
+## 2 020     f     dose100mg       63
+## 3 024     m     dose100mg       10
+## 4 019     m     dose100mg       12</code></pre>
 <p>Here is rather lengthy use case for ungrouping: the z-score is calculated per <code>sex</code> group, and then there is some Dose-specific calculation before summarizing. This required an ungroup in between.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Response_Z =</span> <span class="kw">my_z</span>(Response)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co">##ungroup for other grouping</span>
-<span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Response_scaled =</span> <span class="kw">scale</span>(Response)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">Z =</span> <span class="kw">mean</span>(Response_Z), <span class="dt">Scaled_Mean_sd =</span> <span class="kw">sd</span>(Response_scaled))</code></pre>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="dplyr.html#cb240-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb240-2"><a href="dplyr.html#cb240-2"></a><span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
+<span id="cb240-3"><a href="dplyr.html#cb240-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Response_Z =</span> <span class="kw">my_z</span>(Response)) <span class="op">%&gt;%</span></span>
+<span id="cb240-4"><a href="dplyr.html#cb240-4"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="co">##ungroup for other grouping</span></span>
+<span id="cb240-5"><a href="dplyr.html#cb240-5"></a><span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span></span>
+<span id="cb240-6"><a href="dplyr.html#cb240-6"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">Response_scaled =</span> <span class="kw">scale</span>(Response)) <span class="op">%&gt;%</span></span>
+<span id="cb240-7"><a href="dplyr.html#cb240-7"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">Z =</span> <span class="kw">mean</span>(Response_Z), <span class="dt">Scaled_Mean_sd =</span> <span class="kw">sd</span>(Response_scaled))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 3
 ##   Dose          Z Scaled_Mean_sd
 ##   &lt;chr&gt;     &lt;dbl&gt;          &lt;dbl&gt;
-## 1 dose100mg 0.906          1.000
-## 2 dose10mg  0.912          1.000</code></pre>
+## 1 dose100mg 0.906           1.00
+## 2 dose10mg  0.912           1.00</code></pre>
 </div>
 <div id="group_split-and-group_keys" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> <code>group_split()</code> and <code>group_keys()</code></h3>
 <p>The <code>group_split()</code> function is equivalent to the base R <code>split()</code> function. But it uses the grouping structure from group_by() and therefore is subject to the data mask. Also, it does not name the elements of the list based on the grouping. So in the example below (unevaluated), <code>split()</code> will return a list with two named elements (<code>$m</code> and <code>$f</code>), but the list returned by <code>group_split()</code> will only be accessible with <code>[[1]]</code> and <code>[[2]]</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_split</span>(sex)
-<span class="co">##same as</span>
-<span class="kw">split</span>(<span class="kw">as.data.frame</span>(dose_response_long), dose_response_long<span class="op">$</span>sex)</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="dplyr.html#cb243-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb243-2"><a href="dplyr.html#cb243-2"></a><span class="st">    </span><span class="kw">group_split</span>(sex)</span>
+<span id="cb243-3"><a href="dplyr.html#cb243-3"></a><span class="co">##same as</span></span>
+<span id="cb243-4"><a href="dplyr.html#cb243-4"></a><span class="kw">split</span>(<span class="kw">as.data.frame</span>(dose_response_long), dose_response_long<span class="op">$</span>sex)</span></code></pre></div>
 <p>The last grouping-related function, <code>group_keys()</code>, only returns a tibble explaining the grouping structure:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_keys</span>(sex, Dose)</code></pre>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="dplyr.html#cb244-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb244-2"><a href="dplyr.html#cb244-2"></a><span class="st">    </span><span class="kw">group_keys</span>(sex, Dose)</span></code></pre></div>
+<pre><code>## Warning: The `...` argument of `group_keys()` is deprecated as of dplyr 1.0.0.
+## Please `group_by()` first
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <pre><code>## # A tibble: 4 x 2
 ##   sex   Dose     
-##   &lt;fct&gt; &lt;chr&gt;    
+## * &lt;fct&gt; &lt;chr&gt;    
 ## 1 f     dose100mg
 ## 2 f     dose10mg 
 ## 3 m     dose100mg
@@ -1160,16 +1191,16 @@ In base R you would probably do it like this:</p>
 </div>
 <div id="apply-a-function-to-each-group" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Apply a function to each group</h3>
-<p><code>group_map()</code>, <code>group_modify()</code> and <code>group_walk()</code> are functions that can be used to iterate on grouped tibbles.</p>
+<p><code>group_map()</code>, <code>group_modify()</code> and <code>group_walk()</code> are functions that can be used to iterate grouped tibbles.</p>
 <ul>
-<li><code>group_modify()</code> returns a grouped tibble. In that case <code>.f</code> must return a data frame.</li>
-<li><code>group_map()</code> returns a list of results from calling <code>.f</code> on each group</li>
-<li><code>group_walk()</code> calls .f for side effects and returns the input <code>.tbl</code>, invisibly</li>
+<li><code>group_modify()</code> returns a grouped tibble. Therefore the supplied function must return a data frame/tibble to be able to combine the results of the individual subsets.</li>
+<li><code>group_map()</code> returns a list of results, each element being the result of calling the supplied function on each group</li>
+<li><code>group_walk()</code> calls the supplied function for side effects and returns the input <code>.tbl</code>, invisibly. This makes it possible to, for instance, print the intermediate results or write them to file without breaking the workflow.</li>
 </ul>
-<p>Here is an example of <code>group_walk()</code>. As you can see it takes a lambda expression as seen before:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_map</span>(<span class="op">~</span><span class="st"> </span><span class="kw">quantile</span>(.x<span class="op">$</span>Response, <span class="dt">probs =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>)))</code></pre>
+<p>Here is an example of <code>group_map()</code>. As you can see it takes a lambda expression as seen before:</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="dplyr.html#cb247-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb247-2"><a href="dplyr.html#cb247-2"></a><span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span></span>
+<span id="cb247-3"><a href="dplyr.html#cb247-3"></a><span class="st">    </span><span class="kw">group_map</span>(<span class="op">~</span><span class="st"> </span><span class="kw">quantile</span>(.x<span class="op">$</span>Response, <span class="dt">probs =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.2</span>)))</span></code></pre></div>
 <pre><code>## [[1]]
 ##   0%  20%  40%  60%  80% 100% 
 ##   10   18   31   69   85   99 
@@ -1178,10 +1209,10 @@ In base R you would probably do it like this:</p>
 ##   0%  20%  40%  60%  80% 100% 
 ##   11   19   26   54   67   83</code></pre>
 <p>Use <code>group_walk()</code> when you only want to have a peek at each group before processing further.</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_walk</span>(<span class="op">~</span><span class="st"> </span><span class="kw">print</span>(<span class="kw">head</span>(.x, <span class="dv">2</span>))) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(Response))</code></pre>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="dplyr.html#cb249-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb249-2"><a href="dplyr.html#cb249-2"></a><span class="st">    </span><span class="kw">group_by</span>(Dose) <span class="op">%&gt;%</span></span>
+<span id="cb249-3"><a href="dplyr.html#cb249-3"></a><span class="st">    </span><span class="kw">group_walk</span>(<span class="op">~</span><span class="st"> </span><span class="kw">print</span>(<span class="kw">head</span>(.x, <span class="dv">2</span>))) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb249-4"><a href="dplyr.html#cb249-4"></a><span class="st">    </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(Response))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 3
 ##   patient sex   Response
 ##   &lt;chr&gt;   &lt;fct&gt;    &lt;int&gt;
@@ -1192,6 +1223,7 @@ In base R you would probably do it like this:</p>
 ##   &lt;chr&gt;   &lt;fct&gt;    &lt;int&gt;
 ## 1 001     f           12
 ## 2 002     f           11</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 2 x 2
 ##   Dose        avg
 ##   &lt;chr&gt;     &lt;dbl&gt;
@@ -1203,13 +1235,14 @@ In base R you would probably do it like this:</p>
 <h2><span class="header-section-number">4.6</span> Summarizing and counting</h2>
 <p>You have seen the <code>summarize()</code> function at work a few times. In essence, it creates one or more summary statistics, for each group, if existing.</p>
 <p>For instance, to calculate the mean and SD of relative weight gain for different diets, this is the workflow for it:</p>
-<pre class="sourceCode r"><code class="sourceCode r">chicks <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#split on chicks</span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">rel_weight_gain =</span> (weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight))<span class="op">/</span>weight) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(Diet) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_rel_gain =</span> <span class="kw">mean</span>(rel_weight_gain, <span class="dt">na.rm =</span> T), 
-              <span class="dt">sd =</span> <span class="kw">sd</span>(rel_weight_gain, <span class="dt">na.rm =</span> T))</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="dplyr.html#cb253-1"></a>chicks <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb253-2"><a href="dplyr.html#cb253-2"></a><span class="st">    </span><span class="kw">group_by</span>(Chick) <span class="op">%&gt;%</span><span class="st"> </span><span class="co">#split on chicks</span></span>
+<span id="cb253-3"><a href="dplyr.html#cb253-3"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">rel_weight_gain =</span> (weight <span class="op">-</span><span class="st"> </span><span class="kw">lag</span>(weight))<span class="op">/</span>weight) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb253-4"><a href="dplyr.html#cb253-4"></a><span class="st">    </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
+<span id="cb253-5"><a href="dplyr.html#cb253-5"></a><span class="st">    </span><span class="kw">group_by</span>(Diet) <span class="op">%&gt;%</span></span>
+<span id="cb253-6"><a href="dplyr.html#cb253-6"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">mean_rel_gain =</span> <span class="kw">mean</span>(rel_weight_gain, <span class="dt">na.rm =</span> T), </span>
+<span id="cb253-7"><a href="dplyr.html#cb253-7"></a>              <span class="dt">sd =</span> <span class="kw">sd</span>(rel_weight_gain, <span class="dt">na.rm =</span> T))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ##   Diet  mean_rel_gain     sd
 ##   &lt;fct&gt;         &lt;dbl&gt;  &lt;dbl&gt;
@@ -1218,8 +1251,8 @@ In base R you would probably do it like this:</p>
 ## 3 3             0.153 0.0657
 ## 4 4             0.142 0.0748</code></pre>
 <p>There is an equivalent that creates a summary for a group of variables: <code>summarize_all()</code>, <code>summarize_at()</code> and <code>summareize_if()</code> which are analogous to the <code>mutate_xxx()</code> methods. Here is one example.</p>
-<pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">summarize_if</span>(is.numeric, <span class="kw">list</span>(<span class="dt">mean =</span> mean, <span class="dt">sd =</span> sd))</code></pre>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="dplyr.html#cb256-1"></a>iris <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb256-2"><a href="dplyr.html#cb256-2"></a><span class="st">    </span><span class="kw">summarize_if</span>(is.numeric, <span class="kw">list</span>(<span class="dt">mean =</span> mean, <span class="dt">sd =</span> sd))</span></code></pre></div>
 <pre><code>##   Sepal.Length_mean Sepal.Width_mean Petal.Length_mean Petal.Width_mean
 ## 1              5.84             3.06              3.76              1.2
 ##   Sepal.Length_sd Sepal.Width_sd Petal.Length_sd Petal.Width_sd
@@ -1228,9 +1261,10 @@ In base R you would probably do it like this:</p>
 <div id="simple-counting-of-occurrences" class="section level4">
 <h4><span class="header-section-number">4.6.0.1</span> Simple counting of occurrences</h4>
 <p>An often used operation is simple counting of occurrences of course:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex, Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>())</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="dplyr.html#cb258-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb258-2"><a href="dplyr.html#cb258-2"></a><span class="st">    </span><span class="kw">group_by</span>(sex, Dose) <span class="op">%&gt;%</span></span>
+<span id="cb258-3"><a href="dplyr.html#cb258-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">count =</span> <span class="kw">n</span>())</span></code></pre></div>
+<pre><code>## `summarise()` regrouping output by &#39;sex&#39; (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 4 x 3
 ## # Groups:   sex [2]
 ##   sex   Dose      count
@@ -1240,9 +1274,9 @@ In base R you would probably do it like this:</p>
 ## 3 m     dose100mg    13
 ## 4 m     dose10mg     13</code></pre>
 <p>There is a shorthand for this type of count: <code>tally()</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex, Dose) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">tally</span>()</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="dplyr.html#cb261-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb261-2"><a href="dplyr.html#cb261-2"></a><span class="st">    </span><span class="kw">group_by</span>(sex, Dose) <span class="op">%&gt;%</span></span>
+<span id="cb261-3"><a href="dplyr.html#cb261-3"></a><span class="st">    </span><span class="kw">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ## # Groups:   sex [2]
 ##   sex   Dose          n
@@ -1252,8 +1286,8 @@ In base R you would probably do it like this:</p>
 ## 3 m     dose100mg    13
 ## 4 m     dose10mg     13</code></pre>
 <p>And even shorter is this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">count</span>(sex, Dose)</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="dplyr.html#cb263-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb263-2"><a href="dplyr.html#cb263-2"></a><span class="st">    </span><span class="kw">count</span>(sex, Dose)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   sex   Dose          n
 ##   &lt;fct&gt; &lt;chr&gt;     &lt;int&gt;
@@ -1264,9 +1298,9 @@ In base R you would probably do it like this:</p>
 <p>When you want the counts sorted, use the <code>sort = TRUE</code> argument to count, e.g.<br />
 <code>mtcars %&gt;% count(cyl, sort = TRUE)</code></p>
 <p>If you want such a count as a column in your dataset, use <code>add_tally()</code> or <code>add_count()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">dose_response_long <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">add_tally</span>()</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="dplyr.html#cb265-1"></a>dose_response_long <span class="op">%&gt;%</span></span>
+<span id="cb265-2"><a href="dplyr.html#cb265-2"></a><span class="st">    </span><span class="kw">group_by</span>(sex) <span class="op">%&gt;%</span></span>
+<span id="cb265-3"><a href="dplyr.html#cb265-3"></a><span class="st">    </span><span class="kw">add_tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 52 x 5
 ## # Groups:   sex [2]
 ##    patient sex   Dose     Response     n
@@ -1282,23 +1316,21 @@ In base R you would probably do it like this:</p>
 ##  9 009     f     dose10mg       30    26
 ## 10 010     m     dose10mg       83    26
 ## # … with 42 more rows</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##same as below, but slightly more readable:</span>
-<span class="co">#add_count(sex)</span></code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="dplyr.html#cb267-1"></a><span class="co">##same as below, but slightly more readable:</span></span>
+<span id="cb267-2"><a href="dplyr.html#cb267-2"></a><span class="co">#add_count(sex)</span></span></code></pre></div>
 <p><code>add_count()</code> is useful for groupwise filtering, for instance when you want to show details of the group that occurs the least.</p>
-<pre class="sourceCode r"><code class="sourceCode r">mtcars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">add_count</span>(cyl) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">filter</span>(n <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(n)) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, n)</code></pre>
-<pre><code>## # A tibble: 7 x 6
-##     mpg   cyl  disp    hp  drat     n
-##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;
-## 1  21       6  160    110  3.9      7
-## 2  21       6  160    110  3.9      7
-## 3  21.4     6  258    110  3.08     7
-## 4  18.1     6  225    105  2.76     7
-## 5  19.2     6  168.   123  3.92     7
-## 6  17.8     6  168.   123  3.92     7
-## 7  19.7     6  145    175  3.62     7</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="dplyr.html#cb268-1"></a>mtcars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb268-2"><a href="dplyr.html#cb268-2"></a><span class="st">    </span><span class="kw">add_count</span>(cyl) <span class="op">%&gt;%</span></span>
+<span id="cb268-3"><a href="dplyr.html#cb268-3"></a><span class="st">    </span><span class="kw">filter</span>(n <span class="op">==</span><span class="st"> </span><span class="kw">min</span>(n)) <span class="op">%&gt;%</span></span>
+<span id="cb268-4"><a href="dplyr.html#cb268-4"></a><span class="st">    </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, n)</span></code></pre></div>
+<pre><code>##    mpg cyl disp  hp drat n
+## 1 21.0   6  160 110 3.90 7
+## 2 21.0   6  160 110 3.90 7
+## 3 21.4   6  258 110 3.08 7
+## 4 18.1   6  225 105 2.76 7
+## 5 19.2   6  168 123 3.92 7
+## 6 17.8   6  168 123 3.92 7
+## 7 19.7   6  145 175 3.62 7</code></pre>
 </div>
 </div>
 <div id="combining-data" class="section level2">
@@ -1307,24 +1339,24 @@ In base R you would probably do it like this:</p>
 <h3><span class="header-section-number">4.7.1</span> Merging</h3>
 <p>There are a few functions, <code>left_join()</code>, <code>right_join()</code>, <code>inner_join()</code>, <code>full_join()</code>; only <code>full_join()</code> is discussed here; the others are variations behaving differently with missing data in one or the other data frames to combine. In base R you have <code>merge()</code> that is responsible for this kind of operations.</p>
 <p>Suppose you have two tibbles:</p>
-<pre class="sourceCode r"><code class="sourceCode r">(trA &lt;-<span class="st"> </span><span class="kw">tribble</span>(
-  <span class="op">~</span>ID, <span class="op">~</span>var1,
-  <span class="st">&quot;a&quot;</span>,   <span class="dv">4</span>,
-  <span class="st">&quot;b&quot;</span>,   <span class="dv">6</span>,
-  <span class="st">&quot;c&quot;</span>,   <span class="dv">1</span>,
-))</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="dplyr.html#cb270-1"></a>(trA &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb270-2"><a href="dplyr.html#cb270-2"></a>  <span class="op">~</span>ID, <span class="op">~</span>var1,</span>
+<span id="cb270-3"><a href="dplyr.html#cb270-3"></a>  <span class="st">&quot;a&quot;</span>,   <span class="dv">4</span>,</span>
+<span id="cb270-4"><a href="dplyr.html#cb270-4"></a>  <span class="st">&quot;b&quot;</span>,   <span class="dv">6</span>,</span>
+<span id="cb270-5"><a href="dplyr.html#cb270-5"></a>  <span class="st">&quot;c&quot;</span>,   <span class="dv">1</span>,</span>
+<span id="cb270-6"><a href="dplyr.html#cb270-6"></a>))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   ID     var1
 ##   &lt;chr&gt; &lt;dbl&gt;
 ## 1 a         4
 ## 2 b         6
 ## 3 c         1</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">(trB &lt;-<span class="st"> </span><span class="kw">tribble</span>(
-  <span class="op">~</span>ID, <span class="op">~</span>var2,
-  <span class="st">&quot;a&quot;</span>,   <span class="dv">7</span>,
-  <span class="st">&quot;b&quot;</span>,   <span class="dv">3</span>,
-  <span class="st">&quot;d&quot;</span>,   <span class="dv">5</span>
-))</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="dplyr.html#cb272-1"></a>(trB &lt;-<span class="st"> </span><span class="kw">tribble</span>(</span>
+<span id="cb272-2"><a href="dplyr.html#cb272-2"></a>  <span class="op">~</span>ID, <span class="op">~</span>var2,</span>
+<span id="cb272-3"><a href="dplyr.html#cb272-3"></a>  <span class="st">&quot;a&quot;</span>,   <span class="dv">7</span>,</span>
+<span id="cb272-4"><a href="dplyr.html#cb272-4"></a>  <span class="st">&quot;b&quot;</span>,   <span class="dv">3</span>,</span>
+<span id="cb272-5"><a href="dplyr.html#cb272-5"></a>  <span class="st">&quot;d&quot;</span>,   <span class="dv">5</span></span>
+<span id="cb272-6"><a href="dplyr.html#cb272-6"></a>))</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   ID     var2
 ##   &lt;chr&gt; &lt;dbl&gt;
@@ -1332,7 +1364,7 @@ In base R you would probably do it like this:</p>
 ## 2 b         3
 ## 3 d         5</code></pre>
 <p>Since there is a common variable “ID” we can simply combine these two into a single tibble:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(trA, trB, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="dplyr.html#cb274-1"></a><span class="kw">full_join</span>(trA, trB, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   ID     var1  var2
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1340,9 +1372,9 @@ In base R you would probably do it like this:</p>
 ## 2 b         6     3
 ## 3 c         1    NA
 ## 4 d        NA     5</code></pre>
-<p>When the column names differ you can specify it as <code>full_join(x, y, by = c(&quot;a&quot; = &quot;b&quot;))</code> which will match variable <code>a</code> on tibble <code>x</code> to variable <code>b</code> on tibble <code>y</code>.<br />
+<p>When the column names differ you can specify it as <code>full_join(x, y, by = c("a" = "b"))</code> which will match variable <code>a</code> on tibble <code>x</code> to variable <code>b</code> on tibble <code>y</code>.<br />
 You can of course also do this in a workflow setting:</p>
-<pre class="sourceCode r"><code class="sourceCode r">trA <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(trB, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="dplyr.html#cb276-1"></a>trA <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(trB, <span class="dt">by =</span> <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   ID     var1  var2
 ##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1369,11 +1401,13 @@ You can of course also do this in a workflow setting:</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -1381,12 +1415,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1398,6 +1431,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
@@ -1416,8 +1453,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
