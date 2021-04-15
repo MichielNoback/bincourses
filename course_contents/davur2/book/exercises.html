@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2021-04-12" />
+<meta name="date" content="2021-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="publish.html"/>
 <link rel="next" href="exercise-solutions.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,27 +51,33 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.16/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/str_view-0.1.0/str_view.css" rel="stylesheet" />
 <script src="libs/str_view-binding-1.4.0/str_view.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -90,7 +97,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -140,30 +147,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a><ul>
-<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>1</b> The <code>ggplot2</code> package</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="ggplot2.html"><a href="ggplot2.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#keep-the-goal-in-mind"><i class="fa fa-check"></i>Keep the goal in mind</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a><ul>
+<li class="chapter" data-level="1.2" data-path="ggplot2.html"><a href="ggplot2.html#getting-started"><i class="fa fa-check"></i><b>1.2</b> Getting started</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#a-first-plot"><i class="fa fa-check"></i>A first plot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#adding-a-dimension-using-color"><i class="fa fa-check"></i>Adding a dimension using color</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#inspecting-and-tuning-the-figure"><i class="fa fa-check"></i>Inspecting and tuning the figure</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a><ul>
+<li class="chapter" data-level="1.3" data-path="ggplot2.html"><a href="ggplot2.html#ggplot2-and-the-theory-of-graphics"><i class="fa fa-check"></i><b>1.3</b> ggplot2 and the theory of graphics</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#philosophy-of-ggplot2"><i class="fa fa-check"></i>Philosophy of ggplot2</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-grammar-of-graphics"><i class="fa fa-check"></i>The grammar of graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a><ul>
+<li class="chapter" data-level="1.4" data-path="ggplot2.html"><a href="ggplot2.html#building-plots-with-ggplot2"><i class="fa fa-check"></i><b>1.4</b> Building plots with ggplot2</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#the-layered-plot-architecture"><i class="fa fa-check"></i>The layered plot architecture</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#tidy-the-data"><i class="fa fa-check"></i>“Tidy” the data</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a><ul>
+<li class="chapter" data-level="1.5" data-path="ggplot2.html"><a href="ggplot2.html#aesthetics"><i class="fa fa-check"></i><b>1.5</b> Aesthetics</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#colors"><i class="fa fa-check"></i>Colors</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#shapes"><i class="fa fa-check"></i>Shapes</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#lines"><i class="fa fa-check"></i>Lines</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#size"><i class="fa fa-check"></i>Size</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a><ul>
+<li class="chapter" data-level="1.6" data-path="ggplot2.html"><a href="ggplot2.html#geometries"><i class="fa fa-check"></i><b>1.6</b> Geometries</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#what-are-geometries"><i class="fa fa-check"></i>What are geometries</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
@@ -178,25 +192,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="ggplot2.html"><a href="ggplot2.html#inheritance-of-aesthetics"><i class="fa fa-check"></i><b>1.7</b> Inheritance of aesthetics</a></li>
 <li class="chapter" data-level="1.8" data-path="ggplot2.html"><a href="ggplot2.html#faceting"><i class="fa fa-check"></i><b>1.8</b> Faceting</a></li>
 <li class="chapter" data-level="1.9" data-path="ggplot2.html"><a href="ggplot2.html#experimenting-with-geoms-and-aesthetics"><i class="fa fa-check"></i><b>1.9</b> Experimenting with geoms and aesthetics</a></li>
-<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a><ul>
+<li class="chapter" data-level="1.10" data-path="ggplot2.html"><a href="ggplot2.html#multivariate-categorical-data"><i class="fa fa-check"></i><b>1.10</b> Multivariate Categorical Data</a>
+<ul>
 <li class="chapter" data-level="1.10.1" data-path="ggplot2.html"><a href="ggplot2.html#bar-plots-of-contingency-tables"><i class="fa fa-check"></i><b>1.10.1</b> Bar plots of contingency tables</a></li>
 <li class="chapter" data-level="1.10.2" data-path="ggplot2.html"><a href="ggplot2.html#balloon-plot"><i class="fa fa-check"></i><b>1.10.2</b> Balloon plot</a></li>
-<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.3</b> Correspondence analysis</a></li>
+<li class="chapter" data-level="1.10.3" data-path="ggplot2.html"><a href="ggplot2.html#mosaic-plot"><i class="fa fa-check"></i><b>1.10.3</b> Mosaic plot</a></li>
+<li class="chapter" data-level="1.10.4" data-path="ggplot2.html"><a href="ggplot2.html#correspondence-analysis"><i class="fa fa-check"></i><b>1.10.4</b> Correspondence analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a><ul>
+<li class="chapter" data-level="1.11" data-path="ggplot2.html"><a href="ggplot2.html#advanced-plotting-aspects"><i class="fa fa-check"></i><b>1.11</b> Advanced plotting aspects</a>
+<ul>
 <li class="chapter" data-level="1.11.1" data-path="ggplot2.html"><a href="ggplot2.html#plot-panels-from-for-loops-using-gridextragrid.arrange"><i class="fa fa-check"></i><b>1.11.1</b> Plot panels from <code>for</code> loops using <code>gridExtra::grid.arrange()</code></a></li>
 <li class="chapter" data-level="1.11.2" data-path="ggplot2.html"><a href="ggplot2.html#the-ggallyggpairs-function"><i class="fa fa-check"></i><b>1.11.2</b> The <code>GGally::ggPairs()</code> function</a></li>
 <li class="chapter" data-level="1.11.3" data-path="ggplot2.html"><a href="ggplot2.html#marginal-plots-using-ggextraggmarginal"><i class="fa fa-check"></i><b>1.11.3</b> Marginal plots using <code>ggExtra::ggMarginal()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a><ul>
+<li class="chapter" data-level="1.12" data-path="ggplot2.html"><a href="ggplot2.html#final-tweaks"><i class="fa fa-check"></i><b>1.12</b> Final tweaks</a>
+<ul>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scales-coordinates-and-annotations"><i class="fa fa-check"></i>Scales, Coordinates and Annotations</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#labels"><i class="fa fa-check"></i>Labels</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#themes"><i class="fa fa-check"></i>Themes</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#annotation"><i class="fa fa-check"></i>Annotation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a><ul>
-<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a><ul>
+<li class="chapter" data-level="2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html"><i class="fa fa-check"></i><b>2</b> Developing a custom visualization</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#an-experimental-ptsd-treatment"><i class="fa fa-check"></i><b>2.1</b> An experimental PTSD treatment</a>
+<ul>
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-data"><i class="fa fa-check"></i>The data</a></li>
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#choose-a-visualization"><i class="fa fa-check"></i>Choose a visualization</a></li>
 <li class="chapter" data-level="" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#tidy-the-data-1"><i class="fa fa-check"></i>Tidy the data</a></li>
@@ -207,7 +227,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#last-tweaks-fonts-and-legend"><i class="fa fa-check"></i><b>2.2</b> Last tweaks: fonts and legend</a></li>
 <li class="chapter" data-level="2.3" data-path="developing-a-custom-visualization.html"><a href="developing-a-custom-visualization.html#the-code"><i class="fa fa-check"></i><b>2.3</b> The code</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a><ul>
+<li class="chapter" data-level="3" data-path="tidyr.html"><a href="tidyr.html"><i class="fa fa-check"></i><b>3</b> Package tidyr</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="tidyr.html"><a href="tidyr.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
 <li class="chapter" data-level="3.2" data-path="tidyr.html"><a href="tidyr.html#the-pivot_longer-function"><i class="fa fa-check"></i><b>3.2</b> The <code>pivot_longer()</code> function</a></li>
 <li class="chapter" data-level="3.3" data-path="tidyr.html"><a href="tidyr.html#a-more-complex-problem-two-sets-of-columns"><i class="fa fa-check"></i><b>3.3</b> A more complex problem: two sets of columns</a></li>
@@ -216,14 +237,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6" data-path="tidyr.html"><a href="tidyr.html#combine-columns"><i class="fa fa-check"></i><b>3.6</b> Combine columns</a></li>
 <li class="chapter" data-level="3.7" data-path="tidyr.html"><a href="tidyr.html#drop-rows-with-missing-values-drop_na"><i class="fa fa-check"></i><b>3.7</b> Drop rows with missing values: <code>drop_na()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a><ul>
-<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a><ul>
+<li class="chapter" data-level="4" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>4</b> Data mangling with package <code>dplyr</code></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>4.1</b> Tibbles</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="dplyr.html"><a href="dplyr.html#by-row-constructor"><i class="fa fa-check"></i><b>4.1.1</b> By-row constructor</a></li>
 <li class="chapter" data-level="4.1.2" data-path="dplyr.html"><a href="dplyr.html#tibbles-vs-data-frames"><i class="fa fa-check"></i><b>4.1.2</b> Tibbles vs data frames</a></li>
 <li class="chapter" data-level="4.1.3" data-path="dplyr.html"><a href="dplyr.html#the-str-equivalent-glimpse"><i class="fa fa-check"></i><b>4.1.3</b> The <code>str()</code> equivalent: <code>glimpse()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="dplyr.html"><a href="dplyr.html#the-chaining-operator"><i class="fa fa-check"></i><b>4.2</b> The chaining operator <code>%&gt;%</code></a></li>
-<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a><ul>
+<li class="chapter" data-level="4.3" data-path="dplyr.html"><a href="dplyr.html#selecting"><i class="fa fa-check"></i><b>4.3</b> Selecting</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="dplyr.html"><a href="dplyr.html#selecting-rows-by-index-slice"><i class="fa fa-check"></i><b>4.3.1</b> Selecting rows by index: <code>slice()</code></a></li>
 <li class="chapter" data-level="4.3.2" data-path="dplyr.html"><a href="dplyr.html#get-unique-cases-with-distinct"><i class="fa fa-check"></i><b>4.3.2</b> Get unique cases with <code>distinct()</code></a></li>
 <li class="chapter" data-level="4.3.3" data-path="dplyr.html"><a href="dplyr.html#filter-cases"><i class="fa fa-check"></i><b>4.3.3</b> <code>filter()</code> cases</a></li>
@@ -234,84 +258,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.8" data-path="dplyr.html"><a href="dplyr.html#sorting-with-arrange"><i class="fa fa-check"></i><b>4.3.8</b> Sorting with <code>arrange()</code></a></li>
 <li class="chapter" data-level="4.3.9" data-path="dplyr.html"><a href="dplyr.html#random-sampling"><i class="fa fa-check"></i><b>4.3.9</b> Random sampling</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a><ul>
+<li class="chapter" data-level="4.4" data-path="dplyr.html"><a href="dplyr.html#adding-and-changing-variables"><i class="fa fa-check"></i><b>4.4</b> Adding and changing variables</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
 <li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
 <li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
 <li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a><ul>
+<li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="dplyr.html"><a href="dplyr.html#group_by-and-ungroup"><i class="fa fa-check"></i><b>4.5.1</b> <code>group_by()</code> and <code>ungroup()</code></a></li>
 <li class="chapter" data-level="4.5.2" data-path="dplyr.html"><a href="dplyr.html#group_split-and-group_keys"><i class="fa fa-check"></i><b>4.5.2</b> <code>group_split()</code> and <code>group_keys()</code></a></li>
 <li class="chapter" data-level="4.5.3" data-path="dplyr.html"><a href="dplyr.html#apply-a-function-to-each-group"><i class="fa fa-check"></i><b>4.5.3</b> Apply a function to each group</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="dplyr.html"><a href="dplyr.html#summarizing-and-counting"><i class="fa fa-check"></i><b>4.6</b> Summarizing and counting</a></li>
-<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a><ul>
+<li class="chapter" data-level="4.7" data-path="dplyr.html"><a href="dplyr.html#combining-data"><i class="fa fa-check"></i><b>4.7</b> Combining data</a>
+<ul>
 <li class="chapter" data-level="4.7.1" data-path="dplyr.html"><a href="dplyr.html#merging"><i class="fa fa-check"></i><b>4.7.1</b> Merging</a></li>
 <li class="chapter" data-level="4.7.2" data-path="dplyr.html"><a href="dplyr.html#adding-rows-and-columns"><i class="fa fa-check"></i><b>4.7.2</b> Adding rows and columns</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a><ul>
+<li class="chapter" data-level="5" data-path="date-time.html"><a href="date-time.html"><i class="fa fa-check"></i><b>5</b> Working with date-time data: <code>lubridate</code></a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="date-time.html"><a href="date-time.html#current-time"><i class="fa fa-check"></i><b>5.1</b> Current time</a></li>
 <li class="chapter" data-level="5.2" data-path="date-time.html"><a href="date-time.html#getting-elements-from-date-time-objects"><i class="fa fa-check"></i><b>5.2</b> Getting elements from date-time objects</a></li>
 <li class="chapter" data-level="5.3" data-path="date-time.html"><a href="date-time.html#calculations-with-date-time"><i class="fa fa-check"></i><b>5.3</b> Calculations with date-time</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a><ul>
-<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a><ul>
+<li class="chapter" data-level="6" data-path="stringr.html"><a href="stringr.html"><i class="fa fa-check"></i><b>6</b> Processing text with: <code>stringr</code> and regex</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="stringr.html"><a href="stringr.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="stringr.html"><a href="stringr.html#a-few-remarks-on-locale"><i class="fa fa-check"></i><b>6.1.1</b> A few remarks on “locale”</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a><ul>
+<li class="chapter" data-level="6.2" data-path="stringr.html"><a href="stringr.html#review-of-regular-expressions"><i class="fa fa-check"></i><b>6.2</b> Review of regular expressions</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="stringr.html"><a href="stringr.html#regex-syntax-elements"><i class="fa fa-check"></i><b>6.2.1</b> Regex syntax elements</a></li>
 <li class="chapter" data-level="6.2.2" data-path="stringr.html"><a href="stringr.html#character-classes-and-negation"><i class="fa fa-check"></i><b>6.2.2</b> Character classes and negation</a></li>
 <li class="chapter" data-level="6.2.3" data-path="stringr.html"><a href="stringr.html#quantifiers"><i class="fa fa-check"></i><b>6.2.3</b> Quantifiers</a></li>
 <li class="chapter" data-level="6.2.4" data-path="stringr.html"><a href="stringr.html#anchoring"><i class="fa fa-check"></i><b>6.2.4</b> Anchoring</a></li>
 <li class="chapter" data-level="6.2.5" data-path="stringr.html"><a href="stringr.html#alternatives"><i class="fa fa-check"></i><b>6.2.5</b> Alternatives</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a><ul>
+<li class="chapter" data-level="6.3" data-path="stringr.html"><a href="stringr.html#the-stringr-essentials"><i class="fa fa-check"></i><b>6.3</b> The <code>stringr</code> essentials</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="stringr.html"><a href="stringr.html#case-conversion"><i class="fa fa-check"></i><b>6.3.1</b> Case conversion</a></li>
 <li class="chapter" data-level="6.3.2" data-path="stringr.html"><a href="stringr.html#split-join-and-substring"><i class="fa fa-check"></i><b>6.3.2</b> Split, join and substring</a></li>
 <li class="chapter" data-level="6.3.3" data-path="stringr.html"><a href="stringr.html#matching"><i class="fa fa-check"></i><b>6.3.3</b> Matching</a></li>
 <li class="chapter" data-level="6.3.4" data-path="stringr.html"><a href="stringr.html#extracting-and-replacing"><i class="fa fa-check"></i><b>6.3.4</b> Extracting and replacing</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="7" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="eda.html"><a href="eda.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a><ul>
+<li class="chapter" data-level="7.2" data-path="eda.html"><a href="eda.html#getting-to-know-the-dataset"><i class="fa fa-check"></i><b>7.2</b> Getting to know the dataset</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="eda.html"><a href="eda.html#the-codebook"><i class="fa fa-check"></i><b>7.2.1</b> The codebook</a></li>
 <li class="chapter" data-level="7.2.2" data-path="eda.html"><a href="eda.html#load-and-inspect-the-data"><i class="fa fa-check"></i><b>7.2.2</b> Load and inspect the data</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a><ul>
+<li class="chapter" data-level="7.3" data-path="eda.html"><a href="eda.html#exploring-variables"><i class="fa fa-check"></i><b>7.3</b> Exploring variables</a>
+<ul>
 <li class="chapter" data-level="7.3.1" data-path="eda.html"><a href="eda.html#first-steps"><i class="fa fa-check"></i><b>7.3.1</b> First steps</a></li>
 <li class="chapter" data-level="7.3.2" data-path="eda.html"><a href="eda.html#smoking-data-corrupted"><i class="fa fa-check"></i><b>7.3.2</b> Smoking data corrupted?</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a><ul>
+<li class="chapter" data-level="7.4" data-path="eda.html"><a href="eda.html#variable-engineering"><i class="fa fa-check"></i><b>7.4</b> Variable engineering</a>
+<ul>
 <li class="chapter" data-level="7.4.1" data-path="eda.html"><a href="eda.html#recoding-strategies"><i class="fa fa-check"></i><b>7.4.1</b> Recoding strategies</a></li>
 <li class="chapter" data-level="7.4.2" data-path="eda.html"><a href="eda.html#factorization"><i class="fa fa-check"></i><b>7.4.2</b> “factorization”</a></li>
 <li class="chapter" data-level="7.4.3" data-path="eda.html"><a href="eda.html#data-redundancy-in-std-variables"><i class="fa fa-check"></i><b>7.4.3</b> Data redundancy in STD variables</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="eda.html"><a href="eda.html#the-dependent-variable"><i class="fa fa-check"></i><b>7.5</b> The dependent variable</a></li>
-<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a><ul>
+<li class="chapter" data-level="7.6" data-path="eda.html"><a href="eda.html#exploring-relationships-between-variables"><i class="fa fa-check"></i><b>7.6</b> Exploring relationships between variables</a>
+<ul>
 <li class="chapter" data-level="7.6.1" data-path="eda.html"><a href="eda.html#the-scatterplot"><i class="fa fa-check"></i><b>7.6.1</b> The scatterplot</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="eda.html"><a href="eda.html#look-for-patterns-with-the-dependent-variable"><i class="fa fa-check"></i><b>7.7</b> Look for patterns with the dependent variable</a></li>
-<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a><ul>
+<li class="chapter" data-level="7.8" data-path="eda.html"><a href="eda.html#density-plots-show-class-distinction"><i class="fa fa-check"></i><b>7.8</b> Density plots show class distinction</a>
+<ul>
 <li class="chapter" data-level="7.8.1" data-path="eda.html"><a href="eda.html#the-xor-problem"><i class="fa fa-check"></i><b>7.8.1</b> The ‘xor’ problem</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a><ul>
+<li class="chapter" data-level="7.9" data-path="eda.html"><a href="eda.html#advanced-explorations"><i class="fa fa-check"></i><b>7.9</b> Advanced Explorations</a>
+<ul>
 <li class="chapter" data-level="7.9.1" data-path="eda.html"><a href="eda.html#pca"><i class="fa fa-check"></i><b>7.9.1</b> PCA</a></li>
 <li class="chapter" data-level="7.9.2" data-path="eda.html"><a href="eda.html#clustering"><i class="fa fa-check"></i><b>7.9.2</b> Clustering</a></li>
 <li class="chapter" data-level="7.9.3" data-path="eda.html"><a href="eda.html#k-means-clustering"><i class="fa fa-check"></i><b>7.9.3</b> k-Means clustering</a></li>
 <li class="chapter" data-level="7.9.4" data-path="eda.html"><a href="eda.html#hierarchical-clustering"><i class="fa fa-check"></i><b>7.9.4</b> hierarchical clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a><ul>
+<li class="chapter" data-level="8" data-path="publish.html"><a href="publish.html"><i class="fa fa-check"></i><b>8</b> Publishing, Presenting and Reporting</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="publish.html"><a href="publish.html#introduction-4"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
 <li class="chapter" data-level="8.2" data-path="publish.html"><a href="publish.html#rmarkdown"><i class="fa fa-check"></i><b>8.2</b> RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="publish.html"><a href="publish.html#shiny"><i class="fa fa-check"></i><b>8.3</b> Shiny</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a><ul>
+<li class="chapter" data-level="9" data-path="exercises.html"><a href="exercises.html"><i class="fa fa-check"></i><b>9</b> Exercises</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="exercises.html"><a href="exercises.html#introduction-5"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
-<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="9.2" data-path="exercises.html"><a href="exercises.html#the-ggplot2-and-tidyr-packages"><i class="fa fa-check"></i><b>9.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="exercises.html"><a href="exercises.html#trees"><i class="fa fa-check"></i><b>9.2.1</b> Trees</a></li>
 <li class="chapter" data-level="9.2.2" data-path="exercises.html"><a href="exercises.html#insect-sprays"><i class="fa fa-check"></i><b>9.2.2</b> Insect Sprays</a></li>
 <li class="chapter" data-level="9.2.3" data-path="exercises.html"><a href="exercises.html#diauxic-growth"><i class="fa fa-check"></i><b>9.2.3</b> Diauxic growth</a></li>
@@ -324,21 +366,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.10" data-path="exercises.html"><a href="exercises.html#bacterial-growth-curves-with-varioscan"><i class="fa fa-check"></i><b>9.2.10</b> Bacterial growth curves with Varioscan</a></li>
 <li class="chapter" data-level="9.2.11" data-path="exercises.html"><a href="exercises.html#the-dinos"><i class="fa fa-check"></i><b>9.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="9.3" data-path="exercises.html"><a href="exercises.html#the-tidyr-and-dplyr-packages"><i class="fa fa-check"></i><b>9.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a>
+<ul>
 <li class="chapter" data-level="9.3.1" data-path="exercises.html"><a href="exercises.html#global-temperature-revisited"><i class="fa fa-check"></i><b>9.3.1</b> Global temperature revisited</a></li>
 <li class="chapter" data-level="9.3.2" data-path="exercises.html"><a href="exercises.html#chickweight"><i class="fa fa-check"></i><b>9.3.2</b> ChickWeight</a></li>
 <li class="chapter" data-level="9.3.3" data-path="exercises.html"><a href="exercises.html#population-numbers"><i class="fa fa-check"></i><b>9.3.3</b> Population numbers</a></li>
 <li class="chapter" data-level="9.3.4" data-path="exercises.html"><a href="exercises.html#rubella-and-measles"><i class="fa fa-check"></i><b>9.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="9.4" data-path="exercises.html"><a href="exercises.html#the-lubridate-package"><i class="fa fa-check"></i><b>9.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="9.4.1" data-path="exercises.html"><a href="exercises.html#female-births"><i class="fa fa-check"></i><b>9.4.1</b> Female births</a></li>
 <li class="chapter" data-level="9.4.2" data-path="exercises.html"><a href="exercises.html#diabetes"><i class="fa fa-check"></i><b>9.4.2</b> Diabetes</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="exercises.html"><a href="exercises.html#the-stringr-package"><i class="fa fa-check"></i><b>9.5</b> The <code>stringr</code> package</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a><ul>
+<li class="chapter" data-level="10" data-path="exercise-solutions.html"><a href="exercise-solutions.html"><i class="fa fa-check"></i><b>10</b> Exercise Solutions</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#introduction-6"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
-<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a><ul>
+<li class="chapter" data-level="10.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-ggplot2-and-tidyr-packages-1"><i class="fa fa-check"></i><b>10.2</b> The <code>ggplot2</code> and <code>tidyr</code> packages</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#trees-1"><i class="fa fa-check"></i><b>10.2.1</b> Trees</a></li>
 <li class="chapter" data-level="10.2.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#insect-sprays-1"><i class="fa fa-check"></i><b>10.2.2</b> Insect Sprays</a></li>
 <li class="chapter" data-level="10.2.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diauxic-growth-1"><i class="fa fa-check"></i><b>10.2.3</b> Diauxic growth</a></li>
@@ -351,13 +397,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.10" data-path="exercise-solutions.html"><a href="exercise-solutions.html#bacterial-growth-curves-with-varioscan-1"><i class="fa fa-check"></i><b>10.2.10</b> Bacterial growth curves with Varioscan</a></li>
 <li class="chapter" data-level="10.2.11" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-dinos-1"><i class="fa fa-check"></i><b>10.2.11</b> The dinos</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a><ul>
+<li class="chapter" data-level="10.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-tidyr-and-dplyr-packages-1"><i class="fa fa-check"></i><b>10.3</b> The <code>tidyr</code> and <code>dplyr</code> packages</a>
+<ul>
 <li class="chapter" data-level="10.3.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#global-temperature-revisited-1"><i class="fa fa-check"></i><b>10.3.1</b> Global temperature revisited</a></li>
 <li class="chapter" data-level="10.3.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#chickweight-1"><i class="fa fa-check"></i><b>10.3.2</b> ChickWeight</a></li>
 <li class="chapter" data-level="10.3.3" data-path="exercise-solutions.html"><a href="exercise-solutions.html#population-numbers-1"><i class="fa fa-check"></i><b>10.3.3</b> Population numbers</a></li>
 <li class="chapter" data-level="10.3.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#rubella-and-measles-1"><i class="fa fa-check"></i><b>10.3.4</b> Rubella and Measles</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="10.4" data-path="exercise-solutions.html"><a href="exercise-solutions.html#the-lubridate-package-1"><i class="fa fa-check"></i><b>10.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="10.4.1" data-path="exercise-solutions.html"><a href="exercise-solutions.html#female-births-1"><i class="fa fa-check"></i><b>10.4.1</b> Female births</a></li>
 <li class="chapter" data-level="10.4.2" data-path="exercise-solutions.html"><a href="exercise-solutions.html#diabetes-1"><i class="fa fa-check"></i><b>10.4.2</b> Diabetes</a></li>
 </ul></li>
@@ -385,9 +433,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exercises" class="section level1">
+<div id="exercises" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Exercises</h1>
-<div id="introduction-5" class="section level2">
+<div id="introduction-5" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Introduction</h2>
 <p>These exercises are meant to provide practice of the course material presented in this eBook. There is no single good solution for them, but some are better than others. A good practice is also to try to solve the same exercise in several different ways.</p>
 <p>The exercises have been marked with a difficulty level, from 1 to five “stars” (❋ to ❋❋❋❋❋). Since I am a big fan of intellectual challenge I have included quite some exercises that transcend the mastery level required at the final assessment. For your peace of mind; if you are able to solve three-star exercises you are really good to go!</p>
@@ -395,9 +443,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The solutions to the exercises are in the next chapter of this eBook.</p>
 <p>For all plotting exercises: take care of the details: axis labels, figure title or caption clear names of separating variables.</p>
 </div>
-<div id="the-ggplot2-and-tidyr-packages" class="section level2">
+<div id="the-ggplot2-and-tidyr-packages" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> The <code>ggplot2</code> and <code>tidyr</code> packages</h2>
-<div id="trees" class="section level3">
+<div id="trees" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> Trees</h3>
 <p>The <code>datasets</code> package that is shipped with R has a dataset called <code>trees</code>.</p>
 <p><strong>A [❋]</strong></p>
@@ -407,7 +455,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>C [❋❋]</strong></p>
 <p>Have the Volume variable reflected in the size of the plot symbol and change their transparency level to 0.6.</p>
 </div>
-<div id="insect-sprays" class="section level3">
+<div id="insect-sprays" class="section level3" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Insect Sprays</h3>
 <p>The <code>datasets</code> package that is shipped with R has a dataset called <code>?</code>. Type <code>?InsectSprays</code> to get information on it.</p>
 <p><strong>A [❋]</strong></p>
@@ -416,7 +464,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Create a jitter plot, splitting on the spray type. Have zero jittering on the y-axis and as little as possible on the x-axis. use the <code>alpha</code> parameter and try to find a nice plot symbol.
 [Extra: Give each spray a different plot color]</p>
 </div>
-<div id="diauxic-growth" class="section level3">
+<div id="diauxic-growth" class="section level3" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> Diauxic growth</h3>
 <p>In 1941, Jacques Monod discovered the phenomenon of <strong><em>diauxic growth</em></strong> in bacteria (e.g. <em>E. coli</em>), resulting from the preference for some carbon substrate over others, causing catabolite repression of pathways of less preferred substrates. See <a href="https://en.wikipedia.org/wiki/Diauxie">The Wikipedia page</a> for details.</p>
 <div class="figure">
@@ -433,21 +481,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>D [❋❋❋]</strong></p>
 <p>Create a multi-panel plot like the one from the original publication.</p>
 </div>
-<div id="virginia-death-rates" class="section level3">
+<div id="virginia-death-rates" class="section level3" number="9.2.4">
 <h3><span class="header-section-number">9.2.4</span> Virginia Death Rates</h3>
 <p>The <code>datasets</code> package that is shipped with R has a dataset (a <code>matrix</code>) called <code>VADeaths</code>. Type <code>?VADeaths</code> to get information on it. First you should convert this matrix into a tibble (a kind of data frame) and the rownames into a real variable using the chunk below (study it so you understand what happens here):</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="exercises.html#cb460-1"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb460-2"><a href="exercises.html#cb460-2"></a><span class="co">## %&gt;% is used to pipe results from one operation to the other, just like &#39;|&#39; in Linux.</span></span>
-<span id="cb460-3"><a href="exercises.html#cb460-3"></a>virginia_death_rates &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(VADeaths)</span>
-<span id="cb460-4"><a href="exercises.html#cb460-4"></a>virginia_death_rates &lt;-<span class="st"> </span>virginia_death_rates <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb460-5"><a href="exercises.html#cb460-5"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="st">&quot;Age Group&quot;</span> =<span class="st"> </span><span class="kw">factor</span>(<span class="kw">rownames</span>(virginia_death_rates), <span class="dt">ordered =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb460-6"><a href="exercises.html#cb460-6"></a><span class="st">    </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Age Group</span><span class="st">`</span>, <span class="kw">everything</span>()) <span class="co">#reorder the columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="exercises.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb459-2"><a href="exercises.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="do">## %&gt;% is used to pipe results from one operation to the other, just like &#39;|&#39; in Linux.</span></span>
+<span id="cb459-3"><a href="exercises.html#cb459-3" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(VADeaths)</span>
+<span id="cb459-4"><a href="exercises.html#cb459-4" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> virginia_death_rates <span class="sc">%&gt;%</span> </span>
+<span id="cb459-5"><a href="exercises.html#cb459-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">&quot;Age Group&quot;</span> <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rownames</span>(virginia_death_rates), <span class="at">ordered =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb459-6"><a href="exercises.html#cb459-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="st">`</span><span class="at">Age Group</span><span class="st">`</span>, <span class="fu">everything</span>()) <span class="co">#reorder the columns</span></span></code></pre></div>
 <p><strong>A [❋❋❋]</strong></p>
 <p>Pivot this table to long (tidy) format. This should generate a dataframe with four columns: <code>Age Group</code>, <code>Habitat</code>, <code>Gender</code> and <code>DeathRate</code>.</p>
 <p><strong>B [❋❋]</strong></p>
 <p>Create a bar chart with the age groups on the x-axis and Rural/Urban and Male/Female using side-by-side bars.</p>
 </div>
-<div id="investigate-new-visualization" class="section level3">
+<div id="investigate-new-visualization" class="section level3" number="9.2.5">
 <h3><span class="header-section-number">9.2.5</span> Investigate new visualization <sup><font size="3em">[❋❋❋]</font></sup></h3>
 <p>Go to the <a href="https://www.r-graph-gallery.com/">R graph Gallery</a> and browse the different sections. Then select one visualization to study in-depth (excluding the ones already demonstrated in this eBook). Work out an example with one of the datasets from either the built-in datasets of R or the <a href="https://github.com/MichielNoback/datasets">Datasets Repo</a> of this course. You can also choose another dataset. For instance, Kaggle (<a href="https://www.kaggle.com/" class="uri">https://www.kaggle.com/</a>) and the UCI Machine Learning Repository (<a href="https://archive.ics.uci.edu/ml/" class="uri">https://archive.ics.uci.edu/ml/</a>) have very interesting datasets.</p>
 <p>Present this visualization in class, addressing these topics:</p>
@@ -458,17 +506,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Show an example with the R code, explain difficulties and point out caveats.</li>
 </ol>
 </div>
-<div id="toothgrowth" class="section level3">
+<div id="toothgrowth" class="section level3" number="9.2.6">
 <h3><span class="header-section-number">9.2.6</span> ToothGrowth</h3>
 <p><strong>[❋❋]</strong></p>
 <p>The <code>datasets</code> package that is shipped with R has a dataset called <code>ToothGrowth</code>. Create a visualization distinguishing the tooth growth between both supplement and dose.</p>
 </div>
-<div id="puromycin" class="section level3">
+<div id="puromycin" class="section level3" number="9.2.7">
 <h3><span class="header-section-number">9.2.7</span> Puromycin</h3>
 <p><strong>[❋❋❋]</strong></p>
 <p>Create a scatter plot visualization of the <code>Puromycin</code> dataset. Color by <code>state</code> and add a loess model smoother without error margin. Use the <code>formula =</code> parameter in <code>geom_smooth()</code> for getting a better-fitting regression line.</p>
 </div>
-<div id="global-temperature" class="section level3">
+<div id="global-temperature" class="section level3" number="9.2.8">
 <h3><span class="header-section-number">9.2.8</span> Global temperature</h3>
 <p>Maybe you have seen this picture of the world temperature over the past 120 years in the media:</p>
 <div class="figure">
@@ -479,16 +527,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 The global temperature data are located in folder <code>global_temperature</code> (see the <a href="https://github.com/MichielNoback/datasets/tree/master/global_temperature">Data Repo</a>).
 There are two data series in file <a href="https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv">https://raw.githubusercontent.com/MichielNoback/datasets/master/global_temperature/annual.csv</a>.
 Study the readme file in the same folder to find out more about these datasets.</p>
-<div id="create-a-scatter-and-line-plot" class="section level4">
+<div id="create-a-scatter-and-line-plot" class="section level4" number="9.2.8.1">
 <h4><span class="header-section-number">9.2.8.1</span> Create a scatter-and-line-plot <sup><font size="2em">[❋❋]</font></sup></h4>
 <p>Create a scatter-and-line graph of both series in a single plot. Annotate well with labels and title.
 Optionally, add a smoother without error boundaries.</p>
 </div>
-<div id="re-create-the-heatmap" class="section level4">
+<div id="re-create-the-heatmap" class="section level4" number="9.2.8.2">
 <h4><span class="header-section-number">9.2.8.2</span> Re-create the heatmap <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
 <p>You should try to reproduce the above picture by using the <code>geom_tile()</code> function. Hint: use <code>scale_fill_gradient2(low = "blue", mid = "white", high = "red")</code> and pass <code>1</code> as value for <code>y</code> in the mapping function. The <code>theme()</code> function with <code>element_blank()</code> can be used for extra tweaking.</p>
 </div>
-<div id="extra-practice" class="section level4">
+<div id="extra-practice" class="section level4" number="9.2.8.3">
 <h4><span class="header-section-number">9.2.8.3</span> Extra practice <sup><font size="2em">[❋❋]</font></sup></h4>
 <p>As extra practice, you could try to answer these questions as well:</p>
 <ul>
@@ -500,21 +548,21 @@ Optionally, add a smoother without error boundaries.</p>
 <p>The is also a monthly temperature file. Many explorations can be carried out on that one as well.</p>
 </div>
 </div>
-<div id="epilepsy-drug-trial" class="section level3">
+<div id="epilepsy-drug-trial" class="section level3" number="9.2.9">
 <h3><span class="header-section-number">9.2.9</span> Epilepsy drug trial</h3>
 <p>The <code>epilepsy</code> folder (see the <a href="https://github.com/MichielNoback/datasets/tree/master/epilepsy">Data Repo</a>) contains two files, one of which -<code>epilepsy.csv</code>- is the actual data file. The <code>readme.md</code> file describes the dataset and the columns. Read it carefully before proceeding.</p>
-<div id="load-the-data" class="section level4">
+<div id="load-the-data" class="section level4" number="9.2.9.1">
 <h4><span class="header-section-number">9.2.9.1</span> Load the data <sup><font size="2em">[❋]</font></sup></h4>
 <p>Load the data and be sure to check the correctness of data types in the columns. The <code>period</code> should be a factor. You can use a downloaded copy, but a direct link to the data file can also be used as argument to <code>read.table()</code>:
 <a href="https://raw.githubusercontent.com/MichielNoback/datasets/master/epilepsy/epilepsy.csv">https://raw.githubusercontent.com/MichielNoback/datasets/master/epilepsy/epilepsy.csv</a></p>
 </div>
-<div id="reorganize-the-data" class="section level4">
+<div id="reorganize-the-data" class="section level4" number="9.2.9.2">
 <h4><span class="header-section-number">9.2.9.2</span> Reorganize the data <sup><font size="2em">[❋❋]</font></sup></h4>
 <p>Reorganize the data so that the dependent variable comes last and the useless <code>entry</code> variable is omitted. This order of variables is required:
 <code>"subject", "age", "base", "treatment", "period", "seizure.rate"</code>
 For better readability you should convert the dataframe into a <code>tibble</code> using <code>as_tibble()</code> (tibbles are dealt with in a later chapter: dplyr).</p>
 </div>
-<div id="create-plots-of-seizure-rates" class="section level4">
+<div id="create-plots-of-seizure-rates" class="section level4" number="9.2.9.3">
 <h4><span class="header-section-number">9.2.9.3</span> Create plots of seizure rates</h4>
 <p><strong>A [❋❋]</strong></p>
 <p>First, create a <strong>boxplot</strong> of the seizure rates of both groups, split over both the <code>period</code> and the <code>treatment</code>. To support both of these data dimensions you will either have to use the <code>color</code> aesthetic, or the <code>facet_wrap()</code> function, like this <code>+ facet_wrap(. ~ treatment)</code>. I suggest you try them both.</p>
@@ -523,44 +571,44 @@ For better readability you should convert the dataframe into a <code>tibble</cod
 <p><strong>C [❋❋❋]</strong></p>
 <p>Investigate whether an <strong>overlay</strong> may improve the story this visualization tells, or can you come up with an even better graph?</p>
 </div>
-<div id="a-boxplot-after-correction" class="section level4">
+<div id="a-boxplot-after-correction" class="section level4" number="9.2.9.4">
 <h4><span class="header-section-number">9.2.9.4</span> A boxplot after correction <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>The <code>base</code> column is the base seizure rate of the subject in an 8-week window prior to the actual trial. To compare before and after you should create a new dataframe where the <code>seizure.rate</code> is summed for the 4 periods. Next, create a final boxplot of these corrected values.</p>
 </div>
-<div id="test-for-statistical-significance" class="section level4">
+<div id="test-for-statistical-significance" class="section level4" number="9.2.9.5">
 <h4><span class="header-section-number">9.2.9.5</span> Test for statistical significance <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>In the previous exercise you have determined the corrected seizure rates.
 Can you figure out a statistical test to see if the difference is significant?</p>
 </div>
-<div id="investigate-age-dependency" class="section level4">
+<div id="investigate-age-dependency" class="section level4" number="9.2.9.6">
 <h4><span class="header-section-number">9.2.9.6</span> Investigate age-dependency <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Investigate whether there is an age-dependent effect in either the base seizure rate or the effect of the treatment.</p>
 </div>
 </div>
-<div id="bacterial-growth-curves-with-varioscan" class="section level3">
+<div id="bacterial-growth-curves-with-varioscan" class="section level3" number="9.2.10">
 <h3><span class="header-section-number">9.2.10</span> Bacterial growth curves with Varioscan</h3>
 <p>Chapter 10, @ref(parsing-complex-data ), ended with a file being saved, <code>data/varioscan/2020-01-30_wide.csv</code>. This file is also present in the <code>varioscan</code> folder of the datasets repo.</p>
-<div id="load-preprocess-and-tidy" class="section level4">
+<div id="load-preprocess-and-tidy" class="section level4" number="9.2.10.1">
 <h4><span class="header-section-number">9.2.10.1</span> Load, preprocess and tidy <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
 <p>First load the data; this is straightforward.
 Next, correct OD values of the “triplicate” experiments using the background signal data from samples without bacteria.</p>
 <p>Thus, the <code>Red</code> values should be corrected using the <code>Red_w_o</code> values of the same dilution; the <code>White</code> columns using <code>White_w_o</code> and <code>Elution</code> using <code>Eluiton_w_o</code>.</p>
 <p>This can be done when you apply a trick: transpose the dataframe using <code>t()</code> before carrying out the corrections. After transpose, you should loop the columns and correct using the periodicity of 8 (number of dilutions)</p>
 <p>You can use this as a start, assuming you loaded the file into <code>growth_data</code>:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="exercises.html#cb461-1"></a><span class="co">## Add rownames to get a hold of them after transpose</span></span>
-<span id="cb461-2"><a href="exercises.html#cb461-2"></a><span class="kw">rownames</span>(growth_data) &lt;-<span class="st"> </span><span class="kw">paste0</span>(growth_data<span class="op">$</span>Content, <span class="st">&#39;.&#39;</span>, </span>
-<span id="cb461-3"><a href="exercises.html#cb461-3"></a>                                growth_data<span class="op">$</span>.copy, <span class="st">&#39;.&#39;</span>, </span>
-<span id="cb461-4"><a href="exercises.html#cb461-4"></a>                                <span class="kw">rep</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>], <span class="dt">times =</span> <span class="dv">12</span>))</span>
-<span id="cb461-5"><a href="exercises.html#cb461-5"></a><span class="co">## transpose</span></span>
-<span id="cb461-6"><a href="exercises.html#cb461-6"></a>tmp &lt;-<span class="st"> </span><span class="kw">t</span>(growth_data)</span>
-<span id="cb461-7"><a href="exercises.html#cb461-7"></a></span>
-<span id="cb461-8"><a href="exercises.html#cb461-8"></a><span class="co">## build a new dataframe/tibble</span></span>
-<span id="cb461-9"><a href="exercises.html#cb461-9"></a>growth_data_corr &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">column_names =</span> <span class="kw">rownames</span>(tmp))</span>
-<span id="cb461-10"><a href="exercises.html#cb461-10"></a></span>
-<span id="cb461-11"><a href="exercises.html#cb461-11"></a><span class="co">## continue here</span></span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="exercises.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add rownames to get a hold of them after transpose</span></span>
+<span id="cb460-2"><a href="exercises.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(growth_data) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(growth_data<span class="sc">$</span>Content, <span class="st">&#39;.&#39;</span>, </span>
+<span id="cb460-3"><a href="exercises.html#cb460-3" aria-hidden="true" tabindex="-1"></a>                                growth_data<span class="sc">$</span>.copy, <span class="st">&#39;.&#39;</span>, </span>
+<span id="cb460-4"><a href="exercises.html#cb460-4" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">times =</span> <span class="dv">12</span>))</span>
+<span id="cb460-5"><a href="exercises.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="do">## transpose</span></span>
+<span id="cb460-6"><a href="exercises.html#cb460-6" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">t</span>(growth_data)</span>
+<span id="cb460-7"><a href="exercises.html#cb460-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb460-8"><a href="exercises.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="do">## build a new dataframe/tibble</span></span>
+<span id="cb460-9"><a href="exercises.html#cb460-9" aria-hidden="true" tabindex="-1"></a>growth_data_corr <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">column_names =</span> <span class="fu">rownames</span>(tmp))</span>
+<span id="cb460-10"><a href="exercises.html#cb460-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb460-11"><a href="exercises.html#cb460-11" aria-hidden="true" tabindex="-1"></a><span class="do">## continue here</span></span></code></pre></div>
 <p>After these steps, the data should be tidied.</p>
 </div>
-<div id="create-a-growth-curve-visualization" class="section level4">
+<div id="create-a-growth-curve-visualization" class="section level4" number="9.2.10.2">
 <h4><span class="header-section-number">9.2.10.2</span> Create a growth curve visualization <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
 <p>Create a line plot visualizing the entire experiment.
 The challenge here is to present a clear picture with tons of dataseries on top of each other. You should realise there are 96 time series that could be plotted.</p>
@@ -568,24 +616,24 @@ The challenge here is to present a clear picture with tons of dataseries on top 
 <p>The main sample set (the red tulip) should be emphasized. The least interesting controls, columns 4, 8 and 12, should be made less present visually.</p>
 </div>
 </div>
-<div id="the-dinos" class="section level3">
+<div id="the-dinos" class="section level3" number="9.2.11">
 <h3><span class="header-section-number">9.2.11</span> The dinos</h3>
 <p>This exercise represents a review of many of basic R operations as well, besides ggplot2.</p>
 <p>The <code>dinos</code> folder contains an Excel file called <code>jgs2018049_si_001.xlsx</code>. It contains supplementary data to a scientific publication with the title “The Carnian Pluvial Episode and the origin of dinosaurs” [Benton et al., Journal of the Geological Society 175(6) 2018].</p>
 <p>One of the figures accompanying the paper is this one:</p>
 <p><img src="graphics/dino_trend.png" /></p>
 <p><em><strong>Figure 2</strong>.Proportions of early dinosaurs through the Triassic, showing the rapid rise in the late Carnian and early to middle Norian. Two metrics are shown, numbers of specimens and numbers of genera in 12 sampled faunas, in proportion to all tetrapods; the linking line is a moving average. Specimen counts perhaps exaggerate the trend when compared with generic counts, or at least both show different aspects of the same rise in ecological impact of the dinosaurs in the Late Triassic. (Based on data in supplementary material Table S1.)</em></p>
-<p>You have to agree this is terrible! They even omitted the legend for CPE which is descried in the paper “Carnian Pluvial Episode (CPE), dated at 232 M Ya”. And what the heck is a “moving average”?</p>
+<p>You have to agree this is terrible! They even omitted the legend for CPE which is descried in the paper “Carnian Pluvial Episode (CPE), dated at 232 M Ya.” And what the heck is a “moving average?”</p>
 <p>Let’s explore and improve.</p>
-<div id="export-to-csv" class="section level4">
+<div id="export-to-csv" class="section level4" number="9.2.11.1">
 <h4><span class="header-section-number">9.2.11.1</span> Export to csv</h4>
 <p>We’ll begin by exporting all three tabs to a textual format.</p>
-<p>Open the excel file and select the tab “Contents”. You can see it is a “codebook” - it contains column names and descriptions for the two other tabs in the excel file. In the <em>File</em> menu, select <em>Save As…</em>. Next, give as name <code>codebook.csv</code> and for <em>File Format</em>, select <em>CSV UTF-8 (Comma-delimited) (.csv)</em>. You’ll get a warning -read it!- but select <em>OK</em>.</p>
+<p>Open the excel file and select the tab “Contents.” You can see it is a “codebook” - it contains column names and descriptions for the two other tabs in the excel file. In the <em>File</em> menu, select <em>Save As…</em>. Next, give as name <code>codebook.csv</code> and for <em>File Format</em>, select <em>CSV UTF-8 (Comma-delimited) (.csv)</em>. You’ll get a warning -read it!- but select <em>OK</em>.</p>
 <p>Next, select tab “Skeletons” and repeat to generate <code>skeletons.csv</code> and “Footprints” to generate <code>footprints.csv</code>.</p>
 <p>Close the Excel file without saving changes to it. We’ll continue with the csv files.</p>
 <p>Note: R has packages providing functionality to read from Excel, but this is outside the scope of this course, and installing them is often a hassle.</p>
 </div>
-<div id="clean-up-and-load-codebook.csv" class="section level4">
+<div id="clean-up-and-load-codebook.csv" class="section level4" number="9.2.11.2">
 <h4><span class="header-section-number">9.2.11.2</span> Clean up and load <code>codebook.csv</code></h4>
 <p>Have a look at the contents of <code>codebook.csv</code> in the editor. It is not yet suitable for loading into R. Write down the number of lines describing column headers for the skeletons and the number for footprints. Next, delete the lines that are not really codebook entries.</p>
 <p><strong>A [❋]</strong></p>
@@ -597,20 +645,20 @@ The challenge here is to present a clear picture with tons of dataseries on top 
 <p><strong>D [❋❋]</strong></p>
 <p>Add a column called <code>dataset</code>: a factor with the value <code>skeleton</code> or <code>footprint</code>, depending on the file that is referred to.</p>
 </div>
-<div id="write-a-utility-function" class="section level4">
+<div id="write-a-utility-function" class="section level4" number="9.2.11.3">
 <h4><span class="header-section-number">9.2.11.3</span> Write a utility function <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Write a utility function that returns a text label to be used in plotting when given a dataset name and a column name. The label should come from the codebook <code>description</code> variable of course. The <code>dataset</code> parameter should default to <code>skeleton</code>. For example, these calls:</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="exercises.html#cb462-1"></a><span class="kw">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>, <span class="st">&#39;skeleton&#39;</span>) </span>
-<span id="cb462-2"><a href="exercises.html#cb462-2"></a><span class="co">##same as</span></span>
-<span id="cb462-3"><a href="exercises.html#cb462-3"></a><span class="kw">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="exercises.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>, <span class="st">&#39;skeleton&#39;</span>) </span>
+<span id="cb461-2"><a href="exercises.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="do">##same as</span></span>
+<span id="cb461-3"><a href="exercises.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>) </span></code></pre></div>
 <p>should both return <code>Number of genera of Dinosauria</code>.<br />
 As extra challenge you could implement some error checking to make the function more robust.</p>
 </div>
-<div id="load-skeleton-data" class="section level4">
+<div id="load-skeleton-data" class="section level4" number="9.2.11.4">
 <h4><span class="header-section-number">9.2.11.4</span> Load skeleton data <sup><font size="2em">[❋]</font></sup></h4>
 <p>Load the data in the <code>skeletons.csv</code> file and assign it to variable <code>skeleton</code>. Make sure your data columns have the right type and that you did not overlook NA value or decimal encodings.</p>
 </div>
-<div id="plot-species-versus-time" class="section level4">
+<div id="plot-species-versus-time" class="section level4" number="9.2.11.5">
 <h4><span class="header-section-number">9.2.11.5</span> Plot species versus time <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>As a first exploration of the data, create a scatterplot of <code>Total_spec</code> as a function of <code>Midpoint</code> (the midpoint of the archaeological epoch) and have the points colored by <code>Epoch</code>. You should use ggplot2 of course.
 There is an outlier flattening the picture quite a lot. Can you think of a strategy to make the picture clearer?
@@ -619,11 +667,36 @@ Another problem is that the x-axis scale is from recent to ancient and this shou
 NB: it may be a good idea to tweak the descriptions in the codebook a little bit.</p>
 <p>Note that for “Million Years Ago” you can use the abbreviations “MYA” or “Ma” (Mega annum).</p>
 </div>
+<div id="reproducing-the-publication-figure" class="section level4" number="9.2.11.6">
+<h4><span class="header-section-number">9.2.11.6</span> Reproducing the publication figure</h4>
+<p>Reproduce the figure from the introduction of this section, but using ggplot2 instead of base R as they used. This requires some preprocessing steps, especially with the use of <code>pivot_longer()</code>.</p>
+<p><strong>A [❋❋]</strong><br />
+You will have to calculate the proportions of Dinosauria (<code>Dinosaur_gen</code>) relative to the total of all “tetrapod” groups (including <code>Archosauromorph_gen</code>, <code>Dinosaur_gen</code>, <code>Synapsid_gen</code>, <code>Parareptile_gen</code>, <code>Temnospondyl_gen</code>). You need this for Specimens (<code>_spec</code>) as well as Genera (<code>_gen</code>).</p>
+<p><strong>B [❋❋❋]</strong><br />
+Next, you should extract a single proportion for all Formations represented in a single <code>Midpoint</code>. I realize that this is not an entirely valid operation. Do you know why? Can you figure out how it was done for the existing publication plot?<br />
+I suggest you use the <code>aggregate()</code> function. You will need the Epoch and Stage of these as well for later aspects of plotting.</p>
+<p><strong>C [❋❋❋]</strong><br />
+Now you need to tidy the data.</p>
+<p><strong>D [❋❋❋❋]</strong><br />
+Finally you have the data to generate the plot itself, without the moving average.</p>
+<p><strong>E [❋❋❋❋❋]</strong><br />
+Add the moving average. A <strong><em>simple moving average</em></strong> (SMA) is the unweighted mean of the previous <em>n</em> data.<br />
+The paper does not say anything about the “window” (<code>n</code>) used in the moving average, but looking at the original figure it is less that 10 MY wide. Actually, to be honest, I cannot identify the used algorithm by looking at the plot. Can you?
+Just give it a shot and see how far you get.</p>
+</div>
+<div id="make-a-better-figure" class="section level4" number="9.2.11.7">
+<h4><span class="header-section-number">9.2.11.7</span> Make a better figure <sup><font size="2em">[❋❋❋]</font></sup></h4>
+<p>Next, try to make a plot that uses an alternative to the <em>moving average</em> used in the publication. Also, use background coloring (rectangles) to highlight the Epochs within the plot.</p>
+</div>
+<div id="use-the-size-aesthetic" class="section level4" number="9.2.11.8">
+<h4><span class="header-section-number">9.2.11.8</span> Use the size aesthetic <sup><font size="2em">[❋❋❋❋❋]</font></sup></h4>
+<p>The “size” aesthetic can be used for indicating the absolute number of specimens/genera, respectively. This adds an extra dimension of information to the plot.</p>
 </div>
 </div>
-<div id="the-tidyr-and-dplyr-packages" class="section level2">
+</div>
+<div id="the-tidyr-and-dplyr-packages" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> The <code>tidyr</code> and <code>dplyr</code> packages</h2>
-<div id="global-temperature-revisited" class="section level3">
+<div id="global-temperature-revisited" class="section level3" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> Global temperature revisited</h3>
 <p>Reload the <code>global_temp</code> data if it is not in memory anymore.</p>
 <p><strong>A [❋❋]</strong></p>
@@ -637,7 +710,7 @@ To select the top <em>n</em> values after grouping, use <code>filter(row_number(
 <p>Select the years from 1970 and split up the dataset in decades and report the per-decade average temperature for both models.</p>
 <p>Extra exercise: create a bar plot from this result.</p>
 </div>
-<div id="chickweight" class="section level3">
+<div id="chickweight" class="section level3" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> ChickWeight</h3>
 <p>You have seen how to determine the weight gain of the chickens between measurements in the <code>ChickWeight</code> dataset. Here, we look at this dataset again.</p>
 <ol style="list-style-type: decimal">
@@ -649,39 +722,39 @@ Determine the total weight gain for each chick and list all chickens together wi
 Report the Diet, number of chickens on the diet and the average weight gain.</p></li>
 </ol>
 </div>
-<div id="population-numbers" class="section level3">
+<div id="population-numbers" class="section level3" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> Population numbers</h3>
 <p>The <code>population</code> folder of the <code>datasets</code> repo contains two files. One of them, <code>EDU_DEM.....csv</code> contains population data for all countries of the world (where data is available). We’re going to mangle and explore this data a bit.<br />
 Besides the following exercises there are many, <em>many</em> other questions you could ask yourself about this dataset, and visualizations to be created. For instance, how about countries and age groups, years with maximum growth, etc. Explore and practice!</p>
-<div id="load-the-data-1" class="section level4">
+<div id="load-the-data-1" class="section level4" number="9.3.3.1">
 <h4><span class="header-section-number">9.3.3.1</span> Load the data <sup><font size="2em">[❋]</font></sup></h4>
 <p>Start by loading the data into a dataframe called <code>population</code>.
 Since it is a bit large, I suggest you first download it to a local location.</p>
 </div>
-<div id="clean-up" class="section level4">
+<div id="clean-up" class="section level4" number="9.3.3.2">
 <h4><span class="header-section-number">9.3.3.2</span> Clean up <sup><font size="2em">[❋❋]</font></sup></h4>
 <p>There are quite some uninformative variables - variables with only one value or with only NA.
 Find out which variables are uninformative and remove these from the dataframe.</p>
 </div>
-<div id="create-a-wide-yearly-report-of-population-totals" class="section level4">
+<div id="create-a-wide-yearly-report-of-population-totals" class="section level4" number="9.3.3.3">
 <h4><span class="header-section-number">9.3.3.3</span> Create a “wide” yearly report of population totals <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>With the dataframe you now have, create a report in wide format for the total population numbers over the available years. So, the years now get their own column and each country has a single row.</p>
 </div>
-<div id="create-a-wide-yearly-report-of-population-change" class="section level4">
+<div id="create-a-wide-yearly-report-of-population-change" class="section level4" number="9.3.3.4">
 <h4><span class="header-section-number">9.3.3.4</span> Create a “wide” yearly report of population change <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
 <p>Next, present the same format (wide), but now with the “population change” instead of the total population.</p>
 </div>
-<div id="create-a-bar-plot-split-on-gender" class="section level4">
+<div id="create-a-bar-plot-split-on-gender" class="section level4" number="9.3.3.5">
 <h4><span class="header-section-number">9.3.3.5</span> Create a bar plot split on gender <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Create a bar plot of the population numbers of the countries of Western Europe across the available years, split by gender.</p>
 </div>
-<div id="highest-growth-rate" class="section level4">
+<div id="highest-growth-rate" class="section level4" number="9.3.3.6">
 <h4><span class="header-section-number">9.3.3.6</span> Highest growth rate <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Which three countries have shown the fastest relative growth rate, measured as percentage change over the the whole of the available time period (2005-2017) relative to its start, over the entire population, for both sexes combined?</p>
 <p>Extra practice: Do the same for the different age groups.</p>
 </div>
 </div>
-<div id="rubella-and-measles" class="section level3">
+<div id="rubella-and-measles" class="section level3" number="9.3.4">
 <h3><span class="header-section-number">9.3.4</span> Rubella and Measles</h3>
 <p>The <code>rubella_measles_cases</code> folder of the <code>datasets</code> repo contains historic data for both measles and rubella. This serves as extra training material (no solutions provided). Try to report, both visually and in tables:</p>
 <ul>
@@ -692,36 +765,36 @@ Find out which variables are uninformative and remove these from the dataframe.<
 Other data are available for exploring relations as well in the population data: age groups, sex, and diseases.</p>
 </div>
 </div>
-<div id="the-lubridate-package" class="section level2">
+<div id="the-lubridate-package" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> The <code>lubridate</code> package</h2>
 <p>These exercises can of course only be completed if you also apply your knowledge of the <code>tidyr</code> and <code>dplyr</code> packages.</p>
-<div id="female-births" class="section level3">
+<div id="female-births" class="section level3" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> Female births</h3>
 <p>The <code>datasets</code> repo contains a folder <code>female_births</code>. Its content is fairly simple: it holds the number of daily female births in California in 1959. We’ll have a look at it now.</p>
-<div id="load-the-data-2" class="section level4">
+<div id="load-the-data-2" class="section level4" number="9.4.1.1">
 <h4><span class="header-section-number">9.4.1.1</span> Load the data <sup><font size="2em">[❋❋❋❋]</font></sup></h4>
 <p>Use local caching for this dataset using conditional exectution of <code>download.file()</code>. Load the data and use the <code>lubridate</code> package so that the Date column becomes a Date type.</p>
 </div>
-<div id="check-for-missing-rows" class="section level4">
+<div id="check-for-missing-rows" class="section level4" number="9.4.1.2">
 <h4><span class="header-section-number">9.4.1.2</span> Check for missing rows <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Check if there is really not a single day missing in this reported year. Hint: one option is to look at the <code>lag()</code> between subsequent rows.</p>
 </div>
-<div id="report-birth-numbers" class="section level4">
+<div id="report-birth-numbers" class="section level4" number="9.4.1.3">
 <h4><span class="header-section-number">9.4.1.3</span> Report birth numbers <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Report the number of births per month (Jan - Dec) and per weekday (Mon - Sun), as barplots.
 Is there a month or day that seems to be anomalous, or do you see seasonal trends? Try a statistical test!</p>
 </div>
 </div>
-<div id="diabetes" class="section level3">
+<div id="diabetes" class="section level3" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> Diabetes</h3>
 <p>The <code>datasets</code> repo of this course contains a folder named <code>UCI_diabetes_dataset</code>. The complete dataset contains various types of information for 70 diabetes patients. Study the Readme file of this dataset before proceeding.</p>
-<div id="create-a-codebook" class="section level4">
+<div id="create-a-codebook" class="section level4" number="9.4.2.1">
 <h4><span class="header-section-number">9.4.2.1</span> Create a codebook <sup><font size="2em">[❋❋]</font></sup></h4>
 <p>Copy-and-paste the Code Fields into a file named <code>codebook.txt</code> and load it as a dataframe with name <code>codebook_diab</code>.</p>
 </div>
 </div>
 </div>
-<div id="the-stringr-package" class="section level2">
+<div id="the-stringr-package" class="section level2" number="9.5">
 <h2><span class="header-section-number">9.5</span> The <code>stringr</code> package</h2>
 
 </div>

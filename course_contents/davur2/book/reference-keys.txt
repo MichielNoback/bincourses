@@ -34,6 +34,10 @@ fig:boxplot-seizure-rates3
 fig:boxplot-seizure-rates4
 fig:boxplot-seizure-rates5
 fig:species-vs-time
+fig:plot-reprodiction1
+fig:plot-reprodiction2
+fig:plot-reprodiction3
+fig:plot-reprodiction4
 fig:pop-barplot
 fig:births-month-barplot
 fig:births-month-barplot2
@@ -50,6 +54,7 @@ experimenting-with-geoms-and-aesthetics
 multivariate-categorical-data
 bar-plots-of-contingency-tables
 balloon-plot
+mosaic-plot
 correspondence-analysis
 advanced-plotting-aspects
 plot-panels-from-for-loops-using-gridextragrid.arrange
@@ -190,6 +195,9 @@ clean-up-and-load-codebook.csv
 write-a-utility-function
 load-skeleton-data
 plot-species-versus-time
+reproducing-the-publication-figure
+make-a-better-figure
+use-the-size-aesthetic
 the-tidyr-and-dplyr-packages
 global-temperature-revisited
 chickweight
@@ -237,6 +245,9 @@ clean-up-and-load-codebook.csv-1
 write-a-utility-function-1
 load-skeleton-data-1
 plot-species-versus-time-1
+reproducing-the-publication-figure-1
+make-a-better-figure-1
+use-the-size-aesthetic-1
 the-tidyr-and-dplyr-packages-1
 global-temperature-revisited-1
 chickweight-1
