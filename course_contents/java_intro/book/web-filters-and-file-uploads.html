@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 38 Web filters and File uploads | The Java Track</title>
+  <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 38 Web filters and File uploads | The Java Track" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 38 Web filters and File uploads | The Java Track" />
+  
+  <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
+  
+
+<meta name="author" content="Michiel Noback" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="a-simple-web-service-using-ajax.html"/>
+<link rel="next" href="exercises-intro.html"/>
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Java eBook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> General introduction</a></li>
+<li class="chapter" data-level="2" data-path="keyboard-shortcuts.html"><a href="keyboard-shortcuts.html"><i class="fa fa-check"></i><b>2</b> Keyboard shortcuts</a></li>
+<li class="part"><span><b>Part I - Getting Started</b></span></li>
+<li class="chapter" data-level="3" data-path="a-first-intellij-project.html"><a href="a-first-intellij-project.html"><i class="fa fa-check"></i><b>3</b> A first IntelliJ project</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="a-first-intellij-project.html"><a href="a-first-intellij-project.html#dependency-management"><i class="fa fa-check"></i><b>3.1</b> Dependency management</a></li>
+<li class="chapter" data-level="3.2" data-path="a-first-intellij-project.html"><a href="a-first-intellij-project.html#a-first-project"><i class="fa fa-check"></i><b>3.2</b> A first project</a></li>
+<li class="chapter" data-level="3.3" data-path="a-first-intellij-project.html"><a href="a-first-intellij-project.html#distribute-an-executable"><i class="fa fa-check"></i><b>3.3</b> Distribute an executable</a></li>
+<li class="chapter" data-level="3.4" data-path="a-first-intellij-project.html"><a href="a-first-intellij-project.html#wrap-up"><i class="fa fa-check"></i><b>3.4</b> Wrap-up</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html"><i class="fa fa-check"></i><b>4</b> The essence of Java</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html#cross-platform"><i class="fa fa-check"></i><b>4.1</b> Cross-platform</a></li>
+<li class="chapter" data-level="4.2" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html#multithreaded"><i class="fa fa-check"></i><b>4.2</b> Multithreaded</a></li>
+<li class="chapter" data-level="4.3" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html#object-oriented"><i class="fa fa-check"></i><b>4.3</b> Object-Oriented</a></li>
+<li class="chapter" data-level="4.4" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html#strongly-typed-and-scoped"><i class="fa fa-check"></i><b>4.4</b> Strongly typed and scoped</a></li>
+<li class="chapter" data-level="4.5" data-path="the-essence-of-java.html"><a href="the-essence-of-java.html#compiled"><i class="fa fa-check"></i><b>4.5</b> Compiled</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-program-structure-and-flow.html"><a href="basic-program-structure-and-flow.html"><i class="fa fa-check"></i><b>5</b> Basic program structure and flow</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-program-structure-and-flow.html"><a href="basic-program-structure-and-flow.html#basic-program-structure"><i class="fa fa-check"></i><b>5.1</b> Basic program structure</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-program-structure-and-flow.html"><a href="basic-program-structure-and-flow.html#summary"><i class="fa fa-check"></i><b>5.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="first-look-at-objects.html"><a href="first-look-at-objects.html"><i class="fa fa-check"></i><b>6</b> Objects and classes</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="first-look-at-objects.html"><a href="first-look-at-objects.html#ninjas"><i class="fa fa-check"></i><b>6.1</b> Ninjas</a></li>
+<li class="chapter" data-level="6.2" data-path="first-look-at-objects.html"><a href="first-look-at-objects.html#growing-cells"><i class="fa fa-check"></i><b>6.2</b> Growing cells</a></li>
+<li class="chapter" data-level="6.3" data-path="first-look-at-objects.html"><a href="first-look-at-objects.html#object-construction-first-iteration"><i class="fa fa-check"></i><b>6.3</b> Object construction (first iteration)</a></li>
+<li class="chapter" data-level="6.4" data-path="first-look-at-objects.html"><a href="first-look-at-objects.html#inheritance-first-discussion"><i class="fa fa-check"></i><b>6.4</b> Inheritance (first discussion)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="naming-and-commenting-stuff.html"><a href="naming-and-commenting-stuff.html"><i class="fa fa-check"></i><b>7</b> Naming and commenting stuff</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="naming-and-commenting-stuff.html"><a href="naming-and-commenting-stuff.html#naming"><i class="fa fa-check"></i><b>7.1</b> Naming</a></li>
+<li class="chapter" data-level="7.2" data-path="naming-and-commenting-stuff.html"><a href="naming-and-commenting-stuff.html#commenting"><i class="fa fa-check"></i><b>7.2</b> Commenting</a></li>
+</ul></li>
+<li class="part"><span><b>Part II - Syntax</b></span></li>
+<li class="chapter" data-level="8" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>8</b> Data Types</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-types.html"><a href="data-types.html#primitives"><i class="fa fa-check"></i><b>8.1</b> Primitives</a></li>
+<li class="chapter" data-level="8.2" data-path="data-types.html"><a href="data-types.html#reference-types"><i class="fa fa-check"></i><b>8.2</b> Reference types</a></li>
+<li class="chapter" data-level="8.3" data-path="data-types.html"><a href="data-types.html#what-is-the-difference"><i class="fa fa-check"></i><b>8.3</b> What is the difference?</a></li>
+<li class="chapter" data-level="8.4" data-path="data-types.html"><a href="data-types.html#summary-1"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="arrays.html"><a href="arrays.html"><i class="fa fa-check"></i><b>9</b> Arrays</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="arrays.html"><a href="arrays.html#creating-arrays"><i class="fa fa-check"></i><b>9.1</b> Creating arrays</a></li>
+<li class="chapter" data-level="9.2" data-path="arrays.html"><a href="arrays.html#printing"><i class="fa fa-check"></i><b>9.2</b> Printing</a></li>
+<li class="chapter" data-level="9.3" data-path="arrays.html"><a href="arrays.html#accessing"><i class="fa fa-check"></i><b>9.3</b> Accessing</a></li>
+<li class="chapter" data-level="9.4" data-path="arrays.html"><a href="arrays.html#multidimensional-arrays"><i class="fa fa-check"></i><b>9.4</b> Multidimensional arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="operators.html"><a href="operators.html"><i class="fa fa-check"></i><b>10</b> Operators</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="operators.html"><a href="operators.html#overview"><i class="fa fa-check"></i><b>10.1</b> Overview</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="flow-control.html"><a href="flow-control.html"><i class="fa fa-check"></i><b>11</b> Flow control</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="flow-control.html"><a href="flow-control.html#if-else-if-else"><i class="fa fa-check"></i><b>11.1</b> if [else if] [else]</a></li>
+<li class="chapter" data-level="11.2" data-path="flow-control.html"><a href="flow-control.html#while"><i class="fa fa-check"></i><b>11.2</b> while</a></li>
+<li class="chapter" data-level="11.3" data-path="flow-control.html"><a href="flow-control.html#for"><i class="fa fa-check"></i><b>11.3</b> for</a></li>
+<li class="chapter" data-level="11.4" data-path="flow-control.html"><a href="flow-control.html#break-and-continue"><i class="fa fa-check"></i><b>11.4</b> break and continue</a></li>
+<li class="chapter" data-level="11.5" data-path="flow-control.html"><a href="flow-control.html#switchcase"><i class="fa fa-check"></i><b>11.5</b> switch/case</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>12</b> Methods</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="methods-1.html"><a href="methods-1.html#method-signature"><i class="fa fa-check"></i><b>12.1</b> Method signature</a></li>
+<li class="chapter" data-level="12.2" data-path="methods-1.html"><a href="methods-1.html#interacting-with-state"><i class="fa fa-check"></i><b>12.2</b> Interacting with state</a></li>
+<li class="chapter" data-level="12.3" data-path="methods-1.html"><a href="methods-1.html#method-overloading"><i class="fa fa-check"></i><b>12.3</b> Method overloading</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="packages-and-imports.html"><a href="packages-and-imports.html"><i class="fa fa-check"></i><b>13</b> Packages and Imports</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="packages-and-imports.html"><a href="packages-and-imports.html#class-path"><i class="fa fa-check"></i><b>13.1</b> Class path</a></li>
+<li class="chapter" data-level="13.2" data-path="packages-and-imports.html"><a href="packages-and-imports.html#namespaces"><i class="fa fa-check"></i><b>13.2</b> Namespaces</a></li>
+<li class="chapter" data-level="13.3" data-path="packages-and-imports.html"><a href="packages-and-imports.html#packages"><i class="fa fa-check"></i><b>13.3</b> Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="the-power-of-naming.html"><a href="the-power-of-naming.html"><i class="fa fa-check"></i><b>14</b> The power of naming</a></li>
+<li class="part"><span><b>Part III - Core APIs</b></span></li>
+<li class="chapter" data-level="15" data-path="interfaces.html"><a href="interfaces.html"><i class="fa fa-check"></i><b>15</b> Interfaces</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interfaces.html"><a href="interfaces.html#a-contract-without-implementation-interface"><i class="fa fa-check"></i><b>15.1</b> A contract without implementation: interface</a></li>
+<li class="chapter" data-level="15.2" data-path="interfaces.html"><a href="interfaces.html#summary-2"><i class="fa fa-check"></i><b>15.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="the-java-collections-api.html"><a href="the-java-collections-api.html"><i class="fa fa-check"></i><b>16</b> The Java Collections API</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="the-java-collections-api.html"><a href="the-java-collections-api.html#lists-arraylist-and-linkedlist"><i class="fa fa-check"></i><b>16.1</b> Lists: ArrayList and LinkedList</a></li>
+<li class="chapter" data-level="16.2" data-path="the-java-collections-api.html"><a href="the-java-collections-api.html#code-against-interfaces-not-implementations"><i class="fa fa-check"></i><b>16.2</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="16.3" data-path="the-java-collections-api.html"><a href="the-java-collections-api.html#the-collection-interfaces-map-list-set"><i class="fa fa-check"></i><b>16.3</b> The collection interfaces: Map, List, Set</a></li>
+<li class="chapter" data-level="16.4" data-path="the-java-collections-api.html"><a href="the-java-collections-api.html#collections-utility-methods"><i class="fa fa-check"></i><b>16.4</b> Collections utility methods</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html"><i class="fa fa-check"></i><b>17</b> Methods of class Object</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
+<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+</ul></li>
+<li class="part"><span><b>Part IV - OOP</b></span></li>
+<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
+<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
+<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
+<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+</ul></li>
+<li class="part"><span><b>Part V - Java Web Apps</b></span></li>
+<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
+<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
+<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
+<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
+<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<ul>
+<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<ul>
+<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
+<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+</ul></li>
+<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<ul>
+<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
+<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<ul>
+<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
+<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
+<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
+<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
+<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="part"><span><b>Part VI - JUnit</b></span></li>
+<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<ul>
+<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
+<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
+<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<ul>
+<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+</ul></li>
+<li class="part"><span><b>Part VII - Design</b></span></li>
+<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
+<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<ul>
+<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
+<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
+<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+</ul></li>
+<li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
+<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
+<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Java Track</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="web-filters-and-file-uploads" class="section level1" number="38">
+<h1><span class="header-section-number">Chapter 38</span> Web filters and File uploads</h1>
+<p>This is the last post in this course. It deals with two loose ends: uploading files and intercepting requests.</p>
+<div id="web-filters" class="section level2" number="38.1">
+<h2><span class="header-section-number">38.1</span> Web filters</h2>
+<p>Suppose you want to intercept requests for a (group of) servlets, to log what is requested and where it came from.
+For instance, to do analyse the web traffic later on in order to pinpoint the most used resources.<br />
+Or more relevant: intercept requests to asses authentication status of the user. And reject a request if the user is not authorized to see a resource.</p>
+<div id="a-basic-example" class="section level4 unnumbered">
+<h4>A basic example</h4>
+<p>Here is our old friend, the PhraseServlet (only relevant code show):</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb319-1"><a href="web-filters-and-file-uploads.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
+<span id="cb319-2"><a href="web-filters-and-file-uploads.html#cb319-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-3"><a href="web-filters-and-file-uploads.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;PhraseServlet&quot;</span><span class="op">,</span> urlPatterns <span class="op">=</span> <span class="st">&quot;/give.phrase&quot;</span><span class="op">)</span></span>
+<span id="cb319-4"><a href="web-filters-and-file-uploads.html#cb319-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PhraseServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
+<span id="cb319-5"><a href="web-filters-and-file-uploads.html#cb319-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> TemplateEngine templateEngine<span class="op">;</span></span>
+<span id="cb319-6"><a href="web-filters-and-file-uploads.html#cb319-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-7"><a href="web-filters-and-file-uploads.html#cb319-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span></span>
+<span id="cb319-8"><a href="web-filters-and-file-uploads.html#cb319-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">throws</span> ServletException<span class="op">,</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb319-9"><a href="web-filters-and-file-uploads.html#cb319-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> phraseType <span class="op">=</span> request<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span><span class="st">&quot;phrase_category&quot;</span><span class="op">);</span></span>
+<span id="cb319-10"><a href="web-filters-and-file-uploads.html#cb319-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Locale</span> locale <span class="op">=</span> request<span class="op">.</span><span class="fu">getLocale</span><span class="op">();</span></span>
+<span id="cb319-11"><a href="web-filters-and-file-uploads.html#cb319-11" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">,</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span> locale<span class="op">);</span></span>
+<span id="cb319-12"><a href="web-filters-and-file-uploads.html#cb319-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> phrase <span class="op">=</span> PhraseFactory<span class="op">.</span><span class="fu">getPhrase</span><span class="op">(</span>phraseType<span class="op">);</span></span>
+<span id="cb319-13"><a href="web-filters-and-file-uploads.html#cb319-13" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;phrase_type&quot;</span><span class="op">,</span> phraseType<span class="op">);</span></span>
+<span id="cb319-14"><a href="web-filters-and-file-uploads.html#cb319-14" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;phrase_num&quot;</span><span class="op">,</span> phrase<span class="op">);</span></span>
+<span id="cb319-15"><a href="web-filters-and-file-uploads.html#cb319-15" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span><span class="st">&quot;phrase_of_the_day&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
+<span id="cb319-16"><a href="web-filters-and-file-uploads.html#cb319-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb319-17"><a href="web-filters-and-file-uploads.html#cb319-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This is the way to keep track of requests for <code>/give.phrase</code>; a <code>@WebFilter</code> annotation on a class implementing <code>javax.servlet.Filter</code> does the trick:</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb320-1"><a href="web-filters-and-file-uploads.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">webfilters</span><span class="op">;</span></span>
+<span id="cb320-2"><a href="web-filters-and-file-uploads.html#cb320-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-3"><a href="web-filters-and-file-uploads.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.*;</span></span>
+<span id="cb320-4"><a href="web-filters-and-file-uploads.html#cb320-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">WebFilter</span><span class="op">;</span></span>
+<span id="cb320-5"><a href="web-filters-and-file-uploads.html#cb320-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletRequest</span><span class="op">;</span></span>
+<span id="cb320-6"><a href="web-filters-and-file-uploads.html#cb320-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb320-7"><a href="web-filters-and-file-uploads.html#cb320-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-8"><a href="web-filters-and-file-uploads.html#cb320-8" aria-hidden="true" tabindex="-1"></a><span class="at">@WebFilter</span><span class="op">(</span>urlPatterns <span class="op">=</span> <span class="st">&quot;/give.phrase&quot;</span><span class="op">)</span></span>
+<span id="cb320-9"><a href="web-filters-and-file-uploads.html#cb320-9" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PhraseServletFilter <span class="kw">implements</span> <span class="bu">Filter</span><span class="op">{</span></span>
+<span id="cb320-10"><a href="web-filters-and-file-uploads.html#cb320-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-11"><a href="web-filters-and-file-uploads.html#cb320-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb320-12"><a href="web-filters-and-file-uploads.html#cb320-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doFilter</span><span class="op">(</span>ServletRequest request<span class="op">,</span> ServletResponse response<span class="op">,</span> FilterChain chain<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">,</span> ServletException <span class="op">{</span></span>
+<span id="cb320-13"><a href="web-filters-and-file-uploads.html#cb320-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>request <span class="kw">instanceof</span> HttpServletRequest<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb320-14"><a href="web-filters-and-file-uploads.html#cb320-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Request for &quot;</span> <span class="op">+</span> <span class="op">((</span>HttpServletRequest<span class="op">)</span>request<span class="op">).</span><span class="fu">getRequestURL</span><span class="op">().</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb320-15"><a href="web-filters-and-file-uploads.html#cb320-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Query: &quot;</span> <span class="op">+</span> <span class="op">((</span>HttpServletRequest<span class="op">)</span>request<span class="op">).</span><span class="fu">getQueryString</span><span class="op">());</span></span>
+<span id="cb320-16"><a href="web-filters-and-file-uploads.html#cb320-16" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Remote address: &quot;</span> <span class="op">+</span> request<span class="op">.</span><span class="fu">getRemoteAddr</span><span class="op">());</span></span>
+<span id="cb320-17"><a href="web-filters-and-file-uploads.html#cb320-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb320-18"><a href="web-filters-and-file-uploads.html#cb320-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb320-19"><a href="web-filters-and-file-uploads.html#cb320-19" aria-hidden="true" tabindex="-1"></a>            <span class="co">//pass on the request after you are done</span></span>
+<span id="cb320-20"><a href="web-filters-and-file-uploads.html#cb320-20" aria-hidden="true" tabindex="-1"></a>            chain<span class="op">.</span><span class="fu">doFilter</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
+<span id="cb320-21"><a href="web-filters-and-file-uploads.html#cb320-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb320-22"><a href="web-filters-and-file-uploads.html#cb320-22" aria-hidden="true" tabindex="-1"></a>            e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb320-23"><a href="web-filters-and-file-uploads.html#cb320-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb320-24"><a href="web-filters-and-file-uploads.html#cb320-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb320-25"><a href="web-filters-and-file-uploads.html#cb320-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-26"><a href="web-filters-and-file-uploads.html#cb320-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb320-27"><a href="web-filters-and-file-uploads.html#cb320-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">(</span>FilterConfig filterConfig<span class="op">)</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
+<span id="cb320-28"><a href="web-filters-and-file-uploads.html#cb320-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*not interesting here*/</span></span>
+<span id="cb320-29"><a href="web-filters-and-file-uploads.html#cb320-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb320-30"><a href="web-filters-and-file-uploads.html#cb320-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb320-31"><a href="web-filters-and-file-uploads.html#cb320-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb320-32"><a href="web-filters-and-file-uploads.html#cb320-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">destroy</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb320-33"><a href="web-filters-and-file-uploads.html#cb320-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*not interesting here*/</span></span>
+<span id="cb320-34"><a href="web-filters-and-file-uploads.html#cb320-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb320-35"><a href="web-filters-and-file-uploads.html#cb320-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Whe the <code>/give.phrase?phrase_category=bullshit</code> resource is requested, the Tomcat logs show</p>
+<pre class="console_out">
+Request for http://localhost:8080/give.phrase
+Query: phrase_category=bullshit
+Remote address: 0:0:0:0:0:0:0:1
+</pre>
+</div>
+<div id="check-for-authentication" class="section level4 unnumbered">
+<h4>Check for authentication</h4>
+<p>Suppose you have an application with a few public pages and a few pages for which authentication is required. This is a typical use case for WebFilter.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb321-1"><a href="web-filters-and-file-uploads.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">webfilters</span><span class="op">;</span></span>
+<span id="cb321-2"><a href="web-filters-and-file-uploads.html#cb321-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-3"><a href="web-filters-and-file-uploads.html#cb321-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-4"><a href="web-filters-and-file-uploads.html#cb321-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.*;</span></span>
+<span id="cb321-5"><a href="web-filters-and-file-uploads.html#cb321-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">WebFilter</span><span class="op">;</span></span>
+<span id="cb321-6"><a href="web-filters-and-file-uploads.html#cb321-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletRequest</span><span class="op">;</span></span>
+<span id="cb321-7"><a href="web-filters-and-file-uploads.html#cb321-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
+<span id="cb321-8"><a href="web-filters-and-file-uploads.html#cb321-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpSession</span><span class="op">;</span></span>
+<span id="cb321-9"><a href="web-filters-and-file-uploads.html#cb321-9" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb321-10"><a href="web-filters-and-file-uploads.html#cb321-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-11"><a href="web-filters-and-file-uploads.html#cb321-11" aria-hidden="true" tabindex="-1"></a><span class="at">@WebFilter</span><span class="op">(</span>urlPatterns <span class="op">=</span> <span class="op">{</span><span class="st">&quot;/user.dashboard&quot;</span><span class="op">,</span> <span class="st">&quot;/list.secrets&quot;</span><span class="op">})</span> <span class="co">//use &quot;/*&quot; for catch-all</span></span>
+<span id="cb321-12"><a href="web-filters-and-file-uploads.html#cb321-12" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> AuthenticationFilter <span class="kw">implements</span> <span class="bu">Filter</span> <span class="op">{</span></span>
+<span id="cb321-13"><a href="web-filters-and-file-uploads.html#cb321-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-14"><a href="web-filters-and-file-uploads.html#cb321-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb321-15"><a href="web-filters-and-file-uploads.html#cb321-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doFilter</span><span class="op">(</span>ServletRequest request<span class="op">,</span> ServletResponse response<span class="op">,</span> FilterChain chain<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">,</span> ServletException <span class="op">{</span></span>
+<span id="cb321-16"><a href="web-filters-and-file-uploads.html#cb321-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>request <span class="kw">instanceof</span> HttpServletRequest<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb321-17"><a href="web-filters-and-file-uploads.html#cb321-17" aria-hidden="true" tabindex="-1"></a>            HttpServletRequest req <span class="op">=</span> <span class="op">((</span>HttpServletRequest<span class="op">)</span>request<span class="op">);</span></span>
+<span id="cb321-18"><a href="web-filters-and-file-uploads.html#cb321-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;[AuthenticationFilter] Intercepted URL: &quot;</span> <span class="op">+</span> req<span class="op">.</span><span class="fu">getRequestURL</span><span class="op">().</span><span class="fu">toString</span><span class="op">());</span></span>
+<span id="cb321-19"><a href="web-filters-and-file-uploads.html#cb321-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">final</span> HttpSession session <span class="op">=</span> req<span class="op">.</span><span class="fu">getSession</span><span class="op">();</span></span>
+<span id="cb321-20"><a href="web-filters-and-file-uploads.html#cb321-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>session<span class="op">.</span><span class="fu">getAttribute</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">)</span> <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb321-21"><a href="web-filters-and-file-uploads.html#cb321-21" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;[AuthenticationFilter] no authenticated user: redirecting to /login&quot;</span><span class="op">);</span></span>
+<span id="cb321-22"><a href="web-filters-and-file-uploads.html#cb321-22" aria-hidden="true" tabindex="-1"></a>                <span class="op">((</span>HttpServletResponse<span class="op">)</span>response<span class="op">).</span><span class="fu">sendRedirect</span><span class="op">(</span><span class="st">&quot;/login&quot;</span><span class="op">);</span></span>
+<span id="cb321-23"><a href="web-filters-and-file-uploads.html#cb321-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb321-24"><a href="web-filters-and-file-uploads.html#cb321-24" aria-hidden="true" tabindex="-1"></a>                <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;[AuthenticationFilter] authenticated status checked; user= &quot;</span> <span class="op">+</span> session<span class="op">.</span><span class="fu">getAttribute</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">));</span></span>
+<span id="cb321-25"><a href="web-filters-and-file-uploads.html#cb321-25" aria-hidden="true" tabindex="-1"></a>                <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb321-26"><a href="web-filters-and-file-uploads.html#cb321-26" aria-hidden="true" tabindex="-1"></a>                    chain<span class="op">.</span><span class="fu">doFilter</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
+<span id="cb321-27"><a href="web-filters-and-file-uploads.html#cb321-27" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb321-28"><a href="web-filters-and-file-uploads.html#cb321-28" aria-hidden="true" tabindex="-1"></a>                    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb321-29"><a href="web-filters-and-file-uploads.html#cb321-29" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb321-30"><a href="web-filters-and-file-uploads.html#cb321-30" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb321-31"><a href="web-filters-and-file-uploads.html#cb321-31" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb321-32"><a href="web-filters-and-file-uploads.html#cb321-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb321-33"><a href="web-filters-and-file-uploads.html#cb321-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-34"><a href="web-filters-and-file-uploads.html#cb321-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb321-35"><a href="web-filters-and-file-uploads.html#cb321-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">(</span>FilterConfig filterConfig<span class="op">)</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
+<span id="cb321-36"><a href="web-filters-and-file-uploads.html#cb321-36" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*not interesting here*/</span></span>
+<span id="cb321-37"><a href="web-filters-and-file-uploads.html#cb321-37" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb321-38"><a href="web-filters-and-file-uploads.html#cb321-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb321-39"><a href="web-filters-and-file-uploads.html#cb321-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb321-40"><a href="web-filters-and-file-uploads.html#cb321-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">destroy</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb321-41"><a href="web-filters-and-file-uploads.html#cb321-41" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*not interesting here*/</span></span>
+<span id="cb321-42"><a href="web-filters-and-file-uploads.html#cb321-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb321-43"><a href="web-filters-and-file-uploads.html#cb321-43" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Here is the output after a few requests</p>
+<pre class="console_out">
+[AuthenticationFilter] Intercepted URL: http://localhost:8080/list.secrets 
+[AuthenticationFilter] no authenticated user: redirecting to /login
+
+&lt;logged in as Henk&gt;
+
+[AuthenticationFilter] Intercepted URL: http://localhost:8080/list.secrets 
+[AuthenticationFilter] authenticated status checked; user= User{name='Henk', email='henk@example.com', password='null', role=USER}
+[AuthenticationFilter] Intercepted URL: http://localhost:8080/user.dashboard 
+[AuthenticationFilter] authenticated status checked; user= User{name='Henk', email='henk@example.com', password='null', role=USER}
+</pre>
+</div>
+</div>
+<div id="file-uploads" class="section level2" number="38.2">
+<h2><span class="header-section-number">38.2</span> File uploads</h2>
+<p>File Upload is an essential feature! Many websites provide some form of upload functionality:
+- Photos &amp; Video
+- Data
+- Configuration</p>
+<p>Fortunately, uploading is boilerplate code!</p>
+<p>The harder thing is: what will you do with the file?
+- Into database
+- Store locally
+- Process directly</p>
+<div id="upload-form" class="section level4 unnumbered">
+<h4>Upload form</h4>
+<p>Suppose we want to offer a scv data upload.
+Here is the html for uploading csv data. Key are <code>enctype="multipart/form-data"</code> in the <code>form</code> tag and the <code>&lt;input type="file" name="scv_data" accept="text/csv"&gt;</code> tag.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb322-1"><a href="web-filters-and-file-uploads.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span><span class="ot"> th:action=</span><span class="st">&quot;@{&#39;data_upload&#39;}&quot;</span><span class="ot"> method=</span><span class="st">&quot;post&quot;</span><span class="ot"> enctype=</span><span class="st">&quot;multipart/form-data&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb322-2"><a href="web-filters-and-file-uploads.html#cb322-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;file&quot;</span><span class="ot"> name=</span><span class="st">&quot;scv_data&quot;</span><span class="ot"> accept=</span><span class="st">&quot;text/csv&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb322-3"><a href="web-filters-and-file-uploads.html#cb322-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;Upload&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb322-4"><a href="web-filters-and-file-uploads.html#cb322-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span></code></pre></div>
+<p>The servlet handling the file upload needs to be annotated as such:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb323-1"><a href="web-filters-and-file-uploads.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="at">@MultipartConfig</span><span class="op">(</span>location<span class="op">=</span><span class="st">&quot;/tmp&quot;</span><span class="op">,</span></span>
+<span id="cb323-2"><a href="web-filters-and-file-uploads.html#cb323-2" aria-hidden="true" tabindex="-1"></a>        fileSizeThreshold <span class="op">=</span> <span class="dv">1024</span> <span class="op">*</span> <span class="dv">1024</span><span class="op">,</span></span>
+<span id="cb323-3"><a href="web-filters-and-file-uploads.html#cb323-3" aria-hidden="true" tabindex="-1"></a>        maxFileSize <span class="op">=</span> <span class="dv">1024</span> <span class="op">*</span> <span class="dv">1024</span> <span class="op">*</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb323-4"><a href="web-filters-and-file-uploads.html#cb323-4" aria-hidden="true" tabindex="-1"></a>        maxRequestSize <span class="op">=</span> <span class="dv">1024</span> <span class="op">*</span> <span class="dv">1024</span> <span class="op">*</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">5</span><span class="op">)</span></span>
+<span id="cb323-5"><a href="web-filters-and-file-uploads.html#cb323-5" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;FileUploadServlet&quot;</span><span class="op">,</span> urlPatterns <span class="op">=</span> <span class="st">&quot;/data_upload&quot;</span><span class="op">)</span></span>
+<span id="cb323-6"><a href="web-filters-and-file-uploads.html#cb323-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> FileUploadServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
+<span id="cb323-7"><a href="web-filters-and-file-uploads.html#cb323-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//class body</span></span>
+<span id="cb323-8"><a href="web-filters-and-file-uploads.html#cb323-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The <code>@MultipartConfig</code> annotation has several parameters:</p>
+<ul>
+<li><strong><em>location</em></strong>: An absolute path to a directory on the file system. This location is used to store files temporarily while the parts are processed or when the size of the file exceeds the specified <code>fileSizeThreshold</code> setting. The default location is "".</li>
+<li><strong><em>fileSizeThreshold</em></strong>: The file size in bytes after which the file will be temporarily stored on disk. The default size is 0 bytes.</li>
+<li><strong><em>maxFileSize</em></strong>: The maximum size allowed for uploaded files, in bytes. If the size is greater, the container will throw an exception (<code>IllegalStateExceptio</code>n). The default size is unlimited.</li>
+<li><strong><em>maxRequestSize</em></strong>: The maximum size allowed for a multipart/form-data request, in bytes. The web container will throw an exception if the overall size of all uploaded files exceeds this threshold. The default size is unlimited.</li>
+</ul>
+<p>Instead of hardcoding the constraints, you can also put them in web.xml:</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb324-1"><a href="web-filters-and-file-uploads.html#cb324-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-mapping&gt;</span></span>
+<span id="cb324-2"><a href="web-filters-and-file-uploads.html#cb324-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>FileUploadServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
+<span id="cb324-3"><a href="web-filters-and-file-uploads.html#cb324-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;url-pattern&gt;</span>/data_upload<span class="kw">&lt;/url-pattern&gt;</span></span>
+<span id="cb324-4"><a href="web-filters-and-file-uploads.html#cb324-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet-mapping&gt;</span></span>
+<span id="cb324-5"><a href="web-filters-and-file-uploads.html#cb324-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet&gt;</span></span>
+<span id="cb324-6"><a href="web-filters-and-file-uploads.html#cb324-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>FileUploadServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
+<span id="cb324-7"><a href="web-filters-and-file-uploads.html#cb324-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-class&gt;</span>nl.bioinf.wis_on_thymeleaf.servlets.FileUploadServlet<span class="kw">&lt;/servlet-class&gt;</span></span>
+<span id="cb324-8"><a href="web-filters-and-file-uploads.html#cb324-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;init-param&gt;</span></span>
+<span id="cb324-9"><a href="web-filters-and-file-uploads.html#cb324-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-name&gt;</span>upload_dir<span class="kw">&lt;/param-name&gt;</span></span>
+<span id="cb324-10"><a href="web-filters-and-file-uploads.html#cb324-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-value&gt;</span>/path/to/file/upload<span class="kw">&lt;/param-value&gt;</span></span>
+<span id="cb324-11"><a href="web-filters-and-file-uploads.html#cb324-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/init-param&gt;</span></span>
+<span id="cb324-12"><a href="web-filters-and-file-uploads.html#cb324-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;multipart-config&gt;</span></span>
+<span id="cb324-13"><a href="web-filters-and-file-uploads.html#cb324-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;location&gt;</span>/path/to/tmp/tmp<span class="kw">&lt;/location&gt;</span></span>
+<span id="cb324-14"><a href="web-filters-and-file-uploads.html#cb324-14" aria-hidden="true" tabindex="-1"></a>            <span class="co">&lt;!-- all in bytes --&gt;</span></span>
+<span id="cb324-15"><a href="web-filters-and-file-uploads.html#cb324-15" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;max-file-size&gt;</span>20848820<span class="kw">&lt;/max-file-size&gt;</span></span>
+<span id="cb324-16"><a href="web-filters-and-file-uploads.html#cb324-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;max-request-size&gt;</span>418018841<span class="kw">&lt;/max-request-size&gt;</span></span>
+<span id="cb324-17"><a href="web-filters-and-file-uploads.html#cb324-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;file-size-threshold&gt;</span>1048576<span class="kw">&lt;/file-size-threshold&gt;</span></span>
+<span id="cb324-18"><a href="web-filters-and-file-uploads.html#cb324-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/multipart-config&gt;</span></span>
+<span id="cb324-19"><a href="web-filters-and-file-uploads.html#cb324-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet&gt;</span></span></code></pre></div>
+<p>Here is the servlet dealing with the uploads. The final upload location is specified using an <code>init-param</code> in the <code>web.xml</code> deployment descriptor of course.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb325-1"><a href="web-filters-and-file-uploads.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
+<span id="cb325-2"><a href="web-filters-and-file-uploads.html#cb325-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-3"><a href="web-filters-and-file-uploads.html#cb325-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">.</span><span class="im">WebConfig</span><span class="op">;</span></span>
+<span id="cb325-4"><a href="web-filters-and-file-uploads.html#cb325-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">TemplateEngine</span><span class="op">;</span></span>
+<span id="cb325-5"><a href="web-filters-and-file-uploads.html#cb325-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">context</span><span class="op">.</span><span class="im">WebContext</span><span class="op">;</span></span>
+<span id="cb325-6"><a href="web-filters-and-file-uploads.html#cb325-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-7"><a href="web-filters-and-file-uploads.html#cb325-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletException</span><span class="op">;</span></span>
+<span id="cb325-8"><a href="web-filters-and-file-uploads.html#cb325-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">Part</span><span class="op">;</span></span>
+<span id="cb325-9"><a href="web-filters-and-file-uploads.html#cb325-9" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">WebServlet</span><span class="op">;</span></span>
+<span id="cb325-10"><a href="web-filters-and-file-uploads.html#cb325-10" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServlet</span><span class="op">;</span></span>
+<span id="cb325-11"><a href="web-filters-and-file-uploads.html#cb325-11" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletRequest</span><span class="op">;</span></span>
+<span id="cb325-12"><a href="web-filters-and-file-uploads.html#cb325-12" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
+<span id="cb325-13"><a href="web-filters-and-file-uploads.html#cb325-13" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">File</span><span class="op">;</span></span>
+<span id="cb325-14"><a href="web-filters-and-file-uploads.html#cb325-14" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb325-15"><a href="web-filters-and-file-uploads.html#cb325-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-16"><a href="web-filters-and-file-uploads.html#cb325-16" aria-hidden="true" tabindex="-1"></a><span class="co">//moved to web.xml</span></span>
+<span id="cb325-17"><a href="web-filters-and-file-uploads.html#cb325-17" aria-hidden="true" tabindex="-1"></a><span class="co">//@MultipartConfig(location=&quot;/tmp&quot;,</span></span>
+<span id="cb325-18"><a href="web-filters-and-file-uploads.html#cb325-18" aria-hidden="true" tabindex="-1"></a><span class="co">//        fileSizeThreshold = 1024 * 1024,</span></span>
+<span id="cb325-19"><a href="web-filters-and-file-uploads.html#cb325-19" aria-hidden="true" tabindex="-1"></a><span class="co">//        maxFileSize = 1024 * 1024 * 5,</span></span>
+<span id="cb325-20"><a href="web-filters-and-file-uploads.html#cb325-20" aria-hidden="true" tabindex="-1"></a><span class="co">//        maxRequestSize = 1024 * 1024 * 5 * 5)</span></span>
+<span id="cb325-21"><a href="web-filters-and-file-uploads.html#cb325-21" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;FileUploadServlet&quot;</span><span class="op">,</span> urlPatterns <span class="op">=</span> <span class="st">&quot;/data_upload&quot;</span><span class="op">)</span></span>
+<span id="cb325-22"><a href="web-filters-and-file-uploads.html#cb325-22" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> FileUploadServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
+<span id="cb325-23"><a href="web-filters-and-file-uploads.html#cb325-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-24"><a href="web-filters-and-file-uploads.html#cb325-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> TemplateEngine templateEngine<span class="op">;</span></span>
+<span id="cb325-25"><a href="web-filters-and-file-uploads.html#cb325-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> uploadDir<span class="op">;</span></span>
+<span id="cb325-26"><a href="web-filters-and-file-uploads.html#cb325-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-27"><a href="web-filters-and-file-uploads.html#cb325-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb325-28"><a href="web-filters-and-file-uploads.html#cb325-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">()</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
+<span id="cb325-29"><a href="web-filters-and-file-uploads.html#cb325-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">templateEngine</span> <span class="op">=</span> WebConfig<span class="op">.</span><span class="fu">getTemplateEngine</span><span class="op">();</span></span>
+<span id="cb325-30"><a href="web-filters-and-file-uploads.html#cb325-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">uploadDir</span> <span class="op">=</span> <span class="fu">getInitParameter</span><span class="op">(</span><span class="st">&quot;upload_dir&quot;</span><span class="op">);</span></span>
+<span id="cb325-31"><a href="web-filters-and-file-uploads.html#cb325-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-32"><a href="web-filters-and-file-uploads.html#cb325-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">//or, use relative to this app:</span></span>
+<span id="cb325-33"><a href="web-filters-and-file-uploads.html#cb325-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">// gets absolute path of the web application</span></span>
+<span id="cb325-34"><a href="web-filters-and-file-uploads.html#cb325-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">//String applicationPath = getServletContext().getRealPath(&quot;&quot;);</span></span>
+<span id="cb325-35"><a href="web-filters-and-file-uploads.html#cb325-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">//String uploadFilePath = applicationPath + File.separator + uploadDir;</span></span>
+<span id="cb325-36"><a href="web-filters-and-file-uploads.html#cb325-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb325-37"><a href="web-filters-and-file-uploads.html#cb325-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-38"><a href="web-filters-and-file-uploads.html#cb325-38" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> ServletException<span class="op">,</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb325-39"><a href="web-filters-and-file-uploads.html#cb325-39" aria-hidden="true" tabindex="-1"></a>        <span class="co">//simply go back to upload form</span></span>
+<span id="cb325-40"><a href="web-filters-and-file-uploads.html#cb325-40" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">,</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span> request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
+<span id="cb325-41"><a href="web-filters-and-file-uploads.html#cb325-41" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span><span class="st">&quot;upload_form&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
+<span id="cb325-42"><a href="web-filters-and-file-uploads.html#cb325-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb325-43"><a href="web-filters-and-file-uploads.html#cb325-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-44"><a href="web-filters-and-file-uploads.html#cb325-44" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doPost</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> ServletException<span class="op">,</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb325-45"><a href="web-filters-and-file-uploads.html#cb325-45" aria-hidden="true" tabindex="-1"></a>        <span class="bu">File</span> fileSaveDir <span class="op">=</span> <span class="kw">new</span> <span class="bu">File</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">uploadDir</span><span class="op">);</span></span>
+<span id="cb325-46"><a href="web-filters-and-file-uploads.html#cb325-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(!</span> fileSaveDir<span class="op">.</span><span class="fu">exists</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb325-47"><a href="web-filters-and-file-uploads.html#cb325-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalStateException</span><span class="op">(</span><span class="st">&quot;Upload dir does not exist: &quot;</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="fu">uploadDir</span><span class="op">);</span></span>
+<span id="cb325-48"><a href="web-filters-and-file-uploads.html#cb325-48" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb325-49"><a href="web-filters-and-file-uploads.html#cb325-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-50"><a href="web-filters-and-file-uploads.html#cb325-50" aria-hidden="true" tabindex="-1"></a>        <span class="co">//Do this only if you are sure there won&#39;t be any file name conflicts!</span></span>
+<span id="cb325-51"><a href="web-filters-and-file-uploads.html#cb325-51" aria-hidden="true" tabindex="-1"></a>        <span class="co">//An existing one will simply be overwritten</span></span>
+<span id="cb325-52"><a href="web-filters-and-file-uploads.html#cb325-52" aria-hidden="true" tabindex="-1"></a><span class="co">//        String fileName;</span></span>
+<span id="cb325-53"><a href="web-filters-and-file-uploads.html#cb325-53" aria-hidden="true" tabindex="-1"></a><span class="co">//        for (Part part : request.getParts()) {</span></span>
+<span id="cb325-54"><a href="web-filters-and-file-uploads.html#cb325-54" aria-hidden="true" tabindex="-1"></a><span class="co">//            fileName = part.getSubmittedFileName();</span></span>
+<span id="cb325-55"><a href="web-filters-and-file-uploads.html#cb325-55" aria-hidden="true" tabindex="-1"></a><span class="co">//            part.write(this.uploadDir + File.separator + fileName);</span></span>
+<span id="cb325-56"><a href="web-filters-and-file-uploads.html#cb325-56" aria-hidden="true" tabindex="-1"></a><span class="co">//        }</span></span>
+<span id="cb325-57"><a href="web-filters-and-file-uploads.html#cb325-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-58"><a href="web-filters-and-file-uploads.html#cb325-58" aria-hidden="true" tabindex="-1"></a>        <span class="co">//the safe way, with a generated file name becomes something like this</span></span>
+<span id="cb325-59"><a href="web-filters-and-file-uploads.html#cb325-59" aria-hidden="true" tabindex="-1"></a>        <span class="co">//my_app_upload14260971264207930189.csv</span></span>
+<span id="cb325-60"><a href="web-filters-and-file-uploads.html#cb325-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">File</span> generatedFile <span class="op">=</span> <span class="bu">File</span><span class="op">.</span><span class="fu">createTempFile</span><span class="op">(</span><span class="st">&quot;my_app_upload&quot;</span><span class="op">,</span> <span class="st">&quot;.csv&quot;</span><span class="op">);</span></span>
+<span id="cb325-61"><a href="web-filters-and-file-uploads.html#cb325-61" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span>Part part <span class="op">:</span> request<span class="op">.</span><span class="fu">getParts</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb325-62"><a href="web-filters-and-file-uploads.html#cb325-62" aria-hidden="true" tabindex="-1"></a>            part<span class="op">.</span><span class="fu">write</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">uploadDir</span> <span class="op">+</span> <span class="bu">File</span><span class="op">.</span><span class="fu">separator</span> <span class="op">+</span> generatedFile<span class="op">.</span><span class="fu">getName</span><span class="op">());</span></span>
+<span id="cb325-63"><a href="web-filters-and-file-uploads.html#cb325-63" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb325-64"><a href="web-filters-and-file-uploads.html#cb325-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-65"><a href="web-filters-and-file-uploads.html#cb325-65" aria-hidden="true" tabindex="-1"></a>        <span class="co">//go back to the upload form</span></span>
+<span id="cb325-66"><a href="web-filters-and-file-uploads.html#cb325-66" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">,</span> request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span> request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
+<span id="cb325-67"><a href="web-filters-and-file-uploads.html#cb325-67" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;message&quot;</span><span class="op">,</span> <span class="st">&quot;upload successfull, wanna do another on?&quot;</span><span class="op">);</span></span>
+<span id="cb325-68"><a href="web-filters-and-file-uploads.html#cb325-68" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span><span class="st">&quot;upload_form&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
+<span id="cb325-69"><a href="web-filters-and-file-uploads.html#cb325-69" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb325-70"><a href="web-filters-and-file-uploads.html#cb325-70" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>If you want to be sure files won’t get overwritten, you should use random generated file names, as in the above code example.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-simple-web-service-using-ajax.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["The Java Track.pdf", "The Java Track.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
