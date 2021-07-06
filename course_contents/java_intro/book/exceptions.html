@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 19 Exceptions | The Java Track</title>
+  <title>Chapter 20 Exceptions | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 19 Exceptions | The Java Track" />
+  <meta property="og:title" content="Chapter 20 Exceptions | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 19 Exceptions | The Java Track" />
+  <meta name="twitter:title" content="Chapter 20 Exceptions | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="sorting.html"/>
 <link rel="next" href="file-io.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -227,164 +225,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<li class="chapter" data-level="18" data-path="records.html"><a href="records.html"><i class="fa fa-check"></i><b>18</b> Records</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
-<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
-<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+<li class="chapter" data-level="18.1" data-path="records.html"><a href="records.html#basics"><i class="fa fa-check"></i><b>18.1</b> Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="records.html"><a href="records.html#customization"><i class="fa fa-check"></i><b>18.2</b> Customization</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<li class="chapter" data-level="19" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>19</b> Sorting</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
-<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
-<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
-<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+<li class="chapter" data-level="19.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>19.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="19.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>19.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="19.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>19.3</b> Multilevel sorting</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<li class="chapter" data-level="20" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>20</b> Exceptions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
-<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
-<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
-<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+<li class="chapter" data-level="20.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>20.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="20.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>20.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="20.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>20.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="20.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>20.4</b> Try-with resources</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<li class="chapter" data-level="21" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>21</b> File IO</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
-<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
-<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+<li class="chapter" data-level="21.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>21.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="21.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>21.2</b> File and Files</a></li>
+<li class="chapter" data-level="21.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>21.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="21.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>21.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>22</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>22.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="22.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>22.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="22.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>22.3</b> Pattern &amp; Matcher</a></li>
 </ul></li>
 <li class="part"><span><b>Part IV - OOP</b></span></li>
-<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<li class="chapter" data-level="23" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>23</b> Encapsulation</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+<li class="chapter" data-level="23.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>23.1</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<li class="chapter" data-level="24" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>24</b> Access modifiers &amp; Other keywords</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
-<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+<li class="chapter" data-level="24.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>24.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="24.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>24.2</b> Other keywords</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<li class="chapter" data-level="25" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>25</b> Inheritance and UML</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
-<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+<li class="chapter" data-level="25.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>25.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="25.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>25.2</b> Apply inheritance to model what is common</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<li class="chapter" data-level="26" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>26</b> Enums: constants on steroids</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+<li class="chapter" data-level="26.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>26.1</b> Constants are everywhere</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
-<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<li class="chapter" data-level="27" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>27</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="28" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>28</b> Design rules summary</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
-<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
-<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
-<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
-<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
-<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
-<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+<li class="chapter" data-level="28.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>28.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="28.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>28.2</b> Classes</a></li>
+<li class="chapter" data-level="28.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>28.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="28.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>28.4</b> Exceptions</a></li>
+<li class="chapter" data-level="28.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>28.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="28.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>28.6</b> SRP</a></li>
+<li class="chapter" data-level="28.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>28.7</b> Various</a></li>
 </ul></li>
 <li class="part"><span><b>Part V - Java Web Apps</b></span></li>
-<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<li class="chapter" data-level="29" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>29</b> A refresher</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
-<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+<li class="chapter" data-level="29.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>29.1</b> Introduction</a></li>
+<li class="chapter" data-level="29.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>29.2</b> The basics of web</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
-<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<li class="chapter" data-level="30" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>30</b> The toolbox</a></li>
+<li class="chapter" data-level="31" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>31</b> A first project</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
-<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+<li class="chapter" data-level="31.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>31.2</b> The steps</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<li class="chapter" data-level="32" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>32</b> Implementing MVC</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
-<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+<li class="chapter" data-level="32.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>32.2</b> Java web app architecture</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<li class="chapter" data-level="33" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf expressions</a>
 <ul>
-<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
-<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>33.2</b> Expression types</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<li class="chapter" data-level="34" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>34</b> Thymeleaf flow control and fragments</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
-<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+<li class="chapter" data-level="34.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>34.2</b> Working with fragments</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<li class="chapter" data-level="35" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>35</b> Sessions &amp; Scopes</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
-<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
-<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+<li class="chapter" data-level="35.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>35.1</b> Introduction</a></li>
+<li class="chapter" data-level="35.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>35.2</b> Scopes</a></li>
+<li class="chapter" data-level="35.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>35.3</b> Summary of scopes</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<li class="chapter" data-level="36" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>36</b> Servlet details and lifecycle hooks</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
-<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+<li class="chapter" data-level="36.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>36.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="36.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>36.2</b> Hooks</a></li>
 </ul></li>
-<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<li class="chapter" data-level="37" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>37</b> Database interaction</a>
 <ul>
-<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
-<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
-<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
-<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
-<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+<li class="chapter" data-level="37.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>37.1</b> JDBC</a></li>
+<li class="chapter" data-level="37.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>37.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="37.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>37.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="37.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>37.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="37.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>37.5</b> Use in a servlet environment</a></li>
 </ul></li>
-<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<li class="chapter" data-level="38" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>38</b> A simple web service using Ajax</a>
 <ul>
-<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+<li class="chapter" data-level="38.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>38.1</b> Introduction</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<li class="chapter" data-level="39" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>39</b> Web filters and File uploads</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
-<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+<li class="chapter" data-level="39.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>39.1</b> Web filters</a></li>
+<li class="chapter" data-level="39.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>39.2</b> File uploads</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<li class="chapter" data-level="40" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>40</b> Exercises intro</a>
 <ul>
-<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
-<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
-<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
-<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
-<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
-<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
-<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
-<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+<li class="chapter" data-level="40.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>40.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="40.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>40.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="40.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>40.3</b> Sessions</a></li>
+<li class="chapter" data-level="40.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>40.4</b> Authentication</a></li>
+<li class="chapter" data-level="40.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>40.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="40.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>40.6</b> Database interaction</a></li>
+<li class="chapter" data-level="40.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>40.7</b> Ajax</a></li>
+<li class="chapter" data-level="40.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>40.8</b> Filters</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="chapter" data-level="41" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>41</b> HTML5 tags</a></li>
 <li class="part"><span><b>Part VI - JUnit</b></span></li>
-<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<li class="chapter" data-level="42" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 basics</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
-<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
-<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
-<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
-<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
-<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
-<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+<li class="chapter" data-level="42.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>42.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="42.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>42.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="42.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>42.4</b> Document!</a></li>
+<li class="chapter" data-level="42.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>42.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="42.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>42.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="42.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>42.7</b> Grouping assertions using <code>assertAll()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<li class="chapter" data-level="43" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>43</b> JUnit 5 advanced features</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
-<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+<li class="chapter" data-level="43.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>43.1</b> Introduction</a></li>
+<li class="chapter" data-level="43.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>43.2</b> JUnit 5 annotations</a></li>
 </ul></li>
 <li class="part"><span><b>Part VII - Design</b></span></li>
-<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
-<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<li class="chapter" data-level="44" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>44</b> UML</a></li>
+<li class="chapter" data-level="45" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>45</b> Refactoring</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
-<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
-<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
-<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+<li class="chapter" data-level="45.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>45.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="45.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>45.3</b> Refactor</a></li>
+<li class="chapter" data-level="45.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>45.4</b> Take over</a></li>
 </ul></li>
 <li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
-<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<li class="chapter" data-level="46" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>46</b> REST and MVC with Spring</a>
 <ul>
-<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
-<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+<li class="chapter" data-level="46.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>46.1</b> Create a new project</a></li>
+<li class="chapter" data-level="46.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>46.2</b> Create a REST response</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
-<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<li class="chapter" data-level="47" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>47</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="48" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>48</b> Core (Spring) annotations</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+<li class="chapter" data-level="48.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>48.1</b> Generic annotations</a></li>
 </ul></li>
 </ul>
 
@@ -403,29 +406,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exceptions" class="section level1" number="19">
-<h1><span class="header-section-number">Chapter 19</span> Exceptions</h1>
+<div id="exceptions" class="section level1" number="20">
+<h1><span class="header-section-number">Chapter 20</span> Exceptions</h1>
 <p>Before dealing with file IO, exceptions need to be discussed. You need to deal with exceptions whenever you deal with the outside world. Why? The outside world is dangerous and unpredictable: files do not exist, or are not accessible to you, internet connections can be down, a database has a new password or URL…</p>
 <p>All these scenarios will <strong><em>throw</em></strong> an <code>Exception</code> your way. It is up to you, the application programmer, to <strong><em>catch</em></strong> them and deal with them. Either by following an alternative program path, or to quit the application elegantly.</p>
 <p>Exceptions are method return values that do not follow regular program flow; they are instantiated when something goes wrong and usually cause the program to behave differently.</p>
-<div id="what-are-exceptions" class="section level2" number="19.1">
-<h2><span class="header-section-number">19.1</span> What are exceptions</h2>
+<div id="what-are-exceptions" class="section level2" number="20.1">
+<h2><span class="header-section-number">20.1</span> What are exceptions</h2>
 <p>Consider this code.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb153-1"><a href="exceptions.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb153-2"><a href="exceptions.html#cb153-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-3"><a href="exceptions.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ExceptionsDemo <span class="op">{</span></span>
-<span id="cb153-4"><a href="exceptions.html#cb153-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb153-5"><a href="exceptions.html#cb153-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doFirst</span><span class="op">();</span></span>
-<span id="cb153-6"><a href="exceptions.html#cb153-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb153-7"><a href="exceptions.html#cb153-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-8"><a href="exceptions.html#cb153-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doFirst</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb153-9"><a href="exceptions.html#cb153-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doSecond</span><span class="op">();</span></span>
-<span id="cb153-10"><a href="exceptions.html#cb153-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb153-11"><a href="exceptions.html#cb153-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-12"><a href="exceptions.html#cb153-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doSecond</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb153-13"><a href="exceptions.html#cb153-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span> <span class="op">/</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb153-14"><a href="exceptions.html#cb153-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb153-15"><a href="exceptions.html#cb153-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb163-1"><a href="exceptions.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
+<span id="cb163-2"><a href="exceptions.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-3"><a href="exceptions.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ExceptionsDemo <span class="op">{</span></span>
+<span id="cb163-4"><a href="exceptions.html#cb163-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb163-5"><a href="exceptions.html#cb163-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doFirst</span><span class="op">();</span></span>
+<span id="cb163-6"><a href="exceptions.html#cb163-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb163-7"><a href="exceptions.html#cb163-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-8"><a href="exceptions.html#cb163-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doFirst</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb163-9"><a href="exceptions.html#cb163-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doSecond</span><span class="op">();</span></span>
+<span id="cb163-10"><a href="exceptions.html#cb163-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb163-11"><a href="exceptions.html#cb163-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb163-12"><a href="exceptions.html#cb163-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doSecond</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb163-13"><a href="exceptions.html#cb163-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span> <span class="op">/</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb163-14"><a href="exceptions.html#cb163-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb163-15"><a href="exceptions.html#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Running <code>main()</code> will generate an error resulting in a <strong><em>stacktrace</em></strong>:</p>
 <pre class="console_out">
 Exception in thread "main" java.lang.ArithmeticException: / by zero
@@ -440,8 +443,8 @@ The current executing function is always on top.
 When an exception or error occurs, you will see a <strong><em>traceback</em></strong> through this stack, from the top (where the error occurred) back to the main() function.
 This gives you information about the origin and nature of the error.</p>
 </div>
-<div id="checked-and-unchecked-exceptions" class="section level2" number="19.2">
-<h2><span class="header-section-number">19.2</span> Checked and unchecked exceptions</h2>
+<div id="checked-and-unchecked-exceptions" class="section level2" number="20.2">
+<h2><span class="header-section-number">20.2</span> Checked and unchecked exceptions</h2>
 <p>Although the name <code>Exception</code> was used in this example, there are actually quite a few in the Java API. They are all related to each other through inheritance. The base type of all is class <code>Throwable</code>. It has two children: <code>Error</code> and <code>Exception</code>. See figure below.</p>
 <div class="figure">
 <img src="03_apis/figures/exceptionhierarchy.jpg" alt="" />
@@ -453,69 +456,69 @@ This gives you information about the origin and nature of the error.</p>
 <p>Whenever a method publishes a throws clause of a checked exception in its method signature, you must take one of these two courses of action:</p>
 <ul>
 <li><p>Catch it yourself: place this code in a <strong><em><code>try/catch</code></em></strong> structure</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb154-1"><a href="exceptions.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span> </span>
-<span id="cb154-2"><a href="exceptions.html#cb154-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*do the risky thing*/</span> </span>
-<span id="cb154-3"><a href="exceptions.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb154-4"><a href="exceptions.html#cb154-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*solve the problem*/</span> </span>
-<span id="cb154-5"><a href="exceptions.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb164"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb164-1"><a href="exceptions.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span> </span>
+<span id="cb164-2"><a href="exceptions.html#cb164-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*do the risky thing*/</span> </span>
+<span id="cb164-3"><a href="exceptions.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb164-4"><a href="exceptions.html#cb164-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*solve the problem*/</span> </span>
+<span id="cb164-5"><a href="exceptions.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
 <li><p>Make other code solve the problem: place a <strong><em><code>throws</code></em></strong> clause in the method signature:</p></li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb155-1"><a href="exceptions.html#cb155-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doRisky</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">Exception</span> <span class="op">{</span> </span>
-<span id="cb155-2"><a href="exceptions.html#cb155-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*risky method body*</span></span>
-<span id="cb155-3"><a href="exceptions.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="co">    }</span></span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb165-1"><a href="exceptions.html#cb165-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doRisky</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">Exception</span> <span class="op">{</span> </span>
+<span id="cb165-2"><a href="exceptions.html#cb165-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*risky method body*</span></span>
+<span id="cb165-3"><a href="exceptions.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">    }</span></span></code></pre></div>
 <p>You should use the Exception hierarchy to make a robust error-handling backbone in your application. Have a look at this basic example and read the code comments carefully.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb156-1"><a href="exceptions.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb156-2"><a href="exceptions.html#cb156-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-3"><a href="exceptions.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">FileNotFoundException</span><span class="op">;</span></span>
-<span id="cb156-4"><a href="exceptions.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
-<span id="cb156-5"><a href="exceptions.html#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">nio</span><span class="op">.</span><span class="im">file</span><span class="op">.</span><span class="im">FileAlreadyExistsException</span><span class="op">;</span></span>
-<span id="cb156-6"><a href="exceptions.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">sql</span><span class="op">.</span><span class="im">SQLException</span><span class="op">;</span></span>
-<span id="cb156-7"><a href="exceptions.html#cb156-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Level</span><span class="op">;</span></span>
-<span id="cb156-8"><a href="exceptions.html#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Logger</span><span class="op">;</span></span>
-<span id="cb156-9"><a href="exceptions.html#cb156-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-10"><a href="exceptions.html#cb156-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyAppWithExceptions <span class="op">{</span></span>
-<span id="cb156-11"><a href="exceptions.html#cb156-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-12"><a href="exceptions.html#cb156-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb156-13"><a href="exceptions.html#cb156-13" aria-hidden="true" tabindex="-1"></a>        MyAppWithExceptions app <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyAppWithExceptions</span><span class="op">();</span></span>
-<span id="cb156-14"><a href="exceptions.html#cb156-14" aria-hidden="true" tabindex="-1"></a>        app<span class="op">.</span><span class="fu">start</span><span class="op">();</span></span>
-<span id="cb156-15"><a href="exceptions.html#cb156-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-16"><a href="exceptions.html#cb156-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-17"><a href="exceptions.html#cb156-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb156-18"><a href="exceptions.html#cb156-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb156-19"><a href="exceptions.html#cb156-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">loadDatabase</span><span class="op">();</span></span>
-<span id="cb156-20"><a href="exceptions.html#cb156-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">readFile</span><span class="op">(</span><span class="st">&quot;some_file&quot;</span><span class="op">);</span></span>
-<span id="cb156-21"><a href="exceptions.html#cb156-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">processData</span><span class="op">();</span></span>
-<span id="cb156-22"><a href="exceptions.html#cb156-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeResults</span><span class="op">(</span><span class="st">&quot;results_file&quot;</span><span class="op">);</span></span>
-<span id="cb156-23"><a href="exceptions.html#cb156-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> <span class="op">|</span> <span class="bu">SQLException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb156-24"><a href="exceptions.html#cb156-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">SEVERE</span><span class="op">,</span> <span class="st">&quot;IO error!&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
-<span id="cb156-25"><a href="exceptions.html#cb156-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">err</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;An error occurred. See the log for details.&quot;</span><span class="op">);</span></span>
-<span id="cb156-26"><a href="exceptions.html#cb156-26" aria-hidden="true" tabindex="-1"></a>            <span class="co">//don&#39;t use stacktrace in production!</span></span>
-<span id="cb156-27"><a href="exceptions.html#cb156-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">//e.printStackTrace();</span></span>
-<span id="cb156-28"><a href="exceptions.html#cb156-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb156-29"><a href="exceptions.html#cb156-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-30"><a href="exceptions.html#cb156-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-31"><a href="exceptions.html#cb156-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">processData</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb156-32"><a href="exceptions.html#cb156-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb156-33"><a href="exceptions.html#cb156-33" aria-hidden="true" tabindex="-1"></a>            <span class="co">//processing file data</span></span>
-<span id="cb156-34"><a href="exceptions.html#cb156-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">NumberFormatException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb156-35"><a href="exceptions.html#cb156-35" aria-hidden="true" tabindex="-1"></a>            <span class="co">//note this is an unchecked exception; </span></span>
-<span id="cb156-36"><a href="exceptions.html#cb156-36" aria-hidden="true" tabindex="-1"></a>            <span class="co">//the try/catch is optional</span></span>
-<span id="cb156-37"><a href="exceptions.html#cb156-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">INFO</span><span class="op">,</span> <span class="st">&quot;Number format problem&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
-<span id="cb156-38"><a href="exceptions.html#cb156-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb156-39"><a href="exceptions.html#cb156-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-40"><a href="exceptions.html#cb156-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-41"><a href="exceptions.html#cb156-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">writeResults</span><span class="op">(</span><span class="bu">String</span> resultsFile<span class="op">)</span> <span class="kw">throws</span> FileAlreadyExistsException <span class="op">{</span></span>
-<span id="cb156-42"><a href="exceptions.html#cb156-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">//write to results file</span></span>
-<span id="cb156-43"><a href="exceptions.html#cb156-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-44"><a href="exceptions.html#cb156-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-45"><a href="exceptions.html#cb156-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">loadDatabase</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">SQLException</span> <span class="op">{</span></span>
-<span id="cb156-46"><a href="exceptions.html#cb156-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">//loading MySQL DB</span></span>
-<span id="cb156-47"><a href="exceptions.html#cb156-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-48"><a href="exceptions.html#cb156-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-49"><a href="exceptions.html#cb156-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">readFile</span><span class="op">(</span><span class="bu">String</span> someFile<span class="op">)</span> <span class="kw">throws</span> <span class="bu">FileNotFoundException</span> <span class="op">{</span></span>
-<span id="cb156-50"><a href="exceptions.html#cb156-50" aria-hidden="true" tabindex="-1"></a>        <span class="co">//reading input data</span></span>
-<span id="cb156-51"><a href="exceptions.html#cb156-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb156-52"><a href="exceptions.html#cb156-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb166-1"><a href="exceptions.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
+<span id="cb166-2"><a href="exceptions.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="exceptions.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">FileNotFoundException</span><span class="op">;</span></span>
+<span id="cb166-4"><a href="exceptions.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb166-5"><a href="exceptions.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">nio</span><span class="op">.</span><span class="im">file</span><span class="op">.</span><span class="im">FileAlreadyExistsException</span><span class="op">;</span></span>
+<span id="cb166-6"><a href="exceptions.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">sql</span><span class="op">.</span><span class="im">SQLException</span><span class="op">;</span></span>
+<span id="cb166-7"><a href="exceptions.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Level</span><span class="op">;</span></span>
+<span id="cb166-8"><a href="exceptions.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Logger</span><span class="op">;</span></span>
+<span id="cb166-9"><a href="exceptions.html#cb166-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-10"><a href="exceptions.html#cb166-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyAppWithExceptions <span class="op">{</span></span>
+<span id="cb166-11"><a href="exceptions.html#cb166-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-12"><a href="exceptions.html#cb166-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb166-13"><a href="exceptions.html#cb166-13" aria-hidden="true" tabindex="-1"></a>        MyAppWithExceptions app <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyAppWithExceptions</span><span class="op">();</span></span>
+<span id="cb166-14"><a href="exceptions.html#cb166-14" aria-hidden="true" tabindex="-1"></a>        app<span class="op">.</span><span class="fu">start</span><span class="op">();</span></span>
+<span id="cb166-15"><a href="exceptions.html#cb166-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-16"><a href="exceptions.html#cb166-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-17"><a href="exceptions.html#cb166-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb166-18"><a href="exceptions.html#cb166-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb166-19"><a href="exceptions.html#cb166-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">loadDatabase</span><span class="op">();</span></span>
+<span id="cb166-20"><a href="exceptions.html#cb166-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">readFile</span><span class="op">(</span><span class="st">&quot;some_file&quot;</span><span class="op">);</span></span>
+<span id="cb166-21"><a href="exceptions.html#cb166-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">processData</span><span class="op">();</span></span>
+<span id="cb166-22"><a href="exceptions.html#cb166-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeResults</span><span class="op">(</span><span class="st">&quot;results_file&quot;</span><span class="op">);</span></span>
+<span id="cb166-23"><a href="exceptions.html#cb166-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> <span class="op">|</span> <span class="bu">SQLException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb166-24"><a href="exceptions.html#cb166-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">SEVERE</span><span class="op">,</span> <span class="st">&quot;IO error!&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
+<span id="cb166-25"><a href="exceptions.html#cb166-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">err</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;An error occurred. See the log for details.&quot;</span><span class="op">);</span></span>
+<span id="cb166-26"><a href="exceptions.html#cb166-26" aria-hidden="true" tabindex="-1"></a>            <span class="co">//don&#39;t use stacktrace in production!</span></span>
+<span id="cb166-27"><a href="exceptions.html#cb166-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">//e.printStackTrace();</span></span>
+<span id="cb166-28"><a href="exceptions.html#cb166-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb166-29"><a href="exceptions.html#cb166-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-30"><a href="exceptions.html#cb166-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-31"><a href="exceptions.html#cb166-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">processData</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb166-32"><a href="exceptions.html#cb166-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb166-33"><a href="exceptions.html#cb166-33" aria-hidden="true" tabindex="-1"></a>            <span class="co">//processing file data</span></span>
+<span id="cb166-34"><a href="exceptions.html#cb166-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">NumberFormatException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb166-35"><a href="exceptions.html#cb166-35" aria-hidden="true" tabindex="-1"></a>            <span class="co">//note this is an unchecked exception; </span></span>
+<span id="cb166-36"><a href="exceptions.html#cb166-36" aria-hidden="true" tabindex="-1"></a>            <span class="co">//the try/catch is optional</span></span>
+<span id="cb166-37"><a href="exceptions.html#cb166-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">INFO</span><span class="op">,</span> <span class="st">&quot;Number format problem&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
+<span id="cb166-38"><a href="exceptions.html#cb166-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb166-39"><a href="exceptions.html#cb166-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-40"><a href="exceptions.html#cb166-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-41"><a href="exceptions.html#cb166-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">writeResults</span><span class="op">(</span><span class="bu">String</span> resultsFile<span class="op">)</span> <span class="kw">throws</span> FileAlreadyExistsException <span class="op">{</span></span>
+<span id="cb166-42"><a href="exceptions.html#cb166-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">//write to results file</span></span>
+<span id="cb166-43"><a href="exceptions.html#cb166-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-44"><a href="exceptions.html#cb166-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-45"><a href="exceptions.html#cb166-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">loadDatabase</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">SQLException</span> <span class="op">{</span></span>
+<span id="cb166-46"><a href="exceptions.html#cb166-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">//loading MySQL DB</span></span>
+<span id="cb166-47"><a href="exceptions.html#cb166-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-48"><a href="exceptions.html#cb166-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-49"><a href="exceptions.html#cb166-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">readFile</span><span class="op">(</span><span class="bu">String</span> someFile<span class="op">)</span> <span class="kw">throws</span> <span class="bu">FileNotFoundException</span> <span class="op">{</span></span>
+<span id="cb166-50"><a href="exceptions.html#cb166-50" aria-hidden="true" tabindex="-1"></a>        <span class="co">//reading input data</span></span>
+<span id="cb166-51"><a href="exceptions.html#cb166-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb166-52"><a href="exceptions.html#cb166-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="unchecked-exceptions" class="section level3 unnumbered">
 <h3>Unchecked exceptions</h3>
@@ -527,42 +530,42 @@ This gives you information about the origin and nature of the error.</p>
 <div id="errors" class="section level3 unnumbered">
 <h3>Errors</h3>
 <p>You should never ever try to catch errors. There is no possible use case for that:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb157-1"><a href="exceptions.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb157-2"><a href="exceptions.html#cb157-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">thirdMethod</span><span class="op">();</span></span>
-<span id="cb157-3"><a href="exceptions.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">OutOfMemoryError</span> error<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb157-4"><a href="exceptions.html#cb157-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//recover from an out-of-memory error?</span></span>
-<span id="cb157-5"><a href="exceptions.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb167-1"><a href="exceptions.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb167-2"><a href="exceptions.html#cb167-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">thirdMethod</span><span class="op">();</span></span>
+<span id="cb167-3"><a href="exceptions.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">OutOfMemoryError</span> error<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb167-4"><a href="exceptions.html#cb167-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//recover from an out-of-memory error?</span></span>
+<span id="cb167-5"><a href="exceptions.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="all-trycatch-elements" class="section level2" number="19.3">
-<h2><span class="header-section-number">19.3</span> All try/catch elements</h2>
+<div id="all-trycatch-elements" class="section level2" number="20.3">
+<h2><span class="header-section-number">20.3</span> All try/catch elements</h2>
 <p>Here are all the try/catch flow control elements. Note that the supertype of more specific exceptions need to be caught last, after the specific types.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb158-1"><a href="exceptions.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">{</span></span>
-<span id="cb158-2"><a href="exceptions.html#cb158-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*The risky thing. </span></span>
-<span id="cb158-3"><a href="exceptions.html#cb158-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This block will run until an exception occurs </span></span>
-<span id="cb158-4"><a href="exceptions.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co">    - also exceptions that are not explicitly caught*/</span></span>
-<span id="cb158-5"><a href="exceptions.html#cb158-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">FileNotFoundException</span> <span class="op">|</span></span>
-<span id="cb158-6"><a href="exceptions.html#cb158-6" aria-hidden="true" tabindex="-1"></a>    EndOfFileException ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb158-7"><a href="exceptions.html#cb158-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with some specific file problems*/</span></span>
-<span id="cb158-8"><a href="exceptions.html#cb158-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">IOException</span> ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb158-9"><a href="exceptions.html#cb158-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*IOException is supertype to FileNotFoundException and EndOfFileException.</span></span>
-<span id="cb158-10"><a href="exceptions.html#cb158-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Deal with all other IO problems in this catchall*/</span></span>
-<span id="cb158-11"><a href="exceptions.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">SQLException</span> ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb158-12"><a href="exceptions.html#cb158-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with database problems. </span></span>
-<span id="cb158-13"><a href="exceptions.html#cb158-13" aria-hidden="true" tabindex="-1"></a><span class="co">    SQLException is a sibling to IOException*/</span></span>
-<span id="cb158-14"><a href="exceptions.html#cb158-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb158-15"><a href="exceptions.html#cb158-15" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span> <span class="op">{</span></span>
-<span id="cb158-16"><a href="exceptions.html#cb158-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Always runs, exception or not!  </span></span>
-<span id="cb158-17"><a href="exceptions.html#cb158-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Do things that need to be done, no </span></span>
-<span id="cb158-18"><a href="exceptions.html#cb158-18" aria-hidden="true" tabindex="-1"></a><span class="co">    matter what, like closing a file or </span></span>
-<span id="cb158-19"><a href="exceptions.html#cb158-19" aria-hidden="true" tabindex="-1"></a><span class="co">    database connection*/</span></span>
-<span id="cb158-20"><a href="exceptions.html#cb158-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb168-1"><a href="exceptions.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">{</span></span>
+<span id="cb168-2"><a href="exceptions.html#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*The risky thing. </span></span>
+<span id="cb168-3"><a href="exceptions.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This block will run until an exception occurs </span></span>
+<span id="cb168-4"><a href="exceptions.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co">    - also exceptions that are not explicitly caught*/</span></span>
+<span id="cb168-5"><a href="exceptions.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">FileNotFoundException</span> <span class="op">|</span></span>
+<span id="cb168-6"><a href="exceptions.html#cb168-6" aria-hidden="true" tabindex="-1"></a>    EndOfFileException ex<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb168-7"><a href="exceptions.html#cb168-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with some specific file problems*/</span></span>
+<span id="cb168-8"><a href="exceptions.html#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">IOException</span> ex<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb168-9"><a href="exceptions.html#cb168-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*IOException is supertype to FileNotFoundException and EndOfFileException.</span></span>
+<span id="cb168-10"><a href="exceptions.html#cb168-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Deal with all other IO problems in this catchall*/</span></span>
+<span id="cb168-11"><a href="exceptions.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">SQLException</span> ex<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb168-12"><a href="exceptions.html#cb168-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with database problems. </span></span>
+<span id="cb168-13"><a href="exceptions.html#cb168-13" aria-hidden="true" tabindex="-1"></a><span class="co">    SQLException is a sibling to IOException*/</span></span>
+<span id="cb168-14"><a href="exceptions.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb168-15"><a href="exceptions.html#cb168-15" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span> <span class="op">{</span></span>
+<span id="cb168-16"><a href="exceptions.html#cb168-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Always runs, exception or not!  </span></span>
+<span id="cb168-17"><a href="exceptions.html#cb168-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Do things that need to be done, no </span></span>
+<span id="cb168-18"><a href="exceptions.html#cb168-18" aria-hidden="true" tabindex="-1"></a><span class="co">    matter what, like closing a file or </span></span>
+<span id="cb168-19"><a href="exceptions.html#cb168-19" aria-hidden="true" tabindex="-1"></a><span class="co">    database connection*/</span></span>
+<span id="cb168-20"><a href="exceptions.html#cb168-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="try-with-resources" class="section level2" number="19.4">
-<h2><span class="header-section-number">19.4</span> Try-with resources</h2>
+<div id="try-with-resources" class="section level2" number="20.4">
+<h2><span class="header-section-number">20.4</span> Try-with resources</h2>
 <p>Java 7 introduced the try-with resources structure, which automatically closes the resource once the try block has finished:</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb159-1"><a href="exceptions.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(&lt;</span>OPEN RESOURCE<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb159-2"><a href="exceptions.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(&lt;</span>RESOURCE EXCEPTION<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb169-1"><a href="exceptions.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(&lt;</span>OPEN RESOURCE<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb169-2"><a href="exceptions.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(&lt;</span>RESOURCE EXCEPTION<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
 <p>This form assures that a resource will be closed() after the try{} block exits, with or without error. See the post on IO for its usage.</p>
 
 </div>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 35 Sessions &amp; Scopes | The Java Track</title>
+  <title>Chapter 18 Records | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 35 Sessions &amp; Scopes | The Java Track" />
+  <meta property="og:title" content="Chapter 18 Records | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 35 Sessions &amp; Scopes | The Java Track" />
+  <meta name="twitter:title" content="Chapter 18 Records | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="thymeleaf-flow-control-and-fragments.html"/>
-<link rel="next" href="servlet-details-and-lifecycle-hooks.html"/>
+<link rel="prev" href="methods-of-class-object.html"/>
+<link rel="next" href="sorting.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -406,239 +406,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sessions-scopes" class="section level1" number="35">
-<h1><span class="header-section-number">Chapter 35</span> Sessions &amp; Scopes</h1>
-<div id="introduction-5" class="section level2" number="35.1">
-<h2><span class="header-section-number">35.1</span> Introduction</h2>
-<p>In this post, some seemingly diverse topics are dealt with. After reading, you should be aware that they actually relate.</p>
-<p>The topics are:
-- application-scoped variables with web.xml
-- user authentication
-- sessions
-- overview of the different scopes and when to use which</p>
-<p><img style="float: left; margin: 10px;" src="figures/warning_64.png"></p>
-<p><strong>DISCLAIMER<br />
-<em>Everything in this presentation related to authentication is purely for the purpose of showing principles.
-For real-world applications you will need to do much work on security</em></strong></p>
+<div id="records" class="section level1" number="18">
+<h1><span class="header-section-number">Chapter 18</span> Records</h1>
+<div id="basics" class="section level2" number="18.1">
+<h2><span class="header-section-number">18.1</span> Basics</h2>
+<p>One of the strongest points of criticism of the Java language is its verbosity - so much code is used to specify simple data constructs. Consider this class, which models the data of a biological Species in a simplified way:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb135-1"><a href="records.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">records</span><span class="op">;</span></span>
+<span id="cb135-2"><a href="records.html#cb135-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-3"><a href="records.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Species <span class="op">{</span></span>
+<span id="cb135-4"><a href="records.html#cb135-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> englishName<span class="op">;</span></span>
+<span id="cb135-5"><a href="records.html#cb135-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> latinName<span class="op">;</span></span>
+<span id="cb135-6"><a href="records.html#cb135-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> status<span class="op">;</span></span>
+<span id="cb135-7"><a href="records.html#cb135-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-8"><a href="records.html#cb135-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> latinName<span class="op">,</span> <span class="bu">String</span> status<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb135-9"><a href="records.html#cb135-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span> <span class="op">=</span> englishName<span class="op">;</span></span>
+<span id="cb135-10"><a href="records.html#cb135-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">latinName</span> <span class="op">=</span> latinName<span class="op">;</span></span>
+<span id="cb135-11"><a href="records.html#cb135-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">status</span> <span class="op">=</span> status<span class="op">;</span></span>
+<span id="cb135-12"><a href="records.html#cb135-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-13"><a href="records.html#cb135-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-14"><a href="records.html#cb135-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getEnglishName</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb135-15"><a href="records.html#cb135-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> englishName<span class="op">;</span></span>
+<span id="cb135-16"><a href="records.html#cb135-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-17"><a href="records.html#cb135-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-18"><a href="records.html#cb135-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getLatinName</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb135-19"><a href="records.html#cb135-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> latinName<span class="op">;</span></span>
+<span id="cb135-20"><a href="records.html#cb135-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-21"><a href="records.html#cb135-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-22"><a href="records.html#cb135-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getStatus</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb135-23"><a href="records.html#cb135-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> status<span class="op">;</span></span>
+<span id="cb135-24"><a href="records.html#cb135-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-25"><a href="records.html#cb135-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-26"><a href="records.html#cb135-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb135-27"><a href="records.html#cb135-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb135-28"><a href="records.html#cb135-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Species{&quot;</span> <span class="op">+</span></span>
+<span id="cb135-29"><a href="records.html#cb135-29" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;englishName=&#39;&quot;</span> <span class="op">+</span> englishName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb135-30"><a href="records.html#cb135-30" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, latinName=&#39;&quot;</span> <span class="op">+</span> latinName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb135-31"><a href="records.html#cb135-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, status=&quot;</span> <span class="op">+</span> status <span class="op">+</span></span>
+<span id="cb135-32"><a href="records.html#cb135-32" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
+<span id="cb135-33"><a href="records.html#cb135-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-34"><a href="records.html#cb135-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-35"><a href="records.html#cb135-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb135-36"><a href="records.html#cb135-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">equals</span><span class="op">(</span><span class="bu">Object</span> o<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb135-37"><a href="records.html#cb135-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span> <span class="op">==</span> o<span class="op">)</span> <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb135-38"><a href="records.html#cb135-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>o <span class="op">==</span> <span class="kw">null</span> <span class="op">||</span> <span class="fu">getClass</span><span class="op">()</span> <span class="op">!=</span> o<span class="op">.</span><span class="fu">getClass</span><span class="op">())</span> <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb135-39"><a href="records.html#cb135-39" aria-hidden="true" tabindex="-1"></a>        Species species <span class="op">=</span> <span class="op">(</span>Species<span class="op">)</span> o<span class="op">;</span></span>
+<span id="cb135-40"><a href="records.html#cb135-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-41"><a href="records.html#cb135-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">getEnglishName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="op">!</span><span class="fu">getEnglishName</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>species<span class="op">.</span><span class="fu">getEnglishName</span><span class="op">())</span> <span class="op">:</span> species<span class="op">.</span><span class="fu">getEnglishName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span></span>
+<span id="cb135-42"><a href="records.html#cb135-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb135-43"><a href="records.html#cb135-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">getLatinName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="op">!</span><span class="fu">getLatinName</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span>species<span class="op">.</span><span class="fu">getLatinName</span><span class="op">())</span> <span class="op">:</span> species<span class="op">.</span><span class="fu">getLatinName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span></span>
+<span id="cb135-44"><a href="records.html#cb135-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb135-45"><a href="records.html#cb135-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fu">getStatus</span><span class="op">()</span> <span class="op">==</span> species<span class="op">.</span><span class="fu">getStatus</span><span class="op">();</span></span>
+<span id="cb135-46"><a href="records.html#cb135-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-47"><a href="records.html#cb135-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-48"><a href="records.html#cb135-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb135-49"><a href="records.html#cb135-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">hashCode</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb135-50"><a href="records.html#cb135-50" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> result <span class="op">=</span> <span class="fu">getEnglishName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="fu">getEnglishName</span><span class="op">().</span><span class="fu">hashCode</span><span class="op">()</span> <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb135-51"><a href="records.html#cb135-51" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="dv">31</span> <span class="op">*</span> result <span class="op">+</span> <span class="op">(</span><span class="fu">getLatinName</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="fu">getLatinName</span><span class="op">().</span><span class="fu">hashCode</span><span class="op">()</span> <span class="op">:</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb135-52"><a href="records.html#cb135-52" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="dv">31</span> <span class="op">*</span> result <span class="op">+</span> <span class="op">(</span><span class="fu">getStatus</span><span class="op">()</span> <span class="op">!=</span> <span class="kw">null</span> <span class="op">?</span> <span class="fu">getStatus</span><span class="op">().</span><span class="fu">hashCode</span><span class="op">()</span> <span class="op">:</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb135-53"><a href="records.html#cb135-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> result<span class="op">;</span></span>
+<span id="cb135-54"><a href="records.html#cb135-54" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb135-55"><a href="records.html#cb135-55" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>That is a <em>lot</em> of code to for a class that simple models the data associated with a Species entity - a <em>data class</em>. We call this <em>boilerplate</em> code, and don’t like it. Of course, in modern IDEs like IntelliJ you can autogenerate almost all of this code (I only typed the class name and properties), but all this code also makes it harder to understand what this class really models: a Species entity with English name, Latin name and conservation status. Moreover, when a new field is added or an existing field is changed (e.g. status from String to enum), this requires a careful refactoring of the class.</p>
+<p>Some would maybe suggest to simply take out all boilerplate, and access modifiers, like in the next example.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb136-1"><a href="records.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Species <span class="op">{</span></span>
+<span id="cb136-2"><a href="records.html#cb136-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> englishName<span class="op">;</span></span>
+<span id="cb136-3"><a href="records.html#cb136-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> latinName<span class="op">;</span></span>
+<span id="cb136-4"><a href="records.html#cb136-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> status<span class="op">;</span></span>
+<span id="cb136-5"><a href="records.html#cb136-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-6"><a href="records.html#cb136-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb136-7"><a href="records.html#cb136-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb136-8"><a href="records.html#cb136-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Species{&quot;</span> <span class="op">+</span></span>
+<span id="cb136-9"><a href="records.html#cb136-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;englishName=&#39;&quot;</span> <span class="op">+</span> englishName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb136-10"><a href="records.html#cb136-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, latinName=&#39;&quot;</span> <span class="op">+</span> latinName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb136-11"><a href="records.html#cb136-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, status=&#39;&quot;</span> <span class="op">+</span> status <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb136-12"><a href="records.html#cb136-12" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
+<span id="cb136-13"><a href="records.html#cb136-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb136-14"><a href="records.html#cb136-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This way, you simply set and get the properties directly, and rely on tha class Object <code>equals()</code> and <code>hashCode()</code> definitions. Pause a moment to think why this would be a bad idea before continuing.</p>
+<p>The huge difference lies of course in immutability and encapsulation!</p>
+<p>Since Java 14, this has been overcome with addition of the new <code>record</code> type. Records are <strong><em>immutable data classes</em></strong> that require only the type and name of its fields. Here is the <code>Species</code> class as a record:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb137-1"><a href="records.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> record <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> genus<span class="op">,</span> <span class="bu">String</span> species<span class="op">,</span> <span class="bu">String</span> status<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
+<p>By using records, all boilerplate code is still created, but behind the scenes by the compiler. The <code>equals()</code>, <code>hashCode()</code>, and <code>toString()</code> methods as well as the private, final instance variables, getters for each of these, and a public constructor are generated by the compiler. So, this single line of code will generate the same class as the first example, but only in its compiled form.</p>
+<p>Here you see the auto-generated constructor and toString methods in action.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb138-1"><a href="records.html#cb138-1" aria-hidden="true" tabindex="-1"></a>Species bonobo <span class="op">=</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;Bonobo&quot;</span><span class="op">,</span> <span class="st">&quot;Pan paniscus&quot;</span><span class="op">,</span> <span class="st">&quot;Endangered&quot;</span><span class="op">);</span></span>
+<span id="cb138-2"><a href="records.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;bonobo = &quot;</span> <span class="op">+</span> bonobo<span class="op">);</span></span></code></pre></div>
+<p>outputs</p>
+<pre class="console_out">
+bonobo = Species[englishName=Bonobo, latinName=Pan paniscus, status=Endangered]
+</pre>
+<p>The test method below passes both assertions since the equals() and hashCode() methods have been implemented as well. The Object methods would have failed here, of course.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb139-1"><a href="records.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb139-2"><a href="records.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">testEqualsAndHashCode</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb139-3"><a href="records.html#cb139-3" aria-hidden="true" tabindex="-1"></a>    Species bonobo1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;Bonobo&quot;</span><span class="op">,</span> <span class="st">&quot;Pan paniscus&quot;</span><span class="op">,</span> <span class="st">&quot;Endangered&quot;</span><span class="op">);</span></span>
+<span id="cb139-4"><a href="records.html#cb139-4" aria-hidden="true" tabindex="-1"></a>    Species bonobo2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;Bonobo&quot;</span><span class="op">,</span> <span class="st">&quot;Pan paniscus&quot;</span><span class="op">,</span> <span class="st">&quot;Endangered&quot;</span><span class="op">);</span></span>
+<span id="cb139-5"><a href="records.html#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-6"><a href="records.html#cb139-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>bonobo1<span class="op">,</span> bonobo2<span class="op">);</span></span>
+<span id="cb139-7"><a href="records.html#cb139-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>bonobo1<span class="op">.</span><span class="fu">hashCode</span><span class="op">(),</span> bonobo2<span class="op">.</span><span class="fu">hashCode</span><span class="op">());</span></span>
+<span id="cb139-8"><a href="records.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="scopes" class="section level2" number="35.2">
-<h2><span class="header-section-number">35.2</span> Scopes</h2>
-<div id="application-scope-web.xml" class="section level3" number="35.2.1">
-<h3><span class="header-section-number">35.2.1</span> Application scope: web.xml</h3>
-<p>You use application-scoped variables for everything that
-relates to the entire application: admin email, database type and url, servlet configuration, etc.
-<strong><em>Application-scoped variables</em></strong> are available withing servlets but also within Thymeleaf templates. These variables are defined within an xml file named <code>web.xml</code> and it is called a <strong><em>deployment descriptor</em></strong>.</p>
-<div id="adding-a-deployment-descriptor" class="section level4 unnumbered">
-<h4>Adding a deployment descriptor</h4>
-<p>These are the steps you can take to have IntelliJ add a web.xml file in the correct location.</p>
-<ol style="list-style-type: decimal">
-<li>Go to Project Structure (<code>Cmd + ;</code> on Mac)</li>
-<li>Facets → Web → Web Gradle (select your project)</li>
-<li>Under pane Deployment Descriptors, click “+”</li>
-<li>Select “web.xml”</li>
-<li>In the path, put this: <code>&lt;your project root&gt;/src/main/webapp/WEB-INF/web.xml</code></li>
-</ol>
-<p>You’ll get something like this</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb282-1"><a href="sessions-scopes.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></span>
-<span id="cb282-2"><a href="sessions-scopes.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;web-app</span><span class="ot"> xmlns=</span><span class="st">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
-<span id="cb282-3"><a href="sessions-scopes.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="ot">         xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
-<span id="cb282-4"><a href="sessions-scopes.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="ot">         xsi:schemaLocation=</span><span class="st">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span>
-<span id="cb282-5"><a href="sessions-scopes.html#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="ot">         version=</span><span class="st">&quot;4.0&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb282-6"><a href="sessions-scopes.html#cb282-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-7"><a href="sessions-scopes.html#cb282-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/web-app&gt;</span></span></code></pre></div>
-</div>
-<div id="add-an-application-scoped-variable" class="section level4 unnumbered">
-<h4>Add an application-scoped variable</h4>
-<p>In <code>web.xml</code>, put the following snippet:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb283-1"><a href="sessions-scopes.html#cb283-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;context-param&gt;</span></span>
-<span id="cb283-2"><a href="sessions-scopes.html#cb283-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-name&gt;</span>admin_email<span class="kw">&lt;/param-name&gt;</span></span>
-<span id="cb283-3"><a href="sessions-scopes.html#cb283-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-value&gt;</span>admin@example.com<span class="kw">&lt;/param-value&gt;</span></span>
-<span id="cb283-4"><a href="sessions-scopes.html#cb283-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/context-param&gt;</span></span></code></pre></div>
-</div>
-<div id="using-the-application-scoped-variable" class="section level4 unnumbered">
-<h4>Using the application-scoped variable</h4>
-<p>In your servlets, use the web app variable like this:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb284-1"><a href="sessions-scopes.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getInitParameter</span><span class="op">(</span><span class="st">&quot;admin_email&quot;</span><span class="op">)</span></span></code></pre></div>
-<p>In your Thymeleaf template, the application-scoped variable, is available like this</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb285-1"><a href="sessions-scopes.html#cb285-1" aria-hidden="true" tabindex="-1"></a>th:text=&quot;${#servletContext.getInitParameter(&#39;admin_email&#39;)}&quot;</span></code></pre></div>
-</div>
-</div>
-<div id="session-scope-cross-request-memory" class="section level3" number="35.2.2">
-<h3><span class="header-section-number">35.2.2</span> Session scope: cross-request “memory”</h3>
-<p>A server handling your request will have no memory of your visit after it is processed.
-To be able to “keep in touch” you will need to have a tracking system: we call this a session.
-The most well-known session implementation system is by means of cookies.</p>
-<p>This is a cookie according to Wikipedia: “In computing, a cookie (also tracking cookie, browser cookie, and HTTP cookie) is a small piece of text stored on a user’s computer by a web browser. A cookie consists of one or more name-value pairs containing bits of information such as … the identifier for a server-based session….”</p>
-<p>Thus, sessions represent <strong><em>cross-request memory</em></strong>.</p>
-<p>Typical usages of session objects are
-- keeping an authenticated user “logged in”
-- keeping track of “shopping baskets”
-- keeping track of history (“here at the items you have looked at previously”)</p>
-<p>In java, sessions are usually maintained by means of a JSessionID stored as a cookie.
-You will probably never create a cookie directly. You simply use this statement:
-<code>HttpSession session = request.getSession();</code></p>
-</div>
-<div id="authentication" class="section level3" number="35.2.3">
-<h3><span class="header-section-number">35.2.3</span> Authentication</h3>
-<p>You do not need to have an authenticated user to create a session, but authentication is never done without using session.</p>
-<p>There are several reasons why you would like to know who it is that requests a certain page, the main reason being that you want only authorized persons to have access (and with a certain role).</p>
-<p>Let’s look at some sample code to create a login system using sessions.</p>
-<div id="login-form" class="section level4 unnumbered">
-<h4>Login form</h4>
-<p>Here is the first element, a login form. Take notice of the form field names eg <code>name="username"</code>. These names are going to be used in the servlet to fetch the login credentials. Also note the <code>action="login"</code> attribute of the <code>&lt;form&gt;</code> tag. It will direct to the server requesting resource <code>login</code>.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb286-1"><a href="sessions-scopes.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
-<span id="cb286-2"><a href="sessions-scopes.html#cb286-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-3"><a href="sessions-scopes.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
-<span id="cb286-4"><a href="sessions-scopes.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="ot">      xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb286-5"><a href="sessions-scopes.html#cb286-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb286-6"><a href="sessions-scopes.html#cb286-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
-<span id="cb286-7"><a href="sessions-scopes.html#cb286-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>Authentication demo<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb286-8"><a href="sessions-scopes.html#cb286-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-9"><a href="sessions-scopes.html#cb286-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> th:href=</span><span class="st">&quot;@{/css/main.css}&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../css/main.css&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb286-10"><a href="sessions-scopes.html#cb286-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
-<span id="cb286-11"><a href="sessions-scopes.html#cb286-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb286-12"><a href="sessions-scopes.html#cb286-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4&gt;</span>Log in<span class="kw">&lt;/h4&gt;</span></span>
-<span id="cb286-13"><a href="sessions-scopes.html#cb286-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4</span><span class="ot"> th:text=</span><span class="st">&quot;${message}&quot;</span><span class="ot"> th:class=</span><span class="st">&quot;${message_type}&quot;</span><span class="kw">&gt;</span>_message_<span class="kw">&lt;/h4&gt;</span></span>
-<span id="cb286-14"><a href="sessions-scopes.html#cb286-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-15"><a href="sessions-scopes.html#cb286-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb286-16"><a href="sessions-scopes.html#cb286-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;username_field&quot;</span><span class="kw">&gt;</span> User name: <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb286-17"><a href="sessions-scopes.html#cb286-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;username_field&quot;</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span><span class="ot"> required</span><span class="kw">/&gt;</span> <span class="kw">&lt;br/&gt;</span></span>
-<span id="cb286-18"><a href="sessions-scopes.html#cb286-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;password_field&quot;</span><span class="kw">&gt;</span> User password: <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb286-19"><a href="sessions-scopes.html#cb286-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;password_field&quot;</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span><span class="ot"> required</span><span class="kw">/&gt;&lt;br/&gt;</span></span>
-<span id="cb286-20"><a href="sessions-scopes.html#cb286-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> class=</span><span class="st">&quot;login_field&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb286-21"><a href="sessions-scopes.html#cb286-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;OK&quot;</span><span class="kw">/&gt;</span></span>
-<span id="cb286-22"><a href="sessions-scopes.html#cb286-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span>
-<span id="cb286-23"><a href="sessions-scopes.html#cb286-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-24"><a href="sessions-scopes.html#cb286-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h5&gt;</span>If you have any problems, please contact <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${#servletContext.getInitParameter(&#39;admin_email&#39;)}&quot;</span><span class="kw">&gt;&lt;/span&gt;&lt;/h5&gt;</span></span>
-<span id="cb286-25"><a href="sessions-scopes.html#cb286-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
-<span id="cb286-26"><a href="sessions-scopes.html#cb286-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-<p>and it looks like this in the browser:</p>
-<div class="figure">
-<img src="05_web/figures/login_form1s.png" alt="" />
-<p class="caption">Login form 1</p>
-</div>
-<p><img style="float: left; margin: 10px;" src="figures/warning_64.png"></p>
-<p><strong>Actually, when you see a <code>http://</code> protocol instead of an <code>https://</code> protocol in the location bar of your browser, you do NOT have safety on you connection, even though you cannot see the password in the form!</strong></p>
-<p>But that issue is not within the scope of this course.</p>
-</div>
-<div id="login-servlet" class="section level4 unnumbered">
-<h4>Login servlet</h4>
-<p>This is the servlet dealing with the login form.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb287-1"><a href="sessions-scopes.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
-<span id="cb287-2"><a href="sessions-scopes.html#cb287-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-3"><a href="sessions-scopes.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="co">//many imports</span></span>
-<span id="cb287-4"><a href="sessions-scopes.html#cb287-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-5"><a href="sessions-scopes.html#cb287-5" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>urlPatterns <span class="op">=</span> <span class="st">&quot;/login&quot;</span><span class="op">)</span></span>
-<span id="cb287-6"><a href="sessions-scopes.html#cb287-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> LoginServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
-<span id="cb287-7"><a href="sessions-scopes.html#cb287-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> TemplateEngine templateEngine<span class="op">;</span></span>
-<span id="cb287-8"><a href="sessions-scopes.html#cb287-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-9"><a href="sessions-scopes.html#cb287-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb287-10"><a href="sessions-scopes.html#cb287-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">()</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
-<span id="cb287-11"><a href="sessions-scopes.html#cb287-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">templateEngine</span> <span class="op">=</span> WebConfig<span class="op">.</span><span class="fu">getTemplateEngine</span><span class="op">();</span></span>
-<span id="cb287-12"><a href="sessions-scopes.html#cb287-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb287-13"><a href="sessions-scopes.html#cb287-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-14"><a href="sessions-scopes.html#cb287-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doPost</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> ServletException<span class="op">,</span> <span class="bu">IOException</span> <span class="op">{</span></span>
-<span id="cb287-15"><a href="sessions-scopes.html#cb287-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> username <span class="op">=</span> request<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span><span class="st">&quot;username&quot;</span><span class="op">);</span></span>
-<span id="cb287-16"><a href="sessions-scopes.html#cb287-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> password <span class="op">=</span> request<span class="op">.</span><span class="fu">getParameter</span><span class="op">(</span><span class="st">&quot;password&quot;</span><span class="op">);</span></span>
-<span id="cb287-17"><a href="sessions-scopes.html#cb287-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-18"><a href="sessions-scopes.html#cb287-18" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span></span>
-<span id="cb287-19"><a href="sessions-scopes.html#cb287-19" aria-hidden="true" tabindex="-1"></a>                request<span class="op">,</span></span>
-<span id="cb287-20"><a href="sessions-scopes.html#cb287-20" aria-hidden="true" tabindex="-1"></a>                response<span class="op">,</span></span>
-<span id="cb287-21"><a href="sessions-scopes.html#cb287-21" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span></span>
-<span id="cb287-22"><a href="sessions-scopes.html#cb287-22" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
-<span id="cb287-23"><a href="sessions-scopes.html#cb287-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-24"><a href="sessions-scopes.html#cb287-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">//fetch the session object</span></span>
-<span id="cb287-25"><a href="sessions-scopes.html#cb287-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">//if it is not present, one will be created</span></span>
-<span id="cb287-26"><a href="sessions-scopes.html#cb287-26" aria-hidden="true" tabindex="-1"></a>        HttpSession session <span class="op">=</span> request<span class="op">.</span><span class="fu">getSession</span><span class="op">();</span></span>
-<span id="cb287-27"><a href="sessions-scopes.html#cb287-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> nextPage<span class="op">;</span></span>
-<span id="cb287-28"><a href="sessions-scopes.html#cb287-28" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb287-29"><a href="sessions-scopes.html#cb287-29" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb287-30"><a href="sessions-scopes.html#cb287-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>session<span class="op">.</span><span class="fu">isNew</span><span class="op">()</span> <span class="op">||</span> session<span class="op">.</span><span class="fu">getAttribute</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">)</span> <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb287-31"><a href="sessions-scopes.html#cb287-31" aria-hidden="true" tabindex="-1"></a>            <span class="dt">boolean</span> authenticated <span class="op">=</span> <span class="fu">authenticate</span><span class="op">(</span>username<span class="op">,</span> password<span class="op">);</span></span>
-<span id="cb287-32"><a href="sessions-scopes.html#cb287-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>authenticated<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb287-33"><a href="sessions-scopes.html#cb287-33" aria-hidden="true" tabindex="-1"></a>                session<span class="op">.</span><span class="fu">setAttribute</span><span class="op">(</span><span class="st">&quot;user&quot;</span><span class="op">,</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">(</span><span class="st">&quot;Henk&quot;</span><span class="op">,</span> <span class="st">&quot;henk@example.com&quot;</span><span class="op">,</span> <span class="bu">Role</span><span class="op">.</span><span class="fu">USER</span><span class="op">));</span></span>
-<span id="cb287-34"><a href="sessions-scopes.html#cb287-34" aria-hidden="true" tabindex="-1"></a>                nextPage <span class="op">=</span> <span class="st">&quot;mainSite&quot;</span><span class="op">;</span></span>
-<span id="cb287-35"><a href="sessions-scopes.html#cb287-35" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb287-36"><a href="sessions-scopes.html#cb287-36" aria-hidden="true" tabindex="-1"></a>                ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;message&quot;</span><span class="op">,</span> <span class="st">&quot;Your password and/or username are incorrect; please try again&quot;</span><span class="op">);</span></span>
-<span id="cb287-37"><a href="sessions-scopes.html#cb287-37" aria-hidden="true" tabindex="-1"></a>                ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;message_type&quot;</span><span class="op">,</span> <span class="st">&quot;error&quot;</span><span class="op">);</span></span>
-<span id="cb287-38"><a href="sessions-scopes.html#cb287-38" aria-hidden="true" tabindex="-1"></a>                nextPage <span class="op">=</span> <span class="st">&quot;login&quot;</span><span class="op">;</span></span>
-<span id="cb287-39"><a href="sessions-scopes.html#cb287-39" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb287-40"><a href="sessions-scopes.html#cb287-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb287-41"><a href="sessions-scopes.html#cb287-41" aria-hidden="true" tabindex="-1"></a>            nextPage <span class="op">=</span> <span class="st">&quot;mainSite&quot;</span><span class="op">;</span></span>
-<span id="cb287-42"><a href="sessions-scopes.html#cb287-42" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb287-43"><a href="sessions-scopes.html#cb287-43" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span>nextPage<span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
-<span id="cb287-44"><a href="sessions-scopes.html#cb287-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb287-45"><a href="sessions-scopes.html#cb287-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-46"><a href="sessions-scopes.html#cb287-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">boolean</span> <span class="fu">authenticate</span><span class="op">(</span><span class="bu">String</span> username<span class="op">,</span> <span class="bu">String</span> password<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb287-47"><a href="sessions-scopes.html#cb287-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> username<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;Henk&quot;</span><span class="op">)</span> <span class="op">&amp;&amp;</span> password<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;henk&quot;</span><span class="op">);</span></span>
-<span id="cb287-48"><a href="sessions-scopes.html#cb287-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb287-49"><a href="sessions-scopes.html#cb287-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-50"><a href="sessions-scopes.html#cb287-50" aria-hidden="true" tabindex="-1"></a>    <span class="co">//simple GET requests are immediately forwarded to the login page</span></span>
-<span id="cb287-51"><a href="sessions-scopes.html#cb287-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">doGet</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> ServletException<span class="op">,</span> <span class="bu">IOException</span> <span class="op">{</span></span>
-<span id="cb287-52"><a href="sessions-scopes.html#cb287-52" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span></span>
-<span id="cb287-53"><a href="sessions-scopes.html#cb287-53" aria-hidden="true" tabindex="-1"></a>                request<span class="op">,</span></span>
-<span id="cb287-54"><a href="sessions-scopes.html#cb287-54" aria-hidden="true" tabindex="-1"></a>                response<span class="op">,</span></span>
-<span id="cb287-55"><a href="sessions-scopes.html#cb287-55" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span></span>
-<span id="cb287-56"><a href="sessions-scopes.html#cb287-56" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
-<span id="cb287-57"><a href="sessions-scopes.html#cb287-57" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;message&quot;</span><span class="op">,</span> <span class="st">&quot;Fill out the login form&quot;</span><span class="op">);</span></span>
-<span id="cb287-58"><a href="sessions-scopes.html#cb287-58" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;message_type&quot;</span><span class="op">,</span> <span class="st">&quot;info&quot;</span><span class="op">);</span></span>
-<span id="cb287-59"><a href="sessions-scopes.html#cb287-59" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span><span class="st">&quot;login&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
-<span id="cb287-60"><a href="sessions-scopes.html#cb287-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb287-61"><a href="sessions-scopes.html#cb287-61" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>Above the class declaration you see the <code>@WebServlet(urlPatterns = "/login")</code> annotation which tells the application server to route all requests to the URL <code>/login</code> to this servlet class.</p>
-<p>The <code>doPost()</code> method -which has several code smells (do you know which)- creates a session object. Next, it checks the session status and proceeds. If it is new (or empty): check user credentials. Else: go directly to the main page - why check credentials if the user already is logged in?
-The <code>authenticate()</code> method is a dummy of course. We’ll visit that part of authentication in the post on database interaction because -obviously- user data are stored in a database and are never hard-coded. If authentication is successful, the user is forwarded to the sites’ main page:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb288-1"><a href="sessions-scopes.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
-<span id="cb288-2"><a href="sessions-scopes.html#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-3"><a href="sessions-scopes.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
-<span id="cb288-4"><a href="sessions-scopes.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="ot">      xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb288-5"><a href="sessions-scopes.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb288-6"><a href="sessions-scopes.html#cb288-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
-<span id="cb288-7"><a href="sessions-scopes.html#cb288-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>_TITLE_<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb288-8"><a href="sessions-scopes.html#cb288-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-9"><a href="sessions-scopes.html#cb288-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
-<span id="cb288-10"><a href="sessions-scopes.html#cb288-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb288-11"><a href="sessions-scopes.html#cb288-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3&gt;</span>Welcome to our main page, [[${session.user.name}]]! Feel free to browse our content<span class="kw">&lt;/h3&gt;</span></span>
-<span id="cb288-12"><a href="sessions-scopes.html#cb288-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
-<span id="cb288-13"><a href="sessions-scopes.html#cb288-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-<p>The <code>[[${session.user.name}]]!</code> expression is an inline text expression - it does not need to be embedded in a html tag.</p>
-<p>Alternatively, we could have used this:</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb289-1"><a href="sessions-scopes.html#cb289-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3&gt;</span>Welcome to our main page, <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${session.user.name}&quot;</span><span class="kw">&gt;</span>__offline__<span class="kw">&lt;/span&gt;</span>! Feel free to browse our content<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
-</div>
-<div id="test-1" class="section level4 unnumbered">
-<h4>Test</h4>
-<p>Start the server and run
-- Log in
-- Enter username and password
-- Test false credentials
-- Test correct credentials</p>
-<p>What is the result, what do you see?
-Can you detect weaknesses and/or improve on the design?</p>
-</div>
-</div>
-</div>
-<div id="summary-of-scopes" class="section level2" number="35.3">
-<h2><span class="header-section-number">35.3</span> Summary of scopes</h2>
-<p>As in all programming environments, scopes are really important in web applications.
-We have seen the three main ones:</p>
-<div id="application-scope" class="section level4 unnumbered">
-<h4>Application scope</h4>
-<p>Specified in <code>web.xml</code> and accessed through
-<code>${#servletContext.getInitParameter('admin_email')}</code> in the Thymeleaf files or <code>getServletContext().getInitParameter("&lt;attrib_name&gt;")</code> in the servlet code</p>
-</div>
-<div id="session-scope" class="section level4 unnumbered">
-<h4>Session scope</h4>
-<p>Stored in <code>HttpSession</code> object. When available, accessed through
-<code>${session.&lt;attrib_name&gt;}</code> in the Thymeleaf files and
-<code>getSession.getAttribute("&lt;attrib_name&gt;")</code> in the servlet code. Set through <code>getSession.setAttribute("&lt;attrib_name&gt;", &lt;attrib&gt;)</code>.</p>
-</div>
-<div id="request-scope" class="section level4 unnumbered">
-<h4>“Request” scope</h4>
-<p>Each http request generates its own <code>HttpRequest</code> object.
-It can be accessed through <code>${#request.&lt;attrib_name&gt;}</code> in the Thymeleaf files. In servlet context, use <code>request.getParameter("&lt;attrib_name&gt;")</code> to get it or <code>request.setAttribute("&lt;attrib_name&gt;", "&lt;attrib&gt;")</code> to set it.
-The <code>WebContext</code> object is of course used much more in Thymeleaf, and in that context simply accessed as <code>${attrib_name&gt;}</code></p>
+<div id="customization" class="section level2" number="18.2">
+<h2><span class="header-section-number">18.2</span> Customization</h2>
+<p>The default implementation of the constructor is simply this:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb140-1"><a href="records.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> latinName<span class="op">,</span> <span class="bu">String</span> status<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb140-2"><a href="records.html#cb140-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span> <span class="op">=</span> englishName<span class="op">;</span></span>
+<span id="cb140-3"><a href="records.html#cb140-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">latinName</span> <span class="op">=</span> latinName<span class="op">;</span></span>
+<span id="cb140-4"><a href="records.html#cb140-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">status</span> <span class="op">=</span> status<span class="op">;</span></span>
+<span id="cb140-5"><a href="records.html#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>But you can override this by supplying your own. This can serve two purposes. The first is that you want to add some checks or initialization, and the second is to provide more than one constructor, publishing different argument lists.</p>
+<p>This constructor adds null-checking to two of the fields. Note that there is no parameter-list here: it is no regular constructor - it merely adds behavior to the auto-generated constructor.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb141-1"><a href="records.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> Species <span class="op">{</span></span>
+<span id="cb141-2"><a href="records.html#cb141-2" aria-hidden="true" tabindex="-1"></a>    Objects<span class="op">.</span><span class="fu">requireNonNull</span><span class="op">(</span>englishName<span class="op">);</span></span>
+<span id="cb141-3"><a href="records.html#cb141-3" aria-hidden="true" tabindex="-1"></a>    Objects<span class="op">.</span><span class="fu">requireNonNull</span><span class="op">(</span>latinName<span class="op">);</span></span>
+<span id="cb141-4"><a href="records.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>So the first of these assertions passes and the second fails:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb142-1"><a href="records.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb142-2"><a href="records.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">testNullArguments</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb142-3"><a href="records.html#cb142-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//passes</span></span>
+<span id="cb142-4"><a href="records.html#cb142-4" aria-hidden="true" tabindex="-1"></a>    Species bonobo1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;Bonobo&quot;</span><span class="op">,</span> <span class="st">&quot;Pan paniscus&quot;</span><span class="op">,</span> <span class="kw">null</span><span class="op">);</span></span>
+<span id="cb142-5"><a href="records.html#cb142-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;bonobo = &quot;</span> <span class="op">+</span> bonobo1<span class="op">);</span></span>
+<span id="cb142-6"><a href="records.html#cb142-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-7"><a href="records.html#cb142-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//fails</span></span>
+<span id="cb142-8"><a href="records.html#cb142-8" aria-hidden="true" tabindex="-1"></a>    Species bonobo2 <span class="op">=</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;Bonobo&quot;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="st">&quot;Endangered&quot;</span><span class="op">);</span></span>
+<span id="cb142-9"><a href="records.html#cb142-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;bonobo = &quot;</span> <span class="op">+</span> bonobo2<span class="op">);</span></span>
+<span id="cb142-10"><a href="records.html#cb142-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>This constructor provides a constructor that sets a default conservation status.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb143-1"><a href="records.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> latinName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb143-2"><a href="records.html#cb143-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">(</span>englishName<span class="op">,</span> latinName<span class="op">,</span> <span class="st">&quot;Least Concern&quot;</span><span class="op">);</span></span>
+<span id="cb143-3"><a href="records.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>So Species objects can be instantiated with only English and Latin names.</p>
+<p>Finally, you can add static and nonstatic method and fields, just as regular classes.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb144-1"><a href="records.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Objects</span><span class="op">;</span></span>
+<span id="cb144-2"><a href="records.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="records.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> record <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> latinName<span class="op">,</span> <span class="bu">String</span> status<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb144-4"><a href="records.html#cb144-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> <span class="bu">String</span> DEFAULT_CONSERVATION_STATUS <span class="op">=</span> <span class="st">&quot;Least Concern&quot;</span><span class="op">;</span></span>
+<span id="cb144-5"><a href="records.html#cb144-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> Species <span class="op">{</span></span>
+<span id="cb144-6"><a href="records.html#cb144-6" aria-hidden="true" tabindex="-1"></a>        Objects<span class="op">.</span><span class="fu">requireNonNull</span><span class="op">(</span>englishName<span class="op">);</span></span>
+<span id="cb144-7"><a href="records.html#cb144-7" aria-hidden="true" tabindex="-1"></a>        Objects<span class="op">.</span><span class="fu">requireNonNull</span><span class="op">(</span>latinName<span class="op">);</span></span>
+<span id="cb144-8"><a href="records.html#cb144-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb144-9"><a href="records.html#cb144-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-10"><a href="records.html#cb144-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Species</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="bu">String</span> latinName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb144-11"><a href="records.html#cb144-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">(</span>englishName<span class="op">,</span> latinName<span class="op">,</span> DEFAULT_CONSERVATION_STATUS<span class="op">);</span></span>
+<span id="cb144-12"><a href="records.html#cb144-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb144-13"><a href="records.html#cb144-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-14"><a href="records.html#cb144-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">description</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb144-15"><a href="records.html#cb144-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> englishName <span class="op">+</span> <span class="st">&quot; [&quot;</span> <span class="op">+</span> latinName <span class="op">+</span> <span class="st">&quot; ]: &quot;</span> <span class="op">+</span> status<span class="op">;</span></span>
+<span id="cb144-16"><a href="records.html#cb144-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb144-17"><a href="records.html#cb144-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-18"><a href="records.html#cb144-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> Species <span class="fu">fromGenusAndSpecies</span> <span class="op">(</span><span class="bu">String</span> genus<span class="op">,</span> <span class="bu">String</span> species<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb144-19"><a href="records.html#cb144-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> latinName <span class="op">=</span> genus <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> species<span class="op">;</span></span>
+<span id="cb144-20"><a href="records.html#cb144-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">new</span> <span class="fu">Species</span><span class="op">(</span><span class="st">&quot;NO ENGLISH NAME&quot;</span><span class="op">,</span> latinName<span class="op">);</span></span>
+<span id="cb144-21"><a href="records.html#cb144-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb144-22"><a href="records.html#cb144-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>but when you are going in this direction, you lose the clean purpose of records and it may be advisable to go back to a regular class.</p>
+<p>In summary, whenever you need a simple data class, use the record type. When your class starts to show logic, use regular classes.</p>
 
-</div>
 </div>
 </div>
             </section>
@@ -646,8 +567,8 @@ The <code>WebContext</code> object is of course used much more in Thymeleaf, and
           </div>
         </div>
       </div>
-<a href="thymeleaf-flow-control-and-fragments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="servlet-details-and-lifecycle-hooks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="methods-of-class-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sorting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

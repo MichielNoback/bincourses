@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 20 File IO | The Java Track</title>
+  <title>Chapter 21 File IO | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 20 File IO | The Java Track" />
+  <meta property="og:title" content="Chapter 21 File IO | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 20 File IO | The Java Track" />
+  <meta name="twitter:title" content="Chapter 21 File IO | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="exceptions.html"/>
 <link rel="next" href="regular-expressions.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -227,164 +225,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<li class="chapter" data-level="18" data-path="records.html"><a href="records.html"><i class="fa fa-check"></i><b>18</b> Records</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
-<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
-<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+<li class="chapter" data-level="18.1" data-path="records.html"><a href="records.html#basics"><i class="fa fa-check"></i><b>18.1</b> Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="records.html"><a href="records.html#customization"><i class="fa fa-check"></i><b>18.2</b> Customization</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<li class="chapter" data-level="19" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>19</b> Sorting</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
-<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
-<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
-<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+<li class="chapter" data-level="19.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>19.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="19.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>19.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="19.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>19.3</b> Multilevel sorting</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<li class="chapter" data-level="20" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>20</b> Exceptions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
-<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
-<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
-<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+<li class="chapter" data-level="20.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>20.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="20.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>20.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="20.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>20.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="20.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>20.4</b> Try-with resources</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<li class="chapter" data-level="21" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>21</b> File IO</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
-<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
-<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+<li class="chapter" data-level="21.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>21.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="21.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>21.2</b> File and Files</a></li>
+<li class="chapter" data-level="21.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>21.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="21.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>21.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>22</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>22.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="22.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>22.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="22.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>22.3</b> Pattern &amp; Matcher</a></li>
 </ul></li>
 <li class="part"><span><b>Part IV - OOP</b></span></li>
-<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<li class="chapter" data-level="23" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>23</b> Encapsulation</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+<li class="chapter" data-level="23.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>23.1</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<li class="chapter" data-level="24" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>24</b> Access modifiers &amp; Other keywords</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
-<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+<li class="chapter" data-level="24.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>24.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="24.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>24.2</b> Other keywords</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<li class="chapter" data-level="25" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>25</b> Inheritance and UML</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
-<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+<li class="chapter" data-level="25.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>25.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="25.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>25.2</b> Apply inheritance to model what is common</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<li class="chapter" data-level="26" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>26</b> Enums: constants on steroids</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+<li class="chapter" data-level="26.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>26.1</b> Constants are everywhere</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
-<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<li class="chapter" data-level="27" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>27</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="28" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>28</b> Design rules summary</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
-<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
-<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
-<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
-<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
-<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
-<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+<li class="chapter" data-level="28.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>28.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="28.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>28.2</b> Classes</a></li>
+<li class="chapter" data-level="28.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>28.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="28.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>28.4</b> Exceptions</a></li>
+<li class="chapter" data-level="28.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>28.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="28.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>28.6</b> SRP</a></li>
+<li class="chapter" data-level="28.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>28.7</b> Various</a></li>
 </ul></li>
 <li class="part"><span><b>Part V - Java Web Apps</b></span></li>
-<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<li class="chapter" data-level="29" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>29</b> A refresher</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
-<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+<li class="chapter" data-level="29.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>29.1</b> Introduction</a></li>
+<li class="chapter" data-level="29.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>29.2</b> The basics of web</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
-<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<li class="chapter" data-level="30" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>30</b> The toolbox</a></li>
+<li class="chapter" data-level="31" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>31</b> A first project</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
-<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+<li class="chapter" data-level="31.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>31.2</b> The steps</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<li class="chapter" data-level="32" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>32</b> Implementing MVC</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
-<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+<li class="chapter" data-level="32.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>32.2</b> Java web app architecture</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<li class="chapter" data-level="33" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf expressions</a>
 <ul>
-<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
-<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>33.2</b> Expression types</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<li class="chapter" data-level="34" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>34</b> Thymeleaf flow control and fragments</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
-<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+<li class="chapter" data-level="34.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>34.2</b> Working with fragments</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<li class="chapter" data-level="35" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>35</b> Sessions &amp; Scopes</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
-<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
-<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+<li class="chapter" data-level="35.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>35.1</b> Introduction</a></li>
+<li class="chapter" data-level="35.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>35.2</b> Scopes</a></li>
+<li class="chapter" data-level="35.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>35.3</b> Summary of scopes</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<li class="chapter" data-level="36" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>36</b> Servlet details and lifecycle hooks</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
-<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+<li class="chapter" data-level="36.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>36.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="36.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>36.2</b> Hooks</a></li>
 </ul></li>
-<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<li class="chapter" data-level="37" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>37</b> Database interaction</a>
 <ul>
-<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
-<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
-<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
-<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
-<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+<li class="chapter" data-level="37.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>37.1</b> JDBC</a></li>
+<li class="chapter" data-level="37.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>37.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="37.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>37.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="37.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>37.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="37.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>37.5</b> Use in a servlet environment</a></li>
 </ul></li>
-<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<li class="chapter" data-level="38" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>38</b> A simple web service using Ajax</a>
 <ul>
-<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+<li class="chapter" data-level="38.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>38.1</b> Introduction</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<li class="chapter" data-level="39" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>39</b> Web filters and File uploads</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
-<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+<li class="chapter" data-level="39.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>39.1</b> Web filters</a></li>
+<li class="chapter" data-level="39.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>39.2</b> File uploads</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<li class="chapter" data-level="40" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>40</b> Exercises intro</a>
 <ul>
-<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
-<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
-<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
-<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
-<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
-<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
-<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
-<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+<li class="chapter" data-level="40.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>40.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="40.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>40.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="40.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>40.3</b> Sessions</a></li>
+<li class="chapter" data-level="40.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>40.4</b> Authentication</a></li>
+<li class="chapter" data-level="40.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>40.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="40.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>40.6</b> Database interaction</a></li>
+<li class="chapter" data-level="40.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>40.7</b> Ajax</a></li>
+<li class="chapter" data-level="40.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>40.8</b> Filters</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="chapter" data-level="41" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>41</b> HTML5 tags</a></li>
 <li class="part"><span><b>Part VI - JUnit</b></span></li>
-<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<li class="chapter" data-level="42" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 basics</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
-<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
-<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
-<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
-<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
-<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
-<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+<li class="chapter" data-level="42.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>42.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="42.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>42.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="42.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>42.4</b> Document!</a></li>
+<li class="chapter" data-level="42.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>42.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="42.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>42.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="42.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>42.7</b> Grouping assertions using <code>assertAll()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<li class="chapter" data-level="43" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>43</b> JUnit 5 advanced features</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
-<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+<li class="chapter" data-level="43.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>43.1</b> Introduction</a></li>
+<li class="chapter" data-level="43.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>43.2</b> JUnit 5 annotations</a></li>
 </ul></li>
 <li class="part"><span><b>Part VII - Design</b></span></li>
-<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
-<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<li class="chapter" data-level="44" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>44</b> UML</a></li>
+<li class="chapter" data-level="45" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>45</b> Refactoring</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
-<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
-<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
-<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+<li class="chapter" data-level="45.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>45.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="45.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>45.3</b> Refactor</a></li>
+<li class="chapter" data-level="45.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>45.4</b> Take over</a></li>
 </ul></li>
 <li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
-<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<li class="chapter" data-level="46" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>46</b> REST and MVC with Spring</a>
 <ul>
-<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
-<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+<li class="chapter" data-level="46.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>46.1</b> Create a new project</a></li>
+<li class="chapter" data-level="46.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>46.2</b> Create a REST response</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
-<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<li class="chapter" data-level="47" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>47</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="48" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>48</b> Core (Spring) annotations</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+<li class="chapter" data-level="48.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>48.1</b> Generic annotations</a></li>
 </ul></li>
 </ul>
 
@@ -403,24 +406,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="file-io" class="section level1" number="20">
-<h1><span class="header-section-number">Chapter 20</span> File IO</h1>
+<div id="file-io" class="section level1" number="21">
+<h1><span class="header-section-number">Chapter 21</span> File IO</h1>
 <p>Almost all applications work on external data – files, databases and internet resources.<br />
 Here we will only have a look at files.</p>
-<div id="path-paths" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> Path &amp; Paths</h2>
+<div id="path-paths" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Path &amp; Paths</h2>
 <p>These classes represent storage locations, not the files themselves. They are useful for quite a number of things. Here are a few.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb160-1"><a href="file-io.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/proteins.fa&quot;</span><span class="op">;</span></span>
-<span id="cb160-2"><a href="file-io.html#cb160-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-3"><a href="file-io.html#cb160-3" aria-hidden="true" tabindex="-1"></a>Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
-<span id="cb160-4"><a href="file-io.html#cb160-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-5"><a href="file-io.html#cb160-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path = &quot;</span> <span class="op">+</span> path<span class="op">);</span></span>
-<span id="cb160-6"><a href="file-io.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getParent() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getParent</span><span class="op">());</span></span>
-<span id="cb160-7"><a href="file-io.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getRoot() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getRoot</span><span class="op">());</span></span>
-<span id="cb160-8"><a href="file-io.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.subpath(0,3) = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">subpath</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">3</span><span class="op">));</span></span>
-<span id="cb160-9"><a href="file-io.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getFileName() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getFileName</span><span class="op">());</span></span>
-<span id="cb160-10"><a href="file-io.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co">//convert to File object</span></span>
-<span id="cb160-11"><a href="file-io.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="bu">File</span> file <span class="op">=</span> path<span class="op">.</span><span class="fu">toFile</span><span class="op">();</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb170-1"><a href="file-io.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/proteins.fa&quot;</span><span class="op">;</span></span>
+<span id="cb170-2"><a href="file-io.html#cb170-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-3"><a href="file-io.html#cb170-3" aria-hidden="true" tabindex="-1"></a>Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
+<span id="cb170-4"><a href="file-io.html#cb170-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-5"><a href="file-io.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path = &quot;</span> <span class="op">+</span> path<span class="op">);</span></span>
+<span id="cb170-6"><a href="file-io.html#cb170-6" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getParent() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getParent</span><span class="op">());</span></span>
+<span id="cb170-7"><a href="file-io.html#cb170-7" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getRoot() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getRoot</span><span class="op">());</span></span>
+<span id="cb170-8"><a href="file-io.html#cb170-8" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.subpath(0,3) = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">subpath</span><span class="op">(</span><span class="dv">0</span><span class="op">,</span> <span class="dv">3</span><span class="op">));</span></span>
+<span id="cb170-9"><a href="file-io.html#cb170-9" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;path.getFileName() = &quot;</span> <span class="op">+</span> path<span class="op">.</span><span class="fu">getFileName</span><span class="op">());</span></span>
+<span id="cb170-10"><a href="file-io.html#cb170-10" aria-hidden="true" tabindex="-1"></a><span class="co">//convert to File object</span></span>
+<span id="cb170-11"><a href="file-io.html#cb170-11" aria-hidden="true" tabindex="-1"></a><span class="bu">File</span> file <span class="op">=</span> path<span class="op">.</span><span class="fu">toFile</span><span class="op">();</span></span></code></pre></div>
 <p>will output</p>
 <pre><code>path = /Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/proteins.fa
 path.getParent() = /Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data
@@ -428,22 +431,22 @@ path.getRoot() = /
 path.subpath(0,3) = Users/michiel/IdeaProjects
 path.getFileName() = proteins.fa</code></pre>
 </div>
-<div id="file-and-files" class="section level2" number="20.2">
-<h2><span class="header-section-number">20.2</span> File and Files</h2>
+<div id="file-and-files" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> File and Files</h2>
 <p>Class <code>Files</code> has typical utility methods:</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb162-1"><a href="file-io.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/proteins.fa&quot;</span><span class="op">;</span></span>
-<span id="cb162-2"><a href="file-io.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb162-3"><a href="file-io.html#cb162-3" aria-hidden="true" tabindex="-1"></a>Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
-<span id="cb162-4"><a href="file-io.html#cb162-4" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Files.isReadable(path) = &quot;</span> <span class="op">+</span> Files<span class="op">.</span><span class="fu">isReadable</span><span class="op">(</span>path<span class="op">));</span></span>
-<span id="cb162-5"><a href="file-io.html#cb162-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Files.isDirectory(path) = &quot;</span> <span class="op">+</span> Files<span class="op">.</span><span class="fu">isDirectory</span><span class="op">(</span>path<span class="op">));</span></span>
-<span id="cb162-6"><a href="file-io.html#cb162-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb162-7"><a href="file-io.html#cb162-7" aria-hidden="true" tabindex="-1"></a>    Path copy <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;/Users/michiel/Desktop/test.fa&quot;</span><span class="op">);</span></span>
-<span id="cb162-8"><a href="file-io.html#cb162-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">//delete if it already exists</span></span>
-<span id="cb162-9"><a href="file-io.html#cb162-9" aria-hidden="true" tabindex="-1"></a>    Files<span class="op">.</span><span class="fu">deleteIfExists</span><span class="op">(</span>copy<span class="op">);</span></span>
-<span id="cb162-10"><a href="file-io.html#cb162-10" aria-hidden="true" tabindex="-1"></a>    Files<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>path<span class="op">,</span> copy<span class="op">);</span></span>
-<span id="cb162-11"><a href="file-io.html#cb162-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb162-12"><a href="file-io.html#cb162-12" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb162-13"><a href="file-io.html#cb162-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb172-1"><a href="file-io.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/proteins.fa&quot;</span><span class="op">;</span></span>
+<span id="cb172-2"><a href="file-io.html#cb172-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-3"><a href="file-io.html#cb172-3" aria-hidden="true" tabindex="-1"></a>Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
+<span id="cb172-4"><a href="file-io.html#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Files.isReadable(path) = &quot;</span> <span class="op">+</span> Files<span class="op">.</span><span class="fu">isReadable</span><span class="op">(</span>path<span class="op">));</span></span>
+<span id="cb172-5"><a href="file-io.html#cb172-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Files.isDirectory(path) = &quot;</span> <span class="op">+</span> Files<span class="op">.</span><span class="fu">isDirectory</span><span class="op">(</span>path<span class="op">));</span></span>
+<span id="cb172-6"><a href="file-io.html#cb172-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb172-7"><a href="file-io.html#cb172-7" aria-hidden="true" tabindex="-1"></a>    Path copy <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span><span class="st">&quot;/Users/michiel/Desktop/test.fa&quot;</span><span class="op">);</span></span>
+<span id="cb172-8"><a href="file-io.html#cb172-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">//delete if it already exists</span></span>
+<span id="cb172-9"><a href="file-io.html#cb172-9" aria-hidden="true" tabindex="-1"></a>    Files<span class="op">.</span><span class="fu">deleteIfExists</span><span class="op">(</span>copy<span class="op">);</span></span>
+<span id="cb172-10"><a href="file-io.html#cb172-10" aria-hidden="true" tabindex="-1"></a>    Files<span class="op">.</span><span class="fu">copy</span><span class="op">(</span>path<span class="op">,</span> copy<span class="op">);</span></span>
+<span id="cb172-11"><a href="file-io.html#cb172-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb172-12"><a href="file-io.html#cb172-12" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb172-13"><a href="file-io.html#cb172-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>outputs this, and copies the file to my Desktop.</p>
 <pre><code>Files.isReadable(path) = true
 Files.isDirectory(path) = false
@@ -452,25 +455,25 @@ Files.copy() = /Users/michiel/Desktop/test.fa</code></pre>
 <div id="create" class="section level3 unnumbered">
 <h3>Create</h3>
 <p><strong><em>Create</em></strong> a file.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb164-1"><a href="file-io.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(!</span> Files<span class="op">.</span><span class="fu">exists</span><span class="op">(</span>dataPath<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb164-2"><a href="file-io.html#cb164-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb164-3"><a href="file-io.html#cb164-3" aria-hidden="true" tabindex="-1"></a>        Files<span class="op">.</span><span class="fu">createFile</span><span class="op">(</span>dataPath<span class="op">);</span></span>
-<span id="cb164-4"><a href="file-io.html#cb164-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb164-5"><a href="file-io.html#cb164-5" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb164-6"><a href="file-io.html#cb164-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb164-7"><a href="file-io.html#cb164-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb174-1"><a href="file-io.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span><span class="op">(!</span> Files<span class="op">.</span><span class="fu">exists</span><span class="op">(</span>dataPath<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb174-2"><a href="file-io.html#cb174-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb174-3"><a href="file-io.html#cb174-3" aria-hidden="true" tabindex="-1"></a>        Files<span class="op">.</span><span class="fu">createFile</span><span class="op">(</span>dataPath<span class="op">);</span></span>
+<span id="cb174-4"><a href="file-io.html#cb174-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb174-5"><a href="file-io.html#cb174-5" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb174-6"><a href="file-io.html#cb174-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb174-7"><a href="file-io.html#cb174-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="write" class="section level3 unnumbered">
 <h3>Write</h3>
 <p><strong><em>Write</em></strong> to file. Note the <strong><em>try-with-resources</em></strong> construct that was introduced in Java7.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb165-1"><a href="file-io.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="bu">BufferedWriter</span> writer <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedWriter</span><span class="op">(</span>dataPath<span class="op">,</span> StandardOpenOption<span class="op">.</span><span class="fu">APPEND</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb165-2"><a href="file-io.html#cb165-2" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">write</span><span class="op">(</span><span class="st">&quot;Hi there&quot;</span><span class="op">);</span></span>
-<span id="cb165-3"><a href="file-io.html#cb165-3" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">newLine</span><span class="op">();</span></span>
-<span id="cb165-4"><a href="file-io.html#cb165-4" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">write</span><span class="op">(</span><span class="st">&quot;Bye now&quot;</span><span class="op">);</span></span>
-<span id="cb165-5"><a href="file-io.html#cb165-5" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">newLine</span><span class="op">();</span></span>
-<span id="cb165-6"><a href="file-io.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb165-7"><a href="file-io.html#cb165-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb165-8"><a href="file-io.html#cb165-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb175-1"><a href="file-io.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="bu">BufferedWriter</span> writer <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedWriter</span><span class="op">(</span>dataPath<span class="op">,</span> StandardOpenOption<span class="op">.</span><span class="fu">APPEND</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb175-2"><a href="file-io.html#cb175-2" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">write</span><span class="op">(</span><span class="st">&quot;Hi there&quot;</span><span class="op">);</span></span>
+<span id="cb175-3"><a href="file-io.html#cb175-3" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">newLine</span><span class="op">();</span></span>
+<span id="cb175-4"><a href="file-io.html#cb175-4" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">write</span><span class="op">(</span><span class="st">&quot;Bye now&quot;</span><span class="op">);</span></span>
+<span id="cb175-5"><a href="file-io.html#cb175-5" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">newLine</span><span class="op">();</span></span>
+<span id="cb175-6"><a href="file-io.html#cb175-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb175-7"><a href="file-io.html#cb175-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb175-8"><a href="file-io.html#cb175-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Note the <code>StandardOpenOption</code> argument. Besides <code>APPEND</code> you have these choices:</p>
 <ul>
 <li><strong><code>APPEND</code></strong> If the file is opened for WRITE access then bytes will be written to the end of the file rather than the beginning.</li>
@@ -485,33 +488,33 @@ Files.copy() = /Users/michiel/Desktop/test.fa</code></pre>
 <p class="caption">Write to file</p>
 </div>
 <p>For convenience, you can wrap the BufferedWriter into a <code>PrintWriter</code> instance. This gives you easier line writing and the possibility for string formatting:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb166-1"><a href="file-io.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="bu">PrintWriter</span> writer <span class="op">=</span> <span class="kw">new</span> <span class="bu">PrintWriter</span><span class="op">(</span>Files<span class="op">.</span><span class="fu">newBufferedWriter</span><span class="op">(</span>dataPath<span class="op">,</span> StandardOpenOption<span class="op">.</span><span class="fu">APPEND</span><span class="op">)))</span> <span class="op">{</span></span>
-<span id="cb166-2"><a href="file-io.html#cb166-2" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;I&#39;m back!&quot;</span><span class="op">);</span></span>
-<span id="cb166-3"><a href="file-io.html#cb166-3" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">format</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">%s</span><span class="st"> is mijn voornaam en </span><span class="sc">%s</span><span class="st"> mijn achternaam&quot;</span><span class="op">,</span> <span class="st">&quot;Michiel&quot;</span><span class="op">,</span> <span class="st">&quot;Noback&quot;</span><span class="op">);</span></span>
-<span id="cb166-4"><a href="file-io.html#cb166-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Also nice:  class MessageFormat</span></span>
-<span id="cb166-5"><a href="file-io.html#cb166-5" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="bu">MessageFormat</span><span class="op">.</span><span class="fu">format</span><span class="op">(</span><span class="st">&quot;{0} is mijn voornaam en {1} mijn achternaam&quot;</span><span class="op">,</span> <span class="st">&quot;Jan&quot;</span><span class="op">,</span> <span class="st">&quot;Jansen&quot;</span><span class="op">));</span></span>
-<span id="cb166-6"><a href="file-io.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb166-7"><a href="file-io.html#cb166-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb166-8"><a href="file-io.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb176-1"><a href="file-io.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(</span><span class="bu">PrintWriter</span> writer <span class="op">=</span> <span class="kw">new</span> <span class="bu">PrintWriter</span><span class="op">(</span>Files<span class="op">.</span><span class="fu">newBufferedWriter</span><span class="op">(</span>dataPath<span class="op">,</span> StandardOpenOption<span class="op">.</span><span class="fu">APPEND</span><span class="op">)))</span> <span class="op">{</span></span>
+<span id="cb176-2"><a href="file-io.html#cb176-2" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;I&#39;m back!&quot;</span><span class="op">);</span></span>
+<span id="cb176-3"><a href="file-io.html#cb176-3" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">format</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">%s</span><span class="st"> is mijn voornaam en </span><span class="sc">%s</span><span class="st"> mijn achternaam&quot;</span><span class="op">,</span> <span class="st">&quot;Michiel&quot;</span><span class="op">,</span> <span class="st">&quot;Noback&quot;</span><span class="op">);</span></span>
+<span id="cb176-4"><a href="file-io.html#cb176-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Also nice:  class MessageFormat</span></span>
+<span id="cb176-5"><a href="file-io.html#cb176-5" aria-hidden="true" tabindex="-1"></a>    writer<span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="bu">MessageFormat</span><span class="op">.</span><span class="fu">format</span><span class="op">(</span><span class="st">&quot;{0} is mijn voornaam en {1} mijn achternaam&quot;</span><span class="op">,</span> <span class="st">&quot;Jan&quot;</span><span class="op">,</span> <span class="st">&quot;Jansen&quot;</span><span class="op">));</span></span>
+<span id="cb176-6"><a href="file-io.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb176-7"><a href="file-io.html#cb176-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb176-8"><a href="file-io.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="read" class="section level3 unnumbered">
 <h3>Read</h3>
 <p><strong><em>Reading</em></strong> data from file is a similar process:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb167-1"><a href="file-io.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">(</span><span class="bu">BufferedReader</span> reader <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedReader</span><span class="op">(</span>dataPath<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb167-2"><a href="file-io.html#cb167-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> line<span class="op">;</span></span>
-<span id="cb167-3"><a href="file-io.html#cb167-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">((</span>line <span class="op">=</span> reader<span class="op">.</span><span class="fu">readLine</span><span class="op">())</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb167-4"><a href="file-io.html#cb167-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;line = &quot;</span> <span class="op">+</span> line<span class="op">);</span></span>
-<span id="cb167-5"><a href="file-io.html#cb167-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb167-6"><a href="file-io.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb167-7"><a href="file-io.html#cb167-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb167-8"><a href="file-io.html#cb167-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb177-1"><a href="file-io.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">(</span><span class="bu">BufferedReader</span> reader <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedReader</span><span class="op">(</span>dataPath<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb177-2"><a href="file-io.html#cb177-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> line<span class="op">;</span></span>
+<span id="cb177-3"><a href="file-io.html#cb177-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">((</span>line <span class="op">=</span> reader<span class="op">.</span><span class="fu">readLine</span><span class="op">())</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb177-4"><a href="file-io.html#cb177-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;line = &quot;</span> <span class="op">+</span> line<span class="op">);</span></span>
+<span id="cb177-5"><a href="file-io.html#cb177-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb177-6"><a href="file-io.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb177-7"><a href="file-io.html#cb177-7" aria-hidden="true" tabindex="-1"></a>    e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb177-8"><a href="file-io.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="parsing-file-content-the-easy-way" class="section level2" number="20.3">
-<h2><span class="header-section-number">20.3</span> Parsing file content the easy way</h2>
+<div id="parsing-file-content-the-easy-way" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Parsing file content the easy way</h2>
 <p>A thing that typically happens when reading data is to split the line into elements on some separator:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb168-1"><a href="file-io.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co">//splits on spaces</span></span>
-<span id="cb168-2"><a href="file-io.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span><span class="op">[]</span> elements <span class="op">=</span> line<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb178-1"><a href="file-io.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co">//splits on spaces</span></span>
+<span id="cb178-2"><a href="file-io.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span><span class="op">[]</span> elements <span class="op">=</span> line<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">)</span></span></code></pre></div>
 <p>In this example, this is the employee data we are going to process.</p>
 <pre class="console_out">
 Name    Age Function    Salary*1000
@@ -522,64 +525,64 @@ RoseBanner  18  secretary   11.78
 </pre>
 <p>File <code>empl_data.csv</code> is a tab-separated file. Note the first line is a header and not real data.</p>
 <p>Here is a typical use case for working with structured data. First, class <code>Employee</code>:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb169-1"><a href="file-io.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb169-2"><a href="file-io.html#cb169-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-3"><a href="file-io.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Employee <span class="op">{</span></span>
-<span id="cb169-4"><a href="file-io.html#cb169-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
-<span id="cb169-5"><a href="file-io.html#cb169-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> age<span class="op">;</span></span>
-<span id="cb169-6"><a href="file-io.html#cb169-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> salary<span class="op">;</span></span>
-<span id="cb169-7"><a href="file-io.html#cb169-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-8"><a href="file-io.html#cb169-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Employee</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="dt">int</span> age<span class="op">,</span> <span class="dt">double</span> salary<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb169-9"><a href="file-io.html#cb169-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
-<span id="cb169-10"><a href="file-io.html#cb169-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">=</span> age<span class="op">;</span></span>
-<span id="cb169-11"><a href="file-io.html#cb169-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">salary</span> <span class="op">=</span> salary<span class="op">;</span></span>
-<span id="cb169-12"><a href="file-io.html#cb169-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb169-13"><a href="file-io.html#cb169-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb169-14"><a href="file-io.html#cb169-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb169-15"><a href="file-io.html#cb169-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb169-16"><a href="file-io.html#cb169-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Employee{&quot;</span> <span class="op">+</span></span>
-<span id="cb169-17"><a href="file-io.html#cb169-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;name=&#39;&quot;</span> <span class="op">+</span> name <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
-<span id="cb169-18"><a href="file-io.html#cb169-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, age=&quot;</span> <span class="op">+</span> age <span class="op">+</span></span>
-<span id="cb169-19"><a href="file-io.html#cb169-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, salary=&quot;</span> <span class="op">+</span> salary <span class="op">+</span></span>
-<span id="cb169-20"><a href="file-io.html#cb169-20" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
-<span id="cb169-21"><a href="file-io.html#cb169-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb169-22"><a href="file-io.html#cb169-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb179-1"><a href="file-io.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
+<span id="cb179-2"><a href="file-io.html#cb179-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-3"><a href="file-io.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Employee <span class="op">{</span></span>
+<span id="cb179-4"><a href="file-io.html#cb179-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb179-5"><a href="file-io.html#cb179-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> age<span class="op">;</span></span>
+<span id="cb179-6"><a href="file-io.html#cb179-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">double</span> salary<span class="op">;</span></span>
+<span id="cb179-7"><a href="file-io.html#cb179-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-8"><a href="file-io.html#cb179-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Employee</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="dt">int</span> age<span class="op">,</span> <span class="dt">double</span> salary<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb179-9"><a href="file-io.html#cb179-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb179-10"><a href="file-io.html#cb179-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">age</span> <span class="op">=</span> age<span class="op">;</span></span>
+<span id="cb179-11"><a href="file-io.html#cb179-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">salary</span> <span class="op">=</span> salary<span class="op">;</span></span>
+<span id="cb179-12"><a href="file-io.html#cb179-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb179-13"><a href="file-io.html#cb179-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb179-14"><a href="file-io.html#cb179-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb179-15"><a href="file-io.html#cb179-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb179-16"><a href="file-io.html#cb179-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Employee{&quot;</span> <span class="op">+</span></span>
+<span id="cb179-17"><a href="file-io.html#cb179-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;name=&#39;&quot;</span> <span class="op">+</span> name <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb179-18"><a href="file-io.html#cb179-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, age=&quot;</span> <span class="op">+</span> age <span class="op">+</span></span>
+<span id="cb179-19"><a href="file-io.html#cb179-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, salary=&quot;</span> <span class="op">+</span> salary <span class="op">+</span></span>
+<span id="cb179-20"><a href="file-io.html#cb179-20" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
+<span id="cb179-21"><a href="file-io.html#cb179-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb179-22"><a href="file-io.html#cb179-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Next, parse Employee instances:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb170-1"><a href="file-io.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="dt">static</span> <span class="bu">List</span><span class="op">&lt;</span>Employee<span class="op">&gt;</span> <span class="fu">parseEmployees</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb170-2"><a href="file-io.html#cb170-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/empl_data.csv&quot;</span><span class="op">;</span></span>
-<span id="cb170-3"><a href="file-io.html#cb170-3" aria-hidden="true" tabindex="-1"></a>    Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
-<span id="cb170-4"><a href="file-io.html#cb170-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">List</span><span class="op">&lt;</span>Employee<span class="op">&gt;</span> employees <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb170-5"><a href="file-io.html#cb170-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">(</span><span class="bu">BufferedReader</span> br <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedReader</span><span class="op">(</span>path<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb170-6"><a href="file-io.html#cb170-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> line<span class="op">;</span></span>
-<span id="cb170-7"><a href="file-io.html#cb170-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> lineNumber <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb170-8"><a href="file-io.html#cb170-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-9"><a href="file-io.html#cb170-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">((</span>line <span class="op">=</span> br<span class="op">.</span><span class="fu">readLine</span><span class="op">())</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb170-10"><a href="file-io.html#cb170-10" aria-hidden="true" tabindex="-1"></a>            lineNumber<span class="op">++;</span></span>
-<span id="cb170-11"><a href="file-io.html#cb170-11" aria-hidden="true" tabindex="-1"></a>            <span class="co">//skips first header line</span></span>
-<span id="cb170-12"><a href="file-io.html#cb170-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>lineNumber <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="cf">continue</span><span class="op">;</span></span>
-<span id="cb170-13"><a href="file-io.html#cb170-13" aria-hidden="true" tabindex="-1"></a>            <span class="co">//split on tabs</span></span>
-<span id="cb170-14"><a href="file-io.html#cb170-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span><span class="op">[]</span> elements <span class="op">=</span> line<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span><span class="op">);</span></span>
-<span id="cb170-15"><a href="file-io.html#cb170-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span> name <span class="op">=</span> elements<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
-<span id="cb170-16"><a href="file-io.html#cb170-16" aria-hidden="true" tabindex="-1"></a>            <span class="co">//convert to int</span></span>
-<span id="cb170-17"><a href="file-io.html#cb170-17" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> age <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">parseInt</span><span class="op">(</span>elements<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb170-18"><a href="file-io.html#cb170-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span> function <span class="op">=</span> elements<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
-<span id="cb170-19"><a href="file-io.html#cb170-19" aria-hidden="true" tabindex="-1"></a>            <span class="co">//convert to double</span></span>
-<span id="cb170-20"><a href="file-io.html#cb170-20" aria-hidden="true" tabindex="-1"></a>            <span class="dt">double</span> salary <span class="op">=</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">parseDouble</span><span class="op">(</span>elements<span class="op">[</span><span class="dv">3</span><span class="op">])</span> <span class="op">*</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb170-21"><a href="file-io.html#cb170-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb170-22"><a href="file-io.html#cb170-22" aria-hidden="true" tabindex="-1"></a>            Employee emp <span class="op">=</span> <span class="kw">new</span> <span class="fu">Employee</span><span class="op">(</span>name<span class="op">,</span> age<span class="op">,</span> salary<span class="op">);</span></span>
-<span id="cb170-23"><a href="file-io.html#cb170-23" aria-hidden="true" tabindex="-1"></a>            employees<span class="op">.</span><span class="fu">add</span><span class="op">(</span>emp<span class="op">);</span></span>
-<span id="cb170-24"><a href="file-io.html#cb170-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>emp<span class="op">);</span></span>
-<span id="cb170-25"><a href="file-io.html#cb170-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb170-26"><a href="file-io.html#cb170-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb170-27"><a href="file-io.html#cb170-27" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb170-28"><a href="file-io.html#cb170-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb170-29"><a href="file-io.html#cb170-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> employees<span class="op">;</span></span>
-<span id="cb170-30"><a href="file-io.html#cb170-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb180-1"><a href="file-io.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="dt">static</span> <span class="bu">List</span><span class="op">&lt;</span>Employee<span class="op">&gt;</span> <span class="fu">parseEmployees</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb180-2"><a href="file-io.html#cb180-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> fileName <span class="op">=</span> <span class="st">&quot;/Users/michiel/IdeaProjects/JavaIntroProgrammingAssignments/data/empl_data.csv&quot;</span><span class="op">;</span></span>
+<span id="cb180-3"><a href="file-io.html#cb180-3" aria-hidden="true" tabindex="-1"></a>    Path path <span class="op">=</span> Paths<span class="op">.</span><span class="fu">get</span><span class="op">(</span>fileName<span class="op">);</span></span>
+<span id="cb180-4"><a href="file-io.html#cb180-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">List</span><span class="op">&lt;</span>Employee<span class="op">&gt;</span> employees <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb180-5"><a href="file-io.html#cb180-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">(</span><span class="bu">BufferedReader</span> br <span class="op">=</span> Files<span class="op">.</span><span class="fu">newBufferedReader</span><span class="op">(</span>path<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb180-6"><a href="file-io.html#cb180-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> line<span class="op">;</span></span>
+<span id="cb180-7"><a href="file-io.html#cb180-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> lineNumber <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb180-8"><a href="file-io.html#cb180-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-9"><a href="file-io.html#cb180-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">((</span>line <span class="op">=</span> br<span class="op">.</span><span class="fu">readLine</span><span class="op">())</span> <span class="op">!=</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb180-10"><a href="file-io.html#cb180-10" aria-hidden="true" tabindex="-1"></a>            lineNumber<span class="op">++;</span></span>
+<span id="cb180-11"><a href="file-io.html#cb180-11" aria-hidden="true" tabindex="-1"></a>            <span class="co">//skips first header line</span></span>
+<span id="cb180-12"><a href="file-io.html#cb180-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>lineNumber <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> <span class="cf">continue</span><span class="op">;</span></span>
+<span id="cb180-13"><a href="file-io.html#cb180-13" aria-hidden="true" tabindex="-1"></a>            <span class="co">//split on tabs</span></span>
+<span id="cb180-14"><a href="file-io.html#cb180-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span><span class="op">[]</span> elements <span class="op">=</span> line<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb180-15"><a href="file-io.html#cb180-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span> name <span class="op">=</span> elements<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
+<span id="cb180-16"><a href="file-io.html#cb180-16" aria-hidden="true" tabindex="-1"></a>            <span class="co">//convert to int</span></span>
+<span id="cb180-17"><a href="file-io.html#cb180-17" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> age <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">parseInt</span><span class="op">(</span>elements<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb180-18"><a href="file-io.html#cb180-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">String</span> function <span class="op">=</span> elements<span class="op">[</span><span class="dv">2</span><span class="op">];</span></span>
+<span id="cb180-19"><a href="file-io.html#cb180-19" aria-hidden="true" tabindex="-1"></a>            <span class="co">//convert to double</span></span>
+<span id="cb180-20"><a href="file-io.html#cb180-20" aria-hidden="true" tabindex="-1"></a>            <span class="dt">double</span> salary <span class="op">=</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">parseDouble</span><span class="op">(</span>elements<span class="op">[</span><span class="dv">3</span><span class="op">])</span> <span class="op">*</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb180-21"><a href="file-io.html#cb180-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb180-22"><a href="file-io.html#cb180-22" aria-hidden="true" tabindex="-1"></a>            Employee emp <span class="op">=</span> <span class="kw">new</span> <span class="fu">Employee</span><span class="op">(</span>name<span class="op">,</span> age<span class="op">,</span> salary<span class="op">);</span></span>
+<span id="cb180-23"><a href="file-io.html#cb180-23" aria-hidden="true" tabindex="-1"></a>            employees<span class="op">.</span><span class="fu">add</span><span class="op">(</span>emp<span class="op">);</span></span>
+<span id="cb180-24"><a href="file-io.html#cb180-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>emp<span class="op">);</span></span>
+<span id="cb180-25"><a href="file-io.html#cb180-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb180-26"><a href="file-io.html#cb180-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb180-27"><a href="file-io.html#cb180-27" aria-hidden="true" tabindex="-1"></a>        e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
+<span id="cb180-28"><a href="file-io.html#cb180-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb180-29"><a href="file-io.html#cb180-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> employees<span class="op">;</span></span>
+<span id="cb180-30"><a href="file-io.html#cb180-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>As stated before: this is very typical for the start of any data processing pipeline.</p>
 <p>More advanced splitting is discussed in a next topic: regular expressions.</p>
 </div>
-<div id="note-on-character-sets" class="section level2" number="20.4">
-<h2><span class="header-section-number">20.4</span> Note on character sets</h2>
+<div id="note-on-character-sets" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> Note on character sets</h2>
 <p>All these examples worked with the default characterset of Java, <strong><em>UTF-8</em></strong>. When other sets are required, these can be specified in the <code>Files.newBufferedReader()</code> and <code>Files.newBufferedWriter()</code> factory methods. See docs for details.</p>
 
 </div>

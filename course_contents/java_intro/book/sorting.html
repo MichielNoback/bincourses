@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 18 Sorting | The Java Track</title>
+  <title>Chapter 19 Sorting | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 18 Sorting | The Java Track" />
+  <meta property="og:title" content="Chapter 19 Sorting | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 18 Sorting | The Java Track" />
+  <meta name="twitter:title" content="Chapter 19 Sorting | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -30,9 +30,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="methods-of-class-object.html"/>
+<link rel="prev" href="records.html"/>
 <link rel="next" href="exceptions.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -227,164 +225,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<li class="chapter" data-level="18" data-path="records.html"><a href="records.html"><i class="fa fa-check"></i><b>18</b> Records</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
-<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
-<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+<li class="chapter" data-level="18.1" data-path="records.html"><a href="records.html#basics"><i class="fa fa-check"></i><b>18.1</b> Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="records.html"><a href="records.html#customization"><i class="fa fa-check"></i><b>18.2</b> Customization</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<li class="chapter" data-level="19" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>19</b> Sorting</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
-<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
-<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
-<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+<li class="chapter" data-level="19.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>19.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="19.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>19.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="19.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>19.3</b> Multilevel sorting</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<li class="chapter" data-level="20" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>20</b> Exceptions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
-<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
-<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
-<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+<li class="chapter" data-level="20.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>20.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="20.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>20.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="20.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>20.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="20.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>20.4</b> Try-with resources</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<li class="chapter" data-level="21" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>21</b> File IO</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
-<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
-<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+<li class="chapter" data-level="21.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>21.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="21.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>21.2</b> File and Files</a></li>
+<li class="chapter" data-level="21.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>21.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="21.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>21.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>22</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>22.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="22.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>22.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="22.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>22.3</b> Pattern &amp; Matcher</a></li>
 </ul></li>
 <li class="part"><span><b>Part IV - OOP</b></span></li>
-<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<li class="chapter" data-level="23" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>23</b> Encapsulation</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+<li class="chapter" data-level="23.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>23.1</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<li class="chapter" data-level="24" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>24</b> Access modifiers &amp; Other keywords</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
-<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+<li class="chapter" data-level="24.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>24.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="24.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>24.2</b> Other keywords</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<li class="chapter" data-level="25" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>25</b> Inheritance and UML</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
-<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+<li class="chapter" data-level="25.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>25.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="25.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>25.2</b> Apply inheritance to model what is common</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<li class="chapter" data-level="26" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>26</b> Enums: constants on steroids</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+<li class="chapter" data-level="26.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>26.1</b> Constants are everywhere</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
-<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<li class="chapter" data-level="27" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>27</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="28" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>28</b> Design rules summary</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
-<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
-<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
-<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
-<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
-<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
-<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+<li class="chapter" data-level="28.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>28.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="28.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>28.2</b> Classes</a></li>
+<li class="chapter" data-level="28.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>28.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="28.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>28.4</b> Exceptions</a></li>
+<li class="chapter" data-level="28.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>28.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="28.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>28.6</b> SRP</a></li>
+<li class="chapter" data-level="28.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>28.7</b> Various</a></li>
 </ul></li>
 <li class="part"><span><b>Part V - Java Web Apps</b></span></li>
-<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<li class="chapter" data-level="29" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>29</b> A refresher</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
-<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+<li class="chapter" data-level="29.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>29.1</b> Introduction</a></li>
+<li class="chapter" data-level="29.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>29.2</b> The basics of web</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
-<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<li class="chapter" data-level="30" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>30</b> The toolbox</a></li>
+<li class="chapter" data-level="31" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>31</b> A first project</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
-<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+<li class="chapter" data-level="31.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>31.2</b> The steps</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<li class="chapter" data-level="32" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>32</b> Implementing MVC</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
-<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+<li class="chapter" data-level="32.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>32.2</b> Java web app architecture</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<li class="chapter" data-level="33" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf expressions</a>
 <ul>
-<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
-<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>33.2</b> Expression types</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<li class="chapter" data-level="34" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>34</b> Thymeleaf flow control and fragments</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
-<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+<li class="chapter" data-level="34.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>34.2</b> Working with fragments</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<li class="chapter" data-level="35" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>35</b> Sessions &amp; Scopes</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
-<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
-<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+<li class="chapter" data-level="35.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>35.1</b> Introduction</a></li>
+<li class="chapter" data-level="35.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>35.2</b> Scopes</a></li>
+<li class="chapter" data-level="35.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>35.3</b> Summary of scopes</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<li class="chapter" data-level="36" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>36</b> Servlet details and lifecycle hooks</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
-<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+<li class="chapter" data-level="36.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>36.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="36.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>36.2</b> Hooks</a></li>
 </ul></li>
-<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<li class="chapter" data-level="37" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>37</b> Database interaction</a>
 <ul>
-<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
-<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
-<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
-<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
-<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+<li class="chapter" data-level="37.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>37.1</b> JDBC</a></li>
+<li class="chapter" data-level="37.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>37.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="37.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>37.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="37.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>37.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="37.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>37.5</b> Use in a servlet environment</a></li>
 </ul></li>
-<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<li class="chapter" data-level="38" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>38</b> A simple web service using Ajax</a>
 <ul>
-<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+<li class="chapter" data-level="38.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>38.1</b> Introduction</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<li class="chapter" data-level="39" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>39</b> Web filters and File uploads</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
-<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+<li class="chapter" data-level="39.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>39.1</b> Web filters</a></li>
+<li class="chapter" data-level="39.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>39.2</b> File uploads</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<li class="chapter" data-level="40" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>40</b> Exercises intro</a>
 <ul>
-<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
-<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
-<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
-<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
-<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
-<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
-<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
-<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+<li class="chapter" data-level="40.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>40.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="40.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>40.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="40.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>40.3</b> Sessions</a></li>
+<li class="chapter" data-level="40.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>40.4</b> Authentication</a></li>
+<li class="chapter" data-level="40.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>40.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="40.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>40.6</b> Database interaction</a></li>
+<li class="chapter" data-level="40.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>40.7</b> Ajax</a></li>
+<li class="chapter" data-level="40.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>40.8</b> Filters</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="chapter" data-level="41" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>41</b> HTML5 tags</a></li>
 <li class="part"><span><b>Part VI - JUnit</b></span></li>
-<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<li class="chapter" data-level="42" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 basics</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
-<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
-<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
-<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
-<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
-<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
-<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+<li class="chapter" data-level="42.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>42.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="42.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>42.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="42.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>42.4</b> Document!</a></li>
+<li class="chapter" data-level="42.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>42.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="42.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>42.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="42.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>42.7</b> Grouping assertions using <code>assertAll()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<li class="chapter" data-level="43" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>43</b> JUnit 5 advanced features</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
-<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+<li class="chapter" data-level="43.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>43.1</b> Introduction</a></li>
+<li class="chapter" data-level="43.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>43.2</b> JUnit 5 annotations</a></li>
 </ul></li>
 <li class="part"><span><b>Part VII - Design</b></span></li>
-<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
-<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<li class="chapter" data-level="44" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>44</b> UML</a></li>
+<li class="chapter" data-level="45" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>45</b> Refactoring</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
-<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
-<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
-<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+<li class="chapter" data-level="45.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>45.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="45.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>45.3</b> Refactor</a></li>
+<li class="chapter" data-level="45.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>45.4</b> Take over</a></li>
 </ul></li>
 <li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
-<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<li class="chapter" data-level="46" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>46</b> REST and MVC with Spring</a>
 <ul>
-<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
-<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+<li class="chapter" data-level="46.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>46.1</b> Create a new project</a></li>
+<li class="chapter" data-level="46.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>46.2</b> Create a REST response</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
-<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<li class="chapter" data-level="47" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>47</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="48" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>48</b> Core (Spring) annotations</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+<li class="chapter" data-level="48.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>48.1</b> Generic annotations</a></li>
 </ul></li>
 </ul>
 
@@ -403,12 +406,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sorting" class="section level1" number="18">
-<h1><span class="header-section-number">Chapter 18</span> Sorting</h1>
+<div id="sorting" class="section level1" number="19">
+<h1><span class="header-section-number">Chapter 19</span> Sorting</h1>
 <p>Sorting is one of the fundamental operations on data. You want the best student, the closest cafe, all players with a top 10% ranking…this all involves sorting.</p>
 <p>Sorting in “classic” Java (not using the Streams API) is done using the the <code>Collections.sort()</code> methods and, since Java 8, some methods in class List. These methods require either (a) that the objects you want to sort implement the <code>Comparable</code> interface or (b) that you provide a sorter object implementing the <code>Comparator</code> interface.</p>
-<div id="natural-sorting-with-the-comparable-interface" class="section level2" number="18.1">
-<h2><span class="header-section-number">18.1</span> “Natural” sorting with the <code>Comparable</code> interface</h2>
+<div id="natural-sorting-with-the-comparable-interface" class="section level2" number="19.1">
+<h2><span class="header-section-number">19.1</span> “Natural” sorting with the <code>Comparable</code> interface</h2>
 <p>This is the first and main sorting strategy. Whenever the type in your collection implements the Comparable interface, it is said to have “natural ordering.” This interface is described in detail later. Java classes such as String, Integer, and Double all implement the Comparable interface. In IntelliJ you can see this when you select a String variable declaration and press F1 (or ^Q):</p>
 <div class="figure">
 <img src="03_apis/figures/String_Javadoc.png" alt="" />
@@ -429,10 +432,10 @@ public static <span style="color:darkorange;">&lt;T extends Comparable&lt;? supe
 <li>the elements of the list are of type <code>T</code> (a generic placeholder), where the constraint on type <code>T</code> is that it should implement the <code>Comparable</code> interface - more specifically: a <code>Comparable</code> comparing T or its supertypes.</li>
 </ul>
 <p>Key here is the <code>Comparable</code> interface (package <code>java.util</code>):</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb135-1"><a href="sorting.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> java</span><span class="op">.</span><span class="im">util</span><span class="op">;</span></span>
-<span id="cb135-2"><a href="sorting.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Comparable</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb135-3"><a href="sorting.html#cb135-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>T other<span class="op">);</span></span>
-<span id="cb135-4"><a href="sorting.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb145-1"><a href="sorting.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> java</span><span class="op">.</span><span class="im">util</span><span class="op">;</span></span>
+<span id="cb145-2"><a href="sorting.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Comparable</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb145-3"><a href="sorting.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>T other<span class="op">);</span></span>
+<span id="cb145-4"><a href="sorting.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The contract is really simple. To be comparable to other objects (of the same class), a class needs to implement the method <code>compareTo(T other)</code> where <code>T</code> is the class implementing the interface. The method signature of <code>compareTo()</code> states that it should receive an instance of <code>T</code> and return an integer indicating the sort order of the current object with respect to the other object. The convention for this return value is</p>
 <ul>
 <li>a negative value if <code>this</code> &lt; <code>other</code></li>
@@ -440,11 +443,11 @@ public static <span style="color:darkorange;">&lt;T extends Comparable&lt;? supe
 <li>a positive value if <code>this</code> &gt; <code>other</code></li>
 </ul>
 <p>Since String and other Java classes already implement this interface, you can sort them without any further work:</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb136-1"><a href="sorting.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> names <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb136-2"><a href="sorting.html#cb136-2" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">addAll</span><span class="op">(</span><span class="bu">List</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">&quot;Jordan&quot;</span><span class="op">,</span> <span class="st">&quot;Wanda&quot;</span><span class="op">,</span> <span class="st">&quot;James&quot;</span><span class="op">,</span> <span class="st">&quot;rose&quot;</span><span class="op">,</span> <span class="st">&quot;Aaron&quot;</span><span class="op">));</span></span>
-<span id="cb136-3"><a href="sorting.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names before sort: &quot;</span> <span class="op">+</span> names<span class="op">);</span></span>
-<span id="cb136-4"><a href="sorting.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>names<span class="op">);</span></span>
-<span id="cb136-5"><a href="sorting.html#cb136-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after natural sort: &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb146-1"><a href="sorting.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> names <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb146-2"><a href="sorting.html#cb146-2" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">addAll</span><span class="op">(</span><span class="bu">List</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">&quot;Jordan&quot;</span><span class="op">,</span> <span class="st">&quot;Wanda&quot;</span><span class="op">,</span> <span class="st">&quot;James&quot;</span><span class="op">,</span> <span class="st">&quot;rose&quot;</span><span class="op">,</span> <span class="st">&quot;Aaron&quot;</span><span class="op">));</span></span>
+<span id="cb146-3"><a href="sorting.html#cb146-3" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names before sort: &quot;</span> <span class="op">+</span> names<span class="op">);</span></span>
+<span id="cb146-4"><a href="sorting.html#cb146-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>names<span class="op">);</span></span>
+<span id="cb146-5"><a href="sorting.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after natural sort: &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
 <p>This will output</p>
 <pre class="console_out">
 names before sort: [Jordan, Wanda, James, rose, Aaron]
@@ -452,21 +455,21 @@ names after natural sort: [Aaron, James, Jordan, Wanda, rose]
 </pre>
 <p>As you can see, capitals come before lower case letters.</p>
 <p>The exact same thing could have been achieved using the <code>sort()</code> method of class <code>List</code>, added in Java 8:</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb137-1"><a href="sorting.html#cb137-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">Comparator</span><span class="op">.</span><span class="fu">naturalOrder</span><span class="op">());</span></span>
-<span id="cb137-2"><a href="sorting.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after sort on List &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb147-1"><a href="sorting.html#cb147-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">Comparator</span><span class="op">.</span><span class="fu">naturalOrder</span><span class="op">());</span></span>
+<span id="cb147-2"><a href="sorting.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after sort on List &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
 <p>The signature of this sort method is:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb138-1"><a href="sorting.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">sort</span><span class="op">(</span><span class="at">@Nullable</span> java<span class="op">.</span><span class="fu">util</span><span class="op">.</span><span class="fu">Comparator</span><span class="op">&lt;?</span> <span class="kw">super</span> E<span class="op">&gt;</span> c<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb148-1"><a href="sorting.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">sort</span><span class="op">(</span><span class="at">@Nullable</span> java<span class="op">.</span><span class="fu">util</span><span class="op">.</span><span class="fu">Comparator</span><span class="op">&lt;?</span> <span class="kw">super</span> E<span class="op">&gt;</span> c<span class="op">)</span></span></code></pre></div>
 <p>It takes a <code>Comparator</code> instance; this interface is described in the next section. Some common default Comparators have already been implemented, for natural (<code>Comparator.naturalOrder()</code>) and reverse (<code>Comparator.reverseOrder()</code>) order for use with classes that implement Comparable. Note that the <code>@Nullable</code> in the above signature means that if <code>null</code> is passed, it defaults to <code>Comparator.naturalOrder()</code> An overloaded method would have been better design in my opinion, because this <code>names.sort(null);</code> is really ugly.</p>
 <p>Here is the reverse ordering:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb139-1"><a href="sorting.html#cb139-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">Comparator</span><span class="op">.</span><span class="fu">reverseOrder</span><span class="op">());</span></span>
-<span id="cb139-2"><a href="sorting.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after reverse sort &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb149-1"><a href="sorting.html#cb149-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">Comparator</span><span class="op">.</span><span class="fu">reverseOrder</span><span class="op">());</span></span>
+<span id="cb149-2"><a href="sorting.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names after reverse sort &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
 <p>outputs</p>
 <pre class="console_out">
 names after reverse sort [rose, Wanda, Jordan, James, Aaron]
 </pre>
 <p>Another interesting Comparator is the CASE_INSENSITIVE_ORDER comparator defined in the String class:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb140-1"><a href="sorting.html#cb140-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">CASE_INSENSITIVE_ORDER</span><span class="op">);</span></span>
-<span id="cb140-2"><a href="sorting.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names case insensitive sort &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb150-1"><a href="sorting.html#cb150-1" aria-hidden="true" tabindex="-1"></a>names<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="bu">String</span><span class="op">.</span><span class="fu">CASE_INSENSITIVE_ORDER</span><span class="op">);</span></span>
+<span id="cb150-2"><a href="sorting.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;names case insensitive sort &quot;</span> <span class="op">+</span> names<span class="op">);</span></span></code></pre></div>
 <p>outputs</p>
 <pre class="console_out">
 names case insensitive sort [Aaron, James, Jordan, rose, Wanda]
@@ -475,28 +478,28 @@ names case insensitive sort [Aaron, James, Jordan, rose, Wanda]
 <h3>Custom comparable implementations</h3>
 <p>Let’s create our own implementation of the Comparable interface in a custom class and demonstrate its use.</p>
 <p>Here is a simple Bird class.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb141-1"><a href="sorting.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb141-2"><a href="sorting.html#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-3"><a href="sorting.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Bird <span class="op">{</span></span>
-<span id="cb141-4"><a href="sorting.html#cb141-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> englishName<span class="op">;</span></span>
-<span id="cb141-5"><a href="sorting.html#cb141-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> wingSpan<span class="op">;</span></span>
-<span id="cb141-6"><a href="sorting.html#cb141-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maximumAge<span class="op">;</span></span>
-<span id="cb141-7"><a href="sorting.html#cb141-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-8"><a href="sorting.html#cb141-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Bird</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="dt">double</span> wingSpan<span class="op">,</span> <span class="dt">int</span> maximumAge<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb141-9"><a href="sorting.html#cb141-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span> <span class="op">=</span> englishName<span class="op">;</span></span>
-<span id="cb141-10"><a href="sorting.html#cb141-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">=</span> wingSpan<span class="op">;</span></span>
-<span id="cb141-11"><a href="sorting.html#cb141-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">maximumAge</span> <span class="op">=</span> maximumAge<span class="op">;</span></span>
-<span id="cb141-12"><a href="sorting.html#cb141-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb141-13"><a href="sorting.html#cb141-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-14"><a href="sorting.html#cb141-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb141-15"><a href="sorting.html#cb141-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb141-16"><a href="sorting.html#cb141-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Bird{&quot;</span> <span class="op">+</span></span>
-<span id="cb141-17"><a href="sorting.html#cb141-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;englishName=&#39;&quot;</span> <span class="op">+</span> englishName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
-<span id="cb141-18"><a href="sorting.html#cb141-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, wingSpan=&quot;</span> <span class="op">+</span> wingSpan <span class="op">+</span></span>
-<span id="cb141-19"><a href="sorting.html#cb141-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, maximumAge=&quot;</span> <span class="op">+</span> maximumAge <span class="op">+</span></span>
-<span id="cb141-20"><a href="sorting.html#cb141-20" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
-<span id="cb141-21"><a href="sorting.html#cb141-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb141-22"><a href="sorting.html#cb141-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb151-1"><a href="sorting.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
+<span id="cb151-2"><a href="sorting.html#cb151-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-3"><a href="sorting.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Bird <span class="op">{</span></span>
+<span id="cb151-4"><a href="sorting.html#cb151-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> englishName<span class="op">;</span></span>
+<span id="cb151-5"><a href="sorting.html#cb151-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> wingSpan<span class="op">;</span></span>
+<span id="cb151-6"><a href="sorting.html#cb151-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maximumAge<span class="op">;</span></span>
+<span id="cb151-7"><a href="sorting.html#cb151-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-8"><a href="sorting.html#cb151-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">Bird</span><span class="op">(</span><span class="bu">String</span> englishName<span class="op">,</span> <span class="dt">double</span> wingSpan<span class="op">,</span> <span class="dt">int</span> maximumAge<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb151-9"><a href="sorting.html#cb151-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span> <span class="op">=</span> englishName<span class="op">;</span></span>
+<span id="cb151-10"><a href="sorting.html#cb151-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">=</span> wingSpan<span class="op">;</span></span>
+<span id="cb151-11"><a href="sorting.html#cb151-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">maximumAge</span> <span class="op">=</span> maximumAge<span class="op">;</span></span>
+<span id="cb151-12"><a href="sorting.html#cb151-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb151-13"><a href="sorting.html#cb151-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb151-14"><a href="sorting.html#cb151-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb151-15"><a href="sorting.html#cb151-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">toString</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb151-16"><a href="sorting.html#cb151-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;Bird{&quot;</span> <span class="op">+</span></span>
+<span id="cb151-17"><a href="sorting.html#cb151-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;englishName=&#39;&quot;</span> <span class="op">+</span> englishName <span class="op">+</span> <span class="ch">&#39;\&#39;&#39;</span> <span class="op">+</span></span>
+<span id="cb151-18"><a href="sorting.html#cb151-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, wingSpan=&quot;</span> <span class="op">+</span> wingSpan <span class="op">+</span></span>
+<span id="cb151-19"><a href="sorting.html#cb151-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;, maximumAge=&quot;</span> <span class="op">+</span> maximumAge <span class="op">+</span></span>
+<span id="cb151-20"><a href="sorting.html#cb151-20" aria-hidden="true" tabindex="-1"></a>                <span class="ch">&#39;}&#39;</span><span class="op">;</span></span>
+<span id="cb151-21"><a href="sorting.html#cb151-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb151-22"><a href="sorting.html#cb151-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The first thing you need to figure out when implementing sorting is <strong><em>what is the natural sort order of this class?</em></strong>
 This depends entirely on you application: which aspect of your class will be used primarily for sorting. In this case, I choose the <code>wingSpan</code> property.</p>
 <p>Next, these steps should be taken:</p>
@@ -511,38 +514,38 @@ This depends entirely on you application: which aspect of your class will be use
 <p class="caption">Implement interface methods</p>
 </div>
 <p>Select the single method and press enter. This is the result.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb142-1"><a href="sorting.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
-<span id="cb142-2"><a href="sorting.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb142-3"><a href="sorting.html#cb142-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb142-4"><a href="sorting.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb152-1"><a href="sorting.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
+<span id="cb152-2"><a href="sorting.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb152-3"><a href="sorting.html#cb152-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb152-4"><a href="sorting.html#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This compiles just fine, but logic is missing. The next snipped solves that.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb143-1"><a href="sorting.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
-<span id="cb143-2"><a href="sorting.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb143-3"><a href="sorting.html#cb143-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//declare named variables for readability</span></span>
-<span id="cb143-4"><a href="sorting.html#cb143-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> BEFORE <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb143-5"><a href="sorting.html#cb143-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> EQUAL <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb143-6"><a href="sorting.html#cb143-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> AFTER <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb143-7"><a href="sorting.html#cb143-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//compare</span></span>
-<span id="cb143-8"><a href="sorting.html#cb143-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&lt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> BEFORE<span class="op">;</span></span>
-<span id="cb143-9"><a href="sorting.html#cb143-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&gt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> AFTER<span class="op">;</span></span>
-<span id="cb143-10"><a href="sorting.html#cb143-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> EQUAL<span class="op">;</span></span>
-<span id="cb143-11"><a href="sorting.html#cb143-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb153-1"><a href="sorting.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
+<span id="cb153-2"><a href="sorting.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb153-3"><a href="sorting.html#cb153-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//declare named variables for readability</span></span>
+<span id="cb153-4"><a href="sorting.html#cb153-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> BEFORE <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb153-5"><a href="sorting.html#cb153-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> EQUAL <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb153-6"><a href="sorting.html#cb153-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> AFTER <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb153-7"><a href="sorting.html#cb153-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//compare</span></span>
+<span id="cb153-8"><a href="sorting.html#cb153-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&lt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> BEFORE<span class="op">;</span></span>
+<span id="cb153-9"><a href="sorting.html#cb153-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&gt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> AFTER<span class="op">;</span></span>
+<span id="cb153-10"><a href="sorting.html#cb153-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> EQUAL<span class="op">;</span></span>
+<span id="cb153-11"><a href="sorting.html#cb153-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Time for a test drive. The toString method was adjusted for readability and compactness. Also, a Java8+ feature (Streams API) was used for printing (not part of this courses’ material).</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb144-1"><a href="sorting.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span>Bird<span class="op">&gt;</span> birds <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb144-2"><a href="sorting.html#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="sorting.html#cb144-3" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Buzzard&quot;</span><span class="op">,</span> <span class="fl">1.3</span><span class="op">,</span> <span class="dv">29</span><span class="op">));</span></span>
-<span id="cb144-4"><a href="sorting.html#cb144-4" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Griffon vulture&quot;</span><span class="op">,</span> <span class="fl">2.6</span><span class="op">,</span> <span class="dv">25</span><span class="op">));</span></span>
-<span id="cb144-5"><a href="sorting.html#cb144-5" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Kestrel&quot;</span><span class="op">,</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dv">15</span><span class="op">));</span></span>
-<span id="cb144-6"><a href="sorting.html#cb144-6" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Red kite&quot;</span><span class="op">,</span> <span class="fl">1.8</span><span class="op">,</span> <span class="dv">23</span><span class="op">));</span></span>
-<span id="cb144-7"><a href="sorting.html#cb144-7" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Steppe eagle&quot;</span><span class="op">,</span> <span class="fl">2.1</span><span class="op">,</span> <span class="dv">41</span><span class="op">));</span></span>
-<span id="cb144-8"><a href="sorting.html#cb144-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-9"><a href="sorting.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Before:&quot;</span><span class="op">);</span></span>
-<span id="cb144-10"><a href="sorting.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="co">//prints addition order using Java8 streams</span></span>
-<span id="cb144-11"><a href="sorting.html#cb144-11" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">stream</span><span class="op">().</span><span class="fu">forEach</span><span class="op">(</span>bird <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> <span class="op">+</span> bird<span class="op">));</span></span>
-<span id="cb144-12"><a href="sorting.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">);</span></span>
-<span id="cb144-13"><a href="sorting.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;After sort on wingspan:&quot;</span><span class="op">);</span></span>
-<span id="cb144-14"><a href="sorting.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="co">//prints sort order on wingspan, ascending</span></span>
-<span id="cb144-15"><a href="sorting.html#cb144-15" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">stream</span><span class="op">().</span><span class="fu">forEach</span><span class="op">(</span>bird <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> <span class="op">+</span> bird<span class="op">));</span></span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb154-1"><a href="sorting.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="bu">List</span><span class="op">&lt;</span>Bird<span class="op">&gt;</span> birds <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb154-2"><a href="sorting.html#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="sorting.html#cb154-3" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Buzzard&quot;</span><span class="op">,</span> <span class="fl">1.3</span><span class="op">,</span> <span class="dv">29</span><span class="op">));</span></span>
+<span id="cb154-4"><a href="sorting.html#cb154-4" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Griffon vulture&quot;</span><span class="op">,</span> <span class="fl">2.6</span><span class="op">,</span> <span class="dv">25</span><span class="op">));</span></span>
+<span id="cb154-5"><a href="sorting.html#cb154-5" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Kestrel&quot;</span><span class="op">,</span> <span class="fl">0.35</span><span class="op">,</span> <span class="dv">15</span><span class="op">));</span></span>
+<span id="cb154-6"><a href="sorting.html#cb154-6" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Red kite&quot;</span><span class="op">,</span> <span class="fl">1.8</span><span class="op">,</span> <span class="dv">23</span><span class="op">));</span></span>
+<span id="cb154-7"><a href="sorting.html#cb154-7" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Bird</span><span class="op">(</span><span class="st">&quot;Steppe eagle&quot;</span><span class="op">,</span> <span class="fl">2.1</span><span class="op">,</span> <span class="dv">41</span><span class="op">));</span></span>
+<span id="cb154-8"><a href="sorting.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="sorting.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Before:&quot;</span><span class="op">);</span></span>
+<span id="cb154-10"><a href="sorting.html#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="co">//prints addition order using Java8 streams</span></span>
+<span id="cb154-11"><a href="sorting.html#cb154-11" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">stream</span><span class="op">().</span><span class="fu">forEach</span><span class="op">(</span>bird <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> <span class="op">+</span> bird<span class="op">));</span></span>
+<span id="cb154-12"><a href="sorting.html#cb154-12" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">);</span></span>
+<span id="cb154-13"><a href="sorting.html#cb154-13" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;After sort on wingspan:&quot;</span><span class="op">);</span></span>
+<span id="cb154-14"><a href="sorting.html#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="co">//prints sort order on wingspan, ascending</span></span>
+<span id="cb154-15"><a href="sorting.html#cb154-15" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">stream</span><span class="op">().</span><span class="fu">forEach</span><span class="op">(</span>bird <span class="op">-&gt;</span> <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span> <span class="op">+</span> bird<span class="op">));</span></span></code></pre></div>
 <p>outputs</p>
 <pre class="console_out">
 Before:
@@ -561,15 +564,15 @@ After sort on wingspan:
     White-tailed eagle', ws=2.5, max.age=25
 </pre>
 <p>Note the ascending order of wingspan. What if the natural order is descending in your opinion? Simply reverse the sort logic:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb145-1"><a href="sorting.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
-<span id="cb145-2"><a href="sorting.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb145-3"><a href="sorting.html#cb145-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> BEFORE <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb145-4"><a href="sorting.html#cb145-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> EQUAL <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb145-5"><a href="sorting.html#cb145-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> AFTER <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb145-6"><a href="sorting.html#cb145-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&lt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> AFTER<span class="op">;</span></span>
-<span id="cb145-7"><a href="sorting.html#cb145-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&gt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> BEFORE<span class="op">;</span></span>
-<span id="cb145-8"><a href="sorting.html#cb145-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> EQUAL<span class="op">;</span></span>
-<span id="cb145-9"><a href="sorting.html#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb155-1"><a href="sorting.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
+<span id="cb155-2"><a href="sorting.html#cb155-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb155-3"><a href="sorting.html#cb155-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> BEFORE <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb155-4"><a href="sorting.html#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> EQUAL <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb155-5"><a href="sorting.html#cb155-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="dt">int</span> AFTER <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb155-6"><a href="sorting.html#cb155-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&lt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> AFTER<span class="op">;</span></span>
+<span id="cb155-7"><a href="sorting.html#cb155-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span> <span class="op">&gt;=</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">)</span> <span class="cf">return</span> BEFORE<span class="op">;</span></span>
+<span id="cb155-8"><a href="sorting.html#cb155-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> <span class="cf">return</span> EQUAL<span class="op">;</span></span>
+<span id="cb155-9"><a href="sorting.html#cb155-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>outputs</p>
 <pre class="console_out">
 After:
@@ -580,15 +583,15 @@ After:
     Kestrel', ws=0.35, max.age=15
 </pre>
 <p>Although this sort logic is just fine, it is often better to use classes that are dedicated to dealing with the datatype and <strong><em>delegate</em></strong> to their implemented and tested methods:</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb146-1"><a href="sorting.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
-<span id="cb146-2"><a href="sorting.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb146-3"><a href="sorting.html#cb146-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//delegate to class double</span></span>
-<span id="cb146-4"><a href="sorting.html#cb146-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span><span class="op">,</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">);</span></span>
-<span id="cb146-5"><a href="sorting.html#cb146-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb156-1"><a href="sorting.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
+<span id="cb156-2"><a href="sorting.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb156-3"><a href="sorting.html#cb156-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//delegate to class double</span></span>
+<span id="cb156-4"><a href="sorting.html#cb156-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span><span class="op">,</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">);</span></span>
+<span id="cb156-5"><a href="sorting.html#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="sorting-using-a-custom-comparator" class="section level2" number="18.2">
-<h2><span class="header-section-number">18.2</span> Sorting using a custom <code>Comparator</code></h2>
+<div id="sorting-using-a-custom-comparator" class="section level2" number="19.2">
+<h2><span class="header-section-number">19.2</span> Sorting using a custom <code>Comparator</code></h2>
 <p>What if you want to sort in other ways as well, or if you do not want to settle on a natural sort order? Then there is the second form of the <code>Collections.sort()</code> method, also supported by the <code>List.sort()</code> method since Java 8:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 public static <span style="color:darkred;">&lt;T&gt;</span> void sort(<span style="color:darkgreen;">List&lt;T&gt; list</span>, <span style="color:darkorange;">Comparator&lt;? super T&gt; c</span>)
@@ -598,51 +601,51 @@ public static <span style="color:darkred;">&lt;T&gt;</span> void sort(<span styl
 public void sort(<span style="font-style: italic;">@Nullable</span> <span style="color:darkorange;">Comparator&lt;? super E&gt; comparator</span>)
 </pre>
 <p>The <code>Comparator</code> interface has a single abstract method:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb147-1"><a href="sorting.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> java</span><span class="op">.</span><span class="im">util</span></span>
-<span id="cb147-2"><a href="sorting.html#cb147-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-3"><a href="sorting.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Comparator</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb147-4"><a href="sorting.html#cb147-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>T one<span class="op">,</span> T two<span class="op">);</span></span>
-<span id="cb147-5"><a href="sorting.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb157-1"><a href="sorting.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> java</span><span class="op">.</span><span class="im">util</span></span>
+<span id="cb157-2"><a href="sorting.html#cb157-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-3"><a href="sorting.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> <span class="bu">Comparator</span><span class="op">&lt;</span>T<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb157-4"><a href="sorting.html#cb157-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>T one<span class="op">,</span> T two<span class="op">);</span></span>
+<span id="cb157-5"><a href="sorting.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Let’s start with the most straightforward implementation.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb148-1"><a href="sorting.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb148-2"><a href="sorting.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Comparator</span><span class="op">;</span></span>
-<span id="cb148-3"><a href="sorting.html#cb148-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb148-4"><a href="sorting.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> BirdNameComparator <span class="kw">implements</span> <span class="bu">Comparator</span><span class="op">&lt;</span>Bird<span class="op">&gt;</span> <span class="op">{</span></span>
-<span id="cb148-5"><a href="sorting.html#cb148-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb148-6"><a href="sorting.html#cb148-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>Bird first<span class="op">,</span> Bird second<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb148-7"><a href="sorting.html#cb148-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first<span class="op">.</span><span class="fu">englishName</span><span class="op">.</span><span class="fu">compareTo</span><span class="op">(</span>second<span class="op">.</span><span class="fu">englishName</span><span class="op">);</span></span>
-<span id="cb148-8"><a href="sorting.html#cb148-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb148-9"><a href="sorting.html#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb158-1"><a href="sorting.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
+<span id="cb158-2"><a href="sorting.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Comparator</span><span class="op">;</span></span>
+<span id="cb158-3"><a href="sorting.html#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="sorting.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> BirdNameComparator <span class="kw">implements</span> <span class="bu">Comparator</span><span class="op">&lt;</span>Bird<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb158-5"><a href="sorting.html#cb158-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb158-6"><a href="sorting.html#cb158-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>Bird first<span class="op">,</span> Bird second<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb158-7"><a href="sorting.html#cb158-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> first<span class="op">.</span><span class="fu">englishName</span><span class="op">.</span><span class="fu">compareTo</span><span class="op">(</span>second<span class="op">.</span><span class="fu">englishName</span><span class="op">);</span></span>
+<span id="cb158-8"><a href="sorting.html#cb158-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb158-9"><a href="sorting.html#cb158-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This one sorts on name, and again delegates to the type of the instance variable - class String. This is its usage.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb149-1"><a href="sorting.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="kw">new</span> <span class="fu">BirdNameComparator</span><span class="op">());</span></span>
-<span id="cb149-2"><a href="sorting.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="co">//or, the Java8+ way</span></span>
-<span id="cb149-3"><a href="sorting.html#cb149-3" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="kw">new</span> <span class="fu">BirdNameComparator</span><span class="op">())</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb159-1"><a href="sorting.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="kw">new</span> <span class="fu">BirdNameComparator</span><span class="op">());</span></span>
+<span id="cb159-2"><a href="sorting.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="co">//or, the Java8+ way</span></span>
+<span id="cb159-3"><a href="sorting.html#cb159-3" aria-hidden="true" tabindex="-1"></a>birds<span class="op">.</span><span class="fu">sort</span><span class="op">(</span><span class="kw">new</span> <span class="fu">BirdNameComparator</span><span class="op">())</span></span></code></pre></div>
 <p>Implementations of the Comparator interface are often created on-the-fly. For instance, look at this <strong><em>anonymous inner class</em></strong>.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb150-1"><a href="sorting.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="kw">new</span> <span class="bu">Comparator</span><span class="op">&lt;</span>Bird<span class="op">&gt;(){</span></span>
-<span id="cb150-2"><a href="sorting.html#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb150-3"><a href="sorting.html#cb150-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>Bird first<span class="op">,</span> Bird second<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb150-4"><a href="sorting.html#cb150-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>first<span class="op">.</span><span class="fu">maximumAge</span><span class="op">,</span> second<span class="op">.</span><span class="fu">maximumAge</span><span class="op">);</span></span>
-<span id="cb150-5"><a href="sorting.html#cb150-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb150-6"><a href="sorting.html#cb150-6" aria-hidden="true" tabindex="-1"></a><span class="op">});</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb160-1"><a href="sorting.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="kw">new</span> <span class="bu">Comparator</span><span class="op">&lt;</span>Bird<span class="op">&gt;(){</span></span>
+<span id="cb160-2"><a href="sorting.html#cb160-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb160-3"><a href="sorting.html#cb160-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">compare</span><span class="op">(</span>Bird first<span class="op">,</span> Bird second<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb160-4"><a href="sorting.html#cb160-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>first<span class="op">.</span><span class="fu">maximumAge</span><span class="op">,</span> second<span class="op">.</span><span class="fu">maximumAge</span><span class="op">);</span></span>
+<span id="cb160-5"><a href="sorting.html#cb160-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb160-6"><a href="sorting.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="op">});</span></span></code></pre></div>
 <p>Actually, since Java8, sorting has become much versatile, but you need to climb the learning curve of lambdas first:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb151-1"><a href="sorting.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Java8+ alternative: OK</span></span>
-<span id="cb151-2"><a href="sorting.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="op">(</span>birdOne<span class="op">,</span> birdTwo<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>birdOne<span class="op">.</span><span class="fu">maximumAge</span><span class="op">,</span> birdTwo<span class="op">.</span><span class="fu">maximumAge</span><span class="op">));</span></span>
-<span id="cb151-3"><a href="sorting.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="co">//Java8+ alternative: best</span></span>
-<span id="cb151-4"><a href="sorting.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="bu">Comparator</span><span class="op">.</span><span class="fu">comparingInt</span><span class="op">(</span>bird <span class="op">-&gt;</span> bird<span class="op">.</span><span class="fu">maximumAge</span><span class="op">));</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb161-1"><a href="sorting.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Java8+ alternative: OK</span></span>
+<span id="cb161-2"><a href="sorting.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="op">(</span>birdOne<span class="op">,</span> birdTwo<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>birdOne<span class="op">.</span><span class="fu">maximumAge</span><span class="op">,</span> birdTwo<span class="op">.</span><span class="fu">maximumAge</span><span class="op">));</span></span>
+<span id="cb161-3"><a href="sorting.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="co">//Java8+ alternative: best</span></span>
+<span id="cb161-4"><a href="sorting.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="bu">Collections</span><span class="op">.</span><span class="fu">sort</span><span class="op">(</span>birds<span class="op">,</span> <span class="bu">Comparator</span><span class="op">.</span><span class="fu">comparingInt</span><span class="op">(</span>bird <span class="op">-&gt;</span> bird<span class="op">.</span><span class="fu">maximumAge</span><span class="op">));</span></span></code></pre></div>
 <p>Lambdas are out of scope for this course, unfortunately.</p>
 </div>
-<div id="multilevel-sorting" class="section level2" number="18.3">
-<h2><span class="header-section-number">18.3</span> Multilevel sorting</h2>
+<div id="multilevel-sorting" class="section level2" number="19.3">
+<h2><span class="header-section-number">19.3</span> Multilevel sorting</h2>
 <p>The final part of this post does not deal with the API but with the logic to implement it. You have seen how to code simple comparison logic. But what if you want to sort on multiple properties? Suppose, in the case of the birds example, we wanted to sort on wingspan first and then on name.
 No matter how many properties, the pattern is always the same: check the primary property, return this if they are not equal. If they are equal, check on the secondary property:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb152-1"><a href="sorting.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
-<span id="cb152-2"><a href="sorting.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb152-3"><a href="sorting.html#cb152-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> compareWingSpan <span class="op">=</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span><span class="op">,</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">);</span></span>
-<span id="cb152-4"><a href="sorting.html#cb152-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>compareWingSpan <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb152-5"><a href="sorting.html#cb152-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span><span class="op">.</span><span class="fu">compareTo</span><span class="op">(</span>other<span class="op">.</span><span class="fu">englishName</span><span class="op">);</span></span>
-<span id="cb152-6"><a href="sorting.html#cb152-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb152-7"><a href="sorting.html#cb152-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> compareWingSpan<span class="op">;</span></span>
-<span id="cb152-8"><a href="sorting.html#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb162-1"><a href="sorting.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Override</span></span>
+<span id="cb162-2"><a href="sorting.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">compareTo</span><span class="op">(</span>Bird other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb162-3"><a href="sorting.html#cb162-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> compareWingSpan <span class="op">=</span> <span class="bu">Double</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">wingSpan</span><span class="op">,</span> other<span class="op">.</span><span class="fu">wingSpan</span><span class="op">);</span></span>
+<span id="cb162-4"><a href="sorting.html#cb162-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>compareWingSpan <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb162-5"><a href="sorting.html#cb162-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">englishName</span><span class="op">.</span><span class="fu">compareTo</span><span class="op">(</span>other<span class="op">.</span><span class="fu">englishName</span><span class="op">);</span></span>
+<span id="cb162-6"><a href="sorting.html#cb162-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb162-7"><a href="sorting.html#cb162-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> compareWingSpan<span class="op">;</span></span>
+<span id="cb162-8"><a href="sorting.html#cb162-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Note that with alphabetical sorting capitals come before lower case letters. This is because the numeric values of the table of ASCII codes are used:</p>
 <div class="figure">
 <img src="03_apis/figures/Ascii-codes-table.png" alt="" />
@@ -656,7 +659,7 @@ No matter how many properties, the pattern is always the same: check the primary
           </div>
         </div>
       </div>
-<a href="methods-of-class-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="records.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="exceptions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

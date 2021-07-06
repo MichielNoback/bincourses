@@ -66,6 +66,9 @@ set-hashset
 collections-utility-methods
 methods-of-class-object
 tostring-equals-hashcode-getclass
+records
+basics
+customization
 sorting
 natural-sorting-with-the-comparable-interface
 sorting-using-a-custom-comparator

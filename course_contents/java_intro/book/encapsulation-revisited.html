@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 26 Encapsulation revisited | The Java Track</title>
+  <title>Chapter 27 Encapsulation revisited | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 26 Encapsulation revisited | The Java Track" />
+  <meta property="og:title" content="Chapter 27 Encapsulation revisited | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 26 Encapsulation revisited | The Java Track" />
+  <meta name="twitter:title" content="Chapter 27 Encapsulation revisited | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="enums-constants-on-steroids.html"/>
 <link rel="next" href="design-rules-summary.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -227,164 +225,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<li class="chapter" data-level="18" data-path="records.html"><a href="records.html"><i class="fa fa-check"></i><b>18</b> Records</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
-<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
-<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+<li class="chapter" data-level="18.1" data-path="records.html"><a href="records.html#basics"><i class="fa fa-check"></i><b>18.1</b> Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="records.html"><a href="records.html#customization"><i class="fa fa-check"></i><b>18.2</b> Customization</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<li class="chapter" data-level="19" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>19</b> Sorting</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
-<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
-<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
-<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+<li class="chapter" data-level="19.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>19.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="19.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>19.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="19.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>19.3</b> Multilevel sorting</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<li class="chapter" data-level="20" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>20</b> Exceptions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
-<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
-<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
-<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+<li class="chapter" data-level="20.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>20.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="20.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>20.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="20.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>20.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="20.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>20.4</b> Try-with resources</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<li class="chapter" data-level="21" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>21</b> File IO</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
-<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
-<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+<li class="chapter" data-level="21.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>21.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="21.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>21.2</b> File and Files</a></li>
+<li class="chapter" data-level="21.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>21.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="21.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>21.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>22</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>22.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="22.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>22.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="22.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>22.3</b> Pattern &amp; Matcher</a></li>
 </ul></li>
 <li class="part"><span><b>Part IV - OOP</b></span></li>
-<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<li class="chapter" data-level="23" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>23</b> Encapsulation</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+<li class="chapter" data-level="23.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>23.1</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<li class="chapter" data-level="24" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>24</b> Access modifiers &amp; Other keywords</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
-<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+<li class="chapter" data-level="24.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>24.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="24.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>24.2</b> Other keywords</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<li class="chapter" data-level="25" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>25</b> Inheritance and UML</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
-<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+<li class="chapter" data-level="25.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>25.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="25.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>25.2</b> Apply inheritance to model what is common</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<li class="chapter" data-level="26" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>26</b> Enums: constants on steroids</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+<li class="chapter" data-level="26.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>26.1</b> Constants are everywhere</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
-<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<li class="chapter" data-level="27" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>27</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="28" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>28</b> Design rules summary</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
-<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
-<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
-<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
-<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
-<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
-<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+<li class="chapter" data-level="28.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>28.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="28.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>28.2</b> Classes</a></li>
+<li class="chapter" data-level="28.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>28.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="28.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>28.4</b> Exceptions</a></li>
+<li class="chapter" data-level="28.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>28.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="28.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>28.6</b> SRP</a></li>
+<li class="chapter" data-level="28.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>28.7</b> Various</a></li>
 </ul></li>
 <li class="part"><span><b>Part V - Java Web Apps</b></span></li>
-<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<li class="chapter" data-level="29" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>29</b> A refresher</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
-<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+<li class="chapter" data-level="29.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>29.1</b> Introduction</a></li>
+<li class="chapter" data-level="29.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>29.2</b> The basics of web</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
-<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<li class="chapter" data-level="30" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>30</b> The toolbox</a></li>
+<li class="chapter" data-level="31" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>31</b> A first project</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
-<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+<li class="chapter" data-level="31.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>31.2</b> The steps</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<li class="chapter" data-level="32" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>32</b> Implementing MVC</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
-<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+<li class="chapter" data-level="32.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>32.2</b> Java web app architecture</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<li class="chapter" data-level="33" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf expressions</a>
 <ul>
-<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
-<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>33.2</b> Expression types</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<li class="chapter" data-level="34" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>34</b> Thymeleaf flow control and fragments</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
-<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+<li class="chapter" data-level="34.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>34.2</b> Working with fragments</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<li class="chapter" data-level="35" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>35</b> Sessions &amp; Scopes</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
-<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
-<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+<li class="chapter" data-level="35.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>35.1</b> Introduction</a></li>
+<li class="chapter" data-level="35.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>35.2</b> Scopes</a></li>
+<li class="chapter" data-level="35.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>35.3</b> Summary of scopes</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<li class="chapter" data-level="36" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>36</b> Servlet details and lifecycle hooks</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
-<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+<li class="chapter" data-level="36.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>36.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="36.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>36.2</b> Hooks</a></li>
 </ul></li>
-<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<li class="chapter" data-level="37" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>37</b> Database interaction</a>
 <ul>
-<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
-<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
-<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
-<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
-<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+<li class="chapter" data-level="37.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>37.1</b> JDBC</a></li>
+<li class="chapter" data-level="37.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>37.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="37.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>37.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="37.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>37.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="37.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>37.5</b> Use in a servlet environment</a></li>
 </ul></li>
-<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<li class="chapter" data-level="38" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>38</b> A simple web service using Ajax</a>
 <ul>
-<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+<li class="chapter" data-level="38.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>38.1</b> Introduction</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<li class="chapter" data-level="39" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>39</b> Web filters and File uploads</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
-<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+<li class="chapter" data-level="39.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>39.1</b> Web filters</a></li>
+<li class="chapter" data-level="39.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>39.2</b> File uploads</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<li class="chapter" data-level="40" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>40</b> Exercises intro</a>
 <ul>
-<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
-<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
-<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
-<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
-<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
-<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
-<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
-<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+<li class="chapter" data-level="40.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>40.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="40.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>40.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="40.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>40.3</b> Sessions</a></li>
+<li class="chapter" data-level="40.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>40.4</b> Authentication</a></li>
+<li class="chapter" data-level="40.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>40.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="40.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>40.6</b> Database interaction</a></li>
+<li class="chapter" data-level="40.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>40.7</b> Ajax</a></li>
+<li class="chapter" data-level="40.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>40.8</b> Filters</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="chapter" data-level="41" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>41</b> HTML5 tags</a></li>
 <li class="part"><span><b>Part VI - JUnit</b></span></li>
-<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<li class="chapter" data-level="42" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 basics</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
-<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
-<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
-<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
-<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
-<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
-<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+<li class="chapter" data-level="42.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>42.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="42.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>42.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="42.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>42.4</b> Document!</a></li>
+<li class="chapter" data-level="42.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>42.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="42.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>42.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="42.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>42.7</b> Grouping assertions using <code>assertAll()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<li class="chapter" data-level="43" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>43</b> JUnit 5 advanced features</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
-<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+<li class="chapter" data-level="43.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>43.1</b> Introduction</a></li>
+<li class="chapter" data-level="43.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>43.2</b> JUnit 5 annotations</a></li>
 </ul></li>
 <li class="part"><span><b>Part VII - Design</b></span></li>
-<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
-<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<li class="chapter" data-level="44" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>44</b> UML</a></li>
+<li class="chapter" data-level="45" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>45</b> Refactoring</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
-<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
-<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
-<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+<li class="chapter" data-level="45.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>45.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="45.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>45.3</b> Refactor</a></li>
+<li class="chapter" data-level="45.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>45.4</b> Take over</a></li>
 </ul></li>
 <li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
-<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<li class="chapter" data-level="46" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>46</b> REST and MVC with Spring</a>
 <ul>
-<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
-<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+<li class="chapter" data-level="46.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>46.1</b> Create a new project</a></li>
+<li class="chapter" data-level="46.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>46.2</b> Create a REST response</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
-<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<li class="chapter" data-level="47" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>47</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="48" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>48</b> Core (Spring) annotations</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+<li class="chapter" data-level="48.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>48.1</b> Generic annotations</a></li>
 </ul></li>
 </ul>
 
@@ -403,8 +406,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="encapsulation-revisited" class="section level1" number="26">
-<h1><span class="header-section-number">Chapter 26</span> Encapsulation revisited</h1>
+<div id="encapsulation-revisited" class="section level1" number="27">
+<h1><span class="header-section-number">Chapter 27</span> Encapsulation revisited</h1>
 <p>In this post, I want to revisit one of the most basic of Object Oriented Programming (OOP) concepts: encapsulation.</p>
 <p>It is a principle my students often fail to see the use for. And I must admit some
 of my colleagues as well – especially those who are really into Python. They are of the opinion that NOTHING should be hidden. Just be careful when programming.</p>
@@ -418,130 +421,130 @@ can be discussed, but I have taken the liberty to keep things simple for the
 purpose of demonstrating encapsulation.</p>
 <p>Here is class <code>SequenceManager</code>, the main class of a GUI application managing
 biological sequences:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb202-1"><a href="encapsulation-revisited.html#cb202-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-2"><a href="encapsulation-revisited.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
-<span id="cb202-3"><a href="encapsulation-revisited.html#cb202-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-4"><a href="encapsulation-revisited.html#cb202-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-5"><a href="encapsulation-revisited.html#cb202-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">final</span> <span class="kw">class</span> SequenceManager <span class="op">{</span></span>
-<span id="cb202-6"><a href="encapsulation-revisited.html#cb202-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-7"><a href="encapsulation-revisited.html#cb202-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="dt">final</span> <span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb202-8"><a href="encapsulation-revisited.html#cb202-8" aria-hidden="true" tabindex="-1"></a>        SequenceManager mainObject <span class="op">=</span> <span class="kw">new</span> <span class="fu">SequenceManager</span><span class="op">();</span></span>
-<span id="cb202-9"><a href="encapsulation-revisited.html#cb202-9" aria-hidden="true" tabindex="-1"></a>        mainObject<span class="op">.</span><span class="fu">start</span><span class="op">();</span></span>
-<span id="cb202-10"><a href="encapsulation-revisited.html#cb202-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb202-11"><a href="encapsulation-revisited.html#cb202-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb202-12"><a href="encapsulation-revisited.html#cb202-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb202-13"><a href="encapsulation-revisited.html#cb202-13" aria-hidden="true" tabindex="-1"></a>        SequenceCollection sc <span class="op">=</span> <span class="kw">new</span> <span class="fu">SequenceCollection</span><span class="op">();</span></span>
-<span id="cb202-14"><a href="encapsulation-revisited.html#cb202-14" aria-hidden="true" tabindex="-1"></a>        sc<span class="op">.</span><span class="fu">addSequence</span><span class="op">(</span><span class="kw">new</span> <span class="bu">Sequence</span><span class="op">(</span><span class="st">&quot;Gene 1&quot;</span><span class="op">,</span> <span class="st">&quot;GAATTC&quot;</span><span class="op">,</span> <span class="st">&quot;gi|12345&quot;</span><span class="op">));</span></span>
-<span id="cb202-15"><a href="encapsulation-revisited.html#cb202-15" aria-hidden="true" tabindex="-1"></a>        sc<span class="op">.</span><span class="fu">addSequence</span><span class="op">(</span><span class="kw">new</span> <span class="bu">Sequence</span><span class="op">(</span><span class="st">&quot;Gene 2&quot;</span><span class="op">,</span> <span class="st">&quot;GAATTC&quot;</span><span class="op">,</span> <span class="st">&quot;gi|98765&quot;</span><span class="op">));</span></span>
-<span id="cb202-16"><a href="encapsulation-revisited.html#cb202-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb202-17"><a href="encapsulation-revisited.html#cb202-17" aria-hidden="true" tabindex="-1"></a>        MyCoolGUIPanel guiPanel <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyCoolGUIPanel</span><span class="op">(</span>sc<span class="op">);</span></span>
-<span id="cb202-18"><a href="encapsulation-revisited.html#cb202-18" aria-hidden="true" tabindex="-1"></a>        guiPanel<span class="op">.</span><span class="fu">showSequenceCollection</span><span class="op">();</span></span>
-<span id="cb202-19"><a href="encapsulation-revisited.html#cb202-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb202-20"><a href="encapsulation-revisited.html#cb202-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">//also add to other panels of the GUI</span></span>
-<span id="cb202-21"><a href="encapsulation-revisited.html#cb202-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb202-22"><a href="encapsulation-revisited.html#cb202-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb212-1"><a href="encapsulation-revisited.html#cb212-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-2"><a href="encapsulation-revisited.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
+<span id="cb212-3"><a href="encapsulation-revisited.html#cb212-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-4"><a href="encapsulation-revisited.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-5"><a href="encapsulation-revisited.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">final</span> <span class="kw">class</span> SequenceManager <span class="op">{</span></span>
+<span id="cb212-6"><a href="encapsulation-revisited.html#cb212-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-7"><a href="encapsulation-revisited.html#cb212-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="dt">final</span> <span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb212-8"><a href="encapsulation-revisited.html#cb212-8" aria-hidden="true" tabindex="-1"></a>        SequenceManager mainObject <span class="op">=</span> <span class="kw">new</span> <span class="fu">SequenceManager</span><span class="op">();</span></span>
+<span id="cb212-9"><a href="encapsulation-revisited.html#cb212-9" aria-hidden="true" tabindex="-1"></a>        mainObject<span class="op">.</span><span class="fu">start</span><span class="op">();</span></span>
+<span id="cb212-10"><a href="encapsulation-revisited.html#cb212-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb212-11"><a href="encapsulation-revisited.html#cb212-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb212-12"><a href="encapsulation-revisited.html#cb212-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb212-13"><a href="encapsulation-revisited.html#cb212-13" aria-hidden="true" tabindex="-1"></a>        SequenceCollection sc <span class="op">=</span> <span class="kw">new</span> <span class="fu">SequenceCollection</span><span class="op">();</span></span>
+<span id="cb212-14"><a href="encapsulation-revisited.html#cb212-14" aria-hidden="true" tabindex="-1"></a>        sc<span class="op">.</span><span class="fu">addSequence</span><span class="op">(</span><span class="kw">new</span> <span class="bu">Sequence</span><span class="op">(</span><span class="st">&quot;Gene 1&quot;</span><span class="op">,</span> <span class="st">&quot;GAATTC&quot;</span><span class="op">,</span> <span class="st">&quot;gi|12345&quot;</span><span class="op">));</span></span>
+<span id="cb212-15"><a href="encapsulation-revisited.html#cb212-15" aria-hidden="true" tabindex="-1"></a>        sc<span class="op">.</span><span class="fu">addSequence</span><span class="op">(</span><span class="kw">new</span> <span class="bu">Sequence</span><span class="op">(</span><span class="st">&quot;Gene 2&quot;</span><span class="op">,</span> <span class="st">&quot;GAATTC&quot;</span><span class="op">,</span> <span class="st">&quot;gi|98765&quot;</span><span class="op">));</span></span>
+<span id="cb212-16"><a href="encapsulation-revisited.html#cb212-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb212-17"><a href="encapsulation-revisited.html#cb212-17" aria-hidden="true" tabindex="-1"></a>        MyCoolGUIPanel guiPanel <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyCoolGUIPanel</span><span class="op">(</span>sc<span class="op">);</span></span>
+<span id="cb212-18"><a href="encapsulation-revisited.html#cb212-18" aria-hidden="true" tabindex="-1"></a>        guiPanel<span class="op">.</span><span class="fu">showSequenceCollection</span><span class="op">();</span></span>
+<span id="cb212-19"><a href="encapsulation-revisited.html#cb212-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb212-20"><a href="encapsulation-revisited.html#cb212-20" aria-hidden="true" tabindex="-1"></a>        <span class="co">//also add to other panels of the GUI</span></span>
+<span id="cb212-21"><a href="encapsulation-revisited.html#cb212-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb212-22"><a href="encapsulation-revisited.html#cb212-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Nothing funny going on here. A SequenceCollection is created and stocked (of course, in real life this will come from some file or database), and subsequently passed to some GUI panels for displaying and managing.
 The <code>Sequence</code> class looks quite like any POJO you will ever meet:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb203-1"><a href="encapsulation-revisited.html#cb203-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-2"><a href="encapsulation-revisited.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
-<span id="cb203-3"><a href="encapsulation-revisited.html#cb203-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-4"><a href="encapsulation-revisited.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Sequence</span> <span class="op">{</span></span>
-<span id="cb203-5"><a href="encapsulation-revisited.html#cb203-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
-<span id="cb203-6"><a href="encapsulation-revisited.html#cb203-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> sequence<span class="op">;</span></span>
-<span id="cb203-7"><a href="encapsulation-revisited.html#cb203-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> id<span class="op">;</span></span>
-<span id="cb203-8"><a href="encapsulation-revisited.html#cb203-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-9"><a href="encapsulation-revisited.html#cb203-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Sequence</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">String</span> sequence<span class="op">,</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb203-10"><a href="encapsulation-revisited.html#cb203-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
-<span id="cb203-11"><a href="encapsulation-revisited.html#cb203-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequence</span> <span class="op">=</span> sequence<span class="op">;</span></span>
-<span id="cb203-12"><a href="encapsulation-revisited.html#cb203-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">id</span> <span class="op">=</span> id<span class="op">;</span></span>
-<span id="cb203-13"><a href="encapsulation-revisited.html#cb203-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-14"><a href="encapsulation-revisited.html#cb203-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-15"><a href="encapsulation-revisited.html#cb203-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Sequence</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb203-16"><a href="encapsulation-revisited.html#cb203-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
-<span id="cb203-17"><a href="encapsulation-revisited.html#cb203-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">id</span> <span class="op">=</span> id<span class="op">;</span></span>
-<span id="cb203-18"><a href="encapsulation-revisited.html#cb203-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-19"><a href="encapsulation-revisited.html#cb203-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-20"><a href="encapsulation-revisited.html#cb203-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getName</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb203-21"><a href="encapsulation-revisited.html#cb203-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> name<span class="op">;</span></span>
-<span id="cb203-22"><a href="encapsulation-revisited.html#cb203-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-23"><a href="encapsulation-revisited.html#cb203-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-24"><a href="encapsulation-revisited.html#cb203-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setName</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb203-25"><a href="encapsulation-revisited.html#cb203-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
-<span id="cb203-26"><a href="encapsulation-revisited.html#cb203-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-27"><a href="encapsulation-revisited.html#cb203-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-28"><a href="encapsulation-revisited.html#cb203-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getSequence</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb203-29"><a href="encapsulation-revisited.html#cb203-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sequence<span class="op">;</span></span>
-<span id="cb203-30"><a href="encapsulation-revisited.html#cb203-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-31"><a href="encapsulation-revisited.html#cb203-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-32"><a href="encapsulation-revisited.html#cb203-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setSequence</span><span class="op">(</span><span class="bu">String</span> sequence<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb203-33"><a href="encapsulation-revisited.html#cb203-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequence</span> <span class="op">=</span> sequence<span class="op">;</span></span>
-<span id="cb203-34"><a href="encapsulation-revisited.html#cb203-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-35"><a href="encapsulation-revisited.html#cb203-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb203-36"><a href="encapsulation-revisited.html#cb203-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getId</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb203-37"><a href="encapsulation-revisited.html#cb203-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> id<span class="op">;</span></span>
-<span id="cb203-38"><a href="encapsulation-revisited.html#cb203-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb203-39"><a href="encapsulation-revisited.html#cb203-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb213-1"><a href="encapsulation-revisited.html#cb213-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-2"><a href="encapsulation-revisited.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
+<span id="cb213-3"><a href="encapsulation-revisited.html#cb213-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-4"><a href="encapsulation-revisited.html#cb213-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Sequence</span> <span class="op">{</span></span>
+<span id="cb213-5"><a href="encapsulation-revisited.html#cb213-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> name<span class="op">;</span></span>
+<span id="cb213-6"><a href="encapsulation-revisited.html#cb213-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">String</span> sequence<span class="op">;</span></span>
+<span id="cb213-7"><a href="encapsulation-revisited.html#cb213-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> <span class="bu">String</span> id<span class="op">;</span></span>
+<span id="cb213-8"><a href="encapsulation-revisited.html#cb213-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-9"><a href="encapsulation-revisited.html#cb213-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Sequence</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">String</span> sequence<span class="op">,</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb213-10"><a href="encapsulation-revisited.html#cb213-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb213-11"><a href="encapsulation-revisited.html#cb213-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequence</span> <span class="op">=</span> sequence<span class="op">;</span></span>
+<span id="cb213-12"><a href="encapsulation-revisited.html#cb213-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">id</span> <span class="op">=</span> id<span class="op">;</span></span>
+<span id="cb213-13"><a href="encapsulation-revisited.html#cb213-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-14"><a href="encapsulation-revisited.html#cb213-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-15"><a href="encapsulation-revisited.html#cb213-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Sequence</span><span class="op">(</span><span class="bu">String</span> name<span class="op">,</span> <span class="bu">String</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb213-16"><a href="encapsulation-revisited.html#cb213-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb213-17"><a href="encapsulation-revisited.html#cb213-17" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">id</span> <span class="op">=</span> id<span class="op">;</span></span>
+<span id="cb213-18"><a href="encapsulation-revisited.html#cb213-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-19"><a href="encapsulation-revisited.html#cb213-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-20"><a href="encapsulation-revisited.html#cb213-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getName</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb213-21"><a href="encapsulation-revisited.html#cb213-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> name<span class="op">;</span></span>
+<span id="cb213-22"><a href="encapsulation-revisited.html#cb213-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-23"><a href="encapsulation-revisited.html#cb213-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-24"><a href="encapsulation-revisited.html#cb213-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setName</span><span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb213-25"><a href="encapsulation-revisited.html#cb213-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">name</span> <span class="op">=</span> name<span class="op">;</span></span>
+<span id="cb213-26"><a href="encapsulation-revisited.html#cb213-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-27"><a href="encapsulation-revisited.html#cb213-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-28"><a href="encapsulation-revisited.html#cb213-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getSequence</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb213-29"><a href="encapsulation-revisited.html#cb213-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sequence<span class="op">;</span></span>
+<span id="cb213-30"><a href="encapsulation-revisited.html#cb213-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-31"><a href="encapsulation-revisited.html#cb213-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-32"><a href="encapsulation-revisited.html#cb213-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">setSequence</span><span class="op">(</span><span class="bu">String</span> sequence<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb213-33"><a href="encapsulation-revisited.html#cb213-33" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequence</span> <span class="op">=</span> sequence<span class="op">;</span></span>
+<span id="cb213-34"><a href="encapsulation-revisited.html#cb213-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-35"><a href="encapsulation-revisited.html#cb213-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-36"><a href="encapsulation-revisited.html#cb213-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getId</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb213-37"><a href="encapsulation-revisited.html#cb213-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> id<span class="op">;</span></span>
+<span id="cb213-38"><a href="encapsulation-revisited.html#cb213-38" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb213-39"><a href="encapsulation-revisited.html#cb213-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The only noteworthy thing here is the omission of a setter for the Sequence ID,
 and the id member being final (often a good choice for identifiers of bean
 objects).</p>
 <p>Now, the collection class managing our sequences:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb204-1"><a href="encapsulation-revisited.html#cb204-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb204-2"><a href="encapsulation-revisited.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
-<span id="cb204-3"><a href="encapsulation-revisited.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">HashMap</span><span class="op">;</span></span>
-<span id="cb204-4"><a href="encapsulation-revisited.html#cb204-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb204-5"><a href="encapsulation-revisited.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SequenceCollection <span class="op">{</span></span>
-<span id="cb204-6"><a href="encapsulation-revisited.html#cb204-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> sequences<span class="op">;</span></span>
-<span id="cb204-7"><a href="encapsulation-revisited.html#cb204-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb204-8"><a href="encapsulation-revisited.html#cb204-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb204-9"><a href="encapsulation-revisited.html#cb204-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> constructor instantuiates the collection</span>
-<span id="cb204-10"><a href="encapsulation-revisited.html#cb204-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb204-11"><a href="encapsulation-revisited.html#cb204-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SequenceCollection</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb204-12"><a href="encapsulation-revisited.html#cb204-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb204-13"><a href="encapsulation-revisited.html#cb204-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb204-14"><a href="encapsulation-revisited.html#cb204-14" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb204-15"><a href="encapsulation-revisited.html#cb204-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb204-16"><a href="encapsulation-revisited.html#cb204-16" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> adds a sequence to the collection</span>
-<span id="cb204-17"><a href="encapsulation-revisited.html#cb204-17" aria-hidden="true" tabindex="-1"></a><span class="co">     * @</span>param seq </span>
-<span id="cb204-18"><a href="encapsulation-revisited.html#cb204-18" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb204-19"><a href="encapsulation-revisited.html#cb204-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addSequence</span><span class="op">(</span><span class="bu">Sequence</span> seq<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb204-20"><a href="encapsulation-revisited.html#cb204-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">put</span><span class="op">(</span>seq<span class="op">.</span><span class="fu">getId</span><span class="op">(),</span> seq<span class="op">);</span></span>
-<span id="cb204-21"><a href="encapsulation-revisited.html#cb204-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb204-22"><a href="encapsulation-revisited.html#cb204-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb204-23"><a href="encapsulation-revisited.html#cb204-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb204-24"><a href="encapsulation-revisited.html#cb204-24" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> getter for the sequence hash</span>
-<span id="cb204-25"><a href="encapsulation-revisited.html#cb204-25" aria-hidden="true" tabindex="-1"></a><span class="co">     * @</span>return sequences</span>
-<span id="cb204-26"><a href="encapsulation-revisited.html#cb204-26" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb204-27"><a href="encapsulation-revisited.html#cb204-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequences</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb204-28"><a href="encapsulation-revisited.html#cb204-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">;</span></span>
-<span id="cb204-29"><a href="encapsulation-revisited.html#cb204-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb204-30"><a href="encapsulation-revisited.html#cb204-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb214-1"><a href="encapsulation-revisited.html#cb214-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-2"><a href="encapsulation-revisited.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
+<span id="cb214-3"><a href="encapsulation-revisited.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">HashMap</span><span class="op">;</span></span>
+<span id="cb214-4"><a href="encapsulation-revisited.html#cb214-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb214-5"><a href="encapsulation-revisited.html#cb214-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> SequenceCollection <span class="op">{</span></span>
+<span id="cb214-6"><a href="encapsulation-revisited.html#cb214-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> sequences<span class="op">;</span></span>
+<span id="cb214-7"><a href="encapsulation-revisited.html#cb214-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb214-8"><a href="encapsulation-revisited.html#cb214-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb214-9"><a href="encapsulation-revisited.html#cb214-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> constructor instantuiates the collection</span>
+<span id="cb214-10"><a href="encapsulation-revisited.html#cb214-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb214-11"><a href="encapsulation-revisited.html#cb214-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">SequenceCollection</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb214-12"><a href="encapsulation-revisited.html#cb214-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb214-13"><a href="encapsulation-revisited.html#cb214-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb214-14"><a href="encapsulation-revisited.html#cb214-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb214-15"><a href="encapsulation-revisited.html#cb214-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb214-16"><a href="encapsulation-revisited.html#cb214-16" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> adds a sequence to the collection</span>
+<span id="cb214-17"><a href="encapsulation-revisited.html#cb214-17" aria-hidden="true" tabindex="-1"></a><span class="co">     * @</span>param seq </span>
+<span id="cb214-18"><a href="encapsulation-revisited.html#cb214-18" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb214-19"><a href="encapsulation-revisited.html#cb214-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addSequence</span><span class="op">(</span><span class="bu">Sequence</span> seq<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb214-20"><a href="encapsulation-revisited.html#cb214-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">put</span><span class="op">(</span>seq<span class="op">.</span><span class="fu">getId</span><span class="op">(),</span> seq<span class="op">);</span></span>
+<span id="cb214-21"><a href="encapsulation-revisited.html#cb214-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb214-22"><a href="encapsulation-revisited.html#cb214-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb214-23"><a href="encapsulation-revisited.html#cb214-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb214-24"><a href="encapsulation-revisited.html#cb214-24" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> getter for the sequence hash</span>
+<span id="cb214-25"><a href="encapsulation-revisited.html#cb214-25" aria-hidden="true" tabindex="-1"></a><span class="co">     * @</span>return sequences</span>
+<span id="cb214-26"><a href="encapsulation-revisited.html#cb214-26" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb214-27"><a href="encapsulation-revisited.html#cb214-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequences</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb214-28"><a href="encapsulation-revisited.html#cb214-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">;</span></span>
+<span id="cb214-29"><a href="encapsulation-revisited.html#cb214-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb214-30"><a href="encapsulation-revisited.html#cb214-30" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This class contains the origin of a world of pain. The class seems to be simple
 enough, providing a method to add a sequence and a getter offering a ways to
 iterate over the collection. Can you see why this is the origin of a world of
 pain? No? Let’s have a look at the GUI JPanel displaying some aspect of this
 collection (yes I know swing is becoming a bit outdated for GUIs).</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb205-1"><a href="encapsulation-revisited.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
-<span id="cb205-2"><a href="encapsulation-revisited.html#cb205-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">swing</span><span class="op">.</span><span class="im">JPanel</span><span class="op">;</span></span>
-<span id="cb205-3"><a href="encapsulation-revisited.html#cb205-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb205-4"><a href="encapsulation-revisited.html#cb205-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyCoolGUIPanel <span class="kw">extends</span> <span class="bu">JPanel</span><span class="op">{</span></span>
-<span id="cb205-5"><a href="encapsulation-revisited.html#cb205-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb205-6"><a href="encapsulation-revisited.html#cb205-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> SequenceCollection seqColl<span class="op">;</span></span>
-<span id="cb205-7"><a href="encapsulation-revisited.html#cb205-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb205-8"><a href="encapsulation-revisited.html#cb205-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">MyCoolGUIPanel</span><span class="op">(</span>SequenceCollection sc<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb205-9"><a href="encapsulation-revisited.html#cb205-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">seqColl</span> <span class="op">=</span> sc<span class="op">;</span></span>
-<span id="cb205-10"><a href="encapsulation-revisited.html#cb205-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb205-11"><a href="encapsulation-revisited.html#cb205-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb205-12"><a href="encapsulation-revisited.html#cb205-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">showSequenceCollection</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb205-13"><a href="encapsulation-revisited.html#cb205-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*</span></span>
-<span id="cb205-14"><a href="encapsulation-revisited.html#cb205-14" aria-hidden="true" tabindex="-1"></a><span class="co">        * panel logic here</span></span>
-<span id="cb205-15"><a href="encapsulation-revisited.html#cb205-15" aria-hidden="true" tabindex="-1"></a><span class="co">        */</span></span>
-<span id="cb205-16"><a href="encapsulation-revisited.html#cb205-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb205-17"><a href="encapsulation-revisited.html#cb205-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb205-18"><a href="encapsulation-revisited.html#cb205-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">removeButtonClicked</span><span class="op">(</span><span class="bu">String</span> seqID<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb205-19"><a href="encapsulation-revisited.html#cb205-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">//the remove sequence button was clicked so a sequence is removed</span></span>
-<span id="cb205-20"><a href="encapsulation-revisited.html#cb205-20" aria-hidden="true" tabindex="-1"></a>        seqColl<span class="op">.</span><span class="fu">getSequences</span><span class="op">().</span><span class="fu">remove</span><span class="op">(</span>seqID<span class="op">);</span></span>
-<span id="cb205-21"><a href="encapsulation-revisited.html#cb205-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb205-22"><a href="encapsulation-revisited.html#cb205-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb215-1"><a href="encapsulation-revisited.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> encapsulation</span><span class="op">;</span></span>
+<span id="cb215-2"><a href="encapsulation-revisited.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">swing</span><span class="op">.</span><span class="im">JPanel</span><span class="op">;</span></span>
+<span id="cb215-3"><a href="encapsulation-revisited.html#cb215-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-4"><a href="encapsulation-revisited.html#cb215-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyCoolGUIPanel <span class="kw">extends</span> <span class="bu">JPanel</span><span class="op">{</span></span>
+<span id="cb215-5"><a href="encapsulation-revisited.html#cb215-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb215-6"><a href="encapsulation-revisited.html#cb215-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> SequenceCollection seqColl<span class="op">;</span></span>
+<span id="cb215-7"><a href="encapsulation-revisited.html#cb215-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb215-8"><a href="encapsulation-revisited.html#cb215-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">MyCoolGUIPanel</span><span class="op">(</span>SequenceCollection sc<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb215-9"><a href="encapsulation-revisited.html#cb215-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">seqColl</span> <span class="op">=</span> sc<span class="op">;</span></span>
+<span id="cb215-10"><a href="encapsulation-revisited.html#cb215-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb215-11"><a href="encapsulation-revisited.html#cb215-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb215-12"><a href="encapsulation-revisited.html#cb215-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">showSequenceCollection</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb215-13"><a href="encapsulation-revisited.html#cb215-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*</span></span>
+<span id="cb215-14"><a href="encapsulation-revisited.html#cb215-14" aria-hidden="true" tabindex="-1"></a><span class="co">        * panel logic here</span></span>
+<span id="cb215-15"><a href="encapsulation-revisited.html#cb215-15" aria-hidden="true" tabindex="-1"></a><span class="co">        */</span></span>
+<span id="cb215-16"><a href="encapsulation-revisited.html#cb215-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb215-17"><a href="encapsulation-revisited.html#cb215-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb215-18"><a href="encapsulation-revisited.html#cb215-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">removeButtonClicked</span><span class="op">(</span><span class="bu">String</span> seqID<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb215-19"><a href="encapsulation-revisited.html#cb215-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">//the remove sequence button was clicked so a sequence is removed</span></span>
+<span id="cb215-20"><a href="encapsulation-revisited.html#cb215-20" aria-hidden="true" tabindex="-1"></a>        seqColl<span class="op">.</span><span class="fu">getSequences</span><span class="op">().</span><span class="fu">remove</span><span class="op">(</span>seqID<span class="op">);</span></span>
+<span id="cb215-21"><a href="encapsulation-revisited.html#cb215-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb215-22"><a href="encapsulation-revisited.html#cb215-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>So what happens when somebody decides to remove a sequence from the collection?
 The getter on the SequenceCollection object is called to access the underlying
 Collection class, and the wretched object is removed.</p>
@@ -553,9 +556,9 @@ your bank card onto the floor of a bar with the pin code written on the back.
 You can bet somebody is going to take the invitation to trash your account.</p>
 <p>So what is the solution? Exactly, encapsulate your inner workings. There are
 several simple ways to do this. Here is the simplest one:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb206-1"><a href="encapsulation-revisited.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequences</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb206-2"><a href="encapsulation-revisited.html#cb206-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Collections</span><span class="op">.</span><span class="fu">unmodifiableMap</span><span class="op">(</span>sequences<span class="op">);</span></span>
-<span id="cb206-3"><a href="encapsulation-revisited.html#cb206-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb216-1"><a href="encapsulation-revisited.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span> <span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequences</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb216-2"><a href="encapsulation-revisited.html#cb216-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Collections</span><span class="op">.</span><span class="fu">unmodifiableMap</span><span class="op">(</span>sequences<span class="op">);</span></span>
+<span id="cb216-3"><a href="encapsulation-revisited.html#cb216-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The Javadocs have this to say about the <code>Collections.unmodifiableMap</code> method:
 “Returns an unmodifiable view of the specified collection. This method allows
 modules to provide users with “read-only” access to internal collections.
@@ -564,13 +567,13 @@ collection, and attempts to modify the returned collection, whether direct or
 via its iterator, result in an UnsupportedOperationException.” So this line</p>
 <p><code>seqColl.getSequences().remove(seqID);</code></p>
 <p>will throw such an Exception. What I like slightly better through is an iterator:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb207-1"><a href="encapsulation-revisited.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Iterator</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequenceIterator</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb207-2"><a href="encapsulation-revisited.html#cb207-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">values</span><span class="op">().</span><span class="fu">iterator</span><span class="op">();</span></span>
-<span id="cb207-3"><a href="encapsulation-revisited.html#cb207-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb217-1"><a href="encapsulation-revisited.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">Iterator</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequenceIterator</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb217-2"><a href="encapsulation-revisited.html#cb217-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">values</span><span class="op">().</span><span class="fu">iterator</span><span class="op">();</span></span>
+<span id="cb217-3"><a href="encapsulation-revisited.html#cb217-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Or, when you really want to have the joy of the Java for(each) loop:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb208-1"><a href="encapsulation-revisited.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">List</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequenceList</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb208-2"><a href="encapsulation-revisited.html#cb208-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;(</span><span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
-<span id="cb208-3"><a href="encapsulation-revisited.html#cb208-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb218-1"><a href="encapsulation-revisited.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">List</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;</span> <span class="fu">getSequenceList</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb218-2"><a href="encapsulation-revisited.html#cb218-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">Sequence</span><span class="op">&gt;(</span><span class="kw">this</span><span class="op">.</span><span class="fu">sequences</span><span class="op">.</span><span class="fu">values</span><span class="op">());</span></span>
+<span id="cb218-3"><a href="encapsulation-revisited.html#cb218-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>All these strategies will keep your data safe, but the last two also hide
 the inner workings of your SequenceCollection class so these should be
 preferred.</p>

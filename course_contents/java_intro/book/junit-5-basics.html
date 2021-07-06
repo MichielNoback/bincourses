@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 41 JUnit 5 basics | The Java Track</title>
+  <title>Chapter 42 JUnit 5 basics | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 41 JUnit 5 basics | The Java Track" />
+  <meta property="og:title" content="Chapter 42 JUnit 5 basics | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 41 JUnit 5 basics | The Java Track" />
+  <meta name="twitter:title" content="Chapter 42 JUnit 5 basics | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,7 +32,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="html5-tags.html"/>
 <link rel="next" href="junit-5-advanced-features.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,8 +50,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -227,164 +225,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="methods-of-class-object.html"><a href="methods-of-class-object.html#tostring-equals-hashcode-getclass"><i class="fa fa-check"></i><b>17.1</b> toString(), equals(), hashCode(), getClass()</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>18</b> Sorting</a>
+<li class="chapter" data-level="18" data-path="records.html"><a href="records.html"><i class="fa fa-check"></i><b>18</b> Records</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>18.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
-<li class="chapter" data-level="18.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>18.2</b> Sorting using a custom <code>Comparator</code></a></li>
-<li class="chapter" data-level="18.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>18.3</b> Multilevel sorting</a></li>
+<li class="chapter" data-level="18.1" data-path="records.html"><a href="records.html#basics"><i class="fa fa-check"></i><b>18.1</b> Basics</a></li>
+<li class="chapter" data-level="18.2" data-path="records.html"><a href="records.html#customization"><i class="fa fa-check"></i><b>18.2</b> Customization</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>19</b> Exceptions</a>
+<li class="chapter" data-level="19" data-path="sorting.html"><a href="sorting.html"><i class="fa fa-check"></i><b>19</b> Sorting</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>19.1</b> What are exceptions</a></li>
-<li class="chapter" data-level="19.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>19.2</b> Checked and unchecked exceptions</a></li>
-<li class="chapter" data-level="19.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>19.3</b> All try/catch elements</a></li>
-<li class="chapter" data-level="19.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>19.4</b> Try-with resources</a></li>
+<li class="chapter" data-level="19.1" data-path="sorting.html"><a href="sorting.html#natural-sorting-with-the-comparable-interface"><i class="fa fa-check"></i><b>19.1</b> “Natural” sorting with the <code>Comparable</code> interface</a></li>
+<li class="chapter" data-level="19.2" data-path="sorting.html"><a href="sorting.html#sorting-using-a-custom-comparator"><i class="fa fa-check"></i><b>19.2</b> Sorting using a custom <code>Comparator</code></a></li>
+<li class="chapter" data-level="19.3" data-path="sorting.html"><a href="sorting.html#multilevel-sorting"><i class="fa fa-check"></i><b>19.3</b> Multilevel sorting</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>20</b> File IO</a>
+<li class="chapter" data-level="20" data-path="exceptions.html"><a href="exceptions.html"><i class="fa fa-check"></i><b>20</b> Exceptions</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>20.1</b> Path &amp; Paths</a></li>
-<li class="chapter" data-level="20.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>20.2</b> File and Files</a></li>
-<li class="chapter" data-level="20.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>20.3</b> Parsing file content the easy way</a></li>
-<li class="chapter" data-level="20.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>20.4</b> Note on character sets</a></li>
+<li class="chapter" data-level="20.1" data-path="exceptions.html"><a href="exceptions.html#what-are-exceptions"><i class="fa fa-check"></i><b>20.1</b> What are exceptions</a></li>
+<li class="chapter" data-level="20.2" data-path="exceptions.html"><a href="exceptions.html#checked-and-unchecked-exceptions"><i class="fa fa-check"></i><b>20.2</b> Checked and unchecked exceptions</a></li>
+<li class="chapter" data-level="20.3" data-path="exceptions.html"><a href="exceptions.html#all-trycatch-elements"><i class="fa fa-check"></i><b>20.3</b> All try/catch elements</a></li>
+<li class="chapter" data-level="20.4" data-path="exceptions.html"><a href="exceptions.html#try-with-resources"><i class="fa fa-check"></i><b>20.4</b> Try-with resources</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>21</b> Regular Expressions</a>
+<li class="chapter" data-level="21" data-path="file-io.html"><a href="file-io.html"><i class="fa fa-check"></i><b>21</b> File IO</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>21.1</b> Regex syntax?</a></li>
-<li class="chapter" data-level="21.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>21.2</b> Methods of class String</a></li>
-<li class="chapter" data-level="21.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>21.3</b> Pattern &amp; Matcher</a></li>
+<li class="chapter" data-level="21.1" data-path="file-io.html"><a href="file-io.html#path-paths"><i class="fa fa-check"></i><b>21.1</b> Path &amp; Paths</a></li>
+<li class="chapter" data-level="21.2" data-path="file-io.html"><a href="file-io.html#file-and-files"><i class="fa fa-check"></i><b>21.2</b> File and Files</a></li>
+<li class="chapter" data-level="21.3" data-path="file-io.html"><a href="file-io.html#parsing-file-content-the-easy-way"><i class="fa fa-check"></i><b>21.3</b> Parsing file content the easy way</a></li>
+<li class="chapter" data-level="21.4" data-path="file-io.html"><a href="file-io.html#note-on-character-sets"><i class="fa fa-check"></i><b>21.4</b> Note on character sets</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="regular-expressions.html"><a href="regular-expressions.html"><i class="fa fa-check"></i><b>22</b> Regular Expressions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="regular-expressions.html"><a href="regular-expressions.html#regex-syntax"><i class="fa fa-check"></i><b>22.1</b> Regex syntax?</a></li>
+<li class="chapter" data-level="22.2" data-path="regular-expressions.html"><a href="regular-expressions.html#methods-of-class-string"><i class="fa fa-check"></i><b>22.2</b> Methods of class String</a></li>
+<li class="chapter" data-level="22.3" data-path="regular-expressions.html"><a href="regular-expressions.html#pattern-matcher"><i class="fa fa-check"></i><b>22.3</b> Pattern &amp; Matcher</a></li>
 </ul></li>
 <li class="part"><span><b>Part IV - OOP</b></span></li>
-<li class="chapter" data-level="22" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>22</b> Encapsulation</a>
+<li class="chapter" data-level="23" data-path="encapsulation.html"><a href="encapsulation.html"><i class="fa fa-check"></i><b>23</b> Encapsulation</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>22.1</b> Summary</a></li>
+<li class="chapter" data-level="23.1" data-path="encapsulation.html"><a href="encapsulation.html#summary-3"><i class="fa fa-check"></i><b>23.1</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>23</b> Access modifiers &amp; Other keywords</a>
+<li class="chapter" data-level="24" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html"><i class="fa fa-check"></i><b>24</b> Access modifiers &amp; Other keywords</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>23.1</b> Access Modifiers</a></li>
-<li class="chapter" data-level="23.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>23.2</b> Other keywords</a></li>
+<li class="chapter" data-level="24.1" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#access-modifiers"><i class="fa fa-check"></i><b>24.1</b> Access Modifiers</a></li>
+<li class="chapter" data-level="24.2" data-path="access-modifiers-other-keywords.html"><a href="access-modifiers-other-keywords.html#other-keywords"><i class="fa fa-check"></i><b>24.2</b> Other keywords</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>24</b> Inheritance and UML</a>
+<li class="chapter" data-level="25" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html"><i class="fa fa-check"></i><b>25</b> Inheritance and UML</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>24.1</b> The TestTube with cells</a></li>
-<li class="chapter" data-level="24.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>24.2</b> Apply inheritance to model what is common</a></li>
+<li class="chapter" data-level="25.1" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#the-testtube-with-cells"><i class="fa fa-check"></i><b>25.1</b> The TestTube with cells</a></li>
+<li class="chapter" data-level="25.2" data-path="inheritance-and-uml.html"><a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common"><i class="fa fa-check"></i><b>25.2</b> Apply inheritance to model what is common</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>25</b> Enums: constants on steroids</a>
+<li class="chapter" data-level="26" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html"><i class="fa fa-check"></i><b>26</b> Enums: constants on steroids</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>25.1</b> Constants are everywhere</a></li>
+<li class="chapter" data-level="26.1" data-path="enums-constants-on-steroids.html"><a href="enums-constants-on-steroids.html#constants-are-everywhere"><i class="fa fa-check"></i><b>26.1</b> Constants are everywhere</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>26</b> Encapsulation revisited</a></li>
-<li class="chapter" data-level="27" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>27</b> Design rules summary</a>
+<li class="chapter" data-level="27" data-path="encapsulation-revisited.html"><a href="encapsulation-revisited.html"><i class="fa fa-check"></i><b>27</b> Encapsulation revisited</a></li>
+<li class="chapter" data-level="28" data-path="design-rules-summary.html"><a href="design-rules-summary.html"><i class="fa fa-check"></i><b>28</b> Design rules summary</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>27.1</b> equals() and hashCode()</a></li>
-<li class="chapter" data-level="27.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>27.2</b> Classes</a></li>
-<li class="chapter" data-level="27.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>27.3</b> Code against interfaces, not implementations</a></li>
-<li class="chapter" data-level="27.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>27.4</b> Exceptions</a></li>
-<li class="chapter" data-level="27.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>27.5</b> Access modifiers</a></li>
-<li class="chapter" data-level="27.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>27.6</b> SRP</a></li>
-<li class="chapter" data-level="27.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>27.7</b> Various</a></li>
+<li class="chapter" data-level="28.1" data-path="design-rules-summary.html"><a href="design-rules-summary.html#equals-and-hashcode"><i class="fa fa-check"></i><b>28.1</b> equals() and hashCode()</a></li>
+<li class="chapter" data-level="28.2" data-path="design-rules-summary.html"><a href="design-rules-summary.html#classes-1"><i class="fa fa-check"></i><b>28.2</b> Classes</a></li>
+<li class="chapter" data-level="28.3" data-path="design-rules-summary.html"><a href="design-rules-summary.html#code-against-interfaces-not-implementations-1"><i class="fa fa-check"></i><b>28.3</b> Code against interfaces, not implementations</a></li>
+<li class="chapter" data-level="28.4" data-path="design-rules-summary.html"><a href="design-rules-summary.html#exceptions-1"><i class="fa fa-check"></i><b>28.4</b> Exceptions</a></li>
+<li class="chapter" data-level="28.5" data-path="design-rules-summary.html"><a href="design-rules-summary.html#access-modifiers-1"><i class="fa fa-check"></i><b>28.5</b> Access modifiers</a></li>
+<li class="chapter" data-level="28.6" data-path="design-rules-summary.html"><a href="design-rules-summary.html#srp"><i class="fa fa-check"></i><b>28.6</b> SRP</a></li>
+<li class="chapter" data-level="28.7" data-path="design-rules-summary.html"><a href="design-rules-summary.html#various"><i class="fa fa-check"></i><b>28.7</b> Various</a></li>
 </ul></li>
 <li class="part"><span><b>Part V - Java Web Apps</b></span></li>
-<li class="chapter" data-level="28" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>28</b> A refresher</a>
+<li class="chapter" data-level="29" data-path="a-refresher.html"><a href="a-refresher.html"><i class="fa fa-check"></i><b>29</b> A refresher</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
-<li class="chapter" data-level="28.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>28.2</b> The basics of web</a></li>
+<li class="chapter" data-level="29.1" data-path="a-refresher.html"><a href="a-refresher.html#introduction"><i class="fa fa-check"></i><b>29.1</b> Introduction</a></li>
+<li class="chapter" data-level="29.2" data-path="a-refresher.html"><a href="a-refresher.html#the-basics-of-web"><i class="fa fa-check"></i><b>29.2</b> The basics of web</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>29</b> The toolbox</a></li>
-<li class="chapter" data-level="30" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>30</b> A first project</a>
+<li class="chapter" data-level="30" data-path="the-toolbox.html"><a href="the-toolbox.html"><i class="fa fa-check"></i><b>30</b> The toolbox</a></li>
+<li class="chapter" data-level="31" data-path="a-first-project-1.html"><a href="a-first-project-1.html"><i class="fa fa-check"></i><b>31</b> A first project</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>30.1</b> Introduction</a></li>
-<li class="chapter" data-level="30.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>30.2</b> The steps</a></li>
+<li class="chapter" data-level="31.1" data-path="a-first-project-1.html"><a href="a-first-project-1.html#introduction-1"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
+<li class="chapter" data-level="31.2" data-path="a-first-project-1.html"><a href="a-first-project-1.html#the-steps"><i class="fa fa-check"></i><b>31.2</b> The steps</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>31</b> Implementing MVC</a>
+<li class="chapter" data-level="32" data-path="implementing-mvc.html"><a href="implementing-mvc.html"><i class="fa fa-check"></i><b>32</b> Implementing MVC</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>31.1</b> Introduction</a></li>
-<li class="chapter" data-level="31.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>31.2</b> Java web app architecture</a></li>
+<li class="chapter" data-level="32.1" data-path="implementing-mvc.html"><a href="implementing-mvc.html#introduction-2"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
+<li class="chapter" data-level="32.2" data-path="implementing-mvc.html"><a href="implementing-mvc.html#java-web-app-architecture"><i class="fa fa-check"></i><b>32.2</b> Java web app architecture</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>32</b> Thymeleaf expressions</a>
+<li class="chapter" data-level="33" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf expressions</a>
 <ul>
-<li class="chapter" data-level="32.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>32.1</b> Introduction</a></li>
-<li class="chapter" data-level="32.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>32.2</b> Expression types</a></li>
+<li class="chapter" data-level="33.1" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#introduction-3"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
+<li class="chapter" data-level="33.2" data-path="thymeleaf-expressions.html"><a href="thymeleaf-expressions.html#expression-types"><i class="fa fa-check"></i><b>33.2</b> Expression types</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>33</b> Thymeleaf flow control and fragments</a>
+<li class="chapter" data-level="34" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html"><i class="fa fa-check"></i><b>34</b> Thymeleaf flow control and fragments</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>33.1</b> Introduction</a></li>
-<li class="chapter" data-level="33.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>33.2</b> Working with fragments</a></li>
+<li class="chapter" data-level="34.1" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#introduction-4"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
+<li class="chapter" data-level="34.2" data-path="thymeleaf-flow-control-and-fragments.html"><a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments"><i class="fa fa-check"></i><b>34.2</b> Working with fragments</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>34</b> Sessions &amp; Scopes</a>
+<li class="chapter" data-level="35" data-path="sessions-scopes.html"><a href="sessions-scopes.html"><i class="fa fa-check"></i><b>35</b> Sessions &amp; Scopes</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>34.1</b> Introduction</a></li>
-<li class="chapter" data-level="34.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>34.2</b> Scopes</a></li>
-<li class="chapter" data-level="34.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>34.3</b> Summary of scopes</a></li>
+<li class="chapter" data-level="35.1" data-path="sessions-scopes.html"><a href="sessions-scopes.html#introduction-5"><i class="fa fa-check"></i><b>35.1</b> Introduction</a></li>
+<li class="chapter" data-level="35.2" data-path="sessions-scopes.html"><a href="sessions-scopes.html#scopes"><i class="fa fa-check"></i><b>35.2</b> Scopes</a></li>
+<li class="chapter" data-level="35.3" data-path="sessions-scopes.html"><a href="sessions-scopes.html#summary-of-scopes"><i class="fa fa-check"></i><b>35.3</b> Summary of scopes</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>35</b> Servlet details and lifecycle hooks</a>
+<li class="chapter" data-level="36" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html"><i class="fa fa-check"></i><b>36</b> Servlet details and lifecycle hooks</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>35.1</b> Servlet configuration</a></li>
-<li class="chapter" data-level="35.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>35.2</b> Hooks</a></li>
+<li class="chapter" data-level="36.1" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration"><i class="fa fa-check"></i><b>36.1</b> Servlet configuration</a></li>
+<li class="chapter" data-level="36.2" data-path="servlet-details-and-lifecycle-hooks.html"><a href="servlet-details-and-lifecycle-hooks.html#hooks"><i class="fa fa-check"></i><b>36.2</b> Hooks</a></li>
 </ul></li>
-<li class="chapter" data-level="36" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>36</b> Database interaction</a>
+<li class="chapter" data-level="37" data-path="database-interaction.html"><a href="database-interaction.html"><i class="fa fa-check"></i><b>37</b> Database interaction</a>
 <ul>
-<li class="chapter" data-level="36.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>36.1</b> JDBC</a></li>
-<li class="chapter" data-level="36.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>36.2</b> The naive implementation</a></li>
-<li class="chapter" data-level="36.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>36.3</b> Improve on naive implementation</a></li>
-<li class="chapter" data-level="36.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>36.4</b> Refactoring to OO principles</a></li>
-<li class="chapter" data-level="36.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>36.5</b> Use in a servlet environment</a></li>
+<li class="chapter" data-level="37.1" data-path="database-interaction.html"><a href="database-interaction.html#jdbc"><i class="fa fa-check"></i><b>37.1</b> JDBC</a></li>
+<li class="chapter" data-level="37.2" data-path="database-interaction.html"><a href="database-interaction.html#the-naive-implementation"><i class="fa fa-check"></i><b>37.2</b> The naive implementation</a></li>
+<li class="chapter" data-level="37.3" data-path="database-interaction.html"><a href="database-interaction.html#improve-on-naive-implementation"><i class="fa fa-check"></i><b>37.3</b> Improve on naive implementation</a></li>
+<li class="chapter" data-level="37.4" data-path="database-interaction.html"><a href="database-interaction.html#refactoring-to-oo-principles"><i class="fa fa-check"></i><b>37.4</b> Refactoring to OO principles</a></li>
+<li class="chapter" data-level="37.5" data-path="database-interaction.html"><a href="database-interaction.html#use-in-a-servlet-environment"><i class="fa fa-check"></i><b>37.5</b> Use in a servlet environment</a></li>
 </ul></li>
-<li class="chapter" data-level="37" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>37</b> A simple web service using Ajax</a>
+<li class="chapter" data-level="38" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html"><i class="fa fa-check"></i><b>38</b> A simple web service using Ajax</a>
 <ul>
-<li class="chapter" data-level="37.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>37.1</b> Introduction</a></li>
+<li class="chapter" data-level="38.1" data-path="a-simple-web-service-using-ajax.html"><a href="a-simple-web-service-using-ajax.html#introduction-6"><i class="fa fa-check"></i><b>38.1</b> Introduction</a></li>
 </ul></li>
-<li class="chapter" data-level="38" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>38</b> Web filters and File uploads</a>
+<li class="chapter" data-level="39" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html"><i class="fa fa-check"></i><b>39</b> Web filters and File uploads</a>
 <ul>
-<li class="chapter" data-level="38.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>38.1</b> Web filters</a></li>
-<li class="chapter" data-level="38.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>38.2</b> File uploads</a></li>
+<li class="chapter" data-level="39.1" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#web-filters"><i class="fa fa-check"></i><b>39.1</b> Web filters</a></li>
+<li class="chapter" data-level="39.2" data-path="web-filters-and-file-uploads.html"><a href="web-filters-and-file-uploads.html#file-uploads"><i class="fa fa-check"></i><b>39.2</b> File uploads</a></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>39</b> Exercises intro</a>
+<li class="chapter" data-level="40" data-path="exercises-intro.html"><a href="exercises-intro.html"><i class="fa fa-check"></i><b>40</b> Exercises intro</a>
 <ul>
-<li class="chapter" data-level="39.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>39.1</b> Implementing MVC</a></li>
-<li class="chapter" data-level="39.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>39.2</b> Thymeleaf</a></li>
-<li class="chapter" data-level="39.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>39.3</b> Sessions</a></li>
-<li class="chapter" data-level="39.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>39.4</b> Authentication</a></li>
-<li class="chapter" data-level="39.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>39.5</b> Servlet details and hooks</a></li>
-<li class="chapter" data-level="39.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>39.6</b> Database interaction</a></li>
-<li class="chapter" data-level="39.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>39.7</b> Ajax</a></li>
-<li class="chapter" data-level="39.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>39.8</b> Filters</a></li>
+<li class="chapter" data-level="40.1" data-path="exercises-intro.html"><a href="exercises-intro.html#implementing-mvc-1"><i class="fa fa-check"></i><b>40.1</b> Implementing MVC</a></li>
+<li class="chapter" data-level="40.2" data-path="exercises-intro.html"><a href="exercises-intro.html#thymeleaf"><i class="fa fa-check"></i><b>40.2</b> Thymeleaf</a></li>
+<li class="chapter" data-level="40.3" data-path="exercises-intro.html"><a href="exercises-intro.html#sessions"><i class="fa fa-check"></i><b>40.3</b> Sessions</a></li>
+<li class="chapter" data-level="40.4" data-path="exercises-intro.html"><a href="exercises-intro.html#authentication-1"><i class="fa fa-check"></i><b>40.4</b> Authentication</a></li>
+<li class="chapter" data-level="40.5" data-path="exercises-intro.html"><a href="exercises-intro.html#servlet-details-and-hooks"><i class="fa fa-check"></i><b>40.5</b> Servlet details and hooks</a></li>
+<li class="chapter" data-level="40.6" data-path="exercises-intro.html"><a href="exercises-intro.html#database-interaction-1"><i class="fa fa-check"></i><b>40.6</b> Database interaction</a></li>
+<li class="chapter" data-level="40.7" data-path="exercises-intro.html"><a href="exercises-intro.html#ajax"><i class="fa fa-check"></i><b>40.7</b> Ajax</a></li>
+<li class="chapter" data-level="40.8" data-path="exercises-intro.html"><a href="exercises-intro.html#filters"><i class="fa fa-check"></i><b>40.8</b> Filters</a></li>
 </ul></li>
-<li class="chapter" data-level="40" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>40</b> HTML5 tags</a></li>
+<li class="chapter" data-level="41" data-path="html5-tags.html"><a href="html5-tags.html"><i class="fa fa-check"></i><b>41</b> HTML5 tags</a></li>
 <li class="part"><span><b>Part VI - JUnit</b></span></li>
-<li class="chapter" data-level="41" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>41</b> JUnit 5 basics</a>
+<li class="chapter" data-level="42" data-path="junit-5-basics.html"><a href="junit-5-basics.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 basics</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>41.1</b> Introduction</a></li>
-<li class="chapter" data-level="41.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>41.2</b> Reasons for unit testing</a></li>
-<li class="chapter" data-level="41.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>41.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
-<li class="chapter" data-level="41.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>41.4</b> Document!</a></li>
-<li class="chapter" data-level="41.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>41.5</b> JUnit <code>assert...()</code> methods</a></li>
-<li class="chapter" data-level="41.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>41.6</b> Testing for Exceptions</a></li>
-<li class="chapter" data-level="41.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>41.7</b> Grouping assertions using <code>assertAll()</code></a></li>
+<li class="chapter" data-level="42.1" data-path="junit-5-basics.html"><a href="junit-5-basics.html#introduction-7"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
+<li class="chapter" data-level="42.2" data-path="junit-5-basics.html"><a href="junit-5-basics.html#reasons-for-unit-testing"><i class="fa fa-check"></i><b>42.2</b> Reasons for unit testing</a></li>
+<li class="chapter" data-level="42.3" data-path="junit-5-basics.html"><a href="junit-5-basics.html#running-junit-5-tests-using-gradle-and-intellij"><i class="fa fa-check"></i><b>42.3</b> Running JUnit 5 tests using Gradle and IntelliJ</a></li>
+<li class="chapter" data-level="42.4" data-path="junit-5-basics.html"><a href="junit-5-basics.html#document"><i class="fa fa-check"></i><b>42.4</b> Document!</a></li>
+<li class="chapter" data-level="42.5" data-path="junit-5-basics.html"><a href="junit-5-basics.html#junit-assert...-methods"><i class="fa fa-check"></i><b>42.5</b> JUnit <code>assert...()</code> methods</a></li>
+<li class="chapter" data-level="42.6" data-path="junit-5-basics.html"><a href="junit-5-basics.html#testing-for-exceptions"><i class="fa fa-check"></i><b>42.6</b> Testing for Exceptions</a></li>
+<li class="chapter" data-level="42.7" data-path="junit-5-basics.html"><a href="junit-5-basics.html#grouping-assertions-using-assertall"><i class="fa fa-check"></i><b>42.7</b> Grouping assertions using <code>assertAll()</code></a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>42</b> JUnit 5 advanced features</a>
+<li class="chapter" data-level="43" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html"><i class="fa fa-check"></i><b>43</b> JUnit 5 advanced features</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>42.1</b> Introduction</a></li>
-<li class="chapter" data-level="42.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>42.2</b> JUnit 5 annotations</a></li>
+<li class="chapter" data-level="43.1" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#introduction-8"><i class="fa fa-check"></i><b>43.1</b> Introduction</a></li>
+<li class="chapter" data-level="43.2" data-path="junit-5-advanced-features.html"><a href="junit-5-advanced-features.html#junit-5-annotations"><i class="fa fa-check"></i><b>43.2</b> JUnit 5 annotations</a></li>
 </ul></li>
 <li class="part"><span><b>Part VII - Design</b></span></li>
-<li class="chapter" data-level="43" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>43</b> UML</a></li>
-<li class="chapter" data-level="44" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>44</b> Refactoring</a>
+<li class="chapter" data-level="44" data-path="uml.html"><a href="uml.html"><i class="fa fa-check"></i><b>44</b> UML</a></li>
+<li class="chapter" data-level="45" data-path="refactoring.html"><a href="refactoring.html"><i class="fa fa-check"></i><b>45</b> Refactoring</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>44.1</b> Introduction</a></li>
-<li class="chapter" data-level="44.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>44.2</b> Get to know what is there</a></li>
-<li class="chapter" data-level="44.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>44.3</b> Refactor</a></li>
-<li class="chapter" data-level="44.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>44.4</b> Take over</a></li>
+<li class="chapter" data-level="45.1" data-path="refactoring.html"><a href="refactoring.html#introduction-9"><i class="fa fa-check"></i><b>45.1</b> Introduction</a></li>
+<li class="chapter" data-level="45.2" data-path="refactoring.html"><a href="refactoring.html#get-to-know-what-is-there"><i class="fa fa-check"></i><b>45.2</b> Get to know what is there</a></li>
+<li class="chapter" data-level="45.3" data-path="refactoring.html"><a href="refactoring.html#refactor"><i class="fa fa-check"></i><b>45.3</b> Refactor</a></li>
+<li class="chapter" data-level="45.4" data-path="refactoring.html"><a href="refactoring.html#take-over"><i class="fa fa-check"></i><b>45.4</b> Take over</a></li>
 </ul></li>
 <li class="part"><span><b>Part VIII - Spring Boot</b></span></li>
-<li class="chapter" data-level="45" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>45</b> REST and MVC with Spring</a>
+<li class="chapter" data-level="46" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html"><i class="fa fa-check"></i><b>46</b> REST and MVC with Spring</a>
 <ul>
-<li class="chapter" data-level="45.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>45.1</b> Create a new project</a></li>
-<li class="chapter" data-level="45.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>45.2</b> Create a REST response</a></li>
+<li class="chapter" data-level="46.1" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-new-project"><i class="fa fa-check"></i><b>46.1</b> Create a new project</a></li>
+<li class="chapter" data-level="46.2" data-path="rest-and-mvc-with-spring.html"><a href="rest-and-mvc-with-spring.html#create-a-rest-response"><i class="fa fa-check"></i><b>46.2</b> Create a REST response</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>46</b> Dependency Injection in Spring</a></li>
-<li class="chapter" data-level="47" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>47</b> Core (Spring) annotations</a>
+<li class="chapter" data-level="47" data-path="dependency-injection-in-spring.html"><a href="dependency-injection-in-spring.html"><i class="fa fa-check"></i><b>47</b> Dependency Injection in Spring</a></li>
+<li class="chapter" data-level="48" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html"><i class="fa fa-check"></i><b>48</b> Core (Spring) annotations</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>47.1</b> Generic annotations</a></li>
+<li class="chapter" data-level="48.1" data-path="core-spring-annotations.html"><a href="core-spring-annotations.html#generic-annotations"><i class="fa fa-check"></i><b>48.1</b> Generic annotations</a></li>
 </ul></li>
 </ul>
 
@@ -403,10 +406,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="junit-5-basics" class="section level1" number="41">
-<h1><span class="header-section-number">Chapter 41</span> JUnit 5 basics</h1>
-<div id="introduction-7" class="section level2" number="41.1">
-<h2><span class="header-section-number">41.1</span> Introduction</h2>
+<div id="junit-5-basics" class="section level1" number="42">
+<h1><span class="header-section-number">Chapter 42</span> JUnit 5 basics</h1>
+<div id="introduction-7" class="section level2" number="42.1">
+<h2><span class="header-section-number">42.1</span> Introduction</h2>
 <p>In this post, we’ll address a topic that is subject to heated debate in development land: testing.
 Why would you spend a significant portion of your development time writing code to test other code?
 This will be addressed in more detail later, but think about this question first:</p>
@@ -414,72 +417,72 @@ This will be addressed in more detail later, but think about this question first
 <p>Several major Java unit testing frameworks exist, but we will explore JUnit since it is the most widely used. Also, the concepts you learn with JUnit are easily transferred to other frameworks.</p>
 <p>The <strong><em>unit</em></strong> in unit testing is the method - a named piece of reusable code. If designed well it does one thing only, and it does it well. When creating tests, we <strong><em>cover</em></strong> the software units (methods) of our code base with one or more test methods - unit tests or <strong><em>test cases</em></strong>.</p>
 <p>Here is an example to clarify the concept. Suppose you have class <code>Polygon</code> that has as field a list of <code>Coordinate</code> instances. Here is the <code>Coordinate</code> class:</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb344-1"><a href="junit-5-basics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
-<span id="cb344-2"><a href="junit-5-basics.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Coordinate <span class="op">{</span></span>
-<span id="cb344-3"><a href="junit-5-basics.html#cb344-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> x<span class="op">;</span></span>
-<span id="cb344-4"><a href="junit-5-basics.html#cb344-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> y<span class="op">;</span></span>
-<span id="cb344-5"><a href="junit-5-basics.html#cb344-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb344-6"><a href="junit-5-basics.html#cb344-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">//constructors, getters and setters omitted</span></span>
-<span id="cb344-7"><a href="junit-5-basics.html#cb344-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb344-8"><a href="junit-5-basics.html#cb344-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">distanceTo</span><span class="op">(</span>Coordinate other<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb344-9"><a href="junit-5-basics.html#cb344-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span><span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">x</span> <span class="op">-</span> other<span class="op">.</span><span class="fu">x</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">y</span> <span class="op">-</span> other<span class="op">.</span><span class="fu">y</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
-<span id="cb344-10"><a href="junit-5-basics.html#cb344-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb344-11"><a href="junit-5-basics.html#cb344-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb354-1"><a href="junit-5-basics.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
+<span id="cb354-2"><a href="junit-5-basics.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Coordinate <span class="op">{</span></span>
+<span id="cb354-3"><a href="junit-5-basics.html#cb354-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> x<span class="op">;</span></span>
+<span id="cb354-4"><a href="junit-5-basics.html#cb354-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">int</span> y<span class="op">;</span></span>
+<span id="cb354-5"><a href="junit-5-basics.html#cb354-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb354-6"><a href="junit-5-basics.html#cb354-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">//constructors, getters and setters omitted</span></span>
+<span id="cb354-7"><a href="junit-5-basics.html#cb354-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb354-8"><a href="junit-5-basics.html#cb354-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">distanceTo</span><span class="op">(</span>Coordinate other<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb354-9"><a href="junit-5-basics.html#cb354-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span><span class="op">(</span><span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">x</span> <span class="op">-</span> other<span class="op">.</span><span class="fu">x</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">y</span> <span class="op">-</span> other<span class="op">.</span><span class="fu">y</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
+<span id="cb354-10"><a href="junit-5-basics.html#cb354-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb354-11"><a href="junit-5-basics.html#cb354-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>And here is the <code>Polygon</code> class:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb345-1"><a href="junit-5-basics.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
-<span id="cb345-2"><a href="junit-5-basics.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">List</span><span class="op">;</span></span>
-<span id="cb345-3"><a href="junit-5-basics.html#cb345-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-4"><a href="junit-5-basics.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Polygon</span> <span class="op">{</span></span>
-<span id="cb345-5"><a href="junit-5-basics.html#cb345-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">List</span><span class="op">&lt;</span>Coordinate<span class="op">&gt;</span> coordinates<span class="op">;</span></span>
-<span id="cb345-6"><a href="junit-5-basics.html#cb345-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-7"><a href="junit-5-basics.html#cb345-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//constructors, getters and setters omitted</span></span>
-<span id="cb345-8"><a href="junit-5-basics.html#cb345-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb345-9"><a href="junit-5-basics.html#cb345-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addCoordinate</span><span class="op">(</span>Coordinate coordinate<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb345-10"><a href="junit-5-basics.html#cb345-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>coordinates <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb345-11"><a href="junit-5-basics.html#cb345-11" aria-hidden="true" tabindex="-1"></a>            coordinates <span class="op">=</span> <span class="kw">new</span> <span class="bu">LinkedList</span><span class="op">&lt;&gt;();</span></span>
-<span id="cb345-12"><a href="junit-5-basics.html#cb345-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb345-13"><a href="junit-5-basics.html#cb345-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">coordinates</span><span class="op">.</span><span class="fu">add</span><span class="op">(</span>coordinate<span class="op">);</span></span>
-<span id="cb345-14"><a href="junit-5-basics.html#cb345-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb345-15"><a href="junit-5-basics.html#cb345-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb345-16"><a href="junit-5-basics.html#cb345-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb345-17"><a href="junit-5-basics.html#cb345-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> distance <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb345-18"><a href="junit-5-basics.html#cb345-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">//calculate distance</span></span>
-<span id="cb345-19"><a href="junit-5-basics.html#cb345-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> distance<span class="op">;</span></span>
-<span id="cb345-20"><a href="junit-5-basics.html#cb345-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb345-21"><a href="junit-5-basics.html#cb345-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb355-1"><a href="junit-5-basics.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
+<span id="cb355-2"><a href="junit-5-basics.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">List</span><span class="op">;</span></span>
+<span id="cb355-3"><a href="junit-5-basics.html#cb355-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-4"><a href="junit-5-basics.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Polygon</span> <span class="op">{</span></span>
+<span id="cb355-5"><a href="junit-5-basics.html#cb355-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">List</span><span class="op">&lt;</span>Coordinate<span class="op">&gt;</span> coordinates<span class="op">;</span></span>
+<span id="cb355-6"><a href="junit-5-basics.html#cb355-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-7"><a href="junit-5-basics.html#cb355-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//constructors, getters and setters omitted</span></span>
+<span id="cb355-8"><a href="junit-5-basics.html#cb355-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb355-9"><a href="junit-5-basics.html#cb355-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">addCoordinate</span><span class="op">(</span>Coordinate coordinate<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb355-10"><a href="junit-5-basics.html#cb355-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>coordinates <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb355-11"><a href="junit-5-basics.html#cb355-11" aria-hidden="true" tabindex="-1"></a>            coordinates <span class="op">=</span> <span class="kw">new</span> <span class="bu">LinkedList</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb355-12"><a href="junit-5-basics.html#cb355-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb355-13"><a href="junit-5-basics.html#cb355-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">coordinates</span><span class="op">.</span><span class="fu">add</span><span class="op">(</span>coordinate<span class="op">);</span></span>
+<span id="cb355-14"><a href="junit-5-basics.html#cb355-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb355-15"><a href="junit-5-basics.html#cb355-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb355-16"><a href="junit-5-basics.html#cb355-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb355-17"><a href="junit-5-basics.html#cb355-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> distance <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb355-18"><a href="junit-5-basics.html#cb355-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">//calculate distance</span></span>
+<span id="cb355-19"><a href="junit-5-basics.html#cb355-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> distance<span class="op">;</span></span>
+<span id="cb355-20"><a href="junit-5-basics.html#cb355-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb355-21"><a href="junit-5-basics.html#cb355-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Now look at the Coordinate and Polygon classes and ask yourself: “Is this code robust?” Can I think of usage scenario’s where one of these classes will fail?
 Or is there even a real bug in there? Take a minute and then read on.</p>
 <p>One thing that will immediately alert an experienced programmer is the instance variable in the Polygon class: it is being initialized in a “lazy” manner. There is a big fat <code>NullPointerException</code> lurking there. When the <code>getLength()</code> method is called on an object where no Coordinate has been added yet, <code>coordinates</code> will be null.</p>
 <p>This is the essence of JUnit testing: it makes you think about <strong><em>boundary cases</em></strong> like this, and will help you create robust code in a systematic way.</p>
 <p>A typical test covering this boundary case could be:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb346-1"><a href="junit-5-basics.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
-<span id="cb346-2"><a href="junit-5-basics.html#cb346-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb346-3"><a href="junit-5-basics.html#cb346-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
-<span id="cb346-4"><a href="junit-5-basics.html#cb346-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.</span><span class="im">assertEquals</span><span class="op">;</span></span>
-<span id="cb346-5"><a href="junit-5-basics.html#cb346-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PolygonTest <span class="op">{</span></span>
-<span id="cb346-6"><a href="junit-5-basics.html#cb346-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb346-7"><a href="junit-5-basics.html#cb346-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb346-8"><a href="junit-5-basics.html#cb346-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Polygon</span> polygon <span class="op">=</span> <span class="kw">new</span> <span class="bu">Polygon</span><span class="op">();</span></span>
-<span id="cb346-9"><a href="junit-5-basics.html#cb346-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> expectedLength <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb346-10"><a href="junit-5-basics.html#cb346-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertEquals</span><span class="op">(</span>expectedLength<span class="op">,</span> polygon<span class="op">.</span><span class="fu">getLength</span><span class="op">());</span></span>
-<span id="cb346-11"><a href="junit-5-basics.html#cb346-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb346-12"><a href="junit-5-basics.html#cb346-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb356-1"><a href="junit-5-basics.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">;</span></span>
+<span id="cb356-2"><a href="junit-5-basics.html#cb356-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-3"><a href="junit-5-basics.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb356-4"><a href="junit-5-basics.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.</span><span class="im">assertEquals</span><span class="op">;</span></span>
+<span id="cb356-5"><a href="junit-5-basics.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PolygonTest <span class="op">{</span></span>
+<span id="cb356-6"><a href="junit-5-basics.html#cb356-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb356-7"><a href="junit-5-basics.html#cb356-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb356-8"><a href="junit-5-basics.html#cb356-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Polygon</span> polygon <span class="op">=</span> <span class="kw">new</span> <span class="bu">Polygon</span><span class="op">();</span></span>
+<span id="cb356-9"><a href="junit-5-basics.html#cb356-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> expectedLength <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb356-10"><a href="junit-5-basics.html#cb356-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertEquals</span><span class="op">(</span>expectedLength<span class="op">,</span> polygon<span class="op">.</span><span class="fu">getLength</span><span class="op">());</span></span>
+<span id="cb356-11"><a href="junit-5-basics.html#cb356-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb356-12"><a href="junit-5-basics.html#cb356-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This test <strong>asserts</strong> that the length of an empty Polygon is zero - a good choice of <strong><em>expected behavior</em></strong>. Any other result, including a <code>NullPointerException</code>, will make the test fail.</p>
 <p>The next step is of course to modify method <code>getLength()</code> in such a way that it will pass this test. Here is a simple solution:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb347-1"><a href="junit-5-basics.html#cb347-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb347-2"><a href="junit-5-basics.html#cb347-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>coordinates <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb347-3"><a href="junit-5-basics.html#cb347-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb347-4"><a href="junit-5-basics.html#cb347-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">double</span> distance <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb347-5"><a href="junit-5-basics.html#cb347-5" aria-hidden="true" tabindex="-1"></a>            <span class="co">//calculate distance</span></span>
-<span id="cb347-6"><a href="junit-5-basics.html#cb347-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> distance<span class="op">;</span></span>
-<span id="cb347-7"><a href="junit-5-basics.html#cb347-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb347-8"><a href="junit-5-basics.html#cb347-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb357-1"><a href="junit-5-basics.html#cb357-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">double</span> <span class="fu">getLength</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb357-2"><a href="junit-5-basics.html#cb357-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>coordinates <span class="op">==</span> <span class="kw">null</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb357-3"><a href="junit-5-basics.html#cb357-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb357-4"><a href="junit-5-basics.html#cb357-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">double</span> distance <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb357-5"><a href="junit-5-basics.html#cb357-5" aria-hidden="true" tabindex="-1"></a>            <span class="co">//calculate distance</span></span>
+<span id="cb357-6"><a href="junit-5-basics.html#cb357-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> distance<span class="op">;</span></span>
+<span id="cb357-7"><a href="junit-5-basics.html#cb357-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb357-8"><a href="junit-5-basics.html#cb357-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <blockquote>
 <p>The how-to of creating and running tests in IntelliJ will be shown shortly.</p>
 </blockquote>
 </div>
-<div id="reasons-for-unit-testing" class="section level2" number="41.2">
-<h2><span class="header-section-number">41.2</span> Reasons for unit testing</h2>
+<div id="reasons-for-unit-testing" class="section level2" number="42.2">
+<h2><span class="header-section-number">42.2</span> Reasons for unit testing</h2>
 <p>Test Driven Development (TDD) is today’s standard in software development.
 If you introduce new features, a solid test suite protects you against regression in existing code</p>
 <p>The approach we’ll take in this course is hand-in-hand development of test and production code. This is one school.
@@ -492,51 +495,51 @@ The other believes that all test code should be written before any production co
 </ol>
 <p>(See <a href="http://code.tutsplus.com/articles/the-beginners-guide-to-unit-testing-what-is-unit-testing--wp-25728">tutsplus</a>)</p>
 </div>
-<div id="running-junit-5-tests-using-gradle-and-intellij" class="section level2" number="41.3">
-<h2><span class="header-section-number">41.3</span> Running JUnit 5 tests using Gradle and IntelliJ</h2>
+<div id="running-junit-5-tests-using-gradle-and-intellij" class="section level2" number="42.3">
+<h2><span class="header-section-number">42.3</span> Running JUnit 5 tests using Gradle and IntelliJ</h2>
 <p>First make sure you have the correct dependencies in your Gradle build file. Note that I already put two additional dependencies in there (AssertJ and JUnit Params) that will be needed for the next post.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode groovy"><code class="sourceCode groovy"><span id="cb348-1"><a href="junit-5-basics.html#cb348-1" aria-hidden="true" tabindex="-1"></a>group <span class="st">&#39;nl.bioinf.nomi.appdesigndemos&#39;</span></span>
-<span id="cb348-2"><a href="junit-5-basics.html#cb348-2" aria-hidden="true" tabindex="-1"></a>version <span class="st">&#39;1.0-SNAPSHOT&#39;</span></span>
-<span id="cb348-3"><a href="junit-5-basics.html#cb348-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-4"><a href="junit-5-basics.html#cb348-4" aria-hidden="true" tabindex="-1"></a>apply plugin<span class="op">:</span> <span class="st">&#39;java&#39;</span></span>
-<span id="cb348-5"><a href="junit-5-basics.html#cb348-5" aria-hidden="true" tabindex="-1"></a>apply plugin<span class="op">:</span> <span class="st">&#39;idea&#39;</span></span>
-<span id="cb348-6"><a href="junit-5-basics.html#cb348-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-7"><a href="junit-5-basics.html#cb348-7" aria-hidden="true" tabindex="-1"></a>sourceCompatibility <span class="op">=</span> JavaVersion<span class="op">.</span>VERSION_1_10</span>
-<span id="cb348-8"><a href="junit-5-basics.html#cb348-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-9"><a href="junit-5-basics.html#cb348-9" aria-hidden="true" tabindex="-1"></a>repositories <span class="op">{</span></span>
-<span id="cb348-10"><a href="junit-5-basics.html#cb348-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mavenCentral</span><span class="op">()</span></span>
-<span id="cb348-11"><a href="junit-5-basics.html#cb348-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb348-12"><a href="junit-5-basics.html#cb348-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-13"><a href="junit-5-basics.html#cb348-13" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
-<span id="cb348-14"><a href="junit-5-basics.html#cb348-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">testCompile</span><span class="op">(</span></span>
-<span id="cb348-15"><a href="junit-5-basics.html#cb348-15" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.2.2&#39;</span></span>
-<span id="cb348-16"><a href="junit-5-basics.html#cb348-16" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.5.2&#39;</span></span>
-<span id="cb348-17"><a href="junit-5-basics.html#cb348-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//for parameterized tests</span></span>
-<span id="cb348-18"><a href="junit-5-basics.html#cb348-18" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-params:5.5.2&#39;</span></span>
-<span id="cb348-19"><a href="junit-5-basics.html#cb348-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">//for assertJ type assertions</span></span>
-<span id="cb348-20"><a href="junit-5-basics.html#cb348-20" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.assertj:assertj-core:3.13.2&#39;</span></span>
-<span id="cb348-21"><a href="junit-5-basics.html#cb348-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb348-22"><a href="junit-5-basics.html#cb348-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-23"><a href="junit-5-basics.html#cb348-23" aria-hidden="true" tabindex="-1"></a><span class="co">//in some cases you need to put this in to get it running (I am not sure why...)</span></span>
-<span id="cb348-24"><a href="junit-5-basics.html#cb348-24" aria-hidden="true" tabindex="-1"></a>test <span class="op">{</span></span>
-<span id="cb348-25"><a href="junit-5-basics.html#cb348-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useJUnitPlatform</span><span class="op">()</span></span>
-<span id="cb348-26"><a href="junit-5-basics.html#cb348-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode groovy"><code class="sourceCode groovy"><span id="cb358-1"><a href="junit-5-basics.html#cb358-1" aria-hidden="true" tabindex="-1"></a>group <span class="st">&#39;nl.bioinf.nomi.appdesigndemos&#39;</span></span>
+<span id="cb358-2"><a href="junit-5-basics.html#cb358-2" aria-hidden="true" tabindex="-1"></a>version <span class="st">&#39;1.0-SNAPSHOT&#39;</span></span>
+<span id="cb358-3"><a href="junit-5-basics.html#cb358-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-4"><a href="junit-5-basics.html#cb358-4" aria-hidden="true" tabindex="-1"></a>apply plugin<span class="op">:</span> <span class="st">&#39;java&#39;</span></span>
+<span id="cb358-5"><a href="junit-5-basics.html#cb358-5" aria-hidden="true" tabindex="-1"></a>apply plugin<span class="op">:</span> <span class="st">&#39;idea&#39;</span></span>
+<span id="cb358-6"><a href="junit-5-basics.html#cb358-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-7"><a href="junit-5-basics.html#cb358-7" aria-hidden="true" tabindex="-1"></a>sourceCompatibility <span class="op">=</span> JavaVersion<span class="op">.</span>VERSION_1_10</span>
+<span id="cb358-8"><a href="junit-5-basics.html#cb358-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-9"><a href="junit-5-basics.html#cb358-9" aria-hidden="true" tabindex="-1"></a>repositories <span class="op">{</span></span>
+<span id="cb358-10"><a href="junit-5-basics.html#cb358-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mavenCentral</span><span class="op">()</span></span>
+<span id="cb358-11"><a href="junit-5-basics.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb358-12"><a href="junit-5-basics.html#cb358-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-13"><a href="junit-5-basics.html#cb358-13" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
+<span id="cb358-14"><a href="junit-5-basics.html#cb358-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">testCompile</span><span class="op">(</span></span>
+<span id="cb358-15"><a href="junit-5-basics.html#cb358-15" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.2.2&#39;</span></span>
+<span id="cb358-16"><a href="junit-5-basics.html#cb358-16" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.5.2&#39;</span></span>
+<span id="cb358-17"><a href="junit-5-basics.html#cb358-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//for parameterized tests</span></span>
+<span id="cb358-18"><a href="junit-5-basics.html#cb358-18" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-params:5.5.2&#39;</span></span>
+<span id="cb358-19"><a href="junit-5-basics.html#cb358-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">//for assertJ type assertions</span></span>
+<span id="cb358-20"><a href="junit-5-basics.html#cb358-20" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.assertj:assertj-core:3.13.2&#39;</span></span>
+<span id="cb358-21"><a href="junit-5-basics.html#cb358-21" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb358-22"><a href="junit-5-basics.html#cb358-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-23"><a href="junit-5-basics.html#cb358-23" aria-hidden="true" tabindex="-1"></a><span class="co">//in some cases you need to put this in to get it running (I am not sure why...)</span></span>
+<span id="cb358-24"><a href="junit-5-basics.html#cb358-24" aria-hidden="true" tabindex="-1"></a>test <span class="op">{</span></span>
+<span id="cb358-25"><a href="junit-5-basics.html#cb358-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useJUnitPlatform</span><span class="op">()</span></span>
+<span id="cb358-26"><a href="junit-5-basics.html#cb358-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Next, create a class and method stub that should be unit tested. Suppose you are creating a class, <code>TextUtils</code> with method <code>getLongestWord(String text)</code>
 This is what it looks like without any functionality implemented:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb349-1"><a href="junit-5-basics.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">junit5tests</span><span class="op">;</span></span>
-<span id="cb349-2"><a href="junit-5-basics.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TextUtils <span class="op">{</span></span>
-<span id="cb349-3"><a href="junit-5-basics.html#cb349-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb349-4"><a href="junit-5-basics.html#cb349-4" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> Finds the longest word in a given string<span class="co">.</span></span>
-<span id="cb349-5"><a href="junit-5-basics.html#cb349-5" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> If there is a tie<span class="co">,</span> the last found longest</span>
-<span id="cb349-6"><a href="junit-5-basics.html#cb349-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> is returned<span class="co">.</span></span>
-<span id="cb349-7"><a href="junit-5-basics.html#cb349-7" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span></span>
-<span id="cb349-8"><a href="junit-5-basics.html#cb349-8" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="co">@</span>param text the text to scan</span>
-<span id="cb349-9"><a href="junit-5-basics.html#cb349-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="co">@</span>return longestWord</span>
-<span id="cb349-10"><a href="junit-5-basics.html#cb349-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb349-11"><a href="junit-5-basics.html#cb349-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb349-12"><a href="junit-5-basics.html#cb349-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">UnsupportedOperationException</span><span class="op">(</span><span class="st">&quot;Not implemented yet&quot;</span><span class="op">);</span></span>
-<span id="cb349-13"><a href="junit-5-basics.html#cb349-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb349-14"><a href="junit-5-basics.html#cb349-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb359-1"><a href="junit-5-basics.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">junit5tests</span><span class="op">;</span></span>
+<span id="cb359-2"><a href="junit-5-basics.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TextUtils <span class="op">{</span></span>
+<span id="cb359-3"><a href="junit-5-basics.html#cb359-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb359-4"><a href="junit-5-basics.html#cb359-4" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> Finds the longest word in a given string<span class="co">.</span></span>
+<span id="cb359-5"><a href="junit-5-basics.html#cb359-5" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> If there is a tie<span class="co">,</span> the last found longest</span>
+<span id="cb359-6"><a href="junit-5-basics.html#cb359-6" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> is returned<span class="co">.</span></span>
+<span id="cb359-7"><a href="junit-5-basics.html#cb359-7" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span></span>
+<span id="cb359-8"><a href="junit-5-basics.html#cb359-8" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="co">@</span>param text the text to scan</span>
+<span id="cb359-9"><a href="junit-5-basics.html#cb359-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> <span class="co">@</span>return longestWord</span>
+<span id="cb359-10"><a href="junit-5-basics.html#cb359-10" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb359-11"><a href="junit-5-basics.html#cb359-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb359-12"><a href="junit-5-basics.html#cb359-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">UnsupportedOperationException</span><span class="op">(</span><span class="st">&quot;Not implemented yet&quot;</span><span class="op">);</span></span>
+<span id="cb359-13"><a href="junit-5-basics.html#cb359-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb359-14"><a href="junit-5-basics.html#cb359-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Note that the programmer already thought about a single boundary case - the tie. This can be seen in the Javadoc.
 To create a test for this method, put the cursor on the class name, activate the context menu (<code>alt + enter</code>) and select “Create Test”</p>
 <div class="figure">
@@ -558,24 +561,24 @@ Select the method you want to create a test for ant press “OK.”</p>
 <p class="caption">Create JUnit test class 2</p>
 </div>
 <p>The test class will look like this.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb350-1"><a href="junit-5-basics.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">junit5demos</span><span class="op">;</span></span>
-<span id="cb350-2"><a href="junit-5-basics.html#cb350-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-3"><a href="junit-5-basics.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
-<span id="cb350-4"><a href="junit-5-basics.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.*;</span></span>
-<span id="cb350-5"><a href="junit-5-basics.html#cb350-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-6"><a href="junit-5-basics.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TextUtilsTest <span class="op">{</span></span>
-<span id="cb350-7"><a href="junit-5-basics.html#cb350-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb350-8"><a href="junit-5-basics.html#cb350-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb350-9"><a href="junit-5-basics.html#cb350-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb350-10"><a href="junit-5-basics.html#cb350-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb350-11"><a href="junit-5-basics.html#cb350-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb360-1"><a href="junit-5-basics.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">junit5demos</span><span class="op">;</span></span>
+<span id="cb360-2"><a href="junit-5-basics.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="junit-5-basics.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Test</span><span class="op">;</span></span>
+<span id="cb360-4"><a href="junit-5-basics.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="kw">static</span><span class="im"> org</span><span class="op">.</span><span class="im">junit</span><span class="op">.</span><span class="im">jupiter</span><span class="op">.</span><span class="im">api</span><span class="op">.</span><span class="im">Assertions</span><span class="op">.*;</span></span>
+<span id="cb360-5"><a href="junit-5-basics.html#cb360-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-6"><a href="junit-5-basics.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TextUtilsTest <span class="op">{</span></span>
+<span id="cb360-7"><a href="junit-5-basics.html#cb360-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-8"><a href="junit-5-basics.html#cb360-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb360-9"><a href="junit-5-basics.html#cb360-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb360-10"><a href="junit-5-basics.html#cb360-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb360-11"><a href="junit-5-basics.html#cb360-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Note the <code>@Test</code> <strong><em>annotation</em></strong> above the method signature. It makes this method recognizable as test method - it tells the JUnit runtime this is a JUnit test method. We’ll visit more JUnit -related annotations later on.
 This default method stub should never be kept as is; it will always pass! There is great danger in that (think about it).
 A much better default test stub is the one below as it will always fail because the <code>fail()</code> method will throw an error.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb351-1"><a href="junit-5-basics.html#cb351-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb351-2"><a href="junit-5-basics.html#cb351-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb351-3"><a href="junit-5-basics.html#cb351-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fail</span><span class="op">(</span><span class="st">&quot;test not implemented yet&quot;</span><span class="op">);</span></span>
-<span id="cb351-4"><a href="junit-5-basics.html#cb351-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb361-1"><a href="junit-5-basics.html#cb361-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb361-2"><a href="junit-5-basics.html#cb361-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb361-3"><a href="junit-5-basics.html#cb361-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fail</span><span class="op">(</span><span class="st">&quot;test not implemented yet&quot;</span><span class="op">);</span></span>
+<span id="cb361-4"><a href="junit-5-basics.html#cb361-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <p>In the editor margin, you see little green arrows (triangles):
 These represent the simplest way to run one or more tests. You find them next to the class name (run the entire test class) or besides a single test case. Hover one to see the hint.</p>
 <div class="figure">
@@ -588,33 +591,33 @@ These represent the simplest way to run one or more tests. You find them next to
 <p class="caption">Run JUnit5 test 2</p>
 </div>
 <p>Now create some test code. The simplest is a so-called <strong><em>sunny-day scenario</em></strong>: a normal input where you expect unambiguous result. Here is an example:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb352-1"><a href="junit-5-basics.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb352-2"><a href="junit-5-basics.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb352-3"><a href="junit-5-basics.html#cb352-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> input <span class="op">=</span> <span class="st">&quot;Hello JUnit testing world&quot;</span><span class="op">;</span></span>
-<span id="cb352-4"><a href="junit-5-basics.html#cb352-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> expected <span class="op">=</span> <span class="st">&quot;testing&quot;</span><span class="op">;</span></span>
-<span id="cb352-5"><a href="junit-5-basics.html#cb352-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> observed <span class="op">=</span> TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span>input<span class="op">);</span></span>
-<span id="cb352-6"><a href="junit-5-basics.html#cb352-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>expected<span class="op">,</span> observed<span class="op">);</span></span>
-<span id="cb352-7"><a href="junit-5-basics.html#cb352-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb362-1"><a href="junit-5-basics.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb362-2"><a href="junit-5-basics.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">getLongestWord</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb362-3"><a href="junit-5-basics.html#cb362-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> input <span class="op">=</span> <span class="st">&quot;Hello JUnit testing world&quot;</span><span class="op">;</span></span>
+<span id="cb362-4"><a href="junit-5-basics.html#cb362-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> expected <span class="op">=</span> <span class="st">&quot;testing&quot;</span><span class="op">;</span></span>
+<span id="cb362-5"><a href="junit-5-basics.html#cb362-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">final</span> <span class="bu">String</span> observed <span class="op">=</span> TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span>input<span class="op">);</span></span>
+<span id="cb362-6"><a href="junit-5-basics.html#cb362-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>expected<span class="op">,</span> observed<span class="op">);</span></span>
+<span id="cb362-7"><a href="junit-5-basics.html#cb362-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Assertions are the fundaments on which unit testing is built. They are used to specify <em>how you expect the code under test will behave given a set of conditions</em>. one of the most basic ones is the <code>assertEquals()</code> assertion method that is also used in the snippet above. You use it like this: <code>assertEquals(&lt;expected value&gt;, &lt;observed value&gt;);</code> When the expected value does not equal the observed value (according to the <code>equals()</code> method of course), an error will be thrown. In this case, <code>AssertionFailedError</code>. The test will fail.</p>
 <p>Of course the test will still fail because the tested method throws an <code>UnsupportedOperationException</code>. The next snippet gives a naive implementation.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb353-1"><a href="junit-5-basics.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb353-2"><a href="junit-5-basics.html#cb353-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
-<span id="cb353-3"><a href="junit-5-basics.html#cb353-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> longest <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
-<span id="cb353-4"><a href="junit-5-basics.html#cb353-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> word <span class="op">:</span> words<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb353-5"><a href="junit-5-basics.html#cb353-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>word<span class="op">.</span><span class="fu">length</span><span class="op">()</span> <span class="op">&gt;=</span> longest<span class="op">.</span><span class="fu">length</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb353-6"><a href="junit-5-basics.html#cb353-6" aria-hidden="true" tabindex="-1"></a>            longest <span class="op">=</span> word<span class="op">;</span></span>
-<span id="cb353-7"><a href="junit-5-basics.html#cb353-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb353-8"><a href="junit-5-basics.html#cb353-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb353-9"><a href="junit-5-basics.html#cb353-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> longest<span class="op">;</span></span>
-<span id="cb353-10"><a href="junit-5-basics.html#cb353-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb363-1"><a href="junit-5-basics.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb363-2"><a href="junit-5-basics.html#cb363-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
+<span id="cb363-3"><a href="junit-5-basics.html#cb363-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> longest <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb363-4"><a href="junit-5-basics.html#cb363-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> word <span class="op">:</span> words<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb363-5"><a href="junit-5-basics.html#cb363-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>word<span class="op">.</span><span class="fu">length</span><span class="op">()</span> <span class="op">&gt;=</span> longest<span class="op">.</span><span class="fu">length</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb363-6"><a href="junit-5-basics.html#cb363-6" aria-hidden="true" tabindex="-1"></a>            longest <span class="op">=</span> word<span class="op">;</span></span>
+<span id="cb363-7"><a href="junit-5-basics.html#cb363-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb363-8"><a href="junit-5-basics.html#cb363-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb363-9"><a href="junit-5-basics.html#cb363-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> longest<span class="op">;</span></span>
+<span id="cb363-10"><a href="junit-5-basics.html#cb363-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>If you’re into it, you can also do it the Java8 / Functional Programming way:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb354-1"><a href="junit-5-basics.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb354-2"><a href="junit-5-basics.html#cb354-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
-<span id="cb354-3"><a href="junit-5-basics.html#cb354-3" aria-hidden="true" tabindex="-1"></a>    Optional<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> findFirst <span class="op">=</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>words<span class="op">).</span><span class="fu">sorted</span><span class="op">(</span></span>
-<span id="cb354-4"><a href="junit-5-basics.html#cb354-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">(</span>one<span class="op">,</span> two<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>two<span class="op">.</span><span class="fu">length</span><span class="op">(),</span> one<span class="op">.</span><span class="fu">length</span><span class="op">())</span></span>
-<span id="cb354-5"><a href="junit-5-basics.html#cb354-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">).</span><span class="fu">findFirst</span><span class="op">();</span></span>
-<span id="cb354-6"><a href="junit-5-basics.html#cb354-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> findFirst<span class="op">.</span><span class="fu">get</span><span class="op">();</span></span>
-<span id="cb354-7"><a href="junit-5-basics.html#cb354-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb364-1"><a href="junit-5-basics.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb364-2"><a href="junit-5-basics.html#cb364-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
+<span id="cb364-3"><a href="junit-5-basics.html#cb364-3" aria-hidden="true" tabindex="-1"></a>    Optional<span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> findFirst <span class="op">=</span> Stream<span class="op">.</span><span class="fu">of</span><span class="op">(</span>words<span class="op">).</span><span class="fu">sorted</span><span class="op">(</span></span>
+<span id="cb364-4"><a href="junit-5-basics.html#cb364-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">(</span>one<span class="op">,</span> two<span class="op">)</span> <span class="op">-&gt;</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">compare</span><span class="op">(</span>two<span class="op">.</span><span class="fu">length</span><span class="op">(),</span> one<span class="op">.</span><span class="fu">length</span><span class="op">())</span></span>
+<span id="cb364-5"><a href="junit-5-basics.html#cb364-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">).</span><span class="fu">findFirst</span><span class="op">();</span></span>
+<span id="cb364-6"><a href="junit-5-basics.html#cb364-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> findFirst<span class="op">.</span><span class="fu">get</span><span class="op">();</span></span>
+<span id="cb364-7"><a href="junit-5-basics.html#cb364-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Given the above implementation(s), many programmers would think they are done. But you’re not!
 Can you think of use cases where the above code would break, or behave incorrectly?
 Again: This is a very important reason to test - it makes you think about other than sunny day scenarios.</p>
@@ -635,63 +638,63 @@ Should you maybe even change the signature of the method getLongestWord()?</p>
 - strip punctuation characters: ‘:’ ‘;’ ‘?’ etc
 - keep numbers (why? Because I like them).</p>
 <p>Here is a (still flawed) next iteration</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb355-1"><a href="junit-5-basics.html#cb355-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb355-2"><a href="junit-5-basics.html#cb355-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">isIllegalInput</span><span class="op">(</span>text<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb355-3"><a href="junit-5-basics.html#cb355-3" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
-<span id="cb355-4"><a href="junit-5-basics.html#cb355-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb355-5"><a href="junit-5-basics.html#cb355-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-6"><a href="junit-5-basics.html#cb355-6" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="fu">stripPunctuationCharacters</span><span class="op">(</span>text<span class="op">);</span></span>
-<span id="cb355-7"><a href="junit-5-basics.html#cb355-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
-<span id="cb355-8"><a href="junit-5-basics.html#cb355-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> longest <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
-<span id="cb355-9"><a href="junit-5-basics.html#cb355-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> word <span class="op">:</span> words<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb355-10"><a href="junit-5-basics.html#cb355-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>word<span class="op">.</span><span class="fu">length</span><span class="op">()</span> <span class="op">&gt;=</span> longest<span class="op">.</span><span class="fu">length</span><span class="op">())</span> <span class="op">{</span></span>
-<span id="cb355-11"><a href="junit-5-basics.html#cb355-11" aria-hidden="true" tabindex="-1"></a>                longest <span class="op">=</span> word<span class="op">;</span></span>
-<span id="cb355-12"><a href="junit-5-basics.html#cb355-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb355-13"><a href="junit-5-basics.html#cb355-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb355-14"><a href="junit-5-basics.html#cb355-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> longest<span class="op">;</span></span>
-<span id="cb355-15"><a href="junit-5-basics.html#cb355-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb355-16"><a href="junit-5-basics.html#cb355-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-17"><a href="junit-5-basics.html#cb355-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">isIllegalInput</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb355-18"><a href="junit-5-basics.html#cb355-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">null</span> <span class="op">==</span> text <span class="op">||</span> text<span class="op">.</span><span class="fu">isEmpty</span><span class="op">()</span> <span class="op">||</span> text<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
-<span id="cb355-19"><a href="junit-5-basics.html#cb355-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb355-20"><a href="junit-5-basics.html#cb355-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-21"><a href="junit-5-basics.html#cb355-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">stripPunctuationCharacters</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb355-22"><a href="junit-5-basics.html#cb355-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> text<span class="op">.</span><span class="fu">replaceAll</span><span class="op">(</span><span class="st">&quot;[?,.:;]&quot;</span><span class="op">,</span> <span class="st">&quot;&quot;</span><span class="op">);</span></span>
-<span id="cb355-23"><a href="junit-5-basics.html#cb355-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb365-1"><a href="junit-5-basics.html#cb365-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">getLongestWord</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb365-2"><a href="junit-5-basics.html#cb365-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="fu">isIllegalInput</span><span class="op">(</span>text<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb365-3"><a href="junit-5-basics.html#cb365-3" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
+<span id="cb365-4"><a href="junit-5-basics.html#cb365-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb365-5"><a href="junit-5-basics.html#cb365-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-6"><a href="junit-5-basics.html#cb365-6" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> <span class="fu">stripPunctuationCharacters</span><span class="op">(</span>text<span class="op">);</span></span>
+<span id="cb365-7"><a href="junit-5-basics.html#cb365-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span><span class="op">[]</span> words <span class="op">=</span> text<span class="op">.</span><span class="fu">split</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
+<span id="cb365-8"><a href="junit-5-basics.html#cb365-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> longest <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb365-9"><a href="junit-5-basics.html#cb365-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">String</span> word <span class="op">:</span> words<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb365-10"><a href="junit-5-basics.html#cb365-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>word<span class="op">.</span><span class="fu">length</span><span class="op">()</span> <span class="op">&gt;=</span> longest<span class="op">.</span><span class="fu">length</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb365-11"><a href="junit-5-basics.html#cb365-11" aria-hidden="true" tabindex="-1"></a>                longest <span class="op">=</span> word<span class="op">;</span></span>
+<span id="cb365-12"><a href="junit-5-basics.html#cb365-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb365-13"><a href="junit-5-basics.html#cb365-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb365-14"><a href="junit-5-basics.html#cb365-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> longest<span class="op">;</span></span>
+<span id="cb365-15"><a href="junit-5-basics.html#cb365-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb365-16"><a href="junit-5-basics.html#cb365-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-17"><a href="junit-5-basics.html#cb365-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">isIllegalInput</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb365-18"><a href="junit-5-basics.html#cb365-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">null</span> <span class="op">==</span> text <span class="op">||</span> text<span class="op">.</span><span class="fu">isEmpty</span><span class="op">()</span> <span class="op">||</span> text<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">);</span></span>
+<span id="cb365-19"><a href="junit-5-basics.html#cb365-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb365-20"><a href="junit-5-basics.html#cb365-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-21"><a href="junit-5-basics.html#cb365-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="bu">String</span> <span class="fu">stripPunctuationCharacters</span><span class="op">(</span><span class="bu">String</span> text<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb365-22"><a href="junit-5-basics.html#cb365-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> text<span class="op">.</span><span class="fu">replaceAll</span><span class="op">(</span><span class="st">&quot;[?,.:;]&quot;</span><span class="op">,</span> <span class="st">&quot;&quot;</span><span class="op">);</span></span>
+<span id="cb365-23"><a href="junit-5-basics.html#cb365-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <p>Notice how very small pieces of code have been extracted to separate methods. It makes the functionality so much more readable! Compare the readability of this</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb356-1"><a href="junit-5-basics.html#cb356-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span><span class="fu">isIllegalInput</span><span class="op">(</span>text<span class="op">))</span> <span class="op">{</span></span>
-<span id="cb356-2"><a href="junit-5-basics.html#cb356-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
-<span id="cb356-3"><a href="junit-5-basics.html#cb356-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb366-1"><a href="junit-5-basics.html#cb366-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span><span class="fu">isIllegalInput</span><span class="op">(</span>text<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb366-2"><a href="junit-5-basics.html#cb366-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
+<span id="cb366-3"><a href="junit-5-basics.html#cb366-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <p>with this</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb357-1"><a href="junit-5-basics.html#cb357-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">null</span> <span class="op">==</span> text <span class="op">||</span> text<span class="op">.</span><span class="fu">isEmpty</span><span class="op">()</span> <span class="op">||</span> text<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">))</span> <span class="op">{</span></span>
-<span id="cb357-2"><a href="junit-5-basics.html#cb357-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
-<span id="cb357-3"><a href="junit-5-basics.html#cb357-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb367-1"><a href="junit-5-basics.html#cb367-1" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span><span class="kw">null</span> <span class="op">==</span> text <span class="op">||</span> text<span class="op">.</span><span class="fu">isEmpty</span><span class="op">()</span> <span class="op">||</span> text<span class="op">.</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot; &quot;</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb367-2"><a href="junit-5-basics.html#cb367-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;text cannot be null or empty&quot;</span><span class="op">);</span></span>
+<span id="cb367-3"><a href="junit-5-basics.html#cb367-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <p>Besides readability, these small methods can be tested separately, making for a much more robust test suite.</p>
 </div>
-<div id="document" class="section level2" number="41.4">
-<h2><span class="header-section-number">41.4</span> Document!</h2>
+<div id="document" class="section level2" number="42.4">
+<h2><span class="header-section-number">42.4</span> Document!</h2>
 <p>Don’t forget to write down your design decisions in the Javadoc section - especially regarding public methods.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb358-1"><a href="junit-5-basics.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
-<span id="cb358-2"><a href="junit-5-basics.html#cb358-2" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> This method searches for the longest word in </span>
-<span id="cb358-3"><a href="junit-5-basics.html#cb358-3" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> a given string<span class="co">.</span></span>
-<span id="cb358-4"><a href="junit-5-basics.html#cb358-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> It will split the String on all spaces and</span>
-<span id="cb358-5"><a href="junit-5-basics.html#cb358-5" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> removes all punctuation characters <span class="co">(</span>matching</span>
-<span id="cb358-6"><a href="junit-5-basics.html#cb358-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> the pattern <span class="co">&quot;[:;,.?!]&quot;).</span> If multiple words</span>
-<span id="cb358-7"><a href="junit-5-basics.html#cb358-7" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> have the same length<span class="co">,</span> it will return the</span>
-<span id="cb358-8"><a href="junit-5-basics.html#cb358-8" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> first of these<span class="co">.</span></span>
-<span id="cb358-9"><a href="junit-5-basics.html#cb358-9" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>param text the text to analyze</span>
-<span id="cb358-10"><a href="junit-5-basics.html#cb358-10" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>return longest the longest word</span>
-<span id="cb358-11"><a href="junit-5-basics.html#cb358-11" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>throws IllegalArgumentException when </span>
-<span id="cb358-12"><a href="junit-5-basics.html#cb358-12" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span>    a null value<span class="co">,</span> an empty string or a single space is passed</span>
-<span id="cb358-13"><a href="junit-5-basics.html#cb358-13" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb368-1"><a href="junit-5-basics.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb368-2"><a href="junit-5-basics.html#cb368-2" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> This method searches for the longest word in </span>
+<span id="cb368-3"><a href="junit-5-basics.html#cb368-3" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> a given string<span class="co">.</span></span>
+<span id="cb368-4"><a href="junit-5-basics.html#cb368-4" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> It will split the String on all spaces and</span>
+<span id="cb368-5"><a href="junit-5-basics.html#cb368-5" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> removes all punctuation characters <span class="co">(</span>matching</span>
+<span id="cb368-6"><a href="junit-5-basics.html#cb368-6" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> the pattern <span class="co">&quot;[:;,.?!]&quot;).</span> If multiple words</span>
+<span id="cb368-7"><a href="junit-5-basics.html#cb368-7" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> have the same length<span class="co">,</span> it will return the</span>
+<span id="cb368-8"><a href="junit-5-basics.html#cb368-8" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> first of these<span class="co">.</span></span>
+<span id="cb368-9"><a href="junit-5-basics.html#cb368-9" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>param text the text to analyze</span>
+<span id="cb368-10"><a href="junit-5-basics.html#cb368-10" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>return longest the longest word</span>
+<span id="cb368-11"><a href="junit-5-basics.html#cb368-11" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span> <span class="co">@</span>throws IllegalArgumentException when </span>
+<span id="cb368-12"><a href="junit-5-basics.html#cb368-12" aria-hidden="true" tabindex="-1"></a> <span class="co">*</span>    a null value<span class="co">,</span> an empty string or a single space is passed</span>
+<span id="cb368-13"><a href="junit-5-basics.html#cb368-13" aria-hidden="true" tabindex="-1"></a> <span class="co">*/</span></span></code></pre></div>
 <p>The nice thing about Javadoc is that you can access it in a readable manner from within your IDE (Fn+F1 on Mac or Ctrl + Q on Linux/Windows):</p>
 <div class="figure">
 <img src="06_junit/figures/get_javadoc_info.png" alt="" />
 <p class="caption">Get Javadoc info</p>
 </div>
 </div>
-<div id="junit-assert...-methods" class="section level2" number="41.5">
-<h2><span class="header-section-number">41.5</span> JUnit <code>assert...()</code> methods</h2>
+<div id="junit-assert...-methods" class="section level2" number="42.5">
+<h2><span class="header-section-number">42.5</span> JUnit <code>assert...()</code> methods</h2>
 <p>You have seen the <code>fail()</code> and <code>assertEquals()</code> methods that simply fail a test or assert equality between two objects, respectively. Although in principle you could write almost any test with the assertEquals method, there are more. The primary reason is that they make your test suite more readable and more concise.</p>
 <p>Below are the assert methods you can use in your tests. Their names are mostly self-explanatory but some need a bit of an explanation. The <code>assertThrows()</code> method, testing for exceptions, will be dealt with in more detail, as well as the <code>assertAll()</code> method that groups other assertions.</p>
 <ul>
@@ -708,97 +711,97 @@ Should you maybe even change the signature of the method getLongestWord()?</p>
 <p>There are overloaded variants for many of them.<br />
 Please refer to the docs for more detail: <a href="https://junit.org/junit5/docs/current/user-guide">https://junit.org/junit5/docs/current/user-guide</a></p>
 </div>
-<div id="testing-for-exceptions" class="section level2" number="41.6">
-<h2><span class="header-section-number">41.6</span> Testing for Exceptions</h2>
+<div id="testing-for-exceptions" class="section level2" number="42.6">
+<h2><span class="header-section-number">42.6</span> Testing for Exceptions</h2>
 <p>The method <code>assertThrows(Class&lt;? extends Throwable&gt; expectedType, Executable executable)</code>
 in JUnit5 is used to assert that the supplied <strong><em>executable</em></strong> will throw an exception of the expected type.
 It relies on lambdas, which of course were not discussed yet. However, looking at the example below you can probably figure out how to do it for your method to be tested.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb359-1"><a href="junit-5-basics.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb359-2"><a href="junit-5-basics.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">shouldThrowException</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb359-3"><a href="junit-5-basics.html#cb359-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Throwable</span> exception <span class="op">=</span> <span class="fu">assertThrows</span><span class="op">(</span></span>
-<span id="cb359-4"><a href="junit-5-basics.html#cb359-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">IllegalArgumentException</span><span class="op">.</span><span class="fu">class</span><span class="op">,</span> <span class="co">/*expects an IllegalArgumentException.class instance*/</span></span>
-<span id="cb359-5"><a href="junit-5-basics.html#cb359-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">()</span> <span class="op">-&gt;</span> TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span><span class="kw">null</span><span class="op">));</span> <span class="co">/*will call getLongestWord as tested method*/</span></span>
-<span id="cb359-6"><a href="junit-5-basics.html#cb359-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*this uses a regular assertTrue test to check for the exception message*/</span></span>
-<span id="cb359-7"><a href="junit-5-basics.html#cb359-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>exception<span class="op">.</span><span class="fu">getMessage</span><span class="op">(),</span> <span class="st">&quot;text cannot be null&quot;</span><span class="op">);</span></span>
-<span id="cb359-8"><a href="junit-5-basics.html#cb359-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb369-1"><a href="junit-5-basics.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb369-2"><a href="junit-5-basics.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">shouldThrowException</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb369-3"><a href="junit-5-basics.html#cb369-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Throwable</span> exception <span class="op">=</span> <span class="fu">assertThrows</span><span class="op">(</span></span>
+<span id="cb369-4"><a href="junit-5-basics.html#cb369-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">IllegalArgumentException</span><span class="op">.</span><span class="fu">class</span><span class="op">,</span> <span class="co">/*expects an IllegalArgumentException.class instance*/</span></span>
+<span id="cb369-5"><a href="junit-5-basics.html#cb369-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">()</span> <span class="op">-&gt;</span> TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span><span class="kw">null</span><span class="op">));</span> <span class="co">/*will call getLongestWord as tested method*/</span></span>
+<span id="cb369-6"><a href="junit-5-basics.html#cb369-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*this uses a regular assertTrue test to check for the exception message*/</span></span>
+<span id="cb369-7"><a href="junit-5-basics.html#cb369-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertEquals</span><span class="op">(</span>exception<span class="op">.</span><span class="fu">getMessage</span><span class="op">(),</span> <span class="st">&quot;text cannot be null&quot;</span><span class="op">);</span></span>
+<span id="cb369-8"><a href="junit-5-basics.html#cb369-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>If you don’t like (or understand) lambdas you can also use the strategy below with basic Java to achieve the same test functionality.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb360-1"><a href="junit-5-basics.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb360-2"><a href="junit-5-basics.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">shouldThrowExceptionOldSchool</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb360-3"><a href="junit-5-basics.html#cb360-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb360-4"><a href="junit-5-basics.html#cb360-4" aria-hidden="true" tabindex="-1"></a>        TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span><span class="kw">null</span><span class="op">);</span></span>
-<span id="cb360-5"><a href="junit-5-basics.html#cb360-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fail</span><span class="op">(</span><span class="st">&quot;Expected an IllegalArgumentException&quot;</span><span class="op">);</span></span>
-<span id="cb360-6"><a href="junit-5-basics.html#cb360-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb360-7"><a href="junit-5-basics.html#cb360-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;text cannot be null&quot;</span><span class="op">,</span> e<span class="op">.</span><span class="fu">getMessage</span><span class="op">());</span></span>
-<span id="cb360-8"><a href="junit-5-basics.html#cb360-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb360-9"><a href="junit-5-basics.html#cb360-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb370-1"><a href="junit-5-basics.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb370-2"><a href="junit-5-basics.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">shouldThrowExceptionOldSchool</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb370-3"><a href="junit-5-basics.html#cb370-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span> <span class="op">{</span></span>
+<span id="cb370-4"><a href="junit-5-basics.html#cb370-4" aria-hidden="true" tabindex="-1"></a>        TextUtils<span class="op">.</span><span class="fu">getLongestWord</span><span class="op">(</span><span class="kw">null</span><span class="op">);</span></span>
+<span id="cb370-5"><a href="junit-5-basics.html#cb370-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fail</span><span class="op">(</span><span class="st">&quot;Expected an IllegalArgumentException&quot;</span><span class="op">);</span></span>
+<span id="cb370-6"><a href="junit-5-basics.html#cb370-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb370-7"><a href="junit-5-basics.html#cb370-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;text cannot be null&quot;</span><span class="op">,</span> e<span class="op">.</span><span class="fu">getMessage</span><span class="op">());</span></span>
+<span id="cb370-8"><a href="junit-5-basics.html#cb370-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb370-9"><a href="junit-5-basics.html#cb370-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="grouping-assertions-using-assertall" class="section level2" number="41.7">
-<h2><span class="header-section-number">41.7</span> Grouping assertions using <code>assertAll()</code></h2>
+<div id="grouping-assertions-using-assertall" class="section level2" number="42.7">
+<h2><span class="header-section-number">42.7</span> Grouping assertions using <code>assertAll()</code></h2>
 <p>When multiple assertions are concern a single object, it may be a good idea to treat them as a single assertion. That is where <code>assertAll()</code> comes in. This method takes a varargs “list” of Executables.</p>
 <p>Here is a self-contained example (borrowed and adapted from the official docs).</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb361-1"><a href="junit-5-basics.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Testing the name elements of Person&quot;</span><span class="op">)</span></span>
-<span id="cb361-2"><a href="junit-5-basics.html#cb361-2" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb361-3"><a href="junit-5-basics.html#cb361-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">groupedAssertions</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb361-4"><a href="junit-5-basics.html#cb361-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Person <span class="op">{</span></span>
-<span id="cb361-5"><a href="junit-5-basics.html#cb361-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> firstName<span class="op">;</span></span>
-<span id="cb361-6"><a href="junit-5-basics.html#cb361-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> LastName<span class="op">;</span></span>
-<span id="cb361-7"><a href="junit-5-basics.html#cb361-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="fu">Person</span><span class="op">(</span><span class="bu">String</span> firstName<span class="op">,</span> <span class="bu">String</span> lastName<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb361-8"><a href="junit-5-basics.html#cb361-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">firstName</span> <span class="op">=</span> firstName<span class="op">;</span></span>
-<span id="cb361-9"><a href="junit-5-basics.html#cb361-9" aria-hidden="true" tabindex="-1"></a>            LastName <span class="op">=</span> lastName<span class="op">;</span></span>
-<span id="cb361-10"><a href="junit-5-basics.html#cb361-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb361-11"><a href="junit-5-basics.html#cb361-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getFirstName</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb361-12"><a href="junit-5-basics.html#cb361-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> firstName<span class="op">;</span></span>
-<span id="cb361-13"><a href="junit-5-basics.html#cb361-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb361-14"><a href="junit-5-basics.html#cb361-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getLastName</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb361-15"><a href="junit-5-basics.html#cb361-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> LastName<span class="op">;</span></span>
-<span id="cb361-16"><a href="junit-5-basics.html#cb361-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb361-17"><a href="junit-5-basics.html#cb361-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb361-18"><a href="junit-5-basics.html#cb361-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-19"><a href="junit-5-basics.html#cb361-19" aria-hidden="true" tabindex="-1"></a>    Person person <span class="op">=</span> <span class="kw">new</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> <span class="st">&quot;Goodall&quot;</span><span class="op">);</span></span>
-<span id="cb361-20"><a href="junit-5-basics.html#cb361-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// In a grouped assertion all assertions are executed, and all</span></span>
-<span id="cb361-21"><a href="junit-5-basics.html#cb361-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// failures will be reported together.</span></span>
-<span id="cb361-22"><a href="junit-5-basics.html#cb361-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;person&quot;</span><span class="op">,</span></span>
-<span id="cb361-23"><a href="junit-5-basics.html#cb361-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> person<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()),</span></span>
-<span id="cb361-24"><a href="junit-5-basics.html#cb361-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;Doe&quot;</span><span class="op">,</span> person<span class="op">.</span><span class="fu">getLastName</span><span class="op">())</span></span>
-<span id="cb361-25"><a href="junit-5-basics.html#cb361-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">);</span></span>
-<span id="cb361-26"><a href="junit-5-basics.html#cb361-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb371-1"><a href="junit-5-basics.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Testing the name elements of Person&quot;</span><span class="op">)</span></span>
+<span id="cb371-2"><a href="junit-5-basics.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb371-3"><a href="junit-5-basics.html#cb371-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="fu">groupedAssertions</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb371-4"><a href="junit-5-basics.html#cb371-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> Person <span class="op">{</span></span>
+<span id="cb371-5"><a href="junit-5-basics.html#cb371-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> firstName<span class="op">;</span></span>
+<span id="cb371-6"><a href="junit-5-basics.html#cb371-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> LastName<span class="op">;</span></span>
+<span id="cb371-7"><a href="junit-5-basics.html#cb371-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="fu">Person</span><span class="op">(</span><span class="bu">String</span> firstName<span class="op">,</span> <span class="bu">String</span> lastName<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb371-8"><a href="junit-5-basics.html#cb371-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">this</span><span class="op">.</span><span class="fu">firstName</span> <span class="op">=</span> firstName<span class="op">;</span></span>
+<span id="cb371-9"><a href="junit-5-basics.html#cb371-9" aria-hidden="true" tabindex="-1"></a>            LastName <span class="op">=</span> lastName<span class="op">;</span></span>
+<span id="cb371-10"><a href="junit-5-basics.html#cb371-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb371-11"><a href="junit-5-basics.html#cb371-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getFirstName</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb371-12"><a href="junit-5-basics.html#cb371-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> firstName<span class="op">;</span></span>
+<span id="cb371-13"><a href="junit-5-basics.html#cb371-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb371-14"><a href="junit-5-basics.html#cb371-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="bu">String</span> <span class="fu">getLastName</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb371-15"><a href="junit-5-basics.html#cb371-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> LastName<span class="op">;</span></span>
+<span id="cb371-16"><a href="junit-5-basics.html#cb371-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb371-17"><a href="junit-5-basics.html#cb371-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb371-18"><a href="junit-5-basics.html#cb371-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb371-19"><a href="junit-5-basics.html#cb371-19" aria-hidden="true" tabindex="-1"></a>    Person person <span class="op">=</span> <span class="kw">new</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> <span class="st">&quot;Goodall&quot;</span><span class="op">);</span></span>
+<span id="cb371-20"><a href="junit-5-basics.html#cb371-20" aria-hidden="true" tabindex="-1"></a>    <span class="co">// In a grouped assertion all assertions are executed, and all</span></span>
+<span id="cb371-21"><a href="junit-5-basics.html#cb371-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// failures will be reported together.</span></span>
+<span id="cb371-22"><a href="junit-5-basics.html#cb371-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;person&quot;</span><span class="op">,</span></span>
+<span id="cb371-23"><a href="junit-5-basics.html#cb371-23" aria-hidden="true" tabindex="-1"></a>            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> person<span class="op">.</span><span class="fu">getFirstName</span><span class="op">()),</span></span>
+<span id="cb371-24"><a href="junit-5-basics.html#cb371-24" aria-hidden="true" tabindex="-1"></a>            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertEquals</span><span class="op">(</span><span class="st">&quot;Doe&quot;</span><span class="op">,</span> person<span class="op">.</span><span class="fu">getLastName</span><span class="op">())</span></span>
+<span id="cb371-25"><a href="junit-5-basics.html#cb371-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">);</span></span>
+<span id="cb371-26"><a href="junit-5-basics.html#cb371-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>This results in</p>
 <div class="figure">
 <img src="06_junit/figures/grouped_assertions_output.png" alt="" />
 <p class="caption">Grouped assertions output</p>
 </div>
 <p>You can even nest them within code blocks:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb362-1"><a href="junit-5-basics.html#cb362-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
-<span id="cb362-2"><a href="junit-5-basics.html#cb362-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">dependentAssertions</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb362-3"><a href="junit-5-basics.html#cb362-3" aria-hidden="true" tabindex="-1"></a>        Person person <span class="op">=</span> <span class="kw">new</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> <span class="st">&quot;Goodall&quot;</span><span class="op">);</span></span>
-<span id="cb362-4"><a href="junit-5-basics.html#cb362-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb362-5"><a href="junit-5-basics.html#cb362-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Within a code block, if an assertion fails the</span></span>
-<span id="cb362-6"><a href="junit-5-basics.html#cb362-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// subsequent code in the same block will be skipped.</span></span>
-<span id="cb362-7"><a href="junit-5-basics.html#cb362-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;properties&quot;</span><span class="op">,</span></span>
-<span id="cb362-8"><a href="junit-5-basics.html#cb362-8" aria-hidden="true" tabindex="-1"></a>                <span class="op">()</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb362-9"><a href="junit-5-basics.html#cb362-9" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">String</span> firstName <span class="op">=</span> person<span class="op">.</span><span class="fu">getFirstName</span><span class="op">();</span></span>
-<span id="cb362-10"><a href="junit-5-basics.html#cb362-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertNotNull</span><span class="op">(</span>firstName<span class="op">);</span></span>
-<span id="cb362-11"><a href="junit-5-basics.html#cb362-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb362-12"><a href="junit-5-basics.html#cb362-12" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Executed only if the previous assertion is valid.</span></span>
-<span id="cb362-13"><a href="junit-5-basics.html#cb362-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;first name&quot;</span><span class="op">,</span></span>
-<span id="cb362-14"><a href="junit-5-basics.html#cb362-14" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>firstName<span class="op">.</span><span class="fu">startsWith</span><span class="op">(</span><span class="st">&quot;J&quot;</span><span class="op">)),</span></span>
-<span id="cb362-15"><a href="junit-5-basics.html#cb362-15" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>firstName<span class="op">.</span><span class="fu">endsWith</span><span class="op">(</span><span class="st">&quot;e&quot;</span><span class="op">))</span></span>
-<span id="cb362-16"><a href="junit-5-basics.html#cb362-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">);</span></span>
-<span id="cb362-17"><a href="junit-5-basics.html#cb362-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">},</span></span>
-<span id="cb362-18"><a href="junit-5-basics.html#cb362-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">()</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
-<span id="cb362-19"><a href="junit-5-basics.html#cb362-19" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Grouped assertion, so processed independently</span></span>
-<span id="cb362-20"><a href="junit-5-basics.html#cb362-20" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// of results of first name assertions.</span></span>
-<span id="cb362-21"><a href="junit-5-basics.html#cb362-21" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">String</span> lastName <span class="op">=</span> person<span class="op">.</span><span class="fu">getLastName</span><span class="op">();</span></span>
-<span id="cb362-22"><a href="junit-5-basics.html#cb362-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertNotNull</span><span class="op">(</span>lastName<span class="op">);</span></span>
-<span id="cb362-23"><a href="junit-5-basics.html#cb362-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb362-24"><a href="junit-5-basics.html#cb362-24" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Executed only if the previous assertion is valid.</span></span>
-<span id="cb362-25"><a href="junit-5-basics.html#cb362-25" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;last name&quot;</span><span class="op">,</span></span>
-<span id="cb362-26"><a href="junit-5-basics.html#cb362-26" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>lastName<span class="op">.</span><span class="fu">startsWith</span><span class="op">(</span><span class="st">&quot;G&quot;</span><span class="op">)),</span></span>
-<span id="cb362-27"><a href="junit-5-basics.html#cb362-27" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>lastName<span class="op">.</span><span class="fu">endsWith</span><span class="op">(</span><span class="st">&quot;l&quot;</span><span class="op">))</span></span>
-<span id="cb362-28"><a href="junit-5-basics.html#cb362-28" aria-hidden="true" tabindex="-1"></a>                    <span class="op">);</span></span>
-<span id="cb362-29"><a href="junit-5-basics.html#cb362-29" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
-<span id="cb362-30"><a href="junit-5-basics.html#cb362-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">);</span></span>
-<span id="cb362-31"><a href="junit-5-basics.html#cb362-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb372-1"><a href="junit-5-basics.html#cb372-1" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Test</span></span>
+<span id="cb372-2"><a href="junit-5-basics.html#cb372-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">dependentAssertions</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb372-3"><a href="junit-5-basics.html#cb372-3" aria-hidden="true" tabindex="-1"></a>        Person person <span class="op">=</span> <span class="kw">new</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Jane&quot;</span><span class="op">,</span> <span class="st">&quot;Goodall&quot;</span><span class="op">);</span></span>
+<span id="cb372-4"><a href="junit-5-basics.html#cb372-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-5"><a href="junit-5-basics.html#cb372-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Within a code block, if an assertion fails the</span></span>
+<span id="cb372-6"><a href="junit-5-basics.html#cb372-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// subsequent code in the same block will be skipped.</span></span>
+<span id="cb372-7"><a href="junit-5-basics.html#cb372-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;properties&quot;</span><span class="op">,</span></span>
+<span id="cb372-8"><a href="junit-5-basics.html#cb372-8" aria-hidden="true" tabindex="-1"></a>                <span class="op">()</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb372-9"><a href="junit-5-basics.html#cb372-9" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">String</span> firstName <span class="op">=</span> person<span class="op">.</span><span class="fu">getFirstName</span><span class="op">();</span></span>
+<span id="cb372-10"><a href="junit-5-basics.html#cb372-10" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertNotNull</span><span class="op">(</span>firstName<span class="op">);</span></span>
+<span id="cb372-11"><a href="junit-5-basics.html#cb372-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-12"><a href="junit-5-basics.html#cb372-12" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Executed only if the previous assertion is valid.</span></span>
+<span id="cb372-13"><a href="junit-5-basics.html#cb372-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;first name&quot;</span><span class="op">,</span></span>
+<span id="cb372-14"><a href="junit-5-basics.html#cb372-14" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>firstName<span class="op">.</span><span class="fu">startsWith</span><span class="op">(</span><span class="st">&quot;J&quot;</span><span class="op">)),</span></span>
+<span id="cb372-15"><a href="junit-5-basics.html#cb372-15" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>firstName<span class="op">.</span><span class="fu">endsWith</span><span class="op">(</span><span class="st">&quot;e&quot;</span><span class="op">))</span></span>
+<span id="cb372-16"><a href="junit-5-basics.html#cb372-16" aria-hidden="true" tabindex="-1"></a>                    <span class="op">);</span></span>
+<span id="cb372-17"><a href="junit-5-basics.html#cb372-17" aria-hidden="true" tabindex="-1"></a>                <span class="op">},</span></span>
+<span id="cb372-18"><a href="junit-5-basics.html#cb372-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">()</span> <span class="op">-&gt;</span> <span class="op">{</span></span>
+<span id="cb372-19"><a href="junit-5-basics.html#cb372-19" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Grouped assertion, so processed independently</span></span>
+<span id="cb372-20"><a href="junit-5-basics.html#cb372-20" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// of results of first name assertions.</span></span>
+<span id="cb372-21"><a href="junit-5-basics.html#cb372-21" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">String</span> lastName <span class="op">=</span> person<span class="op">.</span><span class="fu">getLastName</span><span class="op">();</span></span>
+<span id="cb372-22"><a href="junit-5-basics.html#cb372-22" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertNotNull</span><span class="op">(</span>lastName<span class="op">);</span></span>
+<span id="cb372-23"><a href="junit-5-basics.html#cb372-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb372-24"><a href="junit-5-basics.html#cb372-24" aria-hidden="true" tabindex="-1"></a>                    <span class="co">// Executed only if the previous assertion is valid.</span></span>
+<span id="cb372-25"><a href="junit-5-basics.html#cb372-25" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">assertAll</span><span class="op">(</span><span class="st">&quot;last name&quot;</span><span class="op">,</span></span>
+<span id="cb372-26"><a href="junit-5-basics.html#cb372-26" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>lastName<span class="op">.</span><span class="fu">startsWith</span><span class="op">(</span><span class="st">&quot;G&quot;</span><span class="op">)),</span></span>
+<span id="cb372-27"><a href="junit-5-basics.html#cb372-27" aria-hidden="true" tabindex="-1"></a>                            <span class="op">()</span> <span class="op">-&gt;</span> <span class="fu">assertTrue</span><span class="op">(</span>lastName<span class="op">.</span><span class="fu">endsWith</span><span class="op">(</span><span class="st">&quot;l&quot;</span><span class="op">))</span></span>
+<span id="cb372-28"><a href="junit-5-basics.html#cb372-28" aria-hidden="true" tabindex="-1"></a>                    <span class="op">);</span></span>
+<span id="cb372-29"><a href="junit-5-basics.html#cb372-29" aria-hidden="true" tabindex="-1"></a>                <span class="op">}</span></span>
+<span id="cb372-30"><a href="junit-5-basics.html#cb372-30" aria-hidden="true" tabindex="-1"></a>        <span class="op">);</span></span>
+<span id="cb372-31"><a href="junit-5-basics.html#cb372-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 
 </div>
 </div>
