@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2021-04-15" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="stringr.html"/>
 <link rel="next" href="publish.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.16/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -182,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-smooth-ribbon"><i class="fa fa-check"></i>Plot overlays: smooth + ribbon</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
@@ -262,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
 <li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
-<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#multi-column-mutate-or-summary"><i class="fa fa-check"></i><b>4.4.3</b> Multi-column mutate or summary</a></li>
 <li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a>
@@ -449,11 +448,11 @@ s. (Wikipedia)</p>
 <div id="libraries" class="section level4" number="7.1.0.2">
 <h4><span class="header-section-number">7.1.0.2</span> Libraries</h4>
 <p>These are the packages used in this EDA:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="eda.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb357-2"><a href="eda.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb357-3"><a href="eda.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb357-4"><a href="eda.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
-<span id="cb357-5"><a href="eda.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="eda.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb369-2"><a href="eda.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb369-3"><a href="eda.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb369-4"><a href="eda.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb369-5"><a href="eda.html#cb369-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
 </div>
 </div>
 <div id="getting-to-know-the-dataset" class="section level2" number="7.2">
@@ -497,9 +496,9 @@ s. (Wikipedia)</p>
 <li>as a <em>last resort</em>: try to deduce from context and domain knowledge</li>
 </ul>
 <p>I have cleaned it up a bit and came to this. It is still not perfect; how would you improve on this?</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="eda.html#cb359-1" aria-hidden="true" tabindex="-1"></a>codebook <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cerv_cancer_codebook.csv&quot;</span>, </span>
-<span id="cb359-2"><a href="eda.html#cb359-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">as.is =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb359-3"><a href="eda.html#cb359-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(codebook)</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="eda.html#cb371-1" aria-hidden="true" tabindex="-1"></a>codebook <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/cerv_cancer_codebook.csv&quot;</span>, </span>
+<span id="cb371-2"><a href="eda.html#cb371-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">as.is =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb371-3"><a href="eda.html#cb371-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(codebook)</span></code></pre></div>
 <pre><code>##   abbreviation   class                      full.name
 ## 1          age     int                            Age
 ## 2 num.partners     int      Number of sexual partners
@@ -514,11 +513,11 @@ s. (Wikipedia)</p>
 <p>Load the data and check the data type of the columns. Always beware of unusual encodings for missing data! This is one of the most common causes of erroneous analyses, besides data entry errors and sample swaps.</p>
 <p>You should get data loading right in an iterative process, using several functions to inspect the result each time you have adjusted a parameter. Use <code>head()</code> and -especially- <code>str()</code> to do this. Tibbles print their data type automatically so that gives an advantage over <code>data.frame</code>.</p>
 <p>Here is a first attempt:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="eda.html#cb361-1" aria-hidden="true" tabindex="-1"></a>datafile <span class="ot">&lt;-</span> <span class="st">&quot;data/risk_factors_cervical_cancer.csv&quot;</span></span>
-<span id="cb361-2"><a href="eda.html#cb361-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(datafile, </span>
-<span id="cb361-3"><a href="eda.html#cb361-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, </span>
-<span id="cb361-4"><a href="eda.html#cb361-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb361-5"><a href="eda.html#cb361-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="eda.html#cb373-1" aria-hidden="true" tabindex="-1"></a>datafile <span class="ot">&lt;-</span> <span class="st">&quot;data/risk_factors_cervical_cancer.csv&quot;</span></span>
+<span id="cb373-2"><a href="eda.html#cb373-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(datafile, </span>
+<span id="cb373-3"><a href="eda.html#cb373-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, </span>
+<span id="cb373-4"><a href="eda.html#cb373-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb373-5"><a href="eda.html#cb373-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
 ##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
 ##  $ Number.of.sexual.partners         : chr  &quot;4.0&quot; &quot;1.0&quot; &quot;1.0&quot; &quot;5.0&quot; ...
@@ -558,11 +557,11 @@ s. (Wikipedia)</p>
 ##  $ Biopsy                            : int  0 0 0 0 0 0 1 0 0 0 ...</code></pre>
 <p>As you can see, many of the variables have been read incorrectly. These can be recognized by the fact that they have been read as <code>Factor</code> instead of the expected <code>int</code>. A closer look at the output also tells me why: missing values are apparently encoded with a question mark.
 This is fixed in iteration two:</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="eda.html#cb363-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(datafile,</span>
-<span id="cb363-2"><a href="eda.html#cb363-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, </span>
-<span id="cb363-3"><a href="eda.html#cb363-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb363-4"><a href="eda.html#cb363-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
-<span id="cb363-5"><a href="eda.html#cb363-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="eda.html#cb375-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(datafile,</span>
+<span id="cb375-2"><a href="eda.html#cb375-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, </span>
+<span id="cb375-3"><a href="eda.html#cb375-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb375-4"><a href="eda.html#cb375-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
+<span id="cb375-5"><a href="eda.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    858 obs. of  36 variables:
 ##  $ Age                               : int  18 15 34 52 46 42 51 26 45 44 ...
 ##  $ Number.of.sexual.partners         : num  4 1 1 5 3 3 3 1 1 3 ...
@@ -610,22 +609,22 @@ This is fixed in iteration two:</p>
 This kind of inspection should make you aware of possible problems that are going to arise later on. Booleans are very different from numbers after all. What is even more dangerous is that they can be treated interchangeably - in R you can treat a logical as an integer and an integer in a boolean context.</p>
 <p>This kind of discrepancy is the first thing you should address after loading your data. We’ll get back to this shortly.</p>
 <p>I will now first change the column names to something shorter, using the codebook. Also, the data will be converted into a tibble because this is really a nicer data structure:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="eda.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> codebook[,<span class="dv">1</span>]</span>
-<span id="cb366-2"><a href="eda.html#cb366-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(data)</span>
-<span id="cb366-3"><a href="eda.html#cb366-3" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="eda.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> codebook[,<span class="dv">1</span>]</span>
+<span id="cb378-2"><a href="eda.html#cb378-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(data)</span>
+<span id="cb378-3"><a href="eda.html#cb378-3" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
 <pre><code>## # A tibble: 858 x 36
-##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.ye…
-##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;            &lt;dbl&gt;
-##  1    18            4        15        1      0        0                 0  
-##  2    15            1        14        1      0        0                 0  
-##  3    34            1        NA        1      0        0                 0  
-##  4    52            5        16        4      1       37                37  
-##  5    46            3        21        4      0        0                 0  
-##  6    42            3        23        2      0        0                 0  
-##  7    51            3        17        6      1       34                 3.4
-##  8    26            1        26        3      0        0                 0  
-##  9    45            1        20        5      0        0                 0  
-## 10    44            3        15       NA      1        1.27              2.8
+##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.year
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;             &lt;dbl&gt;
+##  1    18            4        15        1      0        0                  0  
+##  2    15            1        14        1      0        0                  0  
+##  3    34            1        NA        1      0        0                  0  
+##  4    52            5        16        4      1       37                 37  
+##  5    46            3        21        4      0        0                  0  
+##  6    42            3        23        2      0        0                  0  
+##  7    51            3        17        6      1       34                  3.4
+##  8    26            1        26        3      0        0                  0  
+##  9    45            1        20        5      0        0                  0  
+## 10    44            3        15       NA      1        1.27               2.8
 ## # … with 848 more rows, and 29 more variables: horm.contracept.ever &lt;dbl&gt;,
 ## #   horm.contracept.years &lt;dbl&gt;, IUD.ever &lt;dbl&gt;, IUD.years &lt;dbl&gt;,
 ## #   STD.ever &lt;dbl&gt;, STDs.number &lt;dbl&gt;, STD_condylomatosis &lt;dbl&gt;,
@@ -637,9 +636,9 @@ This kind of inspection should make you aware of possible problems that are goin
 ## #   target.hinselman &lt;int&gt;, target.schiller &lt;int&gt;, target.cytology &lt;int&gt;,
 ## #   target.biopsy &lt;int&gt;</code></pre>
 <p>Now let’s have a look at the <code>smoke.years</code> variable:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="eda.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>smoke.years)) <span class="sc">+</span> </span>
-<span id="cb368-2"><a href="eda.html#cb368-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">4</span>, <span class="at">na.rm =</span> T) <span class="sc">+</span> </span>
-<span id="cb368-3"><a href="eda.html#cb368-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="eda.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>smoke.years)) <span class="sc">+</span> </span>
+<span id="cb380-2"><a href="eda.html#cb380-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">4</span>, <span class="at">na.rm =</span> T) <span class="sc">+</span> </span>
+<span id="cb380-3"><a href="eda.html#cb380-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">50</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:smoke-years-inspection"></span>
 <img src="bookdown-demo_files/figure-html/smoke-years-inspection-1.png" alt="A histogram of the 'smoke.years' attribute" width="80%" />
 <p class="caption">
@@ -652,27 +651,27 @@ Figure 7.1: A histogram of the ‘smoke.years’ attribute
 <div id="getting-it-right-in-the-end" class="section level4" number="7.2.2.2">
 <h4><span class="header-section-number">7.2.2.2</span> Getting it right in the end</h4>
 <p>Here, for demonstration purposes I use a wrapper function <code>read.csv()</code> instead of <code>read.table()</code>. The tidyverse has data reading facilities as well of course, but these were not dealt with in this course.</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="eda.html#cb369-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(datafile, <span class="at">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
-<span id="cb369-2"><a href="eda.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> codebook[,<span class="dv">1</span>]</span>
-<span id="cb369-3"><a href="eda.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(codebook)) {</span>
-<span id="cb369-4"><a href="eda.html#cb369-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(codebook[i, <span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;logical&quot;</span>){</span>
-<span id="cb369-5"><a href="eda.html#cb369-5" aria-hidden="true" tabindex="-1"></a>    data[,i] <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(data[,i])</span>
-<span id="cb369-6"><a href="eda.html#cb369-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb369-7"><a href="eda.html#cb369-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb369-8"><a href="eda.html#cb369-8" aria-hidden="true" tabindex="-1"></a>(data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(data))</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="eda.html#cb381-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(datafile, <span class="at">na.strings =</span> <span class="st">&quot;?&quot;</span>)</span>
+<span id="cb381-2"><a href="eda.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data) <span class="ot">&lt;-</span> codebook[,<span class="dv">1</span>]</span>
+<span id="cb381-3"><a href="eda.html#cb381-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(codebook)) {</span>
+<span id="cb381-4"><a href="eda.html#cb381-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(codebook[i, <span class="dv">2</span>] <span class="sc">==</span> <span class="st">&quot;logical&quot;</span>){</span>
+<span id="cb381-5"><a href="eda.html#cb381-5" aria-hidden="true" tabindex="-1"></a>    data[,i] <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(data[,i])</span>
+<span id="cb381-6"><a href="eda.html#cb381-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb381-7"><a href="eda.html#cb381-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb381-8"><a href="eda.html#cb381-8" aria-hidden="true" tabindex="-1"></a>(data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(data))</span></code></pre></div>
 <pre><code>## # A tibble: 858 x 36
-##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.ye…
-##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;        &lt;dbl&gt;            &lt;dbl&gt;
-##  1    18            4        15        1 FALSE         0                 0  
-##  2    15            1        14        1 FALSE         0                 0  
-##  3    34            1        NA        1 FALSE         0                 0  
-##  4    52            5        16        4 TRUE         37                37  
-##  5    46            3        21        4 FALSE         0                 0  
-##  6    42            3        23        2 FALSE         0                 0  
-##  7    51            3        17        6 TRUE         34                 3.4
-##  8    26            1        26        3 FALSE         0                 0  
-##  9    45            1        20        5 FALSE         0                 0  
-## 10    44            3        15       NA TRUE          1.27              2.8
+##      age num.partners first.sex num.preg smoker smoke.years smokes.packs.year
+##    &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
+##  1    18            4        15        1 FALSE         0                  0  
+##  2    15            1        14        1 FALSE         0                  0  
+##  3    34            1        NA        1 FALSE         0                  0  
+##  4    52            5        16        4 TRUE         37                 37  
+##  5    46            3        21        4 FALSE         0                  0  
+##  6    42            3        23        2 FALSE         0                  0  
+##  7    51            3        17        6 TRUE         34                  3.4
+##  8    26            1        26        3 FALSE         0                  0  
+##  9    45            1        20        5 FALSE         0                  0  
+## 10    44            3        15       NA TRUE          1.27               2.8
 ## # … with 848 more rows, and 29 more variables: horm.contracept.ever &lt;lgl&gt;,
 ## #   horm.contracept.years &lt;dbl&gt;, IUD.ever &lt;lgl&gt;, IUD.years &lt;dbl&gt;,
 ## #   STD.ever &lt;lgl&gt;, STDs.number &lt;dbl&gt;, STD_condylomatosis &lt;lgl&gt;,
@@ -709,7 +708,7 @@ Besides this, it will make adding labels to plots a breeze.</p>
 <div id="inspecting-some-columns" class="section level4" number="7.3.1.1">
 <h4><span class="header-section-number">7.3.1.1</span> Inspecting some columns</h4>
 <p>Here, I will only inspect some columns since this entire process is for demonstration purposes only. I will start with columns 2 and three.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="eda.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="eda.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>])</span></code></pre></div>
 <pre><code>##   num.partners     first.sex 
 ##  Min.   : 1.00   Min.   :10  
 ##  1st Qu.: 2.00   1st Qu.:15  
@@ -719,20 +718,20 @@ Besides this, it will make adding labels to plots a breeze.</p>
 ##  Max.   :28.00   Max.   :32  
 ##  NA&#39;s   :26      NA&#39;s   :7</code></pre>
 <p>Here is a visualization. I used <code>grid.arrange()</code> from the <code>gridExtra</code> package for arranging two plots in a single panel.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="eda.html#cb373-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb373-2"><a href="eda.html#cb373-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> num.partners)) <span class="sc">+</span> </span>
-<span id="cb373-3"><a href="eda.html#cb373-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
-<span id="cb373-4"><a href="eda.html#cb373-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb373-5"><a href="eda.html#cb373-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;number of partners&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb373-6"><a href="eda.html#cb373-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span>
-<span id="cb373-7"><a href="eda.html#cb373-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb373-8"><a href="eda.html#cb373-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> first.sex)) <span class="sc">+</span> </span>
-<span id="cb373-9"><a href="eda.html#cb373-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb373-10"><a href="eda.html#cb373-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb373-11"><a href="eda.html#cb373-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;age of first sex&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb373-12"><a href="eda.html#cb373-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span>
-<span id="cb373-13"><a href="eda.html#cb373-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-14"><a href="eda.html#cb373-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="eda.html#cb385-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb385-2"><a href="eda.html#cb385-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> num.partners)) <span class="sc">+</span> </span>
+<span id="cb385-3"><a href="eda.html#cb385-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb385-4"><a href="eda.html#cb385-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb385-5"><a href="eda.html#cb385-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;number of partners&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb385-6"><a href="eda.html#cb385-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span>
+<span id="cb385-7"><a href="eda.html#cb385-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb385-8"><a href="eda.html#cb385-8" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> first.sex)) <span class="sc">+</span> </span>
+<span id="cb385-9"><a href="eda.html#cb385-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb385-10"><a href="eda.html#cb385-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb385-11"><a href="eda.html#cb385-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&quot;age of first sex&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb385-12"><a href="eda.html#cb385-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="cn">NULL</span>)</span>
+<span id="cb385-13"><a href="eda.html#cb385-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-14"><a href="eda.html#cb385-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:num-partners-inspection1"></span>
 <img src="bookdown-demo_files/figure-html/num-partners-inspection1-1.png" alt="The 'num.partners' (left) and 'first.sex' (right) attributes" width="80%" />
 <p class="caption">
@@ -747,28 +746,28 @@ Figure 7.2: The ‘num.partners’ (left) and ‘first.sex’ (right) attributes
 </ul>
 <p>Here is another boxplot, the workhorse of data visualization. The problem with discrete data is that they overlap 100% in plots, as is the case with the outliers here. Instead of overlaying with all jittered data you could apply this trick to only jitter the outliers. The trick there is to provide a <code>data = function(x) dplyr::filter(x, outlier)</code> argument in <code>geom_jitter()</code> where only the rows with outliers are selected.<br />
 Note that I already moved away from univeriate analysis.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="eda.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="do">##define outlier function</span></span>
-<span id="cb374-2"><a href="eda.html#cb374-2" aria-hidden="true" tabindex="-1"></a>my_outlier <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb374-3"><a href="eda.html#cb374-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> <span class="fu">median</span>(x) <span class="sc">+</span> <span class="fu">IQR</span>(x) <span class="sc">*</span> <span class="fl">1.5</span></span>
-<span id="cb374-4"><a href="eda.html#cb374-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb374-5"><a href="eda.html#cb374-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-6"><a href="eda.html#cb374-6" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb374-7"><a href="eda.html#cb374-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">c</span>(horm.contracept.years, target.biopsy)) <span class="sc">%&gt;%</span> </span>
-<span id="cb374-8"><a href="eda.html#cb374-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb374-9"><a href="eda.html#cb374-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">outlier =</span> <span class="fu">my_outlier</span>(horm.contracept.years)) <span class="sc">%&gt;%</span></span>
-<span id="cb374-10"><a href="eda.html#cb374-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb374-11"><a href="eda.html#cb374-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-12"><a href="eda.html#cb374-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>target.biopsy, <span class="at">y=</span>horm.contracept.years)) <span class="sc">+</span> </span>
-<span id="cb374-13"><a href="eda.html#cb374-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="do">##no outliers plotted here</span></span>
-<span id="cb374-14"><a href="eda.html#cb374-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">data =</span> <span class="cf">function</span>(x) dplyr<span class="sc">::</span><span class="fu">filter</span>(x, outlier), </span>
-<span id="cb374-15"><a href="eda.html#cb374-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="eda.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="do">##define outlier function</span></span>
+<span id="cb386-2"><a href="eda.html#cb386-2" aria-hidden="true" tabindex="-1"></a>my_outlier <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb386-3"><a href="eda.html#cb386-3" aria-hidden="true" tabindex="-1"></a>    x <span class="sc">&gt;</span> <span class="fu">median</span>(x) <span class="sc">+</span> <span class="fu">IQR</span>(x) <span class="sc">*</span> <span class="fl">1.5</span></span>
+<span id="cb386-4"><a href="eda.html#cb386-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb386-5"><a href="eda.html#cb386-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb386-6"><a href="eda.html#cb386-6" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb386-7"><a href="eda.html#cb386-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">c</span>(horm.contracept.years, target.biopsy)) <span class="sc">%&gt;%</span> </span>
+<span id="cb386-8"><a href="eda.html#cb386-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb386-9"><a href="eda.html#cb386-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">outlier =</span> <span class="fu">my_outlier</span>(horm.contracept.years)) <span class="sc">%&gt;%</span></span>
+<span id="cb386-10"><a href="eda.html#cb386-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb386-11"><a href="eda.html#cb386-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb386-12"><a href="eda.html#cb386-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tmp, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>target.biopsy, <span class="at">y=</span>horm.contracept.years)) <span class="sc">+</span> </span>
+<span id="cb386-13"><a href="eda.html#cb386-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="do">##no outliers plotted here</span></span>
+<span id="cb386-14"><a href="eda.html#cb386-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">data =</span> <span class="cf">function</span>(x) dplyr<span class="sc">::</span><span class="fu">filter</span>(x, outlier), </span>
+<span id="cb386-15"><a href="eda.html#cb386-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <p>Let’s also look at the STDs.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="eda.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>STDs.number)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="eda.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data<span class="sc">$</span>STDs.number)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ##     0.0     0.0     0.0     0.2     0.0     4.0     105</code></pre>
 <p>These are strange numbers! Many missing values and many outliers apparently. A simple table view may help get insight here.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="eda.html#cb377-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(STDs.number) <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="eda.html#cb389-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(STDs.number) <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   STDs.number     n
 ##         &lt;dbl&gt; &lt;int&gt;
@@ -783,7 +782,7 @@ Note that I already moved away from univeriate analysis.</p>
 </div>
 <div id="smoking-data-corrupted" class="section level3" number="7.3.2">
 <h3><span class="header-section-number">7.3.2</span> Smoking data corrupted?</h3>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="eda.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data[, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="eda.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data[, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>])</span></code></pre></div>
 <pre><code>##    smoker         smoke.years   smokes.packs.year
 ##  Mode :logical   Min.   : 0.0   Min.   : 0.0     
 ##  FALSE:722       1st Qu.: 0.0   1st Qu.: 0.0     
@@ -793,29 +792,29 @@ Note that I already moved away from univeriate analysis.</p>
 ##                  Max.   :37.0   Max.   :37.0     
 ##                  NA&#39;s   :13     NA&#39;s   :13</code></pre>
 <p>Obviously, these three variables describe the exact same thing: smoking behavior. But there is something funny going on. Let’s investigate this further and deal with it.</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="eda.html#cb381-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(smoker) <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="eda.html#cb393-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(smoker) <span class="sc">%&gt;%</span> <span class="fu">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 2
 ##   smoker     n
 ##   &lt;lgl&gt;  &lt;int&gt;
 ## 1 FALSE    722
 ## 2 TRUE     123
 ## 3 NA        13</code></pre>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="eda.html#cb383-1" aria-hidden="true" tabindex="-1"></a>perc <span class="ot">&lt;-</span> <span class="fu">length</span>(data<span class="sc">$</span>smoker) <span class="sc">/</span> <span class="fu">sum</span>(data<span class="sc">$</span>smoker, <span class="at">na.rm =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="eda.html#cb395-1" aria-hidden="true" tabindex="-1"></a>perc <span class="ot">&lt;-</span> <span class="fu">length</span>(data<span class="sc">$</span>smoker) <span class="sc">/</span> <span class="fu">sum</span>(data<span class="sc">$</span>smoker, <span class="at">na.rm =</span> T)</span></code></pre></div>
 <p>So 6.98% of the subjects in this study is smoker.</p>
 <p>Verify the number of smokers via another route:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="eda.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data<span class="sc">$</span>smoker <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> data<span class="sc">$</span>smokes.packs.year <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="eda.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data<span class="sc">$</span>smoker <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> data<span class="sc">$</span>smokes.packs.year <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## [1] 123</code></pre>
 <p>So is the smoker data corrupted? Probably not, but row 4 is dodgy at the least, and worth further investigation:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="eda.html#cb386-1" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="eda.html#cb398-1" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)]</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 4
 ##     age smoker smoke.years smokes.packs.year
 ##   &lt;int&gt; &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
 ## 1    52 TRUE            37                37</code></pre>
 <p>Let’s look at the values in the the smoker columns in another way:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="eda.html#cb388-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb388-2"><a href="eda.html#cb388-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(smoker, smoke.years, smokes.packs.year) <span class="sc">%&gt;%</span></span>
-<span id="cb388-3"><a href="eda.html#cb388-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb388-4"><a href="eda.html#cb388-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> smoke.years <span class="sc">==</span> smokes.packs.year)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="eda.html#cb400-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb400-2"><a href="eda.html#cb400-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(smoker, smoke.years, smokes.packs.year) <span class="sc">%&gt;%</span></span>
+<span id="cb400-3"><a href="eda.html#cb400-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb400-4"><a href="eda.html#cb400-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> smoke.years <span class="sc">==</span> smokes.packs.year)</span></code></pre></div>
 <pre><code>## # A tibble: 14 x 3
 ##    smoker smoke.years smokes.packs.year
 ##    &lt;lgl&gt;        &lt;dbl&gt;             &lt;dbl&gt;
@@ -834,16 +833,16 @@ Note that I already moved away from univeriate analysis.</p>
 ## 13 TRUE             3                 3
 ## 14 TRUE            22                22</code></pre>
 <p>As reminder, here is the equivalent base R code - which do you prefer?</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="eda.html#cb390-1" aria-hidden="true" tabindex="-1"></a>data[<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>smoke.years) </span>
-<span id="cb390-2"><a href="eda.html#cb390-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> </span>
-<span id="cb390-3"><a href="eda.html#cb390-3" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">==</span> data<span class="sc">$</span>smokes.packs.year, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="eda.html#cb402-1" aria-hidden="true" tabindex="-1"></a>data[<span class="sc">!</span><span class="fu">is.na</span>(data<span class="sc">$</span>smoke.years) </span>
+<span id="cb402-2"><a href="eda.html#cb402-2" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">&gt;</span> <span class="dv">0</span> </span>
+<span id="cb402-3"><a href="eda.html#cb402-3" aria-hidden="true" tabindex="-1"></a>     <span class="sc">&amp;</span> data<span class="sc">$</span>smoke.years <span class="sc">==</span> data<span class="sc">$</span>smokes.packs.year, <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)]</span></code></pre></div>
 <p>What do you think happened here?<br />
 I personally think there was a sleepy person doing data entry in the wrong column, or something like that.</p>
 <p>Now the packs per year attribute.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="eda.html#cb391-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(smokes.packs.year <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb391-2"><a href="eda.html#cb391-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> smokes.packs.year)) <span class="sc">+</span>  </span>
-<span id="cb391-3"><a href="eda.html#cb391-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="eda.html#cb403-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(smokes.packs.year <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb403-2"><a href="eda.html#cb403-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> smokes.packs.year)) <span class="sc">+</span>  </span>
+<span id="cb403-3"><a href="eda.html#cb403-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p>Do you know any smoker? Do they smoke at most 37 packs per year? I think not! This cannot be packs per year! Most smokers smoke 1-7 packs per week! This is exactly what this histogram shows.</p>
 <div id="dealing-with-data-corruption" class="section level4" number="7.3.2.1">
 <h4><span class="header-section-number">7.3.2.1</span> Dealing with data corruption</h4>
@@ -876,12 +875,12 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <h4><span class="header-section-number">7.4.1.1</span> min-max normalization</h4>
 <p>All data is scaled from 0 to 1, where the lowest value in your data is mapped to zero and the highest to one. This method is easy and transparent, but the danger lies in unseen data. When new data is encountered with a wider distribution analyses with this approach may break.</p>
 <p>This is how to do it in R</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="eda.html#cb392-1" aria-hidden="true" tabindex="-1"></a>scale_min_max <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb392-2"><a href="eda.html#cb392-2" aria-hidden="true" tabindex="-1"></a>     (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x))</span>
-<span id="cb392-3"><a href="eda.html#cb392-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="eda.html#cb404-1" aria-hidden="true" tabindex="-1"></a>scale_min_max <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb404-2"><a href="eda.html#cb404-2" aria-hidden="true" tabindex="-1"></a>     (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x))</span>
+<span id="cb404-3"><a href="eda.html#cb404-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Here is a demo of min-max normalization.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="eda.html#cb393-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
-<span id="cb393-2"><a href="eda.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_min_max</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="eda.html#cb405-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb405-2"><a href="eda.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_min_max</span>(x)</span></code></pre></div>
 <pre><code>## [1] 0.500 0.000 0.667 1.000 0.167 0.833</code></pre>
 </div>
 <div id="scaling-normalization" class="section level4" number="7.4.1.2">
@@ -889,8 +888,8 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <p>A slightly more used normalization technique is scaling normalization. It scales all variable to a mean of zero and with the same standard deviation.</p>
 <p><span class="math display">\[x&#39; = \frac{x-\bar{x}}{\sigma}\]</span></p>
 <p>It is built right into R:</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="eda.html#cb395-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
-<span id="cb395-2"><a href="eda.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="eda.html#cb407-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb407-2"><a href="eda.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scale</span>(x)</span></code></pre></div>
 <pre><code>##         [,1]
 ## [1,] -0.0719
 ## [2,] -1.3669
@@ -908,9 +907,9 @@ Since the smoking data is redundant, I will choose the latter. if you have this 
 <p>How to change this factor in a numeric representation usable for techniques that require numeric input such as clustering, linear modelling or regression?</p>
 <p>This is done with a technique called dummy coding and the essence is binary splitting.
 Here is a small data set:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="eda.html#cb397-1" aria-hidden="true" tabindex="-1"></a>pet_favour <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">subject =</span> <span class="fu">c</span>(<span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Roger&quot;</span>, <span class="st">&quot;Rose&quot;</span>, <span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Caitlin&quot;</span>),</span>
-<span id="cb397-2"><a href="eda.html#cb397-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">favour =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;rat&quot;</span>)))</span>
-<span id="cb397-3"><a href="eda.html#cb397-3" aria-hidden="true" tabindex="-1"></a>pet_favour</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="eda.html#cb409-1" aria-hidden="true" tabindex="-1"></a>pet_favour <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">subject =</span> <span class="fu">c</span>(<span class="st">&quot;Mike&quot;</span>, <span class="st">&quot;Roger&quot;</span>, <span class="st">&quot;Rose&quot;</span>, <span class="st">&quot;Megan&quot;</span>, <span class="st">&quot;Caitlin&quot;</span>),</span>
+<span id="cb409-2"><a href="eda.html#cb409-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">favour =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;dog&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;rat&quot;</span>)))</span>
+<span id="cb409-3"><a href="eda.html#cb409-3" aria-hidden="true" tabindex="-1"></a>pet_favour</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   subject favour
 ##   &lt;chr&gt;   &lt;fct&gt; 
@@ -926,13 +925,13 @@ Here is a small data set:</p>
 <li>rat/not rat</li>
 </ul>
 <p>Below you can see an approach to this using some techniques from base R.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="eda.html#cb399-1" aria-hidden="true" tabindex="-1"></a>encode_dummy <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb399-2"><a href="eda.html#cb399-2" aria-hidden="true" tabindex="-1"></a>    lvls <span class="ot">&lt;-</span> <span class="fu">levels</span>(x)</span>
-<span id="cb399-3"><a href="eda.html#cb399-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">sapply</span>(lvls, <span class="cf">function</span>(y) <span class="fu">as.integer</span>(x <span class="sc">==</span> y)))</span>
-<span id="cb399-4"><a href="eda.html#cb399-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(tmp) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(lvls, <span class="st">&quot;_y&quot;</span>)</span>
-<span id="cb399-5"><a href="eda.html#cb399-5" aria-hidden="true" tabindex="-1"></a>    tmp</span>
-<span id="cb399-6"><a href="eda.html#cb399-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb399-7"><a href="eda.html#cb399-7" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(<span class="at">subject =</span> pet_favour<span class="sc">$</span>subject, <span class="fu">encode_dummy</span>(pet_favour<span class="sc">$</span>favour))</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="eda.html#cb411-1" aria-hidden="true" tabindex="-1"></a>encode_dummy <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb411-2"><a href="eda.html#cb411-2" aria-hidden="true" tabindex="-1"></a>    lvls <span class="ot">&lt;-</span> <span class="fu">levels</span>(x)</span>
+<span id="cb411-3"><a href="eda.html#cb411-3" aria-hidden="true" tabindex="-1"></a>    tmp <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">sapply</span>(lvls, <span class="cf">function</span>(y) <span class="fu">as.integer</span>(x <span class="sc">==</span> y)))</span>
+<span id="cb411-4"><a href="eda.html#cb411-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(tmp) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(lvls, <span class="st">&quot;_y&quot;</span>)</span>
+<span id="cb411-5"><a href="eda.html#cb411-5" aria-hidden="true" tabindex="-1"></a>    tmp</span>
+<span id="cb411-6"><a href="eda.html#cb411-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb411-7"><a href="eda.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_cols</span>(<span class="at">subject =</span> pet_favour<span class="sc">$</span>subject, <span class="fu">encode_dummy</span>(pet_favour<span class="sc">$</span>favour))</span></code></pre></div>
 <pre><code>##   subject cat_y dog_y rat_y
 ## 1    Mike     0     1     0
 ## 2   Roger     1     0     0
@@ -947,16 +946,16 @@ Here is a small data set:</p>
 <p>Especially for visualization purposes, it can be more convenient to have a variable in a factor form instead of numeric form. For instance, this is the case with the smoking-related data in the current dataset.</p>
 <p>I will reduce all three ‘smoking’ variables to one variable and start building a ‘clean’ dataset.
 Here, the new variable <code>smoking</code> is the result of cutting the <code>smoke.years</code> variable into factor levels.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="eda.html#cb401-1" aria-hidden="true" tabindex="-1"></a>smoking_f <span class="ot">&lt;-</span> <span class="fu">cut</span>(data<span class="sc">$</span>smoke.years, </span>
-<span id="cb401-2"><a href="eda.html#cb401-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">100</span>), </span>
-<span id="cb401-3"><a href="eda.html#cb401-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;short&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;long&quot;</span>),</span>
-<span id="cb401-4"><a href="eda.html#cb401-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">ordered_result =</span> T,</span>
-<span id="cb401-5"><a href="eda.html#cb401-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">right =</span> F)</span>
-<span id="cb401-6"><a href="eda.html#cb401-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb401-7"><a href="eda.html#cb401-7" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb401-8"><a href="eda.html#cb401-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">smoking =</span> smoking_f) <span class="sc">%&gt;%</span></span>
-<span id="cb401-9"><a href="eda.html#cb401-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(age<span class="sc">:</span>num.preg, smoking, horm.contracept.ever<span class="sc">:</span>target.biopsy)</span>
-<span id="cb401-10"><a href="eda.html#cb401-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(clean_data<span class="sc">$</span>smoking, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="eda.html#cb413-1" aria-hidden="true" tabindex="-1"></a>smoking_f <span class="ot">&lt;-</span> <span class="fu">cut</span>(data<span class="sc">$</span>smoke.years, </span>
+<span id="cb413-2"><a href="eda.html#cb413-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">100</span>), </span>
+<span id="cb413-3"><a href="eda.html#cb413-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;short&quot;</span>, <span class="st">&quot;medium&quot;</span>, <span class="st">&quot;long&quot;</span>),</span>
+<span id="cb413-4"><a href="eda.html#cb413-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">ordered_result =</span> T,</span>
+<span id="cb413-5"><a href="eda.html#cb413-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">right =</span> F)</span>
+<span id="cb413-6"><a href="eda.html#cb413-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb413-7"><a href="eda.html#cb413-7" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb413-8"><a href="eda.html#cb413-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">smoking =</span> smoking_f) <span class="sc">%&gt;%</span></span>
+<span id="cb413-9"><a href="eda.html#cb413-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(age<span class="sc">:</span>num.preg, smoking, horm.contracept.ever<span class="sc">:</span>target.biopsy)</span>
+<span id="cb413-10"><a href="eda.html#cb413-10" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(clean_data<span class="sc">$</span>smoking, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  never  short medium   long   &lt;NA&gt; 
 ##    726     42     44     33     13</code></pre>
@@ -964,9 +963,9 @@ Here, the new variable <code>smoking</code> is the result of cutting the <code>s
 <div id="data-redundancy-in-std-variables" class="section level3" number="7.4.3">
 <h3><span class="header-section-number">7.4.3</span> Data redundancy in STD variables</h3>
 <p>There are many variables related to STDs:</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="eda.html#cb403-1" aria-hidden="true" tabindex="-1"></a>(std_columns <span class="ot">&lt;-</span> codebook <span class="sc">%&gt;%</span> </span>
-<span id="cb403-2"><a href="eda.html#cb403-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(abbreviation) <span class="sc">%&gt;%</span> </span>
-<span id="cb403-3"><a href="eda.html#cb403-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(abbreviation, <span class="st">&quot;STD_&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="eda.html#cb415-1" aria-hidden="true" tabindex="-1"></a>(std_columns <span class="ot">&lt;-</span> codebook <span class="sc">%&gt;%</span> </span>
+<span id="cb415-2"><a href="eda.html#cb415-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(abbreviation) <span class="sc">%&gt;%</span> </span>
+<span id="cb415-3"><a href="eda.html#cb415-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(abbreviation, <span class="st">&quot;STD_&quot;</span>)))</span></code></pre></div>
 <pre><code>##          abbreviation
 ## 1  STD_condylomatosis
 ## 2   STD_cervical.cond
@@ -980,20 +979,20 @@ Here, the new variable <code>smoking</code> is the result of cutting the <code>s
 ## 10            STD_hiv
 ## 11           STD_hepB
 ## 12            STD_HPV</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="eda.html#cb405-1" aria-hidden="true" tabindex="-1"></a>std_columns <span class="ot">&lt;-</span> std_columns<span class="sc">$</span>abbreviation</span>
-<span id="cb405-2"><a href="eda.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="do">##alternative with base R:</span></span>
-<span id="cb405-3"><a href="eda.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="co">#codebook[grep(pattern = &quot;STD_&quot;, x = codebook$abbreviation), 1]</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="eda.html#cb417-1" aria-hidden="true" tabindex="-1"></a>std_columns <span class="ot">&lt;-</span> std_columns<span class="sc">$</span>abbreviation</span>
+<span id="cb417-2"><a href="eda.html#cb417-2" aria-hidden="true" tabindex="-1"></a><span class="do">##alternative with base R:</span></span>
+<span id="cb417-3"><a href="eda.html#cb417-3" aria-hidden="true" tabindex="-1"></a><span class="co">#codebook[grep(pattern = &quot;STD_&quot;, x = codebook$abbreviation), 1]</span></span></code></pre></div>
 <p>Some of these are almost completely redundant, and most with extremely low -and thus useless- counts. Seen in absolute numbers, not many have multiple STDs, but statistically seen they are highly over represented - there are even more with two than with one STD:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="eda.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>STDs.number, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="eda.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>STDs.number, <span class="at">useNA =</span> <span class="st">&quot;always&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##    0    1    2    3    4 &lt;NA&gt; 
 ##  674   34   37    7    1  105</code></pre>
 <p>Only 79 subjects have STDs (luckily!).</p>
 <p>These are the counts of occurrences of individual STDs:</p>
 <p>They are listed below. You can see a nice application of the <code>gather()</code> function to put the results in long format instead of wide.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="eda.html#cb408-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span></span>
-<span id="cb408-2"><a href="eda.html#cb408-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_at</span>(std_columns, <span class="cf">function</span>(x) <span class="fu">sum</span>(x, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
-<span id="cb408-3"><a href="eda.html#cb408-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;disease&quot;</span>, <span class="at">value =</span> <span class="st">&quot;count&quot;</span>, <span class="fu">everything</span>()) </span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="eda.html#cb420-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span></span>
+<span id="cb420-2"><a href="eda.html#cb420-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_at</span>(std_columns, <span class="cf">function</span>(x) <span class="fu">sum</span>(x, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
+<span id="cb420-3"><a href="eda.html#cb420-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gather</span>(<span class="at">key =</span> <span class="st">&quot;disease&quot;</span>, <span class="at">value =</span> <span class="st">&quot;count&quot;</span>, <span class="fu">everything</span>()) </span></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##    disease            count
 ##    &lt;chr&gt;              &lt;int&gt;
@@ -1010,22 +1009,22 @@ Here, the new variable <code>smoking</code> is the result of cutting the <code>s
 ## 11 STD_hepB               1
 ## 12 STD_HPV                2</code></pre>
 <p>This is the same in base R using <code>apply()</code>:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="eda.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(data[ ,std_columns], <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x<span class="sc">&gt;</span><span class="dv">0</span>, <span class="at">na.rm=</span>T))</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="eda.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(data[ ,std_columns], <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(x<span class="sc">&gt;</span><span class="dv">0</span>, <span class="at">na.rm=</span>T))</span></code></pre></div>
 </div>
 </div>
 <div id="the-dependent-variable" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> The dependent variable</h2>
 <p>In many datasets there is a single <strong><em>dependent variable</em></strong>, the variable you try to explain or model using all the other variables (hence the name “target” used here. In this case it is the question whether the subject has cervical cancer yes or no.</p>
 <p>Unfortunately there are four dependent variables:</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="eda.html#cb411-1" aria-hidden="true" tabindex="-1"></a>last <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">names</span>(data))</span>
-<span id="cb411-2"><a href="eda.html#cb411-2" aria-hidden="true" tabindex="-1"></a>(target_vars <span class="ot">&lt;-</span> <span class="fu">names</span>(data)[(last<span class="dv">-3</span>)<span class="sc">:</span>last])</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="eda.html#cb423-1" aria-hidden="true" tabindex="-1"></a>last <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">names</span>(data))</span>
+<span id="cb423-2"><a href="eda.html#cb423-2" aria-hidden="true" tabindex="-1"></a>(target_vars <span class="ot">&lt;-</span> <span class="fu">names</span>(data)[(last<span class="dv">-3</span>)<span class="sc">:</span>last])</span></code></pre></div>
 <pre><code>## [1] &quot;target.hinselman&quot; &quot;target.schiller&quot;  &quot;target.cytology&quot;  &quot;target.biopsy&quot;</code></pre>
 <p><strong>Which one(s) are you going to use?</strong></p>
 <p>Let’s investigate the pairwise correlations between them.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="eda.html#cb413-1" aria-hidden="true" tabindex="-1"></a>target_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hinselman&quot;</span>, <span class="st">&quot;Schiller&quot;</span>, <span class="st">&quot;cytology&quot;</span>, <span class="st">&quot;biopsy&quot;</span>)</span>
-<span id="cb413-2"><a href="eda.html#cb413-2" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(data[, <span class="dv">33</span><span class="sc">:</span><span class="dv">36</span>])</span>
-<span id="cb413-3"><a href="eda.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cor_matrix) <span class="ot">&lt;-</span> target_names</span>
-<span id="cb413-4"><a href="eda.html#cb413-4" aria-hidden="true" tabindex="-1"></a>(cor_matrix <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cor_matrix))</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="eda.html#cb425-1" aria-hidden="true" tabindex="-1"></a>target_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hinselman&quot;</span>, <span class="st">&quot;Schiller&quot;</span>, <span class="st">&quot;cytology&quot;</span>, <span class="st">&quot;biopsy&quot;</span>)</span>
+<span id="cb425-2"><a href="eda.html#cb425-2" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(data[, <span class="dv">33</span><span class="sc">:</span><span class="dv">36</span>])</span>
+<span id="cb425-3"><a href="eda.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cor_matrix) <span class="ot">&lt;-</span> target_names</span>
+<span id="cb425-4"><a href="eda.html#cb425-4" aria-hidden="true" tabindex="-1"></a>(cor_matrix <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cor_matrix))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 4
 ##   Hinselman Schiller cytology biopsy
 ##       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
@@ -1033,7 +1032,7 @@ Here, the new variable <code>smoking</code> is the result of cutting the <code>s
 ## 2     0.650    1        0.361  0.733
 ## 3     0.192    0.361    1      0.327
 ## 4     0.547    0.733    0.327  1</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="eda.html#cb415-1" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> cor_matrix <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">target_name =</span> target_names) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="eda.html#cb427-1" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> cor_matrix <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">target_name =</span> target_names) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
 <p>A <strong><em>
 map</em></strong> is a nice visualization for this type of data. Of course, ggplot really likes the long format so that needs to be done first with <code>gather()</code> (try to do this with <code>pivot_longer()</code> as an exercise):</p>
 <pre class="{r"><code>map, fig.asp=.9, out.width=&#39;70%&#39;, fig.align=&#39;center&#39;, fig.cap=&quot;A correlation 
@@ -1045,7 +1044,7 @@ ggplot(data = cor_matrix_long, aes(x=target_name, y=method, fill=correlation)) +
     scale_fill_gradient(high = &quot;red&quot;, low = &quot;white&quot; )</code></pre>
 <p>This shows the correlation between the four target variables.</p>
 <p>Another way to explore this is a <strong><em>contingency table</em></strong>.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="eda.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="do">## TO BE DONE</span></span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="eda.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="do">## TO BE DONE</span></span></code></pre></div>
 </div>
 <div id="exploring-relationships-between-variables" class="section level2" number="7.6">
 <h2><span class="header-section-number">7.6</span> Exploring relationships between variables</h2>
@@ -1053,9 +1052,9 @@ ggplot(data = cor_matrix_long, aes(x=target_name, y=method, fill=correlation)) +
 <div id="the-scatterplot" class="section level3" number="7.6.1">
 <h3><span class="header-section-number">7.6.1</span> The scatterplot</h3>
 <p>A simple scatterplot looking at the relationship between <code>first.sex</code> and <code>num.partners</code>.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="eda.html#cb418-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(clean_data, <span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.partners)) <span class="sc">+</span></span>
-<span id="cb418-2"><a href="eda.html#cb418-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) </span>
-<span id="cb418-3"><a href="eda.html#cb418-3" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="eda.html#cb430-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(clean_data, <span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.partners)) <span class="sc">+</span></span>
+<span id="cb430-2"><a href="eda.html#cb430-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) </span>
+<span id="cb430-3"><a href="eda.html#cb430-3" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot1"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot1-1.png" alt="scatterplot first version" width="70%" />
 <p class="caption">
@@ -1066,12 +1065,12 @@ Figure 7.3: scatterplot first version
 More importantly, this is not showing the correct picture: there is a limited number of discrete values for each variable. Only around 100 points are visible where {r nrow(data)} are expected, so apparently many points overlap. This can be improved with alpha parameter to <code>geom_point</code>. Another strategy to improve is by using the <code>geom_jitter()</code> function, and combined with the <code>alpha</code> parameter.
 Omitting outliers could improve the picture, but will of course not show the complete picture anymore.</p>
 <p>Here, I choose the transparency option together with a bit of jitter (but not too much to still show the discreteness of the measurements). I also added a trend line in the form of a smoother. The trend line is an addition that is a great visual help to guide your reader. My question to you is: look at the trend line and decide whether it is showing a false pattern.</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="eda.html#cb419-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> </span>
-<span id="cb419-2"><a href="eda.html#cb419-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">na.rm=</span>T, <span class="at">alpha=</span><span class="fl">0.2</span>, </span>
-<span id="cb419-3"><a href="eda.html#cb419-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">2</span>, </span>
-<span id="cb419-4"><a href="eda.html#cb419-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>,</span>
-<span id="cb419-5"><a href="eda.html#cb419-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb419-6"><a href="eda.html#cb419-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="eda.html#cb431-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> </span>
+<span id="cb431-2"><a href="eda.html#cb431-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">na.rm=</span>T, <span class="at">alpha=</span><span class="fl">0.2</span>, </span>
+<span id="cb431-3"><a href="eda.html#cb431-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">2</span>, </span>
+<span id="cb431-4"><a href="eda.html#cb431-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>,</span>
+<span id="cb431-5"><a href="eda.html#cb431-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb431-6"><a href="eda.html#cb431-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot2"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot2-1.png" alt="scatterplot  with trendline" width="70%" />
@@ -1080,14 +1079,14 @@ Figure 7.4: scatterplot with trendline
 </p>
 </div>
 <p>The trend line shows the high impact of a single outlier! In contrast to common belief about age of first sex and “promiscuity,” no apparent relationship is visible in this dataset when you omit the single outlier:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="eda.html#cb421-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(num.partners <span class="sc">&lt;</span> <span class="dv">25</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb421-2"><a href="eda.html#cb421-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.partners)) <span class="sc">+</span></span>
-<span id="cb421-3"><a href="eda.html#cb421-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) <span class="sc">+</span></span>
-<span id="cb421-4"><a href="eda.html#cb421-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">na.rm=</span>T, <span class="at">alpha=</span><span class="fl">0.2</span>, </span>
-<span id="cb421-5"><a href="eda.html#cb421-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">2</span>, </span>
-<span id="cb421-6"><a href="eda.html#cb421-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>,</span>
-<span id="cb421-7"><a href="eda.html#cb421-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb421-8"><a href="eda.html#cb421-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="eda.html#cb433-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(num.partners <span class="sc">&lt;</span> <span class="dv">25</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb433-2"><a href="eda.html#cb433-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.partners)) <span class="sc">+</span></span>
+<span id="cb433-3"><a href="eda.html#cb433-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of sexual partners&quot;</span>) <span class="sc">+</span></span>
+<span id="cb433-4"><a href="eda.html#cb433-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_jitter</span>(<span class="at">na.rm=</span>T, <span class="at">alpha=</span><span class="fl">0.2</span>, </span>
+<span id="cb433-5"><a href="eda.html#cb433-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">2</span>, </span>
+<span id="cb433-6"><a href="eda.html#cb433-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>, <span class="at">height =</span> <span class="fl">0.2</span>,</span>
+<span id="cb433-7"><a href="eda.html#cb433-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb433-8"><a href="eda.html#cb433-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:scatterplot3"></span>
 <img src="bookdown-demo_files/figure-html/scatterplot3-1.png" alt="scatterplot  with trendline" width="70%" />
@@ -1098,59 +1097,59 @@ Figure 7.5: scatterplot with trendline
 <div id="binning" class="section level4" number="7.6.1.1">
 <h4><span class="header-section-number">7.6.1.1</span> Binning</h4>
 <p>A method not discussed before is <strong><em>binning</em></strong>, With binning, you cluster the individual data points into “buckets.” The amount of cases in a bucket is then displayed using a color gradient.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="eda.html#cb423-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_bin2d</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-125-1.png" width="624" /></p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="eda.html#cb435-1" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_bin2d</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-123-1.png" width="624" /></p>
 <p>Here is a variation of binning - the hexagonal bin (requires package <code>hexbin</code>):</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="eda.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hexbin)</span>
-<span id="cb424-2"><a href="eda.html#cb424-2" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_hex</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="eda.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hexbin)</span>
+<span id="cb436-2"><a href="eda.html#cb436-2" aria-hidden="true" tabindex="-1"></a>baseplot_sp <span class="sc">+</span> <span class="fu">geom_hex</span>(<span class="at">na.rm=</span>T)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 </div>
 </div>
 </div>
 <div id="look-for-patterns-with-the-dependent-variable" class="section level2" number="7.7">
 <h2><span class="header-section-number">7.7</span> Look for patterns with the dependent variable</h2>
 <p>Why would you do that? The dependent variable is the thing you are interested in! Therefore it is a good idea to investigate variables in relation with the dependent variable.</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="eda.html#cb425-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(num.partners <span class="sc">&lt;</span> <span class="dv">25</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb425-2"><a href="eda.html#cb425-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.preg, <span class="at">color=</span>target.biopsy)) <span class="sc">+</span></span>
-<span id="cb425-3"><a href="eda.html#cb425-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of pregnancies&quot;</span>) <span class="sc">+</span></span>
-<span id="cb425-4"><a href="eda.html#cb425-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color=</span>target.biopsy), </span>
-<span id="cb425-5"><a href="eda.html#cb425-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">na.rm=</span>T, <span class="at">width=</span><span class="fl">0.2</span>, <span class="at">height=</span><span class="fl">0.2</span>, </span>
-<span id="cb425-6"><a href="eda.html#cb425-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb425-7"><a href="eda.html#cb425-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb425-8"><a href="eda.html#cb425-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="eda.html#cb437-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(num.partners <span class="sc">&lt;</span> <span class="dv">25</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb437-2"><a href="eda.html#cb437-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>first.sex, <span class="at">y=</span>num.preg, <span class="at">color=</span>target.biopsy)) <span class="sc">+</span></span>
+<span id="cb437-3"><a href="eda.html#cb437-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Age of first sex&quot;</span>, <span class="at">y=</span><span class="st">&quot;Number of pregnancies&quot;</span>) <span class="sc">+</span></span>
+<span id="cb437-4"><a href="eda.html#cb437-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color=</span>target.biopsy), </span>
+<span id="cb437-5"><a href="eda.html#cb437-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">na.rm=</span>T, <span class="at">width=</span><span class="fl">0.2</span>, <span class="at">height=</span><span class="fl">0.2</span>, </span>
+<span id="cb437-6"><a href="eda.html#cb437-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb437-7"><a href="eda.html#cb437-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb437-8"><a href="eda.html#cb437-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;loess&quot;</span>, <span class="at">na.rm=</span>T)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-127-1.png" width="624" /></p>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-125-1.png" width="624" /></p>
 <p>Again, the heatmap comes in handy. Start with creating the matrix.</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="eda.html#cb427-1" aria-hidden="true" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
-<span id="cb427-2"><a href="eda.html#cb427-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb427-3"><a href="eda.html#cb427-3" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(selection) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="eda.html#cb439-1" aria-hidden="true" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
+<span id="cb439-2"><a href="eda.html#cb439-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-3"><a href="eda.html#cb439-3" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(selection) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span></code></pre></div>
 <pre><code>## Note: Using an external vector in selections is ambiguous.
 ## ℹ Use `all_of(selection)` instead of `selection` to silence this message.
 ## ℹ See &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.
 ## This message is displayed once per session.</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="eda.html#cb429-1" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(tmp)</span>
-<span id="cb429-2"><a href="eda.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cor_matrix</span></span>
-<span id="cb429-3"><a href="eda.html#cb429-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb429-4"><a href="eda.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="co">#colnames(cor_matrix) &lt;- target_names</span></span>
-<span id="cb429-5"><a href="eda.html#cb429-5" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cor_matrix)</span>
-<span id="cb429-6"><a href="eda.html#cb429-6" aria-hidden="true" tabindex="-1"></a>(cor_matrix <span class="ot">&lt;-</span> cor_matrix <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">var1 =</span> selection) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="eda.html#cb441-1" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(tmp)</span>
+<span id="cb441-2"><a href="eda.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cor_matrix</span></span>
+<span id="cb441-3"><a href="eda.html#cb441-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb441-4"><a href="eda.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="co">#colnames(cor_matrix) &lt;- target_names</span></span>
+<span id="cb441-5"><a href="eda.html#cb441-5" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(cor_matrix)</span>
+<span id="cb441-6"><a href="eda.html#cb441-6" aria-hidden="true" tabindex="-1"></a>(cor_matrix <span class="ot">&lt;-</span> cor_matrix <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">var1 =</span> selection) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">8</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 8
-##   var1  num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
-##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-## 1 num.…      1        -0.148    0.0937           0.0209    0.00705     0.0370 
-## 2 firs…     -0.148     1       -0.0704           0.00434  -0.0357      0.00188
-## 3 num.…      0.0937   -0.0704   1                0.217     0.156      -0.00460
-## 4 horm…      0.0209    0.00434  0.217            1        -0.00885    -0.0175 
-## 5 IUD.…      0.00705  -0.0357   0.156           -0.00885   1           0.00262
-## 6 STDs…      0.0370    0.00188 -0.00460         -0.0175    0.00262     1      
-## 7 targ…     -0.00266   0.0296   0.0452           0.0799    0.0422      0.105  
+##   var1    num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 num.pa…      1        -0.148    0.0937           0.0209    0.00705     0.0370 
+## 2 first.…     -0.148     1       -0.0704           0.00434  -0.0357      0.00188
+## 3 num.pr…      0.0937   -0.0704   1                0.217     0.156      -0.00460
+## 4 horm.c…      0.0209    0.00434  0.217            1        -0.00885    -0.0175 
+## 5 IUD.ye…      0.00705  -0.0357   0.156           -0.00885   1           0.00262
+## 6 STDs.n…      0.0370    0.00188 -0.00460         -0.0175    0.00262     1      
+## 7 target…     -0.00266   0.0296   0.0452           0.0799    0.0422      0.105  
 ## # … with 1 more variable: target.biopsy &lt;dbl&gt;</code></pre>
 <p>And then create the plot. Here I used <code>pivot_longer()</code> instead of <code>gather()</code> to obtain the longer format required for ggplot2.</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="eda.html#cb431-1" aria-hidden="true" tabindex="-1"></a>cor_matrix_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> cor_matrix, <span class="at">cols =</span> selection, <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cor&quot;</span>)</span>
-<span id="cb431-2"><a href="eda.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cor_matrix_long, <span class="fu">aes</span>(<span class="at">x=</span>var1, <span class="at">y=</span>variable, <span class="at">fill=</span>cor)) <span class="sc">+</span> </span>
-<span id="cb431-3"><a href="eda.html#cb431-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
-<span id="cb431-4"><a href="eda.html#cb431-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb431-5"><a href="eda.html#cb431-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient</span>(<span class="at">high =</span> <span class="st">&quot;red&quot;</span>, <span class="at">low =</span> <span class="st">&quot;white&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="eda.html#cb443-1" aria-hidden="true" tabindex="-1"></a>cor_matrix_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> cor_matrix, <span class="at">cols =</span> selection, <span class="at">names_to =</span> <span class="st">&quot;variable&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cor&quot;</span>)</span>
+<span id="cb443-2"><a href="eda.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> cor_matrix_long, <span class="fu">aes</span>(<span class="at">x=</span>var1, <span class="at">y=</span>variable, <span class="at">fill=</span>cor)) <span class="sc">+</span> </span>
+<span id="cb443-3"><a href="eda.html#cb443-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>() <span class="sc">+</span> </span>
+<span id="cb443-4"><a href="eda.html#cb443-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb443-5"><a href="eda.html#cb443-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient</span>(<span class="at">high =</span> <span class="st">&quot;red&quot;</span>, <span class="at">low =</span> <span class="st">&quot;white&quot;</span> )</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:heatmap2"></span>
 <img src="bookdown-demo_files/figure-html/heatmap2-1.png" alt="A heatmap pairwise correlation of selected numeric variables" width="100%" />
 <p class="caption">
@@ -1162,25 +1161,25 @@ Figure 7.6: A heatmap pairwise correlation of selected numeric variables
 <div id="density-plots-show-class-distinction" class="section level2" number="7.8">
 <h2><span class="header-section-number">7.8</span> Density plots show class distinction</h2>
 <p>A density plot, split over the categories of your target variable, will often quickly reveal whether there is promise in a variable. I’ll demonstrate with the <code>iris</code> dataset since the cervical cancer dataset is not so nice in that respect.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="eda.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Length)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species))</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-129-1.png" width="624" />
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="eda.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Length)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color=</span>Species))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-127-1.png" width="624" />
 In this plot, you can see that Setosa separates quite nicely, by the other two don’t.</p>
 <div id="the-xor-problem" class="section level3" number="7.8.1">
 <h3><span class="header-section-number">7.8.1</span> The ‘xor’ problem</h3>
 <p>The density approach is not flawless! Consider this:</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="eda.html#cb433-1" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">300</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="fu">runif</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb433-2"><a href="eda.html#cb433-2" aria-hidden="true" tabindex="-1"></a>var_y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">150</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb433-3"><a href="eda.html#cb433-3" aria-hidden="true" tabindex="-1"></a>label <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;sick&quot;</span>, <span class="dv">150</span>), <span class="fu">rep</span>(<span class="st">&quot;healthy&quot;</span>, <span class="dv">150</span>)), <span class="dv">2</span>)</span>
-<span id="cb433-4"><a href="eda.html#cb433-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">dosage =</span> var_x, <span class="at">response=</span>var_y, <span class="at">patient_type =</span> label)</span>
-<span id="cb433-5"><a href="eda.html#cb433-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>dosage)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color=</span>patient_type))</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-130-1.png" width="624" /></p>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="eda.html#cb445-1" aria-hidden="true" tabindex="-1"></a>var_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">300</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="fu">runif</span>(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb445-2"><a href="eda.html#cb445-2" aria-hidden="true" tabindex="-1"></a>var_y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">150</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">runif</span>(<span class="dv">150</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb445-3"><a href="eda.html#cb445-3" aria-hidden="true" tabindex="-1"></a>label <span class="ot">=</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;sick&quot;</span>, <span class="dv">150</span>), <span class="fu">rep</span>(<span class="st">&quot;healthy&quot;</span>, <span class="dv">150</span>)), <span class="dv">2</span>)</span>
+<span id="cb445-4"><a href="eda.html#cb445-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">dosage =</span> var_x, <span class="at">response=</span>var_y, <span class="at">patient_type =</span> label)</span>
+<span id="cb445-5"><a href="eda.html#cb445-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x=</span>dosage)) <span class="sc">+</span> <span class="fu">geom_density</span>(<span class="fu">aes</span>(<span class="at">color=</span>patient_type))</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-128-1.png" width="624" /></p>
 <p>This looks like there is little to win, doesn’t it?<br />
 Here’s another view of the same data!</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="eda.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>dosage, <span class="at">y=</span>response)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-131-1.png" width="624" />
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="eda.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>dosage, <span class="at">y=</span>response)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-129-1.png" width="624" />
 Still not interesting! Give it one more shot:</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="eda.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>dosage, <span class="at">y=</span>response, <span class="at">color=</span>patient_type)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-132-1.png" width="624" /></p>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="eda.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x=</span>dosage, <span class="at">y=</span>response, <span class="at">color=</span>patient_type)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-130-1.png" width="624" /></p>
 <p>This is called the <strong><em>XOR</em></strong> problem because the cases follow an “Exclusive Or” rule.</p>
 </div>
 </div>
@@ -1189,10 +1188,10 @@ Still not interesting! Give it one more shot:</p>
 <div id="pca" class="section level3" number="7.9.1">
 <h3><span class="header-section-number">7.9.1</span> PCA</h3>
 <p>First PCA will be shown with the iris dataset and then with the cervical cancer dataset.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="eda.html#cb436-1" aria-hidden="true" tabindex="-1"></a>ir.pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(iris[, <span class="sc">-</span><span class="dv">5</span>],</span>
-<span id="cb436-2"><a href="eda.html#cb436-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb436-3"><a href="eda.html#cb436-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb436-4"><a href="eda.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ir.pca)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="eda.html#cb448-1" aria-hidden="true" tabindex="-1"></a>ir.pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(iris[, <span class="sc">-</span><span class="dv">5</span>],</span>
+<span id="cb448-2"><a href="eda.html#cb448-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb448-3"><a href="eda.html#cb448-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb448-4"><a href="eda.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ir.pca)</span></code></pre></div>
 <pre><code>## Standard deviations (1, .., p=4):
 ## [1] 1.708 0.956 0.383 0.144
 ## 
@@ -1203,17 +1202,17 @@ Still not interesting! Give it one more shot:</p>
 ## Petal.Length  0.580 -0.0245 -0.142 -0.801
 ## Petal.Width   0.565 -0.0669 -0.634  0.524</code></pre>
 <p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="eda.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ir.pca, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="eda.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ir.pca, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <p>The summary method describe the importance of the PCs.</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="eda.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ir.pca)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="eda.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ir.pca)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                         PC1   PC2    PC3     PC4
 ## Standard deviation     1.71 0.956 0.3831 0.14393
 ## Proportion of Variance 0.73 0.229 0.0367 0.00518
 ## Cumulative Proportion  0.73 0.958 0.9948 1.00000</code></pre>
 <p>The PC plot</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="eda.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbiplot)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="eda.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbiplot)</span></code></pre></div>
 <pre><code>## Loading required package: plyr</code></pre>
 <pre><code>## ------------------------------------------------------------------------------</code></pre>
 <pre><code>## You have loaded plyr after dplyr - this is likely to cause problems.
@@ -1227,34 +1226,34 @@ Still not interesting! Give it one more shot:</p>
 ##     arrange, count, desc, failwith, id, mutate, rename, summarise,
 ##     summarize</code></pre>
 <pre><code>## Loading required package: scales</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="eda.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbiplot</span>(ir.pca, <span class="at">obs.scale =</span> <span class="dv">1</span>, <span class="at">var.scale =</span> <span class="dv">1</span>, </span>
-<span id="cb449-2"><a href="eda.html#cb449-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">groups =</span> iris[,<span class="dv">5</span>], <span class="at">ellipse =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb449-3"><a href="eda.html#cb449-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">circle =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb449-4"><a href="eda.html#cb449-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
-<span id="cb449-5"><a href="eda.html#cb449-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="eda.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbiplot</span>(ir.pca, <span class="at">obs.scale =</span> <span class="dv">1</span>, <span class="at">var.scale =</span> <span class="dv">1</span>, </span>
+<span id="cb461-2"><a href="eda.html#cb461-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">groups =</span> iris[,<span class="dv">5</span>], <span class="at">ellipse =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb461-3"><a href="eda.html#cb461-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">circle =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb461-4"><a href="eda.html#cb461-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span></span>
+<span id="cb461-5"><a href="eda.html#cb461-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <p>Now the same procedure for the cervical cancer dataset, with a selection of numerical variables.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="eda.html#cb450-1" aria-hidden="true" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
-<span id="cb450-2"><a href="eda.html#cb450-2" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(selection) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
-<span id="cb450-3"><a href="eda.html#cb450-3" aria-hidden="true" tabindex="-1"></a>tmp</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="eda.html#cb462-1" aria-hidden="true" tabindex="-1"></a>selection <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;num.partners&quot;</span>, <span class="st">&quot;first.sex&quot;</span>, <span class="st">&quot;num.preg&quot;</span>, <span class="st">&quot;horm.contracept.years&quot;</span>, <span class="st">&quot;IUD.years&quot;</span>, <span class="st">&quot;STDs.number&quot;</span>, <span class="st">&quot;target.biopsy&quot;</span>)</span>
+<span id="cb462-2"><a href="eda.html#cb462-2" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span> <span class="fu">select</span>(selection) <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>()</span>
+<span id="cb462-3"><a href="eda.html#cb462-3" aria-hidden="true" tabindex="-1"></a>tmp</span></code></pre></div>
 <pre><code>## # A tibble: 676 x 7
-##    num.partners first.sex num.preg horm.contracept… IUD.years STDs.number
-##           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;            &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-##  1            4        15        1                0         0           0
-##  2            1        14        1                0         0           0
-##  3            5        16        4                3         0           0
-##  4            3        21        4               15         0           0
-##  5            3        23        2                0         0           0
-##  6            3        17        6                0         7           0
-##  7            1        26        3                2         7           0
-##  8            1        20        5                0         0           0
-##  9            3        26        4                2         0           0
-## 10            1        17        3                8         0           0
+##    num.partners first.sex num.preg horm.contracept.years IUD.years STDs.number
+##           &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;                 &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+##  1            4        15        1                     0         0           0
+##  2            1        14        1                     0         0           0
+##  3            5        16        4                     3         0           0
+##  4            3        21        4                    15         0           0
+##  5            3        23        2                     0         0           0
+##  6            3        17        6                     0         7           0
+##  7            1        26        3                     2         7           0
+##  8            1        20        5                     0         0           0
+##  9            3        26        4                     2         0           0
+## 10            1        17        3                     8         0           0
 ## # … with 666 more rows, and 1 more variable: target.biopsy &lt;lgl&gt;</code></pre>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="eda.html#cb452-1" aria-hidden="true" tabindex="-1"></a>cc.pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(tmp[, <span class="sc">-</span><span class="dv">7</span>],</span>
-<span id="cb452-2"><a href="eda.html#cb452-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb452-3"><a href="eda.html#cb452-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb452-4"><a href="eda.html#cb452-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cc.pca)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="eda.html#cb464-1" aria-hidden="true" tabindex="-1"></a>cc.pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(tmp[, <span class="sc">-</span><span class="dv">7</span>],</span>
+<span id="cb464-2"><a href="eda.html#cb464-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">center =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb464-3"><a href="eda.html#cb464-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb464-4"><a href="eda.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cc.pca)</span></code></pre></div>
 <pre><code>## Standard deviations (1, .., p=6):
 ## [1] 1.151 1.052 1.005 0.999 0.918 0.848
 ## 
@@ -1267,21 +1266,21 @@ Still not interesting! Give it one more shot:</p>
 ## IUD.years             -0.3457 -0.104 -0.8319 -0.0899 -0.0903 -0.40168
 ## STDs.number           -0.0113  0.266 -0.1506  0.9336  0.1875  0.00171</code></pre>
 <p>The plot method returns a plot of the variances (y-axis) associated with the PCs (x-axis).</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="eda.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cc.pca, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="eda.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cc.pca, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>The summary method describe the importance of the PCs.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="eda.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cc.pca)</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="eda.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cc.pca)</span></code></pre></div>
 <pre><code>## Importance of components:
 ##                          PC1   PC2   PC3   PC4   PC5   PC6
 ## Standard deviation     1.151 1.052 1.005 0.999 0.918 0.848
 ## Proportion of Variance 0.221 0.185 0.168 0.166 0.140 0.120
 ## Cumulative Proportion  0.221 0.405 0.574 0.740 0.880 1.000</code></pre>
 <p>PC plot</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="eda.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbiplot</span>(cc.pca, <span class="at">obs.scale =</span> <span class="dv">1</span>, <span class="at">var.scale =</span> <span class="dv">1</span>, </span>
-<span id="cb457-2"><a href="eda.html#cb457-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">groups =</span> tmp<span class="sc">$</span>target.biopsy, <span class="at">ellipse =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb457-3"><a href="eda.html#cb457-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">circle =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb457-4"><a href="eda.html#cb457-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span> </span>
-<span id="cb457-5"><a href="eda.html#cb457-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="eda.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbiplot</span>(cc.pca, <span class="at">obs.scale =</span> <span class="dv">1</span>, <span class="at">var.scale =</span> <span class="dv">1</span>, </span>
+<span id="cb469-2"><a href="eda.html#cb469-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">groups =</span> tmp<span class="sc">$</span>target.biopsy, <span class="at">ellipse =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb469-3"><a href="eda.html#cb469-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">circle =</span> <span class="cn">TRUE</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb469-4"><a href="eda.html#cb469-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;&#39;</span>) <span class="sc">+</span> </span>
+<span id="cb469-5"><a href="eda.html#cb469-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.direction =</span> <span class="st">&#39;horizontal&#39;</span>, <span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pca2"></span>
 <img src="bookdown-demo_files/figure-html/pca2-1.png" alt="A PCA plot of the numerical variables" width="100%" />
 <p class="caption">
@@ -1305,7 +1304,7 @@ Figure 7.7: A PCA plot of the numerical variables
 <div id="k-means-clustering" class="section level3" number="7.9.3">
 <h3><span class="header-section-number">7.9.3</span> k-Means clustering</h3>
 <p>k-means is very sensitive to the scale of your data so you’ll need to normalize it.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="eda.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="co">#km_clusters &lt;- kmeans()</span></span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="eda.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co">#km_clusters &lt;- kmeans()</span></span></code></pre></div>
 </div>
 <div id="hierarchical-clustering" class="section level3" number="7.9.4">
 <h3><span class="header-section-number">7.9.4</span> hierarchical clustering</h3>

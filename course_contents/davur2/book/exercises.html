@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2021-04-15" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="publish.html"/>
 <link rel="next" href="exercise-solutions.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.16/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -182,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-smooth-ribbon"><i class="fa fa-check"></i>Plot overlays: smooth + ribbon</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
@@ -262,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
 <li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
-<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#multi-column-mutate-or-summary"><i class="fa fa-check"></i><b>4.4.3</b> Multi-column mutate or summary</a></li>
 <li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a>
@@ -484,12 +483,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="virginia-death-rates" class="section level3" number="9.2.4">
 <h3><span class="header-section-number">9.2.4</span> Virginia Death Rates</h3>
 <p>The <code>datasets</code> package that is shipped with R has a dataset (a <code>matrix</code>) called <code>VADeaths</code>. Type <code>?VADeaths</code> to get information on it. First you should convert this matrix into a tibble (a kind of data frame) and the rownames into a real variable using the chunk below (study it so you understand what happens here):</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="exercises.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb459-2"><a href="exercises.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="do">## %&gt;% is used to pipe results from one operation to the other, just like &#39;|&#39; in Linux.</span></span>
-<span id="cb459-3"><a href="exercises.html#cb459-3" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(VADeaths)</span>
-<span id="cb459-4"><a href="exercises.html#cb459-4" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> virginia_death_rates <span class="sc">%&gt;%</span> </span>
-<span id="cb459-5"><a href="exercises.html#cb459-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">&quot;Age Group&quot;</span> <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rownames</span>(virginia_death_rates), <span class="at">ordered =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb459-6"><a href="exercises.html#cb459-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="st">`</span><span class="at">Age Group</span><span class="st">`</span>, <span class="fu">everything</span>()) <span class="co">#reorder the columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="exercises.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb471-2"><a href="exercises.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="do">## %&gt;% is used to pipe results from one operation to the other, just like &#39;|&#39; in Linux.</span></span>
+<span id="cb471-3"><a href="exercises.html#cb471-3" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(VADeaths)</span>
+<span id="cb471-4"><a href="exercises.html#cb471-4" aria-hidden="true" tabindex="-1"></a>virginia_death_rates <span class="ot">&lt;-</span> virginia_death_rates <span class="sc">%&gt;%</span> </span>
+<span id="cb471-5"><a href="exercises.html#cb471-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">&quot;Age Group&quot;</span> <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">rownames</span>(virginia_death_rates), <span class="at">ordered =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb471-6"><a href="exercises.html#cb471-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="st">`</span><span class="at">Age Group</span><span class="st">`</span>, <span class="fu">everything</span>()) <span class="co">#reorder the columns</span></span></code></pre></div>
 <p><strong>A [❋❋❋]</strong></p>
 <p>Pivot this table to long (tidy) format. This should generate a dataframe with four columns: <code>Age Group</code>, <code>Habitat</code>, <code>Gender</code> and <code>DeathRate</code>.</p>
 <p><strong>B [❋❋]</strong></p>
@@ -595,17 +594,17 @@ Next, correct OD values of the “triplicate” experiments using the background
 <p>Thus, the <code>Red</code> values should be corrected using the <code>Red_w_o</code> values of the same dilution; the <code>White</code> columns using <code>White_w_o</code> and <code>Elution</code> using <code>Eluiton_w_o</code>.</p>
 <p>This can be done when you apply a trick: transpose the dataframe using <code>t()</code> before carrying out the corrections. After transpose, you should loop the columns and correct using the periodicity of 8 (number of dilutions)</p>
 <p>You can use this as a start, assuming you loaded the file into <code>growth_data</code>:</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="exercises.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add rownames to get a hold of them after transpose</span></span>
-<span id="cb460-2"><a href="exercises.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(growth_data) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(growth_data<span class="sc">$</span>Content, <span class="st">&#39;.&#39;</span>, </span>
-<span id="cb460-3"><a href="exercises.html#cb460-3" aria-hidden="true" tabindex="-1"></a>                                growth_data<span class="sc">$</span>.copy, <span class="st">&#39;.&#39;</span>, </span>
-<span id="cb460-4"><a href="exercises.html#cb460-4" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">times =</span> <span class="dv">12</span>))</span>
-<span id="cb460-5"><a href="exercises.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="do">## transpose</span></span>
-<span id="cb460-6"><a href="exercises.html#cb460-6" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">t</span>(growth_data)</span>
-<span id="cb460-7"><a href="exercises.html#cb460-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb460-8"><a href="exercises.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="do">## build a new dataframe/tibble</span></span>
-<span id="cb460-9"><a href="exercises.html#cb460-9" aria-hidden="true" tabindex="-1"></a>growth_data_corr <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">column_names =</span> <span class="fu">rownames</span>(tmp))</span>
-<span id="cb460-10"><a href="exercises.html#cb460-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb460-11"><a href="exercises.html#cb460-11" aria-hidden="true" tabindex="-1"></a><span class="do">## continue here</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="exercises.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add rownames to get a hold of them after transpose</span></span>
+<span id="cb472-2"><a href="exercises.html#cb472-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(growth_data) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(growth_data<span class="sc">$</span>Content, <span class="st">&#39;.&#39;</span>, </span>
+<span id="cb472-3"><a href="exercises.html#cb472-3" aria-hidden="true" tabindex="-1"></a>                                growth_data<span class="sc">$</span>.copy, <span class="st">&#39;.&#39;</span>, </span>
+<span id="cb472-4"><a href="exercises.html#cb472-4" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">rep</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>], <span class="at">times =</span> <span class="dv">12</span>))</span>
+<span id="cb472-5"><a href="exercises.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="do">## transpose</span></span>
+<span id="cb472-6"><a href="exercises.html#cb472-6" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">t</span>(growth_data)</span>
+<span id="cb472-7"><a href="exercises.html#cb472-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-8"><a href="exercises.html#cb472-8" aria-hidden="true" tabindex="-1"></a><span class="do">## build a new dataframe/tibble</span></span>
+<span id="cb472-9"><a href="exercises.html#cb472-9" aria-hidden="true" tabindex="-1"></a>growth_data_corr <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">column_names =</span> <span class="fu">rownames</span>(tmp))</span>
+<span id="cb472-10"><a href="exercises.html#cb472-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-11"><a href="exercises.html#cb472-11" aria-hidden="true" tabindex="-1"></a><span class="do">## continue here</span></span></code></pre></div>
 <p>After these steps, the data should be tidied.</p>
 </div>
 <div id="create-a-growth-curve-visualization" class="section level4" number="9.2.10.2">
@@ -648,9 +647,9 @@ The challenge here is to present a clear picture with tons of dataseries on top 
 <div id="write-a-utility-function" class="section level4" number="9.2.11.3">
 <h4><span class="header-section-number">9.2.11.3</span> Write a utility function <sup><font size="2em">[❋❋❋]</font></sup></h4>
 <p>Write a utility function that returns a text label to be used in plotting when given a dataset name and a column name. The label should come from the codebook <code>description</code> variable of course. The <code>dataset</code> parameter should default to <code>skeleton</code>. For example, these calls:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="exercises.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>, <span class="st">&#39;skeleton&#39;</span>) </span>
-<span id="cb461-2"><a href="exercises.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="do">##same as</span></span>
-<span id="cb461-3"><a href="exercises.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="exercises.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>, <span class="st">&#39;skeleton&#39;</span>) </span>
+<span id="cb473-2"><a href="exercises.html#cb473-2" aria-hidden="true" tabindex="-1"></a><span class="do">##same as</span></span>
+<span id="cb473-3"><a href="exercises.html#cb473-3" aria-hidden="true" tabindex="-1"></a><span class="fu">get_description</span>(<span class="st">&#39;Dinosaur_gen&#39;</span>) </span></code></pre></div>
 <p>should both return <code>Number of genera of Dinosauria</code>.<br />
 As extra challenge you could implement some error checking to make the function more robust.</p>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Michiel Noback" />
 
 
-<meta name="date" content="2021-04-15" />
+<meta name="date" content="2021-07-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="exercise-solutions.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,9 +51,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="libs/datatables-binding-0.16/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -182,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#boxplot"><i class="fa fa-check"></i>Boxplot</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#jitter"><i class="fa fa-check"></i>Jitter</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-boxplot-jitter"><i class="fa fa-check"></i>Plot overlays: boxplot + jitter</a></li>
+<li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#plot-overlays-smooth-ribbon"><i class="fa fa-check"></i>Plot overlays: smooth + ribbon</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#scatterplot-points"><i class="fa fa-check"></i>Scatterplot: Points</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#line-plots"><i class="fa fa-check"></i>Line plots</a></li>
 <li class="chapter" data-level="" data-path="ggplot2.html"><a href="ggplot2.html#histograms"><i class="fa fa-check"></i>Histograms</a></li>
@@ -262,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.4.1" data-path="dplyr.html"><a href="dplyr.html#window-functions"><i class="fa fa-check"></i><b>4.4.1</b> Window functions</a></li>
 <li class="chapter" data-level="4.4.2" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>4.4.2</b> Add one or more variables: <code>mutate()</code></a></li>
-<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#create-new-variables-based-on-more-columns"><i class="fa fa-check"></i><b>4.4.3</b> Create new variables based on more columns</a></li>
+<li class="chapter" data-level="4.4.3" data-path="dplyr.html"><a href="dplyr.html#multi-column-mutate-or-summary"><i class="fa fa-check"></i><b>4.4.3</b> Multi-column mutate or summary</a></li>
 <li class="chapter" data-level="4.4.4" data-path="dplyr.html"><a href="dplyr.html#change-a-variable-recode-and-recode_factor"><i class="fa fa-check"></i><b>4.4.4</b> Change a variable: <code>recode()</code> and <code>recode_factor()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="dplyr.html"><a href="dplyr.html#operations-on-groups"><i class="fa fa-check"></i><b>4.5</b> Operations on groups</a>
@@ -479,9 +478,9 @@ Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  A;Un_0001 1/1;Un_0009 1/1;Un_0017 1/1;Un_0025 1/1;Un_0033 1/1;Un_0041 1/1;Un_0049 1/1;Un_0057 1/1;Un_0065 1/1;Un_0073 1/1;Un_0081 1/1;Un_0089 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 </code></pre>
 <p>Here, a strategy is demonstrated for when your data cannot be simply read into a dataframe directly. First, load all data in a single character vector, on line per element:</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="parsing-complex-data.html#cb556-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="st">&quot;data/varioscan/2020-01-30.csv&quot;</span></span>
-<span id="cb556-2"><a href="parsing-complex-data.html#cb556-2" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">readLines</span>(file)</span>
-<span id="cb556-3"><a href="parsing-complex-data.html#cb556-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_data[<span class="sc">-</span><span class="dv">1</span>]) <span class="do">##omitting empty lines</span></span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="parsing-complex-data.html#cb568-1" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="st">&quot;data/varioscan/2020-01-30.csv&quot;</span></span>
+<span id="cb568-2"><a href="parsing-complex-data.html#cb568-2" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">readLines</span>(file)</span>
+<span id="cb568-3"><a href="parsing-complex-data.html#cb568-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(all_data[<span class="sc">-</span><span class="dv">1</span>]) <span class="do">##omitting empty lines</span></span></code></pre></div>
 <pre><code>## [1] &quot;Photometric1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                          
 ## [2] &quot;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                                      
 ## [3] &quot;Plate 1: 1, reading 1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                 
@@ -489,7 +488,7 @@ Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ## [5] &quot;Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;                                                                                                                 
 ## [6] &quot; A;Un_0001 1/1;Un_0009 1/1;Un_0017 1/1;Un_0025 1/1;Un_0033 1/1;Un_0041 1/1;Un_0049 1/1;Un_0057 1/1;Un_0065 1/1;Un_0073 1/1;Un_0081 1/1;Un_0089 1/1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&quot;</code></pre>
 <p>Next, remove unwanted header lines:</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="parsing-complex-data.html#cb558-1" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> all_data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="parsing-complex-data.html#cb570-1" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> all_data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)]</span></code></pre></div>
 <p>What is left is a vector with nice <strong><em>periodicity</em></strong>: recurring blocks of 22 elements with this structure:</p>
 <ul>
 <li>element 1: reading count</li>
@@ -499,41 +498,41 @@ Sample;1;2;3;4;5;6;7;8;9;10;11;12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 <li>element 22: empty line</li>
 </ul>
 <p>Let’s read the first block - the sample layout. Note that there are many empty columns and these are removed as well.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="parsing-complex-data.html#cb559-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> all_data[<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>], <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb559-2"><a href="parsing-complex-data.html#cb559-2" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> samples[, <span class="sc">-</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">42</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="parsing-complex-data.html#cb571-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> all_data[<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>], <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb571-2"><a href="parsing-complex-data.html#cb571-2" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> samples[, <span class="sc">-</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">42</span>)]</span></code></pre></div>
 <p>The experimental setup needs to be added as well.</p>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="parsing-complex-data.html#cb560-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Dilution&quot;</span>, </span>
-<span id="cb560-2"><a href="parsing-complex-data.html#cb560-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;Red&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Red_w_o&quot;</span>, </span>
-<span id="cb560-3"><a href="parsing-complex-data.html#cb560-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;White&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;White_w_o&quot;</span>, </span>
-<span id="cb560-4"><a href="parsing-complex-data.html#cb560-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;Elution&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Elution_w_o&quot;</span>)</span>
-<span id="cb560-5"><a href="parsing-complex-data.html#cb560-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(samples) <span class="ot">&lt;-</span> new_names</span>
-<span id="cb560-6"><a href="parsing-complex-data.html#cb560-6" aria-hidden="true" tabindex="-1"></a>dilutions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="fl">0.0625</span>, <span class="fl">0.03125</span>, <span class="dv">0</span>)</span>
-<span id="cb560-7"><a href="parsing-complex-data.html#cb560-7" aria-hidden="true" tabindex="-1"></a>samples<span class="sc">$</span>Dilution <span class="ot">&lt;-</span> dilutions</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="parsing-complex-data.html#cb572-1" aria-hidden="true" tabindex="-1"></a>new_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Dilution&quot;</span>, </span>
+<span id="cb572-2"><a href="parsing-complex-data.html#cb572-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;Red&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Red_w_o&quot;</span>, </span>
+<span id="cb572-3"><a href="parsing-complex-data.html#cb572-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;White&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;White_w_o&quot;</span>, </span>
+<span id="cb572-4"><a href="parsing-complex-data.html#cb572-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">rep</span>(<span class="st">&quot;Elution&quot;</span>, <span class="dv">3</span>), <span class="st">&quot;Elution_w_o&quot;</span>)</span>
+<span id="cb572-5"><a href="parsing-complex-data.html#cb572-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(samples) <span class="ot">&lt;-</span> new_names</span>
+<span id="cb572-6"><a href="parsing-complex-data.html#cb572-6" aria-hidden="true" tabindex="-1"></a>dilutions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">0.5</span>, <span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="fl">0.0625</span>, <span class="fl">0.03125</span>, <span class="dv">0</span>)</span>
+<span id="cb572-7"><a href="parsing-complex-data.html#cb572-7" aria-hidden="true" tabindex="-1"></a>samples<span class="sc">$</span>Dilution <span class="ot">&lt;-</span> dilutions</span></code></pre></div>
 <p>Finally, we need a set of columns to add the OD measurements to. The <code>pivot_longer()</code> function is perfect for this. For the next phase, the sample data needs to be ordered by Sample ID, so that is done as well.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="parsing-complex-data.html#cb561-1" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> samples <span class="sc">%&gt;%</span></span>
-<span id="cb561-2"><a href="parsing-complex-data.html#cb561-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">names_to =</span> <span class="st">&quot;Content&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Sample&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb561-3"><a href="parsing-complex-data.html#cb561-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Sample)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="parsing-complex-data.html#cb573-1" aria-hidden="true" tabindex="-1"></a>growth_data <span class="ot">&lt;-</span> samples <span class="sc">%&gt;%</span></span>
+<span id="cb573-2"><a href="parsing-complex-data.html#cb573-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">names_to =</span> <span class="st">&quot;Content&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Sample&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb573-3"><a href="parsing-complex-data.html#cb573-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(Sample)</span></code></pre></div>
 <p>Note the warning <code>Duplicate column names detected, adding .copy variable</code>. This is not a bug but a feature!</p>
 <p>In the next step we need to loop the entire file, essentially doing the same thing with all OD measurements: read, flatten and attach.</p>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="parsing-complex-data.html#cb562-1" aria-hidden="true" tabindex="-1"></a>line_count <span class="ot">&lt;-</span> <span class="fu">length</span>(all_data)</span>
-<span id="cb562-2"><a href="parsing-complex-data.html#cb562-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb562-3"><a href="parsing-complex-data.html#cb562-3" aria-hidden="true" tabindex="-1"></a>time <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb562-4"><a href="parsing-complex-data.html#cb562-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">13</span>, <span class="at">to =</span> line_count, <span class="at">by =</span> <span class="dv">22</span>)) {</span>
-<span id="cb562-5"><a href="parsing-complex-data.html#cb562-5" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> all_data[(n<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(n<span class="sc">+</span><span class="dv">8</span>)], <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
-<span id="cb562-6"><a href="parsing-complex-data.html#cb562-6" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> values[, <span class="sc">-</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">42</span>)]</span>
-<span id="cb562-7"><a href="parsing-complex-data.html#cb562-7" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(values[, <span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb562-8"><a href="parsing-complex-data.html#cb562-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dim</span>(values) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb562-9"><a href="parsing-complex-data.html#cb562-9" aria-hidden="true" tabindex="-1"></a>    growth_data[, <span class="fu">paste0</span>(<span class="st">&quot;T.&quot;</span>, time)] <span class="ot">&lt;-</span> values</span>
-<span id="cb562-10"><a href="parsing-complex-data.html#cb562-10" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> time <span class="sc">+</span> <span class="dv">10</span></span>
-<span id="cb562-11"><a href="parsing-complex-data.html#cb562-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb562-12"><a href="parsing-complex-data.html#cb562-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb562-13"><a href="parsing-complex-data.html#cb562-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="parsing-complex-data.html#cb574-1" aria-hidden="true" tabindex="-1"></a>line_count <span class="ot">&lt;-</span> <span class="fu">length</span>(all_data)</span>
+<span id="cb574-2"><a href="parsing-complex-data.html#cb574-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb574-3"><a href="parsing-complex-data.html#cb574-3" aria-hidden="true" tabindex="-1"></a>time <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb574-4"><a href="parsing-complex-data.html#cb574-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(n <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">13</span>, <span class="at">to =</span> line_count, <span class="at">by =</span> <span class="dv">22</span>)) {</span>
+<span id="cb574-5"><a href="parsing-complex-data.html#cb574-5" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">text =</span> all_data[(n<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>(n<span class="sc">+</span><span class="dv">8</span>)], <span class="at">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="at">dec =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb574-6"><a href="parsing-complex-data.html#cb574-6" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> values[, <span class="sc">-</span>(<span class="dv">14</span><span class="sc">:</span><span class="dv">42</span>)]</span>
+<span id="cb574-7"><a href="parsing-complex-data.html#cb574-7" aria-hidden="true" tabindex="-1"></a>    values <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(values[, <span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb574-8"><a href="parsing-complex-data.html#cb574-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dim</span>(values) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb574-9"><a href="parsing-complex-data.html#cb574-9" aria-hidden="true" tabindex="-1"></a>    growth_data[, <span class="fu">paste0</span>(<span class="st">&quot;T.&quot;</span>, time)] <span class="ot">&lt;-</span> values</span>
+<span id="cb574-10"><a href="parsing-complex-data.html#cb574-10" aria-hidden="true" tabindex="-1"></a>    time <span class="ot">&lt;-</span> time <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb574-11"><a href="parsing-complex-data.html#cb574-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb574-12"><a href="parsing-complex-data.html#cb574-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb574-13"><a href="parsing-complex-data.html#cb574-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(growth_data)</span></code></pre></div>
 <pre><code>## [1]  96 112</code></pre>
 <p>Now everything is in a nice dataframe, but it is not <strong><em>tidy</em></strong> yet, of course, nor is any other processing performed required for correct visualization and analysis of this dataset.
 Let’s save it as it is though:</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="parsing-complex-data.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(growth_data, </span>
-<span id="cb564-2"><a href="parsing-complex-data.html#cb564-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">&quot;data/varioscan/2020-01-30_wide.csv&quot;</span>,</span>
-<span id="cb564-3"><a href="parsing-complex-data.html#cb564-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="parsing-complex-data.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(growth_data, </span>
+<span id="cb576-2"><a href="parsing-complex-data.html#cb576-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">&quot;data/varioscan/2020-01-30_wide.csv&quot;</span>,</span>
+<span id="cb576-3"><a href="parsing-complex-data.html#cb576-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>One of the exercises will address this dataset for tidying, processing and visualization.</p>
 
 </div>

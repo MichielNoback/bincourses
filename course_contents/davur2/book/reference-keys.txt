@@ -94,10 +94,7 @@ random-sampling
 adding-and-changing-variables
 window-functions
 mutate
-create-new-variables-based-on-more-columns
-mutate_all
-mutate_at
-mutate_if
+multi-column-mutate-or-summary
 change-a-variable-recode-and-recode_factor
 operations-on-groups
 group_by-and-ungroup
