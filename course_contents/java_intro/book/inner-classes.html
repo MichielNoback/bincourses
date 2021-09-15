@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 20 Exceptions | The Java Track</title>
+  <title>Chapter 29 Inner classes | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 20 Exceptions | The Java Track" />
+  <meta property="og:title" content="Chapter 29 Inner classes | The Java Track" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 20 Exceptions | The Java Track" />
+  <meta name="twitter:title" content="Chapter 29 Inner classes | The Java Track" />
   
   <meta name="twitter:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link rel="prev" href="sorting.html"/>
-<link rel="next" href="file-io.html"/>
+<link rel="prev" href="design-rules-summary.html"/>
+<link rel="next" href="a-refresher.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -407,177 +407,93 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exceptions" class="section level1" number="20">
-<h1><span class="header-section-number">Chapter 20</span> Exceptions</h1>
-<p>Before dealing with file IO, exceptions need to be discussed. You need to deal with exceptions whenever you deal with the outside world. Why? The outside world is dangerous and unpredictable: files do not exist, or are not accessible to you, internet connections can be down, a database has a new password or URL…</p>
-<p>All these scenarios will <strong><em>throw</em></strong> an <code>Exception</code> your way. It is up to you, the application programmer, to <strong><em>catch</em></strong> them and deal with them. Either by following an alternative program path, or to quit the application elegantly.</p>
-<p>Exceptions are method return values that do not follow regular program flow; they are instantiated when something goes wrong and usually cause the program to behave differently.</p>
-<div id="what-are-exceptions" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> What are exceptions</h2>
-<p>Consider this code.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb163-1"><a href="exceptions.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb163-2"><a href="exceptions.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-3"><a href="exceptions.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ExceptionsDemo <span class="op">{</span></span>
-<span id="cb163-4"><a href="exceptions.html#cb163-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb163-5"><a href="exceptions.html#cb163-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doFirst</span><span class="op">();</span></span>
-<span id="cb163-6"><a href="exceptions.html#cb163-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb163-7"><a href="exceptions.html#cb163-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-8"><a href="exceptions.html#cb163-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doFirst</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb163-9"><a href="exceptions.html#cb163-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">doSecond</span><span class="op">();</span></span>
-<span id="cb163-10"><a href="exceptions.html#cb163-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb163-11"><a href="exceptions.html#cb163-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb163-12"><a href="exceptions.html#cb163-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">doSecond</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb163-13"><a href="exceptions.html#cb163-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span> <span class="op">/</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb163-14"><a href="exceptions.html#cb163-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb163-15"><a href="exceptions.html#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>Running <code>main()</code> will generate an error resulting in a <strong><em>stacktrace</em></strong>:</p>
+<div id="inner-classes" class="section level1" number="29">
+<h1><span class="header-section-number">Chapter 29</span> Inner classes</h1>
+<p>While we have done so almost always, there is a misconception about how many classes can exist in one source file.
+<strong><em>There can be only one public top-level class per source file.</em></strong>
+A source file can, however, have many static and non-static inner classes, non-public classes, anonymous inner classes and interface implementers.</p>
+<p>Here is an example showing some inner class types.</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb219-1"><a href="inner-classes.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">oop</span><span class="op">;</span></span>
+<span id="cb219-2"><a href="inner-classes.html#cb219-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-3"><a href="inner-classes.html#cb219-3" aria-hidden="true" tabindex="-1"></a><span class="co">//top level public class</span></span>
+<span id="cb219-4"><a href="inner-classes.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Outer <span class="op">{</span></span>
+<span id="cb219-5"><a href="inner-classes.html#cb219-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">//inner anonymous implementer of inner interface</span></span>
+<span id="cb219-6"><a href="inner-classes.html#cb219-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> Usable usable <span class="op">=</span> <span class="kw">new</span> <span class="fu">Usable</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-7"><a href="inner-classes.html#cb219-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">use</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-8"><a href="inner-classes.html#cb219-8" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;doing it this way&quot;</span><span class="op">);</span></span>
+<span id="cb219-9"><a href="inner-classes.html#cb219-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb219-10"><a href="inner-classes.html#cb219-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb219-11"><a href="inner-classes.html#cb219-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">//idem, same interface</span></span>
+<span id="cb219-12"><a href="inner-classes.html#cb219-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> Usable usableTwo <span class="op">=</span> <span class="kw">new</span> <span class="fu">Usable</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-13"><a href="inner-classes.html#cb219-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">use</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-14"><a href="inner-classes.html#cb219-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;doing it that way&quot;</span><span class="op">);</span></span>
+<span id="cb219-15"><a href="inner-classes.html#cb219-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb219-16"><a href="inner-classes.html#cb219-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">};</span></span>
+<span id="cb219-17"><a href="inner-classes.html#cb219-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//non-anonymous inner class instance</span></span>
+<span id="cb219-18"><a href="inner-classes.html#cb219-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> Usable usable3 <span class="op">=</span> <span class="kw">new</span> <span class="fu">UsableUsable</span><span class="op">();</span></span>
+<span id="cb219-19"><a href="inner-classes.html#cb219-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-20"><a href="inner-classes.html#cb219-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb219-21"><a href="inner-classes.html#cb219-21" aria-hidden="true" tabindex="-1"></a>        Outer outer <span class="op">=</span> <span class="kw">new</span> <span class="fu">Outer</span><span class="op">();</span></span>
+<span id="cb219-22"><a href="inner-classes.html#cb219-22" aria-hidden="true" tabindex="-1"></a>        outer<span class="op">.</span><span class="fu">usable</span><span class="op">.</span><span class="fu">use</span><span class="op">();</span></span>
+<span id="cb219-23"><a href="inner-classes.html#cb219-23" aria-hidden="true" tabindex="-1"></a>        outer<span class="op">.</span><span class="fu">usableTwo</span><span class="op">.</span><span class="fu">use</span><span class="op">();</span></span>
+<span id="cb219-24"><a href="inner-classes.html#cb219-24" aria-hidden="true" tabindex="-1"></a>        outer<span class="op">.</span><span class="fu">usable3</span><span class="op">.</span><span class="fu">use</span><span class="op">();</span></span>
+<span id="cb219-25"><a href="inner-classes.html#cb219-25" aria-hidden="true" tabindex="-1"></a>        outer<span class="op">.</span><span class="fu">useInners</span><span class="op">();</span></span>
+<span id="cb219-26"><a href="inner-classes.html#cb219-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb219-27"><a href="inner-classes.html#cb219-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-28"><a href="inner-classes.html#cb219-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">useInners</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-29"><a href="inner-classes.html#cb219-29" aria-hidden="true" tabindex="-1"></a>        Inner i <span class="op">=</span> <span class="kw">new</span> <span class="fu">Inner</span><span class="op">();</span></span>
+<span id="cb219-30"><a href="inner-classes.html#cb219-30" aria-hidden="true" tabindex="-1"></a>        i<span class="op">.</span><span class="fu">doIt</span><span class="op">();</span></span>
+<span id="cb219-31"><a href="inner-classes.html#cb219-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb219-32"><a href="inner-classes.html#cb219-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-33"><a href="inner-classes.html#cb219-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* A non-static inner class that needs an instance of Outer to exist.</span></span>
+<span id="cb219-34"><a href="inner-classes.html#cb219-34" aria-hidden="true" tabindex="-1"></a><span class="co">    * Usually it is extremely tightly bound to the Outer class logic*/</span></span>
+<span id="cb219-35"><a href="inner-classes.html#cb219-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">class</span> Inner <span class="op">{</span></span>
+<span id="cb219-36"><a href="inner-classes.html#cb219-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doIt</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-37"><a href="inner-classes.html#cb219-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;doing it inner&quot;</span><span class="op">);</span></span>
+<span id="cb219-38"><a href="inner-classes.html#cb219-38" aria-hidden="true" tabindex="-1"></a>            <span class="co">//access to instance fields!</span></span>
+<span id="cb219-39"><a href="inner-classes.html#cb219-39" aria-hidden="true" tabindex="-1"></a>            usableTwo<span class="op">.</span><span class="fu">use</span><span class="op">();</span></span>
+<span id="cb219-40"><a href="inner-classes.html#cb219-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb219-41"><a href="inner-classes.html#cb219-41" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb219-42"><a href="inner-classes.html#cb219-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-43"><a href="inner-classes.html#cb219-43" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb219-44"><a href="inner-classes.html#cb219-44" aria-hidden="true" tabindex="-1"></a><span class="co">    * A static (although not explicity stated) interface</span></span>
+<span id="cb219-45"><a href="inner-classes.html#cb219-45" aria-hidden="true" tabindex="-1"></a><span class="co">     */</span></span>
+<span id="cb219-46"><a href="inner-classes.html#cb219-46" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="kw">interface</span> Usable <span class="op">{</span></span>
+<span id="cb219-47"><a href="inner-classes.html#cb219-47" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">use</span><span class="op">();</span></span>
+<span id="cb219-48"><a href="inner-classes.html#cb219-48" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb219-49"><a href="inner-classes.html#cb219-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb219-50"><a href="inner-classes.html#cb219-50" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*static implementer*/</span></span>
+<span id="cb219-51"><a href="inner-classes.html#cb219-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="kw">class</span> UsableUsable <span class="kw">implements</span> Usable <span class="op">{</span></span>
+<span id="cb219-52"><a href="inner-classes.html#cb219-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">@Override</span></span>
+<span id="cb219-53"><a href="inner-classes.html#cb219-53" aria-hidden="true" tabindex="-1"></a>        <span class="kw">public</span> <span class="dt">void</span> <span class="fu">use</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb219-54"><a href="inner-classes.html#cb219-54" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;doing it the other way&quot;</span><span class="op">);</span></span>
+<span id="cb219-55"><a href="inner-classes.html#cb219-55" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb219-56"><a href="inner-classes.html#cb219-56" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb219-57"><a href="inner-classes.html#cb219-57" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code></pre></div>
+<p>outputs</p>
 <pre class="console_out">
-Exception in thread "main" java.lang.ArithmeticException: / by zero
-    at snippets.apis.ExceptionsDemo.doSecond(ExceptionsDemo.java:13)
-    at snippets.apis.ExceptionsDemo.doFirst(ExceptionsDemo.java:9)
-    at snippets.apis.ExceptionsDemo.main(ExceptionsDemo.java:5)
+doing it this way
+doing it that way
+doing it the other way
+doing it inner
+doing it that way
 </pre>
-<p>The error - the fact that a number cannot be divided by zero - occurs in method <code>doSecond()</code> and this will cause the JVM to generate an Exception. In this case, an <code>ArithmeticException</code>. The stack trace starts with the method where the error originated, and works its way down to <code>main()</code> from where the application “crashes” because the exception was not caught/resolved by program logic.</p>
-<p>The Exception object is <strong><em>thrown</em></strong> from this point down the call stack unless it is caught.</p>
-<p>The name “stacktrace” refers to the <strong><em>call stack</em></strong> or stack of execution. A call stack is a data structure that stores information about the active subroutines of a computer program.
-The current executing function is always on top.
-When an exception or error occurs, you will see a <strong><em>traceback</em></strong> through this stack, from the top (where the error occurred) back to the main() function.
-This gives you information about the origin and nature of the error.</p>
-</div>
-<div id="checked-and-unchecked-exceptions" class="section level2" number="20.2">
-<h2><span class="header-section-number">20.2</span> Checked and unchecked exceptions</h2>
-<p>Although the name <code>Exception</code> was used in this example, there are actually quite a few in the Java API. They are all related to each other through inheritance. The base type of all is class <code>Throwable</code>. It has two children: <code>Error</code> and <code>Exception</code>. See figure below.</p>
-<div class="figure">
-<img src="03_apis/figures/exceptionhierarchy.jpg" alt="" />
-<p class="caption">Exception hierarchy</p>
-</div>
-<p>There are exceptions for standard IO operations. These are called <strong><em>checked exceptions</em></strong> because their fate is checked by the compiler: whenever you call a method throwing one of these, you <strong><em>must</em></strong> catch it, or add a throws clause to your method. There is a subbranch extending from <code>RuntimeException</code> that represent the <strong><em>unchecked</em></strong> exceptions. These are not checked by the compiler: you can throw or catch these explicitly, but that is not required.</p>
-<div id="checked-exceptions" class="section level3 unnumbered">
-<h3>Checked exceptions</h3>
-<p>Whenever a method publishes a throws clause of a checked exception in its method signature, you must take one of these two courses of action:</p>
-<ul>
-<li><p>Catch it yourself: place this code in a <strong><em><code>try/catch</code></em></strong> structure</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb164-1"><a href="exceptions.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span> </span>
-<span id="cb164-2"><a href="exceptions.html#cb164-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*do the risky thing*/</span> </span>
-<span id="cb164-3"><a href="exceptions.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">Exception</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb164-4"><a href="exceptions.html#cb164-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*solve the problem*/</span> </span>
-<span id="cb164-5"><a href="exceptions.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
-<li><p>Make other code solve the problem: place a <strong><em><code>throws</code></em></strong> clause in the method signature:</p></li>
-</ul>
-<div class="sourceCode" id="cb165"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb165-1"><a href="exceptions.html#cb165-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doRisky</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">Exception</span> <span class="op">{</span> </span>
-<span id="cb165-2"><a href="exceptions.html#cb165-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">/*risky method body*</span></span>
-<span id="cb165-3"><a href="exceptions.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co">    }</span></span></code></pre></div>
-<p>You should use the Exception hierarchy to make a robust error-handling backbone in your application. Have a look at this basic example and read the code comments carefully.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb166-1"><a href="exceptions.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
-<span id="cb166-2"><a href="exceptions.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-3"><a href="exceptions.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">FileNotFoundException</span><span class="op">;</span></span>
-<span id="cb166-4"><a href="exceptions.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
-<span id="cb166-5"><a href="exceptions.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">nio</span><span class="op">.</span><span class="im">file</span><span class="op">.</span><span class="im">FileAlreadyExistsException</span><span class="op">;</span></span>
-<span id="cb166-6"><a href="exceptions.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">sql</span><span class="op">.</span><span class="im">SQLException</span><span class="op">;</span></span>
-<span id="cb166-7"><a href="exceptions.html#cb166-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Level</span><span class="op">;</span></span>
-<span id="cb166-8"><a href="exceptions.html#cb166-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">logging</span><span class="op">.</span><span class="im">Logger</span><span class="op">;</span></span>
-<span id="cb166-9"><a href="exceptions.html#cb166-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-10"><a href="exceptions.html#cb166-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyAppWithExceptions <span class="op">{</span></span>
-<span id="cb166-11"><a href="exceptions.html#cb166-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-12"><a href="exceptions.html#cb166-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb166-13"><a href="exceptions.html#cb166-13" aria-hidden="true" tabindex="-1"></a>        MyAppWithExceptions app <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyAppWithExceptions</span><span class="op">();</span></span>
-<span id="cb166-14"><a href="exceptions.html#cb166-14" aria-hidden="true" tabindex="-1"></a>        app<span class="op">.</span><span class="fu">start</span><span class="op">();</span></span>
-<span id="cb166-15"><a href="exceptions.html#cb166-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-16"><a href="exceptions.html#cb166-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-17"><a href="exceptions.html#cb166-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">start</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb166-18"><a href="exceptions.html#cb166-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb166-19"><a href="exceptions.html#cb166-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">loadDatabase</span><span class="op">();</span></span>
-<span id="cb166-20"><a href="exceptions.html#cb166-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">readFile</span><span class="op">(</span><span class="st">&quot;some_file&quot;</span><span class="op">);</span></span>
-<span id="cb166-21"><a href="exceptions.html#cb166-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">processData</span><span class="op">();</span></span>
-<span id="cb166-22"><a href="exceptions.html#cb166-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">writeResults</span><span class="op">(</span><span class="st">&quot;results_file&quot;</span><span class="op">);</span></span>
-<span id="cb166-23"><a href="exceptions.html#cb166-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IOException</span> <span class="op">|</span> <span class="bu">SQLException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb166-24"><a href="exceptions.html#cb166-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">SEVERE</span><span class="op">,</span> <span class="st">&quot;IO error!&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
-<span id="cb166-25"><a href="exceptions.html#cb166-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">err</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;An error occurred. See the log for details.&quot;</span><span class="op">);</span></span>
-<span id="cb166-26"><a href="exceptions.html#cb166-26" aria-hidden="true" tabindex="-1"></a>            <span class="co">//don&#39;t use stacktrace in production!</span></span>
-<span id="cb166-27"><a href="exceptions.html#cb166-27" aria-hidden="true" tabindex="-1"></a>            <span class="co">//e.printStackTrace();</span></span>
-<span id="cb166-28"><a href="exceptions.html#cb166-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb166-29"><a href="exceptions.html#cb166-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-30"><a href="exceptions.html#cb166-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-31"><a href="exceptions.html#cb166-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">processData</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb166-32"><a href="exceptions.html#cb166-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb166-33"><a href="exceptions.html#cb166-33" aria-hidden="true" tabindex="-1"></a>            <span class="co">//processing file data</span></span>
-<span id="cb166-34"><a href="exceptions.html#cb166-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">NumberFormatException</span> e<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb166-35"><a href="exceptions.html#cb166-35" aria-hidden="true" tabindex="-1"></a>            <span class="co">//note this is an unchecked exception; </span></span>
-<span id="cb166-36"><a href="exceptions.html#cb166-36" aria-hidden="true" tabindex="-1"></a>            <span class="co">//the try/catch is optional</span></span>
-<span id="cb166-37"><a href="exceptions.html#cb166-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Logger</span><span class="op">.</span><span class="fu">getLogger</span><span class="op">(</span><span class="st">&quot;MyApp&quot;</span><span class="op">).</span><span class="fu">log</span><span class="op">(</span><span class="bu">Level</span><span class="op">.</span><span class="fu">INFO</span><span class="op">,</span> <span class="st">&quot;Number format problem&quot;</span><span class="op">,</span> e<span class="op">);</span></span>
-<span id="cb166-38"><a href="exceptions.html#cb166-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb166-39"><a href="exceptions.html#cb166-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-40"><a href="exceptions.html#cb166-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-41"><a href="exceptions.html#cb166-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">writeResults</span><span class="op">(</span><span class="bu">String</span> resultsFile<span class="op">)</span> <span class="kw">throws</span> FileAlreadyExistsException <span class="op">{</span></span>
-<span id="cb166-42"><a href="exceptions.html#cb166-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">//write to results file</span></span>
-<span id="cb166-43"><a href="exceptions.html#cb166-43" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-44"><a href="exceptions.html#cb166-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-45"><a href="exceptions.html#cb166-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">loadDatabase</span><span class="op">()</span> <span class="kw">throws</span> <span class="bu">SQLException</span> <span class="op">{</span></span>
-<span id="cb166-46"><a href="exceptions.html#cb166-46" aria-hidden="true" tabindex="-1"></a>        <span class="co">//loading MySQL DB</span></span>
-<span id="cb166-47"><a href="exceptions.html#cb166-47" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-48"><a href="exceptions.html#cb166-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-49"><a href="exceptions.html#cb166-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">readFile</span><span class="op">(</span><span class="bu">String</span> someFile<span class="op">)</span> <span class="kw">throws</span> <span class="bu">FileNotFoundException</span> <span class="op">{</span></span>
-<span id="cb166-50"><a href="exceptions.html#cb166-50" aria-hidden="true" tabindex="-1"></a>        <span class="co">//reading input data</span></span>
-<span id="cb166-51"><a href="exceptions.html#cb166-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb166-52"><a href="exceptions.html#cb166-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</div>
-<div id="unchecked-exceptions" class="section level3 unnumbered">
-<h3>Unchecked exceptions</h3>
-<p>Unchecked exceptions are quite similar to checked exceptions, but with the difference that you do not
-- need to declare them
-- need to try/catch or throw them explicitly.</p>
-<p>Unchecked exceptions include <code>NumberFormatException</code>, <code>NullPointerException</code>, <code>IllegalArgumentException</code> and <code>UnsupportedOperationException</code>. In modern Java, unchecked exceptions are preferred above checked exceptions. Try to work with these as much as possible.</p>
-</div>
-<div id="errors" class="section level3 unnumbered">
-<h3>Errors</h3>
-<p>You should never ever try to catch errors. There is no possible use case for that:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb167-1"><a href="exceptions.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
-<span id="cb167-2"><a href="exceptions.html#cb167-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">thirdMethod</span><span class="op">();</span></span>
-<span id="cb167-3"><a href="exceptions.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">OutOfMemoryError</span> error<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb167-4"><a href="exceptions.html#cb167-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//recover from an out-of-memory error?</span></span>
-<span id="cb167-5"><a href="exceptions.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</div>
-</div>
-<div id="all-trycatch-elements" class="section level2" number="20.3">
-<h2><span class="header-section-number">20.3</span> All try/catch elements</h2>
-<p>Here are all the try/catch flow control elements. Note that the supertype of more specific exceptions need to be caught last, after the specific types.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb168-1"><a href="exceptions.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">{</span></span>
-<span id="cb168-2"><a href="exceptions.html#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*The risky thing. </span></span>
-<span id="cb168-3"><a href="exceptions.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This block will run until an exception occurs </span></span>
-<span id="cb168-4"><a href="exceptions.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co">    - also exceptions that are not explicitly caught*/</span></span>
-<span id="cb168-5"><a href="exceptions.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">FileNotFoundException</span> <span class="op">|</span></span>
-<span id="cb168-6"><a href="exceptions.html#cb168-6" aria-hidden="true" tabindex="-1"></a>    EndOfFileException ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb168-7"><a href="exceptions.html#cb168-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with some specific file problems*/</span></span>
-<span id="cb168-8"><a href="exceptions.html#cb168-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">IOException</span> ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb168-9"><a href="exceptions.html#cb168-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*IOException is supertype to FileNotFoundException and EndOfFileException.</span></span>
-<span id="cb168-10"><a href="exceptions.html#cb168-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Deal with all other IO problems in this catchall*/</span></span>
-<span id="cb168-11"><a href="exceptions.html#cb168-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">catch</span><span class="op">(</span><span class="bu">SQLException</span> ex<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb168-12"><a href="exceptions.html#cb168-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Deal with database problems. </span></span>
-<span id="cb168-13"><a href="exceptions.html#cb168-13" aria-hidden="true" tabindex="-1"></a><span class="co">    SQLException is a sibling to IOException*/</span></span>
-<span id="cb168-14"><a href="exceptions.html#cb168-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb168-15"><a href="exceptions.html#cb168-15" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span> <span class="op">{</span></span>
-<span id="cb168-16"><a href="exceptions.html#cb168-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*Always runs, exception or not!  </span></span>
-<span id="cb168-17"><a href="exceptions.html#cb168-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Do things that need to be done, no </span></span>
-<span id="cb168-18"><a href="exceptions.html#cb168-18" aria-hidden="true" tabindex="-1"></a><span class="co">    matter what, like closing a file or </span></span>
-<span id="cb168-19"><a href="exceptions.html#cb168-19" aria-hidden="true" tabindex="-1"></a><span class="co">    database connection*/</span></span>
-<span id="cb168-20"><a href="exceptions.html#cb168-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-</div>
-<div id="try-with-resources" class="section level2" number="20.4">
-<h2><span class="header-section-number">20.4</span> Try-with resources</h2>
-<p>Java 7 introduced the try-with resources structure, which automatically closes the resource once the try block has finished:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb169-1"><a href="exceptions.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(&lt;</span>OPEN RESOURCE<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span>
-<span id="cb169-2"><a href="exceptions.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(&lt;</span>RESOURCE EXCEPTION<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
-<p>This form assures that a resource will be closed() after the try{} block exits, with or without error. See the post on IO for its usage.</p>
+<p>Some general rules on the use of inner classes:<br />
+- Use an inner class when it is tightly bound to the Outer class, and there is no reason for existence outside the outer class.
+- Use an anonymous inner class when there is no scenario of reusability
+- only use a non-static inner class when it should be bound to an instance of the outer class, else use a static inner class (a nested class)</p>
 
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="sorting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="file-io.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="design-rules-summary.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-refresher.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

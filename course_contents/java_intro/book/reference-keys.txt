@@ -110,6 +110,7 @@ exceptions-1
 access-modifiers-1
 srp
 various
+inner-classes
 a-refresher
 introduction
 the-basics-of-web
