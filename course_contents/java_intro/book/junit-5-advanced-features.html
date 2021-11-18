@@ -427,13 +427,13 @@ Annotations are a form of syntactic metadata that can be added to Java source co
 <div id="test-2" class="section level4 unnumbered">
 <h4>@Test</h4>
 <p>This is the most important one. It marks a method as a JUnit test method, so that it can be discovered by the test runtime. Nothing else is required.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb374-1"><a href="junit-5-advanced-features.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb374-2"><a href="junit-5-advanced-features.html#cb374-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">testImportant</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb374-3"><a href="junit-5-advanced-features.html#cb374-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> first <span class="op">=</span> <span class="st">&quot;Michiel&quot;</span><span class="op">;</span></span>
-<span id="cb374-4"><a href="junit-5-advanced-features.html#cb374-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> second <span class="op">=</span> <span class="st">&quot;Michiel&quot;</span><span class="op">;</span></span>
-<span id="cb374-5"><a href="junit-5-advanced-features.html#cb374-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">//What do you think - will this pass?</span></span>
-<span id="cb374-6"><a href="junit-5-advanced-features.html#cb374-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertSame</span><span class="op">(</span>first<span class="op">,</span> second<span class="op">);</span></span>
-<span id="cb374-7"><a href="junit-5-advanced-features.html#cb374-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb375-1"><a href="junit-5-advanced-features.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb375-2"><a href="junit-5-advanced-features.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">testImportant</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb375-3"><a href="junit-5-advanced-features.html#cb375-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> first <span class="op">=</span> <span class="st">&quot;Michiel&quot;</span><span class="op">;</span></span>
+<span id="cb375-4"><a href="junit-5-advanced-features.html#cb375-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> second <span class="op">=</span> <span class="st">&quot;Michiel&quot;</span><span class="op">;</span></span>
+<span id="cb375-5"><a href="junit-5-advanced-features.html#cb375-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">//What do you think - will this pass?</span></span>
+<span id="cb375-6"><a href="junit-5-advanced-features.html#cb375-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertSame</span><span class="op">(</span>first<span class="op">,</span> second<span class="op">);</span></span>
+<span id="cb375-7"><a href="junit-5-advanced-features.html#cb375-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="disabled" class="section level4 unnumbered">
 <h4>@Disabled</h4>
@@ -451,14 +451,14 @@ Unfortunately, this disables the <code>@Tag</code> selection mechanism which is 
 <h4>@BeforeEach and @AfterEach</h4>
 <p><code>@BeforeEach</code> and <code>@AfterEach</code> run respectively before and after each test case. You use them to re-initialize objects that may have been changed during a previous test.</p>
 <p>For instance, a Polygon object under test:</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb375-1"><a href="junit-5-advanced-features.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="bu">Polygon</span> polygon<span class="op">;</span></span>
-<span id="cb375-2"><a href="junit-5-advanced-features.html#cb375-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb375-3"><a href="junit-5-advanced-features.html#cb375-3" aria-hidden="true" tabindex="-1"></a><span class="at">@BeforeEach</span></span>
-<span id="cb375-4"><a href="junit-5-advanced-features.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">resetPolygon</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb375-5"><a href="junit-5-advanced-features.html#cb375-5" aria-hidden="true" tabindex="-1"></a>    polygon <span class="op">=</span> <span class="kw">new</span> <span class="bu">Polygon</span><span class="op">();</span></span>
-<span id="cb375-6"><a href="junit-5-advanced-features.html#cb375-6" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">.</span><span class="fu">addCoordinate</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Coordinate</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
-<span id="cb375-7"><a href="junit-5-advanced-features.html#cb375-7" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">.</span><span class="fu">addCoordinate</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Coordinate</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">6</span><span class="op">));</span></span>
-<span id="cb375-8"><a href="junit-5-advanced-features.html#cb375-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb376-1"><a href="junit-5-advanced-features.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="bu">Polygon</span> polygon<span class="op">;</span></span>
+<span id="cb376-2"><a href="junit-5-advanced-features.html#cb376-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-3"><a href="junit-5-advanced-features.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="at">@BeforeEach</span></span>
+<span id="cb376-4"><a href="junit-5-advanced-features.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">resetPolygon</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb376-5"><a href="junit-5-advanced-features.html#cb376-5" aria-hidden="true" tabindex="-1"></a>    polygon <span class="op">=</span> <span class="kw">new</span> <span class="bu">Polygon</span><span class="op">();</span></span>
+<span id="cb376-6"><a href="junit-5-advanced-features.html#cb376-6" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">.</span><span class="fu">addCoordinate</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Coordinate</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">));</span></span>
+<span id="cb376-7"><a href="junit-5-advanced-features.html#cb376-7" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">.</span><span class="fu">addCoordinate</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Coordinate</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">6</span><span class="op">));</span></span>
+<span id="cb376-8"><a href="junit-5-advanced-features.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="beforeall-and-afterall" class="section level4 unnumbered">
 <h4>@BeforeAll and @AfterAll</h4>
@@ -469,32 +469,32 @@ Unfortunately, this disables the <code>@Tag</code> selection mechanism which is 
 <h4>@Tag</h4>
 <p>The <code>@Tag</code> annotation is a much more sophisticated way of switching (groups of) tests on and off. You use them in combination with a configuration of your test runtime (in this case Gradle).</p>
 <p>Here are two tagged methods.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb376-1"><a href="junit-5-advanced-features.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Tag</span><span class="op">(</span><span class="st">&quot;sometimes&quot;</span><span class="op">)</span></span>
-<span id="cb376-2"><a href="junit-5-advanced-features.html#cb376-2" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Tag demo method 1: &#39;sometimes&#39;&quot;</span><span class="op">)</span></span>
-<span id="cb376-3"><a href="junit-5-advanced-features.html#cb376-3" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb376-4"><a href="junit-5-advanced-features.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">tagDemo1</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb376-5"><a href="junit-5-advanced-features.html#cb376-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Tag demo 1 running&quot;</span><span class="op">);</span></span>
-<span id="cb376-6"><a href="junit-5-advanced-features.html#cb376-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb376-7"><a href="junit-5-advanced-features.html#cb376-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-8"><a href="junit-5-advanced-features.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="at">@Tag</span><span class="op">(</span><span class="st">&quot;rarely&quot;</span><span class="op">)</span></span>
-<span id="cb376-9"><a href="junit-5-advanced-features.html#cb376-9" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Tag demo method 2: &#39;rarely&#39;&quot;</span><span class="op">)</span></span>
-<span id="cb376-10"><a href="junit-5-advanced-features.html#cb376-10" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
-<span id="cb376-11"><a href="junit-5-advanced-features.html#cb376-11" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">tagDemo2</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb376-12"><a href="junit-5-advanced-features.html#cb376-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Tag demo 2 running.&quot;</span><span class="op">);</span></span>
-<span id="cb376-13"><a href="junit-5-advanced-features.html#cb376-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb377-1"><a href="junit-5-advanced-features.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Tag</span><span class="op">(</span><span class="st">&quot;sometimes&quot;</span><span class="op">)</span></span>
+<span id="cb377-2"><a href="junit-5-advanced-features.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Tag demo method 1: &#39;sometimes&#39;&quot;</span><span class="op">)</span></span>
+<span id="cb377-3"><a href="junit-5-advanced-features.html#cb377-3" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb377-4"><a href="junit-5-advanced-features.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">tagDemo1</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb377-5"><a href="junit-5-advanced-features.html#cb377-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Tag demo 1 running&quot;</span><span class="op">);</span></span>
+<span id="cb377-6"><a href="junit-5-advanced-features.html#cb377-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb377-7"><a href="junit-5-advanced-features.html#cb377-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb377-8"><a href="junit-5-advanced-features.html#cb377-8" aria-hidden="true" tabindex="-1"></a><span class="at">@Tag</span><span class="op">(</span><span class="st">&quot;rarely&quot;</span><span class="op">)</span></span>
+<span id="cb377-9"><a href="junit-5-advanced-features.html#cb377-9" aria-hidden="true" tabindex="-1"></a><span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Tag demo method 2: &#39;rarely&#39;&quot;</span><span class="op">)</span></span>
+<span id="cb377-10"><a href="junit-5-advanced-features.html#cb377-10" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
+<span id="cb377-11"><a href="junit-5-advanced-features.html#cb377-11" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">tagDemo2</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb377-12"><a href="junit-5-advanced-features.html#cb377-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Tag demo 2 running.&quot;</span><span class="op">);</span></span>
+<span id="cb377-13"><a href="junit-5-advanced-features.html#cb377-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Assuming all other test methods are untagged; this declaration in your <code>build.gradle</code> file</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb377-1"><a href="junit-5-advanced-features.html#cb377-1" aria-hidden="true" tabindex="-1"></a>test {</span>
-<span id="cb377-2"><a href="junit-5-advanced-features.html#cb377-2" aria-hidden="true" tabindex="-1"></a>    useJUnitPlatform {</span>
-<span id="cb377-3"><a href="junit-5-advanced-features.html#cb377-3" aria-hidden="true" tabindex="-1"></a>        excludeTags <span class="st">&#39;rarely&#39;</span></span>
-<span id="cb377-4"><a href="junit-5-advanced-features.html#cb377-4" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb377-5"><a href="junit-5-advanced-features.html#cb377-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>will result in <code>tagDemo1()</code> being executed as well as all other tests - also the ones without any tag. So this only excludes <code>tagDemo2()</code> and any other class or test having this tag.</p>
-<p>On the other hand, this configuration</p>
 <div class="sourceCode" id="cb378"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb378-1"><a href="junit-5-advanced-features.html#cb378-1" aria-hidden="true" tabindex="-1"></a>test {</span>
 <span id="cb378-2"><a href="junit-5-advanced-features.html#cb378-2" aria-hidden="true" tabindex="-1"></a>    useJUnitPlatform {</span>
-<span id="cb378-3"><a href="junit-5-advanced-features.html#cb378-3" aria-hidden="true" tabindex="-1"></a>        includeTags <span class="st">&#39;sometimes&#39;</span></span>
+<span id="cb378-3"><a href="junit-5-advanced-features.html#cb378-3" aria-hidden="true" tabindex="-1"></a>        excludeTags <span class="st">&#39;rarely&#39;</span></span>
 <span id="cb378-4"><a href="junit-5-advanced-features.html#cb378-4" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb378-5"><a href="junit-5-advanced-features.html#cb378-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>will result in <code>tagDemo1()</code> being executed as well as all other tests - also the ones without any tag. So this only excludes <code>tagDemo2()</code> and any other class or test having this tag.</p>
+<p>On the other hand, this configuration</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb379-1"><a href="junit-5-advanced-features.html#cb379-1" aria-hidden="true" tabindex="-1"></a>test {</span>
+<span id="cb379-2"><a href="junit-5-advanced-features.html#cb379-2" aria-hidden="true" tabindex="-1"></a>    useJUnitPlatform {</span>
+<span id="cb379-3"><a href="junit-5-advanced-features.html#cb379-3" aria-hidden="true" tabindex="-1"></a>        includeTags <span class="st">&#39;sometimes&#39;</span></span>
+<span id="cb379-4"><a href="junit-5-advanced-features.html#cb379-4" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb379-5"><a href="junit-5-advanced-features.html#cb379-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>will result in <strong><em>only</em></strong> <code>tagDemo1()</code> being executed.</p>
 <p>You can <code>@Tag</code> single methods as well as classes.</p>
 </div>
@@ -503,31 +503,31 @@ Unfortunately, this disables the <code>@Tag</code> selection mechanism which is 
 <p>You can repeat the same test with different inputs using the <code>@ParameterizedTest</code> annotation.
 It is highly versatile, so you should really read the docs when your professional setting takes you there.</p>
 <p>In order to use this annotation, you should add this line to your dependencies (in this case, <code>build.gradle</code>):</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb379-1"><a href="junit-5-advanced-features.html#cb379-1" aria-hidden="true" tabindex="-1"></a>testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-params:5.5.2&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb380-1"><a href="junit-5-advanced-features.html#cb380-1" aria-hidden="true" tabindex="-1"></a>testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-params:5.5.2&#39;</span></span></code></pre></div>
 <p>When you have a test that should be executed with a few different input values, you can do something like this:</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb380-1"><a href="junit-5-advanced-features.html#cb380-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb380-2"><a href="junit-5-advanced-features.html#cb380-2" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> parameterized test with single value</span>
-<span id="cb380-3"><a href="junit-5-advanced-features.html#cb380-3" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb380-4"><a href="junit-5-advanced-features.html#cb380-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Palindrome finding&quot;</span><span class="op">)</span></span>
-<span id="cb380-5"><a href="junit-5-advanced-features.html#cb380-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ParameterizedTest</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">{0}</span><span class="sc">\&quot;</span><span class="st"> should be a palindrome&quot;</span><span class="op">)</span></span>
-<span id="cb380-6"><a href="junit-5-advanced-features.html#cb380-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ValueSource</span><span class="op">(</span>strings <span class="op">=</span> <span class="op">{</span><span class="st">&quot;racecar&quot;</span><span class="op">,</span> <span class="st">&quot;radar&quot;</span><span class="op">,</span> <span class="st">&quot;able was I ere I saw elba&quot;</span><span class="op">})</span></span>
-<span id="cb380-7"><a href="junit-5-advanced-features.html#cb380-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">palindromes</span><span class="op">(</span><span class="bu">String</span> candidate<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb380-8"><a href="junit-5-advanced-features.html#cb380-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertTrue</span><span class="op">(</span><span class="fu">isPalindrome</span><span class="op">(</span>candidate<span class="op">),</span> <span class="op">()</span> <span class="op">-&gt;</span> candidate <span class="op">+</span> <span class="st">&quot; should be a palindrome!&quot;</span><span class="op">);</span></span>
-<span id="cb380-9"><a href="junit-5-advanced-features.html#cb380-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb381-1"><a href="junit-5-advanced-features.html#cb381-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb381-2"><a href="junit-5-advanced-features.html#cb381-2" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> parameterized test with single value</span>
+<span id="cb381-3"><a href="junit-5-advanced-features.html#cb381-3" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb381-4"><a href="junit-5-advanced-features.html#cb381-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Palindrome finding&quot;</span><span class="op">)</span></span>
+<span id="cb381-5"><a href="junit-5-advanced-features.html#cb381-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ParameterizedTest</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">{0}</span><span class="sc">\&quot;</span><span class="st"> should be a palindrome&quot;</span><span class="op">)</span></span>
+<span id="cb381-6"><a href="junit-5-advanced-features.html#cb381-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ValueSource</span><span class="op">(</span>strings <span class="op">=</span> <span class="op">{</span><span class="st">&quot;racecar&quot;</span><span class="op">,</span> <span class="st">&quot;radar&quot;</span><span class="op">,</span> <span class="st">&quot;able was I ere I saw elba&quot;</span><span class="op">})</span></span>
+<span id="cb381-7"><a href="junit-5-advanced-features.html#cb381-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">palindromes</span><span class="op">(</span><span class="bu">String</span> candidate<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb381-8"><a href="junit-5-advanced-features.html#cb381-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertTrue</span><span class="op">(</span><span class="fu">isPalindrome</span><span class="op">(</span>candidate<span class="op">),</span> <span class="op">()</span> <span class="op">-&gt;</span> candidate <span class="op">+</span> <span class="st">&quot; should be a palindrome!&quot;</span><span class="op">);</span></span>
+<span id="cb381-9"><a href="junit-5-advanced-features.html#cb381-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 <p>This will carry out the <code>asertTrue()</code> statement sequentially with the inputs “racecar,” “radar,” “able was I ere I saw elba” that will be injected into the variable <code>candidate</code>. These values are provided by the <code>@ValueSource</code> annotation.</p>
 <p>If one of the inputs causes the test to fail, all subsequent candidates will still be run. This is a big difference with the case where you have multiple assert statements within a single test method. If one fails, all following assert tests will be skipped.</p>
 <p>Use this setup if all your test inputs are expected to give the same result (in this case, being a legal palindrome).</p>
 <p>Note that the annotation (<code>@ParameterizedTest(name = "\"{0}\" should be a palindrome")</code>) supports a dynamically generated error message using a format string where the input will be inserted in tha case of failure.</p>
 <p>If you have multiple values to be inserted, you should consider using the <code>@CsvSource</code> annotation:</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb381-1"><a href="junit-5-advanced-features.html#cb381-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb381-2"><a href="junit-5-advanced-features.html#cb381-2" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> parameterized test with two values</span>
-<span id="cb381-3"><a href="junit-5-advanced-features.html#cb381-3" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
-<span id="cb381-4"><a href="junit-5-advanced-features.html#cb381-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Roman numeral&quot;</span><span class="op">)</span></span>
-<span id="cb381-5"><a href="junit-5-advanced-features.html#cb381-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ParameterizedTest</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">{0}</span><span class="sc">\&quot;</span><span class="st"> should be {1}&quot;</span><span class="op">)</span></span>
-<span id="cb381-6"><a href="junit-5-advanced-features.html#cb381-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@CsvSource</span><span class="op">({</span><span class="st">&quot;I, 1&quot;</span><span class="op">,</span> <span class="st">&quot;II, 2&quot;</span><span class="op">,</span> <span class="st">&quot;V, 5&quot;</span><span class="op">})</span></span>
-<span id="cb381-7"><a href="junit-5-advanced-features.html#cb381-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">withNiceName</span><span class="op">(</span><span class="bu">String</span> word<span class="op">,</span> <span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb381-8"><a href="junit-5-advanced-features.html#cb381-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">//DO </span><span class="al">TESTING</span><span class="co"> WORK</span></span>
-<span id="cb381-9"><a href="junit-5-advanced-features.html#cb381-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb382-1"><a href="junit-5-advanced-features.html#cb382-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb382-2"><a href="junit-5-advanced-features.html#cb382-2" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> parameterized test with two values</span>
+<span id="cb382-3"><a href="junit-5-advanced-features.html#cb382-3" aria-hidden="true" tabindex="-1"></a>     <span class="co">*/</span></span>
+<span id="cb382-4"><a href="junit-5-advanced-features.html#cb382-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@DisplayName</span><span class="op">(</span><span class="st">&quot;Roman numeral&quot;</span><span class="op">)</span></span>
+<span id="cb382-5"><a href="junit-5-advanced-features.html#cb382-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@ParameterizedTest</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">{0}</span><span class="sc">\&quot;</span><span class="st"> should be {1}&quot;</span><span class="op">)</span></span>
+<span id="cb382-6"><a href="junit-5-advanced-features.html#cb382-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">@CsvSource</span><span class="op">({</span><span class="st">&quot;I, 1&quot;</span><span class="op">,</span> <span class="st">&quot;II, 2&quot;</span><span class="op">,</span> <span class="st">&quot;V, 5&quot;</span><span class="op">})</span></span>
+<span id="cb382-7"><a href="junit-5-advanced-features.html#cb382-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">withNiceName</span><span class="op">(</span><span class="bu">String</span> word<span class="op">,</span> <span class="dt">int</span> number<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb382-8"><a href="junit-5-advanced-features.html#cb382-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">//DO </span><span class="al">TESTING</span><span class="co"> WORK</span></span>
+<span id="cb382-9"><a href="junit-5-advanced-features.html#cb382-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 
 </div>
 </div>
@@ -580,7 +580,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["The Java Track.pdf", "The Java Track.epub"],
+"download": ["The Java Track.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

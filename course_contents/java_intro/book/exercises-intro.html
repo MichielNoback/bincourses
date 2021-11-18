@@ -478,7 +478,7 @@ Aquila nipalensis;Steppe Eagle;steppearend;1.9;figures/steppe_eagle.jpg</code></
 <li><p>Create a class that can parse your csv file into a “CollectionClass,” holding a collection of instances representing your species.</p></li>
 <li><p>Create a servlet serving url <code>/home</code> that redirects to a Thymeleaf page called <code>species-listing.html</code>.
 This page should list all available species in a table, providing for each species a hyperlink to a species-detail page (look at the html cheat sheet how to do this). The link should point to url <code>/species.detail</code>. This is a Thymeleaf example:</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb338-1"><a href="exercises-intro.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> th:href=</span><span class="st">&quot;@{&#39;/species.detail?species=&#39; + ${species.name}}&quot;</span><span class="ot"> th:text=</span><span class="st">&quot;${species.name}&quot;</span><span class="kw">&gt;&lt;/a&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb339-1"><a href="exercises-intro.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> th:href=</span><span class="st">&quot;@{&#39;/species.detail?species=&#39; + ${species.name}}&quot;</span><span class="ot"> th:text=</span><span class="st">&quot;${species.name}&quot;</span><span class="kw">&gt;&lt;/a&gt;</span></span></code></pre></div>
 <p>This page should be internationalized for Dutch and English of course.</p></li>
 <li><p>Create a servlet serving url <code>/species.detail</code> that directs to a Thymeleaf page showing the detailed information of a selected species (linked via the table created before), as well as a nice picture of course.
 This page is also internationalized.</p></li>
@@ -675,7 +675,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["The Java Track.pdf", "The Java Track.epub"],
+"download": ["The Java Track.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

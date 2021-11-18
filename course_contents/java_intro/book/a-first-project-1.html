@@ -421,13 +421,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>creating a servlet</li>
 <li>running the web application</li>
 </ol>
-<p>In this post, I’ll show you how to get started with a basic project that supports internationalization.</p>
+<p>You should realise that creating a web app from scratch is something you don’t do very often so it is not that terrible it takes some time. Also, this example makes use of a resource bundle supporting multiple languages (internationalization) and that is sometging you won’t do with every app you build.</p>
 <div id="prerequisites" class="section level5 unnumbered">
 <h5>Prerequisites</h5>
 <ul>
-<li><strong>Tomcat</strong>. I assume you have a working version of Tomcat server (see <a href="http://tomcat.apache.org/" class="uri">http://tomcat.apache.org/</a>). This blog
-uses Tomcat 9.0.13. Simply extract the downloaded zip at a convenient location. Don’t forget to make the *.sh
-scripts in the bin folder executable!</li>
+<li><strong>Tomcat</strong>. I assume you have a working version of Tomcat server (see <a href="http://tomcat.apache.org/" class="uri">http://tomcat.apache.org/</a>). This tutorial uses Tomcat 9.0.XX - a more recent version is OK of course. Simply extract the downloaded zip at a convenient location. Don’t forget to make the <code>*.sh</code> scripts in the <code>bin</code> folder executable!</li>
 <li><strong>IntelliJ Idea</strong>. This blog uses the 2018.3 Ultimate version. Please refer to Jetbrains for educational licences.</li>
 </ul>
 </div>
@@ -436,8 +434,8 @@ scripts in the bin folder executable!</li>
 <h2><span class="header-section-number">32.2</span> The steps</h2>
 <div id="configure-tomcat-as-webserver" class="section level4 unnumbered">
 <h4>Configure Tomcat as webserver</h4>
-<p>After installation (extraction) of Tomcat, you’ll have to let IntelliJ know where it is.
-You do this via Preferences → Build, Execution, Deployment → Application Servers → click ‘+’ (Add)</p>
+<p>After extraction of Tomcat the Tomcat server application (and making the *.sh scripts executable), you’ll have to let IntelliJ know where it is.
+You do this via <code>Preferences</code> → <code>Build, Execution, Deployment</code> → <code>Application Servers</code> → click <code>+</code> (Add) and point to the location where you extracted Tomcat.</p>
 <div class="figure">
 <img src="05_web/figures/Configure-Tomcat.png" title="Configure with Tomcat" alt="" />
 <p class="caption">Configure Tomcat</p>
@@ -447,55 +445,60 @@ You do this via Preferences → Build, Execution, Deployment → Application Ser
 <h4>Create a Gradle-managed web project</h4>
 <p>Creating a Gradle-managed web project in IntelliJ:</p>
 <ul>
-<li>Choose File → New → Project</li>
-<li>Choose Gradle → + Java + Web → Next</li>
+<li>Choose <code>File</code> → <code>New</code> → <code>Project</code></li>
+<li>Choose <code>Gradle</code> → and check <code>Java</code> + <code>Web</code> → <code>Next</code></li>
 </ul>
 <p>You see something like this:</p>
 <div class="figure">
-<img src="05_web/figures/Create-Gradle-project-1.png" title="Configure with Tomcat" alt="" />
-<p class="caption">Create Gradle project 1</p>
+<img src="05_web/figures/Create-Gradle-project-1.png" title="Create Gradle project 1" alt="" />
+<p class="caption">Gradle project creation</p>
 </div>
-<p>Enter GroupId, ArtifactId and Version and Click Next</p>
+<p>Enter GroupId (your unique identifier to this project), ArtifactId (its name) and Version and <code>Finish</code>.</p>
 <div class="figure">
-<img src="05_web/figures/Create-Gradle-project-2.png" title="Configure with Tomcat" alt="" />
-<p class="caption">Create Gradle project 2</p>
+<img src="05_web/figures/Create-Gradle-project-2.png" title="Create Gradle project 2" alt="" />
+<p class="caption">Gradle project basic config</p>
 </div>
-<p>Check “Use auto-import” and “Use Gradle wrapper” and Click Next and Click Finish</p>
-<p>You will have something like this:</p>
+<p>You will have something like this, after Gradle has build the project (this may take some time, depending on your machine and internet connection):</p>
 <div class="figure">
-<img src="05_web/figures/Create-Gradle-project-3.png" title="Configure with Tomcat" alt="" />
-<p class="caption">Create Gradle project 3</p>
+<img src="05_web/figures/Create-Gradle-project-3.png" title="Create Gradle project 3" alt="" />
+<p class="caption">New Gradle project</p>
 </div>
 </div>
 <div id="configure-gradle" class="section level4 unnumbered">
 <h4>Configure Gradle</h4>
-<p>In this project, we’ll be using Thymeleaf and JUnit5 (and the Servlet API). Since they are not readily available in Java, you’ll need to configure your projects’ dependencies.
+<p>In this project, we’ll be using Thymeleaf and JUnit5 (and the Servlet API). Since they are not available in Java by default (i.e. not in the standard JDK), you’ll need to configure them as your projects dependencies.
 Fortunately, Gradle is an excellent tool for dependency management.
-Here is the contents of a basic <code>build.gradle</code> configuration file:</p>
+Here is the contents of a basic <code>build.gradle</code> configuration file for a web app:</p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode gradle"><code class="sourceCode groovy"><span id="cb227-1"><a href="a-first-project-1.html#cb227-1" aria-hidden="true" tabindex="-1"></a>plugins <span class="op">{</span></span>
-<span id="cb227-2"><a href="a-first-project-1.html#cb227-2" aria-hidden="true" tabindex="-1"></a>    id <span class="st">&#39;java&#39;</span></span>
-<span id="cb227-3"><a href="a-first-project-1.html#cb227-3" aria-hidden="true" tabindex="-1"></a>    id <span class="st">&#39;war&#39;</span></span>
+<span id="cb227-2"><a href="a-first-project-1.html#cb227-2" aria-hidden="true" tabindex="-1"></a>    id <span class="st">&#39;war&#39;</span></span>
+<span id="cb227-3"><a href="a-first-project-1.html#cb227-3" aria-hidden="true" tabindex="-1"></a>    id <span class="st">&#39;java&#39;</span></span>
 <span id="cb227-4"><a href="a-first-project-1.html#cb227-4" aria-hidden="true" tabindex="-1"></a>    id <span class="st">&#39;idea&#39;</span></span>
 <span id="cb227-5"><a href="a-first-project-1.html#cb227-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb227-6"><a href="a-first-project-1.html#cb227-6" aria-hidden="true" tabindex="-1"></a>group <span class="st">&#39;nl.bioinf.wis_thymeleaf&#39;</span></span>
-<span id="cb227-7"><a href="a-first-project-1.html#cb227-7" aria-hidden="true" tabindex="-1"></a>version <span class="st">&#39;0.0.1&#39;</span></span>
-<span id="cb227-8"><a href="a-first-project-1.html#cb227-8" aria-hidden="true" tabindex="-1"></a>sourceCompatibility <span class="op">=</span> <span class="fl">1.8</span></span>
-<span id="cb227-9"><a href="a-first-project-1.html#cb227-9" aria-hidden="true" tabindex="-1"></a>repositories <span class="op">{</span></span>
-<span id="cb227-10"><a href="a-first-project-1.html#cb227-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mavenCentral</span><span class="op">()</span></span>
-<span id="cb227-11"><a href="a-first-project-1.html#cb227-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb227-12"><a href="a-first-project-1.html#cb227-12" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
-<span id="cb227-13"><a href="a-first-project-1.html#cb227-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Servlets</span></span>
-<span id="cb227-14"><a href="a-first-project-1.html#cb227-14" aria-hidden="true" tabindex="-1"></a>    compile <span class="st">&#39;javax.servlet:javax.servlet-api:3.1.0&#39;</span></span>
-<span id="cb227-15"><a href="a-first-project-1.html#cb227-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Thymeleaf</span></span>
-<span id="cb227-16"><a href="a-first-project-1.html#cb227-16" aria-hidden="true" tabindex="-1"></a>    compile <span class="st">&#39;org.thymeleaf:thymeleaf:3.0.11.RELEASE&#39;</span></span>
-<span id="cb227-17"><a href="a-first-project-1.html#cb227-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//JUnit5</span></span>
-<span id="cb227-18"><a href="a-first-project-1.html#cb227-18" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.1.0&#39;</span></span>
-<span id="cb227-19"><a href="a-first-project-1.html#cb227-19" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.1.0&#39;</span>  </span>
-<span id="cb227-20"><a href="a-first-project-1.html#cb227-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<span id="cb227-6"><a href="a-first-project-1.html#cb227-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-7"><a href="a-first-project-1.html#cb227-7" aria-hidden="true" tabindex="-1"></a>group <span class="st">&#39;nl.bioinf.nomi&#39;</span></span>
+<span id="cb227-8"><a href="a-first-project-1.html#cb227-8" aria-hidden="true" tabindex="-1"></a>version <span class="st">&#39;0.0.1&#39;</span></span>
+<span id="cb227-9"><a href="a-first-project-1.html#cb227-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-10"><a href="a-first-project-1.html#cb227-10" aria-hidden="true" tabindex="-1"></a>repositories <span class="op">{</span></span>
+<span id="cb227-11"><a href="a-first-project-1.html#cb227-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mavenCentral</span><span class="op">()</span></span>
+<span id="cb227-12"><a href="a-first-project-1.html#cb227-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb227-13"><a href="a-first-project-1.html#cb227-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-14"><a href="a-first-project-1.html#cb227-14" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
+<span id="cb227-15"><a href="a-first-project-1.html#cb227-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Servlets</span></span>
+<span id="cb227-16"><a href="a-first-project-1.html#cb227-16" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;javax.servlet:javax.servlet-api:3.1.0&#39;</span></span>
+<span id="cb227-17"><a href="a-first-project-1.html#cb227-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Thymeleaf</span></span>
+<span id="cb227-18"><a href="a-first-project-1.html#cb227-18" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;org.thymeleaf:thymeleaf:3.0.11.RELEASE&#39;</span></span>
+<span id="cb227-19"><a href="a-first-project-1.html#cb227-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">//JUnit5</span></span>
+<span id="cb227-20"><a href="a-first-project-1.html#cb227-20" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.7.0&#39;</span></span>
+<span id="cb227-21"><a href="a-first-project-1.html#cb227-21" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.7.0&#39;</span></span>
+<span id="cb227-22"><a href="a-first-project-1.html#cb227-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb227-23"><a href="a-first-project-1.html#cb227-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-24"><a href="a-first-project-1.html#cb227-24" aria-hidden="true" tabindex="-1"></a>test <span class="op">{</span></span>
+<span id="cb227-25"><a href="a-first-project-1.html#cb227-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useJUnitPlatform</span><span class="op">()</span></span>
+<span id="cb227-26"><a href="a-first-project-1.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 <div id="the-web-inf-folder" class="section level4 unnumbered">
 <h4>The WEB-INF folder</h4>
-<p>Under web-app, create a folder called <code>WEB-INF</code> and within that one a folder called <code>templates</code>. Within <code>templates</code>, create the html file called <code>welcome.html</code>.</p>
+<p>Under web-app, create a folder called <code>WEB-INF</code> and within that one a folder called <code>templates</code>. Within <code>templates</code>, create the html file called <code>welcome.html</code>. You can do that via context menu <code>New</code> → <code>Thymeleaf</code> or simply <code>New</code> &amp;rarr File.</p>
 <div class="figure">
 <img src="05_web/figures/create-WEB-INF.png" title="Create WEB-INF" alt="" />
 <p class="caption">Create WEB-INF</p>
@@ -514,23 +517,27 @@ Here is the contents of a basic <code>build.gradle</code> configuration file:</p
 <span id="cb228-11"><a href="a-first-project-1.html#cb228-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Date: <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${currentDate}&quot;</span><span class="kw">&gt;</span>Sat Oct 24 2015<span class="kw">&lt;/span&gt;&lt;/p&gt;</span></span>
 <span id="cb228-12"><a href="a-first-project-1.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb228-13"><a href="a-first-project-1.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
-<p>There are several non-html syntax elements that make this page special:
-<strong><code>#{...}</code></strong> and
-<strong><code>${...}</code></strong> and the Thymeleaf tag attributes <code>th:text</code>.
-<strong><code>#{...}</code></strong> fetches the value from the resource bundle (files named <code>xxxxx.properties</code>). The expression <strong><code>#{welcome.msg}</code></strong> gets the value of key welcome.msg from the file <code>welcome_xx.properties</code>. The expression <code>${...}</code> fetches the value set in the <code>WebContext</code> instance. The expression <code>${currentDate}</code> gets the value for the attribute <code>currentDate</code> set in <code>WebContext</code>.</p>
-<p>Much more on this later.</p>
+<p>Note the <code>&lt;!DOCTYPE...&gt;</code> declaration on top declaring it to be a Thymeleaf page.
+There are several non-html syntax elements that make this page special:
+<strong><code>#{...}</code></strong> and <strong><code>${...}</code></strong> and the Thymeleaf tag attributes <code>th:text</code>.</p>
+<p><strong><code>#{...}</code></strong> fetches the value from the <strong><em>resource bundle</em></strong> (files named <code>xxxxx.properties</code> discussed below). The expression <strong><code>#{welcome.msg}</code></strong> gets the value of key <code>welcome.msg</code> from the file <code>welcome_xx.properties</code>. The expression <code>${...}</code> fetches the value set in the <code>WebContext</code> instance. The expression <code>${currentDate}</code> gets the value for the attribute <code>currentDate</code> set in <code>WebContext</code>.</p>
+<p>Much more on that stuff.</p>
 <p>Other than that, this is a plain old html file. You can open it in any browser and it will show you the non-processed view. This is what makes Thymeleaf so nice; you can develop the view of your app without using servers or template engines!</p>
 </div>
 <div id="create-a-resource-bundle" class="section level4 unnumbered">
 <h4>Create a resource bundle</h4>
-<p>A resource bundle is where you store your application texts. Instead of creating web pages for every language you are willing to support, you create text-free web pages and store the texts for the different languages in separate files called <em>resource bundles</em>.</p>
+<p>A resource bundle is where you store your web page texts, if you ever want to support more than one language. Instead of creating web pages for every language you are willing to support, you create text-free web pages and store the texts for the different languages in separate files called <em>resource bundles</em>.</p>
 <p>This is how you add language support to your web app:</p>
-<p>Right-click the templates folder, select New → Resource Bundle → Type welcome as base name → Click ‘+’ under ‘Locales to add’ and add ‘en’ → Click OK</p>
+<p>Right-click the templates folder, select <code>New</code> → <code>Resource Bundle</code> →<br />
+Type welcome as base name →<br />
+Click <code>+</code> under <code>Locales to add</code> and add <code>en</code> →<br />
+Click <code>OK</code> → Click <code>OK</code> again to finish.</p>
 <div class="figure">
 <img src="05_web/figures/Create-Resource-Bundle-1.png" title="Create Resource bundle 1" alt="" />
 <p class="caption">Create Resource bundle 1</p>
 </div>
-<p>The resource bundle will open in your editor. It has plain text view and “resource bundle” view. Choose the latter. Click ‘+’ to add a new Property key and name it <code>welcome.msg</code>.</p>
+<p>The resource bundle will open in your editor. It has plain text view and “Resource Bundle” view. (You may need to install the Plugin for that via <code>Preferences</code> → <code>Plugins</code> → search for Resource Bundle Editor in Marketplace).<br />
+Here I choose the latter. Click ‘+’ to add a new Property key and name it <code>welcome.msg</code>.</p>
 <div class="figure">
 <img src="05_web/figures/Create-Resource-Bundle-2.png" title="Create Resource bundle 2" alt="" />
 <p class="caption">Create Resource bundle 2</p>
@@ -540,101 +547,113 @@ Here is the contents of a basic <code>build.gradle</code> configuration file:</p
 <img src="05_web/figures/Create-Resource-Bundle-3.png" title="Create Resource bundle 3" alt="" />
 <p class="caption">Create Resource bundle 3</p>
 </div>
-<p>Now you have internationalized your view.</p>
+<p>Now you have internationalized your view.<br />
+Note that in Text view (the default when no plugin is present), you can simply enter <code>key=value</code> pairs in each of your resource bundle files. This one is in <code>welcome.properties</code>:</p>
+<pre><code>welcome.msg=Hallo dan!</code></pre>
 </div>
 <div id="prepare-to-use-thymeleaf" class="section level4 unnumbered">
 <h4>Prepare to use Thymeleaf</h4>
-<p>Thymeleaf needs some configuration to get going. Here is some boilerplate code you can simply copy-and-paste.</p>
-<p>Under <code>main/java</code>, create a base package, e.g. <code>&lt;your_._domain&gt;.&lt;your_name&gt;.&lt;your_project&gt;</code>. Within it, create two additional packages: <code>config</code> and <code>servlets</code>. Under <code>config</code>, create a new Java class file <code>WebConfig.java</code>. Put this code in there:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb229-1"><a href="a-first-project-1.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">;</span></span>
-<span id="cb229-2"><a href="a-first-project-1.html#cb229-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">TemplateEngine</span><span class="op">;</span></span>
-<span id="cb229-3"><a href="a-first-project-1.html#cb229-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">templateresolver</span><span class="op">.</span><span class="im">ServletContextTemplateResolver</span><span class="op">;</span></span>
-<span id="cb229-4"><a href="a-first-project-1.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletContext</span><span class="op">;</span></span>
-<span id="cb229-5"><a href="a-first-project-1.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
-<span id="cb229-6"><a href="a-first-project-1.html#cb229-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WebConfig <span class="op">{</span></span>
-<span id="cb229-7"><a href="a-first-project-1.html#cb229-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> TemplateEngine <span class="fu">createTemplateEngine</span><span class="op">(</span>ServletContext servletContext<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb229-8"><a href="a-first-project-1.html#cb229-8" aria-hidden="true" tabindex="-1"></a>        ServletContextTemplateResolver templateResolver <span class="op">=</span></span>
-<span id="cb229-9"><a href="a-first-project-1.html#cb229-9" aria-hidden="true" tabindex="-1"></a>                <span class="kw">new</span> <span class="fu">ServletContextTemplateResolver</span><span class="op">(</span>servletContext<span class="op">);</span></span>
-<span id="cb229-10"><a href="a-first-project-1.html#cb229-10" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setTemplateMode</span><span class="op">(</span><span class="st">&quot;XHTML&quot;</span><span class="op">);</span></span>
-<span id="cb229-11"><a href="a-first-project-1.html#cb229-11" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setPrefix</span><span class="op">(</span><span class="st">&quot;/WEB-INF/templates/&quot;</span><span class="op">);</span></span>
-<span id="cb229-12"><a href="a-first-project-1.html#cb229-12" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setSuffix</span><span class="op">(</span><span class="st">&quot;.html&quot;</span><span class="op">);</span></span>
-<span id="cb229-13"><a href="a-first-project-1.html#cb229-13" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setCacheTTLMs</span><span class="op">(</span><span class="dv">3600000L</span><span class="op">);</span></span>
-<span id="cb229-14"><a href="a-first-project-1.html#cb229-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Cache is set to true by default.</span></span>
-<span id="cb229-15"><a href="a-first-project-1.html#cb229-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Set to false if you want templates to be automatically</span></span>
-<span id="cb229-16"><a href="a-first-project-1.html#cb229-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">// updated when modified.</span></span>
-<span id="cb229-17"><a href="a-first-project-1.html#cb229-17" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setCacheable</span><span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
-<span id="cb229-18"><a href="a-first-project-1.html#cb229-18" aria-hidden="true" tabindex="-1"></a>        TemplateEngine templateEngine <span class="op">=</span> <span class="kw">new</span> <span class="fu">TemplateEngine</span><span class="op">();</span></span>
-<span id="cb229-19"><a href="a-first-project-1.html#cb229-19" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">setTemplateResolver</span><span class="op">(</span>templateResolver<span class="op">);</span></span>
-<span id="cb229-20"><a href="a-first-project-1.html#cb229-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> templateEngine<span class="op">;</span></span>
-<span id="cb229-21"><a href="a-first-project-1.html#cb229-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb229-22"><a href="a-first-project-1.html#cb229-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
-<span id="cb229-23"><a href="a-first-project-1.html#cb229-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">*</span> Configures the response in a standard way<span class="co">.</span></span>
-<span id="cb229-24"><a href="a-first-project-1.html#cb229-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">*</span> <span class="co">@</span>param response</span>
-<span id="cb229-25"><a href="a-first-project-1.html#cb229-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">*/</span></span>
-<span id="cb229-26"><a href="a-first-project-1.html#cb229-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">configureResponse</span><span class="op">(</span>HttpServletResponse response<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb229-27"><a href="a-first-project-1.html#cb229-27" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span><span class="st">&quot;text/html;charset=UTF-8&quot;</span><span class="op">);</span></span>
-<span id="cb229-28"><a href="a-first-project-1.html#cb229-28" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;Pragma&quot;</span><span class="op">,</span> <span class="st">&quot;no-cache&quot;</span><span class="op">);</span></span>
-<span id="cb229-29"><a href="a-first-project-1.html#cb229-29" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;Cache-Control&quot;</span><span class="op">,</span> <span class="st">&quot;no-cache&quot;</span><span class="op">);</span></span>
-<span id="cb229-30"><a href="a-first-project-1.html#cb229-30" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setDateHeader</span><span class="op">(</span><span class="st">&quot;Expires&quot;</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb229-31"><a href="a-first-project-1.html#cb229-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb229-32"><a href="a-first-project-1.html#cb229-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>The main role of this class is to provide a template engine. This is the piece of the application responsible for processing the Thymeleaf templates into html views. To do this, the template engine needs to know -amongst other things- where these templates are. That is the responsibility of the <code>TemplateResolver</code>.</p>
+<p>Thymeleaf needs some configuration to get going. Here is some boilerplate code that you can simply copy-and-paste.</p>
+<p>Under <code>main/java</code>, create a base package using the context menu looking like this <code>&lt;your_._domain&gt;.&lt;your_name&gt;.&lt;your_project&gt;</code>, e.g. <code>nl.bioinf.nomi.mywebapp</code>. Within it, create two additional packages: <code>config</code> and <code>servlets</code>. Under <code>config</code>, create a new Java class file <code>WebConfig.java</code>. Put this code in there, and change the package declaration to match your situation:</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb230-1"><a href="a-first-project-1.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">;</span> <span class="co">//change this for your situation!</span></span>
+<span id="cb230-2"><a href="a-first-project-1.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">TemplateEngine</span><span class="op">;</span></span>
+<span id="cb230-3"><a href="a-first-project-1.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">templateresolver</span><span class="op">.</span><span class="im">ServletContextTemplateResolver</span><span class="op">;</span></span>
+<span id="cb230-4"><a href="a-first-project-1.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletContext</span><span class="op">;</span></span>
+<span id="cb230-5"><a href="a-first-project-1.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
+<span id="cb230-6"><a href="a-first-project-1.html#cb230-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb230-7"><a href="a-first-project-1.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WebConfig <span class="op">{</span></span>
+<span id="cb230-8"><a href="a-first-project-1.html#cb230-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> TemplateEngine <span class="fu">createTemplateEngine</span><span class="op">(</span>ServletContext servletContext<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb230-9"><a href="a-first-project-1.html#cb230-9" aria-hidden="true" tabindex="-1"></a>        ServletContextTemplateResolver templateResolver <span class="op">=</span></span>
+<span id="cb230-10"><a href="a-first-project-1.html#cb230-10" aria-hidden="true" tabindex="-1"></a>                <span class="kw">new</span> <span class="fu">ServletContextTemplateResolver</span><span class="op">(</span>servletContext<span class="op">);</span></span>
+<span id="cb230-11"><a href="a-first-project-1.html#cb230-11" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setTemplateMode</span><span class="op">(</span><span class="st">&quot;XHTML&quot;</span><span class="op">);</span></span>
+<span id="cb230-12"><a href="a-first-project-1.html#cb230-12" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setPrefix</span><span class="op">(</span><span class="st">&quot;/WEB-INF/templates/&quot;</span><span class="op">);</span></span>
+<span id="cb230-13"><a href="a-first-project-1.html#cb230-13" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setSuffix</span><span class="op">(</span><span class="st">&quot;.html&quot;</span><span class="op">);</span></span>
+<span id="cb230-14"><a href="a-first-project-1.html#cb230-14" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setCacheTTLMs</span><span class="op">(</span><span class="dv">3600000L</span><span class="op">);</span></span>
+<span id="cb230-15"><a href="a-first-project-1.html#cb230-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Cache is set to true by default.</span></span>
+<span id="cb230-16"><a href="a-first-project-1.html#cb230-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Set to false if you want templates to be automatically</span></span>
+<span id="cb230-17"><a href="a-first-project-1.html#cb230-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// updated when modified.</span></span>
+<span id="cb230-18"><a href="a-first-project-1.html#cb230-18" aria-hidden="true" tabindex="-1"></a>        templateResolver<span class="op">.</span><span class="fu">setCacheable</span><span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb230-19"><a href="a-first-project-1.html#cb230-19" aria-hidden="true" tabindex="-1"></a>        TemplateEngine templateEngine <span class="op">=</span> <span class="kw">new</span> <span class="fu">TemplateEngine</span><span class="op">();</span></span>
+<span id="cb230-20"><a href="a-first-project-1.html#cb230-20" aria-hidden="true" tabindex="-1"></a>        templateEngine<span class="op">.</span><span class="fu">setTemplateResolver</span><span class="op">(</span>templateResolver<span class="op">);</span></span>
+<span id="cb230-21"><a href="a-first-project-1.html#cb230-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> templateEngine<span class="op">;</span></span>
+<span id="cb230-22"><a href="a-first-project-1.html#cb230-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb230-23"><a href="a-first-project-1.html#cb230-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb230-24"><a href="a-first-project-1.html#cb230-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
+<span id="cb230-25"><a href="a-first-project-1.html#cb230-25" aria-hidden="true" tabindex="-1"></a>      <span class="co">*</span> Configures the response in a standard way<span class="co">.</span></span>
+<span id="cb230-26"><a href="a-first-project-1.html#cb230-26" aria-hidden="true" tabindex="-1"></a>      <span class="co">*</span> <span class="co">@</span>param response</span>
+<span id="cb230-27"><a href="a-first-project-1.html#cb230-27" aria-hidden="true" tabindex="-1"></a>      <span class="co">*/</span></span>
+<span id="cb230-28"><a href="a-first-project-1.html#cb230-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">configureResponse</span><span class="op">(</span>HttpServletResponse response<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb230-29"><a href="a-first-project-1.html#cb230-29" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setContentType</span><span class="op">(</span><span class="st">&quot;text/html;charset=UTF-8&quot;</span><span class="op">);</span></span>
+<span id="cb230-30"><a href="a-first-project-1.html#cb230-30" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;Pragma&quot;</span><span class="op">,</span> <span class="st">&quot;no-cache&quot;</span><span class="op">);</span></span>
+<span id="cb230-31"><a href="a-first-project-1.html#cb230-31" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setHeader</span><span class="op">(</span><span class="st">&quot;Cache-Control&quot;</span><span class="op">,</span> <span class="st">&quot;no-cache&quot;</span><span class="op">);</span></span>
+<span id="cb230-32"><a href="a-first-project-1.html#cb230-32" aria-hidden="true" tabindex="-1"></a>        response<span class="op">.</span><span class="fu">setDateHeader</span><span class="op">(</span><span class="st">&quot;Expires&quot;</span><span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb230-33"><a href="a-first-project-1.html#cb230-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb230-34"><a href="a-first-project-1.html#cb230-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>The main role of this class is to provide a <strong><em>template engine</em></strong>. This is the component of your application that is responsible for processing the Thymeleaf templates into html views. To do this, the template engine needs to know -amongst other things- where these templates are. That is the responsibility of the <code>TemplateResolver</code>. have a look at the code and try to understand what’s happening.</p>
 </div>
 <div id="create-a-servlet" class="section level4 unnumbered">
 <h4>Create a Servlet</h4>
-<p>Finally, everything is going to fall into place. Under package <code>....servlets</code>, create a new Servlet class with this contents:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb230-1"><a href="a-first-project-1.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
-<span id="cb230-2"><a href="a-first-project-1.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">.</span><span class="im">WebConfig</span><span class="op">;</span></span>
-<span id="cb230-3"><a href="a-first-project-1.html#cb230-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">context</span><span class="op">.</span><span class="im">WebContext</span><span class="op">;</span></span>
-<span id="cb230-4"><a href="a-first-project-1.html#cb230-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletContext</span><span class="op">;</span></span>
-<span id="cb230-5"><a href="a-first-project-1.html#cb230-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletException</span><span class="op">;</span></span>
-<span id="cb230-6"><a href="a-first-project-1.html#cb230-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">WebServlet</span><span class="op">;</span></span>
-<span id="cb230-7"><a href="a-first-project-1.html#cb230-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServlet</span><span class="op">;</span></span>
-<span id="cb230-8"><a href="a-first-project-1.html#cb230-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletRequest</span><span class="op">;</span></span>
-<span id="cb230-9"><a href="a-first-project-1.html#cb230-9" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
-<span id="cb230-10"><a href="a-first-project-1.html#cb230-10" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
-<span id="cb230-11"><a href="a-first-project-1.html#cb230-11" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Date</span><span class="op">;</span></span>
-<span id="cb230-12"><a href="a-first-project-1.html#cb230-12" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;WelcomeServlet&quot;</span><span class="op">,</span> urlPatterns <span class="op">=</span> <span class="st">&quot;/welcome&quot;</span><span class="op">,</span> loadOnStartup <span class="op">=</span> <span class="dv">1</span><span class="op">)</span></span>
-<span id="cb230-13"><a href="a-first-project-1.html#cb230-13" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WelcomeServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
-<span id="cb230-14"><a href="a-first-project-1.html#cb230-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
-<span id="cb230-15"><a href="a-first-project-1.html#cb230-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">()</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
-<span id="cb230-16"><a href="a-first-project-1.html#cb230-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Initializing Thymeleaf template engine&quot;</span><span class="op">);</span></span>
-<span id="cb230-17"><a href="a-first-project-1.html#cb230-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> ServletContext servletContext <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getServletContext</span><span class="op">();</span></span>
-<span id="cb230-18"><a href="a-first-project-1.html#cb230-18" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">createTemplateEngine</span><span class="op">(</span>servletContext<span class="op">);</span></span>
-<span id="cb230-19"><a href="a-first-project-1.html#cb230-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb230-20"><a href="a-first-project-1.html#cb230-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">long</span> serialVersionUID <span class="op">=</span> <span class="dv">1L</span><span class="op">;</span></span>
-<span id="cb230-21"><a href="a-first-project-1.html#cb230-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doPost</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">{</span></span>
-<span id="cb230-22"><a href="a-first-project-1.html#cb230-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">process</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
-<span id="cb230-23"><a href="a-first-project-1.html#cb230-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb230-24"><a href="a-first-project-1.html#cb230-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doGet</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">{</span></span>
-<span id="cb230-25"><a href="a-first-project-1.html#cb230-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">process</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
-<span id="cb230-26"><a href="a-first-project-1.html#cb230-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb230-27"><a href="a-first-project-1.html#cb230-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">process</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span></span>
-<span id="cb230-28"><a href="a-first-project-1.html#cb230-28" aria-hidden="true" tabindex="-1"></a>            <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
-<span id="cb230-29"><a href="a-first-project-1.html#cb230-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">//this step is optional; standard settings also suffice</span></span>
-<span id="cb230-30"><a href="a-first-project-1.html#cb230-30" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">configureResponse</span><span class="op">(</span>response<span class="op">);</span></span>
-<span id="cb230-31"><a href="a-first-project-1.html#cb230-31" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span></span>
-<span id="cb230-32"><a href="a-first-project-1.html#cb230-32" aria-hidden="true" tabindex="-1"></a>                request<span class="op">,</span></span>
-<span id="cb230-33"><a href="a-first-project-1.html#cb230-33" aria-hidden="true" tabindex="-1"></a>                response<span class="op">,</span></span>
-<span id="cb230-34"><a href="a-first-project-1.html#cb230-34" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span></span>
-<span id="cb230-35"><a href="a-first-project-1.html#cb230-35" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
-<span id="cb230-36"><a href="a-first-project-1.html#cb230-36" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;currentDate&quot;</span><span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span><span class="op">());</span></span>
-<span id="cb230-37"><a href="a-first-project-1.html#cb230-37" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">createTemplateEngine</span><span class="op">(</span><span class="fu">getServletContext</span><span class="op">()).</span></span>
-<span id="cb230-38"><a href="a-first-project-1.html#cb230-38" aria-hidden="true" tabindex="-1"></a>            <span class="fu">process</span><span class="op">(</span><span class="st">&quot;welcome&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
-<span id="cb230-39"><a href="a-first-project-1.html#cb230-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb230-40"><a href="a-first-project-1.html#cb230-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>Finally, everything is going to fall into place. Under package <code>....servlets</code>, create a new Servlet class with the contents listed below. If you have that context menu item whan right-clicking on the <code>servlets</code> package, you can use the <code>New</code> → <code>Servlet</code> wizard; if not, use <code>New</code> → <code>Java class</code> to create one from scratch.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb231-1"><a href="a-first-project-1.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span> <span class="co">//change to your situation!</span></span>
+<span id="cb231-2"><a href="a-first-project-1.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">.</span><span class="im">WebConfig</span><span class="op">;</span> <span class="co">//change to your situation!</span></span>
+<span id="cb231-3"><a href="a-first-project-1.html#cb231-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">thymeleaf</span><span class="op">.</span><span class="im">context</span><span class="op">.</span><span class="im">WebContext</span><span class="op">;</span></span>
+<span id="cb231-4"><a href="a-first-project-1.html#cb231-4" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletContext</span><span class="op">;</span></span>
+<span id="cb231-5"><a href="a-first-project-1.html#cb231-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">ServletException</span><span class="op">;</span></span>
+<span id="cb231-6"><a href="a-first-project-1.html#cb231-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">annotation</span><span class="op">.</span><span class="im">WebServlet</span><span class="op">;</span></span>
+<span id="cb231-7"><a href="a-first-project-1.html#cb231-7" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServlet</span><span class="op">;</span></span>
+<span id="cb231-8"><a href="a-first-project-1.html#cb231-8" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletRequest</span><span class="op">;</span></span>
+<span id="cb231-9"><a href="a-first-project-1.html#cb231-9" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">javax</span><span class="op">.</span><span class="im">servlet</span><span class="op">.</span><span class="im">http</span><span class="op">.</span><span class="im">HttpServletResponse</span><span class="op">;</span></span>
+<span id="cb231-10"><a href="a-first-project-1.html#cb231-10" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">io</span><span class="op">.</span><span class="im">IOException</span><span class="op">;</span></span>
+<span id="cb231-11"><a href="a-first-project-1.html#cb231-11" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Date</span><span class="op">;</span></span>
+<span id="cb231-12"><a href="a-first-project-1.html#cb231-12" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;WelcomeServlet&quot;</span><span class="op">,</span> urlPatterns <span class="op">=</span> <span class="st">&quot;/welcome&quot;</span><span class="op">,</span> loadOnStartup <span class="op">=</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb231-13"><a href="a-first-project-1.html#cb231-13" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WelcomeServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span></span>
+<span id="cb231-14"><a href="a-first-project-1.html#cb231-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">@Override</span></span>
+<span id="cb231-15"><a href="a-first-project-1.html#cb231-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">init</span><span class="op">()</span> <span class="kw">throws</span> ServletException <span class="op">{</span></span>
+<span id="cb231-16"><a href="a-first-project-1.html#cb231-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Initializing Thymeleaf template engine&quot;</span><span class="op">);</span></span>
+<span id="cb231-17"><a href="a-first-project-1.html#cb231-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">final</span> ServletContext servletContext <span class="op">=</span> <span class="kw">this</span><span class="op">.</span><span class="fu">getServletContext</span><span class="op">();</span></span>
+<span id="cb231-18"><a href="a-first-project-1.html#cb231-18" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">createTemplateEngine</span><span class="op">(</span>servletContext<span class="op">);</span></span>
+<span id="cb231-19"><a href="a-first-project-1.html#cb231-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb231-20"><a href="a-first-project-1.html#cb231-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">long</span> serialVersionUID <span class="op">=</span> <span class="dv">1L</span><span class="op">;</span></span>
+<span id="cb231-21"><a href="a-first-project-1.html#cb231-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doPost</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">{</span></span>
+<span id="cb231-22"><a href="a-first-project-1.html#cb231-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">process</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
+<span id="cb231-23"><a href="a-first-project-1.html#cb231-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb231-24"><a href="a-first-project-1.html#cb231-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">doGet</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span> <span class="kw">throws</span> <span class="bu">IOException</span><span class="op">{</span></span>
+<span id="cb231-25"><a href="a-first-project-1.html#cb231-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">process</span><span class="op">(</span>request<span class="op">,</span> response<span class="op">);</span></span>
+<span id="cb231-26"><a href="a-first-project-1.html#cb231-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb231-27"><a href="a-first-project-1.html#cb231-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">process</span><span class="op">(</span>HttpServletRequest request<span class="op">,</span> HttpServletResponse response<span class="op">)</span></span>
+<span id="cb231-28"><a href="a-first-project-1.html#cb231-28" aria-hidden="true" tabindex="-1"></a>            <span class="kw">throws</span> <span class="bu">IOException</span> <span class="op">{</span></span>
+<span id="cb231-29"><a href="a-first-project-1.html#cb231-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">//this step is optional; standard settings also suffice</span></span>
+<span id="cb231-30"><a href="a-first-project-1.html#cb231-30" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">configureResponse</span><span class="op">(</span>response<span class="op">);</span></span>
+<span id="cb231-31"><a href="a-first-project-1.html#cb231-31" aria-hidden="true" tabindex="-1"></a>        WebContext ctx <span class="op">=</span> <span class="kw">new</span> <span class="fu">WebContext</span><span class="op">(</span></span>
+<span id="cb231-32"><a href="a-first-project-1.html#cb231-32" aria-hidden="true" tabindex="-1"></a>                request<span class="op">,</span></span>
+<span id="cb231-33"><a href="a-first-project-1.html#cb231-33" aria-hidden="true" tabindex="-1"></a>                response<span class="op">,</span></span>
+<span id="cb231-34"><a href="a-first-project-1.html#cb231-34" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getServletContext</span><span class="op">(),</span></span>
+<span id="cb231-35"><a href="a-first-project-1.html#cb231-35" aria-hidden="true" tabindex="-1"></a>                request<span class="op">.</span><span class="fu">getLocale</span><span class="op">());</span></span>
+<span id="cb231-36"><a href="a-first-project-1.html#cb231-36" aria-hidden="true" tabindex="-1"></a>        ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;currentDate&quot;</span><span class="op">,</span> <span class="kw">new</span> <span class="bu">Date</span><span class="op">());</span></span>
+<span id="cb231-37"><a href="a-first-project-1.html#cb231-37" aria-hidden="true" tabindex="-1"></a>        WebConfig<span class="op">.</span><span class="fu">createTemplateEngine</span><span class="op">(</span><span class="fu">getServletContext</span><span class="op">()).</span></span>
+<span id="cb231-38"><a href="a-first-project-1.html#cb231-38" aria-hidden="true" tabindex="-1"></a>            <span class="fu">process</span><span class="op">(</span><span class="st">&quot;welcome&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span>
+<span id="cb231-39"><a href="a-first-project-1.html#cb231-39" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb231-40"><a href="a-first-project-1.html#cb231-40" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Of course, the package declarations will be different, as well as the first <code>import</code> statement.
-The alert reader may notice that this will create a <code>TemplateEngine</code> for each single servlet. This is probably not the very best strategy, but for simplicity, we’ll stick to it for now.
+The alert reader may notice that this will create a <code>TemplateEngine</code> for each single servlet. This is absolutely not the best strategy, but for simplicity we’ll stick to it for now.
 Have a look at the <a href="https://bitbucket.org/minoba/java_web_thymeleaf_demo" title="Demonstration repository">Demo repo</a> for a final solution with the template resolver.</p>
 </div>
 <div id="finally-run-it" class="section level4 unnumbered">
 <h4>Finally: run it</h4>
-<p>Create a new run configuration (it’s in the top bar) and point it to <code>http://localhost:8080/welcome</code>.</p>
+<p>Create a new run configuration (it’s in the top bar, <code>Add Configuration</code>).
+Click <code>+</code> → select <code>Tomcat Server/Local</code> (NOT <code>TomEE Server</code>!). Make sure the <code>Application server</code> is defined (your unpacked Tomcat location), use for <code>URL</code>
+this address: <code>http://localhost:8080/welcome</code>.</p>
+<p>Note the <code>Warning: no artifacts...</code> message at the bottom. Click <code>Fix</code> → select either one of the options <code>Gradle....war</code> and in <code>Application context</code> (you are now under Tab <code>Deployment</code>) fill in <code>/</code> instead of <code>/Gradle___nl_bioinf_nomi___MyWebApp_0_0_1_war</code>. If you don’t do this, you will need to add this to your URLs!</p>
 <div class="figure">
 <img src="05_web/figures/Run-the-Application-1.png" title="Run-the-Application-1.png" alt="" />
 <p class="caption">Run the Application 1</p>
 </div>
-<p>Next, crank up your browser, and I hope you’ll see something like this:</p>
+<div class="figure">
+<img src="05_web/figures/Run-the-Application-2.png" title="Run-the-Application-2.png" alt="" />
+<p class="caption">Run the Application 2</p>
+</div>
+<p>If you run the configuration (Green triangle in menu bar), the browser will fire op or you’ll have to do it yourself, and go to <code>http://localhost:8080/welcome</code>.</p>
+<p>I hope you’ll see something like this:</p>
 <div class="figure">
 <img src="05_web/figures/Run-the-Application-nl.png" title="Run-the-Application-nl.png" alt="" />
 <p class="caption">Run the Application NL</p>
@@ -694,7 +713,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["The Java Track.pdf", "The Java Track.epub"],
+"download": ["The Java Track.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
