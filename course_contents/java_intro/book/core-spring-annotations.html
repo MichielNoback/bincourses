@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 49 Core (Spring) annotations | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 49 Core (Spring) annotations | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="dependency-injection-in-spring.html"/>
 
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="core-spring-annotations" class="section level1" number="49">
-<h1><span class="header-section-number">Chapter 49</span> Core (Spring) annotations</h1>
+<div id="core-spring-annotations" class="section level1 hasAnchor" number="49">
+<h1><span class="header-section-number">Chapter 49</span> Core (Spring) annotations<a href="core-spring-annotations.html#core-spring-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This page lists the most common annotations of the Spring (MVC) framework.</p>
 <p>The Component scan process is central to all annotations. Annotated classes, methods and fields will only be found and processed if they are included in the component scanning process. Spring Boot automatically includes all source folders in this scan. Many annotations are actually subtypes of each other. In particular, <code>@Component</code> is the supertype for many other class-level annotations such as <code>@Controller</code>, <code>@Service</code>. For instance, if you look up class <code>Controller</code> by pressing <code>Cmd (Ctr) + B</code> when the cursor is on the name where it is used, you can see it is itself annotated with <code>@Component</code>:</p>
 <div class="sourceCode" id="cb426"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb426-1"><a href="core-spring-annotations.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
@@ -441,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb426-28"><a href="core-spring-annotations.html#cb426-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> <span class="fu">value</span><span class="op">()</span> <span class="kw">default</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
 <span id="cb426-29"><a href="core-spring-annotations.html#cb426-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Note that by looking these up you can also see which properties can be set, and what the default is when they are not required. Also note that the Javadoc section is highly informative!</p>
-<div id="generic-annotations" class="section level2" number="49.1">
-<h2><span class="header-section-number">49.1</span> Generic annotations</h2>
+<div id="generic-annotations" class="section level2 hasAnchor" number="49.1">
+<h2><span class="header-section-number">49.1</span> Generic annotations<a href="core-spring-annotations.html#generic-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><strong><code>@Configuration</code></strong> – tells the Spring container that this class published components, i.e. Beans</p></li>
 <li><p><strong><code>@Bean</code></strong> – annotated on methods, telling the container that the method serves a component. The bean will have the name of the method by default.</p>
@@ -469,8 +471,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="08_spring/figures/propertysource.png" alt="@PropertySource" /></p>
 <p>Will look under /src/main/resources for the given properties file.</p></li>
 </ul>
-<div id="web-oriented-annotations" class="section level3" number="49.1.1">
-<h3><span class="header-section-number">49.1.1</span> Web oriented annotations</h3>
+<div id="web-oriented-annotations" class="section level3 hasAnchor" number="49.1.1">
+<h3><span class="header-section-number">49.1.1</span> Web oriented annotations<a href="core-spring-annotations.html#web-oriented-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><strong><code>@Controller</code></strong> – tells the framework this class deals with http requests.</p></li>
 <li><p><strong><code>@RestController</code></strong> – See <code>@Controller</code>, but for REST endpoints and will return json by default.</p></li>
@@ -510,7 +512,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -529,6 +530,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -546,6 +548,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -560,7 +566,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

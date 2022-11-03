@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Operators | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Operators | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="arrays.html"/>
 <link rel="next" href="flow-control.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,15 +409,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="operators" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Operators</h1>
+<div id="operators" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Operators<a href="operators.html#operators" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Operators are the syntax elements that bind, change and combine the data, classes and methods.
 Although they are extremely important, they are not very interesting in the sense that
 they are just what they are, almost the same in any programming language.</p>
 <p>Therefore, this post is quite small. It starts with an overview of all operators and ends
 with a more detailed description of the less obvious ones.</p>
-<div id="overview" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Overview</h2>
+<div id="overview" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Overview<a href="operators.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Operators can be <strong><em>assigning</em></strong> (<code>=</code>), <strong><em>modifying</em></strong>, as in <code>count++</code> and they
 can be <strong><em>comparing</em></strong>, as in <code>count &lt; maximum</code>.
 Another way to classify them is to look at the number of operands they work on. They
@@ -428,7 +430,7 @@ which they will be evaluated.</p>
 <span id="cb69-3"><a href="operators.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> y <span class="op">=</span> x <span class="op">+</span> <span class="op">++</span>count<span class="op">;</span></span>
 <span id="cb69-4"><a href="operators.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;count=&quot;</span> <span class="op">+</span> count <span class="op">+</span> <span class="st">&quot;; y=&quot;</span> <span class="op">+</span> y<span class="op">);</span></span></code></pre></div>
 <p>This snippet will output “<em>count=2; y=43</em>” because the pre-increment operator has
-precedence over “+,” and the assignment operator.</p>
+precedence over “+”, and the assignment operator.</p>
 <p>Here is the complete listing. The associativity (Left-to-Right or Right-to-Left) of an operator
 is a property that determines how operators of the same precedence are grouped in the absence of
 parentheses.</p>
@@ -441,8 +443,8 @@ parentheses.</p>
 with respect to readability:</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb70-1"><a href="operators.html#cb70-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">+</span> z <span class="op">*</span> <span class="dv">2</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span><span class="op">;</span></span>
 <span id="cb70-2"><a href="operators.html#cb70-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> y <span class="op">+</span> <span class="op">((</span>z <span class="op">*</span> <span class="dv">2</span><span class="op">)</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">PI</span><span class="op">);</span></span></code></pre></div>
-<div id="assignment-operators" class="section level4 unnumbered">
-<h4>Assignment operators</h4>
+<div id="assignment-operators" class="section level4 unnumbered hasAnchor">
+<h4>Assignment operators<a href="operators.html#assignment-operators" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Not all languages have such an extended set of assignment operators.</p>
 <p>When you want to change the value of a variable, you can use these shorthand assignment operators</p>
 <p><code>x = x + 2;</code> is the same as <code>x += 2;</code>
@@ -453,8 +455,8 @@ with respect to readability:</p>
 <p>The last three are a bit esoteric in my opinion and I do not use them because they
 lower the readability of the code (especially <code>%=</code>).</p>
 </div>
-<div id="modulo" class="section level4 unnumbered">
-<h4>Modulo: <code>%</code></h4>
+<div id="modulo" class="section level4 unnumbered hasAnchor">
+<h4>Modulo: <code>%</code><a href="operators.html#modulo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The modulo operator is also called the remainder operator; it gives the remainder of a division.</p>
 <p><code>10 % 3</code> -&gt; 1 (one)
 <code>8 % 5</code> -&gt; 3</p>
@@ -464,8 +466,8 @@ this will address every hundredth item:</p>
 <span id="cb71-2"><a href="operators.html#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*deal with every hundredth item</span></span>
 <span id="cb71-3"><a href="operators.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div>
 </div>
-<div id="ternary-operator" class="section level4 unnumbered">
-<h4>Ternary operator</h4>
+<div id="ternary-operator" class="section level4 unnumbered hasAnchor">
+<h4>Ternary operator<a href="operators.html#ternary-operator" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The ternary operator is actually a condensed if..else block but can give more comprehensive code.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb72-1"><a href="operators.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>age <span class="op">&lt;</span> <span class="dv">18</span><span class="op">)</span> <span class="op">{</span></span>
 <span id="cb72-2"><a href="operators.html#cb72-2" aria-hidden="true" tabindex="-1"></a>    minor <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
@@ -479,8 +481,8 @@ this will address every hundredth item:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb73-1"><a href="operators.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> name <span class="op">=</span> <span class="st">&quot;John Doe&quot;</span><span class="op">;</span></span>
 <span id="cb73-2"><a href="operators.html#cb73-2" aria-hidden="true" tabindex="-1"></a>name <span class="op">+=</span> <span class="op">(</span>academicTitle <span class="op">==</span> <span class="kw">null</span> <span class="op">?</span> <span class="st">&quot;, &quot;</span> <span class="op">+</span> academicTitle <span class="op">:</span> <span class="st">&quot;&quot;</span><span class="op">);</span></span></code></pre></div>
 </div>
-<div id="instanceof" class="section level4 unnumbered">
-<h4><code>instanceof</code></h4>
+<div id="instanceof" class="section level4 unnumbered hasAnchor">
+<h4><code>instanceof</code><a href="operators.html#instanceof" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>instanceof</code> operator (keyword) is a boolean operator that will yield <code>true</code> of the left operand
 is the type of the right operand, or a subtype of it. Defining inheritance (subtypes) is done using the
 <strong><em><code>extends</code> keyword</em></strong>. Here is an example.</p>
@@ -502,8 +504,8 @@ chihuahua instanceof Animal = true
 chihuahua instanceof Chihuahua = true
 </pre>
 </div>
-<div id="bitwise-operators" class="section level4 unnumbered">
-<h4>bitwise operators</h4>
+<div id="bitwise-operators" class="section level4 unnumbered hasAnchor">
+<h4>bitwise operators<a href="operators.html#bitwise-operators" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Java also has some bitwise operators that are not described within this course.</p>
 
 </div>
@@ -519,7 +521,6 @@ chihuahua instanceof Chihuahua = true
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -538,6 +539,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -555,6 +557,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -569,7 +575,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 26 Enums: constants on steroids | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 26 Enums: constants on steroids | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="inheritance-and-uml.html"/>
 <link rel="next" href="encapsulation-revisited.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="enums-constants-on-steroids" class="section level1" number="26">
-<h1><span class="header-section-number">Chapter 26</span> Enums: constants on steroids</h1>
-<div id="constants-are-everywhere" class="section level2" number="26.1">
-<h2><span class="header-section-number">26.1</span> Constants are everywhere</h2>
+<div id="enums-constants-on-steroids" class="section level1 hasAnchor" number="26">
+<h1><span class="header-section-number">Chapter 26</span> Enums: constants on steroids<a href="enums-constants-on-steroids.html#enums-constants-on-steroids" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="constants-are-everywhere" class="section level2 hasAnchor" number="26.1">
+<h2><span class="header-section-number">26.1</span> Constants are everywhere<a href="enums-constants-on-steroids.html#constants-are-everywhere" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Constants are everywhere: the number pi, the number e, the URL to a web service
 you use in your app. These are really simple constants that do not need anything
 special besides being defined as a</p>
@@ -502,7 +504,7 @@ you can provide this value through a constructor:</p>
 <span id="cb205-18"><a href="enums-constants-on-steroids.html#cb205-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb205-19"><a href="enums-constants-on-steroids.html#cb205-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Now, when you print an enum you will get its string value given via the constructor
-argument. Yes, this <code>A("Adenine")</code> constructs a Nucleotide enum constant of type <code>Nucleotide.A</code> with “name” property “Adenine.”
+argument. Yes, this <code>A("Adenine")</code> constructs a Nucleotide enum constant of type <code>Nucleotide.A</code> with “name” property “Adenine”.
 The reverse is also a much-used aspect: you have some string value and want to create an enum from it.<br />
 This is how it’s done:</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb206-1"><a href="enums-constants-on-steroids.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> letter <span class="op">=</span> <span class="st">&quot;G&quot;</span><span class="op">;</span></span>
@@ -555,7 +557,7 @@ Here are two lines using this functionality:</p>
 <span id="cb209-2"><a href="enums-constants-on-steroids.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;nuc C weight = &quot;</span> <span class="op">+</span> Nucleotide<span class="op">.</span><span class="fu">C</span><span class="op">.</span><span class="fu">getMolecularWeight</span><span class="op">());</span></span></code></pre></div>
 <p>But how about the complements of these values (you know, the letter on the other
 strand of DNA in the double helix, the one it pairs with)? “A” has as complement
-“T,” “G” has “C” etc. I want to be able to get a complement for all nucleotides,
+“T”, “G” has “C” etc. I want to be able to get a complement for all nucleotides,
 given its original value. Exactly the same as the molecular weights, but the
 value is another nucleotide.</p>
 <p>Still this is not the whole story. The <em>piece de resistance</em> has yet to come. As
@@ -669,7 +671,6 @@ awaits eternal fame for you if you find it.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -688,6 +689,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -705,6 +707,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -719,7 +725,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

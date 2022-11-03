@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 24 Access modifiers &amp; Other keywords | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 24 Access modifiers &amp; Other keywords | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="encapsulation.html"/>
 <link rel="next" href="inheritance-and-uml.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="access-modifiers-other-keywords" class="section level1" number="24">
-<h1><span class="header-section-number">Chapter 24</span> Access modifiers &amp; Other keywords</h1>
+<div id="access-modifiers-other-keywords" class="section level1 hasAnchor" number="24">
+<h1><span class="header-section-number">Chapter 24</span> Access modifiers &amp; Other keywords<a href="access-modifiers-other-keywords.html#access-modifiers-other-keywords" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Several access modifiers and keywords have already been introduced, explicitly or implicitly. This post gives an overview of the most important ones.</p>
-<div id="access-modifiers" class="section level2" number="24.1">
-<h2><span class="header-section-number">24.1</span> Access Modifiers</h2>
+<div id="access-modifiers" class="section level2 hasAnchor" number="24.1">
+<h2><span class="header-section-number">24.1</span> Access Modifiers<a href="access-modifiers-other-keywords.html#access-modifiers" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Access modifiers are used in the declaration of a method, field, or inner class -collectively called <strong><em>members</em></strong>- to control access to them.
 Using no modifier is an (implicit) modifier, giving <strong><em>default</em></strong> - but very distinct! - behavior.</p>
 <ul>
@@ -424,7 +426,14 @@ Public members can be accessed by the members of any class.</p></li>
 <li><p><strong><em>default</em></strong> access occurs when no explicit access modifier is attached to a member. Members with default access can be accessed by classes within the same package.</p></li>
 </ul>
 <p>This is the same info in table form:</p>
-<table>
+<table style="width:100%;">
+<colgroup>
+<col width="40%" />
+<col width="13%" />
+<col width="17%" />
+<col width="19%" />
+<col width="9%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th>Keyword</th>
@@ -469,8 +478,8 @@ Public members can be accessed by the members of any class.</p></li>
 <p><strong><em>Design rule: Minimize the accessibility of class members.</em></strong></p>
 <p>Changing public API methods is almost impossible since it will create backward incompatibility.</p>
 </div>
-<div id="other-keywords" class="section level2" number="24.2">
-<h2><span class="header-section-number">24.2</span> Other keywords</h2>
+<div id="other-keywords" class="section level2 hasAnchor" number="24.2">
+<h2><span class="header-section-number">24.2</span> Other keywords<a href="access-modifiers-other-keywords.html#other-keywords" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is a list of keywords in the Java programming language. I omitted the access modifiers (discussed separately), the primitive types, flow control keywords as well as some I do not deem essential in an introduction of Java. You cannot use any of the these as identifiers. Text was copied from Wikipedia and edited.</p>
 <ul>
 <li><p><strong><code>abstract</code></strong>
@@ -523,7 +532,6 @@ The <code>void</code> keyword is used to declare that a method does not return a
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -542,6 +550,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -559,6 +568,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -573,7 +586,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

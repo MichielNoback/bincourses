@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Interfaces | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Interfaces | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="the-power-of-naming.html"/>
 <link rel="next" href="the-java-collections-api.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="interfaces" class="section level1" number="15">
-<h1><span class="header-section-number">Chapter 15</span> Interfaces</h1>
+<div id="interfaces" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Interfaces<a href="interfaces.html#interfaces" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>So far, you have seen two basic types: primitives and classes. Classes have instance variables and methods acting on these. Here is an example.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb104-1"><a href="interfaces.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">Sequence</span> <span class="op">{</span></span>
 <span id="cb104-2"><a href="interfaces.html#cb104-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">String</span> sequence<span class="op">;</span></span>
@@ -441,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb104-29"><a href="interfaces.html#cb104-29" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>So the <strong><em>contract</em></strong> (or API, if you like) of class Sequence is that it can deliver its molecular weight and can generate a mutated copy of itself. Both are <strong><em>concrete</em></strong> methods that are implemented with a method body.</p>
 <p>Sometimes, however, you want to <strong><em>separate the contract from its implementation.</em></strong></p>
-<div id="a-contract-without-implementation-interface" class="section level2" number="15.1">
-<h2><span class="header-section-number">15.1</span> A contract without implementation: interface</h2>
+<div id="a-contract-without-implementation-interface" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> A contract without implementation: interface<a href="interfaces.html#a-contract-without-implementation-interface" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Maybe you remember from Python the <code>print()</code> method. It has this signature</p>
 <p><code>print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)</code>.</p>
 <p>By default it writes to the console, <code>sys.stdout</code>, but you can change this
@@ -521,7 +523,7 @@ to provide it with an object <strong><em>implementing</em></strong> the <code>Se
 <img src="03_apis/figures/implement_interface_context_menu.png" alt="" />
 <p class="caption">Implement interface context menu</p>
 </div>
-<p>Place the cursor on the line with the class name, press <code>alt + Enter</code> and select “Implement methods.” Select <code>store()</code> and press Enter. Boilerplate code has been generated.</p>
+<p>Place the cursor on the line with the class name, press <code>alt + Enter</code> and select “Implement methods”. Select <code>store()</code> and press Enter. Boilerplate code has been generated.</p>
 <p>This implementation simply lets the sequence get <strong><em>garbage collected</em></strong>.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb107-1"><a href="interfaces.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
 <span id="cb107-2"><a href="interfaces.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -608,8 +610,8 @@ not interested in sequence really deadly anymore
 <p class="caption">File cretaed</p>
 </div>
 </div>
-<div id="summary-2" class="section level2" number="15.2">
-<h2><span class="header-section-number">15.2</span> Summary</h2>
+<div id="summary-2" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Summary<a href="interfaces.html#summary-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Interfaces make it possible to define a contract or API in a way that makes it possible to deal with an object as <em>being of the contract type</em>, without knowing its implementation, and without using inheritance.</p>
 
 </div>
@@ -624,7 +626,6 @@ not interested in sequence really deadly anymore
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -643,6 +644,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -660,6 +662,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -674,7 +680,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

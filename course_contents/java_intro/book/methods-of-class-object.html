@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 17 Methods of class Object | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 17 Methods of class Object | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="the-java-collections-api.html"/>
 <link rel="next" href="records.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="methods-of-class-object" class="section level1" number="17">
-<h1><span class="header-section-number">Chapter 17</span> Methods of class Object</h1>
-<div id="tostring-equals-hashcode-getclass" class="section level2" number="17.1">
-<h2><span class="header-section-number">17.1</span> toString(), equals(), hashCode(), getClass()</h2>
+<div id="methods-of-class-object" class="section level1 hasAnchor" number="17">
+<h1><span class="header-section-number">Chapter 17</span> Methods of class Object<a href="methods-of-class-object.html#methods-of-class-object" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="tostring-equals-hashcode-getclass" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> toString(), equals(), hashCode(), getClass()<a href="methods-of-class-object.html#tostring-equals-hashcode-getclass" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Previously you have seen some collection types: List, Map, Set.
 One of the methods that is universal to all collection types is <code>contains()</code>.
 How does the JVM determine that two objects are equal?
@@ -438,8 +440,8 @@ is logically the same as the current object. Implemented in class Object as: <co
 <li><code>hashCode()</code> returns the hashCode (an int) of the current object. Implemented in class Object to return an integer representing the objects memory address.</li>
 <li><code>getClass()</code> returns the class of the current object</li>
 </ul>
-<div id="tostring-a-string-representation-of-the-object" class="section level3 unnumbered">
-<h3><code>toString()</code>: a string representation of the object</h3>
+<div id="tostring-a-string-representation-of-the-object" class="section level3 unnumbered hasAnchor">
+<h3><code>toString()</code>: a string representation of the object<a href="methods-of-class-object.html#tostring-a-string-representation-of-the-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you want to see a nice textual representation of an object during software development, you use toString().
 In IntelliJ, type <code>ctrl + O</code> if you want to override a super class method.</p>
 <div class="figure">
@@ -478,8 +480,8 @@ The statement <code>return super.toString();</code> simply states: call the supe
 <span id="cb127-7"><a href="methods-of-class-object.html#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>outputting <code>User{id=15, name='Henk'}</code>, which is a good textual representation of the underlying object.</p>
 </div>
-<div id="equals-determining-logical-similarity-between-objects" class="section level3 unnumbered">
-<h3><code>equals()</code> determining logical similarity between objects</h3>
+<div id="equals-determining-logical-similarity-between-objects" class="section level3 unnumbered hasAnchor">
+<h3><code>equals()</code> determining logical similarity between objects<a href="methods-of-class-object.html#equals-determining-logical-similarity-between-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Consider these three User objects, where the first constructor argument is the user ID and the second the username.</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb128-1"><a href="methods-of-class-object.html#cb128-1" aria-hidden="true" tabindex="-1"></a>User user1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">(</span><span class="dv">15</span><span class="op">,</span> <span class="st">&quot;Henk&quot;</span><span class="op">);</span></span>
 <span id="cb128-2"><a href="methods-of-class-object.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="co">//same, equal?</span></span>
@@ -543,8 +545,8 @@ user3.equals(user4) -- false
 - <strong><em>Transitivity</em></strong>: If a.equals(b) and b.equals(c), then a.equals(c)
 - <strong><em>Consistency with hashCode()</em></strong>: Two equal objects must have the same hashCode() value</p>
 </div>
-<div id="hashcode-required-when-equals-is-implemented" class="section level3 unnumbered">
-<h3><code>hashCode()</code>: required when <code>equals()</code> is implemented</h3>
+<div id="hashcode-required-when-equals-is-implemented" class="section level3 unnumbered hasAnchor">
+<h3><code>hashCode()</code>: required when <code>equals()</code> is implemented<a href="methods-of-class-object.html#hashcode-required-when-equals-is-implemented" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>hashCode()</code> method is kind of the mysterious sister of <code>equals()</code>. You implement them together, but only equals() is easily understood.</p>
 <p>The <code>hashCode()</code> method is used for <strong><em>bucketing</em></strong> in Hash implementations like HashMap, HashTable, HashSet, etc.
 The value received from <code>hashCode()</code> is used as the bucket number for storing elements of the set/map.
@@ -567,8 +569,8 @@ if <code>contains()</code> is true or false, or decide if element could be added
 <span id="cb133-4"><a href="methods-of-class-object.html#cb133-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Objects<span class="op">.</span><span class="fu">hash</span><span class="op">(</span>id<span class="op">,</span> name<span class="op">);</span></span>
 <span id="cb133-5"><a href="methods-of-class-object.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="getclass-gives-meta-information-the-objects-class" class="section level3 unnumbered">
-<h3><code>getClass()</code> gives meta-information the objects class</h3>
+<div id="getclass-gives-meta-information-the-objects-class" class="section level3 unnumbered hasAnchor">
+<h3><code>getClass()</code> gives meta-information the objects class<a href="methods-of-class-object.html#getclass-gives-meta-information-the-objects-class" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Example code is best here:</p>
 <div class="sourceCode" id="cb134"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb134-1"><a href="methods-of-class-object.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;user1.getClass().getSimpleName() = &quot;</span> <span class="op">+</span> user1<span class="op">.</span><span class="fu">getClass</span><span class="op">().</span><span class="fu">getSimpleName</span><span class="op">());</span></span>
 <span id="cb134-2"><a href="methods-of-class-object.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;user1.getClass().getName() = &quot;</span> <span class="op">+</span> user1<span class="op">.</span><span class="fu">getClass</span><span class="op">().</span><span class="fu">getName</span><span class="op">());</span></span>
@@ -594,7 +596,6 @@ user1.getClass().getPackageName() = snippets.apis
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -613,6 +614,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -630,6 +632,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -644,7 +650,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

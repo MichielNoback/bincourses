@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Basic program structure and flow | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Basic program structure and flow | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="the-essence-of-java.html"/>
 <link rel="next" href="first-look-at-objects.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,12 +409,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-program-structure-and-flow" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Basic program structure and flow</h1>
+<div id="basic-program-structure-and-flow" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Basic program structure and flow<a href="basic-program-structure-and-flow.html#basic-program-structure-and-flow" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Basic program structure and some flow control.
 Advanced flow control (switch etc) will be described later.</p>
-<div id="basic-program-structure" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Basic program structure</h2>
+<div id="basic-program-structure" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Basic program structure<a href="basic-program-structure-and-flow.html#basic-program-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As stated before, a Java program must have a <code>main()</code> method as starting point.
 This <code>main()</code> method needs to reside in a class, because <em>all</em> Java code needs to live inside a class.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="basic-program-structure-and-flow.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
@@ -442,7 +444,7 @@ click on the toolbar run configurations box and select “Edit configurations”
 <img src="01_getting_started/figures/edit_run_configuration_1.png" alt="" />
 <p class="caption">Run configuration</p>
 </div>
-<p>The only thing yu need to do now is enter two “Program arguments.” Here, I filled out “Henk” and “49,” with a space between them.</p>
+<p>The only thing yu need to do now is enter two “Program arguments”. Here, I filled out “Henk” and “49”, with a space between them.</p>
 <div class="figure">
 <img src="01_getting_started/figures/edit_run_configuration_2.png" alt="" />
 <p class="caption">Run configuration</p>
@@ -521,8 +523,8 @@ arg = 49
 <span id="cb11-10"><a href="basic-program-structure-and-flow.html#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>So, here we have a two-class application. Both source files are in the same package (namespace). The first is the so-called “main class” which is the entry point of the application: <code>MostBasicApp</code> in source file <code>MostBasicApp.java</code>. The main method receives the command-line arguments and parses one of them into an integer. Next, it instantiates a <code>MessageMaker</code> object and calls its <code>printMessage()</code> method.</p>
 </div>
-<div id="summary" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Summary</h2>
+<div id="summary" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Summary<a href="basic-program-structure-and-flow.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You have seen the basic structure of a Java program. It needs at least one source file with one class. There needs to be a <code>main()</code> method of this signature to be executable as program:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb12-1"><a href="basic-program-structure-and-flow.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb12-2"><a href="basic-program-structure-and-flow.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">//startup code</span></span>
@@ -548,7 +550,6 @@ arg = 49
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -567,6 +568,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -584,6 +586,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -598,7 +604,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

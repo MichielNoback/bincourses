@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 45 UML | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 45 UML | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="junit-5-advanced-features.html"/>
 <link rel="next" href="refactoring.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="uml" class="section level1" number="45">
-<h1><span class="header-section-number">Chapter 45</span> UML</h1>
+<div id="uml" class="section level1 hasAnchor" number="45">
+<h1><span class="header-section-number">Chapter 45</span> UML<a href="uml.html#uml" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter only gives a really simple intro so you are able to read the schematics that are used in the courses, in books and on the internet.</p>
 <p>In the picture below you can see a UML schema of a simple datamodel. Since it uses the OO UML conventions, any OO programmer can “read” the picture and immediately understand what story it is telling.</p>
 <div class="figure">
@@ -416,8 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">Example UML</p>
 </div>
 <p>UML is used to create graphical representations of your design –any design-. Since there are strict rules/conventions, other designers can “read” your model easily. In the chapter only OO design UML is dealt with, and the bare essentials at that.</p>
-<div id="class" class="section level4 unnumbered">
-<h4>Class</h4>
+<div id="class" class="section level4 unnumbered hasAnchor">
+<h4>Class<a href="uml.html#class" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A rectangle containing three compartments stacked vertically.<br />
 The top compartment holds the class name. The middle compartment: class attributes/properties with name and type.
 The bottom compartment: class operations/methods with name, parameters (not always) and return type.</p>
@@ -445,8 +447,8 @@ Sometimes, members (properties and/or methods) are preceded by a symbol indicati
 <img src="07_design/figures/employee_uml_intellij.png" alt="" />
 <p class="caption">Employee class in intelliJ)</p>
 </div>
-<div id="interfaces-1" class="section level5 unnumbered">
-<h5>Interfaces</h5>
+<div id="interfaces-1" class="section level5 unnumbered hasAnchor">
+<h5>Interfaces<a href="uml.html#interfaces-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>A class and an interface differ: A class can have an actual instance, whereas an interface must have at least one class to implement it.
 An interface is drawn just like a class, but the top compartment of the rectangle also has either the text <em><code>&lt;&lt;interface&gt;&gt;</code></em> or the name of the class is printed in italics.</p>
 <div class="figure">
@@ -460,16 +462,16 @@ An interface is drawn just like a class, but the top compartment of the rectangl
 </div>
 </div>
 </div>
-<div id="inheritance" class="section level4 unnumbered">
-<h4>Inheritance</h4>
+<div id="inheritance" class="section level4 unnumbered hasAnchor">
+<h4>Inheritance<a href="uml.html#inheritance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Inheritance is indicated by a solid line with a closed, (usually) unfilled arrowhead pointing at the super class. It can be drawn with separate lines or using a tree notation, as in this example.</p>
 <div class="figure">
 <img src="07_design/figures/employee_inheritance_uml_s.png" alt="" />
 <p class="caption">Employee inheritance</p>
 </div>
 </div>
-<div id="realization" class="section level4 unnumbered">
-<h4>Realization</h4>
+<div id="realization" class="section level4 unnumbered hasAnchor">
+<h4>Realization<a href="uml.html#realization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Realization is a bit like inheritance. Subclasses indicate inheritance. Sometimes implementing classes of interfaces are also called subclasses, but the relation is is slightly different. Although they pas the <em>IS-A</em> test of the <code>instanceof</code> operator, they are actually <em>realizations</em> of a contract. Therefore they show up slightly different in an UML schema.
 Realization is indicated with a dashed line and closed, filled arrowheads pointing at the interface.</p>
 <div class="figure">
@@ -477,8 +479,8 @@ Realization is indicated with a dashed line and closed, filled arrowheads pointi
 <p class="caption">Realization, or implementation</p>
 </div>
 </div>
-<div id="association" class="section level4 unnumbered">
-<h4>Association</h4>
+<div id="association" class="section level4 unnumbered hasAnchor">
+<h4>Association<a href="uml.html#association" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>It is a relationship between objects. One object is connected to the other. Usually called as “has-a” relationship. Both objects have independent life-cycle. Each object owns their actions and will not affect other object.</p>
 <p>Example: <code>Car</code> and <code>Driver</code>.</p>
 <div class="figure">
@@ -486,8 +488,8 @@ Realization is indicated with a dashed line and closed, filled arrowheads pointi
 <p class="caption">Simple association</p>
 </div>
 </div>
-<div id="basic-aggregation" class="section level4 unnumbered">
-<h4>Basic Aggregation</h4>
+<div id="basic-aggregation" class="section level4 unnumbered hasAnchor">
+<h4>Basic Aggregation<a href="uml.html#basic-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A specialized form of Association. Usually called as “has-a” relationship.
 Each object has an independent life-cycle. A whole-part relationship between a component object and an aggregate object. There is sense of ownership between objects.
 In basic aggregation, the child class instance can outlive its parent class.<br />
@@ -498,8 +500,8 @@ Drawn with a solid line from the parent class to the part class, with an unfille
 </div>
 <p>This is a typical example of basic aggregation. A car has 3 to 4 wheels, and wheels can absolutely outlive their cars (and be exchanged for that matter).</p>
 </div>
-<div id="composition-aggregation" class="section level4 unnumbered">
-<h4>Composition aggregation</h4>
+<div id="composition-aggregation" class="section level4 unnumbered hasAnchor">
+<h4>Composition aggregation<a href="uml.html#composition-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This is also a specialized form of Aggregation. Usually called as “has-a” relationship. The Child Object has a dependent life-cycle. This is what separates it from aggregation. A whole-part relationship between a component object and an aggregate object (one class is an integral part of another class). Sense of ownership between objects</p>
 <p>In composition aggregation, the child class’s instance lifecycle is dependent on the parent class’s instance lifecycle. Also, the part class can only be related to one instance of the parent class.<br />
 Drawn with a solid line from the parent class to the part class, with a filled diamond shape on the parent class’s association end.</p>
@@ -509,8 +511,8 @@ Drawn with a solid line from the parent class to the part class, with a filled d
 </div>
 <p>In this example, a company can have zero to many deprtments. However, a department cannot outlive its company.</p>
 </div>
-<div id="reflexive-aggregation" class="section level4 unnumbered">
-<h4>Reflexive aggregation</h4>
+<div id="reflexive-aggregation" class="section level4 unnumbered hasAnchor">
+<h4>Reflexive aggregation<a href="uml.html#reflexive-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One class is associated with itself.</p>
 <div class="figure">
 <img src="07_design/figures/reflexive_aggregation_uml.png" alt="" />
@@ -519,8 +521,8 @@ Drawn with a solid line from the parent class to the part class, with a filled d
 <p>Here it means that an instance of Employee can be the manager of other (0 to many) Employee instances.<br />
 Drawn with a solid line.</p>
 </div>
-<div id="all-together" class="section level4 unnumbered">
-<h4>All together</h4>
+<div id="all-together" class="section level4 unnumbered hasAnchor">
+<h4>All together<a href="uml.html#all-together" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In this example, all described types of UML entities and relationships are present, as well as some more.</p>
 <div class="figure">
 <img src="07_design/figures/example_class_diagram_with_explanations1.png" alt="" />
@@ -539,7 +541,6 @@ Drawn with a solid line.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -558,6 +559,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -575,6 +577,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -589,7 +595,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

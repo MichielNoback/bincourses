@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Packages and Imports | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Packages and Imports | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="methods-1.html"/>
 <link rel="next" href="the-power-of-naming.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,28 +409,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="packages-and-imports" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Packages and Imports</h1>
+<div id="packages-and-imports" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Packages and Imports<a href="packages-and-imports.html#packages-and-imports" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>So far, you may have stored all your class files inside a single source directory. For larger projects this will rapidly become a big unordered mess.
 Besides this, you will run into namespace problems: how many Sequence classes do you think are out there? How will the JVM be able to discern between them?</p>
-<div id="class-path" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Class path</h2>
+<div id="class-path" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Class path<a href="packages-and-imports.html#class-path" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <strong><em>Classpath</em></strong> is a parameter in the Java Virtual Machine, and the Java compiler, that specifies the location of user-defined classes and packages. When you use a type (e.g., User, Duck, Nucleotide), the compiler and later the JVM look for classes that match the type name. The places where the search is performed are collectively known as the classpath.</p>
 </div>
-<div id="namespaces" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> Namespaces</h2>
+<div id="namespaces" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Namespaces<a href="packages-and-imports.html#namespaces" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A namespace is a context in which a class name has meaning
 For example, many Java applications have a class called User. How can the JVM know which of these classes to use if there are more to be found on the classpath?
 In Java this is solved using packages.</p>
 </div>
-<div id="packages" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> Packages</h2>
+<div id="packages" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Packages<a href="packages-and-imports.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All serious Java projects have their code organized into packages.
 Packages are “containers” that keep related classes together and avoid name conflicts with classes with identical names.
 To keep packages (and thus namespaces) unique, they are usually formed by reversing the programmer/company web address:
 <code>nl.bioinf</code> is a package name prefix I often use</p>
 <p>Since there are more programmers working behind nl.bioinf, I also add my teacher abbreviation: <code>nl.bioinf.nomi</code>.</p>
-<p>The next level is the current project you work on, e.g. “biojava light,” resulting in <code>nl.bioinf.nomi.bjl</code>.</p>
+<p>The next level is the current project you work on, e.g. “biojava light”, resulting in <code>nl.bioinf.nomi.bjl</code>.</p>
 <p>Finally, all sequence-related classes I put in package <code>sequences</code>. This gives a full package name <code>nl.bioinf.nomi.bjl.sequences</code>. This is a long name, but quite essential. Fortunately, you will hardly ever type them.</p>
 <p>Most of the core Java classes that you have worked with so far are in package <code>java.lang</code>.
 The <strong><em>fully qualified name</em></strong> for class <code>String</code> is actually <code>java.lang.String</code>.</p>
@@ -486,7 +488,6 @@ The IDE will takes care of these matters for you.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -505,6 +506,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -522,6 +524,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -536,7 +542,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

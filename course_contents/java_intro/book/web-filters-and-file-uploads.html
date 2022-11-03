@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 40 Web filters and File uploads | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 40 Web filters and File uploads | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="a-simple-web-service-using-ajax.html"/>
 <link rel="next" href="exercises-intro.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,16 +409,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="web-filters-and-file-uploads" class="section level1" number="40">
-<h1><span class="header-section-number">Chapter 40</span> Web filters and File uploads</h1>
+<div id="web-filters-and-file-uploads" class="section level1 hasAnchor" number="40">
+<h1><span class="header-section-number">Chapter 40</span> Web filters and File uploads<a href="web-filters-and-file-uploads.html#web-filters-and-file-uploads" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is the last post in this course. It deals with two loose ends: uploading files and intercepting requests.</p>
-<div id="web-filters" class="section level2" number="40.1">
-<h2><span class="header-section-number">40.1</span> Web filters</h2>
+<div id="web-filters" class="section level2 hasAnchor" number="40.1">
+<h2><span class="header-section-number">40.1</span> Web filters<a href="web-filters-and-file-uploads.html#web-filters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose you want to intercept requests for a (group of) servlets, to log what is requested and where it came from.
 For instance, to do analyse the web traffic later on in order to pinpoint the most used resources.<br />
 Or more relevant: intercept requests to asses authentication status of the user. And reject a request if the user is not authorized to see a resource.</p>
-<div id="a-basic-example" class="section level4 unnumbered">
-<h4>A basic example</h4>
+<div id="a-basic-example" class="section level4 unnumbered hasAnchor">
+<h4>A basic example<a href="web-filters-and-file-uploads.html#a-basic-example" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Here is our old friend, the PhraseServlet (only relevant code show):</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb331-1"><a href="web-filters-and-file-uploads.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
 <span id="cb331-2"><a href="web-filters-and-file-uploads.html#cb331-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -478,8 +480,8 @@ Query: phrase_category=bullshit
 Remote address: 0:0:0:0:0:0:0:1
 </pre>
 </div>
-<div id="check-for-authentication" class="section level4 unnumbered">
-<h4>Check for authentication</h4>
+<div id="check-for-authentication" class="section level4 unnumbered hasAnchor">
+<h4>Check for authentication<a href="web-filters-and-file-uploads.html#check-for-authentication" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Suppose you have an application with a few public pages and a few pages for which authentication is required. This is a typical use case for WebFilter.</p>
 <div class="sourceCode" id="cb333"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb333-1"><a href="web-filters-and-file-uploads.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">webfilters</span><span class="op">;</span></span>
 <span id="cb333-2"><a href="web-filters-and-file-uploads.html#cb333-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -538,8 +540,8 @@ Remote address: 0:0:0:0:0:0:0:1
 </pre>
 </div>
 </div>
-<div id="file-uploads" class="section level2" number="40.2">
-<h2><span class="header-section-number">40.2</span> File uploads</h2>
+<div id="file-uploads" class="section level2 hasAnchor" number="40.2">
+<h2><span class="header-section-number">40.2</span> File uploads<a href="web-filters-and-file-uploads.html#file-uploads" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>File Upload is an essential feature! Many websites provide some form of upload functionality:
 - Photos &amp; Video
 - Data
@@ -549,13 +551,13 @@ Remote address: 0:0:0:0:0:0:0:1
 - Into database
 - Store locally
 - Process directly</p>
-<div id="upload-form" class="section level4 unnumbered">
-<h4>Upload form</h4>
+<div id="upload-form" class="section level4 unnumbered hasAnchor">
+<h4>Upload form<a href="web-filters-and-file-uploads.html#upload-form" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Suppose we want to offer a scv data upload.
 Here is the html for uploading csv data. Key are <code>enctype="multipart/form-data"</code> in the <code>form</code> tag and the <code>&lt;input type="file" name="scv_data" accept="text/csv"&gt;</code> tag.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb334-1"><a href="web-filters-and-file-uploads.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span><span class="ot"> th:action=</span><span class="st">&quot;@{&#39;data_upload&#39;}&quot;</span><span class="ot"> method=</span><span class="st">&quot;post&quot;</span><span class="ot"> enctype=</span><span class="st">&quot;multipart/form-data&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb334-2"><a href="web-filters-and-file-uploads.html#cb334-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;file&quot;</span><span class="ot"> name=</span><span class="st">&quot;scv_data&quot;</span><span class="ot"> accept=</span><span class="st">&quot;text/csv&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb334-3"><a href="web-filters-and-file-uploads.html#cb334-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;Upload&quot;</span> <span class="kw">/&gt;</span></span>
+<div class="sourceCode" id="cb334"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb334-1"><a href="web-filters-and-file-uploads.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">th:action</span><span class="ot">=</span><span class="st">&quot;@{&#39;data_upload&#39;}&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;post&quot;</span> <span class="er">enctype</span><span class="ot">=</span><span class="st">&quot;multipart/form-data&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb334-2"><a href="web-filters-and-file-uploads.html#cb334-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;file&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;scv_data&quot;</span> <span class="er">accept</span><span class="ot">=</span><span class="st">&quot;text/csv&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb334-3"><a href="web-filters-and-file-uploads.html#cb334-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;Upload&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb334-4"><a href="web-filters-and-file-uploads.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span></code></pre></div>
 <p>The servlet handling the file upload needs to be annotated as such:</p>
 <div class="sourceCode" id="cb335"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb335-1"><a href="web-filters-and-file-uploads.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="at">@MultipartConfig</span><span class="op">(</span>location<span class="op">=</span><span class="st">&quot;/tmp&quot;</span><span class="op">,</span></span>
@@ -568,31 +570,31 @@ Here is the html for uploading csv data. Key are <code>enctype="multipart/form-d
 <span id="cb335-8"><a href="web-filters-and-file-uploads.html#cb335-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The <code>@MultipartConfig</code> annotation has several parameters:</p>
 <ul>
-<li><strong><em>location</em></strong>: An absolute path to a directory on the file system. This location is used to store files temporarily while the parts are processed or when the size of the file exceeds the specified <code>fileSizeThreshold</code> setting. The default location is "".</li>
+<li><strong><em>location</em></strong>: An absolute path to a directory on the file system. This location is used to store files temporarily while the parts are processed or when the size of the file exceeds the specified <code>fileSizeThreshold</code> setting. The default location is ““.</li>
 <li><strong><em>fileSizeThreshold</em></strong>: The file size in bytes after which the file will be temporarily stored on disk. The default size is 0 bytes.</li>
 <li><strong><em>maxFileSize</em></strong>: The maximum size allowed for uploaded files, in bytes. If the size is greater, the container will throw an exception (<code>IllegalStateExceptio</code>n). The default size is unlimited.</li>
 <li><strong><em>maxRequestSize</em></strong>: The maximum size allowed for a multipart/form-data request, in bytes. The web container will throw an exception if the overall size of all uploaded files exceeds this threshold. The default size is unlimited.</li>
 </ul>
 <p>Instead of hardcoding the constraints, you can also put them in web.xml:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb336-1"><a href="web-filters-and-file-uploads.html#cb336-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-mapping&gt;</span></span>
-<span id="cb336-2"><a href="web-filters-and-file-uploads.html#cb336-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>FileUploadServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb336-3"><a href="web-filters-and-file-uploads.html#cb336-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;url-pattern&gt;</span>/data_upload<span class="kw">&lt;/url-pattern&gt;</span></span>
-<span id="cb336-4"><a href="web-filters-and-file-uploads.html#cb336-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet-mapping&gt;</span></span>
-<span id="cb336-5"><a href="web-filters-and-file-uploads.html#cb336-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet&gt;</span></span>
-<span id="cb336-6"><a href="web-filters-and-file-uploads.html#cb336-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>FileUploadServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb336-7"><a href="web-filters-and-file-uploads.html#cb336-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-class&gt;</span>nl.bioinf.wis_on_thymeleaf.servlets.FileUploadServlet<span class="kw">&lt;/servlet-class&gt;</span></span>
-<span id="cb336-8"><a href="web-filters-and-file-uploads.html#cb336-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;init-param&gt;</span></span>
-<span id="cb336-9"><a href="web-filters-and-file-uploads.html#cb336-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-name&gt;</span>upload_dir<span class="kw">&lt;/param-name&gt;</span></span>
-<span id="cb336-10"><a href="web-filters-and-file-uploads.html#cb336-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-value&gt;</span>/path/to/file/upload<span class="kw">&lt;/param-value&gt;</span></span>
-<span id="cb336-11"><a href="web-filters-and-file-uploads.html#cb336-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/init-param&gt;</span></span>
-<span id="cb336-12"><a href="web-filters-and-file-uploads.html#cb336-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;multipart-config&gt;</span></span>
-<span id="cb336-13"><a href="web-filters-and-file-uploads.html#cb336-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;location&gt;</span>/path/to/tmp/tmp<span class="kw">&lt;/location&gt;</span></span>
+<div class="sourceCode" id="cb336"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb336-1"><a href="web-filters-and-file-uploads.html#cb336-1" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb336-2"><a href="web-filters-and-file-uploads.html#cb336-2" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-name</span>&gt;FileUploadServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb336-3"><a href="web-filters-and-file-uploads.html#cb336-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">url-pattern</span>&gt;/data_upload&lt;/<span class="kw">url-pattern</span>&gt;</span>
+<span id="cb336-4"><a href="web-filters-and-file-uploads.html#cb336-4" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb336-5"><a href="web-filters-and-file-uploads.html#cb336-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet</span>&gt;</span>
+<span id="cb336-6"><a href="web-filters-and-file-uploads.html#cb336-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-name</span>&gt;FileUploadServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb336-7"><a href="web-filters-and-file-uploads.html#cb336-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-class</span>&gt;nl.bioinf.wis_on_thymeleaf.servlets.FileUploadServlet&lt;/<span class="kw">servlet-class</span>&gt;</span>
+<span id="cb336-8"><a href="web-filters-and-file-uploads.html#cb336-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">init-param</span>&gt;</span>
+<span id="cb336-9"><a href="web-filters-and-file-uploads.html#cb336-9" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">param-name</span>&gt;upload_dir&lt;/<span class="kw">param-name</span>&gt;</span>
+<span id="cb336-10"><a href="web-filters-and-file-uploads.html#cb336-10" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">param-value</span>&gt;/path/to/file/upload&lt;/<span class="kw">param-value</span>&gt;</span>
+<span id="cb336-11"><a href="web-filters-and-file-uploads.html#cb336-11" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">init-param</span>&gt;</span>
+<span id="cb336-12"><a href="web-filters-and-file-uploads.html#cb336-12" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">multipart-config</span>&gt;</span>
+<span id="cb336-13"><a href="web-filters-and-file-uploads.html#cb336-13" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">location</span>&gt;/path/to/tmp/tmp&lt;/<span class="kw">location</span>&gt;</span>
 <span id="cb336-14"><a href="web-filters-and-file-uploads.html#cb336-14" aria-hidden="true" tabindex="-1"></a>            <span class="co">&lt;!-- all in bytes --&gt;</span></span>
-<span id="cb336-15"><a href="web-filters-and-file-uploads.html#cb336-15" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;max-file-size&gt;</span>20848820<span class="kw">&lt;/max-file-size&gt;</span></span>
-<span id="cb336-16"><a href="web-filters-and-file-uploads.html#cb336-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;max-request-size&gt;</span>418018841<span class="kw">&lt;/max-request-size&gt;</span></span>
-<span id="cb336-17"><a href="web-filters-and-file-uploads.html#cb336-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;file-size-threshold&gt;</span>1048576<span class="kw">&lt;/file-size-threshold&gt;</span></span>
-<span id="cb336-18"><a href="web-filters-and-file-uploads.html#cb336-18" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/multipart-config&gt;</span></span>
-<span id="cb336-19"><a href="web-filters-and-file-uploads.html#cb336-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet&gt;</span></span></code></pre></div>
+<span id="cb336-15"><a href="web-filters-and-file-uploads.html#cb336-15" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">max-file-size</span>&gt;20848820&lt;/<span class="kw">max-file-size</span>&gt;</span>
+<span id="cb336-16"><a href="web-filters-and-file-uploads.html#cb336-16" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">max-request-size</span>&gt;418018841&lt;/<span class="kw">max-request-size</span>&gt;</span>
+<span id="cb336-17"><a href="web-filters-and-file-uploads.html#cb336-17" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">file-size-threshold</span>&gt;1048576&lt;/<span class="kw">file-size-threshold</span>&gt;</span>
+<span id="cb336-18"><a href="web-filters-and-file-uploads.html#cb336-18" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">multipart-config</span>&gt;</span>
+<span id="cb336-19"><a href="web-filters-and-file-uploads.html#cb336-19" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">servlet</span>&gt;</span></code></pre></div>
 <p>Here is the servlet dealing with the uploads. The final upload location is specified using an <code>init-param</code> in the <code>web.xml</code> deployment descriptor of course.</p>
 <div class="sourceCode" id="cb337"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb337-1"><a href="web-filters-and-file-uploads.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
 <span id="cb337-2"><a href="web-filters-and-file-uploads.html#cb337-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -679,7 +681,6 @@ Here is the html for uploading csv data. Key are <code>enctype="multipart/form-d
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -698,6 +699,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -715,6 +717,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -729,7 +735,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

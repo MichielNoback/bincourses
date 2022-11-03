@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 32 A first project | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 32 A first project | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="the-toolbox.html"/>
 <link rel="next" href="implementing-mvc.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-first-project-1" class="section level1" number="32">
-<h1><span class="header-section-number">Chapter 32</span> A first project</h1>
-<div id="introduction-1" class="section level2" number="32.1">
-<h2><span class="header-section-number">32.1</span> Introduction</h2>
+<div id="a-first-project-1" class="section level1 hasAnchor" number="32">
+<h1><span class="header-section-number">Chapter 32</span> A first project<a href="a-first-project-1.html#a-first-project-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="32.1">
+<h2><span class="header-section-number">32.1</span> Introduction<a href="a-first-project-1.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The topic of this presentation is getting started with a Java web application using a Thymeleaf View that serves an internationalized welcome message.</p>
 <p>Since JSP and not Thymeleaf is the default for basic Java web applications, this involves quite a few steps:</p>
 <ol style="list-style-type: decimal">
@@ -421,19 +423,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>creating a servlet</li>
 <li>running the web application</li>
 </ol>
-<p>You should realise that creating a web app from scratch is something you don’t do very often so it is not that terrible it takes some time. Also, this example makes use of a resource bundle supporting multiple languages (internationalization) and that is sometging you won’t do with every app you build.</p>
-<div id="prerequisites" class="section level5 unnumbered">
-<h5>Prerequisites</h5>
+<p>You should realise that creating a web app from scratch is something you don’t do very often so it is not that terrible it takes some time. Also, this example makes use of a resource bundle supporting multiple languages (internationalization) and that is something you won’t do with every app you build.</p>
+<div id="prerequisites" class="section level5 unnumbered hasAnchor">
+<h5>Prerequisites<a href="a-first-project-1.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <ul>
-<li><strong>Tomcat</strong>. I assume you have a working version of Tomcat server (see <a href="http://tomcat.apache.org/" class="uri">http://tomcat.apache.org/</a>). This tutorial uses Tomcat 9.0.XX - a more recent version is OK of course. Simply extract the downloaded zip at a convenient location. Don’t forget to make the <code>*.sh</code> scripts in the <code>bin</code> folder executable!</li>
-<li><strong>IntelliJ Idea</strong>. This blog uses the 2018.3 Ultimate version. Please refer to Jetbrains for educational licences.</li>
+<li><strong>Tomcat</strong>. I assume you have a working version of Tomcat server (see <a href="http://tomcat.apache.org/" class="uri">http://tomcat.apache.org/</a>). This tutorial uses Tomcat 9.0.XX - (Tomcat 10 failed for mysterious reasons on my machine!). Simply extract the downloaded zip at a convenient location. Don’t forget to make the <code>*.sh</code> scripts in the <code>bin</code> folder executable!</li>
+<li><strong>IntelliJ Idea</strong>. This blog uses the 2022.2.1 Ultimate version. Please refer to Jetbrains for educational licences.</li>
 </ul>
 </div>
 </div>
-<div id="the-steps" class="section level2" number="32.2">
-<h2><span class="header-section-number">32.2</span> The steps</h2>
-<div id="configure-tomcat-as-webserver" class="section level4 unnumbered">
-<h4>Configure Tomcat as webserver</h4>
+<div id="the-steps" class="section level2 hasAnchor" number="32.2">
+<h2><span class="header-section-number">32.2</span> The steps<a href="a-first-project-1.html#the-steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="configure-tomcat-as-webserver" class="section level4 unnumbered hasAnchor">
+<h4>Configure Tomcat as webserver<a href="a-first-project-1.html#configure-tomcat-as-webserver" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>After extraction of Tomcat the Tomcat server application (and making the *.sh scripts executable), you’ll have to let IntelliJ know where it is.
 You do this via <code>Preferences</code> → <code>Build, Execution, Deployment</code> → <code>Application Servers</code> → click <code>+</code> (Add) and point to the location where you extracted Tomcat.</p>
 <div class="figure">
@@ -441,31 +443,34 @@ You do this via <code>Preferences</code> → <code>Build, Execution, Deployment<
 <p class="caption">Configure Tomcat</p>
 </div>
 </div>
-<div id="create-a-gradle-managed-web-project" class="section level4 unnumbered">
-<h4>Create a Gradle-managed web project</h4>
+<div id="create-a-gradle-managed-web-project" class="section level4 unnumbered hasAnchor">
+<h4>Create a Gradle-managed web project<a href="a-first-project-1.html#create-a-gradle-managed-web-project" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Creating a Gradle-managed web project in IntelliJ:</p>
 <ul>
 <li>Choose <code>File</code> → <code>New</code> → <code>Project</code></li>
-<li>Choose <code>Gradle</code> → and check <code>Java</code> + <code>Web</code> → <code>Next</code></li>
 </ul>
 <p>You see something like this:</p>
 <div class="figure">
 <img src="05_web/figures/Create-Gradle-project-1.png" title="Create Gradle project 1" alt="" />
 <p class="caption">Gradle project creation</p>
 </div>
-<p>Enter GroupId (your unique identifier to this project), ArtifactId (its name) and Version and <code>Finish</code>.</p>
-<div class="figure">
-<img src="05_web/figures/Create-Gradle-project-2.png" title="Create Gradle project 2" alt="" />
-<p class="caption">Gradle project basic config</p>
-</div>
+<p>Enter GroupId (your unique identifier to this project), ArtifactId (its name) and Version and click <code>Create</code>.</p>
+<p>You may get an error message like this:
+<img src="05_web/figures/Create-Gradle-project-1a.png" title="Create Gradle project 1 (warning)" alt="Gradle project creation" /></p>
+<p>Don’t worry, simply click <code>Yes</code>. We’ll fix that first.</p>
 <p>You will have something like this, after Gradle has build the project (this may take some time, depending on your machine and internet connection):</p>
 <div class="figure">
 <img src="05_web/figures/Create-Gradle-project-3.png" title="Create Gradle project 3" alt="" />
 <p class="caption">New Gradle project</p>
 </div>
+<p>To solve the warning (if you had any), open file <code>gradle-wrapper.properties</code> under <code>gradle/wrapper/</code> and change the version number to 7.5, then hit “Load Gradle Changes” button:</p>
+<div class="figure">
+<img src="05_web/figures/Create-Gradle-project-4.png" title="Create Gradle project 4" alt="" />
+<p class="caption">New Gradle project</p>
 </div>
-<div id="configure-gradle" class="section level4 unnumbered">
-<h4>Configure Gradle</h4>
+</div>
+<div id="configure-gradle" class="section level4 unnumbered hasAnchor">
+<h4>Configure Gradle<a href="a-first-project-1.html#configure-gradle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In this project, we’ll be using Thymeleaf and JUnit5 (and the Servlet API). Since they are not available in Java by default (i.e. not in the standard JDK), you’ll need to configure them as your projects dependencies.
 Fortunately, Gradle is an excellent tool for dependency management.
 Here is the contents of a basic <code>build.gradle</code> configuration file for a web app:</p>
@@ -484,37 +489,37 @@ Here is the contents of a basic <code>build.gradle</code> configuration file for
 <span id="cb227-13"><a href="a-first-project-1.html#cb227-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb227-14"><a href="a-first-project-1.html#cb227-14" aria-hidden="true" tabindex="-1"></a>dependencies <span class="op">{</span></span>
 <span id="cb227-15"><a href="a-first-project-1.html#cb227-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Servlets</span></span>
-<span id="cb227-16"><a href="a-first-project-1.html#cb227-16" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;javax.servlet:javax.servlet-api:3.1.0&#39;</span></span>
+<span id="cb227-16"><a href="a-first-project-1.html#cb227-16" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;javax.servlet:javax.servlet-api:4.0.0&#39;</span> # or <span class="fl">3.1.0</span></span>
 <span id="cb227-17"><a href="a-first-project-1.html#cb227-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Thymeleaf</span></span>
-<span id="cb227-18"><a href="a-first-project-1.html#cb227-18" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;org.thymeleaf:thymeleaf:3.0.11.RELEASE&#39;</span></span>
-<span id="cb227-19"><a href="a-first-project-1.html#cb227-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">//JUnit5</span></span>
-<span id="cb227-20"><a href="a-first-project-1.html#cb227-20" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.7.0&#39;</span></span>
-<span id="cb227-21"><a href="a-first-project-1.html#cb227-21" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.7.0&#39;</span></span>
+<span id="cb227-18"><a href="a-first-project-1.html#cb227-18" aria-hidden="true" tabindex="-1"></a>    implementation <span class="st">&#39;org.thymeleaf:thymeleaf:3.0.15.RELEASE&#39;</span></span>
+<span id="cb227-19"><a href="a-first-project-1.html#cb227-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">//JUnit</span></span>
+<span id="cb227-20"><a href="a-first-project-1.html#cb227-20" aria-hidden="true" tabindex="-1"></a>    testImplementation <span class="st">&#39;org.junit.jupiter:junit-jupiter-api:5.8.1&#39;</span></span>
+<span id="cb227-21"><a href="a-first-project-1.html#cb227-21" aria-hidden="true" tabindex="-1"></a>    testRuntimeOnly <span class="st">&#39;org.junit.jupiter:junit-jupiter-engine:5.8.1&#39;</span></span>
 <span id="cb227-22"><a href="a-first-project-1.html#cb227-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb227-23"><a href="a-first-project-1.html#cb227-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb227-24"><a href="a-first-project-1.html#cb227-24" aria-hidden="true" tabindex="-1"></a>test <span class="op">{</span></span>
 <span id="cb227-25"><a href="a-first-project-1.html#cb227-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">useJUnitPlatform</span><span class="op">()</span></span>
 <span id="cb227-26"><a href="a-first-project-1.html#cb227-26" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="the-web-inf-folder" class="section level4 unnumbered">
-<h4>The WEB-INF folder</h4>
-<p>Under web-app, create a folder called <code>WEB-INF</code> and within that one a folder called <code>templates</code>. Within <code>templates</code>, create the html file called <code>welcome.html</code>. You can do that via context menu <code>New</code> → <code>Thymeleaf</code> or simply <code>New</code> &amp;rarr File.</p>
+<div id="the-web-inf-folder" class="section level4 unnumbered hasAnchor">
+<h4>The WEB-INF folder<a href="a-first-project-1.html#the-web-inf-folder" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Under <code>main</code>, create folder <code>webapp</code>, create a folder called <code>WEB-INF</code> and within that one a folder called <code>templates</code>. Within <code>templates</code>, create the html file called <code>welcome.html</code>. You can do that via context menu <code>New</code> → <code>Thymeleaf</code> or simply <code>New</code> → HTML File.</p>
 <div class="figure">
 <img src="05_web/figures/create-WEB-INF.png" title="Create WEB-INF" alt="" />
 <p class="caption">Create WEB-INF</p>
 </div>
 <p>Your file <code>welcome.html</code> should have this contents:</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb228-1"><a href="a-first-project-1.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
-<span id="cb228-2"><a href="a-first-project-1.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="ot"> xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb228-2"><a href="a-first-project-1.html#cb228-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="er">xmlns:th</span><span class="ot">=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb228-3"><a href="a-first-project-1.html#cb228-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
 <span id="cb228-4"><a href="a-first-project-1.html#cb228-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>Thymeleaf Starter<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb228-5"><a href="a-first-project-1.html#cb228-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb228-5"><a href="a-first-project-1.html#cb228-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb228-6"><a href="a-first-project-1.html#cb228-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb228-7"><a href="a-first-project-1.html#cb228-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
 <span id="cb228-8"><a href="a-first-project-1.html#cb228-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- welcome message read from resource bundle welcome.html--&gt;</span></span>
-<span id="cb228-9"><a href="a-first-project-1.html#cb228-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p</span><span class="ot"> th:text=</span><span class="st">&quot;#{welcome.msg}&quot;</span><span class="kw">&gt;</span>Welcome Offline<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb228-9"><a href="a-first-project-1.html#cb228-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{welcome.msg}&quot;</span><span class="kw">&gt;</span>Welcome Offline<span class="kw">&lt;/p&gt;</span></span>
 <span id="cb228-10"><a href="a-first-project-1.html#cb228-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- date forwarded from the servlet--&gt;</span></span>
-<span id="cb228-11"><a href="a-first-project-1.html#cb228-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Date: <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${currentDate}&quot;</span><span class="kw">&gt;</span>Sat Oct 24 2015<span class="kw">&lt;/span&gt;&lt;/p&gt;</span></span>
+<span id="cb228-11"><a href="a-first-project-1.html#cb228-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span>Date: <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${currentDate}&quot;</span><span class="kw">&gt;</span>Sat Oct 24 2015<span class="kw">&lt;/span&gt;&lt;/p&gt;</span></span>
 <span id="cb228-12"><a href="a-first-project-1.html#cb228-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb228-13"><a href="a-first-project-1.html#cb228-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>Note the <code>&lt;!DOCTYPE...&gt;</code> declaration on top declaring it to be a Thymeleaf page.
@@ -524,8 +529,8 @@ There are several non-html syntax elements that make this page special:
 <p>Much more on that stuff.</p>
 <p>Other than that, this is a plain old html file. You can open it in any browser and it will show you the non-processed view. This is what makes Thymeleaf so nice; you can develop the view of your app without using servers or template engines!</p>
 </div>
-<div id="create-a-resource-bundle" class="section level4 unnumbered">
-<h4>Create a resource bundle</h4>
+<div id="create-a-resource-bundle" class="section level4 unnumbered hasAnchor">
+<h4>Create a resource bundle<a href="a-first-project-1.html#create-a-resource-bundle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A resource bundle is where you store your web page texts, if you ever want to support more than one language. Instead of creating web pages for every language you are willing to support, you create text-free web pages and store the texts for the different languages in separate files called <em>resource bundles</em>.</p>
 <p>This is how you add language support to your web app:</p>
 <p>Right-click the templates folder, select <code>New</code> → <code>Resource Bundle</code> →<br />
@@ -551,8 +556,8 @@ Here I choose the latter. Click ‘+’ to add a new Property key and name it <c
 Note that in Text view (the default when no plugin is present), you can simply enter <code>key=value</code> pairs in each of your resource bundle files. This one is in <code>welcome.properties</code>:</p>
 <pre><code>welcome.msg=Hallo dan!</code></pre>
 </div>
-<div id="prepare-to-use-thymeleaf" class="section level4 unnumbered">
-<h4>Prepare to use Thymeleaf</h4>
+<div id="prepare-to-use-thymeleaf" class="section level4 unnumbered hasAnchor">
+<h4>Prepare to use Thymeleaf<a href="a-first-project-1.html#prepare-to-use-thymeleaf" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Thymeleaf needs some configuration to get going. Here is some boilerplate code that you can simply copy-and-paste.</p>
 <p>Under <code>main/java</code>, create a base package using the context menu looking like this <code>&lt;your_._domain&gt;.&lt;your_name&gt;.&lt;your_project&gt;</code>, e.g. <code>nl.bioinf.nomi.mywebapp</code>. Within it, create two additional packages: <code>config</code> and <code>servlets</code>. Under <code>config</code>, create a new Java class file <code>WebConfig.java</code>. Put this code in there, and change the package declaration to match your situation:</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb230-1"><a href="a-first-project-1.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">;</span> <span class="co">//change this for your situation!</span></span>
@@ -591,8 +596,8 @@ Note that in Text view (the default when no plugin is present), you can simply e
 <span id="cb230-34"><a href="a-first-project-1.html#cb230-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The main role of this class is to provide a <strong><em>template engine</em></strong>. This is the component of your application that is responsible for processing the Thymeleaf templates into html views. To do this, the template engine needs to know -amongst other things- where these templates are. That is the responsibility of the <code>TemplateResolver</code>. have a look at the code and try to understand what’s happening.</p>
 </div>
-<div id="create-a-servlet" class="section level4 unnumbered">
-<h4>Create a Servlet</h4>
+<div id="create-a-servlet" class="section level4 unnumbered hasAnchor">
+<h4>Create a Servlet<a href="a-first-project-1.html#create-a-servlet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Finally, everything is going to fall into place. Under package <code>....servlets</code>, create a new Servlet class with the contents listed below. If you have that context menu item whan right-clicking on the <code>servlets</code> package, you can use the <code>New</code> → <code>Servlet</code> wizard; if not, use <code>New</code> → <code>Java class</code> to create one from scratch.</p>
 <div class="sourceCode" id="cb231"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb231-1"><a href="a-first-project-1.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span> <span class="co">//change to your situation!</span></span>
 <span id="cb231-2"><a href="a-first-project-1.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">config</span><span class="op">.</span><span class="im">WebConfig</span><span class="op">;</span> <span class="co">//change to your situation!</span></span>
@@ -638,8 +643,8 @@ Note that in Text view (the default when no plugin is present), you can simply e
 The alert reader may notice that this will create a <code>TemplateEngine</code> for each single servlet. This is absolutely not the best strategy, but for simplicity we’ll stick to it for now.
 Have a look at the <a href="https://bitbucket.org/minoba/java_web_thymeleaf_demo" title="Demonstration repository">Demo repo</a> for a final solution with the template resolver.</p>
 </div>
-<div id="finally-run-it" class="section level4 unnumbered">
-<h4>Finally: run it</h4>
+<div id="finally-run-it" class="section level4 unnumbered hasAnchor">
+<h4>Finally: run it<a href="a-first-project-1.html#finally-run-it" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Create a new run configuration (it’s in the top bar, <code>Add Configuration</code>).
 Click <code>+</code> → select <code>Tomcat Server/Local</code> (NOT <code>TomEE Server</code>!). Make sure the <code>Application server</code> is defined (your unpacked Tomcat location), use for <code>URL</code>
 this address: <code>http://localhost:8080/welcome</code>.</p>
@@ -652,7 +657,8 @@ this address: <code>http://localhost:8080/welcome</code>.</p>
 <img src="05_web/figures/Run-the-Application-2.png" title="Run-the-Application-2.png" alt="" />
 <p class="caption">Run the Application 2</p>
 </div>
-<p>If you run the configuration (Green triangle in menu bar), the browser will fire op or you’ll have to do it yourself, and go to <code>http://localhost:8080/welcome</code>.</p>
+<p>If you run the configuration (Green triangle in menu bar), the browser will fire op or you’ll have to do it yourself, and go to <code>http://localhost:8080/welcome</code>.<br />
+(If you get an error message like “… Permission denied” you may have forgotten to make the files in the /bin folder of your Tomcat folder executable.</p>
 <p>I hope you’ll see something like this:</p>
 <div class="figure">
 <img src="05_web/figures/Run-the-Application-nl.png" title="Run-the-Application-nl.png" alt="" />
@@ -678,7 +684,6 @@ this address: <code>http://localhost:8080/welcome</code>.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -697,6 +702,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -714,6 +720,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -728,7 +738,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

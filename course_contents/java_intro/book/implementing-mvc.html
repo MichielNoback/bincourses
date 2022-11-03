@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 33 Implementing MVC | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 33 Implementing MVC | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="a-first-project-1.html"/>
 <link rel="next" href="thymeleaf-expressions.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,14 +409,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="implementing-mvc" class="section level1" number="33">
-<h1><span class="header-section-number">Chapter 33</span> Implementing MVC</h1>
+<div id="implementing-mvc" class="section level1 hasAnchor" number="33">
+<h1><span class="header-section-number">Chapter 33</span> Implementing MVC<a href="implementing-mvc.html#implementing-mvc" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The topic of this post is setting up a clean “MVC“ Java web application.
 This involves working with separated components for different responsibilities. Besides the Model, the View and the Controller, this post also deals with the Data Layer, a fourth component that is almost always a part of a web app.</p>
-<div id="introduction-2" class="section level2" number="33.1">
-<h2><span class="header-section-number">33.1</span> Introduction</h2>
-<div id="the-components-a.k.a-layers" class="section level3 unnumbered">
-<h3>The Components a.k.a Layers</h3>
+<div id="introduction-2" class="section level2 hasAnchor" number="33.1">
+<h2><span class="header-section-number">33.1</span> Introduction<a href="implementing-mvc.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-components-a.k.a-layers" class="section level3 unnumbered hasAnchor">
+<h3>The Components a.k.a Layers<a href="implementing-mvc.html#the-components-a.k.a-layers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The components -or layers- of an MVS application are generally recognized in most applications,
 web-based or not:</p>
 <ul>
@@ -428,51 +430,51 @@ web-based or not:</p>
 <p class="caption">Create WEB-INF</p>
 </div>
 </div>
-<div id="the-goal-a-random-phrase-of-the-day" class="section level3 unnumbered">
-<h3>The goal: a random phrase of the day</h3>
+<div id="the-goal-a-random-phrase-of-the-day" class="section level3 unnumbered hasAnchor">
+<h3>The goal: a random phrase of the day<a href="implementing-mvc.html#the-goal-a-random-phrase-of-the-day" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The specs: a web app that will display a phrase, chosen randomly from one of two categories: Bullshit or Management.</p>
 <p>This post assumes you already have created a new Gradle-managed web app - see post
 <a href="first_project.md">First Project</a></p>
 </div>
 </div>
-<div id="java-web-app-architecture" class="section level2" number="33.2">
-<h2><span class="header-section-number">33.2</span> Java web app architecture</h2>
+<div id="java-web-app-architecture" class="section level2 hasAnchor" number="33.2">
+<h2><span class="header-section-number">33.2</span> Java web app architecture<a href="implementing-mvc.html#java-web-app-architecture" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Java web apps are managed by servers, also called containers. We work with Tomcat, but the idea is the same for all.
 Tomcat receives requests and forwards these to specific entry points in your app.
 These entry points are not <code>main()</code> methods as in Commandline apps, but the service methods of Servlets:
 <code>void doGet(HttpServletRequest request, HttpServletResponse response)</code> and <code>doPost(HttpServletRequest request, HttpServletResponse response)</code>.
 Also, unlike commandline apps that receive their arguments via the <code>String[] args</code> argument to <code>main()</code>, the service methods receive <code>HttpServletRequest</code> and <code>HttpServletResponse</code> objects as their communication channels to the outside world: the request object is the way in and the response object is the connection out.</p>
-<p>Besides these objects, there is the <code>HttpSession</code> object supporting “cross-request memory,” and the <code>ServletContext</code> object that you use for application-wide configuration settings. And throughout the app, Plain Old Java Objects (POJOs) serve as data carriers - the glue of the app. Here is a schema of an entire app.</p>
+<p>Besides these objects, there is the <code>HttpSession</code> object supporting “cross-request memory”, and the <code>ServletContext</code> object that you use for application-wide configuration settings. And throughout the app, Plain Old Java Objects (POJOs) serve as data carriers - the glue of the app. Here is a schema of an entire app.</p>
 <div class="figure">
 <img src="05_web/figures/java_web_app_architecture.png" alt="" />
 <p class="caption">Java web app architecture</p>
 </div>
-<div id="a-view" class="section level3 unnumbered">
-<h3>A View</h3>
+<div id="a-view" class="section level3 unnumbered hasAnchor">
+<h3>A View<a href="implementing-mvc.html#a-view" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To create a Thymeleaf template, right-click on folder webapp/templates, select New → html.
 (Hint: you can also make your own Thymeleaf template!)</p>
 <p>Name it phrase_of_the_day.html and click OK
 The file will automatically open in an editor window, with some standard template code already present.</p>
 <p>Here is the contents of <code>phrase_of_the_day.html</code></p>
 <div class="sourceCode" id="cb232"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb232-1"><a href="implementing-mvc.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
-<span id="cb232-2"><a href="implementing-mvc.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="ot"> xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb232-2"><a href="implementing-mvc.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="er">xmlns:th</span><span class="ot">=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb232-3"><a href="implementing-mvc.html#cb232-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb232-4"><a href="implementing-mvc.html#cb232-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb232-5"><a href="implementing-mvc.html#cb232-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title</span><span class="ot"> th:text=</span><span class="st">&quot;#{tab.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb232-4"><a href="implementing-mvc.html#cb232-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb232-5"><a href="implementing-mvc.html#cb232-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{tab.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/title&gt;</span></span>
 <span id="cb232-6"><a href="implementing-mvc.html#cb232-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb232-7"><a href="implementing-mvc.html#cb232-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb232-8"><a href="implementing-mvc.html#cb232-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3</span><span class="ot"> th:text=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>Offline title<span class="kw">&lt;/h3&gt;</span></span>
-<span id="cb232-9"><a href="implementing-mvc.html#cb232-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h4</span><span class="ot"> th:text=</span><span class="st">&quot;#{page.subtitle}&quot;</span><span class="kw">&gt;</span>Offline subtitle<span class="kw">&lt;/h4&gt;</span></span>
+<span id="cb232-8"><a href="implementing-mvc.html#cb232-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>Offline title<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb232-9"><a href="implementing-mvc.html#cb232-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h4</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{page.subtitle}&quot;</span><span class="kw">&gt;</span>Offline subtitle<span class="kw">&lt;/h4&gt;</span></span>
 <span id="cb232-10"><a href="implementing-mvc.html#cb232-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-11"><a href="implementing-mvc.html#cb232-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;give.phrase&quot;</span><span class="ot"> method=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb232-12"><a href="implementing-mvc.html#cb232-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;select</span><span class="ot"> name=</span><span class="st">&quot;phrase_category&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb232-13"><a href="implementing-mvc.html#cb232-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;bullshit&quot;</span><span class="kw">&gt;</span>Bullshit<span class="kw">&lt;/option&gt;</span></span>
-<span id="cb232-14"><a href="implementing-mvc.html#cb232-14" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;management&quot;</span><span class="kw">&gt;</span>Management<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb232-11"><a href="implementing-mvc.html#cb232-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;give.phrase&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;GET&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb232-12"><a href="implementing-mvc.html#cb232-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;select</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;phrase_category&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb232-13"><a href="implementing-mvc.html#cb232-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;bullshit&quot;</span><span class="kw">&gt;</span>Bullshit<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb232-14"><a href="implementing-mvc.html#cb232-14" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;option</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;management&quot;</span><span class="kw">&gt;</span>Management<span class="kw">&lt;/option&gt;</span></span>
 <span id="cb232-15"><a href="implementing-mvc.html#cb232-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/select&gt;</span></span>
-<span id="cb232-16"><a href="implementing-mvc.html#cb232-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> th:value=</span><span class="st">&quot;#{get.phrase.btn}&quot;</span><span class="ot"> value=</span><span class="st">&quot;_offline_&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb232-16"><a href="implementing-mvc.html#cb232-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">th:value</span><span class="ot">=</span><span class="st">&quot;#{get.phrase.btn}&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;_offline_&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb232-17"><a href="implementing-mvc.html#cb232-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
 <span id="cb232-18"><a href="implementing-mvc.html#cb232-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-19"><a href="implementing-mvc.html#cb232-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h4</span><span class="ot"> th:text=</span><span class="st">&quot;#{&#39;phrase.&#39; + ${phrase_num}}&quot;</span><span class="kw">&gt;</span>_phrase placeholder_<span class="kw">&lt;/h4&gt;</span></span>
+<span id="cb232-19"><a href="implementing-mvc.html#cb232-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h4</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{&#39;phrase.&#39; + ${phrase_num}}&quot;</span><span class="kw">&gt;</span>_phrase placeholder_<span class="kw">&lt;/h4&gt;</span></span>
 <span id="cb232-20"><a href="implementing-mvc.html#cb232-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb232-21"><a href="implementing-mvc.html#cb232-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>Note the text have been moved to a resource bundle.</p>
@@ -483,8 +485,8 @@ Do not select “Run phrase_of_…” from the context menu because you will get
 <p class="caption">Phrase request form</p>
 </div>
 <p>You won’t get any texts into the placeholders because (1) there simply aren’t any and (2) you are viewing a static html page, not a view that is processed by the template engine.</p>
-<div id="create-resource-bundle" class="section level4 unnumbered">
-<h4>Create resource bundle</h4>
+<div id="create-resource-bundle" class="section level4 unnumbered hasAnchor">
+<h4>Create resource bundle<a href="implementing-mvc.html#create-resource-bundle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The resource should have as base name <code>phrase_of_the_day</code> and should have a default and ‘en’ locale versions.
 You also need entries for the used texts, of course</p>
 <div class="figure">
@@ -493,8 +495,8 @@ You also need entries for the used texts, of course</p>
 </div>
 </div>
 </div>
-<div id="a-model" class="section level3 unnumbered">
-<h3>A model</h3>
+<div id="a-model" class="section level3 unnumbered hasAnchor">
+<h3>A model<a href="implementing-mvc.html#a-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new package called <code>model</code>.
 Give it some dummy implementation (we’ll put some real code in there later on).</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb233-1"><a href="implementing-mvc.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> PhraseFactory <span class="op">{</span></span>
@@ -505,8 +507,8 @@ Give it some dummy implementation (we’ll put some real code in there later on)
 <span id="cb233-6"><a href="implementing-mvc.html#cb233-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb233-7"><a href="implementing-mvc.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="a-controller" class="section level3 unnumbered">
-<h3>A controller</h3>
+<div id="a-controller" class="section level3 unnumbered hasAnchor">
+<h3>A controller<a href="implementing-mvc.html#a-controller" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new Servlet and put the following code in there.</p>
 <div class="sourceCode" id="cb234"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb234-1"><a href="implementing-mvc.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
 <span id="cb234-2"><a href="implementing-mvc.html#cb234-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -543,8 +545,8 @@ Give it some dummy implementation (we’ll put some real code in there later on)
 <span id="cb234-33"><a href="implementing-mvc.html#cb234-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The controller receives request parameters from the submitted form using <code>String requestParameter = request.getParameter("&lt;parameter_name&gt;");</code>. On the output side, it passed data to the Thymeleaf template using <code>ctx.setVariable("&lt;variable_name&gt;", &lt;variable&gt;);</code>. It is not responsible for any application logic; for that it calls on the model class <code>PhraseFactory</code>. The controller does not involve itself with the view either; it simply passes the data it received from the model to the View component, the Thymeleaf template <code>phrase_of_the_day.html</code>.</p>
 </div>
-<div id="test" class="section level3 unnumbered">
-<h3>Test!</h3>
+<div id="test" class="section level3 unnumbered hasAnchor">
+<h3>Test!<a href="implementing-mvc.html#test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new run configuration called “phrase” and point it to give.phrase.</p>
 <p>Test the result; try the form submit; change your language; refresh</p>
 <div class="figure">
@@ -556,8 +558,8 @@ Give it some dummy implementation (we’ll put some real code in there later on)
 <p class="caption">Phrase request form 3</p>
 </div>
 </div>
-<div id="extend-the-model" class="section level3 unnumbered">
-<h3>Extend the model</h3>
+<div id="extend-the-model" class="section level3 unnumbered hasAnchor">
+<h3>Extend the model<a href="implementing-mvc.html#extend-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Implement some nice behavior in <code>PhraseFactory.java</code>.
 First the Junit5 test and only then the implementation: this is called Test-Driven Development (TDD).</p>
 <div class="sourceCode" id="cb235"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb235-1"><a href="implementing-mvc.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PhraseFactoryTest <span class="op">{</span></span>
@@ -584,7 +586,7 @@ First the Junit5 test and only then the implementation: this is called Test-Driv
 <span id="cb236-8"><a href="implementing-mvc.html#cb236-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb236-9"><a href="implementing-mvc.html#cb236-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Now fetch the phrases a little bit sophisticated. Here is the relevant part of the Thymeleaf template.</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb237-1"><a href="implementing-mvc.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4</span><span class="ot"> th:text=</span><span class="st">&quot;#{&#39;phrase.&#39; + ${phrase_type} + &#39;.&#39; + ${phrase_num}}&quot;</span><span class="kw">&gt;</span>_phrase placeholder_<span class="kw">&lt;/h4&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb237-1"><a href="implementing-mvc.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{&#39;phrase.&#39; + ${phrase_type} + &#39;.&#39; + ${phrase_num}}&quot;</span><span class="kw">&gt;</span>_phrase placeholder_<span class="kw">&lt;/h4&gt;</span></span></code></pre></div>
 <p>This snippet is building a reference to a randomly chosen phrase from the requested category.</p>
 <p>In the resource bundle, the phrases are stored in two languages.</p>
 <div class="figure">
@@ -592,8 +594,8 @@ First the Junit5 test and only then the implementation: this is called Test-Driv
 <p class="caption">Phrase of the day resource bundle 2</p>
 </div>
 </div>
-<div id="mvc-complete" class="section level3 unnumbered">
-<h3>MVC complete</h3>
+<div id="mvc-complete" class="section level3 unnumbered hasAnchor">
+<h3>MVC complete<a href="implementing-mvc.html#mvc-complete" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Thats it; you have seen the MVC pattern in action. There is a dedicated model class that knows how to provide a random choice for messages.
 The Servlet controller invokes the model (PhraseFactory) and dispatches its output to the view.
 The Thymeleaf template handles the view, processed by the template engine that is also responsible for injecting the text messages from the resource bundle, in the correct language.</p>
@@ -616,7 +618,6 @@ The Thymeleaf template handles the view, processed by the template engine that i
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -635,6 +636,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -652,6 +654,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -666,7 +672,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

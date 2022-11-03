@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 46 Refactoring | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 46 Refactoring | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="uml.html"/>
 <link rel="next" href="rest-and-mvc-with-spring.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="refactoring" class="section level1" number="46">
-<h1><span class="header-section-number">Chapter 46</span> Refactoring</h1>
-<div id="introduction-9" class="section level2" number="46.1">
-<h2><span class="header-section-number">46.1</span> Introduction</h2>
+<div id="refactoring" class="section level1 hasAnchor" number="46">
+<h1><span class="header-section-number">Chapter 46</span> Refactoring<a href="refactoring.html#refactoring" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-9" class="section level2 hasAnchor" number="46.1">
+<h2><span class="header-section-number">46.1</span> Introduction<a href="refactoring.html#introduction-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This will be quite a long post. One I hope you will finish! If you want to follow along in the code base,
 you should clone the repo. It is available at <a href="https://michiel_noback@bitbucket.org/minoba/refactoringtrainingproject.git">bitbucket</a>.
 Check out commit <code>eaf007f</code> to have a look at the original project. It was created by a student of mine, a third year bioinformatics student who will remain anonymous. As final assignment of the course Introduction to Java programming, he wrote a
@@ -439,7 +441,7 @@ PGSC0003DMB000000155    BGI gene    1093109 1102125 .   .   .   ID=PGSC0003DMG40
 <li><strong>end</strong> - End position of the feature, starting at 1.</li>
 <li><strong>score</strong> - A floating point value.</li>
 <li><strong>strand</strong> - defined as + (forward) or - (reverse).</li>
-<li><strong>phase</strong> - One of ‘0,’ ‘1’ or ‘2.’ ‘0’ indicates that the first base of the feature is the first base of a codon, ‘1’ that the second
+<li><strong>phase</strong> - One of ‘0’, ‘1’ or ‘2’. ‘0’ indicates that the first base of the feature is the first base of a codon, ‘1’ that the second
 base is the first base of a codon, and so on.</li>
 <li><strong>attributes</strong> - A semicolon-separated list of tag=value pairs, providing additional information about each feature. Some of these tags
 are predefined, e.g. ID, Name, Alias, Parent.</li>
@@ -449,14 +451,14 @@ so many inline comments that the unintelligible code could be understood and (d)
 but OK. The student had implemented all the required use cases. But the code itself was written like a big old script, with many (naming)
 convention violations, OO violations, Encapsulation and Abstraction not applied. You’ll see many examples as we plod along.</p>
 <p>I do not plan to finish the whole project here; there should be some challenge for you left.</p>
-<div id="note-on-junit-tests" class="section level4 unnumbered">
-<h4>Note on JUnit tests</h4>
+<div id="note-on-junit-tests" class="section level4 unnumbered hasAnchor">
+<h4>Note on JUnit tests<a href="refactoring.html#note-on-junit-tests" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>When taking over a code base like this, without any (J)Unit tests, it is a very good idea to develop JUnit tests in concert with your refactoring efforts.
 Take a look at the (too) few JUnit tests that I added to this project as well.</p>
 </div>
 </div>
-<div id="get-to-know-what-is-there" class="section level2" number="46.2">
-<h2><span class="header-section-number">46.2</span> Get to know what is there</h2>
+<div id="get-to-know-what-is-there" class="section level2 hasAnchor" number="46.2">
+<h2><span class="header-section-number">46.2</span> Get to know what is there<a href="refactoring.html#get-to-know-what-is-there" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First, of course, you need to run the tool in different modes and study the existing code base to what exactly is going on.</p>
 <p>Running it in this mode <code>-i data/gff3_sample.gff3 -s</code> will give a summary:</p>
 <pre><code>file    gff3_sample.gff3
@@ -787,17 +789,17 @@ Moreover, it catches an exception only to generate a <code>System.out.println</c
 <span id="cb389-176"><a href="refactoring.html#cb389-176" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Since I really -really- hate it when people don’t adhere to naming conventions, I’ll start there.</p>
 </div>
-<div id="refactor" class="section level2" number="46.3">
-<h2><span class="header-section-number">46.3</span> Refactor</h2>
-<div id="rename-variables-and-methods-to-adhere-to-java-standards." class="section level4 unnumbered">
-<h4>Rename variables and methods to adhere to Java standards.</h4>
+<div id="refactor" class="section level2 hasAnchor" number="46.3">
+<h2><span class="header-section-number">46.3</span> Refactor<a href="refactoring.html#refactor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rename-variables-and-methods-to-adhere-to-java-standards." class="section level4 unnumbered hasAnchor">
+<h4>Rename variables and methods to adhere to Java standards.<a href="refactoring.html#rename-variables-and-methods-to-adhere-to-java-standards." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>So, <code>help_options</code> becomes <code>helpOptions</code>, and <code>help_cmd</code> becomes <code>helpCommandLine</code>. You may
 note the absence of <code>help_cmd</code> in the final version. This is because there is no reason to maintain
 it as an instance variable.</p>
 <p>Remember by the way that methods should be verbs and variables should be nouns.</p>
 </div>
-<div id="extract-string-literal-to-constants" class="section level4 unnumbered">
-<h4>Extract string literal to constants</h4>
+<div id="extract-string-literal-to-constants" class="section level4 unnumbered hasAnchor">
+<h4>Extract string literal to constants<a href="refactoring.html#extract-string-literal-to-constants" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>As an example, you see the word “infile” typed several times:
 <code>Option infileOption = Option.builder("i").longOpt("infile")</code>, <code>if (this.cmd.hasOption("infile"))</code>
 (2 times). So this is the next step: get these out of the real code.</p>
@@ -831,8 +833,8 @@ it as an instance variable.</p>
 <span id="cb390-28"><a href="refactoring.html#cb390-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Should the constants be public? Maybe, maybe not. Think about it.</p>
 </div>
-<div id="extract-functionality-from-constructor-code." class="section level4 unnumbered">
-<h4>Extract functionality from constructor code.</h4>
+<div id="extract-functionality-from-constructor-code." class="section level4 unnumbered hasAnchor">
+<h4>Extract functionality from constructor code.<a href="refactoring.html#extract-functionality-from-constructor-code." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Constructors should be short and readable, and only construct (maybe through calling other methods).
 What I sometimes even see is code like this:</p>
 <div class="sourceCode" id="cb391"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb391-1"><a href="refactoring.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyApp<span class="op">{</span></span>
@@ -851,8 +853,8 @@ What I sometimes even see is code like this:</p>
 and <code>this.helpOptions = new Options();</code>. That seems a bit funny but this is a workaround for the problem with <code>infileOption</code>
 being required. This will throw an exception if it is absent. That conflicts with the case where only help is requested.</p>
 </div>
-<div id="rename-methods-and-variables-to-their-real-purpose." class="section level4 unnumbered">
-<h4>Rename methods and variables to their real purpose.</h4>
+<div id="rename-methods-and-variables-to-their-real-purpose." class="section level4 unnumbered hasAnchor">
+<h4>Rename methods and variables to their real purpose.<a href="refactoring.html#rename-methods-and-variables-to-their-real-purpose." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The method <code>cliHelpParse()</code> does not parse help. No, its intent is to signal that help is requested:</p>
 <div class="sourceCode" id="cb393"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb393-1"><a href="refactoring.html#cb393-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">cliHelpParse</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="kw">throws</span> <span class="bu">ParseException</span> <span class="op">{</span></span>
 <span id="cb393-2"><a href="refactoring.html#cb393-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">help_cmd</span> <span class="op">=</span> <span class="kw">new</span> <span class="fu">DefaultParser</span><span class="op">().</span><span class="fu">parse</span><span class="op">(</span><span class="kw">this</span><span class="op">.</span><span class="fu">help_options</span><span class="op">,</span> args<span class="op">,</span> <span class="kw">true</span><span class="op">);</span></span>
@@ -885,8 +887,8 @@ being required. This will throw an exception if it is absent. That conflicts wit
 anything goes wrong, help should be displayed. Which is the better?</p>
 <p>Next, method <code>public void cliParse(String[] args)</code> was renamed to <code>public void parseCommandLineArguments(String[] args)</code>.</p>
 </div>
-<div id="the-single-responsibility-principle" class="section level4 unnumbered">
-<h4>The Single Responsibility Principle</h4>
+<div id="the-single-responsibility-principle" class="section level4 unnumbered hasAnchor">
+<h4>The Single Responsibility Principle<a href="refactoring.html#the-single-responsibility-principle" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The next aspect is the method <code>public boolean checkInputs() {}</code>. Is class CLIParse the place to do this? What if some other
 means of options specification is implemeted, e.g. a GUI form? These options will need to be checked all the same. I think
 <code>checkInputs</code> should not be in that class. But where else? Main? No, I think checking options, and keeping track of options,
@@ -909,8 +911,8 @@ option checking in it:</p>
 <span id="cb396-15"><a href="refactoring.html#cb396-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb396-16"><a href="refactoring.html#cb396-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="use-basic-oop-principles" class="section level4 unnumbered">
-<h4>Use basic OOP principles</h4>
+<div id="use-basic-oop-principles" class="section level4 unnumbered hasAnchor">
+<h4>Use basic OOP principles<a href="refactoring.html#use-basic-oop-principles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>So, finally, there is this method (abbreviated):</p>
 <div class="sourceCode" id="cb397"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb397-1"><a href="refactoring.html#cb397-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">String</span><span class="op">[]</span> <span class="fu">returnArguments</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb397-2"><a href="refactoring.html#cb397-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span><span class="op">[]</span> parsed_args <span class="op">=</span> <span class="kw">new</span> <span class="bu">String</span><span class="op">[</span><span class="dv">7</span><span class="op">];</span></span>
@@ -1030,13 +1032,13 @@ So, only refactor out the use of <code>parsedArguments</code> now, and keep on w
 <p>Now the <code>returnArguments()</code> method can be removed. Do NOT comment it out because it clutters your code that is finally becoming readable.
 If you want it back (or have a look at it), simply go to a previous commit.</p>
 </div>
-<div id="remove-unneccesary-comments" class="section level4 unnumbered">
-<h4>Remove unneccesary comments</h4>
+<div id="remove-unneccesary-comments" class="section level4 unnumbered hasAnchor">
+<h4>Remove unneccesary comments<a href="refactoring.html#remove-unneccesary-comments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Good code reads like a book! If you need it for yourself, your code is probably not very good.
 API methods should be very well documented of course, but inline comments or private methods comments should ideally not be necessary. Keep them to a minimum! They get outdated and are becoming damaging by themselves. A comment like <code>/*builds the options*/</code> is entirely unnecessary!</p>
 </div>
-<div id="the-result" class="section level3" number="46.3.1">
-<h3><span class="header-section-number">46.3.1</span> The result</h3>
+<div id="the-result" class="section level3 hasAnchor" number="46.3.1">
+<h3><span class="header-section-number">46.3.1</span> The result<a href="refactoring.html#the-result" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is the <code>CLIParser</code> class after complete refactoring:</p>
 <div class="sourceCode" id="cb401"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb401-1"><a href="refactoring.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">gff_query</span><span class="op">.</span><span class="im">io</span><span class="op">;</span></span>
 <span id="cb401-2"><a href="refactoring.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">commons</span><span class="op">.</span><span class="im">cli</span><span class="op">.*;</span></span>
@@ -1174,8 +1176,8 @@ API methods should be very well documented of course, but inline comments or pri
 <span id="cb401-134"><a href="refactoring.html#cb401-134" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="take-over" class="section level2" number="46.4">
-<h2><span class="header-section-number">46.4</span> Take over</h2>
+<div id="take-over" class="section level2 hasAnchor" number="46.4">
+<h2><span class="header-section-number">46.4</span> Take over<a href="refactoring.html#take-over" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I challenge you to now take class <code>GffQuery</code> and make it look good! Check out tag 0.2 of branch <code>master</code> (commit 19a08f4).</p>
 
 </div>
@@ -1193,7 +1195,6 @@ API methods should be very well documented of course, but inline comments or pri
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1212,6 +1213,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1229,6 +1231,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -1243,7 +1249,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

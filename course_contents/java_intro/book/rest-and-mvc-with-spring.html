@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 47 REST and MVC with Spring | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 47 REST and MVC with Spring | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="refactoring.html"/>
 <link rel="next" href="dependency-injection-in-spring.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="rest-and-mvc-with-spring" class="section level1" number="47">
-<h1><span class="header-section-number">Chapter 47</span> REST and MVC with Spring</h1>
+<div id="rest-and-mvc-with-spring" class="section level1 hasAnchor" number="47">
+<h1><span class="header-section-number">Chapter 47</span> REST and MVC with Spring<a href="rest-and-mvc-with-spring.html#rest-and-mvc-with-spring" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>These tutorials assume you have Jetbrands IntelliJ Idea ultimate. They also assume you have a working knowledge of http, Java - in particular Servlets, and annotations, Gradle, Thymeleaf and html. It is recommended to use Postman for testing your endpoints (visit <a href="https://www.postman.com/">Website</a>).</p>
-<div id="create-a-new-project" class="section level2" number="47.1">
-<h2><span class="header-section-number">47.1</span> Create a new project</h2>
+<div id="create-a-new-project" class="section level2 hasAnchor" number="47.1">
+<h2><span class="header-section-number">47.1</span> Create a new project<a href="rest-and-mvc-with-spring.html#create-a-new-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s start with a quick rundown of how you create and run a Spring MVC Web application.</p>
 <ol style="list-style-type: decimal">
 <li><p>Open IntelliJ</p></li>
@@ -458,8 +460,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>OK, the app works, but there nothing (no data or web page) being served by the application at this url. Therefore you get an <code>404/Not Found</code>. Let’s fix that</p>
 </div>
-<div id="create-a-rest-response" class="section level2" number="47.2">
-<h2><span class="header-section-number">47.2</span> Create a REST response</h2>
+<div id="create-a-rest-response" class="section level2 hasAnchor" number="47.2">
+<h2><span class="header-section-number">47.2</span> Create a REST response<a href="rest-and-mvc-with-spring.html#create-a-rest-response" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Right click on base package → New → Package → name = <code>webcontrol</code>
 Right click on this package → New → Java Class → name = <code>HelloRest</code></p>
 <p>In the editor, modify the class so it looks like this</p>
@@ -482,8 +484,8 @@ You should get this:</p>
 <blockquote>
 <p>Hello Spring Boot!</p>
 </blockquote>
-<div id="serve-json-literals" class="section level3" number="47.2.1">
-<h3><span class="header-section-number">47.2.1</span> Serve Json literals</h3>
+<div id="serve-json-literals" class="section level3 hasAnchor" number="47.2.1">
+<h3><span class="header-section-number">47.2.1</span> Serve Json literals<a href="rest-and-mvc-with-spring.html#serve-json-literals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new package (<code>model</code>) with a new class, <code>Bird</code>, and generate a constructor, <code>toString()</code> and getters for all fields.</p>
 <div class="sourceCode" id="cb406"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb406-1"><a href="rest-and-mvc-with-spring.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">model</span><span class="op">;</span></span>
 <span id="cb406-2"><a href="rest-and-mvc-with-spring.html#cb406-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -503,8 +505,8 @@ You should get this:</p>
 <span id="cb407-4"><a href="rest-and-mvc-with-spring.html#cb407-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Hit the endpoint <a href="http://localhost:8080/hello/rest2">http://localhost:8080/hello/rest2</a>. As you can see, a JSON literal is returned representing a Java Bird instance. That is because your annotated the class with <code>@RestController</code>. All objects returned from the controller methods will be converted into a Json representation. In fact, it works for the whole object graph, so if you return a list of Java objects you will get a Javascript array containing these objects as json!</p>
 </div>
-<div id="path-variables" class="section level3" number="47.2.2">
-<h3><span class="header-section-number">47.2.2</span> Path Variables</h3>
+<div id="path-variables" class="section level3 hasAnchor" number="47.2.2">
+<h3><span class="header-section-number">47.2.2</span> Path Variables<a href="rest-and-mvc-with-spring.html#path-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new method within <code>HelloRest</code></p>
 <div class="sourceCode" id="cb408"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb408-1"><a href="rest-and-mvc-with-spring.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="at">@GetMapping</span><span class="op">(</span>value<span class="op">=</span><span class="st">&quot;/echo/{msg}&quot;</span><span class="op">)</span></span>
 <span id="cb408-2"><a href="rest-and-mvc-with-spring.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">String</span> <span class="fu">doEcho</span><span class="op">(</span><span class="at">@PathVariable</span> <span class="bu">String</span> msg<span class="op">)</span> <span class="op">{</span></span>
@@ -514,8 +516,8 @@ You should get this:</p>
 <code>You said I Rule Rest...I say goodbye.</code></p>
 <p>There is a new annotation here: <code>@PathVariable</code>. It is used on a method parameter. Together with the <code>value="/echo/{msg}"</code> attribute of <code>@GetMapping</code>, it tells the container that there is a request variable embedded in the url and it should be extracted into <code>String msg</code>.</p>
 </div>
-<div id="request-parameters" class="section level3" number="47.2.3">
-<h3><span class="header-section-number">47.2.3</span> Request Parameters</h3>
+<div id="request-parameters" class="section level3 hasAnchor" number="47.2.3">
+<h3><span class="header-section-number">47.2.3</span> Request Parameters<a href="rest-and-mvc-with-spring.html#request-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new method within <code>HelloRest</code></p>
 <div class="sourceCode" id="cb409"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb409-1"><a href="rest-and-mvc-with-spring.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="at">@GetMapping</span><span class="op">(</span>value<span class="op">=</span><span class="st">&quot;/echo_name&quot;</span><span class="op">)</span></span>
 <span id="cb409-2"><a href="rest-and-mvc-with-spring.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="bu">String</span> <span class="fu">doEchoName</span><span class="op">(</span><span class="at">@RequestParam</span><span class="op">(</span>value <span class="op">=</span> <span class="st">&quot;name&quot;</span><span class="op">)</span> <span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
@@ -531,8 +533,8 @@ You should get this:</p>
 <span id="cb410-6"><a href="rest-and-mvc-with-spring.html#cb410-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">&quot;You said &quot;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&quot;...I say goodbye.&quot;</span><span class="op">;</span></span>
 <span id="cb410-7"><a href="rest-and-mvc-with-spring.html#cb410-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
 </div>
-<div id="an-html-view-instead-of-json" class="section level3" number="47.2.4">
-<h3><span class="header-section-number">47.2.4</span> An html view instead of Json</h3>
+<div id="an-html-view-instead-of-json" class="section level3 hasAnchor" number="47.2.4">
+<h3><span class="header-section-number">47.2.4</span> An html view instead of Json<a href="rest-and-mvc-with-spring.html#an-html-view-instead-of-json" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So far you have seen three basic ways of serving data using a REST endpoint. Now we’ll switch to serving an html view using Thymeleaf.
 Create a new class within package <code>webcontrol</code> called <code>HelloMvc</code>, with this content</p>
 <div class="sourceCode" id="cb411"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb411-1"><a href="rest-and-mvc-with-spring.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Controller</span></span>
@@ -546,14 +548,14 @@ Create a new class within package <code>webcontrol</code> called <code>HelloMvc<
 <span id="cb411-9"><a href="rest-and-mvc-with-spring.html#cb411-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb411-10"><a href="rest-and-mvc-with-spring.html#cb411-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>Under folder <code>/src/main/resources/templates</code>, right-click and select New → Thymeleaf. This will generate a standard html page. Replace</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb412-1"><a href="rest-and-mvc-with-spring.html#cb412-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1</span><span class="ot"> th:tekst=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>Offline title<span class="kw">&lt;/h1&gt;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb412-1"><a href="rest-and-mvc-with-spring.html#cb412-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1</span> <span class="er">th:tekst</span><span class="ot">=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>Offline title<span class="kw">&lt;/h1&gt;</span> </span></code></pre></div>
 <p>with</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb413-1"><a href="rest-and-mvc-with-spring.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1</span><span class="ot"> th:text=</span><span class="st">&quot;${greeting}&quot;</span><span class="kw">&gt;</span>_greeting_<span class="kw">&lt;/h1&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb413-1"><a href="rest-and-mvc-with-spring.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${greeting}&quot;</span><span class="kw">&gt;</span>_greeting_<span class="kw">&lt;/h1&gt;</span></span></code></pre></div>
 <p>Reload the app and hit the endpoint <a href="http://localhost:8080/greeting/hello">http://localhost:8080/greeting/hello</a>. Postman will show this:</p>
 <div class="sourceCode" id="cb414"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb414-1"><a href="rest-and-mvc-with-spring.html#cb414-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;!DOCTYPE </span>html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;<span class="dt">&gt;</span></span>
-<span id="cb414-2"><a href="rest-and-mvc-with-spring.html#cb414-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb414-2"><a href="rest-and-mvc-with-spring.html#cb414-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb414-3"><a href="rest-and-mvc-with-spring.html#cb414-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
-<span id="cb414-4"><a href="rest-and-mvc-with-spring.html#cb414-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb414-4"><a href="rest-and-mvc-with-spring.html#cb414-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb414-5"><a href="rest-and-mvc-with-spring.html#cb414-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Phrase of the day<span class="kw">&lt;/title&gt;</span></span>
 <span id="cb414-6"><a href="rest-and-mvc-with-spring.html#cb414-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
 <span id="cb414-7"><a href="rest-and-mvc-with-spring.html#cb414-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
@@ -581,7 +583,6 @@ Create a new class within package <code>webcontrol</code> called <code>HelloMvc<
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -600,6 +601,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -617,6 +619,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -631,7 +637,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

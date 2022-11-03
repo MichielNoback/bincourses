@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 44 JUnit 5 advanced features | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 44 JUnit 5 advanced features | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="junit-5-basics.html"/>
 <link rel="next" href="uml.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,25 +409,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="junit-5-advanced-features" class="section level1" number="44">
-<h1><span class="header-section-number">Chapter 44</span> JUnit 5 advanced features</h1>
-<div id="introduction-8" class="section level2" number="44.1">
-<h2><span class="header-section-number">44.1</span> Introduction</h2>
+<div id="junit-5-advanced-features" class="section level1 hasAnchor" number="44">
+<h1><span class="header-section-number">Chapter 44</span> JUnit 5 advanced features<a href="junit-5-advanced-features.html#junit-5-advanced-features" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-8" class="section level2 hasAnchor" number="44.1">
+<h2><span class="header-section-number">44.1</span> Introduction<a href="junit-5-advanced-features.html#introduction-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This post deals with (slightly) more advanced JUnit features</p>
 <ul>
 <li>usage of annotations other than <code>@Test</code></li>
 <li>the assertJ library for writing assertions</li>
 </ul>
 </div>
-<div id="junit-5-annotations" class="section level2" number="44.2">
-<h2><span class="header-section-number">44.2</span> JUnit 5 annotations</h2>
+<div id="junit-5-annotations" class="section level2 hasAnchor" number="44.2">
+<h2><span class="header-section-number">44.2</span> JUnit 5 annotations<a href="junit-5-advanced-features.html#junit-5-annotations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You probably have seen annotations in your Java code by now, for example <code>@Override</code>
 or <code>@SuppressWarnings("unused")</code>.
 Annotations are a form of syntactic metadata that can be added to Java source code (classes, methods, variables). They attach “properties” to classes, methods or variables.</p>
 <p>JUnit has a whole suite of annotations that you can use to publish a test case to the test runtime, or to modify when it is run, or its scope, for instance.</p>
 <p>Here are a few of the most common ones. Please refer to the official docs for a complete listing.</p>
-<div id="test-2" class="section level4 unnumbered">
-<h4>@Test</h4>
+<div id="test-2" class="section level4 unnumbered hasAnchor">
+<h4>@Test<a href="junit-5-advanced-features.html#test-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This is the most important one. It marks a method as a JUnit test method, so that it can be discovered by the test runtime. Nothing else is required.</p>
 <div class="sourceCode" id="cb375"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb375-1"><a href="junit-5-advanced-features.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Test</span></span>
 <span id="cb375-2"><a href="junit-5-advanced-features.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">testImportant</span><span class="op">()</span> <span class="op">{</span></span>
@@ -435,20 +437,20 @@ Annotations are a form of syntactic metadata that can be added to Java source co
 <span id="cb375-6"><a href="junit-5-advanced-features.html#cb375-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">assertSame</span><span class="op">(</span>first<span class="op">,</span> second<span class="op">);</span></span>
 <span id="cb375-7"><a href="junit-5-advanced-features.html#cb375-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="disabled" class="section level4 unnumbered">
-<h4>@Disabled</h4>
+<div id="disabled" class="section level4 unnumbered hasAnchor">
+<h4>@Disabled<a href="junit-5-advanced-features.html#disabled" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>@Disabled</code> annotation is used to (temporary) disable a test. It is not used very often, because forgetting to remove it again is a lurking danger. A better alternative is to use the <code>@Tag</code> annotation which is discussed in the next post.</p>
 </div>
-<div id="displayname" class="section level4 unnumbered">
-<h4>@DisplayName</h4>
+<div id="displayname" class="section level4 unnumbered hasAnchor">
+<h4>@DisplayName<a href="junit-5-advanced-features.html#displayname" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use the <code>@DisplayName</code> annotation to have the method represented by a more human-readable message. So instead of “testLongestWordWithSingleSpace()” you could have <code>@DisplayName("Single space input to longestWord()")</code>. unfortunately, this feature is not satisfactorily supported in IntelliJ when using Gradle as Test Runner: It does not show the display name in the Run panel. The Gradle test report does show the display names correctly however.</p>
 <p>You can sort of “fix” this by choosing to have IntelliJ IDEA run your tests instead of Gradle. This can be done via<br />
-Preferences → Build, Execution, Deployment → Build Tools → Gradle → choose IntelliJ IDEA from the pulldown at “Run tests using.”<br />
+Preferences → Build, Execution, Deployment → Build Tools → Gradle → choose IntelliJ IDEA from the pulldown at “Run tests using”.<br />
 Unfortunately, this disables the <code>@Tag</code> selection mechanism which is discussed in the next post…</p>
 <p>I recommend always using the <code>@Displayname</code> annotation. Support for it will undoubtedly improve.</p>
 </div>
-<div id="beforeeach-and-aftereach" class="section level4 unnumbered">
-<h4>@BeforeEach and @AfterEach</h4>
+<div id="beforeeach-and-aftereach" class="section level4 unnumbered hasAnchor">
+<h4>@BeforeEach and @AfterEach<a href="junit-5-advanced-features.html#beforeeach-and-aftereach" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><code>@BeforeEach</code> and <code>@AfterEach</code> run respectively before and after each test case. You use them to re-initialize objects that may have been changed during a previous test.</p>
 <p>For instance, a Polygon object under test:</p>
 <div class="sourceCode" id="cb376"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb376-1"><a href="junit-5-advanced-features.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="bu">Polygon</span> polygon<span class="op">;</span></span>
@@ -460,13 +462,13 @@ Unfortunately, this disables the <code>@Tag</code> selection mechanism which is 
 <span id="cb376-7"><a href="junit-5-advanced-features.html#cb376-7" aria-hidden="true" tabindex="-1"></a>    polygon<span class="op">.</span><span class="fu">addCoordinate</span><span class="op">(</span><span class="kw">new</span> <span class="fu">Coordinate</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">6</span><span class="op">));</span></span>
 <span id="cb376-8"><a href="junit-5-advanced-features.html#cb376-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="beforeall-and-afterall" class="section level4 unnumbered">
-<h4>@BeforeAll and @AfterAll</h4>
+<div id="beforeall-and-afterall" class="section level4 unnumbered hasAnchor">
+<h4>@BeforeAll and @AfterAll<a href="junit-5-advanced-features.html#beforeall-and-afterall" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>@BeforeAll and @AfterAll annotations are similar to @AfterEach and @BeforeEach with the difference that they are called <strong><em>once per test class execution</em></strong> and not on a per-test basis. These are used to initialize class level resources (i.e. load a properties file).</p>
 <p><strong><em>Methods annotated with <code>@BeforeAll</code> or <code>@AfterAll</code> the should be static.</em></strong></p>
 </div>
-<div id="tag" class="section level4 unnumbered">
-<h4>@Tag</h4>
+<div id="tag" class="section level4 unnumbered hasAnchor">
+<h4>@Tag<a href="junit-5-advanced-features.html#tag" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>@Tag</code> annotation is a much more sophisticated way of switching (groups of) tests on and off. You use them in combination with a configuration of your test runtime (in this case Gradle).</p>
 <p>Here are two tagged methods.</p>
 <div class="sourceCode" id="cb377"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb377-1"><a href="junit-5-advanced-features.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="at">@Tag</span><span class="op">(</span><span class="st">&quot;sometimes&quot;</span><span class="op">)</span></span>
@@ -498,8 +500,8 @@ Unfortunately, this disables the <code>@Tag</code> selection mechanism which is 
 <p>will result in <strong><em>only</em></strong> <code>tagDemo1()</code> being executed.</p>
 <p>You can <code>@Tag</code> single methods as well as classes.</p>
 </div>
-<div id="parameterizedtest" class="section level4 unnumbered">
-<h4>@ParameterizedTest</h4>
+<div id="parameterizedtest" class="section level4 unnumbered hasAnchor">
+<h4>@ParameterizedTest<a href="junit-5-advanced-features.html#parameterizedtest" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>You can repeat the same test with different inputs using the <code>@ParameterizedTest</code> annotation.
 It is highly versatile, so you should really read the docs when your professional setting takes you there.</p>
 <p>In order to use this annotation, you should add this line to your dependencies (in this case, <code>build.gradle</code>):</p>
@@ -514,7 +516,7 @@ It is highly versatile, so you should really read the docs when your professiona
 <span id="cb381-7"><a href="junit-5-advanced-features.html#cb381-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">palindromes</span><span class="op">(</span><span class="bu">String</span> candidate<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb381-8"><a href="junit-5-advanced-features.html#cb381-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">assertTrue</span><span class="op">(</span><span class="fu">isPalindrome</span><span class="op">(</span>candidate<span class="op">),</span> <span class="op">()</span> <span class="op">-&gt;</span> candidate <span class="op">+</span> <span class="st">&quot; should be a palindrome!&quot;</span><span class="op">);</span></span>
 <span id="cb381-9"><a href="junit-5-advanced-features.html#cb381-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
-<p>This will carry out the <code>asertTrue()</code> statement sequentially with the inputs “racecar,” “radar,” “able was I ere I saw elba” that will be injected into the variable <code>candidate</code>. These values are provided by the <code>@ValueSource</code> annotation.</p>
+<p>This will carry out the <code>asertTrue()</code> statement sequentially with the inputs “racecar”, “radar”, “able was I ere I saw elba” that will be injected into the variable <code>candidate</code>. These values are provided by the <code>@ValueSource</code> annotation.</p>
 <p>If one of the inputs causes the test to fail, all subsequent candidates will still be run. This is a big difference with the case where you have multiple assert statements within a single test method. If one fails, all following assert tests will be skipped.</p>
 <p>Use this setup if all your test inputs are expected to give the same result (in this case, being a legal palindrome).</p>
 <p>Note that the annotation (<code>@ParameterizedTest(name = "\"{0}\" should be a palindrome")</code>) supports a dynamically generated error message using a format string where the input will be inserted in tha case of failure.</p>
@@ -545,7 +547,6 @@ It is highly versatile, so you should really read the docs when your professiona
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -564,6 +565,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -581,6 +583,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -595,7 +601,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

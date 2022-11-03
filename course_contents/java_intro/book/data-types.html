@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Data Types | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Data Types | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="naming-and-commenting-stuff.html"/>
 <link rel="next" href="arrays.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-types" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Data Types</h1>
+<div id="data-types" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Data Types<a href="data-types.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Data forms the <strong><em>state</em></strong> of an object. They define the properties that define how it will <strong><em>behave</em></strong> through methods.
 As stated before, Java is a <strong><em>strongly typed</em></strong> language. That means every variable, method parameter and method return type needs to have a declared type. These types can be <strong><em>primitives</em></strong> or <strong><em>reference types</em></strong>. This post deals with both, and with the “behavioral” differences between them.</p>
-<div id="primitives" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Primitives</h2>
-<p>In essence, every programming language knows about the same data types: integers, floats, booleans, Strings. Java is no different. However, there are a few major distinctions. First, you need to declare the type of every variable. Also, conversion between them usually needs to be done explicitly. Finally, for memory efficiency reasons, there are “subtypes” of integers and floats. Floating-point numbers for instance (numbers with a decimal part), can be represented by the <code>float</code> type (“floating point number) or the <code>double</code> (”double-precision floating point number") which takes twice as much of memory. You have to realise Java was first launched in the 1990s, when memory was a scarce and valuable asset in a computer…</p>
+<div id="primitives" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Primitives<a href="data-types.html#primitives" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In essence, every programming language knows about the same data types: integers, floats, booleans, Strings. Java is no different. However, there are a few major distinctions. First, you need to declare the type of every variable. Also, conversion between them usually needs to be done explicitly. Finally, for memory efficiency reasons, there are “subtypes” of integers and floats. Floating-point numbers for instance (numbers with a decimal part), can be represented by the <code>float</code> type (“floating point number) or the <code>double</code> (”double-precision floating point number”) which takes twice as much of memory. You have to realise Java was first launched in the 1990s, when memory was a scarce and valuable asset in a computer…</p>
 <p>Here are all the primitive types:</p>
 <div class="figure">
 <img src="02_syntax/figures/primitive_types.png" alt="" />
@@ -510,8 +512,8 @@ it is more logical to cast the numerator (<code>x</code>) to a double.</p>
 <span id="cb54-14"><a href="data-types.html#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">//not allowed; the * operator does not support these two types as operands</span></span>
 <span id="cb54-15"><a href="data-types.html#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co">//System.out.println(&quot;name * 10 = &quot; + name * 10);</span></span></code></pre></div>
 </div>
-<div id="reference-types" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Reference types</h2>
+<div id="reference-types" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Reference types<a href="data-types.html#reference-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Java, reference types are everywhere; they point to the object instances. Strings, arrays, and every
 Java class -also the ones you create- represent reference types.</p>
 <p>With primitive-typed variables, the value of the variable is simply the value, in bits, but with reference variables,
@@ -520,15 +522,15 @@ the value of the variable is bits representing a way to get to a specific object
 <img src="02_syntax/figures/remote_control.png" alt="" />
 <p class="caption">A remote control</p>
 </div>
-<div id="creating-a-reference-type-variable" class="section level4 unnumbered">
-<h4>Creating a reference type variable</h4>
+<div id="creating-a-reference-type-variable" class="section level4 unnumbered hasAnchor">
+<h4>Creating a reference type variable<a href="data-types.html#creating-a-reference-type-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure">
 <img src="02_syntax/figures/create_reference_type.png" alt="" />
 <p class="caption">A reference-type variable</p>
 </div>
 </div>
-<div id="type-string" class="section level4 unnumbered">
-<h4>Type String</h4>
+<div id="type-string" class="section level4 unnumbered hasAnchor">
+<h4>Type String<a href="data-types.html#type-string" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Type String needs some special attention. It is actually NOT a primitive type, although always dealt with alongside them.
 You could have guessed from the name, which starts with a capital. It is a full-fledged Java class that can be instantiated and that has many nice methods. It is however immutable as in most languages, and has a shortcuts that most other classes do not have: you can create them from a literal.
 Here is some example usage of class String.</p>
@@ -544,8 +546,8 @@ Here is some example usage of class String.</p>
 <span id="cb55-10"><a href="data-types.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;dnaFour.toCharArray(): &quot;</span> <span class="op">+</span> dnaFour<span class="op">.</span><span class="fu">toCharArray</span><span class="op">());</span> </span>
 <span id="cb55-11"><a href="data-types.html#cb55-11" aria-hidden="true" tabindex="-1"></a><span class="co">//[C@6f3b5d16 but this changes: this is the reference value (the remote control endpoint)</span></span></code></pre></div>
 </div>
-<div id="testing-equality-of-strings" class="section level4 unnumbered">
-<h4>Testing equality (of Strings)</h4>
+<div id="testing-equality-of-strings" class="section level4 unnumbered hasAnchor">
+<h4>Testing equality (of Strings)<a href="data-types.html#testing-equality-of-strings" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A very common mistake with beginning (and advanced) Java programmers is the way String comparison is carried out.</p>
 <p>To test <strong><em>sameness</em></strong>, use <code>==</code>. This returns true if the variables are the same primitives or point to the same object on the heap.<br />
 To test <strong><em>logical equality</em></strong>, use the <code>.equals()</code> method. Strings may be the same in content, but return false when tested for sameness: two distinct string objects on the heap can have the same content.</p>
@@ -568,8 +570,8 @@ dnaOne == dnaSix: true
 </pre>
 <p>And this has to do with String literal caching by the JVM.</p>
 </div>
-<div id="a-special-case-null" class="section level4 unnumbered">
-<h4>A special case: <em>null</em></h4>
+<div id="a-special-case-null" class="section level4 unnumbered hasAnchor">
+<h4>A special case: <em>null</em><a href="data-types.html#a-special-case-null" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There s a special value for reference type variables: the <strong><em>null</em></strong> value. It can be assigned to all Java
 reference type variables. This value is used when you want to declare a variable, but don’t know a useful default or starting value for it. However, there is great danger lurking when using null values. They are not backed by an object, so when you try to access values on them, or call methods, you get a big fat <code>NullPointerException</code> thrown in your face.</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb58-1"><a href="data-types.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> <span class="fu">nullValueDemo</span><span class="op">()</span> <span class="op">{</span></span>
@@ -590,10 +592,10 @@ java.lang.NullPointerException
 </pre>
 </div>
 </div>
-<div id="what-is-the-difference" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> What is the difference?</h2>
-<div id="to-be-passed-around-as-primitive" class="section level4 unnumbered">
-<h4>To be passed around as primitive</h4>
+<div id="what-is-the-difference" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> What is the difference?<a href="data-types.html#what-is-the-difference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="to-be-passed-around-as-primitive" class="section level4 unnumbered hasAnchor">
+<h4>To be passed around as primitive<a href="data-types.html#to-be-passed-around-as-primitive" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Java is pass-by-copy, so to pass a primitive means to pass a copy of it. Whatever happens with the copy has no impact on the original:</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb59-1"><a href="data-types.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> <span class="fu">primitivePassingDemo</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb59-2"><a href="data-types.html#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
@@ -615,8 +617,8 @@ number = 55
 x = 42
 </pre>
 </div>
-<div id="to-be-passed-around-as-reference-type" class="section level4 unnumbered">
-<h4>To be passed around as reference type</h4>
+<div id="to-be-passed-around-as-reference-type" class="section level4 unnumbered hasAnchor">
+<h4>To be passed around as reference type<a href="data-types.html#to-be-passed-around-as-reference-type" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Java is pass-by-copy, so to pass a reference type means to pass a copy of <strong><em>the reference</em></strong>. Now you have two references pointing to the same object on the heap.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb60-1"><a href="data-types.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> <span class="fu">referencePassingDemo</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb60-2"><a href="data-types.html#cb60-2" aria-hidden="true" tabindex="-1"></a>    Cell cell <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cell</span><span class="op">();</span></span>
@@ -662,8 +664,8 @@ you can only make a changed copy of it. In the above example, a new String objec
 within method <code>changeStringVariable()</code>. The existing one was not changed but discarded.</p>
 </div>
 </div>
-<div id="summary-1" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Summary</h2>
+<div id="summary-1" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Summary<a href="data-types.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You have seen an overview of the Java primitives, and what you can do with them.
 The concept of casting has been introduced. This casting can be implicit (from low
 to high information content), but when you try to go from high to low information
@@ -684,7 +686,6 @@ these and primitives are.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -703,6 +704,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -720,6 +722,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -734,7 +740,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

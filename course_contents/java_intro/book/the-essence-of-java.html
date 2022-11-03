@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 The essence of Java | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 The essence of Java | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="a-first-intellij-project.html"/>
 <link rel="next" href="basic-program-structure-and-flow.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,28 +409,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-essence-of-java" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> The essence of Java</h1>
-<p>This part deals with some key characteristics of the Java programming language. Java is a very popular platform for several reasons: it is “compile once, run everywhere,” it is the basis of Android, it is embedded in many domestic appliances, and it has a nice clear object-oriented design.</p>
-<div id="cross-platform" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Cross-platform</h2>
+<div id="the-essence-of-java" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> The essence of Java<a href="the-essence-of-java.html#the-essence-of-java" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This part deals with some key characteristics of the Java programming language. Java is a very popular platform for several reasons: it is “compile once, run everywhere”, it is the basis of Android, it is embedded in many domestic appliances, and it has a nice clear object-oriented design.</p>
+<div id="cross-platform" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Cross-platform<a href="the-essence-of-java.html#cross-platform" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Java is cross-platform in the sense that once it is compiled it can be run on any operating system that has a Java Runtime installed. This OS-specific Java installation instantiates a Java Virtual Machine (<strong>JVM</strong>) and passes your compiled code to it, including instructions on which main() method to start on.</p>
 <p>It is quite an extended story, very well explained <a href="https://javapapers.com/core-java/differentiate-jvm-jre-jdk-jit/">here</a> but outside the scope of this course.</p>
 <p>The key thing to remember is: your Java source files (<code>.java</code>) are compiled into class files (<code>.class</code>) and packaged into a zip-like archive (<code>.jar</code> - java archive) which can be distributed as executable, compatible with any OS.</p>
 </div>
-<div id="multithreaded" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Multithreaded</h2>
+<div id="multithreaded" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Multithreaded<a href="the-essence-of-java.html#multithreaded" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Creating multithreaded applications and algorithm is extremely easy because multicore support is build into the language from version 1, and greatly enhanced with the introduction of the Streams API in Java 8.</p>
 </div>
-<div id="object-oriented" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Object-Oriented</h2>
+<div id="object-oriented" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Object-Oriented<a href="the-essence-of-java.html#object-oriented" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Java you don’t <em>write and run a script</em>. Instead, you write a program where all logic you create resides in methods within <strong><em>classes</em></strong>. Classes reside in their own source file. Java projects usually have <em>many</em> source files! One of these classes must contain a <code>main()</code> method for the library to be executable. You let the JVM know which class has the main method you want executed through a file called manifest.mf.
 Besides the raw -primitive- data types such as integer (<code>int</code>) and <code>double</code>, all types are represented by classes, which define the blueprint to construct <code>objects</code>. So objects are the representations (<strong><em>instances</em></strong>) of a single class - more formally called a <strong><em>type</em></strong>. Java provides many types, and you will routinely define your own types when programming.</p>
 <p><strong>A Class is a Type blueprint that is used to instantiate Objects</strong></p>
 <p>These objects, the number of which can range from one to many millions within a running application, are the fabric of the program. They hold data (called <strong><em>instance variables</em></strong>) and <strong><em>methods</em></strong> that define their behavior and functionality.</p>
 </div>
-<div id="strongly-typed-and-scoped" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Strongly typed and scoped</h2>
+<div id="strongly-typed-and-scoped" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Strongly typed and scoped<a href="the-essence-of-java.html#strongly-typed-and-scoped" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This aspect can at first be a bit daunting when coming from languages such as Python or R. Every variable you use must have a <strong><em>declared type</em></strong>. Moreover, every class/object variable or method (<strong><em>member</em></strong>) has <strong><em>keywords</em></strong> defining its scope, also called visibility.</p>
 <p>Below is an example class that shows these aspects. Read the Javadoc comments (between <code>/**</code> and <code>*/</code>) to see what everything means. You do not have to remember or understand all these keywords yet, only get an idea of their role within the code.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="the-essence-of-java.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
@@ -503,8 +505,8 @@ Besides the raw -primitive- data types such as integer (<code>int</code>) and <c
 <span id="cb5-70"><a href="the-essence-of-java.html#cb5-70" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb5-71"><a href="the-essence-of-java.html#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="compiled" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Compiled</h2>
+<div id="compiled" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Compiled<a href="the-essence-of-java.html#compiled" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Java is a compiled language, which means you have to compile the source into <strong><em>byte code</em></strong> before it can be run. Fortunately, you have to compile it only once, for the JVM and not multiple times, for every OS you want to support.
 Whenever you run an application within IntelliJ, it is first compiled: all source files (<code>.java</code> files) are compiled into byte code files that have a <code>.class</code> extension. You can find these in the <code>build</code> folder. To create a distributable application, you need to build it into a “Jar” - with <code>.jar</code> extension. You run these on the command line using the
 command <code>java -jar &lt;my-app.jar&gt;</code>. The Gradle toolbox has all kinds of Tasks to automate this for you.</p>
@@ -522,7 +524,6 @@ command <code>java -jar &lt;my-app.jar&gt;</code>. The Gradle toolbox has all ki
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -541,6 +542,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -558,6 +560,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -572,7 +578,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

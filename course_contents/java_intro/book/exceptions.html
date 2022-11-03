@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 20 Exceptions | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 20 Exceptions | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="sorting.html"/>
 <link rel="next" href="file-io.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exceptions" class="section level1" number="20">
-<h1><span class="header-section-number">Chapter 20</span> Exceptions</h1>
+<div id="exceptions" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">Chapter 20</span> Exceptions<a href="exceptions.html#exceptions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Before dealing with file IO, exceptions need to be discussed. You need to deal with exceptions whenever you deal with the outside world. Why? The outside world is dangerous and unpredictable: files do not exist, or are not accessible to you, internet connections can be down, a database has a new password or URL…</p>
 <p>All these scenarios will <strong><em>throw</em></strong> an <code>Exception</code> your way. It is up to you, the application programmer, to <strong><em>catch</em></strong> them and deal with them. Either by following an alternative program path, or to quit the application elegantly.</p>
 <p>Exceptions are method return values that do not follow regular program flow; they are instantiated when something goes wrong and usually cause the program to behave differently.</p>
-<div id="what-are-exceptions" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> What are exceptions</h2>
+<div id="what-are-exceptions" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> What are exceptions<a href="exceptions.html#what-are-exceptions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider this code.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb163-1"><a href="exceptions.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">apis</span><span class="op">;</span></span>
 <span id="cb163-2"><a href="exceptions.html#cb163-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -444,16 +446,16 @@ The current executing function is always on top.
 When an exception or error occurs, you will see a <strong><em>traceback</em></strong> through this stack, from the top (where the error occurred) back to the main() function.
 This gives you information about the origin and nature of the error.</p>
 </div>
-<div id="checked-and-unchecked-exceptions" class="section level2" number="20.2">
-<h2><span class="header-section-number">20.2</span> Checked and unchecked exceptions</h2>
+<div id="checked-and-unchecked-exceptions" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Checked and unchecked exceptions<a href="exceptions.html#checked-and-unchecked-exceptions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Although the name <code>Exception</code> was used in this example, there are actually quite a few in the Java API. They are all related to each other through inheritance. The base type of all is class <code>Throwable</code>. It has two children: <code>Error</code> and <code>Exception</code>. See figure below.</p>
 <div class="figure">
 <img src="03_apis/figures/exceptionhierarchy.jpg" alt="" />
 <p class="caption">Exception hierarchy</p>
 </div>
 <p>There are exceptions for standard IO operations. These are called <strong><em>checked exceptions</em></strong> because their fate is checked by the compiler: whenever you call a method throwing one of these, you <strong><em>must</em></strong> catch it, or add a throws clause to your method. There is a subbranch extending from <code>RuntimeException</code> that represent the <strong><em>unchecked</em></strong> exceptions. These are not checked by the compiler: you can throw or catch these explicitly, but that is not required.</p>
-<div id="checked-exceptions" class="section level3 unnumbered">
-<h3>Checked exceptions</h3>
+<div id="checked-exceptions" class="section level3 unnumbered hasAnchor">
+<h3>Checked exceptions<a href="exceptions.html#checked-exceptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Whenever a method publishes a throws clause of a checked exception in its method signature, you must take one of these two courses of action:</p>
 <ul>
 <li><p>Catch it yourself: place this code in a <strong><em><code>try/catch</code></em></strong> structure</p>
@@ -521,15 +523,15 @@ This gives you information about the origin and nature of the error.</p>
 <span id="cb166-51"><a href="exceptions.html#cb166-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb166-52"><a href="exceptions.html#cb166-52" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="unchecked-exceptions" class="section level3 unnumbered">
-<h3>Unchecked exceptions</h3>
+<div id="unchecked-exceptions" class="section level3 unnumbered hasAnchor">
+<h3>Unchecked exceptions<a href="exceptions.html#unchecked-exceptions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Unchecked exceptions are quite similar to checked exceptions, but with the difference that you do not
 - need to declare them
 - need to try/catch or throw them explicitly.</p>
 <p>Unchecked exceptions include <code>NumberFormatException</code>, <code>NullPointerException</code>, <code>IllegalArgumentException</code> and <code>UnsupportedOperationException</code>. In modern Java, unchecked exceptions are preferred above checked exceptions. Try to work with these as much as possible.</p>
 </div>
-<div id="errors" class="section level3 unnumbered">
-<h3>Errors</h3>
+<div id="errors" class="section level3 unnumbered hasAnchor">
+<h3>Errors<a href="exceptions.html#errors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You should never ever try to catch errors. There is no possible use case for that:</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb167-1"><a href="exceptions.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">{</span></span>
 <span id="cb167-2"><a href="exceptions.html#cb167-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">thirdMethod</span><span class="op">();</span></span>
@@ -538,8 +540,8 @@ This gives you information about the origin and nature of the error.</p>
 <span id="cb167-5"><a href="exceptions.html#cb167-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="all-trycatch-elements" class="section level2" number="20.3">
-<h2><span class="header-section-number">20.3</span> All try/catch elements</h2>
+<div id="all-trycatch-elements" class="section level2 hasAnchor" number="20.3">
+<h2><span class="header-section-number">20.3</span> All try/catch elements<a href="exceptions.html#all-trycatch-elements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here are all the try/catch flow control elements. Note that the supertype of more specific exceptions need to be caught last, after the specific types.</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb168-1"><a href="exceptions.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span><span class="op">{</span></span>
 <span id="cb168-2"><a href="exceptions.html#cb168-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*The risky thing. </span></span>
@@ -562,8 +564,8 @@ This gives you information about the origin and nature of the error.</p>
 <span id="cb168-19"><a href="exceptions.html#cb168-19" aria-hidden="true" tabindex="-1"></a><span class="co">    database connection*/</span></span>
 <span id="cb168-20"><a href="exceptions.html#cb168-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="try-with-resources" class="section level2" number="20.4">
-<h2><span class="header-section-number">20.4</span> Try-with resources</h2>
+<div id="try-with-resources" class="section level2 hasAnchor" number="20.4">
+<h2><span class="header-section-number">20.4</span> Try-with resources<a href="exceptions.html#try-with-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Java 7 introduced the try-with resources structure, which automatically closes the resource once the try block has finished:</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb169-1"><a href="exceptions.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span> <span class="op">(&lt;</span>OPEN RESOURCE<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span>
 <span id="cb169-2"><a href="exceptions.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="cf">catch</span> <span class="op">(&lt;</span>RESOURCE EXCEPTION<span class="op">&gt;)</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
@@ -581,7 +583,6 @@ This gives you information about the origin and nature of the error.</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -600,6 +601,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -617,6 +619,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -631,7 +637,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

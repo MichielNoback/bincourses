@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 The Java Collections API | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 The Java Collections API | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="interfaces.html"/>
 <link rel="next" href="methods-of-class-object.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,15 +409,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-java-collections-api" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> The Java Collections API</h1>
+<div id="the-java-collections-api" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">Chapter 16</span> The Java Collections API<a href="the-java-collections-api.html#the-java-collections-api" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Storing variables collectively is nice; doing so in Arrays is usually not so
 nice - simply because they are static and cannot be extended or shortened or inserted within.
 The Java Collections API offers a wealth of other ways to store data, in the form of Lists, Queues,
 Sets, Maps, in variations and hybrids of these.</p>
 <p>Finally (not a collection but essential to show you), we will see a nice way to deal with changeable String data: class StringBuilder.</p>
-<div id="the-old-way" class="section level4 unnumbered">
-<h4>The old way</h4>
+<div id="the-old-way" class="section level4 unnumbered hasAnchor">
+<h4>The old way<a href="the-java-collections-api.html#the-old-way" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In a previous lecture, you have seen the most basic collection type: array.
 Arrays store a fixed number of variables. But suppose you want to do something like this:</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb111-1"><a href="the-java-collections-api.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Sequence</span><span class="op">[]</span> <span class="fu">readSequences</span><span class="op">(</span><span class="bu">String</span> fileName<span class="op">)</span> <span class="op">{</span></span>
@@ -442,8 +444,8 @@ in one run, you have a bigger problem! You will get <code>ArrayIndexOutOfRangeEx
 or other errors. Actually, these machines already exist!</p>
 <p>There is a nice class that will really make your day: <code>java.util.ArrayList</code>.</p>
 </div>
-<div id="lists-arraylist-and-linkedlist" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Lists: ArrayList and LinkedList</h2>
+<div id="lists-arraylist-and-linkedlist" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Lists: ArrayList and LinkedList<a href="the-java-collections-api.html#lists-arraylist-and-linkedlist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ArrayList is the workhorse for most collections where you want to store a number of variables
 in an ordered way. It is, as the name suggests, an Array-like List. The big -no huge- difference
 is that is will grow and shrink according to your needs. So, the previous method could be
@@ -464,8 +466,8 @@ refactored as follows:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 ArrayList<span style="color:darkred;">&lt;String&gt; </span>sequences = new ArrayList<span style="color:darkred;">&lt;&gt;</span>();
 </pre>
-<div id="generics" class="section level3" number="16.1.1">
-<h3><span class="header-section-number">16.1.1</span> Generics</h3>
+<div id="generics" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Generics<a href="the-java-collections-api.html#generics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>&lt;String&gt;</code> and <code>&lt;&gt;</code> have everything to do with Java being strongly typed. Since everything is typed, a collection that is being instantiated must also know what type it will contain. You specify the type of its elements using the <strong><em>diamond operators</em></strong>. This mechanism is called <strong><em>generics</em></strong> in Java, because it makes collection classes generic usable.
 Before Java 8, you had to do it twice (<code>ArrayList&lt;String&gt; sequences = new ArrayList&lt;String&gt;();</code>) but in newer versions of Java you can leave the second set of diamond operators empty.</p>
 <p>Leaving the type declaration out does not yield a compiler error, but makes your life so much harder:</p>
@@ -509,8 +511,8 @@ Before Java 8, you had to do it twice (<code>ArrayList&lt;String&gt; sequences =
 <span id="cb115-10"><a href="the-java-collections-api.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>but why would you make your life harder than it already is?</p>
 </div>
-<div id="arraylist-operations" class="section level3" number="16.1.2">
-<h3><span class="header-section-number">16.1.2</span> ArrayList operations</h3>
+<div id="arraylist-operations" class="section level3 hasAnchor" number="16.1.2">
+<h3><span class="header-section-number">16.1.2</span> ArrayList operations<a href="the-java-collections-api.html#arraylist-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lists in general, and ArrayList is no exception, are used to store in an ordered way. Operations on ArrayLists are of course related to the property. Here are some example usages.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb116-1"><a href="the-java-collections-api.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co">//create</span></span>
 <span id="cb116-2"><a href="the-java-collections-api.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="bu">ArrayList</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">&gt;</span> words <span class="op">=</span> <span class="kw">new</span> <span class="bu">ArrayList</span><span class="op">&lt;&gt;();</span></span>
@@ -554,8 +556,8 @@ Before Java 8, you had to do it twice (<code>ArrayList&lt;String&gt; sequences =
 <span id="cb117-9"><a href="the-java-collections-api.html#cb117-9" aria-hidden="true" tabindex="-1"></a>mutableString<span class="op">.</span><span class="fu">add</span><span class="op">(</span><span class="st">&quot;!&quot;</span><span class="op">);</span></span></code></pre></div>
 </div>
 </div>
-<div id="code-against-interfaces-not-implementations" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Code against interfaces, not implementations</h2>
+<div id="code-against-interfaces-not-implementations" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Code against interfaces, not implementations<a href="the-java-collections-api.html#code-against-interfaces-not-implementations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Be aware that the <code>contains()</code> method performs at <strong>O(n)</strong> (see your Algorithms &amp; Data structures course!), so if you plan to check for
 element presence often, List types are not a good choice. Also, if you are going to do a lot of insert and/or delete operations, LinkedList is a much better choice. Fortunately, you only need to change one line of code in your application to achieve this, and if you design your code well, you only need to change a single word:</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb118-1"><a href="the-java-collections-api.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="co">//This is OK but not efficient with insert/delete </span></span>
@@ -574,8 +576,8 @@ element presence often, List types are not a good choice. Also, if you are going
 <p>In the example above,
 it took only one changes word to use a LinkedList instead of an ArrayList.</p>
 </div>
-<div id="the-collection-interfaces-map-list-set" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> The collection interfaces: Map, List, Set</h2>
+<div id="the-collection-interfaces-map-list-set" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> The collection interfaces: Map, List, Set<a href="the-java-collections-api.html#the-collection-interfaces-map-list-set" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There four base collection types, each with several dedicated implementations.
 You have already seen the <code>List</code> type, with two implementations: <code>ArrayList</code> and <code>LinkedList</code>.</p>
 <p>Here is a -very incomplete- listing of some collection type implementations,
@@ -603,15 +605,15 @@ followed by a demonstration of only the HashMap and HashSet types - you have alr
 <li><code>ArrayDeque</code> double-ended queue</li>
 </ul></li>
 </ul>
-<div id="map-hashmap" class="section level3" number="16.3.1">
-<h3><span class="header-section-number">16.3.1</span> Map: HashMap</h3>
+<div id="map-hashmap" class="section level3 hasAnchor" number="16.3.1">
+<h3><span class="header-section-number">16.3.1</span> Map: HashMap<a href="the-java-collections-api.html#map-hashmap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>HashMap is the main Map implementation in Java. It is a dictionary type mapping keys to values. Like all collection types, it uses generics to declare the type of the keys and values. Here is an example of an ID to User mapping:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 Map<span style="color:darkred;">&lt;Integer, User&gt; </span>users = new HashMap<span style="color:darkred;">&lt;&gt;</span>();
 </pre>
 <p>Note the use of <code>Integer</code> instead of <code>int</code>.</p>
-<div id="primitives-as-objects" class="section level4 unnumbered">
-<h4>Primitives as objects</h4>
+<div id="primitives-as-objects" class="section level4 unnumbered hasAnchor">
+<h4>Primitives as objects<a href="the-java-collections-api.html#primitives-as-objects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Each primitive type in the Java language has an object counterpart. The reason for this is that collection types, amongst others, can not hold primitives but only objects.</p>
 <p>These are the primitives and their <strong><em>wrapper classes</em></strong>:</p>
 <ul>
@@ -620,8 +622,8 @@ Map<span style="color:darkred;">&lt;Integer, User&gt; </span>users = new HashMap
 </ul>
 <p>So only Character and Integer have a different name (longer) the others are simply the primitive name capitalized.</p>
 </div>
-<div id="autoboxing" class="section level4 unnumbered">
-<h4>Autoboxing</h4>
+<div id="autoboxing" class="section level4 unnumbered hasAnchor">
+<h4>Autoboxing<a href="the-java-collections-api.html#autoboxing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The wrapper classes can be converted to and from pretty easy:</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb119-1"><a href="the-java-collections-api.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> count <span class="op">=</span> <span class="dv">33</span><span class="op">;</span></span>
 <span id="cb119-2"><a href="the-java-collections-api.html#cb119-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -639,8 +641,8 @@ Map<span style="color:darkred;">&lt;Integer, User&gt; </span>users = new HashMap
 <p>The last two examples show the mechanism of <strong><em>autoboxing</em></strong> primitives.
 This means the compiler deals with wrapping and unwrapping for you. This is how you typically use primitives in collections. See use cases below.</p>
 </div>
-<div id="map-operations" class="section level4 unnumbered">
-<h4>Map operations</h4>
+<div id="map-operations" class="section level4 unnumbered hasAnchor">
+<h4>Map operations<a href="the-java-collections-api.html#map-operations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>See listing below.</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb120-1"><a href="the-java-collections-api.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Map</span><span class="op">&lt;</span><span class="bu">Integer</span><span class="op">,</span> User<span class="op">&gt;</span> users <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;&gt;();</span></span>
 <span id="cb120-2"><a href="the-java-collections-api.html#cb120-2" aria-hidden="true" tabindex="-1"></a>User u1 <span class="op">=</span> <span class="kw">new</span> <span class="fu">User</span><span class="op">(</span><span class="dv">15</span><span class="op">,</span> <span class="st">&quot;Henk&quot;</span><span class="op">);</span></span>
@@ -675,8 +677,8 @@ This means the compiler deals with wrapping and unwrapping for you. This is how 
 <span id="cb120-31"><a href="the-java-collections-api.html#cb120-31" aria-hidden="true" tabindex="-1"></a>users<span class="op">.</span><span class="fu">clear</span><span class="op">();</span></span></code></pre></div>
 </div>
 </div>
-<div id="set-hashset" class="section level3" number="16.3.2">
-<h3><span class="header-section-number">16.3.2</span> Set: HashSet</h3>
+<div id="set-hashset" class="section level3 hasAnchor" number="16.3.2">
+<h3><span class="header-section-number">16.3.2</span> Set: HashSet<a href="the-java-collections-api.html#set-hashset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Typical set operations are <strong><em>intersection</em></strong>, <strong><em>union</em></strong> and <strong><em>relative complement</em></strong>.</p>
 <div class="figure">
 <img src="03_apis/figures/Set_Theory_Operations.png" alt="" />
@@ -713,8 +715,8 @@ differenceSet = [1, 3]
 </pre>
 </div>
 </div>
-<div id="collections-utility-methods" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Collections utility methods</h2>
+<div id="collections-utility-methods" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Collections utility methods<a href="the-java-collections-api.html#collections-utility-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Collections class has many useful utility functions. Their name are pretty self-explanatory:</p>
 <ul>
 <li>singletonList()</li>
@@ -737,7 +739,6 @@ differenceSet = [1, 3]
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -756,6 +757,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -773,6 +775,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -787,7 +793,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

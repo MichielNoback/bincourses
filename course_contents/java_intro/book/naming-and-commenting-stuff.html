@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Naming and commenting stuff | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Naming and commenting stuff | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="first-look-at-objects.html"/>
 <link rel="next" href="data-types.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="naming-and-commenting-stuff" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Naming and commenting stuff</h1>
+<div id="naming-and-commenting-stuff" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Naming and commenting stuff<a href="naming-and-commenting-stuff.html#naming-and-commenting-stuff" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Anyone who knows me (as a teacher) knows that (a) I really like Java and (b) I really really hate it when stuff gets named in the wrong way.</p>
-<div id="naming" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Naming</h2>
+<div id="naming" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Naming<a href="naming-and-commenting-stuff.html#naming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Experienced programmers can read code as if it is a nice book. When doing this, we rely on
 some conventions, just like in real language. For instance, in regular human text, names start with a
 capital, and sentences have a certain grammatical structure that makes it possible to read quickly without too much confusion. Whenever texts do not adhere to these rules or conventions, reading becomes very difficult.<br />
@@ -419,8 +421,8 @@ Programming languages are no different, and naming and layout-conventions help h
 <p>Java has a concise set of naming rules that you should adopt from your first endeavors. Here are the most important ones.</p>
 <p>For all names -classes, methods, variables- the single most important rule is that they should <strong><em>describe what they model in a precise and concise way</em></strong>. For instance, a valid counter for te number of logins in a system could be <code>c</code>, <code>count</code>, <code>counter</code> or <code>loginCounter</code>, but only the last is really informative to anyone reading te code.</p>
 <p>The second general rule is that Java identifiers are always in <strong><em>CamelCase</em></strong>, with the exception of certain types of constants. Also, never start names with a number and do not use special characters! These are illegal and will not compile: <code>1forTheMoney</code>, <code>k#ller</code>.</p>
-<div id="classes" class="section level4" number="7.1.0.1">
-<h4><span class="header-section-number">7.1.0.1</span> Classes</h4>
+<div id="classes" class="section level4 hasAnchor" number="7.1.0.1">
+<h4><span class="header-section-number">7.1.0.1</span> Classes<a href="naming-and-commenting-stuff.html#classes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Class names should be a noun, in camel case, with the first letter capitalized. Here are a few good and bad examples for names of a class reading GFF data from a file:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb41-1"><a href="naming-and-commenting-stuff.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Read <span class="op">{}</span> <span class="co">//bad - no noun and vague</span></span>
 <span id="cb41-2"><a href="naming-and-commenting-stuff.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="bu">Reader</span> <span class="op">{}</span> <span class="co">//bad, vague</span></span>
@@ -430,8 +432,8 @@ Programming languages are no different, and naming and layout-conventions help h
 <span id="cb41-6"><a href="naming-and-commenting-stuff.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GffRead <span class="op">{}</span> <span class="co">//bad, not a noun</span></span>
 <span id="cb41-7"><a href="naming-and-commenting-stuff.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> GffReader <span class="op">{}</span> <span class="co">//good: a noun and specific</span></span></code></pre></div>
 </div>
-<div id="methods" class="section level4" number="7.1.0.2">
-<h4><span class="header-section-number">7.1.0.2</span> Methods</h4>
+<div id="methods" class="section level4 hasAnchor" number="7.1.0.2">
+<h4><span class="header-section-number">7.1.0.2</span> Methods<a href="naming-and-commenting-stuff.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Method names should be a verb, in camel case. Here some examples for a method name calculating the Euclidean distance between two Point objects:</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb42-1"><a href="naming-and-commenting-stuff.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> <span class="fu">d</span><span class="op">(</span><span class="bu">Point</span> otherPoint<span class="op">)</span> <span class="op">{}</span> <span class="co">//bad - no verb and vague</span></span>
 <span id="cb42-2"><a href="naming-and-commenting-stuff.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> <span class="fu">distance</span><span class="op">(</span><span class="bu">Point</span> otherPoint<span class="op">)</span> <span class="op">{}</span> <span class="co">// bad - no verb and still slightly vague</span></span>
@@ -440,8 +442,8 @@ Programming languages are no different, and naming and layout-conventions help h
 <span id="cb42-5"><a href="naming-and-commenting-stuff.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> <span class="fu">euclideanDistance</span><span class="op">(</span><span class="bu">Point</span> otherPoint<span class="op">)</span> <span class="op">{}</span> <span class="co">// almost good, but no noun</span></span>
 <span id="cb42-6"><a href="naming-and-commenting-stuff.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> <span class="fu">getEuclideanDistance</span><span class="op">(</span><span class="bu">Point</span> otherPoint<span class="op">)</span> <span class="op">{}</span> <span class="co">//finally OK</span></span></code></pre></div>
 </div>
-<div id="variables" class="section level4" number="7.1.0.3">
-<h4><span class="header-section-number">7.1.0.3</span> Variables</h4>
+<div id="variables" class="section level4 hasAnchor" number="7.1.0.3">
+<h4><span class="header-section-number">7.1.0.3</span> Variables<a href="naming-and-commenting-stuff.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Variable names should be nouns as well, but starting in lowercase:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb43-1"><a href="naming-and-commenting-stuff.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> r<span class="op">;</span> <span class="co">//plain bad</span></span>
 <span id="cb43-2"><a href="naming-and-commenting-stuff.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> ratio<span class="op">;</span> <span class="co">//bad - what ratio?</span></span>
@@ -450,8 +452,8 @@ Programming languages are no different, and naming and layout-conventions help h
 <span id="cb43-5"><a href="naming-and-commenting-stuff.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> screenAspectRatio<span class="op">;</span> <span class="co">//good: noun and descriptive</span></span></code></pre></div>
 </div>
 </div>
-<div id="commenting" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Commenting</h2>
+<div id="commenting" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Commenting<a href="naming-and-commenting-stuff.html#commenting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are three ways for commenting:</p>
 <ul>
 <li>Javadoc style: <code>/**\&lt;LINE(S)\&gt;*/</code> these are the most important because they end up in your documentation!</li>
@@ -503,7 +505,6 @@ The javadoc tool will issue warnings but proceed for some inconsistencies, but e
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -522,6 +523,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -539,6 +541,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -553,7 +559,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Flow control | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Flow control | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="operators.html"/>
 <link rel="next" href="methods-1.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="flow-control" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Flow control</h1>
+<div id="flow-control" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Flow control<a href="flow-control.html#flow-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This is a straightforward listing of the Java flow control structures.</p>
-<div id="if-else-if-else" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> if [else if] [else]</h2>
+<div id="if-else-if-else" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> if [else if] [else]<a href="flow-control.html#if-else-if-else" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If/else is the basic decision-making mechanism in every programming language.
 In Java, both “else if” and “else” are optional.</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
@@ -419,7 +421,7 @@ if (<span style="color:darkred;font-style:italic;">condition</span>) {}
 <span style="color:darkgreen;">[</span>else if (<span style="color:darkred;font-style:italic;">condition</span>) {}<span style="color:darkgreen;">]*</span>
 <span style="color:darkgreen;">[</span>else {}<span style="color:darkgreen;">]?</span>
 </pre>
-<p>So, the “if” block is the required basis, “else if” can be used zero to many times - but only directly following the “if,” and the entire statement is closed by an optional “else.”</p>
+<p>So, the “if” block is the required basis, “else if” can be used zero to many times - but only directly following the “if”, and the entire statement is closed by an optional “else”.</p>
 <p>So this is not legal:</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb75-1"><a href="flow-control.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>foo<span class="op">)</span> <span class="op">{</span> <span class="op">}</span></span>
 <span id="cb75-2"><a href="flow-control.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="op">{</span> <span class="op">}</span></span>
@@ -429,8 +431,8 @@ if (<span style="color:darkred;font-style:italic;">condition</span>) {}
 <span id="cb76-2"><a href="flow-control.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> number <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
 <span id="cb76-3"><a href="flow-control.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span> <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
 </div>
-<div id="while" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> while</h2>
+<div id="while" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> while<a href="flow-control.html#while" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>While has two variants:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 while (<span style="color:darkred;font-style:italic;">condition</span>) { } 
@@ -438,8 +440,8 @@ do { } while (<span style="color:darkred;font-style:italic;">condition</span>);
 </pre>
 <p>The difference is that <code>do{}while()</code> is guaranteed to be executed at least once, whereas <code>while(condition) {}</code> can be skipped entirely if “condition” is false at the first evaluation.</p>
 </div>
-<div id="for" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> for</h2>
+<div id="for" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> for<a href="flow-control.html#for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Iterates over a collection or a defined series of steps:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 for (<span style="color:darkred;font-style:italic;">init</span>; <span style="color:darkred;font-style:italic;">condition</span>; <span style="color:darkred;font-style:italic;">change</span>) { } 
@@ -476,8 +478,8 @@ are quite often used to wait for user input in a terminal setting:</p>
 <span id="cb80-2"><a href="flow-control.html#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> answer <span class="op">=</span> <span class="fu">getUserInput</span><span class="op">();</span></span>
 <span id="cb80-3"><a href="flow-control.html#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>answer <span class="op">==</span> <span class="dv">42</span><span class="op">)</span> <span class="cf">break</span><span class="op">;</span></span>
 <span id="cb80-4"><a href="flow-control.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div id="foreach" class="section level3 unnumbered">
-<h3>foreach</h3>
+<div id="foreach" class="section level3 unnumbered hasAnchor">
+<h3>foreach<a href="flow-control.html#foreach" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The for-loop also has a variant. It is called the <strong><em>foreach</em></strong> loop. The difference is that there is no increment or condition; it is simply used to iterate a collection (Arrays or Collection types dealt with later).</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 for (<span style="color:darkred;font-style:italic;">element</span> : <span style="color:darkred;font-style:italic;">collection</span>) { } 
@@ -489,16 +491,16 @@ for (<span style="color:darkred;font-style:italic;">element</span> : <span style
 <span id="cb81-4"><a href="flow-control.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="break-and-continue" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> break and continue</h2>
+<div id="break-and-continue" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> break and continue<a href="flow-control.html#break-and-continue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>All iteration structures (the while <code>while</code> variants and both <code>for</code> variants) have the possibility to leave the current iteration early, or the loop entirely.</p>
 <ul>
 <li><strong><code>break</code></strong> - leave the loop (or the <code>switch</code> block)</li>
 <li><strong><code>continue</code></strong> - abort current iteration and go to next iteration</li>
 </ul>
 </div>
-<div id="switchcase" class="section level2" number="11.5">
-<h2><span class="header-section-number">11.5</span> switch/case</h2>
+<div id="switchcase" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> switch/case<a href="flow-control.html#switchcase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>switch/case</code> structure is a decision flow control structure that is always replaceable by if/else. However,
 <code>switch/case</code> is often more efficient, and better suited to deal with choosing between different discrete options.
 Where <code>if/else</code> works with boolean conditions, <code>switch/case</code> works with discrete cases.</p>
@@ -598,7 +600,6 @@ Some exotic error occurred. Try again later
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -617,6 +618,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -634,6 +636,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -648,7 +654,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Arrays | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Arrays | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="data-types.html"/>
 <link rel="next" href="operators.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="arrays" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Arrays</h1>
+<div id="arrays" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Arrays<a href="arrays.html#arrays" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Just like any programming language, Java knows about arrays.
 Arrays are ordered collections of variables of the same type.
 These elements can by any valid Java type: primitives,
@@ -427,8 +429,8 @@ Java program:</p>
 <span id="cb62-3"><a href="arrays.html#cb62-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;argument &quot;</span> <span class="op">+</span> i <span class="op">+</span> <span class="st">&quot; is &quot;</span> <span class="op">+</span> args<span class="op">[</span>i<span class="op">]);</span></span>
 <span id="cb62-4"><a href="arrays.html#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb62-5"><a href="arrays.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div id="creating-arrays" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Creating arrays</h2>
+<div id="creating-arrays" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Creating arrays<a href="arrays.html#creating-arrays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To create an array, you have to specify what type it will hold, and how many elements
 it will hold. This can be done via:</p>
 <ol style="list-style-type: decimal">
@@ -463,13 +465,13 @@ which is:</p>
 <p class="caption">an array of objects</p>
 </div>
 </div>
-<div id="printing" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Printing</h2>
+<div id="printing" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Printing<a href="arrays.html#printing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you want to print an entire array, use the method <code>Arrays.toString()</code>:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb64-1"><a href="arrays.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;bytes = &quot;</span> <span class="op">+</span> <span class="bu">Arrays</span><span class="op">.</span><span class="fu">toString</span><span class="op">(</span>bytes<span class="op">));</span></span></code></pre></div>
 </div>
-<div id="accessing" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Accessing</h2>
+<div id="accessing" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Accessing<a href="arrays.html#accessing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get to an element of an array, you use an index. Java array indexing starts at zero.</p>
 <div class="figure">
 <img src="02_syntax/figures/array_1.png" alt="" />
@@ -494,8 +496,8 @@ which is:</p>
 <span id="cb67-4"><a href="arrays.html#cb67-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">forEach</span><span class="op">(</span>n <span class="op">-&gt;</span> cells<span class="op">[</span>n<span class="op">]</span> <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cell</span><span class="op">());</span></span>
 <span id="cb67-5"><a href="arrays.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;cells = &quot;</span> <span class="op">+</span> <span class="bu">Arrays</span><span class="op">.</span><span class="fu">toString</span><span class="op">(</span>cells<span class="op">));</span></span></code></pre></div>
 </div>
-<div id="multidimensional-arrays" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Multidimensional arrays</h2>
+<div id="multidimensional-arrays" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Multidimensional arrays<a href="arrays.html#multidimensional-arrays" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Multidimensional arrays have their use. Usually with numeric settings. You can up the number of dimensions way into the hypothetical realm. Here is an example of a two-dimensional one:</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb68-1"><a href="arrays.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="dt">final</span> <span class="dt">int</span> sideLength <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
 <span id="cb68-2"><a href="arrays.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="co">//creates 5*5 array</span></span>
@@ -530,7 +532,6 @@ which is:</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -549,6 +550,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -566,6 +568,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -580,7 +586,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

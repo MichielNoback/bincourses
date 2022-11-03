@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Methods | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Methods | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="flow-control.html"/>
 <link rel="next" href="packages-and-imports.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,8 +409,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="methods-1" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Methods</h1>
+<div id="methods-1" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Methods<a href="methods-1.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This post constitutes the link between basic syntax and design. Variables, operators and flow control
 form the basis of your algorithms. These algorithms have to be organized and combined into bigger
 systems, and building systems is done using classes and their methods.</p>
@@ -424,8 +426,8 @@ systems, and building systems is done using classes and their methods.</p>
 <p>This post only deals with the first two: class and instance methods.</p>
 <p>Methods define the behavior of an object or a class, modified by its state.
 Methods can unseen serve the inner workings of an object, or be available to the outside world: this is something you decide upon, and which is an extremely important design aspect!</p>
-<div id="method-signature" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Method signature</h2>
+<div id="method-signature" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Method signature<a href="methods-1.html#method-signature" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Every method has a <strong><em>signature</em></strong>. In Java, this is a binding contract.
 The signature defines what can go in, what comes out, and what the method scope or visibility is.
 So, the signature is the description of the method contract to the outside world: everything but its implementation (the method body).</p>
@@ -440,8 +442,8 @@ So, the signature is the description of the method contract to the outside world
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
 <span style="color:purple;font-style:italic;">access_modifier</span> <span style="color:darkgreen;font-style:italic;">scope</span> <span style="color:darkred;font-style:italic;">return_type</span> methodName(<span style="color:orange;font-style:italic;">parameter(s)</span>) { }
 </pre>
-<div id="access-modifier-public-or-private" class="section level4 unnumbered">
-<h4>access modifier: public or private?</h4>
+<div id="access-modifier-public-or-private" class="section level4 unnumbered hasAnchor">
+<h4>access modifier: public or private?<a href="methods-1.html#access-modifier-public-or-private" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The access modifier defines the <strong><em>visibility</em></strong> of your method. There are four levels of visibility, but we’ll start out with only two:</p>
 <ul>
 <li><strong><em><code>public</code></em></strong> - accessible anywhere in the <strong><em>class path</em></strong>: all other code can “see” and access the method.</li>
@@ -451,8 +453,8 @@ So, the signature is the description of the method contract to the outside world
 <p>The general rule is this:<br />
 <strong><em>Make a method public when it is part of your class API and make it private when it only serves the inner workings of your class</em></strong></p>
 </div>
-<div id="scope-static-vs-instance-methods" class="section level4 unnumbered">
-<h4>Scope: static vs instance methods</h4>
+<div id="scope-static-vs-instance-methods" class="section level4 unnumbered hasAnchor">
+<h4>Scope: static vs instance methods<a href="methods-1.html#scope-static-vs-instance-methods" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Some methods live outside object scope and are only available as class methods: these can be recognized by the <strong><em><code>static</code></em></strong> keyword. Static methods can be called on a class and on an instance. Instance methods can only be called on an instance, usually because they are dependent on instance variable(s).</p>
 <p>You have of course seen a <code>static</code> method several times: <code>public static void main(String[] args){}</code></p>
 <p>Here are two methods that do the same, but are be used in different contexts.</p>
@@ -484,8 +486,8 @@ So, the signature is the description of the method contract to the outside world
 <span id="cb88-8"><a href="methods-1.html#cb88-8" aria-hidden="true" tabindex="-1"></a>statInst<span class="op">.</span><span class="fu">addIntsStatic</span><span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">6</span><span class="op">);</span></span>
 <span id="cb88-9"><a href="methods-1.html#cb88-9" aria-hidden="true" tabindex="-1"></a>statInst<span class="op">.</span><span class="fu">addIntsInstance</span><span class="op">(</span><span class="dv">3</span><span class="op">,</span> <span class="dv">7</span><span class="op">);</span></span></code></pre></div>
 </div>
-<div id="return-type" class="section level4 unnumbered">
-<h4>Return type</h4>
+<div id="return-type" class="section level4 unnumbered hasAnchor">
+<h4>Return type<a href="methods-1.html#return-type" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The return type defines what a method can (and must) return. This can be any Java type; primitive or reference type. There is a special case when the method does not return anything: this is the <strong><em><code>void</code></em></strong> return type:</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb89-1"><a href="methods-1.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">void</span> <span class="fu">printWelcome</span> <span class="op">(</span><span class="bu">String</span> name<span class="op">)</span> <span class="op">{</span></span>
 <span id="cb89-2"><a href="methods-1.html#cb89-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, &quot;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&quot;, we hope you enjoy our app.&quot;</span><span class="op">);</span></span>
@@ -552,16 +554,16 @@ Besides this, you need extensive comments (documentation) to explain what is goi
 <span id="cb91-33"><a href="methods-1.html#cb91-33" aria-hidden="true" tabindex="-1"></a><span class="co">//doStatistics(1,2,5,6) = Statistics{sum=14, average=3.5}</span></span></code></pre></div>
 <p>The <code>toString()</code> method is similar to the Python <code>__str__()</code> method. It will be discussed in detail later.</p>
 </div>
-<div id="method-name" class="section level4 unnumbered">
-<h4>Method name</h4>
+<div id="method-name" class="section level4 unnumbered hasAnchor">
+<h4>Method name<a href="methods-1.html#method-name" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The name can be any compilable Java identifier, but as stated earlier it is good practice to have method names</p>
 <ul>
 <li>be a noun, in camelcase starting with a lowercase letter</li>
 <li>be as descriptive as possible</li>
 </ul>
 </div>
-<div id="parameters-versus-arguments" class="section level4 unnumbered">
-<h4>Parameters (versus arguments)</h4>
+<div id="parameters-versus-arguments" class="section level4 unnumbered hasAnchor">
+<h4>Parameters (versus arguments)<a href="methods-1.html#parameters-versus-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The method parameters are the number and type of variables that go in. Again, these can be of any valid Java
 type.</p>
 <p>Java is pass-by-value. This means: pass-by-copy. Passing a reference means: pass a copy of the reference.
@@ -588,8 +590,8 @@ beginners:</p>
 A parameter is the variable which is part of the method’s signature (method declaration)
 An argument is an expression used when calling the method.</p>
 </div>
-<div id="cheating-the-contract" class="section level3 unnumbered">
-<h3>Cheating the contract</h3>
+<div id="cheating-the-contract" class="section level3 unnumbered hasAnchor">
+<h3>Cheating the contract<a href="methods-1.html#cheating-the-contract" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is not possible: the compiler won’t let you get away with it. Here are some
 examples showing what is legal and what isn’t.</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb93-1"><a href="methods-1.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> MyMathTools<span class="op">{</span></span>
@@ -631,8 +633,8 @@ examples showing what is legal and what isn’t.</p>
 <span id="cb93-37"><a href="methods-1.html#cb93-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
 </div>
-<div id="interacting-with-state" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Interacting with state</h2>
+<div id="interacting-with-state" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Interacting with state<a href="methods-1.html#interacting-with-state" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The essence of Object-oriented programming is that methods often interact with an object’s state: they display behavior that is dependent on the value of the objects’ instance variables. Here is a simple class that uses its state to modify method behavior.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb94-1"><a href="methods-1.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PowerUpper <span class="op">{</span></span>
 <span id="cb94-2"><a href="methods-1.html#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> power <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
@@ -653,8 +655,8 @@ examples showing what is legal and what isn’t.</p>
 4 ^ 3 = 64
 </pre>
 </div>
-<div id="method-overloading" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Method overloading</h2>
+<div id="method-overloading" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Method overloading<a href="methods-1.html#method-overloading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Java does not know about <strong><em>default parameter values</em></strong>. Fortunately, it can be implemented using a more flexible
 mechanism called <strong><em>method overloading</em></strong>. Method overloading is the implementation of multiple methods with the
 same name and return type, but with different (numbers of) arguments. It is a bit of a hassle, but more versatile at the same time, since this not only supports default values but also extra pieces of algorithm code on top of default behavior.</p>
@@ -734,7 +736,6 @@ method C
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -753,6 +754,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -770,6 +772,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -784,7 +790,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

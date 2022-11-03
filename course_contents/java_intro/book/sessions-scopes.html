@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 36 Sessions &amp; Scopes | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 36 Sessions &amp; Scopes | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="thymeleaf-flow-control-and-fragments.html"/>
 <link rel="next" href="servlet-details-and-lifecycle-hooks.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sessions-scopes" class="section level1" number="36">
-<h1><span class="header-section-number">Chapter 36</span> Sessions &amp; Scopes</h1>
-<div id="introduction-5" class="section level2" number="36.1">
-<h2><span class="header-section-number">36.1</span> Introduction</h2>
+<div id="sessions-scopes" class="section level1 hasAnchor" number="36">
+<h1><span class="header-section-number">Chapter 36</span> Sessions &amp; Scopes<a href="sessions-scopes.html#sessions-scopes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-5" class="section level2 hasAnchor" number="36.1">
+<h2><span class="header-section-number">36.1</span> Introduction<a href="sessions-scopes.html#introduction-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this post, some seemingly diverse topics are dealt with. After reading, you should be aware that they actually relate.</p>
 <p>The topics are:
 - application-scoped variables with web.xml
@@ -422,15 +424,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <em>Everything in this presentation related to authentication is purely for the purpose of showing principles.
 For real-world applications you will need to do much work on security</em></strong></p>
 </div>
-<div id="scopes" class="section level2" number="36.2">
-<h2><span class="header-section-number">36.2</span> Scopes</h2>
-<div id="application-scope-web.xml" class="section level3" number="36.2.1">
-<h3><span class="header-section-number">36.2.1</span> Application scope: web.xml</h3>
+<div id="scopes" class="section level2 hasAnchor" number="36.2">
+<h2><span class="header-section-number">36.2</span> Scopes<a href="sessions-scopes.html#scopes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="application-scope-web.xml" class="section level3 hasAnchor" number="36.2.1">
+<h3><span class="header-section-number">36.2.1</span> Application scope: web.xml<a href="sessions-scopes.html#application-scope-web.xml" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You use application-scoped variables for everything that
 relates to the entire application: admin email, database type and url, servlet configuration, etc.
 <strong><em>Application-scoped variables</em></strong> are available withing servlets but also within Thymeleaf templates. These variables are defined within an xml file named <code>web.xml</code> and it is called a <strong><em>deployment descriptor</em></strong>.</p>
-<div id="adding-a-deployment-descriptor" class="section level4 unnumbered">
-<h4>Adding a deployment descriptor</h4>
+<div id="adding-a-deployment-descriptor" class="section level4 unnumbered hasAnchor">
+<h4>Adding a deployment descriptor<a href="sessions-scopes.html#adding-a-deployment-descriptor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>These are the steps you can take to have IntelliJ add a web.xml file in the correct location.</p>
 <ol style="list-style-type: decimal">
 <li>Go to Project Structure (<code>Cmd + ;</code> on Mac)</li>
@@ -440,32 +442,32 @@ relates to the entire application: admin email, database type and url, servlet c
 <li>In the path, put this: <code>&lt;your project root&gt;/src/main/webapp/WEB-INF/web.xml</code></li>
 </ol>
 <p>You’ll get something like this</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb284-1"><a href="sessions-scopes.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></span>
-<span id="cb284-2"><a href="sessions-scopes.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;web-app</span><span class="ot"> xmlns=</span><span class="st">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
+<div class="sourceCode" id="cb284"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb284-1"><a href="sessions-scopes.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;?xml</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="fu">?&gt;</span></span>
+<span id="cb284-2"><a href="sessions-scopes.html#cb284-2" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">web-app</span><span class="ot"> xmlns=</span><span class="st">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
 <span id="cb284-3"><a href="sessions-scopes.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="ot">         xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
 <span id="cb284-4"><a href="sessions-scopes.html#cb284-4" aria-hidden="true" tabindex="-1"></a><span class="ot">         xsi:schemaLocation=</span><span class="st">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span>
-<span id="cb284-5"><a href="sessions-scopes.html#cb284-5" aria-hidden="true" tabindex="-1"></a><span class="ot">         version=</span><span class="st">&quot;4.0&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb284-5"><a href="sessions-scopes.html#cb284-5" aria-hidden="true" tabindex="-1"></a><span class="ot">         version=</span><span class="st">&quot;4.0&quot;</span>&gt;</span>
 <span id="cb284-6"><a href="sessions-scopes.html#cb284-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb284-7"><a href="sessions-scopes.html#cb284-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/web-app&gt;</span></span></code></pre></div>
+<span id="cb284-7"><a href="sessions-scopes.html#cb284-7" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">web-app</span>&gt;</span></code></pre></div>
 </div>
-<div id="add-an-application-scoped-variable" class="section level4 unnumbered">
-<h4>Add an application-scoped variable</h4>
+<div id="add-an-application-scoped-variable" class="section level4 unnumbered hasAnchor">
+<h4>Add an application-scoped variable<a href="sessions-scopes.html#add-an-application-scoped-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In <code>web.xml</code>, put the following snippet:</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb285-1"><a href="sessions-scopes.html#cb285-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;context-param&gt;</span></span>
-<span id="cb285-2"><a href="sessions-scopes.html#cb285-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-name&gt;</span>admin_email<span class="kw">&lt;/param-name&gt;</span></span>
-<span id="cb285-3"><a href="sessions-scopes.html#cb285-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-value&gt;</span>admin@example.com<span class="kw">&lt;/param-value&gt;</span></span>
-<span id="cb285-4"><a href="sessions-scopes.html#cb285-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/context-param&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb285-1"><a href="sessions-scopes.html#cb285-1" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">context-param</span>&gt;</span>
+<span id="cb285-2"><a href="sessions-scopes.html#cb285-2" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">param-name</span>&gt;admin_email&lt;/<span class="kw">param-name</span>&gt;</span>
+<span id="cb285-3"><a href="sessions-scopes.html#cb285-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">param-value</span>&gt;admin@example.com&lt;/<span class="kw">param-value</span>&gt;</span>
+<span id="cb285-4"><a href="sessions-scopes.html#cb285-4" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">context-param</span>&gt;</span></code></pre></div>
 </div>
-<div id="using-the-application-scoped-variable" class="section level4 unnumbered">
-<h4>Using the application-scoped variable</h4>
+<div id="using-the-application-scoped-variable" class="section level4 unnumbered hasAnchor">
+<h4>Using the application-scoped variable<a href="sessions-scopes.html#using-the-application-scoped-variable" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In your servlets, use the web app variable like this:</p>
 <div class="sourceCode" id="cb286"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb286-1"><a href="sessions-scopes.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getServletContext</span><span class="op">().</span><span class="fu">getInitParameter</span><span class="op">(</span><span class="st">&quot;admin_email&quot;</span><span class="op">)</span></span></code></pre></div>
 <p>In your Thymeleaf template, the application-scoped variable, is available like this</p>
 <div class="sourceCode" id="cb287"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb287-1"><a href="sessions-scopes.html#cb287-1" aria-hidden="true" tabindex="-1"></a>th:text=&quot;${#servletContext.getInitParameter(&#39;admin_email&#39;)}&quot;</span></code></pre></div>
 </div>
 </div>
-<div id="session-scope-cross-request-memory" class="section level3" number="36.2.2">
-<h3><span class="header-section-number">36.2.2</span> Session scope: cross-request “memory”</h3>
+<div id="session-scope-cross-request-memory" class="section level3 hasAnchor" number="36.2.2">
+<h3><span class="header-section-number">36.2.2</span> Session scope: cross-request “memory”<a href="sessions-scopes.html#session-scope-cross-request-memory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A server handling your request will have no memory of your visit after it is processed.
 To be able to “keep in touch” you will need to have a tracking system: we call this a session.
 The most well-known session implementation system is by means of cookies.</p>
@@ -479,38 +481,38 @@ The most well-known session implementation system is by means of cookies.</p>
 You will probably never create a cookie directly. You simply use this statement:
 <code>HttpSession session = request.getSession();</code></p>
 </div>
-<div id="authentication" class="section level3" number="36.2.3">
-<h3><span class="header-section-number">36.2.3</span> Authentication</h3>
+<div id="authentication" class="section level3 hasAnchor" number="36.2.3">
+<h3><span class="header-section-number">36.2.3</span> Authentication<a href="sessions-scopes.html#authentication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You do not need to have an authenticated user to create a session, but authentication is never done without using session.</p>
 <p>There are several reasons why you would like to know who it is that requests a certain page, the main reason being that you want only authorized persons to have access (and with a certain role).</p>
 <p>Let’s look at some sample code to create a login system using sessions.</p>
-<div id="login-form" class="section level4 unnumbered">
-<h4>Login form</h4>
+<div id="login-form" class="section level4 unnumbered hasAnchor">
+<h4>Login form<a href="sessions-scopes.html#login-form" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Here is the first element, a login form. Take notice of the form field names eg <code>name="username"</code>. These names are going to be used in the servlet to fetch the login credentials. Also note the <code>action="login"</code> attribute of the <code>&lt;form&gt;</code> tag. It will direct to the server requesting resource <code>login</code>.</p>
 <div class="sourceCode" id="cb288"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb288-1"><a href="sessions-scopes.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
 <span id="cb288-2"><a href="sessions-scopes.html#cb288-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-3"><a href="sessions-scopes.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
+<span id="cb288-3"><a href="sessions-scopes.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
 <span id="cb288-4"><a href="sessions-scopes.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="ot">      xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb288-5"><a href="sessions-scopes.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb288-6"><a href="sessions-scopes.html#cb288-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb288-6"><a href="sessions-scopes.html#cb288-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb288-7"><a href="sessions-scopes.html#cb288-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>Authentication demo<span class="kw">&lt;/title&gt;</span></span>
 <span id="cb288-8"><a href="sessions-scopes.html#cb288-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-9"><a href="sessions-scopes.html#cb288-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> th:href=</span><span class="st">&quot;@{/css/main.css}&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../css/main.css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb288-9"><a href="sessions-scopes.html#cb288-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">th:href</span><span class="ot">=</span><span class="st">&quot;@{/css/main.css}&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;../../css/main.css&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb288-10"><a href="sessions-scopes.html#cb288-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb288-11"><a href="sessions-scopes.html#cb288-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
 <span id="cb288-12"><a href="sessions-scopes.html#cb288-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4&gt;</span>Log in<span class="kw">&lt;/h4&gt;</span></span>
-<span id="cb288-13"><a href="sessions-scopes.html#cb288-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4</span><span class="ot"> th:text=</span><span class="st">&quot;${message}&quot;</span><span class="ot"> th:class=</span><span class="st">&quot;${message_type}&quot;</span><span class="kw">&gt;</span>_message_<span class="kw">&lt;/h4&gt;</span></span>
+<span id="cb288-13"><a href="sessions-scopes.html#cb288-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${message}&quot;</span> <span class="er">th:class</span><span class="ot">=</span><span class="st">&quot;${message_type}&quot;</span><span class="kw">&gt;</span>_message_<span class="kw">&lt;/h4&gt;</span></span>
 <span id="cb288-14"><a href="sessions-scopes.html#cb288-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-15"><a href="sessions-scopes.html#cb288-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;login&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb288-16"><a href="sessions-scopes.html#cb288-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;username_field&quot;</span><span class="kw">&gt;</span> User name: <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb288-17"><a href="sessions-scopes.html#cb288-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;username_field&quot;</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;username&quot;</span><span class="ot"> required</span><span class="kw">/&gt;</span> <span class="kw">&lt;br/&gt;</span></span>
-<span id="cb288-18"><a href="sessions-scopes.html#cb288-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> for=</span><span class="st">&quot;password_field&quot;</span><span class="kw">&gt;</span> User password: <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb288-19"><a href="sessions-scopes.html#cb288-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> id=</span><span class="st">&quot;password_field&quot;</span><span class="ot"> type=</span><span class="st">&quot;password&quot;</span><span class="ot"> name=</span><span class="st">&quot;password&quot;</span><span class="ot"> required</span><span class="kw">/&gt;&lt;br/&gt;</span></span>
-<span id="cb288-20"><a href="sessions-scopes.html#cb288-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span><span class="ot"> class=</span><span class="st">&quot;login_field&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/label&gt;</span></span>
-<span id="cb288-21"><a href="sessions-scopes.html#cb288-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;OK&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb288-15"><a href="sessions-scopes.html#cb288-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;login&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;POST&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb288-16"><a href="sessions-scopes.html#cb288-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;username_field&quot;</span><span class="kw">&gt;</span> User name: <span class="kw">&lt;/label&gt;</span></span>
+<span id="cb288-17"><a href="sessions-scopes.html#cb288-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;username_field&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;username&quot;</span> <span class="er">required</span><span class="kw">/&gt;</span> <span class="kw">&lt;br/&gt;</span></span>
+<span id="cb288-18"><a href="sessions-scopes.html#cb288-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span> <span class="er">for</span><span class="ot">=</span><span class="st">&quot;password_field&quot;</span><span class="kw">&gt;</span> User password: <span class="kw">&lt;/label&gt;</span></span>
+<span id="cb288-19"><a href="sessions-scopes.html#cb288-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;password_field&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;password&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;password&quot;</span> <span class="er">required</span><span class="kw">/&gt;&lt;br/&gt;</span></span>
+<span id="cb288-20"><a href="sessions-scopes.html#cb288-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;label</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;login_field&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;/label&gt;</span></span>
+<span id="cb288-21"><a href="sessions-scopes.html#cb288-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;OK&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb288-22"><a href="sessions-scopes.html#cb288-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span>
 <span id="cb288-23"><a href="sessions-scopes.html#cb288-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb288-24"><a href="sessions-scopes.html#cb288-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h5&gt;</span>If you have any problems, please contact <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${#servletContext.getInitParameter(&#39;admin_email&#39;)}&quot;</span><span class="kw">&gt;&lt;/span&gt;&lt;/h5&gt;</span></span>
+<span id="cb288-24"><a href="sessions-scopes.html#cb288-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h5&gt;</span>If you have any problems, please contact <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${#servletContext.getInitParameter(&#39;admin_email&#39;)}&quot;</span><span class="kw">&gt;&lt;/span&gt;&lt;/h5&gt;</span></span>
 <span id="cb288-25"><a href="sessions-scopes.html#cb288-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb288-26"><a href="sessions-scopes.html#cb288-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>and it looks like this in the browser:</p>
@@ -522,8 +524,8 @@ You will probably never create a cookie directly. You simply use this statement:
 <p><strong>Actually, when you see a <code>http://</code> protocol instead of an <code>https://</code> protocol in the location bar of your browser, you do NOT have safety on you connection, even though you cannot see the password in the form!</strong></p>
 <p>But that issue is not within the scope of this course.</p>
 </div>
-<div id="login-servlet" class="section level4 unnumbered">
-<h4>Login servlet</h4>
+<div id="login-servlet" class="section level4 unnumbered hasAnchor">
+<h4>Login servlet<a href="sessions-scopes.html#login-servlet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This is the servlet dealing with the login form.</p>
 <div class="sourceCode" id="cb289"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb289-1"><a href="sessions-scopes.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">wis_on_thymeleaf</span><span class="op">.</span><span class="im">servlets</span><span class="op">;</span></span>
 <span id="cb289-2"><a href="sessions-scopes.html#cb289-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -591,10 +593,10 @@ You will probably never create a cookie directly. You simply use this statement:
 The <code>authenticate()</code> method is a dummy of course. We’ll visit that part of authentication in the post on database interaction because -obviously- user data are stored in a database and are never hard-coded. If authentication is successful, the user is forwarded to the sites’ main page:</p>
 <div class="sourceCode" id="cb290"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb290-1"><a href="sessions-scopes.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
 <span id="cb290-2"><a href="sessions-scopes.html#cb290-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-3"><a href="sessions-scopes.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
+<span id="cb290-3"><a href="sessions-scopes.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
 <span id="cb290-4"><a href="sessions-scopes.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="ot">      xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb290-5"><a href="sessions-scopes.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb290-6"><a href="sessions-scopes.html#cb290-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb290-6"><a href="sessions-scopes.html#cb290-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb290-7"><a href="sessions-scopes.html#cb290-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>_TITLE_<span class="kw">&lt;/title&gt;</span></span>
 <span id="cb290-8"><a href="sessions-scopes.html#cb290-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb290-9"><a href="sessions-scopes.html#cb290-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
@@ -604,10 +606,10 @@ The <code>authenticate()</code> method is a dummy of course. We’ll visit that 
 <span id="cb290-13"><a href="sessions-scopes.html#cb290-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>The <code>[[${session.user.name}]]!</code> expression is an inline text expression - it does not need to be embedded in a html tag.</p>
 <p>Alternatively, we could have used this:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb291-1"><a href="sessions-scopes.html#cb291-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3&gt;</span>Welcome to our main page, <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${session.user.name}&quot;</span><span class="kw">&gt;</span>__offline__<span class="kw">&lt;/span&gt;</span>! Feel free to browse our content<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb291-1"><a href="sessions-scopes.html#cb291-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h3&gt;</span>Welcome to our main page, <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${session.user.name}&quot;</span><span class="kw">&gt;</span>__offline__<span class="kw">&lt;/span&gt;</span>! Feel free to browse our content<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
 </div>
-<div id="test-1" class="section level4 unnumbered">
-<h4>Test</h4>
+<div id="test-1" class="section level4 unnumbered hasAnchor">
+<h4>Test<a href="sessions-scopes.html#test-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Start the server and run
 - Log in
 - Enter username and password
@@ -618,23 +620,23 @@ Can you detect weaknesses and/or improve on the design?</p>
 </div>
 </div>
 </div>
-<div id="summary-of-scopes" class="section level2" number="36.3">
-<h2><span class="header-section-number">36.3</span> Summary of scopes</h2>
+<div id="summary-of-scopes" class="section level2 hasAnchor" number="36.3">
+<h2><span class="header-section-number">36.3</span> Summary of scopes<a href="sessions-scopes.html#summary-of-scopes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As in all programming environments, scopes are really important in web applications.
 We have seen the three main ones:</p>
-<div id="application-scope" class="section level4 unnumbered">
-<h4>Application scope</h4>
+<div id="application-scope" class="section level4 unnumbered hasAnchor">
+<h4>Application scope<a href="sessions-scopes.html#application-scope" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Specified in <code>web.xml</code> and accessed through
 <code>${#servletContext.getInitParameter('admin_email')}</code> in the Thymeleaf files or <code>getServletContext().getInitParameter("&lt;attrib_name&gt;")</code> in the servlet code</p>
 </div>
-<div id="session-scope" class="section level4 unnumbered">
-<h4>Session scope</h4>
+<div id="session-scope" class="section level4 unnumbered hasAnchor">
+<h4>Session scope<a href="sessions-scopes.html#session-scope" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Stored in <code>HttpSession</code> object. When available, accessed through
 <code>${session.&lt;attrib_name&gt;}</code> in the Thymeleaf files and
 <code>getSession.getAttribute("&lt;attrib_name&gt;")</code> in the servlet code. Set through <code>getSession.setAttribute("&lt;attrib_name&gt;", &lt;attrib&gt;)</code>.</p>
 </div>
-<div id="request-scope" class="section level4 unnumbered">
-<h4>“Request” scope</h4>
+<div id="request-scope" class="section level4 unnumbered hasAnchor">
+<h4>“Request” scope<a href="sessions-scopes.html#request-scope" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Each http request generates its own <code>HttpRequest</code> object.
 It can be accessed through <code>${#request.&lt;attrib_name&gt;}</code> in the Thymeleaf files. In servlet context, use <code>request.getParameter("&lt;attrib_name&gt;")</code> to get it or <code>request.setAttribute("&lt;attrib_name&gt;", "&lt;attrib&gt;")</code> to set it.
 The <code>WebContext</code> object is of course used much more in Thymeleaf, and in that context simply accessed as <code>${attrib_name&gt;}</code></p>
@@ -652,7 +654,6 @@ The <code>WebContext</code> object is of course used much more in Thymeleaf, and
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -671,6 +672,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -688,6 +690,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -702,7 +708,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

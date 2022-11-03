@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 37 Servlet details and lifecycle hooks | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 37 Servlet details and lifecycle hooks | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="sessions-scopes.html"/>
 <link rel="next" href="database-interaction.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="servlet-details-and-lifecycle-hooks" class="section level1" number="37">
-<h1><span class="header-section-number">Chapter 37</span> Servlet details and lifecycle hooks</h1>
+<div id="servlet-details-and-lifecycle-hooks" class="section level1 hasAnchor" number="37">
+<h1><span class="header-section-number">Chapter 37</span> Servlet details and lifecycle hooks<a href="servlet-details-and-lifecycle-hooks.html#servlet-details-and-lifecycle-hooks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this post, some details of servlet configuration are discussed, as well as techniques that you can use to hook into life cycle events, the main ones being application startup and -shutdown, and first request on a servlet.</p>
-<div id="servlet-configuration" class="section level2" number="37.1">
-<h2><span class="header-section-number">37.1</span> Servlet configuration</h2>
+<div id="servlet-configuration" class="section level2 hasAnchor" number="37.1">
+<h2><span class="header-section-number">37.1</span> Servlet configuration<a href="servlet-details-and-lifecycle-hooks.html#servlet-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <code>@WebServlet</code> annotation offers several possibilities for configuration. Here are the interesting ones:</p>
 <table>
 <colgroup>
@@ -455,8 +457,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div id="webservlet---urlpatterns" class="section level4 unnumbered">
-<h4>@Webservlet - urlPatterns</h4>
+<div id="webservlet---urlpatterns" class="section level4 unnumbered hasAnchor">
+<h4>@Webservlet - urlPatterns<a href="servlet-details-and-lifecycle-hooks.html#webservlet---urlpatterns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>urlPatterns</code> parameter specifies which urls will map on your servlet.
 This configuration:</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb292-1"><a href="servlet-details-and-lifecycle-hooks.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;WelcomeServlet&quot;</span><span class="op">,</span> </span>
@@ -467,8 +469,8 @@ This configuration:</p>
 - <a href="http://localhost:8080/welcome" class="uri">http://localhost:8080/welcome</a>
 - <a href="http://localhost:8080/home" class="uri">http://localhost:8080/home</a></p>
 </div>
-<div id="webservlet---loadonstartup" class="section level4 unnumbered">
-<h4>@Webservlet - loadOnStartup</h4>
+<div id="webservlet---loadonstartup" class="section level4 unnumbered hasAnchor">
+<h4>@Webservlet - loadOnStartup<a href="servlet-details-and-lifecycle-hooks.html#webservlet---loadonstartup" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>loadOnStartup</code> parameter is an integer which specifies the servlet load order.
 The container loads servlets with lower values before servlets with higher values.
 If <code>loadOnStartup</code> is negative (it defaults to -1), the servlet will be loaded when the container decides to - typically on first access.</p>
@@ -477,8 +479,8 @@ If <code>loadOnStartup</code> is negative (it defaults to -1), the servlet will 
 <span id="cb293-3"><a href="servlet-details-and-lifecycle-hooks.html#cb293-3" aria-hidden="true" tabindex="-1"></a>     <span class="co">//guarantees first loading at deployment</span></span>
 <span id="cb293-4"><a href="servlet-details-and-lifecycle-hooks.html#cb293-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WelcomeServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span> <span class="kw">...</span> <span class="op">}</span></span></code></pre></div>
 </div>
-<div id="webservlet-initparams" class="section level4 unnumbered">
-<h4>@Webservlet – initParams</h4>
+<div id="webservlet-initparams" class="section level4 unnumbered hasAnchor">
+<h4>@Webservlet – initParams<a href="servlet-details-and-lifecycle-hooks.html#webservlet-initparams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Servlet initialization parameters are defined as instances of <code>@WebInitParam</code>.</p>
 <div class="sourceCode" id="cb294"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb294-1"><a href="servlet-details-and-lifecycle-hooks.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="at">@WebServlet</span><span class="op">(</span>urlPatterns <span class="op">=</span> <span class="op">{</span><span class="st">&quot;/welcome&quot;</span><span class="op">},</span></span>
 <span id="cb294-2"><a href="servlet-details-and-lifecycle-hooks.html#cb294-2" aria-hidden="true" tabindex="-1"></a>    initParams <span class="op">=</span> <span class="op">{</span></span>
@@ -500,21 +502,21 @@ tempDir = /tmp
 admin_email = admin\@example.com
 </pre>
 <p>You can specify the same information in web.xml, which seems a bit more logical:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb295-1"><a href="servlet-details-and-lifecycle-hooks.html#cb295-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-mapping&gt;</span></span>
-<span id="cb295-2"><a href="servlet-details-and-lifecycle-hooks.html#cb295-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>WelcomeServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb295-3"><a href="servlet-details-and-lifecycle-hooks.html#cb295-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;url-pattern&gt;</span>/welcome<span class="kw">&lt;/url-pattern&gt;</span></span>
-<span id="cb295-4"><a href="servlet-details-and-lifecycle-hooks.html#cb295-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet-mapping&gt;</span></span>
-<span id="cb295-5"><a href="servlet-details-and-lifecycle-hooks.html#cb295-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet&gt;</span></span>
-<span id="cb295-6"><a href="servlet-details-and-lifecycle-hooks.html#cb295-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-name&gt;</span>WelcomeServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb295-7"><a href="servlet-details-and-lifecycle-hooks.html#cb295-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;servlet-class&gt;</span>nl.bioinf.wis_on_thymeleaf.servlets.WelcomeServlet<span class="kw">&lt;/servlet-class&gt;</span></span>
-<span id="cb295-8"><a href="servlet-details-and-lifecycle-hooks.html#cb295-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;init-param&gt;</span></span>
-<span id="cb295-9"><a href="servlet-details-and-lifecycle-hooks.html#cb295-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-name&gt;</span>tempDir<span class="kw">&lt;/param-name&gt;</span></span>
-<span id="cb295-10"><a href="servlet-details-and-lifecycle-hooks.html#cb295-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;param-value&gt;</span>/some/location<span class="kw">&lt;/param-value&gt;</span></span>
-<span id="cb295-11"><a href="servlet-details-and-lifecycle-hooks.html#cb295-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/init-param&gt;</span></span>
-<span id="cb295-12"><a href="servlet-details-and-lifecycle-hooks.html#cb295-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/servlet&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb295-1"><a href="servlet-details-and-lifecycle-hooks.html#cb295-1" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb295-2"><a href="servlet-details-and-lifecycle-hooks.html#cb295-2" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-name</span>&gt;WelcomeServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb295-3"><a href="servlet-details-and-lifecycle-hooks.html#cb295-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">url-pattern</span>&gt;/welcome&lt;/<span class="kw">url-pattern</span>&gt;</span>
+<span id="cb295-4"><a href="servlet-details-and-lifecycle-hooks.html#cb295-4" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb295-5"><a href="servlet-details-and-lifecycle-hooks.html#cb295-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet</span>&gt;</span>
+<span id="cb295-6"><a href="servlet-details-and-lifecycle-hooks.html#cb295-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-name</span>&gt;WelcomeServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb295-7"><a href="servlet-details-and-lifecycle-hooks.html#cb295-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">servlet-class</span>&gt;nl.bioinf.wis_on_thymeleaf.servlets.WelcomeServlet&lt;/<span class="kw">servlet-class</span>&gt;</span>
+<span id="cb295-8"><a href="servlet-details-and-lifecycle-hooks.html#cb295-8" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">init-param</span>&gt;</span>
+<span id="cb295-9"><a href="servlet-details-and-lifecycle-hooks.html#cb295-9" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">param-name</span>&gt;tempDir&lt;/<span class="kw">param-name</span>&gt;</span>
+<span id="cb295-10"><a href="servlet-details-and-lifecycle-hooks.html#cb295-10" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">param-value</span>&gt;/some/location&lt;/<span class="kw">param-value</span>&gt;</span>
+<span id="cb295-11"><a href="servlet-details-and-lifecycle-hooks.html#cb295-11" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">init-param</span>&gt;</span>
+<span id="cb295-12"><a href="servlet-details-and-lifecycle-hooks.html#cb295-12" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">servlet</span>&gt;</span></code></pre></div>
 </div>
-<div id="webservlet-versus-web.xml-configuration" class="section level4 unnumbered">
-<h4>@Webservlet versus web.xml configuration</h4>
+<div id="webservlet-versus-web.xml-configuration" class="section level4 unnumbered hasAnchor">
+<h4>@Webservlet versus web.xml configuration<a href="servlet-details-and-lifecycle-hooks.html#webservlet-versus-web.xml-configuration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>When configuration is done in both <code>web.xml</code> ánd in <code>@WebServlet</code> annotations, the <code>web.xml</code> configuration takes precedence.</p>
 <p>A use case for this behaviour would be: development mode versus production mode.</p>
 <p>With these two “conflicting” configurations, the url will become <code>/extra</code> and tempDir <code>/some/location</code>. The url <code>/welcome</code> will return a 404 not found!</p>
@@ -522,34 +524,34 @@ admin_email = admin\@example.com
 <span id="cb296-2"><a href="servlet-details-and-lifecycle-hooks.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  urlPatterns <span class="op">=</span> <span class="op">{</span><span class="st">&quot;/welcome&quot;</span><span class="op">,</span> <span class="st">&quot;/home&quot;</span><span class="op">},</span></span>
 <span id="cb296-3"><a href="servlet-details-and-lifecycle-hooks.html#cb296-3" aria-hidden="true" tabindex="-1"></a>    initParams <span class="op">=</span> <span class="op">{</span><span class="at">@WebInitParam</span><span class="op">(</span>name <span class="op">=</span> <span class="st">&quot;tempDir&quot;</span><span class="op">,</span> value <span class="op">=</span> <span class="st">&quot;/tmp&quot;</span><span class="op">)}</span></span>
 <span id="cb296-4"><a href="servlet-details-and-lifecycle-hooks.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> WelcomeServlet <span class="kw">extends</span> HttpServlet <span class="op">{</span> <span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb297"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb297-1"><a href="servlet-details-and-lifecycle-hooks.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;servlet-mapping&gt;</span></span>
-<span id="cb297-2"><a href="servlet-details-and-lifecycle-hooks.html#cb297-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-name&gt;</span>WelcomeServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb297-3"><a href="servlet-details-and-lifecycle-hooks.html#cb297-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;url-pattern&gt;</span>/extra<span class="kw">&lt;/url-pattern&gt;</span></span>
-<span id="cb297-4"><a href="servlet-details-and-lifecycle-hooks.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/servlet-mapping&gt;</span></span>
-<span id="cb297-5"><a href="servlet-details-and-lifecycle-hooks.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;servlet&gt;</span></span>
-<span id="cb297-6"><a href="servlet-details-and-lifecycle-hooks.html#cb297-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-name&gt;</span>WelcomeServlet<span class="kw">&lt;/servlet-name&gt;</span></span>
-<span id="cb297-7"><a href="servlet-details-and-lifecycle-hooks.html#cb297-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;servlet-class&gt;</span>nl.bioinf.wis_on_thymeleaf.servlets.WelcomeServlet<span class="kw">&lt;/servlet-class&gt;</span></span>
-<span id="cb297-8"><a href="servlet-details-and-lifecycle-hooks.html#cb297-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;init-param&gt;</span></span>
-<span id="cb297-9"><a href="servlet-details-and-lifecycle-hooks.html#cb297-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-name&gt;</span>tempDir<span class="kw">&lt;/param-name&gt;</span></span>
-<span id="cb297-10"><a href="servlet-details-and-lifecycle-hooks.html#cb297-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;param-value&gt;</span>/some/location<span class="kw">&lt;/param-value&gt;</span></span>
-<span id="cb297-11"><a href="servlet-details-and-lifecycle-hooks.html#cb297-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/init-param&gt;</span></span>
-<span id="cb297-12"><a href="servlet-details-and-lifecycle-hooks.html#cb297-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/servlet&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb297-1"><a href="servlet-details-and-lifecycle-hooks.html#cb297-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb297-2"><a href="servlet-details-and-lifecycle-hooks.html#cb297-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet-name</span>&gt;WelcomeServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb297-3"><a href="servlet-details-and-lifecycle-hooks.html#cb297-3" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">url-pattern</span>&gt;/extra&lt;/<span class="kw">url-pattern</span>&gt;</span>
+<span id="cb297-4"><a href="servlet-details-and-lifecycle-hooks.html#cb297-4" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">servlet-mapping</span>&gt;</span>
+<span id="cb297-5"><a href="servlet-details-and-lifecycle-hooks.html#cb297-5" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">servlet</span>&gt;</span>
+<span id="cb297-6"><a href="servlet-details-and-lifecycle-hooks.html#cb297-6" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet-name</span>&gt;WelcomeServlet&lt;/<span class="kw">servlet-name</span>&gt;</span>
+<span id="cb297-7"><a href="servlet-details-and-lifecycle-hooks.html#cb297-7" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">servlet-class</span>&gt;nl.bioinf.wis_on_thymeleaf.servlets.WelcomeServlet&lt;/<span class="kw">servlet-class</span>&gt;</span>
+<span id="cb297-8"><a href="servlet-details-and-lifecycle-hooks.html#cb297-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">init-param</span>&gt;</span>
+<span id="cb297-9"><a href="servlet-details-and-lifecycle-hooks.html#cb297-9" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">param-name</span>&gt;tempDir&lt;/<span class="kw">param-name</span>&gt;</span>
+<span id="cb297-10"><a href="servlet-details-and-lifecycle-hooks.html#cb297-10" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">param-value</span>&gt;/some/location&lt;/<span class="kw">param-value</span>&gt;</span>
+<span id="cb297-11"><a href="servlet-details-and-lifecycle-hooks.html#cb297-11" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">init-param</span>&gt;</span>
+<span id="cb297-12"><a href="servlet-details-and-lifecycle-hooks.html#cb297-12" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">servlet</span>&gt;</span></code></pre></div>
 </div>
-<div id="webservlet-asyncsupported" class="section level4 unnumbered">
-<h4>@Webservlet – asyncSupported</h4>
+<div id="webservlet-asyncsupported" class="section level4 unnumbered hasAnchor">
+<h4>@Webservlet – asyncSupported<a href="servlet-details-and-lifecycle-hooks.html#webservlet-asyncsupported" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>This allows the servlet to store incoming requests for later response.
 For practical purposes, with this configuration you can set up a servlet that will (in effect) push data to the client (after the client sends the initial request to the server).
 This is very interesting, but outside the scope of this course.</p>
 </div>
 </div>
-<div id="hooks" class="section level2" number="37.2">
-<h2><span class="header-section-number">37.2</span> Hooks</h2>
+<div id="hooks" class="section level2 hasAnchor" number="37.2">
+<h2><span class="header-section-number">37.2</span> Hooks<a href="servlet-details-and-lifecycle-hooks.html#hooks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Hooks are pieces of code that let you write code that will run at application life cycle events.
 The ones we will look at here are:
 - Application startup/shutdown hook
 - Servlet initialization/cleanup hooks</p>
-<div id="application-startup-shutdown" class="section level3" number="37.2.1">
-<h3><span class="header-section-number">37.2.1</span> Application startup &amp; shutdown</h3>
+<div id="application-startup-shutdown" class="section level3 hasAnchor" number="37.2.1">
+<h3><span class="header-section-number">37.2.1</span> Application startup &amp; shutdown<a href="servlet-details-and-lifecycle-hooks.html#application-startup-shutdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you want to do something at
 - startup – e.g. create a single template engine to service all servlets
 - shutdown – e.g. free DB resources
@@ -603,8 +605,8 @@ implement the <code>ServletContextListener</code> interface.</p>
 <span id="cb298-45"><a href="servlet-details-and-lifecycle-hooks.html#cb298-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">//method omitted</span></span>
 <span id="cb298-46"><a href="servlet-details-and-lifecycle-hooks.html#cb298-46" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="servlet-initialization-and-destroy" class="section level3" number="37.2.2">
-<h3><span class="header-section-number">37.2.2</span> Servlet initialization and destroy</h3>
+<div id="servlet-initialization-and-destroy" class="section level3 hasAnchor" number="37.2.2">
+<h3><span class="header-section-number">37.2.2</span> Servlet initialization and destroy<a href="servlet-details-and-lifecycle-hooks.html#servlet-initialization-and-destroy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When a first request is received for a servlet after application startup, the servlet container (Tomcat) will call
 the <code>init()</code> methods, if present. Method <code>init()</code> is guaranteed to be called before the first call to <code>service()</code>.</p>
 <div class="figure">
@@ -659,7 +661,6 @@ the <code>init()</code> methods, if present. Method <code>init()</code> is guara
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -678,6 +679,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -695,6 +697,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -709,7 +715,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

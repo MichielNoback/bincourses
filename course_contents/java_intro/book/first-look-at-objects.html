@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Objects and classes | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Objects and classes | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="basic-program-structure-and-flow.html"/>
 <link rel="next" href="naming-and-commenting-stuff.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="first-look-at-objects" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Objects and classes</h1>
+<div id="first-look-at-objects" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Objects and classes<a href="first-look-at-objects.html#first-look-at-objects" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter presents two independent discussions of what classes and objects are.
 The first “Ninjas” focuses on what an object is and does, and how it relates to a class.
 The second, “Cells” also discusses object relationships and testing.</p>
-<div id="ninjas" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Ninjas</h2>
+<div id="ninjas" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Ninjas<a href="first-look-at-objects.html#ninjas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Suppose you are creating a game with ninjas, trolls and all other sorts of nasty creatures.
 In an Object-Oriented Programming (OOP) environment such as Java you will start by defining the entities that play a role in the app you are developing.</p>
 <p>In this case, <code>Ninja</code> will be one of the entities, or <strong><em>Types</em></strong> populating the application.
@@ -612,8 +614,8 @@ Besides this, we have used the <em>primitive types</em> <code>int</code> and <co
 <p>Next up: Cells and TestTubes in a second round of getting to know objects.
 As extra layer, JUnit testing will be introduced as a more structured means of verifying and demonstrating use of your created code.</p>
 </div>
-<div id="growing-cells" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Growing cells</h2>
+<div id="growing-cells" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Growing cells<a href="first-look-at-objects.html#growing-cells" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This sections already peeks ahead to some more advanced topics, such as exceptions and flow control, to create a more realistic application. Don’t worry if you don’t get everything at once. They will be discussed in length later in the book. All code can be found in the <code>snippets</code> package of the JavaIntroProgrammingAssignments repository.</p>
 <p>Suppose you want to build a cell growth simulation application.
 After careful analysis of the domain you decided that this involves three entities: A simulator that controls the simulation process, a test tube that will hold the cells that are growing, and the cells themselves.</p>
@@ -629,8 +631,8 @@ Finally, there will be cells <em>growing</em> within the test tube.</p>
 <li><code>Cell.java</code></li>
 </ul>
 <p>Each of these will be discussed in more detail.</p>
-<div id="cell.java" class="section level4 unnumbered">
-<h4>Cell.java</h4>
+<div id="cell.java" class="section level4 unnumbered hasAnchor">
+<h4>Cell.java<a href="first-look-at-objects.html#cell.java" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s start with the simplest one: Cell.
 It has an instance variable <code>size</code> which has a default value of 5 when Cell objects are instantiated.
 Every call of the <code>grow()</code> method makes it increase its size by one.</p>
@@ -653,8 +655,8 @@ Every call of the <code>grow()</code> method makes it increase its size by one.<
 <p>To test the logic and correctness of this class we will have to wait until other components are developed, such as TestTube and CellGrowthSimulator.
 <strong><em>Unless you use (J)Unit testing</em></strong>.</p>
 </div>
-<div id="junit-testing" class="section level4 unnumbered">
-<h4>JUnit testing</h4>
+<div id="junit-testing" class="section level4 unnumbered hasAnchor">
+<h4>JUnit testing<a href="first-look-at-objects.html#junit-testing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>JUnit is a <a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a> framework for Java.
 Its main purpose is to have a suite of test methods guaranteeing the correctness of your <strong><em>production code</em></strong> methods. Unit tests only test methods, not variables.
 To create JUnit a test method, you need to have the JUnit libraries defined as dependencies on your <strong><em>class path</em></strong>.
@@ -666,12 +668,12 @@ This piece should be in your <code>build.gradle</code> file:</p>
 <p>See the post <a href="a-first-intellij-project.html">“A first IntelliJ project”</a> for more details on dependency management.</p>
 <p>Next, you need to create a test class.
 In the editor, place the cursor on the class name (<code>Cell</code>) and press <code>alt+enter</code>.
-Select “Create Test.”</p>
+Select “Create Test”.</p>
 <div class="figure">
 <img src="01_getting_started/figures/create_junit_test_class_1.png" alt="" />
 <p class="caption">Create JUnit class</p>
 </div>
-<p>Select the method(s) you want to create test(s) for and press “OK.”</p>
+<p>Select the method(s) you want to create test(s) for and press “OK”.</p>
 <div class="figure">
 <img src="01_getting_started/figures/create_junit_test_class_2.png" alt="" />
 <p class="caption">Create JUnit class</p>
@@ -707,8 +709,8 @@ Select “Create Test.”</p>
 <p>The green checks indicate the test <strong><em>assertions</em></strong> passed. You should really experiment whith this a little bit: change the test (e.g. <code>assertTrue(cell.diameter == 7)</code>) or the production code, rerun the test and see what happens.</p>
 <p>For now, knowing the Cell class is OK, let’s proceed to class TestTube.</p>
 </div>
-<div id="testtube.java" class="section level4 unnumbered">
-<h4>TestTube.java</h4>
+<div id="testtube.java" class="section level4 unnumbered hasAnchor">
+<h4>TestTube.java<a href="first-look-at-objects.html#testtube.java" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>TestTube is slightly more complex. Note that much of the code is actually API documentation that describes how a method should be used in a formal way called Javadoc.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb29-1"><a href="first-look-at-objects.html#cb29-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/**</span></span>
 <span id="cb29-2"><a href="first-look-at-objects.html#cb29-2" aria-hidden="true" tabindex="-1"></a>     <span class="co">*</span> Constructs with an initial cell count<span class="co">.</span></span>
@@ -782,8 +784,8 @@ You again see the use of the keyword <code>new</code> to instantiate Cell object
 <span id="cb34-12"><a href="first-look-at-objects.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>The first verifies that the array of cells has the size that was specified in the constructor and the second verifies that an exception is actually thrown when a zero size is passed.</p>
 </div>
-<div id="cellgrowthsimulator.java" class="section level4 unnumbered">
-<h4>CellGrowthSimulator.java</h4>
+<div id="cellgrowthsimulator.java" class="section level4 unnumbered hasAnchor">
+<h4>CellGrowthSimulator.java<a href="first-look-at-objects.html#cellgrowthsimulator.java" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The last class of the system is <code>CellGrowthSimulator</code>.
 Here is a first version:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb35-1"><a href="first-look-at-objects.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">testtube</span><span class="op">;</span></span>
@@ -817,8 +819,8 @@ Here is a first version:</p>
 <p><strong><em>CellGrowthSimulator HAS-A TestTube and TestTube HAS one or more Cells</em></strong>.</p>
 </div>
 </div>
-<div id="object-construction-first-iteration" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Object construction (first iteration)</h2>
+<div id="object-construction-first-iteration" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Object construction (first iteration)<a href="first-look-at-objects.html#object-construction-first-iteration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You have seen the <code>new</code> keyword used several times now.
 But what does happen, exactly, when you type</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb36-1"><a href="first-look-at-objects.html#cb36-1" aria-hidden="true" tabindex="-1"></a>Cell cell <span class="op">=</span> <span class="kw">new</span> <span class="fu">Cell</span><span class="op">();</span></span></code></pre></div>
@@ -839,8 +841,8 @@ The compiler-processed code will have something like this inserted:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb37-1"><a href="first-look-at-objects.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="fu">Cell</span><span class="op">()</span> <span class="op">{}</span></span></code></pre></div>
 <p>More on constructors in later chapters.</p>
 </div>
-<div id="inheritance-first-discussion" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Inheritance (first discussion)</h2>
+<div id="inheritance-first-discussion" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Inheritance (first discussion)<a href="first-look-at-objects.html#inheritance-first-discussion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Inheritance is one of the key features of object-oriented programming.</p>
 <p>This is a very powerful mechanism to introduce new or adjusted behavior in a software system because subclasses inherit all properties and methods of their superclass.
 For example, the <code>CancerCell</code> class below <code>extends Cell</code> and thus declares itself to be a <strong><em>subclass</em></strong> of <code>Cell</code>.
@@ -901,7 +903,6 @@ Moving through the body
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -920,6 +921,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -937,6 +939,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -951,7 +957,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

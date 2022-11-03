@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 30 A refresher | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 30 A refresher | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="inner-classes.html"/>
 <link rel="next" href="the-toolbox.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-refresher" class="section level1" number="30">
-<h1><span class="header-section-number">Chapter 30</span> A refresher</h1>
-<div id="introduction" class="section level2" number="30.1">
-<h2><span class="header-section-number">30.1</span> Introduction</h2>
+<div id="a-refresher" class="section level1 hasAnchor" number="30">
+<h1><span class="header-section-number">Chapter 30</span> A refresher<a href="a-refresher.html#a-refresher" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor" number="30.1">
+<h2><span class="header-section-number">30.1</span> Introduction<a href="a-refresher.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here starts the contents of the course Web-based Information Systems.<br />
 In this course, we will investigate the power of dynamic web pages using server-side and client-side technology, and the ways they interact</p>
 <p>Before embarking on the technological aspects of web app development, some very useful guidelines should be taken in <span class="math inline">\(source: PLoS Computational Biology, Volume 7, Issue 5\)</span>.</p>
@@ -427,22 +429,22 @@ In this course, we will investigate the power of dynamic web pages using server-
 <li>Switch off an Unused Resource</li>
 </ol>
 </div>
-<div id="the-basics-of-web" class="section level2" number="30.2">
-<h2><span class="header-section-number">30.2</span> The basics of web</h2>
+<div id="the-basics-of-web" class="section level2 hasAnchor" number="30.2">
+<h2><span class="header-section-number">30.2</span> The basics of web<a href="a-refresher.html#the-basics-of-web" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you click a simple link in a web page (the client), you <strong><em>request</em></strong> a resource.
 The web server receives the request, locates the resource and returns something to the user: a <strong><em>response</em></strong>.</p>
 <div class="figure">
 <img src="05_web/figures/request_response.png" alt="" />
 <p class="caption">Request and Response</p>
 </div>
-<div id="the-client" class="section level4 unnumbered">
-<h4>The client</h4>
+<div id="the-client" class="section level4 unnumbered hasAnchor">
+<h4>The client<a href="a-refresher.html#the-client" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The client (usually a web browser) formats a request and sends it to the server.
 The client receives the response and processes it
 when the response is html, the response is <strong><em>rendered</em></strong> by the browser into a web page <strong><em>view</em></strong>.</p>
 </div>
-<div id="the-server" class="section level4 unnumbered">
-<h4>The server</h4>
+<div id="the-server" class="section level4 unnumbered hasAnchor">
+<h4>The server<a href="a-refresher.html#the-server" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The server receives the request, locates the correct resource and formats the response before sending it to the client.
 The server can not:
 - save anything
@@ -450,8 +452,8 @@ The server can not:
 - remember you or your previous requests</p>
 <p>These tasks have to be delegated</p>
 </div>
-<div id="request-types" class="section level4 unnumbered">
-<h4>Request types</h4>
+<div id="request-types" class="section level4 unnumbered hasAnchor">
+<h4>Request types<a href="a-refresher.html#request-types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Http requests come in 7 flavors. In 99.99999% of the use cases, it will be one of these two:
 - <strong>get</strong> a simple resource fetch request
 - <strong>post</strong> a request that sends data to the server or requests to change its data</p>
@@ -463,8 +465,8 @@ The server can not:
 - trace</p>
 <p>We will deal only with the first two.</p>
 </div>
-<div id="a-simple-html-request-form" class="section level4 unnumbered">
-<h4>A simple html request form</h4>
+<div id="a-simple-html-request-form" class="section level4 unnumbered hasAnchor">
+<h4>A simple html request form<a href="a-refresher.html#a-simple-html-request-form" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Below you see a very simple html request form. The request will be send to <code>/birdpic</code> on the root of the current application context.</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb220-1"><a href="a-refresher.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
 <span id="cb220-2"><a href="a-refresher.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span></span>
@@ -472,12 +474,12 @@ The server can not:
 <span id="cb220-4"><a href="a-refresher.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/head&gt;</span></span>
 <span id="cb220-5"><a href="a-refresher.html#cb220-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
 <span id="cb220-6"><a href="a-refresher.html#cb220-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;h1&gt;</span>request bird pictures<span class="kw">&lt;/h1&gt;</span></span>
-<span id="cb220-7"><a href="a-refresher.html#cb220-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;birdpic&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb220-8"><a href="a-refresher.html#cb220-8" aria-hidden="true" tabindex="-1"></a>      Species name: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb220-7"><a href="a-refresher.html#cb220-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;birdpic&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb220-8"><a href="a-refresher.html#cb220-8" aria-hidden="true" tabindex="-1"></a>      Species name: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb220-9"><a href="a-refresher.html#cb220-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;br</span> <span class="kw">/&gt;</span></span>
-<span id="cb220-10"><a href="a-refresher.html#cb220-10" aria-hidden="true" tabindex="-1"></a>      Minimum rating: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;rating&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb220-10"><a href="a-refresher.html#cb220-10" aria-hidden="true" tabindex="-1"></a>      Minimum rating: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;rating&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb220-11"><a href="a-refresher.html#cb220-11" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;br</span> <span class="kw">/&gt;</span></span>
-<span id="cb220-12"><a href="a-refresher.html#cb220-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;find&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb220-12"><a href="a-refresher.html#cb220-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;find&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb220-13"><a href="a-refresher.html#cb220-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/form&gt;</span></span>
 <span id="cb220-14"><a href="a-refresher.html#cb220-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
 <span id="cb220-15"><a href="a-refresher.html#cb220-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
@@ -487,8 +489,8 @@ The server can not:
 <p class="caption">A request form</p>
 </div>
 </div>
-<div id="a-get-request" class="section level4 unnumbered">
-<h4>A GET request</h4>
+<div id="a-get-request" class="section level4 unnumbered hasAnchor">
+<h4>A GET request<a href="a-refresher.html#a-get-request" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Filling out the form and clicking find generates this location (URL) in your browsers’ location bar (only with GET requests).</p>
 <div class="figure">
 <img src="05_web/figures/request_url1.png" alt="" />
@@ -507,13 +509,13 @@ Connection: keep-alife</code></pre>
 <p>You can look at this request with for instance you web browsers developer toolbox (discussed later).</p>
 <p>Note that the parameters of your request have been put at the top of the request. Some other parameters have been added as well, as <code>key: value</code> pairs.</p>
 </div>
-<div id="a-post-request" class="section level4 unnumbered">
-<h4>A POST request</h4>
+<div id="a-post-request" class="section level4 unnumbered hasAnchor">
+<h4>A POST request<a href="a-refresher.html#a-post-request" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Adding the <code>method=POST</code> attribute to the <code>&lt;form&gt;</code> tag,</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb222-1"><a href="a-refresher.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span><span class="ot"> action=</span><span class="st">&quot;birdpic&quot;</span><span class="ot"> method=</span><span class="st">&quot;POST&quot;</span> <span class="kw">&gt;</span></span>
-<span id="cb222-2"><a href="a-refresher.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  Species name: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb222-3"><a href="a-refresher.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  Minimum rating: <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> name=</span><span class="st">&quot;rating&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb222-4"><a href="a-refresher.html#cb222-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;submit&quot;</span><span class="ot"> value=</span><span class="st">&quot;find&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb222"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb222-1"><a href="a-refresher.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;form</span> <span class="er">action</span><span class="ot">=</span><span class="st">&quot;birdpic&quot;</span> <span class="er">method</span><span class="ot">=</span><span class="st">&quot;POST&quot;</span> <span class="kw">&gt;</span></span>
+<span id="cb222-2"><a href="a-refresher.html#cb222-2" aria-hidden="true" tabindex="-1"></a>  Species name: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb222-3"><a href="a-refresher.html#cb222-3" aria-hidden="true" tabindex="-1"></a>  Minimum rating: <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text&quot;</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;rating&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb222-4"><a href="a-refresher.html#cb222-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;input</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;submit&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;find&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb222-5"><a href="a-refresher.html#cb222-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/form&gt;</span></span></code></pre></div>
 <p>will make the url-appended parameters disappear,</p>
 <div class="figure">
@@ -533,8 +535,8 @@ Connection: keep-alife
 
 species=Roodborst&amp;rating=4</code></pre>
 </div>
-<div id="the-http-response" class="section level4 unnumbered">
-<h4>The HTTP response</h4>
+<div id="the-http-response" class="section level4 unnumbered hasAnchor">
+<h4>The HTTP response<a href="a-refresher.html#the-http-response" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The response coming back from the server will look like this:</p>
 <pre><code>HTTP/1.1 200 OK
 Set-Cookie: JSESSIONID=0AAB6CGSTGGC56DS3FF78; Path=/WebBased
@@ -550,13 +552,13 @@ Connection: close
 &lt;/html&gt;</code></pre>
 <p>At the top, there is the HTTP response header with a status code (200 / OK), a cookie and other important information about the response. Below the header is the HTTP response body, with the HTML that the browser is going to display.</p>
 </div>
-<div id="get-or-post" class="section level4 unnumbered">
-<h4>GET or POST?</h4>
+<div id="get-or-post" class="section level4 unnumbered hasAnchor">
+<h4>GET or POST?<a href="a-refresher.html#get-or-post" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Use GET for (simple) requests that do not alter the data on the server side. These are called <strong><em>idempotent</em></strong> because they can be made over and over again without any effect on the server.
 Use POST for complex requests and requests that alter the data on the server side, and always if you are going to send sensitive data (passwords, usernames).</p>
 </div>
-<div id="the-url" class="section level4 unnumbered">
-<h4>The URL</h4>
+<div id="the-url" class="section level4 unnumbered hasAnchor">
+<h4>The URL<a href="a-refresher.html#the-url" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>URL stands for <strong><em>Uniform Resource Locator</em></strong>.
 Every web resource has its own unique address in the URL format:</p>
 <pre style="color:darkblue;font-weight:bold;font-family:courier;font-size:1.2em;">
@@ -571,8 +573,8 @@ http://         protocol
 </pre>
 <p>If you don’t specify a port, it will default to the HTTP port which is 80.</p>
 </div>
-<div id="tcp-ports" class="section level4 unnumbered">
-<h4>TCP ports</h4>
+<div id="tcp-ports" class="section level4 unnumbered hasAnchor">
+<h4>TCP ports<a href="a-refresher.html#tcp-ports" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The TCP port is a 16-bit number that identifies a specific software program on the server hardware.
 A server can have up to 65536 different server apps running
 TCP port numbers from 0 to 1023 are reserved for well-known services:
@@ -584,8 +586,8 @@ TCP port numbers from 0 to 1023 are reserved for well-known services:
 <p>Don’t use these ports for your own server programs!</p>
 <p>Tomcat usually runs on port 8080</p>
 </div>
-<div id="static-versus-dynamic-content" class="section level4 unnumbered">
-<h4>Static versus dynamic content</h4>
+<div id="static-versus-dynamic-content" class="section level4 unnumbered hasAnchor">
+<h4>Static versus dynamic content<a href="a-refresher.html#static-versus-dynamic-content" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Web servers can ONLY serve static content (html pages, pictures, xml documents etc).
 If you want dynamic content, you have to delegate this to another application. A web server can’t help you with this:</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb225-1"><a href="a-refresher.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -605,8 +607,8 @@ If you want dynamic content, you have to delegate this to another application. A
 <span id="cb226-8"><a href="a-refresher.html#cb226-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
 <span id="cb226-9"><a href="a-refresher.html#cb226-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 </div>
-<div id="why-use-java" class="section level4 unnumbered">
-<h4>Why use Java?</h4>
+<div id="why-use-java" class="section level4 unnumbered hasAnchor">
+<h4>Why use Java?<a href="a-refresher.html#why-use-java" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Although Java is more of a fuss to get up and running, it is much better in serving heavy-duty analysis tools.
 If you want a simple interface with forms accessing database data and presenting them, use Python.
 If you want a real analysis tool running behind a web application, use Java
@@ -622,8 +624,8 @@ This is the essence of the Model View Controller (MVC) design pattern (or paradi
 - at the server for whole-application architecture (Servlet control – Thymeleaf view – Java model)
 - In a single web page DOM element: A Form HTML/css view, its Javascript controller and a Javascript model (vue.js has this principle at its core).</p>
 </div>
-<div id="old-versus-modern-web-apps" class="section level4 unnumbered">
-<h4>“old” versus “modern” web apps</h4>
+<div id="old-versus-modern-web-apps" class="section level4 unnumbered hasAnchor">
+<h4>“old” versus “modern” web apps<a href="a-refresher.html#old-versus-modern-web-apps" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In the old days, almost every action or resource requested from the server resulted in a completely new page.
 Now, single-page web apps are becoming the standard.
 The key to this is Javascript and Ajax: it lets you load and update only those parts of the page where this is required.
@@ -642,7 +644,6 @@ Also, Javascript can take a LOT of logic away from the server</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -661,6 +662,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -678,6 +680,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -692,7 +698,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

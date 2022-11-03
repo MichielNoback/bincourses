@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 25 Inheritance and UML | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 25 Inheritance and UML | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="access-modifiers-other-keywords.html"/>
 <link rel="next" href="enums-constants-on-steroids.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,11 +409,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="inheritance-and-uml" class="section level1" number="25">
-<h1><span class="header-section-number">Chapter 25</span> Inheritance and UML</h1>
+<div id="inheritance-and-uml" class="section level1 hasAnchor" number="25">
+<h1><span class="header-section-number">Chapter 25</span> Inheritance and UML<a href="inheritance-and-uml.html#inheritance-and-uml" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this post, the concept of inheritance will be revisited and expanded. Since this is a good place for it, a visualization standard called UML (Unified Modelling Language) is also introduced.</p>
-<div id="the-testtube-with-cells" class="section level2" number="25.1">
-<h2><span class="header-section-number">25.1</span> The TestTube with cells</h2>
+<div id="the-testtube-with-cells" class="section level2 hasAnchor" number="25.1">
+<h2><span class="header-section-number">25.1</span> The TestTube with cells<a href="inheritance-and-uml.html#the-testtube-with-cells" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here is the TestTube at the end of this post <a href="encapsulation.html#encapsulation">23</a>. Instead of showing code, a UML diagram is displayed.</p>
 <div class="figure">
 <img src="04_oop/figures/testtube2_all_s.png" alt="" />
@@ -424,8 +426,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">Test tube public</p>
 </div>
 <p>So, what does this tell us? Class <code>CellGrowthSimulator</code> has a singular field of type <code>TestTube</code> and creates the instance itself. Class <code>TestTube</code> has 1 to many instances of <code>Cell</code> (held in a <code>List&lt;Cell&gt;</code>), and instantiates them itself. These <strong><em>HAS_A</em></strong> relations (class A has an instance of class B) are depicted with the arrow-with-diamond connector.</p>
-<div id="new-specs-different-types-of-cells" class="section level4 unnumbered">
-<h4>New specs: different types of cells</h4>
+<div id="new-specs-different-types-of-cells" class="section level4 unnumbered hasAnchor">
+<h4>New specs: different types of cells<a href="inheritance-and-uml.html#new-specs-different-types-of-cells" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>So here comes your boss and tells you</p>
 <p><em>“…but how about het difference between bacteria and eukaryotic cells??
 They are of way different size and grow at different speeds.<br />
@@ -440,8 +442,8 @@ And didn’t I tell you? They should be able to divide as well.”</em></p>
 <p>As an expert on the subject, you decide that the cells and not the test tube should know when to divide; in fact, they should be solely responsible for their size and increment (not the testtube). Division is depending on the cell size: when a certain size is reached, it is time to divide.</p>
 <p>Here is the new design. Note that I simplified the names again and removed comments for conciseness’ sake.</p>
 </div>
-<div id="class-bacterium" class="section level4 unnumbered">
-<h4>class <code>Bacterium</code></h4>
+<div id="class-bacterium" class="section level4 unnumbered hasAnchor">
+<h4>class <code>Bacterium</code><a href="inheritance-and-uml.html#class-bacterium" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb190"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb190-1"><a href="inheritance-and-uml.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">testtube3</span><span class="op">;</span></span>
 <span id="cb190-2"><a href="inheritance-and-uml.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb190-3"><a href="inheritance-and-uml.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Bacterium <span class="op">{</span></span>
@@ -463,8 +465,8 @@ And didn’t I tell you? They should be able to divide as well.”</em></p>
 <span id="cb190-19"><a href="inheritance-and-uml.html#cb190-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb190-20"><a href="inheritance-and-uml.html#cb190-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 </div>
-<div id="class-eukaryote" class="section level4 unnumbered">
-<h4>class <code>Eukaryote</code></h4>
+<div id="class-eukaryote" class="section level4 unnumbered hasAnchor">
+<h4>class <code>Eukaryote</code><a href="inheritance-and-uml.html#class-eukaryote" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb191"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb191-1"><a href="inheritance-and-uml.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">testtube3</span><span class="op">;</span></span>
 <span id="cb191-2"><a href="inheritance-and-uml.html#cb191-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb191-3"><a href="inheritance-and-uml.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Eukaryote <span class="op">{</span></span>
@@ -487,8 +489,8 @@ And didn’t I tell you? They should be able to divide as well.”</em></p>
 <span id="cb191-20"><a href="inheritance-and-uml.html#cb191-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>See how similar it is to class <code>Bacterium</code>?</p>
 </div>
-<div id="class-testtube" class="section level4 unnumbered">
-<h4>class <code>TestTube</code></h4>
+<div id="class-testtube" class="section level4 unnumbered hasAnchor">
+<h4>class <code>TestTube</code><a href="inheritance-and-uml.html#class-testtube" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="sourceCode" id="cb192"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb192-1"><a href="inheritance-and-uml.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">testtube3</span><span class="op">;</span></span>
 <span id="cb192-2"><a href="inheritance-and-uml.html#cb192-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb192-3"><a href="inheritance-and-uml.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">ArrayList</span><span class="op">;</span></span>
@@ -554,9 +556,9 @@ And didn’t I tell you? They should be able to divide as well.”</em></p>
 <p>Repeated code and similar <code>if/else</code> algorithm logic are typical signs of <strong><em>smelly code</em></strong> that can be solved using some Object Oriented design techniques, in this case inheritance.</p>
 </div>
 </div>
-<div id="apply-inheritance-to-model-what-is-common" class="section level2" number="25.2">
-<h2><span class="header-section-number">25.2</span> Apply inheritance to model what is common</h2>
-<p>Inheritance can be used when there is a <strong><em>IS-A</em></strong> relationship: when it can be said that class A IS-A class B. For example, Apple IS-A Fruit and Pear IS-A Fruit (but not Pear IS-A Apple!). In this case, the IS-A relation ship can be defined as “Bacterium IS-A Cell” and “Eukaryote IS-A Cell.”</p>
+<div id="apply-inheritance-to-model-what-is-common" class="section level2 hasAnchor" number="25.2">
+<h2><span class="header-section-number">25.2</span> Apply inheritance to model what is common<a href="inheritance-and-uml.html#apply-inheritance-to-model-what-is-common" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Inheritance can be used when there is a <strong><em>IS-A</em></strong> relationship: when it can be said that class A IS-A class B. For example, Apple IS-A Fruit and Pear IS-A Fruit (but not Pear IS-A Apple!). In this case, the IS-A relation ship can be defined as “Bacterium IS-A Cell” and “Eukaryote IS-A Cell”.</p>
 <p>Once this prerequisite for inheritance is established, the common superclass should be created and all common code from the subclasses moved to it.</p>
 <p>Class Cell can clearly hold the <code>diameter</code>, the <code>growthIncrement</code> and the <code>maximumDiameter</code> fields, even though they will be different between the subclasses. Class Cell can also publish the <code>growCells()</code> method, even though they will be implemented differently in the subclasses. Key here is that <em>all subclasses will be able to grow</em>. When you know the functionality should be there, but don’t know how, your should make it <strong><em>abstract</em></strong>. As a consequence, your class needs to be abstract as well. Let’s review this with class <code>Cell</code>.</p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb193-1"><a href="inheritance-and-uml.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> snippets</span><span class="op">.</span><span class="im">testtube3</span><span class="op">;</span></span>
@@ -721,8 +723,8 @@ Grow cycle 100 finished; 111230 cells present
 <p>This also shows that actual cell types are hidden behind the abstract Cell class. The subtype constructors could even have been marked <code>protected</code> or <code>&lt;default&gt;</code> to emphasize this.</p>
 <p>This is the power of polymorphism implemented with inheritance!</p>
 <p><strong><em>Polymorphism</em></strong> allows one type to express some sort of contract, and for other types to implement that contract (often through class inheritance) in different ways. Code using that contract should not have to care about which implementation is involved, only that the contract is obeyed.</p>
-<div id="use-a-type-cast-when-you-need-the-specific-type" class="section level3 unnumbered">
-<h3>Use a type cast when you need the specific type</h3>
+<div id="use-a-type-cast-when-you-need-the-specific-type" class="section level3 unnumbered hasAnchor">
+<h3>Use a type cast when you need the specific type<a href="inheritance-and-uml.html#use-a-type-cast-when-you-need-the-specific-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You have seen it is often best to code against generic types, like in this block:</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb199-1"><a href="inheritance-and-uml.html#cb199-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">growCells</span><span class="op">()</span> <span class="op">{</span></span>
 <span id="cb199-2"><a href="inheritance-and-uml.html#cb199-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> cells<span class="op">.</span><span class="fu">size</span><span class="op">();</span> i<span class="op">++)</span> <span class="op">{</span></span>
@@ -772,7 +774,6 @@ Grow cycle 100 finished; 111230 cells present
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -791,6 +792,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -808,6 +810,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -822,7 +828,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

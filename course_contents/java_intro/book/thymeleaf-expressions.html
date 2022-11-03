@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 34 Thymeleaf expressions | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 34 Thymeleaf expressions | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="implementing-mvc.html"/>
 <link rel="next" href="thymeleaf-flow-control-and-fragments.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="thymeleaf-expressions" class="section level1" number="34">
-<h1><span class="header-section-number">Chapter 34</span> Thymeleaf expressions</h1>
-<div id="introduction-3" class="section level2" number="34.1">
-<h2><span class="header-section-number">34.1</span> Introduction</h2>
+<div id="thymeleaf-expressions" class="section level1 hasAnchor" number="34">
+<h1><span class="header-section-number">Chapter 34</span> Thymeleaf expressions<a href="thymeleaf-expressions.html#thymeleaf-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-3" class="section level2 hasAnchor" number="34.1">
+<h2><span class="header-section-number">34.1</span> Introduction<a href="thymeleaf-expressions.html#introduction-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This post is one of a series on Thymeleaf. It deals with some of the essential templating techniques that Thymeleaf offers:</p>
 <ul>
 <li>using texts</li>
@@ -421,44 +423,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>For a complete overview you should refer to <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html">the official docs</a>.</p>
 </div>
-<div id="expression-types" class="section level2" number="34.2">
-<h2><span class="header-section-number">34.2</span> Expression types</h2>
-<div id="resource-expressions" class="section level3" number="34.2.1">
-<h3><span class="header-section-number">34.2.1</span> Resource expressions: <code>#{}</code></h3>
+<div id="expression-types" class="section level2 hasAnchor" number="34.2">
+<h2><span class="header-section-number">34.2</span> Expression types<a href="thymeleaf-expressions.html#expression-types" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="resource-expressions" class="section level3 hasAnchor" number="34.2.1">
+<h3><span class="header-section-number">34.2.1</span> Resource expressions: <code>#{}</code><a href="thymeleaf-expressions.html#resource-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using the <code>#{message.in.resource.bundle}</code> expression will make the template engine look in your resource bundle(s) for internationalized messages with the given key. In its most basic form it works as follows.
 This expression:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb238-1"><a href="thymeleaf-expressions.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3</span><span class="ot"> th:text=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb238-1"><a href="thymeleaf-expressions.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
 <p>combined with this property in a resource bundle</p>
 <pre><code>page.title=get your phrase-of-the-day </code></pre>
 <p>will evaluate to</p>
 <div class="sourceCode" id="cb240"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb240-1"><a href="thymeleaf-expressions.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3&gt;</span>get your phrase-of-the-day<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
-<div id="unescaped-text" class="section level4 unnumbered">
-<h4>Unescaped text</h4>
+<div id="unescaped-text" class="section level4 unnumbered hasAnchor">
+<h4>Unescaped text<a href="thymeleaf-expressions.html#unescaped-text" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The Thymeleaf attribute <code>th:text</code> ‘escapes’ the text in the message. If you want this message:</p>
 <pre><code>favourite=Thymeleaf is my &lt;b&gt;favourite&lt;/b&gt; templating engine!</code></pre>
 <p>to display correctly, you should use <code>th:utext</code>:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb242-1"><a href="thymeleaf-expressions.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3</span><span class="ot"> th:utext=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb242-1"><a href="thymeleaf-expressions.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3</span> <span class="er">th:utext</span><span class="ot">=</span><span class="st">&quot;#{page.title}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/h3&gt;</span></span></code></pre></div>
 <p>So you’ll get this</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb243-1"><a href="thymeleaf-expressions.html#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Thymeleaf is my <span class="kw">&lt;b&gt;</span>favourite<span class="kw">&lt;/b&gt;</span> templating engine!<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 <p>Instead of this</p>
 <div class="sourceCode" id="cb244"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb244-1"><a href="thymeleaf-expressions.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Thymeleaf is my <span class="dv">&amp;lt;</span>b<span class="dv">&amp;gt;</span>favourite<span class="dv">&amp;lt;</span>/b<span class="dv">&amp;gt;</span> templating engine!<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 </div>
-<div id="messages-with-variables" class="section level4 unnumbered">
-<h4>Messages with variables</h4>
-<p>To insert variables into your messages, give the message identifier an argument, just like calling a function. Then, in the message “body,” catch it with {0}.</p>
+<div id="messages-with-variables" class="section level4 unnumbered hasAnchor">
+<h4>Messages with variables<a href="thymeleaf-expressions.html#messages-with-variables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To insert variables into your messages, give the message identifier an argument, just like calling a function. Then, in the message “body”, catch it with {0}.</p>
 <p>Given this message</p>
 <pre class="conf"><code>animal=The {0} is the scariest animal there is!</code></pre>
 <p>and this Thymeleaf</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb246-1"><a href="thymeleaf-expressions.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span><span class="ot"> th:text=</span><span class="st">&quot;#{animal(&#39;black widow&#39;)}&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span>
-<span id="cb246-2"><a href="thymeleaf-expressions.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span><span class="ot"> th:text=</span><span class="st">&quot;#{animal(&#39;rattlesnake&#39;)}&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb246-1"><a href="thymeleaf-expressions.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{animal(&#39;black widow&#39;)}&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span>
+<span id="cb246-2"><a href="thymeleaf-expressions.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;#{animal(&#39;rattlesnake&#39;)}&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span></code></pre></div>
 <p>will process into</p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb247-1"><a href="thymeleaf-expressions.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>The black widow is the scariest animal there is!<span class="kw">&lt;/p&gt;</span></span>
 <span id="cb247-2"><a href="thymeleaf-expressions.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>The rattlesnake is the scariest animal there is!<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 <p>Of course, you should use Use {1}, {2} … for multiple variables.</p>
 </div>
 </div>
-<div id="variable-expressions" class="section level3" number="34.2.2">
-<h3><span class="header-section-number">34.2.2</span> Variable expressions: <code>${}</code></h3>
+<div id="variable-expressions" class="section level3 hasAnchor" number="34.2.2">
+<h3><span class="header-section-number">34.2.2</span> Variable expressions: <code>${}</code><a href="thymeleaf-expressions.html#variable-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Variables expressions is completely different from messages with variables - the previous section!</p>
 <p>Variable expressions query the <code>WebContext</code>, or other implicit objects to resolve these expressions. Usually, they will refer to objects you have attached to the <code>WebContext</code> object in the servlet request handling process.</p>
 <p>For example, this servlet code:</p>
@@ -471,12 +473,12 @@ This expression:</p>
 <span id="cb248-7"><a href="thymeleaf-expressions.html#cb248-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;you must be over 18 to drive a car&quot;</span><span class="op">);</span></span>
 <span id="cb248-8"><a href="thymeleaf-expressions.html#cb248-8" aria-hidden="true" tabindex="-1"></a>templateEngine<span class="op">.</span><span class="fu">process</span><span class="op">(</span><span class="st">&quot;thymeleaf_demo&quot;</span><span class="op">,</span> ctx<span class="op">,</span> response<span class="op">.</span><span class="fu">getWriter</span><span class="op">());</span></span></code></pre></div>
 <p>With this Thymeleaf expression in <code>thymeleaf_demo</code></p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb249-1"><a href="thymeleaf-expressions.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span><span class="ot"> th:text=</span><span class="st">&quot;${warning}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb249-1"><a href="thymeleaf-expressions.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${warning}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 <p>will evaluate to</p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb250-1"><a href="thymeleaf-expressions.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span> you must be over 18 to drive a car <span class="kw">&lt;/p&gt;</span></span></code></pre></div>
 <p>Thus, the <code>warning</code> attribute that was set on the <code>WebContext</code> object has been retrieved in the Thymeleaf template using the <code>${warning}</code> expression.</p>
-<div id="using-java-bean-properties-in-expressions" class="section level4 unnumbered">
-<h4>Using Java bean properties in expressions</h4>
+<div id="using-java-bean-properties-in-expressions" class="section level4 unnumbered hasAnchor">
+<h4>Using Java bean properties in expressions<a href="thymeleaf-expressions.html#using-java-bean-properties-in-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A Java bean is a special kind of class, coded according to a set of rules. That’s why you can use them so conveniently in Thymeleaf, without actually writing Java code.</p>
 <p>These are the JavaBean design rules:</p>
 <ul>
@@ -505,12 +507,12 @@ This expression:</p>
 <p>When set on the context like this:</p>
 <div class="sourceCode" id="cb252"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb252-1"><a href="thymeleaf-expressions.html#cb252-1" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;person&quot;</span><span class="op">,</span> <span class="kw">new</span> <span class="fu">Person</span><span class="op">(</span><span class="st">&quot;Judy&quot;</span><span class="op">,</span> <span class="st">&quot;Steinberg&quot;</span><span class="op">));</span></span></code></pre></div>
 <p>and this template fragment</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb253-1"><a href="thymeleaf-expressions.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${&#39;The person currently logged in is &#39; + person.fullName}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/span&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb253-1"><a href="thymeleaf-expressions.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${&#39;The person currently logged in is &#39; + person.fullName}&quot;</span><span class="kw">&gt;</span>_offline_<span class="kw">&lt;/span&gt;</span></span></code></pre></div>
 <p>will give the processed html</p>
 <div class="sourceCode" id="cb254"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb254-1"><a href="thymeleaf-expressions.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span&gt;</span>The person currently logged in is Judy Steinberg<span class="kw">&lt;/span&gt;</span></span></code></pre></div>
 </div>
-<div id="flexibility-of" class="section level4 unnumbered">
-<h4>Flexibility of <code>${}</code></h4>
+<div id="flexibility-of" class="section level4 unnumbered hasAnchor">
+<h4>Flexibility of <code>${}</code><a href="thymeleaf-expressions.html#flexibility-of" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>${}</code> expression can be used in many ways; here are only a few:
 - Chaining of calls: <strong><code>${object.property.property}</code></strong>
 - List access: <strong><code>${list[1]} or ${list[${selected_index}]}</code></strong>
@@ -522,8 +524,8 @@ This expression:</p>
 ```</code></pre>
 </div>
 </div>
-<div id="built-in-variable-expressions" class="section level3" number="34.2.3">
-<h3><span class="header-section-number">34.2.3</span> Built-in-variable expressions: <code>${#}</code></h3>
+<div id="built-in-variable-expressions" class="section level3 hasAnchor" number="34.2.3">
+<h3><span class="header-section-number">34.2.3</span> Built-in-variable expressions: <code>${#}</code><a href="thymeleaf-expressions.html#built-in-variable-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Thymeleaf provides quite a few predefined variables that can be accessed using <code>${#variableName}</code> syntax. Here are some:</p>
 <table>
 <colgroup>
@@ -559,15 +561,15 @@ This expression:</p>
 </tr>
 </tbody>
 </table>
-<div id="locales" class="section level4 unnumbered">
-<h4>Locales</h4>
+<div id="locales" class="section level4 unnumbered hasAnchor">
+<h4>Locales<a href="thymeleaf-expressions.html#locales" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The ‘#locale’ helper can do things like this:</p>
 <p>Get the Language set on the clients’ browser: <code>${#locale.getLanguage()}</code> will give <code>nl</code> on my browser.<br />
 Get the Country set on the clients’ browser; it will be empty when not set: <code>${#locale.getCountry()}</code> will give <code>&lt;nothing&gt;</code> on my browser.<br />
 Get the display name of your locale set on your browser: <code>${#locale.getDisplayName()}</code> : <code>Dutch</code></p>
 </div>
-<div id="dates-and-calendars" class="section level4 unnumbered">
-<h4>Dates and Calendars</h4>
+<div id="dates-and-calendars" class="section level4 unnumbered hasAnchor">
+<h4>Dates and Calendars<a href="thymeleaf-expressions.html#dates-and-calendars" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The ‘#dates’ and ‘#calendars’ variables help with everything related to dates.</p>
 <p>Here are some examples, with <code>my_date</code>, a <code>java.util.Date</code> object, set on the web context model:</p>
 <table>
@@ -607,32 +609,32 @@ Get the display name of your locale set on your browser: <code>${#locale.getDisp
 </tbody>
 </table>
 </div>
-<div id="numbers" class="section level4 unnumbered">
-<h4>Numbers</h4>
+<div id="numbers" class="section level4 unnumbered hasAnchor">
+<h4>Numbers<a href="thymeleaf-expressions.html#numbers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The ‘#numbers’ implicit object helps with numbers.
 Given ‘my_date’ set on the web context model: <code>ctx.setVariable("my_number", 31415.9265359);</code>, here is simple usage scenarios.</p>
-<p><code>${my_number}</code> gives “31415.9265359,” the exact representation of the context variable.</p>
-<p><code>${#numbers.formatDecimal(my_number, 0, 'COMMA', 2, 'POINT')}</code> gives “31,415.93.”<br />
+<p><code>${my_number}</code> gives “31415.9265359”, the exact representation of the context variable.</p>
+<p><code>${#numbers.formatDecimal(my_number, 0, 'COMMA', 2, 'POINT')}</code> gives “31,415.93”.<br />
 The argument are as follows:<br />
 <code>#numbers.formatDecimal(&lt;target&gt;, &lt;mimimum integer digits&gt;, '&lt;thousandspoint type&gt;', &lt;decimal digits&gt;, &lt;decimalpoint type&gt;)</code></p>
-<p>Similarly, this expression <code>${#numbers.formatInteger(my_number, 10, 'POINT')}</code> will produce “0.000.031.416.”</p>
+<p>Similarly, this expression <code>${#numbers.formatInteger(my_number, 10, 'POINT')}</code> will produce “0.000.031.416”.</p>
 </div>
-<div id="the-session-object" class="section level4 unnumbered">
-<h4>The session object</h4>
+<div id="the-session-object" class="section level4 unnumbered hasAnchor">
+<h4>The session object<a href="thymeleaf-expressions.html#the-session-object" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The session object is simply available as <code>session</code>.
 The expression <code>${session.user.email}</code> will display the ‘email’ property of the User object registered as attribute on the ‘session’ object: <code>session.setAttribute("user", new User("Henk", "henk@example.com", Role.USER));</code> will give
 “<a href="mailto:henk@example.com" class="email">henk@example.com</a>”</p>
 <p>The details of sessions are the topic of a separate post, however.</p>
 </div>
 </div>
-<div id="locally-scoped-variables-with" class="section level3" number="34.2.4">
-<h3><span class="header-section-number">34.2.4</span> Locally scoped variables with <code>*{}</code></h3>
+<div id="locally-scoped-variables-with" class="section level3 hasAnchor" number="34.2.4">
+<h3><span class="header-section-number">34.2.4</span> Locally scoped variables with <code>*{}</code><a href="thymeleaf-expressions.html#locally-scoped-variables-with" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can access the properties of a locally scoped object through the <code>*{}</code> syntax. This obviates the need for retyping the variable name over and over again.</p>
 <p>Given the User object of the session example, you can list its properties as follows:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb256-1"><a href="thymeleaf-expressions.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul</span><span class="ot"> th:object=</span><span class="st">&quot;${session.logged_in_user}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb256-2"><a href="thymeleaf-expressions.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Name: <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;*{name}&quot;</span><span class="kw">&gt;</span>_name_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
-<span id="cb256-3"><a href="thymeleaf-expressions.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Email: <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;*{email}&quot;</span><span class="kw">&gt;</span>_email_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
-<span id="cb256-4"><a href="thymeleaf-expressions.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Role: <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;*{role}&quot;</span><span class="kw">&gt;</span>_role_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
+<div class="sourceCode" id="cb256"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb256-1"><a href="thymeleaf-expressions.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul</span> <span class="er">th:object</span><span class="ot">=</span><span class="st">&quot;${session.logged_in_user}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb256-2"><a href="thymeleaf-expressions.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Name: <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{name}&quot;</span><span class="kw">&gt;</span>_name_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
+<span id="cb256-3"><a href="thymeleaf-expressions.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Email: <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{email}&quot;</span><span class="kw">&gt;</span>_email_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
+<span id="cb256-4"><a href="thymeleaf-expressions.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Role: <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{role}&quot;</span><span class="kw">&gt;</span>_role_<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
 <span id="cb256-5"><a href="thymeleaf-expressions.html#cb256-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
 <p>Which will produce</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb257-1"><a href="thymeleaf-expressions.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
@@ -641,15 +643,15 @@ The expression <code>${session.user.email}</code> will display the ‘email’ p
 <span id="cb257-4"><a href="thymeleaf-expressions.html#cb257-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;</span>Role: <span class="kw">&lt;span&gt;</span>USER<span class="kw">&lt;/span&gt;&lt;/li&gt;</span></span>
 <span id="cb257-5"><a href="thymeleaf-expressions.html#cb257-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
 </div>
-<div id="creating-links" class="section level3" number="34.2.5">
-<h3><span class="header-section-number">34.2.5</span> Creating links: <code>@{}</code></h3>
+<div id="creating-links" class="section level3 hasAnchor" number="34.2.5">
+<h3><span class="header-section-number">34.2.5</span> Creating links: <code>@{}</code><a href="thymeleaf-expressions.html#creating-links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using the <code>@{}</code> syntax, you can create links with a path that is relative to the <strong><em>deployment context</em></strong>.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb258-1"><a href="thymeleaf-expressions.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span><span class="ot"> th:href=</span><span class="st">&quot;@{/give.phrase(phrase_category=bullshit)}&quot;</span><span class="ot"> href=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>get a bullshit phrase<span class="kw">&lt;/a&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb258-1"><a href="thymeleaf-expressions.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">th:href</span><span class="ot">=</span><span class="st">&quot;@{/give.phrase(phrase_category=bullshit)}&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>get a bullshit phrase<span class="kw">&lt;/a&gt;</span></span></code></pre></div>
 <p>will give the following link: <a href="http://localhost:8080/give.phrase?phrase_category=bullshit" class="uri">http://localhost:8080/give.phrase?phrase_category=bullshit</a>.</p>
 <p>As you can see, you can add a request parameter as key=value pair. For multiple key=value pairs, separate them by comma’s: <code>@{/give.phrase(phrase_category=bullshit,action=nothing)}</code> gives <a href="http://localhost:8080/give.phrase?phrase_category=bullshit&amp;action=nothing" class="uri">http://localhost:8080/give.phrase?phrase_category=bullshit&amp;action=nothing</a></p>
 </div>
-<div id="html-tag-attributes-you-can-access" class="section level3" number="34.2.6">
-<h3><span class="header-section-number">34.2.6</span> html tag attributes you can access</h3>
+<div id="html-tag-attributes-you-can-access" class="section level3 hasAnchor" number="34.2.6">
+<h3><span class="header-section-number">34.2.6</span> html tag attributes you can access<a href="thymeleaf-expressions.html#html-tag-attributes-you-can-access" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You have seen Thymeleaf targeting the “text” attribute a lot now, using <code>th:text</code>. But there are many many more. Have a look at the Thymeleaf docs for a complete listing.
 Here are the main ones:</p>
 <table>
@@ -710,27 +712,27 @@ Here are the main ones:</p>
 <div class="sourceCode" id="cb259"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb259-1"><a href="thymeleaf-expressions.html#cb259-1" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;name_of_bird_selector&quot;</span><span class="op">,</span> <span class="st">&quot;fav_birds&quot;</span><span class="op">);</span></span>
 <span id="cb259-2"><a href="thymeleaf-expressions.html#cb259-2" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;bird_groups&quot;</span><span class="op">,</span> <span class="bu">List</span><span class="op">.</span><span class="fu">of</span><span class="op">(</span><span class="st">&quot;raptors&quot;</span><span class="op">,</span> <span class="st">&quot;songbirds&quot;</span><span class="op">,</span> <span class="st">&quot;waders&quot;</span><span class="op">,</span> <span class="st">&quot;wildfowl&quot;</span><span class="op">));</span></span></code></pre></div>
 <p>and this Thymeleaf template fragment</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb260-1"><a href="thymeleaf-expressions.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span><span class="ot"> th:name=</span><span class="st">&quot;${name_of_bird_selector}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb260-2"><a href="thymeleaf-expressions.html#cb260-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> th:each=</span><span class="st">&quot;bird_cat:${bird_groups}&quot;</span></span>
+<div class="sourceCode" id="cb260"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb260-1"><a href="thymeleaf-expressions.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span> <span class="er">th:name</span><span class="ot">=</span><span class="st">&quot;${name_of_bird_selector}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb260-2"><a href="thymeleaf-expressions.html#cb260-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;bird_cat:${bird_groups}&quot;</span></span>
 <span id="cb260-3"><a href="thymeleaf-expressions.html#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:value=</span><span class="st">&quot;${bird_cat}&quot;</span></span>
 <span id="cb260-4"><a href="thymeleaf-expressions.html#cb260-4" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:text=</span><span class="st">&quot;&#39;The &#39; + ${bird_cat}&quot;</span></span>
 <span id="cb260-5"><a href="thymeleaf-expressions.html#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:id=</span><span class="st">&quot;${bird_cat + &#39;_option&#39;}&quot;</span></span>
 <span id="cb260-6"><a href="thymeleaf-expressions.html#cb260-6" aria-hidden="true" tabindex="-1"></a><span class="ot">            value=</span><span class="st">&quot;_bird_cat_&quot;</span><span class="kw">&gt;</span>_bird_cat_<span class="kw">&lt;/option&gt;</span></span>
 <span id="cb260-7"><a href="thymeleaf-expressions.html#cb260-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/select&gt;</span></span></code></pre></div>
 <p>produce this html</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb261-1"><a href="thymeleaf-expressions.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span><span class="ot"> name=</span><span class="st">&quot;fav_birds&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb261-2"><a href="thymeleaf-expressions.html#cb261-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> id=</span><span class="st">&quot;raptors_option&quot;</span><span class="ot"> value=</span><span class="st">&quot;raptors&quot;</span><span class="kw">&gt;</span>The raptors<span class="kw">&lt;/option&gt;</span></span>
-<span id="cb261-3"><a href="thymeleaf-expressions.html#cb261-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> id=</span><span class="st">&quot;songbirds_option&quot;</span><span class="ot"> value=</span><span class="st">&quot;songbirds&quot;</span><span class="kw">&gt;</span>The songbirds<span class="kw">&lt;/option&gt;</span></span>
-<span id="cb261-4"><a href="thymeleaf-expressions.html#cb261-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> id=</span><span class="st">&quot;waders_option&quot;</span><span class="ot"> value=</span><span class="st">&quot;waders&quot;</span><span class="kw">&gt;</span>The waders<span class="kw">&lt;/option&gt;</span></span>
-<span id="cb261-5"><a href="thymeleaf-expressions.html#cb261-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> id=</span><span class="st">&quot;wildfowl_option&quot;</span><span class="ot"> value=</span><span class="st">&quot;wildfowl&quot;</span><span class="kw">&gt;</span>The wildfowl<span class="kw">&lt;/option&gt;</span></span>
+<div class="sourceCode" id="cb261"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb261-1"><a href="thymeleaf-expressions.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span> <span class="er">name</span><span class="ot">=</span><span class="st">&quot;fav_birds&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb261-2"><a href="thymeleaf-expressions.html#cb261-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;raptors_option&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;raptors&quot;</span><span class="kw">&gt;</span>The raptors<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb261-3"><a href="thymeleaf-expressions.html#cb261-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;songbirds_option&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;songbirds&quot;</span><span class="kw">&gt;</span>The songbirds<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb261-4"><a href="thymeleaf-expressions.html#cb261-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;waders_option&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;waders&quot;</span><span class="kw">&gt;</span>The waders<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb261-5"><a href="thymeleaf-expressions.html#cb261-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;wildfowl_option&quot;</span> <span class="er">value</span><span class="ot">=</span><span class="st">&quot;wildfowl&quot;</span><span class="kw">&gt;</span>The wildfowl<span class="kw">&lt;/option&gt;</span></span>
 <span id="cb261-6"><a href="thymeleaf-expressions.html#cb261-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/select&gt;</span></span></code></pre></div>
 </div>
-<div id="inline-expressions" class="section level3" number="34.2.7">
-<h3><span class="header-section-number">34.2.7</span> Inline expressions</h3>
+<div id="inline-expressions" class="section level3 hasAnchor" number="34.2.7">
+<h3><span class="header-section-number">34.2.7</span> Inline expressions<a href="thymeleaf-expressions.html#inline-expressions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes, it is not desirable to have your variables expressed within tag attributes. Instead, you want raw (html) text. This is especially the case with Javascript, when “injecting” variable values. Here is its main usage scenario:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb262-1"><a href="thymeleaf-expressions.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;button</span><span class="ot"> id=</span><span class="st">&quot;say_hello&quot;</span><span class="kw">&gt;</span>Say hello!<span class="kw">&lt;/button&gt;</span></span>
+<div class="sourceCode" id="cb262"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb262-1"><a href="thymeleaf-expressions.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;button</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;say_hello&quot;</span><span class="kw">&gt;</span>Say hello!<span class="kw">&lt;/button&gt;</span></span>
 <span id="cb262-2"><a href="thymeleaf-expressions.html#cb262-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb262-3"><a href="thymeleaf-expressions.html#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> th:inline=</span><span class="st">&quot;javascript&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb262-3"><a href="thymeleaf-expressions.html#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span> <span class="er">th:inline</span><span class="ot">=</span><span class="st">&quot;javascript&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb262-4"><a href="thymeleaf-expressions.html#cb262-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">var</span> user <span class="op">=</span> [[${session<span class="op">.</span><span class="at">logged_in_user</span><span class="op">.</span><span class="at">name</span>}]]<span class="op">;</span></span>
 <span id="cb262-5"><a href="thymeleaf-expressions.html#cb262-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;say_hello&quot;</span>)<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
 <span id="cb262-6"><a href="thymeleaf-expressions.html#cb262-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">alert</span>(<span class="st">&quot;Hi, &quot;</span> <span class="op">+</span> user)<span class="op">;</span></span>
@@ -751,7 +753,6 @@ Here are the main ones:</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -770,6 +771,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -787,6 +789,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -801,7 +807,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

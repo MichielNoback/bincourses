@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 35 Thymeleaf flow control and fragments | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 35 Thymeleaf flow control and fragments | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="thymeleaf-expressions.html"/>
 <link rel="next" href="sessions-scopes.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,10 +409,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="thymeleaf-flow-control-and-fragments" class="section level1" number="35">
-<h1><span class="header-section-number">Chapter 35</span> Thymeleaf flow control and fragments</h1>
-<div id="introduction-4" class="section level2" number="35.1">
-<h2><span class="header-section-number">35.1</span> Introduction</h2>
+<div id="thymeleaf-flow-control-and-fragments" class="section level1 hasAnchor" number="35">
+<h1><span class="header-section-number">Chapter 35</span> Thymeleaf flow control and fragments<a href="thymeleaf-flow-control-and-fragments.html#thymeleaf-flow-control-and-fragments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-4" class="section level2 hasAnchor" number="35.1">
+<h2><span class="header-section-number">35.1</span> Introduction<a href="thymeleaf-flow-control-and-fragments.html#introduction-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This post is the second on Thymeleaf. It deals with these templating techniques that Thymeleaf offers:</p>
 <ul>
 <li>conditionals</li>
@@ -504,8 +506,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The list of movies is attached to the WebContxt object using</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb264-1"><a href="thymeleaf-flow-control-and-fragments.html#cb264-1" aria-hidden="true" tabindex="-1"></a>ctx<span class="op">.</span><span class="fu">setVariable</span><span class="op">(</span><span class="st">&quot;movies&quot;</span><span class="op">,</span> Movie<span class="op">.</span><span class="fu">getAllMovies</span><span class="op">());</span></span></code></pre></div>
 <p>so for all examples the <code>$movies</code> variable is available.</p>
-<div id="iteration" class="section level3" number="35.1.1">
-<h3><span class="header-section-number">35.1.1</span> Iteration</h3>
+<div id="iteration" class="section level3 hasAnchor" number="35.1.1">
+<h3><span class="header-section-number">35.1.1</span> Iteration<a href="thymeleaf-flow-control-and-fragments.html#iteration" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Iteration with Thymeleaf is as simple as in Java code; simply use <code>th:each</code>.
 This is an example with the movies list:</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb265-1"><a href="thymeleaf-flow-control-and-fragments.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;table&gt;</span></span>
@@ -517,18 +519,18 @@ This is an example with the movies list:</p>
 <span id="cb265-7"><a href="thymeleaf-flow-control-and-fragments.html#cb265-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tr&gt;</span></span>
 <span id="cb265-8"><a href="thymeleaf-flow-control-and-fragments.html#cb265-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/thead&gt;</span></span>
 <span id="cb265-9"><a href="thymeleaf-flow-control-and-fragments.html#cb265-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tbody&gt;</span></span>
-<span id="cb265-10"><a href="thymeleaf-flow-control-and-fragments.html#cb265-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span><span class="ot"> th:each=</span><span class="st">&quot;movie:${movies}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb265-11"><a href="thymeleaf-flow-control-and-fragments.html#cb265-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb265-12"><a href="thymeleaf-flow-control-and-fragments.html#cb265-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb265-13"><a href="thymeleaf-flow-control-and-fragments.html#cb265-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb265-10"><a href="thymeleaf-flow-control-and-fragments.html#cb265-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie:${movies}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb265-11"><a href="thymeleaf-flow-control-and-fragments.html#cb265-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb265-12"><a href="thymeleaf-flow-control-and-fragments.html#cb265-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb265-13"><a href="thymeleaf-flow-control-and-fragments.html#cb265-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
 <span id="cb265-14"><a href="thymeleaf-flow-control-and-fragments.html#cb265-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tr&gt;</span></span>
 <span id="cb265-15"><a href="thymeleaf-flow-control-and-fragments.html#cb265-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tbody&gt;</span></span>
 <span id="cb265-16"><a href="thymeleaf-flow-control-and-fragments.html#cb265-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/table&gt;</span></span></code></pre></div>
 <p>Alternatively, you can use the <strong><em>local scope</em></strong> syntax:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb266-1"><a href="thymeleaf-flow-control-and-fragments.html#cb266-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span><span class="ot"> th:each=</span><span class="st">&quot;movie:${movies}&quot;</span><span class="ot"> th:object=</span><span class="st">&quot;${movie}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb266-2"><a href="thymeleaf-flow-control-and-fragments.html#cb266-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;*{title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb266-3"><a href="thymeleaf-flow-control-and-fragments.html#cb266-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;*{year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb266-4"><a href="thymeleaf-flow-control-and-fragments.html#cb266-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;*{rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
+<div class="sourceCode" id="cb266"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb266-1"><a href="thymeleaf-flow-control-and-fragments.html#cb266-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie:${movies}&quot;</span> <span class="er">th:object</span><span class="ot">=</span><span class="st">&quot;${movie}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb266-2"><a href="thymeleaf-flow-control-and-fragments.html#cb266-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb266-3"><a href="thymeleaf-flow-control-and-fragments.html#cb266-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb266-4"><a href="thymeleaf-flow-control-and-fragments.html#cb266-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;*{rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
 <span id="cb266-5"><a href="thymeleaf-flow-control-and-fragments.html#cb266-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tr&gt;</span></span></code></pre></div>
 <p>both of which result in this table:</p>
 <table>
@@ -649,7 +651,7 @@ Of course, sorting is something you usually leave to your Javascript front-end (
 <span id="cb267-9"><a href="thymeleaf-flow-control-and-fragments.html#cb267-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb267-10"><a href="thymeleaf-flow-control-and-fragments.html#cb267-10" aria-hidden="true" tabindex="-1"></a><span class="op">});</span></span></code></pre></div>
 <p>then in Thymeleaf, use the Comparator object:</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb268-1"><a href="thymeleaf-flow-control-and-fragments.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;tr</span><span class="ot"> th:each=</span><span class="st">&quot;movie:${#lists.sort(movies, movies_year_sorter)}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb268-1"><a href="thymeleaf-flow-control-and-fragments.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;tr</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie:${#lists.sort(movies, movies_year_sorter)}&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
 <p>Thymeleaf also provides a mechanism that stores the state of the iteration process. It has several useful properties:</p>
 <ul>
 <li><code>index</code>: the current iteration index, starting with 0 (zero)<br />
@@ -675,12 +677,12 @@ Of course, sorting is something you usually leave to your Javascript front-end (
 <span id="cb269-8"><a href="thymeleaf-flow-control-and-fragments.html#cb269-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tr&gt;</span></span>
 <span id="cb269-9"><a href="thymeleaf-flow-control-and-fragments.html#cb269-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/thead&gt;</span></span>
 <span id="cb269-10"><a href="thymeleaf-flow-control-and-fragments.html#cb269-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tbody&gt;</span></span>
-<span id="cb269-11"><a href="thymeleaf-flow-control-and-fragments.html#cb269-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span><span class="ot"> th:each=</span><span class="st">&quot;movie, it_stat:${movies}&quot;</span> </span>
+<span id="cb269-11"><a href="thymeleaf-flow-control-and-fragments.html#cb269-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;tr</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie, it_stat:${movies}&quot;</span> </span>
 <span id="cb269-12"><a href="thymeleaf-flow-control-and-fragments.html#cb269-12" aria-hidden="true" tabindex="-1"></a><span class="ot">        th:class=</span><span class="st">&quot;${it_stat.first} ? &#39;first&#39; : (${it_stat.even} ? &#39;even&#39; : &#39;odd&#39;)&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb269-13"><a href="thymeleaf-flow-control-and-fragments.html#cb269-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${it_stat.count} + &#39; / &#39; + ${it_stat.size}&quot;</span><span class="kw">&gt;&lt;/td&gt;</span></span>
-<span id="cb269-14"><a href="thymeleaf-flow-control-and-fragments.html#cb269-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb269-15"><a href="thymeleaf-flow-control-and-fragments.html#cb269-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
-<span id="cb269-16"><a href="thymeleaf-flow-control-and-fragments.html#cb269-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb269-13"><a href="thymeleaf-flow-control-and-fragments.html#cb269-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${it_stat.count} + &#39; / &#39; + ${it_stat.size}&quot;</span><span class="kw">&gt;&lt;/td&gt;</span></span>
+<span id="cb269-14"><a href="thymeleaf-flow-control-and-fragments.html#cb269-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.title}&quot;</span><span class="kw">&gt;</span>_title_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb269-15"><a href="thymeleaf-flow-control-and-fragments.html#cb269-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.year}&quot;</span><span class="kw">&gt;</span>_year_<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb269-16"><a href="thymeleaf-flow-control-and-fragments.html#cb269-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;td</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.rating}&quot;</span><span class="kw">&gt;</span>_rating_<span class="kw">&lt;/td&gt;</span></span>
 <span id="cb269-17"><a href="thymeleaf-flow-control-and-fragments.html#cb269-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tr&gt;</span></span>
 <span id="cb269-18"><a href="thymeleaf-flow-control-and-fragments.html#cb269-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/tbody&gt;</span></span>
 <span id="cb269-19"><a href="thymeleaf-flow-control-and-fragments.html#cb269-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/table&gt;</span></span></code></pre></div>
@@ -833,11 +835,11 @@ The Usual Suspects
 Let’s dissect.</p>
 <p>First there is the iteration initialization where an <code>it_stat</code> object is requested as well: <code>th:each="movie, it_stat:${movies}"</code>. In the second part, a nested ternary statement sets the <code>class</code> attribute of the current row. The first level determines the first row: <code>th:class="${it_stat.first} ? 'first' : (&lt;nested ternary&gt;)"</code>. The nested ternary determines the class of all rows except the first: <code>${it_stat.even} ? 'even' : 'odd'</code>.</p>
 </div>
-<div id="conditionals-if-and-thblock" class="section level3" number="35.1.2">
-<h3><span class="header-section-number">35.1.2</span> Conditionals: if (and th:block)</h3>
+<div id="conditionals-if-and-thblock" class="section level3 hasAnchor" number="35.1.2">
+<h3><span class="header-section-number">35.1.2</span> Conditionals: if (and th:block)<a href="thymeleaf-flow-control-and-fragments.html#conditionals-if-and-thblock" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Besides the ternary operator structure shown in the previous section, regular “if” tests can be applied. Here is a test for the rating of the movie; only movies with a rating higher than 9 are displayed:</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb271-1"><a href="thymeleaf-flow-control-and-fragments.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
-<span id="cb271-2"><a href="thymeleaf-flow-control-and-fragments.html#cb271-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li</span><span class="ot"> th:each=</span><span class="st">&quot;movie:${movies}&quot;</span> </span>
+<span id="cb271-2"><a href="thymeleaf-flow-control-and-fragments.html#cb271-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie:${movies}&quot;</span> </span>
 <span id="cb271-3"><a href="thymeleaf-flow-control-and-fragments.html#cb271-3" aria-hidden="true" tabindex="-1"></a><span class="ot">        th:text=</span><span class="st">&quot;${movie.title} + &#39; (&#39; + ${movie.year} + &#39;) - &#39; + ${movie.rating}&quot;</span> </span>
 <span id="cb271-4"><a href="thymeleaf-flow-control-and-fragments.html#cb271-4" aria-hidden="true" tabindex="-1"></a><span class="ot">        th:if=</span><span class="st">&quot;${movie.rating &gt;= 9}&quot;</span><span class="kw">&gt;</span>_movie_<span class="kw">&lt;/li&gt;</span></span>
 <span id="cb271-5"><a href="thymeleaf-flow-control-and-fragments.html#cb271-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
@@ -847,30 +849,30 @@ Let’s dissect.</p>
 <li>a boolean and is true</li>
 <li>a number and is non-zero</li>
 <li>a character and is non-zero</li>
-<li>a String and is not “false,” “off” or “no”</li>
+<li>a String and is not “false”, “off” or “no”</li>
 <li>not a boolean, a number, a character or a String</li>
 </ul>
 <p>The Thymeleaf <code>th:if</code> attribute has an inverse attribute, <code>th:unless</code>.
 This makes an if/else-like structure possible. Here, you see it in combination with <code>th:block</code> which is a handy Thymeleaf element which does not generate a html DOM element. Using th:block prevents excessive use of nested div and span elements.</p>
 <div class="sourceCode" id="cb272"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb272-1"><a href="thymeleaf-flow-control-and-fragments.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
-<span id="cb272-2"><a href="thymeleaf-flow-control-and-fragments.html#cb272-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th:block</span><span class="ot"> th:each=</span><span class="st">&quot;movie : ${movies}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb272-3"><a href="thymeleaf-flow-control-and-fragments.html#cb272-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;li</span><span class="ot"> th:if=</span><span class="st">&quot;${movie.rating &gt;= 9}&quot;</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.title} + &#39; - &#39; + ${movie.rating} + &#39; - WOW!&#39;&quot;</span> <span class="kw">&gt;&lt;/li&gt;</span></span>
-<span id="cb272-4"><a href="thymeleaf-flow-control-and-fragments.html#cb272-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;li</span><span class="ot"> th:unless=</span><span class="st">&quot;${movie.rating &gt;= 9}&quot;</span><span class="ot"> th:text=</span><span class="st">&quot;${movie.title} + &#39; - &#39; + ${movie.rating} + &#39; - JUST OK&#39;&quot;</span> <span class="kw">&gt;&lt;/li&gt;</span></span>
+<span id="cb272-2"><a href="thymeleaf-flow-control-and-fragments.html#cb272-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th:block</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;movie : ${movies}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb272-3"><a href="thymeleaf-flow-control-and-fragments.html#cb272-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;li</span> <span class="er">th:if</span><span class="ot">=</span><span class="st">&quot;${movie.rating &gt;= 9}&quot;</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.title} + &#39; - &#39; + ${movie.rating} + &#39; - WOW!&#39;&quot;</span> <span class="kw">&gt;&lt;/li&gt;</span></span>
+<span id="cb272-4"><a href="thymeleaf-flow-control-and-fragments.html#cb272-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;li</span> <span class="er">th:unless</span><span class="ot">=</span><span class="st">&quot;${movie.rating &gt;= 9}&quot;</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${movie.title} + &#39; - &#39; + ${movie.rating} + &#39; - JUST OK&#39;&quot;</span> <span class="kw">&gt;&lt;/li&gt;</span></span>
 <span id="cb272-5"><a href="thymeleaf-flow-control-and-fragments.html#cb272-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/th:block&gt;</span></span>
 <span id="cb272-6"><a href="thymeleaf-flow-control-and-fragments.html#cb272-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
 </div>
-<div id="conditionals-switch" class="section level3" number="35.1.3">
-<h3><span class="header-section-number">35.1.3</span> Conditionals: switch</h3>
+<div id="conditionals-switch" class="section level3 hasAnchor" number="35.1.3">
+<h3><span class="header-section-number">35.1.3</span> Conditionals: switch<a href="thymeleaf-flow-control-and-fragments.html#conditionals-switch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here you see a combination of iteration and switch/case to build an ordered list.</p>
 <div class="sourceCode" id="cb273"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb273-1"><a href="thymeleaf-flow-control-and-fragments.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ol&gt;</span></span>
-<span id="cb273-2"><a href="thymeleaf-flow-control-and-fragments.html#cb273-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li</span><span class="ot"> th:each=</span><span class="st">&quot;user:${users}&quot;</span><span class="ot"> th:switch=</span><span class="st">&quot;${user.role.toString()}&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb273-3"><a href="thymeleaf-flow-control-and-fragments.html#cb273-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span><span class="ot"> th:case=</span><span class="st">&quot;${&#39;ADMIN&#39;}&quot;</span> </span>
+<span id="cb273-2"><a href="thymeleaf-flow-control-and-fragments.html#cb273-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li</span> <span class="er">th:each</span><span class="ot">=</span><span class="st">&quot;user:${users}&quot;</span> <span class="er">th:switch</span><span class="ot">=</span><span class="st">&quot;${user.role.toString()}&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb273-3"><a href="thymeleaf-flow-control-and-fragments.html#cb273-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="er">th:case</span><span class="ot">=</span><span class="st">&quot;${&#39;ADMIN&#39;}&quot;</span> </span>
 <span id="cb273-4"><a href="thymeleaf-flow-control-and-fragments.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:text=</span><span class="st">&quot;${user.name} + &#39; (&#39; + ${user.role} + &#39;) manages all accounts&#39;&quot;</span><span class="kw">&gt;</span>_admin_<span class="kw">&lt;/span&gt;</span></span>
-<span id="cb273-5"><a href="thymeleaf-flow-control-and-fragments.html#cb273-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span><span class="ot"> th:case=</span><span class="st">&quot;${&#39;USER&#39;}&quot;</span> </span>
+<span id="cb273-5"><a href="thymeleaf-flow-control-and-fragments.html#cb273-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="er">th:case</span><span class="ot">=</span><span class="st">&quot;${&#39;USER&#39;}&quot;</span> </span>
 <span id="cb273-6"><a href="thymeleaf-flow-control-and-fragments.html#cb273-6" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:text=</span><span class="st">&quot;${user.name} + &#39; (&#39; + ${user.role} + &#39;) can browse and share all site content&#39;&quot;</span><span class="kw">&gt;</span>_user_<span class="kw">&lt;/span&gt;</span></span>
-<span id="cb273-7"><a href="thymeleaf-flow-control-and-fragments.html#cb273-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span><span class="ot"> th:case=</span><span class="st">&quot;${&#39;GUEST&#39;}&quot;</span> </span>
+<span id="cb273-7"><a href="thymeleaf-flow-control-and-fragments.html#cb273-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="er">th:case</span><span class="ot">=</span><span class="st">&quot;${&#39;GUEST&#39;}&quot;</span> </span>
 <span id="cb273-8"><a href="thymeleaf-flow-control-and-fragments.html#cb273-8" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:text=</span><span class="st">&quot;${user.name} + &#39; (&#39; + ${user.role} + &#39;) can only see our front page&#39;&quot;</span><span class="kw">&gt;</span>_guest_<span class="kw">&lt;/span&gt;</span></span>
-<span id="cb273-9"><a href="thymeleaf-flow-control-and-fragments.html#cb273-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span><span class="ot"> th:case=</span><span class="st">&quot;*&quot;</span> </span>
+<span id="cb273-9"><a href="thymeleaf-flow-control-and-fragments.html#cb273-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="er">th:case</span><span class="ot">=</span><span class="st">&quot;*&quot;</span> </span>
 <span id="cb273-10"><a href="thymeleaf-flow-control-and-fragments.html#cb273-10" aria-hidden="true" tabindex="-1"></a><span class="ot">            th:text=</span><span class="st">&quot;${user.name} + &#39;(&#39; + ${user.role} + &#39;) we do not know this role&#39;&quot;</span><span class="kw">&gt;</span>_unknown_<span class="kw">&lt;/span&gt;</span></span>
 <span id="cb273-11"><a href="thymeleaf-flow-control-and-fragments.html#cb273-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/li&gt;</span></span>
 <span id="cb273-12"><a href="thymeleaf-flow-control-and-fragments.html#cb273-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ol&gt;</span></span></code></pre></div>
@@ -898,32 +900,32 @@ This makes an if/else-like structure possible. Here, you see it in combination w
 <p>Note that with just one <code>th:case</code>, you can put everything within a single <code>li</code> tag - no need for the <code>span</code>.</p>
 </div>
 </div>
-<div id="working-with-fragments" class="section level2" number="35.2">
-<h2><span class="header-section-number">35.2</span> Working with fragments</h2>
+<div id="working-with-fragments" class="section level2 hasAnchor" number="35.2">
+<h2><span class="header-section-number">35.2</span> Working with fragments<a href="thymeleaf-flow-control-and-fragments.html#working-with-fragments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Parts of your pages will be reused over multiple other pages. Specifically, this is the case for banners, footers, menus and headers. Instead of copy-and-paste, Thymeleaf offers a nice mechanism for reusing page fragments - even conditionally! The strategy of choice here is to create a single Thymeleaf html page called “template” or “fragments” and to include elements of this page in others.
 Consider this html file called <code>template.html</code>:</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb276-1"><a href="thymeleaf-flow-control-and-fragments.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html SYSTEM &quot;http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd&quot;<span class="dt">&gt;</span></span>
 <span id="cb276-2"><a href="thymeleaf-flow-control-and-fragments.html#cb276-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-3"><a href="thymeleaf-flow-control-and-fragments.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span><span class="ot"> xmlns=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
+<span id="cb276-3"><a href="thymeleaf-flow-control-and-fragments.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html</span> <span class="er">xmlns</span><span class="ot">=</span><span class="st">&quot;http://www.w3.org/1999/xhtml&quot;</span></span>
 <span id="cb276-4"><a href="thymeleaf-flow-control-and-fragments.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="ot">      xmlns:th=</span><span class="st">&quot;http://www.thymeleaf.org&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb276-5"><a href="thymeleaf-flow-control-and-fragments.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head</span><span class="ot"> th:fragment=</span><span class="st">&quot;headerFragment&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb276-6"><a href="thymeleaf-flow-control-and-fragments.html#cb276-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span><span class="ot"> http-equiv=</span><span class="st">&quot;Content-Type&quot;</span><span class="ot"> content=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb276-5"><a href="thymeleaf-flow-control-and-fragments.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head</span> <span class="er">th:fragment</span><span class="ot">=</span><span class="st">&quot;headerFragment&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-6"><a href="thymeleaf-flow-control-and-fragments.html#cb276-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;meta</span> <span class="er">http-equiv</span><span class="ot">=</span><span class="st">&quot;Content-Type&quot;</span> <span class="er">content</span><span class="ot">=</span><span class="st">&quot;text/html; charset=UTF-8&quot;</span><span class="kw">/&gt;</span></span>
 <span id="cb276-7"><a href="thymeleaf-flow-control-and-fragments.html#cb276-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>_TITLE_<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb276-8"><a href="thymeleaf-flow-control-and-fragments.html#cb276-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> th:href=</span><span class="st">&quot;@{/css/main.css}&quot;</span><span class="ot"> href=</span><span class="st">&quot;../../css/main.css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-8"><a href="thymeleaf-flow-control-and-fragments.html#cb276-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">th:href</span><span class="ot">=</span><span class="st">&quot;@{/css/main.css}&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;../../css/main.css&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb276-9"><a href="thymeleaf-flow-control-and-fragments.html#cb276-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb276-10"><a href="thymeleaf-flow-control-and-fragments.html#cb276-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
 <span id="cb276-11"><a href="thymeleaf-flow-control-and-fragments.html#cb276-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-12"><a href="thymeleaf-flow-control-and-fragments.html#cb276-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span><span class="ot"> th:fragment=</span><span class="st">&quot;banner&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb276-13"><a href="thymeleaf-flow-control-and-fragments.html#cb276-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;logo&quot;</span><span class="ot"> th:src=</span><span class="st">&quot;@{/graphics/Awesome.png}&quot;</span><span class="ot"> src=</span><span class="st">&quot;../../graphics/Awesome.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;banner pic&quot;</span><span class="kw">/&gt;</span></span>
-<span id="cb276-14"><a href="thymeleaf-flow-control-and-fragments.html#cb276-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;banner_title&quot;</span><span class="kw">&gt;</span>Welcome, ye of lesser quality<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb276-12"><a href="thymeleaf-flow-control-and-fragments.html#cb276-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">th:fragment</span><span class="ot">=</span><span class="st">&quot;banner&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-13"><a href="thymeleaf-flow-control-and-fragments.html#cb276-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;img</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;logo&quot;</span> <span class="er">th:src</span><span class="ot">=</span><span class="st">&quot;@{/graphics/Awesome.png}&quot;</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;../../graphics/Awesome.png&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;banner pic&quot;</span><span class="kw">/&gt;</span></span>
+<span id="cb276-14"><a href="thymeleaf-flow-control-and-fragments.html#cb276-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h1</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;banner_title&quot;</span><span class="kw">&gt;</span>Welcome, ye of lesser quality<span class="kw">&lt;/h1&gt;</span></span>
 <span id="cb276-15"><a href="thymeleaf-flow-control-and-fragments.html#cb276-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb276-16"><a href="thymeleaf-flow-control-and-fragments.html#cb276-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb276-17"><a href="thymeleaf-flow-control-and-fragments.html#cb276-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!--these can be conditionally selected--&gt;</span></span>
-<span id="cb276-18"><a href="thymeleaf-flow-control-and-fragments.html#cb276-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span><span class="ot"> th:fragment=</span><span class="st">&quot;menu&quot;</span><span class="ot"> class=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb276-19"><a href="thymeleaf-flow-control-and-fragments.html#cb276-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb276-18"><a href="thymeleaf-flow-control-and-fragments.html#cb276-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">th:fragment</span><span class="ot">=</span><span class="st">&quot;menu&quot;</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-19"><a href="thymeleaf-flow-control-and-fragments.html#cb276-19" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
 <span id="cb276-20"><a href="thymeleaf-flow-control-and-fragments.html#cb276-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
-<span id="cb276-21"><a href="thymeleaf-flow-control-and-fragments.html#cb276-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span><span class="ot"> th:fragment=</span><span class="st">&quot;menu&quot;</span><span class="ot"> class=</span><span class="st">&quot;normaluser&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb276-22"><a href="thymeleaf-flow-control-and-fragments.html#cb276-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my regular content<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb276-21"><a href="thymeleaf-flow-control-and-fragments.html#cb276-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">th:fragment</span><span class="ot">=</span><span class="st">&quot;menu&quot;</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;normaluser&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-22"><a href="thymeleaf-flow-control-and-fragments.html#cb276-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my regular content<span class="kw">&lt;/a&gt;</span></span>
 <span id="cb276-23"><a href="thymeleaf-flow-control-and-fragments.html#cb276-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb276-24"><a href="thymeleaf-flow-control-and-fragments.html#cb276-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb276-25"><a href="thymeleaf-flow-control-and-fragments.html#cb276-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
@@ -936,43 +938,43 @@ Consider this html file called <code>template.html</code>:</p>
 <span id="cb276-32"><a href="thymeleaf-flow-control-and-fragments.html#cb276-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb276-33"><a href="thymeleaf-flow-control-and-fragments.html#cb276-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb276-34"><a href="thymeleaf-flow-control-and-fragments.html#cb276-34" aria-hidden="true" tabindex="-1"></a>    <span class="co">&lt;!-- receives an argument called pub --&gt;</span></span>
-<span id="cb276-35"><a href="thymeleaf-flow-control-and-fragments.html#cb276-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span><span class="ot"> th:fragment=</span><span class="st">&quot;footer(pub)&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb276-35"><a href="thymeleaf-flow-control-and-fragments.html#cb276-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">th:fragment</span><span class="ot">=</span><span class="st">&quot;footer(pub)&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb276-36"><a href="thymeleaf-flow-control-and-fragments.html#cb276-36" aria-hidden="true" tabindex="-1"></a>        <span class="dv">&amp;copy;</span> 2018 Team Awesome. Please don&#39;t contact us; we are too busy!<span class="kw">&lt;br/&gt;</span></span>
 <span id="cb276-37"><a href="thymeleaf-flow-control-and-fragments.html#cb276-37" aria-hidden="true" tabindex="-1"></a>        But if you really need to communicate, you can find us at the local pub:</span>
-<span id="cb276-38"><a href="thymeleaf-flow-control-and-fragments.html#cb276-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span><span class="ot"> th:text=</span><span class="st">&quot;${pub}&quot;</span><span class="kw">&gt;</span>_PUB_<span class="kw">&lt;/span&gt;&lt;br</span> <span class="kw">/&gt;</span></span>
+<span id="cb276-38"><a href="thymeleaf-flow-control-and-fragments.html#cb276-38" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;span</span> <span class="er">th:text</span><span class="ot">=</span><span class="st">&quot;${pub}&quot;</span><span class="kw">&gt;</span>_PUB_<span class="kw">&lt;/span&gt;&lt;br</span> <span class="kw">/&gt;</span></span>
 <span id="cb276-39"><a href="thymeleaf-flow-control-and-fragments.html#cb276-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb276-40"><a href="thymeleaf-flow-control-and-fragments.html#cb276-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb276-41"><a href="thymeleaf-flow-control-and-fragments.html#cb276-41" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
 <span id="cb276-42"><a href="thymeleaf-flow-control-and-fragments.html#cb276-42" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>The different parts (divs) have been marked with <code>th:fragment="&lt;fragment_name&gt;"</code>. These <code>th:fragment</code> tags make them available for inclusion in other pages.</p>
 <p>This is how you include a fragment from this page into another:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb277-1"><a href="thymeleaf-flow-control-and-fragments.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:insert=</span><span class="st">&quot;~{template :: banner}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span>
+<div class="sourceCode" id="cb277"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb277-1"><a href="thymeleaf-flow-control-and-fragments.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:insert</span><span class="ot">=</span><span class="st">&quot;~{template :: banner}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span>
 <span id="cb277-2"><a href="thymeleaf-flow-control-and-fragments.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- shorthand --&gt;</span></span>
-<span id="cb277-3"><a href="thymeleaf-flow-control-and-fragments.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:insert=</span><span class="st">&quot;template :: banner&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
+<span id="cb277-3"><a href="thymeleaf-flow-control-and-fragments.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:insert</span><span class="ot">=</span><span class="st">&quot;template :: banner&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
 <p>The <code>th:insert</code> expression expects a fragment expression (<code>~{...}</code>), which is an expression that results in a fragment. The first part of this expression is the name of the html file (<code>template.html</code>) without the extension and the second part is the fragment to be included. With a non-complex fragment expression, the (<code>~{</code>,<code>}</code>) enclosing is optional, so the shorthand notation suffices.</p>
 <p>Here is another example, the footer. This fragment takes an argument called <code>pub</code> that is available as variable by that same name. This is how to pass a variable</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb278-1"><a href="thymeleaf-flow-control-and-fragments.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:insert=</span><span class="st">&quot;~{template :: footer(&#39;The Bear Inn&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb278-1"><a href="thymeleaf-flow-control-and-fragments.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:insert</span><span class="ot">=</span><span class="st">&quot;~{template :: footer(&#39;The Bear Inn&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
 <p>and using it with the fragment is standard variable expression syntax: <code>${pub}</code>.</p>
 <p>Finally, different variants of a fragment can be conditionally included - here demonstrated with a ternary statement:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb279-1"><a href="thymeleaf-flow-control-and-fragments.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:insert=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb279-1"><a href="thymeleaf-flow-control-and-fragments.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:insert</span><span class="ot">=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
 <p>If the Role is ADMIN, <code>&lt;div th:fragment="menu" class="admin"&gt;...</code> is selected, otherwise <code>&lt;div th:fragment="menu" class="normaluser"&gt;...</code>.</p>
-<div id="the-difference-between-thinsert-and-threplace" class="section level4 unnumbered">
-<h4>The difference between <code>th:insert</code> and <code>th:replace</code></h4>
+<div id="the-difference-between-thinsert-and-threplace" class="section level4 unnumbered hasAnchor">
+<h4>The difference between <code>th:insert</code> and <code>th:replace</code><a href="thymeleaf-flow-control-and-fragments.html#the-difference-between-thinsert-and-threplace" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>th:insert is the simplest: it will simply insert the specified fragment as the body of its host tag.</p>
 <p>The <code>th:replace</code> expression actually replaces its host tag with the specified fragment.</p>
 <p>So, this:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb280-1"><a href="thymeleaf-flow-control-and-fragments.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:insert=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb280-1"><a href="thymeleaf-flow-control-and-fragments.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:insert</span><span class="ot">=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
 <p>results in</p>
 <div class="sourceCode" id="cb281"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb281-1"><a href="thymeleaf-flow-control-and-fragments.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
-<span id="cb281-2"><a href="thymeleaf-flow-control-and-fragments.html#cb281-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb281-3"><a href="thymeleaf-flow-control-and-fragments.html#cb281-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb281-2"><a href="thymeleaf-flow-control-and-fragments.html#cb281-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb281-3"><a href="thymeleaf-flow-control-and-fragments.html#cb281-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
 <span id="cb281-4"><a href="thymeleaf-flow-control-and-fragments.html#cb281-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
 <span id="cb281-5"><a href="thymeleaf-flow-control-and-fragments.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>whereas</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb282-1"><a href="thymeleaf-flow-control-and-fragments.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> th:replace=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb282-1"><a href="thymeleaf-flow-control-and-fragments.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">th:replace</span><span class="ot">=</span><span class="st">&quot;~{template :: (${users[0].getRole().toString() == &#39;ADMIN&#39;} ? &#39;menu.admin&#39; : &#39;menu.normaluser&#39;)}&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></span></code></pre></div>
 <p>results in</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb283-1"><a href="thymeleaf-flow-control-and-fragments.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb283-2"><a href="thymeleaf-flow-control-and-fragments.html#cb283-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
+<div class="sourceCode" id="cb283"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb283-1"><a href="thymeleaf-flow-control-and-fragments.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;admin&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb283-2"><a href="thymeleaf-flow-control-and-fragments.html#cb283-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;#&quot;</span><span class="kw">&gt;</span>my secret content<span class="kw">&lt;/a&gt;</span></span>
 <span id="cb283-3"><a href="thymeleaf-flow-control-and-fragments.html#cb283-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 
 </div>
@@ -988,7 +990,6 @@ Consider this html file called <code>template.html</code>:</p>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1007,6 +1008,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -1024,6 +1026,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -1038,7 +1044,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

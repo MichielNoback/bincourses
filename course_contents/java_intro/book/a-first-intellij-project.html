@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 A first IntelliJ project | The Java Track</title>
   <meta name="description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 A first IntelliJ project | The Java Track" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This ebook accompanies the Java course track of bioinformatics at the Hanze University of Applied Science, Groningen (The Netherlands)." />
   
@@ -32,8 +31,8 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="keyboard-shortcuts.html"/>
 <link rel="next" href="the-essence-of-java.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -407,13 +409,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="a-first-intellij-project" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> A first IntelliJ project</h1>
+<div id="a-first-intellij-project" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> A first IntelliJ project<a href="a-first-intellij-project.html#a-first-intellij-project" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This course uses the IntelliJ Idea Integrated Development Environment (IDE) to
 develop Java programs. This chapter deals with using IntelliJ Idea to create
 Java applications.</p>
-<div id="dependency-management" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Dependency management</h2>
+<div id="dependency-management" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Dependency management<a href="a-first-intellij-project.html#dependency-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As you probably already know by now, code you write is always
 dependent on other code. This can be code native to the platform (such as the
 <code>integer</code> “class” in R, or the <code>str</code> class in Python) but it can also be code
@@ -422,8 +424,8 @@ These “non-core” dependencies need to be managed. Many tools exist for depen
 now this is the only relevant aspect.</p>
 <p>Let’s dive in and see the different players in a Java coding project work together.</p>
 </div>
-<div id="a-first-project" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> A first project</h2>
+<div id="a-first-project" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> A first project<a href="a-first-intellij-project.html#a-first-project" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Start IntelliJ and select “<code>+ Create New Project</code>” from the start screen (or New → Project from the File menu).</p>
 <div class="figure">
 <img src="01_getting_started/figures/IntelliJ_start_screen.png" alt="" />
@@ -435,13 +437,13 @@ shows Java 10. Only check Java in the Additional Libraries section.</p>
 <img src="01_getting_started/figures/IntelliJ_create_Gradle_project_1.png" alt="" />
 <p class="caption">Create project</p>
 </div>
-<p>Click “Next.” In the next window, give your project a Name and Location. Expand the Artifact Coordinates section which is hidden by default and give your project a <strong><em>GroupId</em></strong>, an <strong><em>ArtifactId</em></strong> and a <strong><em>Version</em></strong>.</p>
+<p>Click “Next”. In the next window, give your project a Name and Location. Expand the Artifact Coordinates section which is hidden by default and give your project a <strong><em>GroupId</em></strong>, an <strong><em>ArtifactId</em></strong> and a <strong><em>Version</em></strong>.</p>
 <div class="figure">
 <img src="01_getting_started/figures/IntelliJ_create_Gradle_project_2.png" alt="" />
 <p class="caption">Define project</p>
 </div>
 <p>The group ID should be a unique identifier; in Java this is usually the web domain of you or your employer, reversed and with a project name appended. It is a way to guarantee a unique <em>name space</em>. Note the underscores; in Java you specify package names with underscores and lowercase letters. The artifact ID is the name of your project, also in lowercase but usually with hyphens between words. Give it version 0.0.1.</p>
-<p>Click “Finish.” A brand new Gradle-managed Java project will be created with a layout as shown below.</p>
+<p>Click “Finish”. A brand new Gradle-managed Java project will be created with a layout as shown below.</p>
 <div class="figure">
 <img src="01_getting_started/figures/IntelliJ_new_Gradle_project.png" alt="" />
 <p class="caption">A new project</p>
@@ -483,12 +485,12 @@ shows Java 10. Only check Java in the Additional Libraries section.</p>
 <img src="01_getting_started/figures/new_package.png" alt="" />
 <p class="caption">New package</p>
 </div>
-<p>Select the new <code>package</code>, right-click it and select “New” -&gt; “Java Class.” Name it <code>HelloWorld</code> (do not give any file extension!).</p>
+<p>Select the new <code>package</code>, right-click it and select “New” -&gt; “Java Class”. Name it <code>HelloWorld</code> (do not give any file extension!).</p>
 <div class="figure">
 <img src="01_getting_started/figures/new_java_class_1.png" alt="" />
 <p class="caption">New Java class</p>
 </div>
-<p>Click “OK.”</p>
+<p>Click “OK”.</p>
 <div class="figure">
 <img src="01_getting_started/figures/new_java_class_2.png" alt="" />
 <p class="caption">New Java class</p>
@@ -507,7 +509,7 @@ shows Java 10. Only check Java in the Additional Libraries section.</p>
 <img src="01_getting_started/figures/shortcut_sout.png" alt="" />
 <p class="caption">Generate console output</p>
 </div>
-<p>The statement <code>System.out.println();</code> appears. Within this print call, type “Hello, World.” Your class should look like this, except that your package will be named differently:</p>
+<p>The statement <code>System.out.println();</code> appears. Within this print call, type “Hello, World”. Your class should look like this, except that your package will be named differently:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="a-first-intellij-project.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">package</span><span class="im"> nl</span><span class="op">.</span><span class="im">bioinf</span><span class="op">.</span><span class="im">nomi</span><span class="op">.</span><span class="im">my_first_project</span><span class="op">;</span></span>
 <span id="cb2-2"><a href="a-first-intellij-project.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="a-first-intellij-project.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> HelloWorld <span class="op">{</span></span>
@@ -515,7 +517,7 @@ shows Java 10. Only check Java in the Additional Libraries section.</p>
 <span id="cb2-5"><a href="a-first-intellij-project.html#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">&quot;Hello, World&quot;</span><span class="op">);</span></span>
 <span id="cb2-6"><a href="a-first-intellij-project.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
 <span id="cb2-7"><a href="a-first-intellij-project.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>Click the green triangle within the editor border and select "run ‘HelloWorld.main()’ Note there is also a shortcut for running <code>main()</code>: <code>^ + shift + R</code>.</p>
+<p>Click the green triangle within the editor border and select “run ‘HelloWorld.main()’ Note there is also a shortcut for running <code>main()</code>: <code>^ + shift + R</code>.</p>
 <div class="figure">
 <img src="01_getting_started/figures/run_main.png" alt="" />
 <p class="caption">Run the app</p>
@@ -546,8 +548,8 @@ BUILD SUCCESSFUL in 0s
 <p class="caption">Specify SDK</p>
 </div>
 </div>
-<div id="distribute-an-executable" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Distribute an executable</h2>
+<div id="distribute-an-executable" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Distribute an executable<a href="a-first-intellij-project.html#distribute-an-executable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The final step is getting the app to your users. In Java you use a <code>jar</code> (Java ARchive) for that.</p>
 <p>Gradle can do the whole build-to-executable process. You first need to specify where your “main class” is located: the class which contains the <code>main()</code> method that you want to use as “entry point” of your application.</p>
 <p>Since we use Gradle for the build process, the place to do this is the <code>build.gradle</code> file; open it again and add this section at the bottom:</p>
@@ -561,7 +563,7 @@ BUILD SUCCESSFUL in 0s
 <p>The <code>Main-Class</code> line specifies for the JVM -when your application is going to be executed- to go look in class <code>HelloWorld</code> for a <code>main()</code> method to run when the application starts up. You can in fact have many <code>main()</code> methods in your application, but only one can serve as entry point in an executable. (Yes, you can make different executables with a single code base by simply specifying different entry points!)</p>
 <p>Refresh your project as before.
 Next, Go to the right Gradle Tool Window on the right (make it visible if required: View → Tool Windows → Gradle) and expand the panel.</p>
-<p>Select Tasks → build → double click “jar.” Your jar will be build under <code>build/libs</code>; go there with a terminal application (IntelliJ also has one) and type <code>java -jar my-first-project-0.0.1.jar</code>.</p>
+<p>Select Tasks → build → double click “jar”. Your jar will be build under <code>build/libs</code>; go there with a terminal application (IntelliJ also has one) and type <code>java -jar my-first-project-0.0.1.jar</code>.</p>
 <p>You should see as output</p>
 <pre><code>~/IdeaProjects/my-first-project$ 
 ~/IdeaProjects/my-first-project$ cd build
@@ -569,8 +571,8 @@ Next, Go to the right Gradle Tool Window on the right (make it visible if requir
 ~/IdeaProjects/my-first-project/build/libs$ java -jar my-first-project-0.0.1.jar 
 Hello, World</code></pre>
 </div>
-<div id="wrap-up" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Wrap-up</h2>
+<div id="wrap-up" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Wrap-up<a href="a-first-intellij-project.html#wrap-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>That’s it. This is how you create, run and build a Gradle-managed Java project.</p>
 <p>These are the keyboard shortcuts you should remember:</p>
 <ul>
@@ -592,7 +594,6 @@ Hello, World</code></pre>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -611,6 +612,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -628,6 +630,10 @@ gitbook.start({
 "text": null
 },
 "download": ["The Java Track.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -642,7 +648,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
